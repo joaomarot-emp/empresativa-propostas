@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta EmpresAtiva Digital × Board Academy RJ</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #080808;
+      --white: #F5F2EC;
+      --orange: #E8671A;
+      --orange-dim: #C4581400;
+      --gold: #C9A84C;
+      --dark: #111111;
+      --mid: #1C1C1C;
+      --border: rgba(255, 255, 255, 0.08);
+      --text-muted: rgba(245, 242, 236, 0.45);
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(232, 103, 26, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--orange);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 900;
+      line-height: 1.0;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.4s;
+    }
+
+    .hero-title em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.6s;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.8s;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-meta-item span:first-child {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .hero-meta-item span:last-child {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.2s;
+    }
+
+    .hero-scroll::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, transparent, var(--text-muted));
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 100px 60px;
+      position: relative;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--orange);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-title em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .section-intro {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 60px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 60px;
+      width: calc(100% - 120px);
+    }
+
+    /* ── DIAGNÓSTICO ── */
+    .diagnostico {
+      background: var(--dark);
+    }
+
+    .diagnostico-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .diag-card {
+      background: var(--mid);
+      padding: 40px 32px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    .diag-card:hover {
+      background: #222;
+    }
+
+    .diag-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--orange);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.4s ease;
+    }
+
+    .diag-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .diag-number {
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 900;
+      color: rgba(232, 103, 26, 0.12);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .diag-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .diag-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── INTELIGÊNCIA COMPETITIVA ── */
+    .intel {
+      background: var(--black);
+    }
+
+    .intel-intro-box {
+      background: linear-gradient(135deg, rgba(232, 103, 26, 0.1), rgba(201, 168, 76, 0.05));
+      border: 1px solid rgba(232, 103, 26, 0.2);
+      padding: 32px 40px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intel-intro-box::after {
+      content: '★';
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 80px;
+      color: rgba(232, 103, 26, 0.08);
+      font-family: var(--font-display);
+    }
+
+    .intel-intro-box p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    .intel-intro-box strong {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .intel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .intel-card {
+      border: 1px solid var(--border);
+      padding: 32px;
+      position: relative;
+    }
+
+    .intel-card-platform {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .intel-card-platform .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .intel-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+
+    .intel-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .intel-list li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .intel-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-size: 11px;
+    }
+
+    .intel-oport {
+      background: var(--mid);
+      border-left: 3px solid var(--gold);
+      padding: 32px 40px;
+    }
+
+    .intel-oport h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .oport-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .oport-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .oport-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .oport-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .oport-item strong {
+      display: block;
+      font-size: 13px;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* ── ESTRATÉGIA ── */
+    .estrategia {
+      background: var(--dark);
+    }
+
+    .strategy-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .strategy-step {
+      display: grid;
+      grid-template-columns: 80px 1fr 280px;
+      align-items: start;
+      gap: 0;
+      background: var(--mid);
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .strategy-step:hover {
+      background: #1e1e1e;
+    }
+
+    .step-num {
+      padding: 32px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--orange);
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      padding-top: 34px;
+    }
+
+    .step-body {
+      padding: 32px 40px;
+      border-right: 1px solid var(--border);
+    }
+
+    .step-body h3 {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .step-body p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .step-tag {
+      padding: 32px;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 36px;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      background: rgba(232, 103, 26, 0.12);
+      border: 1px solid rgba(232, 103, 26, 0.25);
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      padding: 5px 12px;
+      text-transform: uppercase;
+    }
+
+    /* ── ENTREGÁVEIS ── */
+    .entregaveis {
+      background: var(--black);
+    }
+
+    .entrega-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .entrega-card {
+      background: var(--mid);
+      padding: 40px;
+      display: flex;
+      gap: 24px;
+      transition: background 0.3s;
+    }
+
+    .entrega-card:hover {
+      background: #1e1e1e;
+    }
+
+    .entrega-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(232, 103, 26, 0.08);
+      border: 1px solid rgba(232, 103, 26, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .entrega-content h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+
+    .entrega-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── INVESTIMENTO ── */
+    .investimento {
+      background: var(--dark);
+    }
+
+    .inv-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 60px;
+      align-items: start;
+      margin-top: 60px;
+    }
+
+    .inv-compare h3 {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .compare-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-row:first-of-type {
+      padding-top: 0;
+    }
+
+    .compare-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .compare-value {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--white);
+    }
+
+    .compare-value.crossed {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    .compare-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0 0;
+    }
+
+    .compare-total span:first-child {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .compare-total span:last-child {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      opacity: 0.4;
+    }
+
+    .inv-box {
+      background: var(--black);
+      border: 1px solid rgba(232, 103, 26, 0.3);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .inv-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--gold));
+    }
+
+    .inv-box::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(232, 103, 26, 0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .inv-plan-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .inv-price {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .inv-price sub {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-muted);
+      vertical-align: middle;
+      font-family: var(--font-body);
+    }
+
+    .inv-period {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .inv-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+
+    .inv-includes h4 {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .inv-includes ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .inv-includes li {
+      font-size: 13px;
+      color: var(--white);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .inv-includes li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-size: 12px;
+    }
+
+    .inv-media {
+      margin-top: 24px;
+      background: rgba(232, 103, 26, 0.06);
+      border: 1px solid rgba(232, 103, 26, 0.12);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .inv-media span:first-child {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .inv-media span:last-child {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--orange);
+      font-weight: 500;
+    }
+
+    .inv-conditions {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── PRÓXIMOS PASSOS ── */
+    .proximos {
+      background: var(--black);
+    }
+
+    .steps-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 60px;
+    }
+
+    .timeline-step {
+      background: var(--mid);
+      padding: 40px 32px;
+      position: relative;
+    }
+
+    .timeline-step::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 40px;
+      color: var(--orange);
+      font-size: 16px;
+      z-index: 2;
+    }
+
+    .timeline-step:last-child::after {
+      display: none;
+    }
+
+    .timeline-day {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .timeline-step h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .timeline-step p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER / ASSINATURA ── */
+    .assinatura {
+      background: var(--dark);
+      padding: 80px 60px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .assin-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .assin-left h2 em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .assin-left p {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 440px;
+      line-height: 1.7;
+    }
+
+    .assin-contact {
+      text-align: right;
+    }
+
+    .assin-contact .name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .assin-contact .role {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .assin-contact .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .assin-contact .cta-btn:hover {
+      background: var(--gold);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+
+      section,
+      .hero,
+      .assinatura {
+        padding: 60px 24px;
+      }
+
+      .diagnostico-grid,
+      .intel-grid,
+      .entrega-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .inv-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-timeline {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .oport-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .strategy-step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-num {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 24px;
+      }
+
+      .step-body {
+        border-right: none;
+      }
+
+      .assinatura {
+        grid-template-columns: 1fr;
+      }
+
+      .assin-contact {
+        text-align: left;
+      }
+
+      .divider {
+        margin: 0 24px;
+        width: calc(100% - 48px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════ -->
+  <section class="hero">
+    <p class="hero-label">Proposta Estratégica · 2026</p>
+    <h1 class="hero-title">
+      Board Academy<br><em>Rio de Janeiro</em>
+    </h1>
+    <p class="hero-subtitle">
+      Arquitetura de Receita para um programa de formação de conselheiros que precisa escalar matrículas com
+      inteligência, precisão e previsibilidade.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span>Plano</span>
+        <span>Arquitetura de Receita</span>
+      </div>
+      <div class="hero-meta-item">
+        <span>Investimento mensal</span>
+        <span>R$ 2.497 / mês</span>
+      </div>
+      <div class="hero-meta-item">
+        <span>Mídia sugerida</span>
+        <span>R$ 1.500 / mês</span>
+      </div>
+      <div class="hero-meta-item">
+        <span>Prazo mínimo</span>
+        <span>6 meses</span>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll para explorar</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ DIAGNÓSTICO ═══════════════════════════════ -->
+  <section class="diagnostico">
+    <div class="section-label">Diagnóstico</div>
+    <h2 class="section-title">O desafio do <em>PFCC</em> no Rio</h2>
+    <p class="section-intro">
+      Um programa de excelência nacional com 96% de NPS enfrenta um desafio claro: transformar interesse em inscrições
+      pagas em uma praça competitiva e com decisão de compra consultiva.
+    </p>
+
+    <div class="diagnostico-grid">
+      <div class="diag-card">
+        <div class="diag-number">01</div>
+        <div class="diag-title">Funil longo e consultivo</div>
+        <p class="diag-text">O ticket de um programa de formação exige nutrição. Leads que não recebem follow-up
+          estruturado somem antes de converter.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-number">02</div>
+        <div class="diag-title">Concorrência ativa em 3 frentes</div>
+        <p class="diag-text">Competidores investem simultaneamente em Google, Meta e LinkedIn — enquanto o RJ ainda não
+          tem uma campanha local dedicada.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-number">03</div>
+        <div class="diag-title">Público premium & específico</div>
+        <p class="diag-text">Executivos, C-Levels e empresários seniores exigem linguagem, criativos e posicionamento
+          acima da média. Anúncios genéricos não convertem.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-number">04</div>
+        <div class="diag-title">Sem rastreamento local</div>
+        <p class="diag-text">Sem segmentação geográfica ativa, o investimento em mídia vaza para fora do RJ — onde a
+          turma local precisa ser preenchida.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-number">05</div>
+        <div class="diag-title">Leads sem qualificação prévia</div>
+        <p class="diag-text">Sem um agente de IA ou formulário condicional, o time comercial perde tempo com candidatos
+          fora do perfil ideal.</p>
+      </div>
+      <div class="diag-card">
+        <div class="diag-number">06</div>
+        <div class="diag-title">Janela de turmas limitada</div>
+        <p class="diag-text">O PFCC tem início em datas fixas. Toda campanha precisa gerar urgência real para evitar que
+          o lead "espere a próxima turma".</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ INTELIGÊNCIA COMPETITIVA ══════════════════ -->
+  <section class="intel">
+    <div class="section-label">Inteligência Competitiva</div>
+    <h2 class="section-title">O que a <em>concorrência</em> está fazendo</h2>
+
+    <div class="intel-intro-box">
+      <p>
+        Analisamos os anúncios ativos dos principais competidores nas três plataformas — <strong>Google Ads, Meta Ads e
+          LinkedIn Ads</strong>. A Board Academy do RJ tem uma janela clara de oportunidade: <strong>nenhum concorrente
+          está fazendo campanhas locais segmentadas para o Rio de Janeiro</strong> com inteligência de funil
+        estruturada. A corrida está em aberto.
+      </p>
+    </div>
+
+    <div class="intel-grid">
+      <div class="intel-card">
+        <div class="intel-card-platform">
+          <div class="dot"></div>Google Ads
+        </div>
+        <h3>Busca por Curso de Conselheiro</h3>
+        <ul class="intel-list">
+          <li>Competidores anunciam termos amplos como "curso conselheiro" e "governança corporativa" sem segmentação
+            por cidade</li>
+          <li>Muitos criativos de texto focam em credencial, mas não em transformação de carreira ou urgência de turma
+          </li>
+          <li>Nenhum usa extensões de local ou chamada para eventos presenciais no RJ</li>
+          <li>Oportunidade clara em termos de cauda longa como "curso conselheiro Rio de Janeiro" e "PFCC RJ"</li>
+        </ul>
+      </div>
+      <div class="intel-card">
+        <div class="intel-card-platform">
+          <div class="dot"></div>Meta Ads (Instagram & Facebook)
+        </div>
+        <h3>Volume alto, segmentação baixa</h3>
+        <ul class="intel-list">
+          <li>Concorrentes rodam dezenas de variações de criativos sem teste A/B estruturado — volume sem estratégia
+          </li>
+          <li>Predominância de criativos estáticos escuros (fundo preto + texto em amarelo/dourado) — padrão fácil de
+            superar com vídeo e depoimento</li>
+          <li>Nenhuma campanha identificada com segmentação exclusiva para executivos no RJ + Niterói</li>
+          <li>Apelo ao "prestígio do cargo de conselheiro" é o gancho dominante — sem diferenciação clara de metodologia
+          </li>
+        </ul>
+      </div>
+      <div class="intel-card">
+        <div class="intel-card-platform">
+          <div class="dot"></div>LinkedIn Ads
+        </div>
+        <h3>O canal mais ativo da categoria</h3>
+        <ul class="intel-list">
+          <li>LinkedIn é onde a maioria dos competidores concentra esforço — público executivo nativo da plataforma</li>
+          <li>Padrão de anúncio: urgência por vagas ("Faltam 3 dias", "Últimas vagas"), mas sem personalização por
+            região</li>
+          <li>Alta frequência de remarketing, indicando funil ativo porém custoso — CPL elevado não otimizado</li>
+          <li>Board Academy pode dominar RJ no LinkedIn com segmentação por cargo + localização antes dos concorrentes
+            chegarem</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="intel-oport">
+      <h3>🎯 Oportunidades Identificadas para o RJ</h3>
+      <div class="oport-grid">
+        <div class="oport-item">
+          <div class="oport-icon">🗺️</div>
+          <div>
+            <strong>Geo-segmentação RJ + Niterói</strong>
+            <p>Nenhum concorrente faz campanhas locais para o Rio. Ser o primeiro é vantagem de marca.</p>
+          </div>
+        </div>
+        <div class="oport-item">
+          <div class="oport-icon">🤝</div>
+          <div>
+            <strong>Prova social local</strong>
+            <p>Depoimentos de conselheiros formados no RJ têm impacto muito maior para o público carioca.</p>
+          </div>
+        </div>
+        <div class="oport-item">
+          <div class="oport-icon">⚡</div>
+          <div>
+            <strong>Urgência por datas de turma</strong>
+            <p>Usar contagem regressiva real nos criativos para gerar decisão antes da "próxima turma".</p>
+          </div>
+        </div>
+        <div class="oport-item">
+          <div class="oport-icon">🤖</div>
+          <div>
+            <strong>Qualificação por IA antes do comercial</strong>
+            <p>Agente de IA triagem o lead antes do primeiro contato — o concorrente ainda faz isso manualmente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ ESTRATÉGIA ════════════════════════════════ -->
+  <section class="estrategia">
+    <div class="section-label">Estratégia</div>
+    <h2 class="section-title">Arquitetura de <em>Receita</em></h2>
+    <p class="section-intro">
+      Seis camadas integradas que transformam investimento em mídia em matrículas previsíveis para o PFCC RJ.
+    </p>
+
+    <div class="strategy-flow">
+
+      <div class="strategy-step">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Tráfego Pago — Google + Meta + LinkedIn</h3>
+          <p>Campanhas simultâneas nas três plataformas com segmentação geográfica RJ/Niterói. No Google, foco em termos
+            de busca ativa ("curso conselheiro RJ", "PFCC"). No Meta, criativos em vídeo com depoimento de ex-aluno
+            carioca e urgência de turma. No LinkedIn, segmentação por cargo (C-Level, Diretor, Gerente Sênior) +
+            localização + setor.</p>
+        </div>
+        <div class="step-tag">
+          <div class="tag-pill">Aquisição</div>
+        </div>
+      </div>
+
+      <div class="strategy-step">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Landing Page de Alta Conversão</h3>
+          <p>Página dedicada ao PFCC RJ com prova social local, contagem regressiva de turma, formulário condicional com
+            qualificação (cargo, empresa, motivação). Cada lead identificado por origem e campanha. Alerta imediato no
+            WhatsApp do time comercial ao receber cada inscrição.</p>
+        </div>
+        <div class="step-tag">
+          <div class="tag-pill">Conversão</div>
+        </div>
+      </div>
+
+      <div class="strategy-step">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Agente de IA — Qualificação Automática</h3>
+          <p>Assim que o lead preenche o formulário, nosso agente de IA analisa as respostas e entrega uma pontuação de
+            qualificação ao time comercial antes do primeiro contato. Resultado: o comercial fala primeiro com quem tem
+            maior probabilidade de fechar — sem perder tempo com leads fora do perfil.</p>
+        </div>
+        <div class="step-tag">
+          <div class="tag-pill">Inteligência</div>
+        </div>
+      </div>
+
+      <div class="strategy-step">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>Kommo CRM — Pipeline Visual</h3>
+          <p>100% dos leads rastreados em pipeline visual com etapas claras: Aplicação → Qualificado → Reunião →
+            Proposta → Matrícula. Integração nativa com WhatsApp e Instagram. Nenhum lead cai no esquecimento. Cada
+            etapa do funil é mensurável e otimizável.</p>
+        </div>
+        <div class="step-tag">
+          <div class="tag-pill">Gestão</div>
+        </div>
+      </div>
+
+      <div class="strategy-step">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h3>Playbook Comercial & Treinamento</h3>
+          <p>Script de vendas customizado para o PFCC RJ, com objections handling específico para o público executivo
+            carioca ("já tenho MBA", "não tenho tempo", "é presencial?"). Protocolo de atendimento com SLA de resposta e
+            cadência de follow-up estruturada para funil longo.</p>
+        </div>
+        <div class="step-tag">
+          <div class="tag-pill">Comercial</div>
+        </div>
+      </div>
+
+      <div class="strategy-step">
+        <div class="step-num">06</div>
+        <div class="step-body">
+          <h3>Dashboard + Check-ins Quinzenais</h3>
+          <p>Dashboard em tempo real com CPL, ROAS, taxa de conversão por etapa, ranking de criativos e comparativo
+            semanal. Reuniões quinzenais para análise de performance e ajuste de estratégia. Decisões baseadas em dados
+            — não em intuição.</p>
+        </div>
+        <div class="step-tag">
+          <div class="tag-pill">Otimização</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ ENTREGÁVEIS ═══════════════════════════════ -->
+  <section class="entregaveis">
+    <div class="section-label">Entregáveis</div>
+    <h2 class="section-title">O que você <em>recebe</em></h2>
+    <p class="section-intro">
+      Tudo que um programa premium precisa para gerar matrículas de forma consistente e escalável.
+    </p>
+
+    <div class="entrega-grid">
+      <div class="entrega-card">
+        <div class="entrega-icon">🎯</div>
+        <div class="entrega-content">
+          <h3>Gestão de Tráfego Pago Senior</h3>
+          <p>Google Ads, Meta Ads e LinkedIn Ads com gestor dedicado, testes A/B contínuos e relatório de criativos por
+            performance. Segmentação geográfica RJ/Niterói em todas as plataformas.</p>
+        </div>
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-icon">🖥️</div>
+        <div class="entrega-content">
+          <h3>Landing Page + Formulário Qualificador</h3>
+          <p>Página focada em conversão para o PFCC RJ com prova social local, countdown de turma, formulário
+            condicional e alerta WhatsApp a cada novo lead.</p>
+        </div>
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-icon">🤖</div>
+        <div class="entrega-content">
+          <h3>Agente de IA para Qualificação</h3>
+          <p>Score automático de cada lead antes do primeiro contato comercial. Já incluído no fee mensal da Arquitetura
+            de Receita — sem custo adicional.</p>
+        </div>
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-icon">📊</div>
+        <div class="entrega-content">
+          <h3>Kommo CRM Configurado</h3>
+          <p>Pipeline visual com todas as etapas do funil do PFCC, integrado ao WhatsApp e Instagram. 100% dos leads
+            rastreados do clique à matrícula.</p>
+        </div>
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-icon">📋</div>
+        <div class="entrega-content">
+          <h3>Playbook Comercial Customizado</h3>
+          <p>Script de vendas, protocolo de atendimento, cadência de follow-up e handling de objeções específico para o
+            público executivo do PFCC RJ.</p>
+        </div>
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-icon">🎨</div>
+        <div class="entrega-content">
+          <h3>Criativos & Design para Campanhas</h3>
+          <p>Artes e copies desenvolvidos por designer e copywriter especializado em funil de vendas. 4 posts/mês no
+            feed com arte e copy incluídos.</p>
+        </div>
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-icon">📈</div>
+        <div class="entrega-content">
+          <h3>Dashboard em Tempo Real</h3>
+          <p>Métricas executivas: CPL por canal, ROAS, taxa de conversão por etapa do funil, volume de leads e
+            comparativos semanais. Acesso 24h/7 dias.</p>
+        </div>
+      </div>
+      <div class="entrega-card">
+        <div class="entrega-icon">🗓️</div>
+        <div class="entrega-content">
+          <h3>Check-ins Quinzenais</h3>
+          <p>Reuniões de performance a cada 15 dias com análise de resultados, ajuste de estratégia e definição de
+            prioridades para o próximo ciclo de campanhas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ INVESTIMENTO ═══════════════════════════════ -->
+  <section class="investimento">
+    <div class="section-label">Investimento</div>
+    <h2 class="section-title">Custo vs. <em>Valor Real</em></h2>
+    <p class="section-intro">
+      Montar essa estrutura internamente custaria mais de R$ 13.000/mês. Com a EmpresAtiva, você tem tudo isso por uma
+      fração do valor — com resultados mensuráveis desde o primeiro mês.
+    </p>
+
+    <div class="inv-layout">
+      <div class="inv-compare">
+        <h3>Custo de estrutura interna equivalente</h3>
+        <div class="compare-row">
+          <span class="compare-label">Head de Tráfego / Planejamento Estratégico</span>
+          <span class="compare-value crossed">R$ 2.000</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">Designer + Copywriter</span>
+          <span class="compare-value crossed">R$ 800</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">Web Designer / Landing Pages</span>
+          <span class="compare-value crossed">R$ 1.200</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">Playbook Comercial & Treinamento</span>
+          <span class="compare-value crossed">R$ 597</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">IA, Automações & Integrações</span>
+          <span class="compare-value crossed">R$ 700</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">Gestor de Projetos Sênior</span>
+          <span class="compare-value crossed">R$ 4.000</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">Gestor de Performance (Google + Meta)</span>
+          <span class="compare-value crossed">R$ 2.500</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">Especialista em CRM & Relatórios</span>
+          <span class="compare-value crossed">R$ 800</span>
+        </div>
+        <div class="compare-row">
+          <span class="compare-label">Especialista em LinkedIn Ads</span>
+          <span class="compare-value crossed">R$ 500</span>
+        </div>
+        <div class="compare-total">
+          <span>Total interno</span>
+          <span>R$ 13.097</span>
+        </div>
+      </div>
+
+      <div class="inv-box">
+        <div class="inv-plan-name">Plano Selecionado</div>
+        <div class="inv-price">
+          <sub>R$</sub> 2.497
+        </div>
+        <div class="inv-period">por mês · por conta · contrato 6 meses</div>
+
+        <div class="inv-divider"></div>
+
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Google Ads + Meta Ads — gestor sênior dedicado</li>
+            <li>LinkedIn Ads — segmentação executiva RJ</li>
+            <li>Landing Page de alta conversão</li>
+            <li>Agente de IA para qualificação de leads</li>
+            <li>Kommo CRM — pipeline visual completo</li>
+            <li>Playbook Comercial & script de vendas</li>
+            <li>4 posts/mês com arte e copy</li>
+            <li>Dashboard em tempo real</li>
+            <li>Check-ins quinzenais de performance</li>
+          </ul>
+        </div>
+
+        <div class="inv-media">
+          <span>Verba de mídia sugerida (separado)</span>
+          <span>R$ 1.500 / mês</span>
+        </div>
+
+        <div class="inv-conditions">
+          Início em até 2 dias úteis após assinatura · Setup completo em 10 dias · Sem letras miúdas.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ PRÓXIMOS PASSOS ════════════════════════════ -->
+  <section class="proximos">
+    <div class="section-label">Próximos Passos</div>
+    <h2 class="section-title">Do contrato às <em>primeiras matrículas</em></h2>
+    <p class="section-intro">
+      Estrutura ágil de onboarding para que as campanhas estejam no ar antes da próxima janela de turma do PFCC.
+    </p>
+
+    <div class="steps-timeline">
+      <div class="timeline-step">
+        <span class="timeline-day">Dia 1</span>
+        <h3>Assinatura & Onboarding</h3>
+        <p>Contrato assinado, acessos configurados, reunião de briefing completo com o time da Board Academy RJ.</p>
+      </div>
+      <div class="timeline-step">
+        <span class="timeline-day">Dias 2–5</span>
+        <h3>Setup & Estrutura</h3>
+        <p>Pixel instalado, CRM configurado, landing page em produção, contas de anúncio auditadas e estruturadas.</p>
+      </div>
+      <div class="timeline-step">
+        <span class="timeline-day">Dias 6–10</span>
+        <h3>Campanhas no Ar</h3>
+        <p>Criativos aprovados, campanha ativa no Google, Meta e LinkedIn. Agente de IA configurado e testado.</p>
+      </div>
+      <div class="timeline-step">
+        <span class="timeline-day">Dia 15</span>
+        <h3>Primeiro Check-in</h3>
+        <p>Análise dos primeiros dados, ajustes de segmentação e criativos, definição de prioridades para o ciclo
+          seguinte.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ ASSINATURA ════════════════════════════════ -->
+  <div class="assinatura">
+    <div class="assin-left">
+      <h2>Pronto para <em>preencher</em><br>a próxima turma do PFCC RJ?</h2>
+      <p>
+        A EmpresAtiva Digital tem o sistema, o time e a estratégia para transformar o PFCC RJ em referência de marketing
+        educacional para executivos no Rio de Janeiro.
+      </p>
+    </div>
+    <div class="assin-contact">
+      <div class="name">João Marot</div>
+      <div class="role">Founder · EmpresAtiva Digital</div>
+      <a class="cta-btn" href="https://wa.me/5521983424319" target="_blank">Fechar Proposta →</a>
+    </div>
+  </div>
+
+</body>
+
+</html>
