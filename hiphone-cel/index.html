@@ -1,1 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x HiPhone Cel</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080808;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;--dark:#101010;--card:#181818;--border:rgba(255,255,255,0.07);--muted:rgba(245,243,238,0.42);--font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
 
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,8,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,26,0.2) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(42px,11vw,80px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(28px,8vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.13);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.intel-alert{background:linear-gradient(135deg,rgba(232,103,26,0.07),rgba(201,168,76,0.03));border:1px solid rgba(232,103,26,0.18);border-left:3px solid var(--orange);padding:22px;margin-bottom:36px;border-radius:2px;}
+.intel-alert p{font-size:14px;color:var(--muted);line-height:1.8;}
+.intel-alert strong{color:var(--orange);font-weight:600;}
+.concorrente{margin-bottom:32px;}
+.conc-header{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.cdot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+.conc-header h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.conc-header span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;}
+.conc-ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.conc-ul li{font-size:13px;color:var(--muted);padding-left:18px;position:relative;line-height:1.65;}
+.conc-ul li::before{content:">";position:absolute;left:0;color:var(--orange);font-size:11px;}
+.oport-box{background:var(--card);border-left:3px solid var(--gold);padding:24px;margin-top:36px;border-radius:0 2px 2px 0;}
+.oport-box h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold);margin-bottom:24px;}
+.oport-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;}
+.oport-item:last-child{margin-bottom:0;}
+.oport-icon{width:36px;height:36px;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.16);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border-radius:2px;}
+.oport-item strong{display:block;font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.oport-item p{font-size:12px;color:var(--muted);line-height:1.65;}
+
+.content-grid{display:flex;flex-direction:column;gap:2px;}
+.content-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.content-icon{width:40px;height:40px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.content-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.content-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;transition:border-color .25s;}
+.strat-item:active{border-left-color:var(--orange);}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.compare-table{background:var(--card);border-radius:2px;overflow:hidden;margin-bottom:28px;}
+.compare-hdr{padding:14px 20px;border-bottom:1px solid var(--border);}
+.compare-hdr span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+.c-row{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid var(--border);gap:12px;}
+.c-row:last-child{border-bottom:none;}
+.c-row span:first-child{font-size:12px;color:var(--muted);flex:1;}
+.c-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-decoration:line-through;opacity:.45;flex-shrink:0;}
+.c-total{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(255,255,255,.02);border-top:1px solid var(--border);}
+.c-total span:first-child{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.c-total span:last-child{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--muted);text-decoration:line-through;opacity:.3;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"v";font-family:"DM Mono",monospace;position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;padding:0 24px 22px;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:400px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}
+  hr.div{margin:0 48px;}
+  .hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .content-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+  .footer-cta{padding:88px 48px 100px;}
+  .cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20HiPhone%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estratégica &middot; 2026</p>
+  <h1>HiPhone Cel<br><em>Duque de Caxias</em></h1>
+  <p class="hero-sub">Meta Ads estratégico + orientação de conteúdo para transformar o Instagram da HiPhone em máquina de vendas pelo WhatsApp.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta &amp; IA</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>Mídia sugerida</span><span>R$ 500/mês</span></div>
+    <div class="pill"><span>Contrato</span><span>6 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagnóstico</div>
+  <h2 class="sec-title">Por que o tráfego <em>não converteu</em> até agora</h2>
+  <p class="sec-intro">Iza, a HiPhone tem produto, loja física e presença no Instagram. O que falta é estrutura — e não verba.</p>
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Verba sem estrutura</h3><p>Tráfego pago sem pixel bem configurado, sem público segmentado e sem criativo testado desperdiça cada real investido.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Sem rastreamento de origem</h3><p>Quando o cliente manda mensagem no WhatsApp, você não sabe de onde ele veio — orgânico, anúncio ou indicação.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Conteúdo sem estratégia</h3><p>Posts sem gancho, sem call to action e sem frequência correta não alimentam o algoritmo nem geram demanda ativa.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Concorrência bem estruturada</h3><p>SayCell (137k), Sampaio Phones (50k) e Say Imparto têm volume de criativos, depoimentos e frequência que a HiPhone ainda não tem.</p></div></div>
+    <div class="diag-item"><div class="diag-num">05</div><div><h3>Sem formulário condicional</h3><p>Leads chegam no WhatsApp frios e sem qualificação. O atendimento começa do zero toda vez, perdendo tempo e vendas.</p></div></div>
+    <div class="diag-item"><div class="diag-num">06</div><div><h3>Perfil ainda não converte</h3><p>118 posts, 3.973 seguidores — o perfil existe mas não está otimizado para converter visitante em comprador.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INTELIGÊNCIA COMPETITIVA -->
+<section class="bg-black">
+  <div class="sec-label">Inteligência Competitiva</div>
+  <h2 class="sec-title">O que seus <em>concorrentes</em> estão fazendo</h2>
+  <p class="sec-intro">Analisamos os três principais competidores da região. A boa notícia: dá para superar todos com estratégia certa.</p>
+
+  <div class="intel-alert">
+    <p>Os concorrentes cresceram no volume — mas <strong>nenhum tem processo estruturado de qualificação e rastreamento de leads</strong>. Essa é a vantagem que a HiPhone pode conquistar primeiro.</p>
+  </div>
+
+  <div class="concorrente">
+    <div class="conc-header"><div class="cdot"></div><h3>SayCell</h3><span>137k seguidores</span></div>
+    <ul class="conc-ul">
+      <li>Forte em depoimentos de clientes no feed e Reels — prova social é o principal motor de vendas deles</li>
+      <li>Usa humor e situações do cotidiano para gerar engajamento (ex: "a cliente veio comprar com o cartão do marido escondido")</li>
+      <li>Presença constante do dono no conteúdo — gera confiança e autoridade pessoal da marca</li>
+      <li>Ponto fraco: não rastreia leads por origem, atendimento ainda no WhatsApp sem qualificação prévia</li>
+    </ul>
+  </div>
+
+  <div class="concorrente">
+    <div class="conc-header"><div class="cdot"></div><h3>Sampaio Phones</h3><span>50k seguidores</span></div>
+    <ul class="conc-ul">
+      <li>Apelo forte em parcelamento e preço — "Parcele em 18x", "Salário mínimo: parcelas a partir de R$ 490"</li>
+      <li>Usa CTA de catálogo no WhatsApp: "Digita EU QUERO pra receber o catálogo e link da loja"</li>
+      <li>Conteúdo com humor local e referências cariocas — cria identificação com o público da Baixada</li>
+      <li>Ponto fraco: muito focado em preço, sem construção de marca ou autoridade técnica</li>
+    </ul>
+  </div>
+
+  <div class="concorrente">
+    <div class="conc-header"><div class="cdot"></div><h3>Say Imparto</h3><span>Ativa no Meta Ads</span></div>
+    <ul class="conc-ul">
+      <li>Investe pesado em Meta Ads com muitas variações de criativos — alta frequência de anúncios ativos</li>
+      <li>Foco em tráfego direto para o WhatsApp com copy de urgência e escassez</li>
+      <li>Ponto fraco: criativos sem teste A/B estruturado, muito volume sem otimização de CPL</li>
+    </ul>
+  </div>
+
+  <div class="oport-box">
+    <h3>Oportunidades para a HiPhone</h3>
+    <div class="oport-item"><div class="oport-icon">🎥</div><div><strong>Iza como rosto da marca</strong><p>SayCell prova que o dono no conteúdo gera confiança. A Iza tem potencial enorme para isso — autenticidade vende mais que produção cara.</p></div></div>
+    <div class="oport-item"><div class="oport-icon">📍</div><div><strong>Geo-segmentação Duque de Caxias e entorno</strong><p>Anúncios hiperlocais para quem está a poucos km da loja convertem mais e custam menos.</p></div></div>
+    <div class="oport-item"><div class="oport-icon">💬</div><div><strong>CTA de catálogo no WhatsApp</strong><p>Mesma estratégia do Sampaio Phones, mas com formulário de qualificação antes — lead chega pronto para comprar.</p></div></div>
+    <div class="oport-item"><div class="oport-icon">⭐</div><div><strong>Depoimentos de clientes reais</strong><p>Conteúdo de prova social da Baixada Fluminense tem mais identificação do que qualquer anúncio genérico.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ORIENTAÇÃO DE CONTEÚDO -->
+<section class="bg-dark">
+  <div class="sec-label">Orientação de Conteúdo</div>
+  <h2 class="sec-title">O que <em>postar</em> no Instagram</h2>
+  <p class="sec-intro">Além do tráfego pago, vamos orientar a estratégia de conteúdo orgânico — para que o perfil trabalhe 24h vendendo mesmo sem anúncio ativo.</p>
+  <div class="content-grid">
+    <div class="content-item"><div class="content-icon">🎬</div><div><h3>Reels com a Iza</h3><p>Você falando sobre celulares, dicas rápidas, comparativos de modelos. Autenticidade e presença humana são o maior diferencial.</p></div></div>
+    <div class="content-item"><div class="content-icon">⭐</div><div><h3>Depoimentos de clientes</h3><p>Print ou vídeo curto de cliente satisfeito. Um por semana já muda o posicionamento da loja na percepção de novos compradores.</p></div></div>
+    <div class="content-item"><div class="content-icon">📦</div><div><h3>Unboxing e lançamentos</h3><p>Mostrar o produto na mão, com entusiasmo real. "Chegou o Xiaomi Poco X7 aqui na HiPhone!" — simples e altamente eficaz.</p></div></div>
+    <div class="content-item"><div class="content-icon">💰</div><div><h3>Parcelamento e condições</h3><p>Post semanal com condições de pagamento. Parcelamento é o principal gatilho de decisão para o público da Baixada Fluminense.</p></div></div>
+    <div class="content-item"><div class="content-icon">🔧</div><div><h3>Assistência técnica</h3><p>Antes e depois de consertos, dicas de cuidado com celular — posiciona a HiPhone como referência técnica além da venda.</p></div></div>
+    <div class="content-item"><div class="content-icon">📲</div><div><h3>CTA direto para o WhatsApp</h3><p>Todo post termina com uma ação clara: "Manda EU QUERO no WhatsApp", "Chama a gente", "Link na bio". Sem CTA, sem venda.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA META ADS -->
+<section class="bg-black">
+  <div class="sec-label">Estratégia</div>
+  <h2 class="sec-title">Meta Ads + IA para a <em>HiPhone</em></h2>
+  <p class="sec-intro">Cinco camadas que transformam o Instagram em canal de vendas previsível.</p>
+  <div class="strat-list">
+    <div class="strat-item"><div class="strat-top"><div class="strat-num">01</div><h3>Pixel + Perfis Otimizados</h3><div class="strat-tag">Base</div></div><p>Pixel do Meta instalado corretamente, perfil do Instagram e Facebook padronizados com bio, destaques e link de WhatsApp configurado. A base que faltava para o tráfego funcionar.</p></div>
+    <div class="strat-item"><div class="strat-top"><div class="strat-num">02</div><h3>Campanhas Meta Ads Geo-segmentadas</h3><div class="strat-tag">Aquisição</div></div><p>Anúncios de conversão e tráfego segmentados para Duque de Caxias, São João de Meriti, Belford Roxo e entorno. Público lookalike de clientes atuais + interesses (iPhone, Xiaomi, celular). Teste A/B contínuo de criativos.</p></div>
+    <div class="strat-item"><div class="strat-top"><div class="strat-num">03</div><h3>Forms Condicional + Alerta WhatsApp</h3><div class="strat-tag">Conversão</div></div><p>Formulário que qualifica o lead antes de chegar no WhatsApp (modelo desejado, orçamento, urgência). A Iza recebe alerta imediato com o perfil do lead — atendimento começa já qualificado.</p></div>
+    
+    <div class="strat-item"><div class="strat-top"><div class="strat-num">05</div><h3>Dashboard + Orientação de Conteúdo Mensal</h3><div class="strat-tag">Otimização</div></div><p>Métricas em tempo real: CPL, alcance, seguidores, taxa de conversão. Calendário mensal de conteúdo orgânico com temas, formatos e CTAs definidos — para a Iza nunca ficar sem saber o que postar.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entregáveis</div>
+  <h2 class="sec-title">O que você <em>recebe</em></h2>
+  <p class="sec-intro">Tudo que a HiPhone precisa para vender mais pelo Instagram e WhatsApp.</p>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Perfil Instagram + Facebook Otimizado</h3><p>Bio estratégica, padronização visual, destaques organizados e link de WhatsApp configurado.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Campanhas Meta Ads</h3><p>Conversão, lookalike, pixel instalado, teste A/B. Geo-segmentado para Duque de Caxias e entorno.</p></div></div>
+    
+    <div class="entreg-item"><div class="entreg-icon">💬</div><div><h3>Forms + Alerta WhatsApp</h3><p>Lead qualificado antes de chegar no WhatsApp. A Iza recebe notificação imediata com o perfil do cliente.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 Posts/mês com Arte e Copy</h3><p>Designer e copywriter criam os posts prontos para publicar — a Iza só precisa postar.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📅</div><div><h3>Calendário de Conteúdo Mensal</h3><p>Planejamento do que postar, quando e com qual CTA. Nunca mais "não sei o que postar hoje".</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📈</div><div><h3>Dashboard em Tempo Real</h3><p>CPL, alcance, seguidores e conversão. Acesso 24h para acompanhar tudo.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🗓️</div><div><h3>Check-in Mensal de Performance</h3><p>Reunião mensal para análise de resultados e ajuste de estratégia para o próximo ciclo.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Custo vs. <em>Valor Real</em></h2>
+  <p class="sec-intro">Tudo isso por menos do que custa contratar um único freelancer de tráfego — sem garantia de resultado.</p>
+  <div class="inv-layout">
+    <div>
+      <div class="compare-table">
+        <div class="compare-hdr"><span>Custo de estrutura interna equivalente</span></div>
+        <div class="c-row"><span>Gestor de Tráfego Meta Ads</span><span>R$ 1.200</span></div>
+        <div class="c-row"><span>Designer + Copywriter</span><span>R$ 800</span></div>
+        <div class="c-row"><span>Configuração de Pixel + Perfis</span><span>R$ 500</span></div>
+        <div class="c-row"><span>Calendário de Conteúdo</span><span>R$ 400</span></div>
+        <div class="c-row"><span>Agente de IA e Automações</span><span>R$ 700</span></div>
+        <div class="c-row"><span>Dashboard e Relatórios</span><span>R$ 300</span></div>
+        <div class="c-total"><span>Total interno</span><span>R$ 3.900</span></div>
+      </div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta &amp; IA — HiPhone Cel</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">por mês &middot; contrato 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Perfil Instagram + Facebook otimizado</li>
+            <li>Meta Ads — conversão + lookalike + A/B</li>
+            <li>Pixel instalado e configurado</li>
+            <li>Forms condicional + alerta WhatsApp</li>
+            
+            <li>4 posts/mês com arte e copy</li>
+            <li>Calendário de conteúdo mensal</li>
+            <li>Dashboard em tempo real</li>
+            <li>Check-in mensal de performance</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de mídia sugerida (separado)</span>
+          <span>R$ 500/mês</span>
+        </div>
+      </div>
+      <div class="inv-note">Início em até 2 dias úteis após assinatura &middot; Setup em 10 dias &middot; Sem letras miúdas.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Próximos Passos</div>
+  <h2 class="sec-title">Do contrato às <em>primeiras vendas</em></h2>
+  <p class="sec-intro">Onboarding rápido para que a HiPhone já esteja captando leads no WhatsApp em menos de 2 semanas.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Assinatura &amp; Onboarding</h3><p>Contrato assinado, acessos às contas configurados, briefing completo com a Iza sobre produtos, público e metas.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2–5</span><h3>Setup &amp; Estrutura</h3><p>Pixel instalado, perfis otimizados, forms de qualificação configurado, primeiro calendário de conteúdo entregue.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–10</span><h3>Campanhas no Ar</h3><p>Primeiro lote de criativos aprovados pela Iza, campanhas ativas no Meta Ads. Primeiros leads chegando no WhatsApp qualificados.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Check-in</h3><p>Análise dos primeiros dados: CPL, leads gerados, conversões no WhatsApp. Ajustes e planejamento do ciclo 2.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h2>Iza, a HiPhone merece<br><em>vender muito mais.</em></h2>
+  <p>A EmpresAtiva Digital tem a estratégia, os criativos e o sistema para transformar seu Instagram em canal de vendas consistente — começando essa semana.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20HiPhone%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">João Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
