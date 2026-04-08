@@ -1,1 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x JRJ Empreiteira</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080808;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;--dark:#101010;--card:#181818;--border:rgba(255,255,255,0.07);--muted:rgba(245,243,238,0.42);--font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
 
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,8,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,26,0.18) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(42px,11vw,80px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(28px,8vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.13);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;transition:border-color .25s;}
+.strat-item:active{border-left-color:var(--orange);}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.fase-box{background:var(--card);border-left:3px solid var(--gold);padding:24px;border-radius:0 2px 2px 0;margin-bottom:2px;}
+.fase-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--gold);margin-bottom:8px;}
+.fase-box p{font-size:13px;color:var(--muted);line-height:1.75;}
+.fase-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.fase-box ul li{font-size:13px;color:var(--muted);padding-left:18px;position:relative;line-height:1.65;}
+.fase-box ul li::before{content:">";position:absolute;left:0;color:var(--orange);font-size:11px;}
+
+.compare-table{background:var(--card);border-radius:2px;overflow:hidden;margin-bottom:28px;}
+.compare-hdr{padding:14px 20px;border-bottom:1px solid var(--border);}
+.compare-hdr span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+.c-row{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid var(--border);gap:12px;}
+.c-row:last-child{border-bottom:none;}
+.c-row span:first-child{font-size:12px;color:var(--muted);flex:1;}
+.c-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-decoration:line-through;opacity:.45;flex-shrink:0;}
+.c-total{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(255,255,255,.02);border-top:1px solid var(--border);}
+.c-total span:first-child{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.c-total span:last-child{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--muted);text-decoration:line-through;opacity:.3;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;padding:0 24px 22px;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}
+  hr.div{margin:0 48px;}
+  .hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+  .footer-cta{padding:88px 48px 100px;}
+  .cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20JRJ%20Empreiteira%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estratégica &middot; Fase 1 &middot; 2026</p>
+  <h1>JRJ<br><em>Empreiteira</em></h1>
+  <p class="hero-sub">Google Ads + Google Business Profile para a JRJ aparecer nas primeiras posições quando o cliente certo estiver procurando — e transformar cliques em leads no WhatsApp.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Google &amp; Leads</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>M&iacute;dia sugerida</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>Contrato</span><span>6 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">O que está <em>travando</em> o crescimento</h2>
+  <p class="sec-intro">Adriana, a JRJ tem portf&oacute;lio, experi&ecirc;ncia e uma marca sendo estruturada. O que falta &eacute; presença digital ativa para ser encontrada por quem j&aacute; quer contratar.</p>
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Invis&iacute;vel no Google</h3><p>A JRJ ainda n&atilde;o aparece nas buscas locais por "empreiteira S&atilde;o Paulo" ou "pintura de fachada zona sul". Quem pesquisa encontra a concorr&ecirc;ncia — n&atilde;o voc&ecirc;.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Depend&ecirc;ncia de indica&ccedil;&atilde;o</h3><p>Indica&ccedil;&atilde;o fecha 90% das vezes, mas &eacute; limitada. Para crescer de forma previs&iacute;vel, a JRJ precisa de um canal de aquisi&ccedil;&atilde;o que funcione mesmo sem indicar.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Google Business n&atilde;o configurado</h3><p>Sem perfil otimizado, a JRJ n&atilde;o aparece no mapa do Google — onde a maioria dos clientes decide qual empresa chamar.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Sem site de convers&atilde;o</h3><p>Sem uma p&aacute;gina estruturada para receber o tr&aacute;fego pago, o investimento em an&uacute;ncio n&atilde;o tem para onde converter — e o lead se perde.</p></div></div>
+    <div class="diag-item"><div class="diag-num">05</div><div><h3>Transição de marca em curso</h3><p>A mudan&ccedil;a de JRJ Pinturas para JRJ Empreiteira precisa ser executada de forma coordenada no digital — para n&atilde;o perder autoridade j&aacute; conquistada.</p></div></div>
+    <div class="diag-item"><div class="diag-num">06</div><div><h3>Leads chegando sem rastreamento</h3><p>Quando algu&eacute;m liga ou manda mensagem, n&atilde;o h&aacute; como saber de onde veio — impossibilitando otimizar o que funciona.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Como a JRJ vai <em>ser encontrada</em></h2>
+  <p class="sec-intro">Quatro etapas integradas para transformar buscas no Google em leads qualificados direto no seu WhatsApp.</p>
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Google Business Profile Otimizado</h3><div class="strat-tag">Org&acirc;nico</div></div>
+      <p>Configuramos o perfil completo da JRJ Empreiteira: categoria correta, endere&ccedil;o, fotos do portf&oacute;lio (usando as imagens j&aacute; existentes no Instagram), descri&ccedil;&atilde;o estrat&eacute;gica e link para WhatsApp. Objetivo: aparecer nas 3 primeiras posi&ccedil;&otilde;es org&acirc;nicas para buscas locais na zona sul de S&atilde;o Paulo — sem pagar por clique.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Mutir&atilde;o de Avalia&ccedil;&otilde;es no Google</h3><div class="strat-tag">Credibilidade</div></div>
+      <p>Vamos criar um script de mensagem para a Adriana enviar aos clientes antigos pedindo avalia&ccedil;&atilde;o no Google. Avalia&ccedil;&otilde;es reais de clientes da zona sul constroem credibilidade para quem ainda n&atilde;o conhece a JRJ — e melhoram o posicionamento org&acirc;nico diretamente.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Site de Convers&atilde;o (One Page)</h3><div class="strat-tag">Convers&atilde;o</div></div>
+      <p>Criamos uma landing page profissional para a JRJ Empreiteira: servi&ccedil;os, portf&oacute;lio, &aacute;rea de atua&ccedil;&atilde;o, formul&aacute;rio de contato e bot&atilde;o direto para o WhatsApp. Quando o cliente clicar no an&uacute;ncio, vai chegar em uma p&aacute;gina que transmite credibilidade e converte — n&atilde;o em um perfil do Instagram.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Google Ads — Busca Local</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Campanhas de busca segmentadas para zona sul de S&atilde;o Paulo com palavras-chave de fundo de funil: "empreiteira zona sul SP", "pintura de fachada S&atilde;o Paulo", "empresa de pintura predial". Quando algu&eacute;m j&aacute; est&aacute; procurando e pronto para contratar, a JRJ aparece na primeira posi&ccedil;&atilde;o.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>Alerta de Lead no WhatsApp</h3><div class="strat-tag">Velocidade</div></div>
+      <p>Assim que algu&eacute;m preenche o formul&aacute;rio do site, o lead chega automaticamente no grupo do WhatsApp da JRJ com nome, telefone e servi&ccedil;o de interesse. A Adriana entra em contato em minutos — quando o cliente ainda est&aacute; quente.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a JRJ <em>recebe</em></h2>
+  <p class="sec-intro">Tudo estruturado, configurado e funcionando — para a Adriana focar em atender e fechar, n&atilde;o em operar ferramenta.</p>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business Profile completo</h3><p>Perfil configurado com categoria "Empreiteira", fotos, descri&ccedil;&atilde;o, &aacute;rea de atua&ccedil;&atilde;o e link de WhatsApp.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">⭐</div><div><h3>Script de mutir&atilde;o de avalia&ccedil;&otilde;es</h3><p>Mensagem pronta para enviar aos clientes antigos e come&ccedil;ar a construir reputac&atilde;o no Google rapidamente.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🖥️</div><div><h3>Site de convers&atilde;o (One Page)</h3><p>Landing page profissional com portf&oacute;lio, servi&ccedil;os, &aacute;rea de atua&ccedil;&atilde;o e formul&aacute;rio integrado ao WhatsApp.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Campanhas Google Ads</h3><p>Busca local com palavras-chave de fundo de funil. Segmentado para zona sul de S&atilde;o Paulo e regi&atilde;o.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">💬</div><div><h3>Alerta de lead no WhatsApp</h3><p>Lead chega automaticamente no grupo com nome, telefone e servi&ccedil;o. Contato imediato, lead ainda quente.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📈</div><div><h3>Dashboard + Relat&oacute;rio mensal</h3><p>M&eacute;tricas em tempo real e relat&oacute;rio mensal no WhatsApp com investimento, leads gerados e custo por lead.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FASES -->
+<section class="bg-black">
+  <div class="sec-label">Vis&atilde;o de Crescimento</div>
+  <h2 class="sec-title">Fase 1 agora. <em>Fase 2 quando crescer.</em></h2>
+  <p class="sec-intro">A proposta &eacute; come&ccedil;ar pelo que traz retorno imediato — e escalar conforme o volume de leads aumentar.</p>
+  <div class="fase-box">
+    <h3>Fase 1 — Agora (esta proposta)</h3>
+    <p>Estrutura b&aacute;sica completa para come&ccedil;ar a gerar leads qualificados pelo Google.</p>
+    <ul>
+      <li>Google Business Profile otimizado</li>
+      <li>Site de convers&atilde;o + formul&aacute;rio</li>
+      <li>Google Ads busca local</li>
+      <li>Alerta de lead no WhatsApp</li>
+      <li>Relat&oacute;rio mensal de performance</li>
+    </ul>
+  </div>
+  <div style="height:2px"></div>
+  <div class="fase-box" style="border-left-color:rgba(232,103,26,0.3);margin-top:2px;">
+    <h3 style="color:var(--muted)">Fase 2 — Quando o volume crescer</h3>
+    <p>Quando os leads aumentarem e o time de atendimento precisar de suporte, adicionamos:</p>
+    <ul>
+      <li>Remarketing via Meta Ads (reaparecer no Instagram para quem visitou o site)</li>
+      <li>Agente de IA para pr&eacute;-qualifica&ccedil;&atilde;o autom&aacute;tica de leads</li>
+      <li>CRM para rastrear oportunidades do clique ao fechamento</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Simples, <em>sem surpresas.</em></h2>
+  <p class="sec-intro">Sem contrato com letras mi&uacute;das. Sem taxa de setup. Come&ccedil;amos em at&eacute; 2 dias &uacute;teis.</p>
+  <div class="inv-layout">
+    <div>
+      <div class="compare-table">
+        <div class="compare-hdr"><span>Custo de montar isso internamente</span></div>
+        <div class="c-row"><span>Gestor de Google Ads</span><span>R$ 1.500</span></div>
+        <div class="c-row"><span>Configura&ccedil;&atilde;o Google Business Profile</span><span>R$ 500</span></div>
+        <div class="c-row"><span>Cria&ccedil;&atilde;o de site de convers&atilde;o</span><span>R$ 1.200</span></div>
+        <div class="c-row"><span>Configura&ccedil;&atilde;o de automa&ccedil;&atilde;o WhatsApp</span><span>R$ 400</span></div>
+        <div class="c-row"><span>Dashboard e relat&oacute;rios mensais</span><span>R$ 300</span></div>
+        <div class="c-total"><span>Total interno</span><span>R$ 3.900</span></div>
+      </div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Fase 1 &mdash; JRJ Empreiteira</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">por m&ecirc;s &middot; contrato 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Google Business Profile otimizado</li>
+            <li>Script de mutir&atilde;o de avalia&ccedil;&otilde;es</li>
+            <li>Site de convers&atilde;o (One Page)</li>
+            <li>Google Ads — busca local zona sul SP</li>
+            <li>Alerta de lead no WhatsApp</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relat&oacute;rio mensal de performance</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de m&iacute;dia sugerida (separado)</span>
+          <span>R$ 500/m&ecirc;s</span>
+        </div>
+      </div>
+      <div class="inv-note">In&iacute;cio em at&eacute; 2 dias &uacute;teis &middot; Setup em 10 dias &middot; Sem taxa de setup &middot; Sem letras mi&uacute;das.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do contrato ao <em>primeiro lead</em></h2>
+  <p class="sec-intro">Onboarding &aacute;gil para que a JRJ j&aacute; esteja aparecendo no Google em menos de 2 semanas.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Assinatura &amp; Briefing</h3><p>Contrato assinado, acesso &agrave;s contas configurado, briefing completo com a Adriana sobre servi&ccedil;os, &aacute;rea de atua&ccedil;&atilde;o e diferenciais da JRJ.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2&ndash;5</span><h3>Google Business + Site</h3><p>Perfil do Google Business configurado e otimizado. Site de convers&atilde;o em produ&ccedil;&atilde;o com o material do Instagram da JRJ. Script de avalia&ccedil;&otilde;es entregue.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6&ndash;10</span><h3>Campanhas no Ar</h3><p>Google Ads ativo com palavras-chave validadas. Alerta de lead configurado no WhatsApp. Primeiro lead chegando.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relat&oacute;rio</h3><p>An&aacute;lise completa: investimento, leads gerados, custo por lead, palavras que converteram. Ajustes para o ciclo 2.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h2>Adriana, chegou a hora da JRJ<br><em>ser encontrada.</em></h2>
+  <p>A EmpresAtiva Digital vai estruturar a presen&ccedil;a digital da JRJ Empreiteira do zero — para que voc&ecirc; pare de depender s&oacute; de indica&ccedil;&atilde;o e comece a receber leads qualificados todo m&ecirc;s.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20JRJ%20Empreiteira%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">João Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
