@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x NUE Estética</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#080806;
+  --white:#F7F4EE;
+  --cream:#EDE8DF;
+  --orange:#E8671A;
+  --gold:#C9A84C;
+  --sage:#8A9E8A;
+  --dark:#0F0F0D;
+  --card:#161613;
+  --border:rgba(255,255,255,0.07);
+  --muted:rgba(247,244,238,0.42);
+  --font-display:"Cormorant Garamond",serif;
+  --font-body:"DM Sans",sans-serif;
+  --font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,8,6,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(138,158,138,0.12) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-80px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 65%);pointer-events:none;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--gold);}
+
+.hero h1{font-family:var(--font-display);font-size:clamp(52px,13vw,100px);font-weight:400;line-height:1.0;margin-bottom:8px;opacity:0;animation:up .8s ease forwards .25s;font-style:italic;}
+.hero h1 span{display:block;font-style:normal;font-size:clamp(28px,6vw,52px);font-weight:600;color:var(--orange);letter-spacing:0.04em;}
+
+.hero-method{display:inline-flex;align-items:center;gap:10px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:10px 18px;margin-bottom:28px;border-radius:2px;opacity:0;animation:up .8s ease forwards .38s;}
+.hero-method span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;}
+
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .5s;}
+
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .62s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+/* SECTIONS */
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+
+.sec-title{font-family:var(--font-display);font-size:clamp(32px,9vw,56px);font-weight:400;line-height:1.1;margin-bottom:14px;font-style:italic;}
+.sec-title em{color:var(--orange);font-style:italic;}
+.sec-title strong{font-weight:600;font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+/* DIAGNÓSTICO */
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:400;color:rgba(201,168,76,0.15);line-height:1;flex-shrink:0;width:36px;font-style:italic;}
+.diag-item h3{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* MÉTODO BOX */
+.metodo-box{background:var(--card);border:1px solid rgba(201,168,76,0.2);padding:32px 24px;margin-bottom:44px;position:relative;overflow:hidden;}
+.metodo-box::after{content:"NE";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:100px;font-weight:400;color:rgba(201,168,76,0.04);pointer-events:none;font-style:italic;line-height:1;}
+.metodo-box h3{font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--gold);margin-bottom:12px;font-style:italic;}
+.metodo-box p{font-size:14px;color:var(--muted);line-height:1.8;max-width:560px;}
+.metodo-box strong{color:var(--white);font-weight:600;}
+
+/* PÚBLICO */
+.publico-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:44px;}
+.pub-item{background:var(--card);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;}
+.pub-icon{width:40px;height:40px;background:rgba(138,158,138,0.08);border:1px solid rgba(138,158,138,0.18);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.pub-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;letter-spacing:0.03em;}
+.pub-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* STORYTELLING */
+.story-flow{display:flex;flex-direction:column;gap:2px;margin-bottom:0;}
+.story-step{background:var(--card);padding:24px;border-left:3px solid transparent;}
+.story-step.s1{border-left-color:var(--sage);}
+.story-step.s2{border-left-color:var(--gold);}
+.story-step.s3{border-left-color:var(--orange);}
+.story-step.s4{border-left-color:rgba(232,103,26,0.4);}
+.story-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block;}
+.story-step h3{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--white);margin-bottom:8px;font-style:italic;}
+.story-step p{font-size:13px;color:var(--muted);line-height:1.75;}
+.story-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(201,168,76,0.3);padding:10px 14px;}
+.story-example span{font-size:12px;color:var(--gold);font-style:italic;line-height:1.6;}
+
+/* ESTRATÉGIA */
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;transition:border-color .25s;}
+.strat-item:active{border-left-color:var(--orange);}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* ENTREGÁVEIS */
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* ROI */
+.roi-box{background:var(--card);border:1px solid rgba(138,158,138,0.2);padding:28px 24px;margin-bottom:28px;}
+.roi-box h3{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--sage);margin-bottom:20px;font-style:italic;}
+.roi-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);gap:12px;}
+.roi-row:last-child{border-bottom:none;}
+.roi-row span:first-child{font-size:13px;color:var(--muted);}
+.roi-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);font-weight:500;}
+.roi-row.highlight span:last-child{color:var(--sage);}
+
+/* INVESTIMENTO */
+.compare-table{background:var(--card);border-radius:2px;overflow:hidden;margin-bottom:28px;}
+.compare-hdr{padding:14px 20px;border-bottom:1px solid var(--border);}
+.compare-hdr span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+.c-row{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid var(--border);gap:12px;}
+.c-row:last-child{border-bottom:none;}
+.c-row span:first-child{font-size:12px;color:var(--muted);flex:1;}
+.c-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-decoration:line-through;opacity:.45;flex-shrink:0;}
+.c-total{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(255,255,255,.02);border-top:1px solid var(--border);}
+.c-total span:first-child{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.c-total span:last-child{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--muted);text-decoration:line-through;opacity:.3;font-style:italic;}
+
+.inv-card{background:var(--black);border:1px solid rgba(201,168,76,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--gold),var(--orange));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:400;line-height:1;color:var(--white);margin-bottom:6px;font-style:italic;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;font-style:normal;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--gold);font-weight:500;flex-shrink:0;}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;padding:0 24px 22px;}
+
+/* IA SDR BOX */
+.ia-box{background:var(--card);border:1px solid rgba(138,158,138,0.2);padding:28px 24px;margin-top:28px;border-radius:2px;}
+.ia-box h3{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--sage);margin-bottom:12px;font-style:italic;}
+.ia-box p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.ia-flow{display:flex;flex-direction:column;gap:10px;}
+.ia-step{display:flex;gap:12px;align-items:flex-start;}
+.ia-dot{width:24px;height:24px;background:rgba(138,158,138,0.1);border:1px solid rgba(138,158,138,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--sage);flex-shrink:0;margin-top:2px;}
+.ia-step p{font-size:13px;color:var(--muted);line-height:1.65;}
+.ia-step strong{color:var(--white);font-weight:600;}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,0.06));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(201,168,76,0.15);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* FOOTER */
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(30px,9vw,52px);font-weight:400;line-height:1.15;margin-bottom:16px;font-style:italic;}
+.footer-cta h2 em{color:var(--orange);font-style:italic;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--white);margin-bottom:4px;font-style:italic;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}
+  hr.div{margin:0 48px;}
+  .hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .publico-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+  .footer-cta{padding:88px 48px 100px;}
+  .cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20NUE%20Est%C3%A9tica%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estratégica &middot; 2026</p>
+  <h1>NUE<br><span>Estética</span></h1>
+  <div class="hero-method"><span>✦ Método Natural Elegance</span></div>
+  <p class="hero-sub">Meta Ads estratégico + Agente de IA como SDR para transformar o Instagram da NUE em canal de captação previsível — com a sofisticação que o método merece.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta &amp; IA</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>Mídia sugerida</span><span>R$ 500/mês</span></div>
+    <div class="pill"><span>Contrato</span><span>6 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O MÉTODO -->
+<section class="bg-dark">
+  <div class="sec-label">O Diferencial</div>
+  <h2 class="sec-title">O <em>Método Natural Elegance</em></h2>
+  <p class="sec-intro">Larissa, você criou algo raro: um método exclusivo que permite cobrar mais, fidelizar mais e atrair o perfil exato de cliente que você quer. O que a gente vai fazer é usar o tráfego pago para amplificar o que você já validou.</p>
+
+  <div class="metodo-box">
+    <h3>Natural Elegance — o que isso significa no tráfego</h3>
+    <p>A maioria das clínicas anuncia procedimento. Você vai anunciar <strong>método</strong>. Assim como o Método Renata França cobra R$ 500 onde a concorrência cobra R$ 180 — não pelo produto, mas pela técnica e pela experiência — o Natural Elegance posiciona cada procedimento da NUE como parte de algo maior e exclusivo. Toxina, bioestimulador, Contour Lifting: tudo é Natural Elegance. Isso é o que vai para o anúncio.</p>
+  </div>
+
+  <!-- PÚBLICO -->
+  <div class="sec-label" style="margin-top:0">Público-Alvo</div>
+  <h2 class="sec-title" style="font-size:clamp(24px,6vw,38px)">A <em>cliente ideal</em> da NUE</h2>
+  <p class="sec-intro">Mapeado na nossa conversa: a clean girl de Alphaville.</p>
+  <div class="publico-grid">
+    <div class="pub-item"><div class="pub-icon">👩</div><div><h3>Perfil</h3><p>Mulher 35–45 anos, mora ou trabalha em Alphaville/Tamboré. Exigente, valoriza personalização e discreção. Não quer transformação — quer refinamento.</p></div></div>
+    <div class="pub-item"><div class="pub-icon">😰</div><div><h3>Dor principal</h3><p>Percebeu que o rosto está mudando — flacidez, perda de contorno — mas tem medo de procedimentos agressivos que a deixem "artificial".</p></div></div>
+    <div class="pub-item"><div class="pub-icon">✨</div><div><h3>Desejo real</h3><p>Quer se sentir como ela mesma, só que mais descansada, mais firme, mais ela. Naturalidade com resultado visível.</p></div></div>
+    <div class="pub-item"><div class="pub-icon">🔍</div><div><h3>Comportamento</h3><p>Entra no Instagram antes de agendar, pesquisa a médica, lê os resultados. A decisão já começa ali — antes do primeiro contato.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- STORYTELLING -->
+<section class="bg-black">
+  <div class="sec-label">Estrutura de Conteúdo</div>
+  <h2 class="sec-title"><em>Storytelling</em> para os <strong>vídeos</strong></h2>
+  <p class="sec-intro">A estrutura que vamos usar nos scripts que enviarei para você gravar — e que vou usar como base dos criativos de tráfego pago.</p>
+
+  <div class="story-flow">
+    <div class="story-step s1">
+      <span class="story-label">01 &mdash; Abertura Magnética</span>
+      <h3>A frase que para o scroll</h3>
+      <p>Uma pergunta ou afirmação que faz a mulher de 38 anos parar e pensar: "Ela tá falando comigo". Não pode ser genérica.</p>
+      <div class="story-example"><span>"É incrível como a gente percebe que o rosto não é mais o mesmo — e fica com medo de fazer algo que pareça exagerado."</span></div>
+    </div>
+    <div class="story-step s2">
+      <span class="story-label">02 &mdash; Conflito</span>
+      <h3>A dor que ela não sabe nomear</h3>
+      <p>Mostrar que você entende a tensão: quer melhorar, mas tem medo de mudar demais. Ela não tem medo de procedimento — ela tem medo de deixar de ser ela mesma.</p>
+    </div>
+    <div class="story-step s3">
+      <span class="story-label">03 &mdash; Virada</span>
+      <h3>O Método como solução</h3>
+      <p>Apresentar o Natural Elegance como a resposta: procedimento personalizado que realça, não transforma. Mostrar antes e depois da Mari ou de outra paciente autorizada — com o foco na naturalidade do resultado.</p>
+      <div class="story-example"><span>"Com o Contour Lifting, harmonizei o rosto da Mari sem usar 1ml de ácido hialurônico. A galera chutou que foram 10ml. Foram zero."</span></div>
+    </div>
+    <div class="story-step s4">
+      <span class="story-label">04 &mdash; CTA</span>
+      <h3>O próximo passo</h3>
+      <p>Convite simples, sem pressão: "Se você tá em Alphaville e quer entender como o Natural Elegance funciona para o seu rosto, chama a gente." A IA já recebe o lead e faz o primeiro contato.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-dark">
+  <div class="sec-label">Estratégia</div>
+  <h2 class="sec-title">Meta Ads + IA para a <em>NUE</em></h2>
+  <p class="sec-intro">Cinco camadas integradas para transformar o Instagram da NUE em canal de captação previsível para a Dra. Larissa.</p>
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Perfil e LP renovados para o Método</h3><div class="strat-tag">Base</div></div>
+      <p>Otimizamos o perfil do Instagram com fixados estratégicos (o que é o Natural Elegance, resultados, história da Dra. Larissa) e renovamos a landing page atual — alinhando tudo ao conceito do método, não a procedimentos isolados. Quando o lead chegar na LP, vai entender que está diante de algo exclusivo.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Campanhas Meta Ads — Método, não procedimento</h3><div class="strat-tag">Aquisição</div></div>
+      <p>Anúncios de vídeo segmentados para mulheres 35–50 anos em Alphaville, Tamboré e entorno. Criativos baseados na estrutura de storytelling — abertura magnética, conflito, Natural Elegance como virada, CTA. Pixel instalado para remarketing futuro. Teste A/B contínuo de hooks e formatos.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Scripts de vídeo para a Larissa gravar</h3><div class="strat-tag">Conteúdo</div></div>
+      <p>Vou entregar os roteiros prontos baseados na estrutura de storytelling. A Larissa grava de forma crua (usando palmas como claquete para os cortes), manda para nossa designer editar. Carrosséis de alta performance — como o do melasma que teve 1.400 visualizações — também serão planejados mensalmente.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Agente de IA como SDR 24/7</h3><div class="strat-tag">IA</div></div>
+      <p>Quando o lead entrar em contato pelo WhatsApp, o agente de IA faz o primeiro atendimento imediatamente — sem delta de tempo, sem lead esfriando. Tira dúvidas, apresenta o método, qualifica o interesse. Quando o lead pede agendamento, a Larissa recebe um alerta e assume. A IA pausa. Nenhum curioso toma o tempo da Dra. Larissa.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>Dashboard + 4 posts mensais</h3><div class="strat-tag">Otimização</div></div>
+      <p>Métricas em tempo real: CPL, alcance, seguidores, conversão. 4 posts mensais com arte e copy incluídos para manter a frequência do feed alinhada ao método. Acompanhamento mensal de performance para calibrar criativos e verba.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">Entregáveis</div>
+  <h2 class="sec-title">O que a NUE <em>recebe</em></h2>
+  <p class="sec-intro">Tudo que a clínica precisa para sair da gangorra de faturamento e ter previsibilidade todos os meses.</p>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Perfil Instagram otimizado</h3><p>Fixados estratégicos, destaques reorganizados (Natural Elegance, resultados, quem sou eu) e bio com CTA claro.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🖥️</div><div><h3>Landing Page renovada</h3><p>LP alinhada ao conceito do Método Natural Elegance — não a procedimentos. Para que o lead chegue já entendendo o diferencial.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Campanhas Meta Ads</h3><p>Vídeo, lookalike, pixel, teste A/B. Segmentado para mulheres 35+ em Alphaville e entorno. Foco no método, não no procedimento.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎬</div><div><h3>Scripts de vídeo mensais</h3><p>Roteiros prontos baseados na estrutura dor → solução → CTA para a Larissa gravar. Designer edita o vídeo cru.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🤖</div><div><h3>Agente de IA — SDR 24/7</h3><p>Atendimento imediato no WhatsApp, qualificação automática do lead, alerta para a Larissa quando o lead quer agendar.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 posts/mês com arte e copy</h3><p>Carrosséis e estáticos para manter o feed ativo e alinhado ao posicionamento Natural Elegance.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">💬</div><div><h3>Alerta de lead no WhatsApp</h3><p>Notificação imediata quando lead qualificado quer agendar. A Larissa foca em atender — não em prospectar.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📈</div><div><h3>Dashboard em tempo real</h3><p>CPL, alcance, seguidores, taxa de conversão. Acompanhamento mensal de performance e ajuste de estratégia.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ROI + INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">O que faz <em>sentido financeiro</em></h2>
+  <p class="sec-intro">Baseado em clínicas de estética similares que atendemos e nos dados do mercado de estética em Alphaville.</p>
+
+  <div class="roi-box">
+    <h3>Projeção de retorno — cenário conservador</h3>
+    <div class="roi-row"><span>Verba de mídia mensal</span><span>R$ 500</span></div>
+    <div class="roi-row"><span>CPL estimado (clínica estética, Alphaville)</span><span>R$ 40–80</span></div>
+    <div class="roi-row"><span>Leads esperados por mês</span><span>7–12 leads</span></div>
+    <div class="roi-row"><span>Taxa de conversão em agendamento (com IA SDR)</span><span>40–60%</span></div>
+    <div class="roi-row"><span>Agendamentos esperados</span><span>3–7 por mês</span></div>
+    <div class="roi-row"><span>Ticket médio estimado (Natural Elegance)</span><span>R$ 800–1.500</span></div>
+    <div class="roi-row highlight"><span>Receita potencial gerada</span><span>R$ 2.400–10.500/mês</span></div>
+  </div>
+
+  <div class="inv-layout">
+    <div>
+      <div class="compare-table">
+        <div class="compare-hdr"><span>Custo de montar internamente</span></div>
+        <div class="c-row"><span>Gestor de Meta Ads</span><span>R$ 1.500</span></div>
+        <div class="c-row"><span>Designer + Copywriter</span><span>R$ 800</span></div>
+        <div class="c-row"><span>Renovação da LP</span><span>R$ 1.200</span></div>
+        <div class="c-row"><span>Roteirista de conteúdo</span><span>R$ 600</span></div>
+        <div class="c-row"><span>Agente de IA SDR configurado</span><span>R$ 700</span></div>
+        <div class="c-row"><span>Dashboard e relatórios</span><span>R$ 300</span></div>
+        <div class="c-total"><span>Total interno</span><span>R$ 5.100</span></div>
+      </div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta &amp; IA — NUE Estética</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">por mês &middot; contrato 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Perfil Instagram otimizado</li>
+            <li>Landing page renovada (Natural Elegance)</li>
+            <li>Meta Ads — vídeo + lookalike + pixel + A/B</li>
+            <li>Scripts de vídeo mensais</li>
+            <li>Agente de IA como SDR 24/7</li>
+            <li>4 posts/mês com arte e copy</li>
+            <li>Alerta de lead no WhatsApp</li>
+            <li>Dashboard em tempo real</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de mídia sugerida (separado)</span>
+          <span>R$ 500/mês</span>
+        </div>
+      </div>
+      <div class="inv-note">Início em até 2 dias úteis &middot; Setup em 10 dias &middot; Sem taxa de setup &middot; Sem letras miúdas.</div>
+    </div>
+  </div>
+
+  <div class="ia-box">
+    <h3>Como o Agente de IA funciona como SDR</h3>
+    <p>Quando o lead manda mensagem no WhatsApp — seja às 22h de uma sexta ou às 7h de uma segunda — o agente já está respondendo. Sem espera. Sem lead esfriando.</p>
+    <div class="ia-flow">
+      <div class="ia-step"><div class="ia-dot">1</div><p><strong>Lead entra em contato</strong> — vindo do anúncio, do Instagram orgânico ou de indicação.</p></div>
+      <div class="ia-step"><div class="ia-dot">2</div><p><strong>IA responde imediatamente</strong> — apresenta o método, tira dúvidas, entende o interesse e o perfil da paciente.</p></div>
+      <div class="ia-step"><div class="ia-dot">3</div><p><strong>Lead qualificado quer agendar</strong> — a Larissa recebe um alerta no WhatsApp com o resumo da conversa e assume o atendimento.</p></div>
+      <div class="ia-step"><div class="ia-dot">4</div><p><strong>IA pausa</strong> — e aguarda o próximo lead. A Dra. Larissa foca em quem está pronto para virar paciente.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Próximos Passos</div>
+  <h2 class="sec-title">Do contrato à <em>primeira paciente</em></h2>
+  <p class="sec-intro">Onboarding estruturado para que a NUE já esteja captando com o método em menos de 2 semanas.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Assinatura &amp; Briefing</h3><p>Contrato assinado, acessos configurados. Você me envia o documento de consultoria de conteúdo e mapeamento dos pontos fortes da NUE — já usamos como base para tudo.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2–5</span><h3>Setup &amp; Estrutura</h3><p>Pixel instalado, perfil otimizado, LP renovada em produção. Primeiro lote de scripts de vídeo entregue para a Larissa começar a gravar.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–10</span><h3>Campanhas + IA no Ar</h3><p>Primeiros criativos aprovados e campanhas ativas. Agente de IA configurado e testado com você antes de ir ao ar. Larissa testa o fluxo do SDR.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relatório</h3><p>Análise de CPL, leads gerados, qualidade dos leads, conversões em agendamento. Ajustes para o ciclo 2 — criativos, verba e segmentação.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h2>Larissa, o Natural Elegance<br><em>merece ser encontrado.</em></h2>
+  <p>Você criou um método. Construiu uma marca. Agora é hora de usar o tráfego pago para amplificar o que você já validou — e sair da gangorra de faturamento de uma vez por todas.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20NUE%20Est%C3%A9tica%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">João Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
