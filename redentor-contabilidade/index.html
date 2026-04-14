@@ -1,1 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Redentor Contabilidade</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#080808;
+  --white:#F5F3EE;
+  --orange:#E8671A;
+  --gold:#C9A84C;
+  --blue:#1A4DE8;
+  --dark:#101010;
+  --card:#181818;
+  --border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);
+  --font-display:"Syne",sans-serif;
+  --font-body:"DM Sans",sans-serif;
+  --font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
 
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,8,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:340px;height:340px;background:radial-gradient(circle,rgba(232,103,26,0.18) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 65%);pointer-events:none;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(38px,10vw,76px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(28px,8vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.13);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.nicho-box{background:var(--card);border:1px solid rgba(232,103,26,0.22);padding:28px 24px;margin-bottom:44px;position:relative;overflow:hidden;}
+.nicho-box::after{content:"❄";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:80px;color:rgba(232,103,26,0.05);pointer-events:none;line-height:1;}
+.nicho-box h3{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.nicho-box p{font-size:14px;color:var(--muted);line-height:1.8;max-width:580px;}
+.nicho-box strong{color:var(--white);font-weight:600;}
+
+.roi-box{background:var(--card);border:1px solid rgba(201,168,76,0.2);padding:28px 24px;margin-bottom:28px;}
+.roi-box h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold);margin-bottom:20px;}
+.roi-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);gap:12px;}
+.roi-row:last-child{border-bottom:none;}
+.roi-row span:first-child{font-size:13px;color:var(--muted);}
+.roi-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);font-weight:500;}
+.roi-row.hl span:last-child{color:var(--gold);}
+
+.kw-box{background:var(--card);border-left:3px solid var(--orange);padding:24px;margin-bottom:28px;}
+.kw-box h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:16px;letter-spacing:0.04em;}
+.kw-list{display:flex;flex-direction:column;gap:10px;}
+.kw-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:12px;}
+.kw-item:last-child{border-bottom:none;}
+.kw-item span:first-child{font-size:13px;color:var(--white);}
+.kw-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.kw-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:0.12em;padding:3px 8px;border-radius:2px;text-transform:uppercase;}
+.kw-tag.baixo{background:rgba(138,200,138,0.1);border:1px solid rgba(138,200,138,0.2);color:#8AC88A;}
+.kw-tag.medio{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);color:var(--gold);}
+.kw-tag.alto{background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;transition:border-color .25s;}
+.strat-item:active{border-left-color:var(--orange);}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.bonus-box{background:var(--card);border-left:3px solid var(--gold);padding:24px;margin-top:44px;border-radius:0 2px 2px 0;}
+.bonus-box h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold);margin-bottom:12px;}
+.bonus-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+
+.compare-table{background:var(--card);border-radius:2px;overflow:hidden;margin-bottom:28px;}
+.compare-hdr{padding:14px 20px;border-bottom:1px solid var(--border);}
+.compare-hdr span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+.c-row{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid var(--border);gap:12px;}
+.c-row:last-child{border-bottom:none;}
+.c-row span:first-child{font-size:12px;color:var(--muted);flex:1;}
+.c-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-decoration:line-through;opacity:.45;flex-shrink:0;}
+.c-total{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(255,255,255,.02);border-top:1px solid var(--border);}
+.c-total span:first-child{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.c-total span:last-child{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--muted);text-decoration:line-through;opacity:.3;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;padding:0 24px 22px;}
+
+.fase-box{background:var(--card);border-left:3px solid var(--gold);padding:24px;border-radius:0 2px 2px 0;margin-bottom:2px;}
+.fase-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--gold);margin-bottom:8px;}
+.fase-box p{font-size:13px;color:var(--muted);line-height:1.75;}
+.fase-box ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.fase-box ul li{font-size:13px;color:var(--muted);padding-left:18px;position:relative;line-height:1.65;}
+.fase-box ul li::before{content:">";position:absolute;left:0;color:var(--orange);font-size:11px;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}
+  hr.div{margin:0 48px;}
+  .hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+  .footer-cta{padding:88px 48px 100px;}
+  .cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Redentor%20Contabilidade%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estratégica &middot; Fase 1 &middot; 2026</p>
+  <h1>Redentor<br><em>Contabilidade</em></h1>
+  <p class="hero-sub">Google Ads + Google Business + Landing Page para a Redentor aparecer na primeira posição quando o dono de empresa de refrigeração e climatização estiver pronto para trocar de contador.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Google &amp; Leads</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>M&iacute;dia sugerida</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>Contrato</span><span>6 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- NICHO -->
+<section class="bg-dark">
+  <div class="sec-label">O Diferencial</div>
+  <h2 class="sec-title">Contabilidade nichada para <em>refrigeração</em></h2>
+  <p class="sec-intro">Carla, o nicho da Redentor é o maior ativo estratégico que vocês têm. A maioria das contabilidades tenta ser tudo para todos. Vocês escolheram ser os melhores para um público específico — e isso muda completamente como o tráfego pago funciona.</p>
+
+  <div class="nicho-box">
+    <h3>Por que o nicho transforma o tráfego pago</h3>
+    <p>Quando você anuncia para "empresas de refrigeração e climatização" e a copy fala diretamente das dores desse público — MEI que não sabe se pode parcelar equipamento, empresa que paga imposto errado por não ter contador especializado, dono que não entende a diferença entre Simples e Lucro Presumido para o seu setor — <strong>a taxa de conversão é incomparável</strong> com uma contabilidade genérica que fala para todo mundo. O lead que chega já sabe que você é diferente. A objeção de preço praticamente desaparece.</p>
+  </div>
+
+  <!-- DIAGNÓSTICO -->
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title" style="font-size:clamp(24px,6vw,38px)">O que está <em>travando</em> o crescimento</h2>
+  <p class="sec-intro">Mapeado na nossa conversa com o Gustavo.</p>
+
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Depend&ecirc;ncia do org&acirc;nico da Carla</h3><p>Quando a Carla está produzindo conteúdo, o negócio flui. Quando ela para, os leads secam. Tráfego pago resolve essa dependência com previsibilidade.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Hist&oacute;rico ruim com tr&aacute;fego pago</h3><p>A Carla já teve experiências negativas. O problema não foi o canal — foi a execução sem estratégia de qualificação e sem paciência para o processo de maturação.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Leads n&atilde;o qualificados</h3><p>Por indicação, às vezes chegam empresas que não têm mentalidade de crescimento. Com formulário condicional, só avança quem já tem o perfil certo — faturamento mínimo e intenção real de troca.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Mudan&ccedil;a de endere&ccedil;o em maio</h3><p>A mudança para a Barra da Tijuca é uma oportunidade. Atualizamos as campanhas e o Google Business com o novo endereço antes da inauguração — sem perder relevância.</p></div></div>
+    <div class="diag-item"><div class="diag-num">05</div><div><h3>Intelig&ecirc;ncia de dados existe mas n&atilde;o foi aproveitada</h3><p>Vocês já rodaram Google Ads antes. Os dados históricos de palavras-chave que converteram são ativos que vamos usar para acelerar os resultados desde o primeiro mês.</p></div></div>
+    <div class="diag-item"><div class="diag-num">06</div><div><h3>Google Business no verde, mas com gaps</h3><p>Nota 90 é excelente. Porém, a última postagem tem 77 dias. Uma postagem mensal já coloca a Redentor à frente das concorrentes que não fazem essa manutenção.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PALAVRAS-CHAVE -->
+<section class="bg-black">
+  <div class="sec-label">Planejamento de M&iacute;dia</div>
+  <h2 class="sec-title">As palavras que vão <em>trazer clientes</em></h2>
+  <p class="sec-intro">Fizemos o mapeamento ao vivo durante a nossa conversa. Aqui está a estratégia de palavras-chave para o Google Ads da Redentor — priorizando as que têm custo viável e intenção de compra alta.</p>
+
+  <div class="kw-box">
+    <h3>Palavras-chave prioritárias — nicho de refrigeração/climatização</h3>
+    <div class="kw-list">
+      <div class="kw-item"><span>contabilidade para refrigeração</span><div class="kw-tags"><span class="kw-tag baixo">Concorr. baixa</span><span class="kw-tag baixo">Prioridade 1</span></div></div>
+      <div class="kw-item"><span>contabilidade para climatização</span><div class="kw-tags"><span class="kw-tag baixo">Concorr. baixa</span><span class="kw-tag baixo">Prioridade 1</span></div></div>
+      <div class="kw-item"><span>contador especializado ar condicionado</span><div class="kw-tags"><span class="kw-tag baixo">Concorr. baixa</span><span class="kw-tag baixo">Prioridade 1</span></div></div>
+      <div class="kw-item"><span>contabilidade Barra da Tijuca</span><div class="kw-tags"><span class="kw-tag medio">Concorr. média</span><span class="kw-tag medio">Prioridade 2</span></div></div>
+      <div class="kw-item"><span>contabilidade Taquara RJ</span><div class="kw-tags"><span class="kw-tag baixo">Concorr. baixa</span><span class="kw-tag medio">Prioridade 2</span></div></div>
+      <div class="kw-item"><span>trocar de contador Rio de Janeiro</span><div class="kw-tags"><span class="kw-tag medio">Concorr. média</span><span class="kw-tag medio">Prioridade 2</span></div></div>
+      <div class="kw-item"><span>escritório de contabilidade RJ</span><div class="kw-tags"><span class="kw-tag alto">Concorr. alta</span><span class="kw-tag alto">Secundária</span></div></div>
+    </div>
+  </div>
+
+  <div style="background:var(--card);border-left:3px solid var(--gold);padding:20px 24px;border-radius:0 2px 2px 0;">
+    <p style="font-size:13px;color:var(--muted);line-height:1.8;"><strong style="color:var(--gold);">Vantagem do nicho nas palavras-chave:</strong> "contabilidade para refrigeração" tem concorrência praticamente zero no Google Ads do Rio de Janeiro. O custo por clique é uma fração do que você pagaria para "escritório de contabilidade". E quando o dono de empresa de ar condicionado clica nesse anúncio, ele já sabe que chegou no lugar certo — a conversão é muito maior.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ROI -->
+<section class="bg-dark">
+  <div class="sec-label">Matem&aacute;tica do Neg&oacute;cio</div>
+  <h2 class="sec-title">Por que o LTV muda <em>tudo</em></h2>
+  <p class="sec-intro">Como conversamos: cliente de contabilidade não compra uma vez. Ele casa com você por anos. Isso transforma completamente o cálculo do tráfego pago.</p>
+
+  <div class="roi-box">
+    <h3>Projeção de retorno — cenário conservador</h3>
+    <div class="roi-row"><span>Verba de mídia mensal</span><span>R$ 500</span></div>
+    <div class="roi-row"><span>Leads qualificados esperados (nicho + formulário condicional)</span><span>5–10/mês</span></div>
+    <div class="roi-row"><span>Taxa de conversão em contrato (lead qualificado)</span><span>30–50%</span></div>
+    <div class="roi-row"><span>Novos contratos por mês</span><span>2–4</span></div>
+    <div class="roi-row"><span>Ticket médio mensal por cliente</span><span>R$ 500–800</span></div>
+    <div class="roi-row"><span>Receita gerada no 1º mês</span><span>R$ 1.000–3.200</span></div>
+    <div class="roi-row hl"><span>LTV de 1 cliente (permanência média 3 anos)</span><span>R$ 18.000–28.800</span></div>
+    <div class="roi-row hl"><span>Retorno sobre R$ 997 investidos no 1º ano</span><span>10x–20x</span></div>
+  </div>
+
+  <p style="font-size:13px;color:var(--muted);line-height:1.8;background:var(--card);padding:20px 24px;border-radius:2px;">Como falei durante a reunião: se 2 novos clientes a R$600/mês ficarem com a Redentor por 3 anos, cada cliente vale R$21.600. Ou seja, o investimento de R$997/mês no primeiro ano já se paga com o primeiro fechamento do mês. Do segundo em diante, é lucro puro.</p>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Google Ads para a <em>Redentor</em></h2>
+  <p class="sec-intro">Quatro camadas integradas — da busca no Google ao lead qualificado no WhatsApp da Carla.</p>
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Google Business — manutenção e postagem mensal</h3><div class="strat-tag">Org&acirc;nico</div></div>
+      <p>Seu perfil já está na zona verde (nota 90) — parabéns, isso é raro. A gente mantém essa relevância com uma postagem mensal estratégica e atualização do endereço para a Barra da Tijuca em maio. Simples, mas decisivo para manter o ranqueamento.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Landing Page — nichada para refrigeração</h3><div class="strat-tag">Convers&atilde;o</div></div>
+      <p>Criamos uma LP específica para o público de refrigeração/climatização — não uma página genérica de contabilidade. A copy vai falar diretamente das dores do setor: impostos errados, MEI que cresceu e não migrou de regime, dificuldade com folha de pagamento de instaladores. Quando o lead chegar aqui, vai sentir que você foi feita para ele.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Formulário Condicional — só lead qualificado avança</h3><div class="strat-tag">Qualifica&ccedil;&atilde;o</div></div>
+      <p>O formulário faz as perguntas certas antes de enviar o lead para a Carla: sua empresa é do setor de refrigeração/climatização? Qual o faturamento mensal? Você já tem contador? Está pensando em trocar? Se o perfil não bater, o lead é descartado automaticamente. Só chega no WhatsApp quem tem o perfil MQL da Redentor.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Google Ads — busca no nicho + localização</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Campanhas de busca com as palavras-chave do nicho (custo baixo, intenção alta) + palavras de localização (Barra da Tijuca, Taquara, Campo Grande). Vamos aproveitar a inteligência dos dados do Google Ads anterior da Carla para acelerar o aprendizado das campanhas desde o primeiro mês — sem começar do zero.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>Alerta de Lead + Dashboard em Tempo Real</h3><div class="strat-tag">Rastreamento</div></div>
+      <p>Cada lead qualificado que chegar dispara um alerta automático no WhatsApp da Carla (ou do time comercial) com nome, telefone e as respostas do formulário. Dashboard em tempo real mostrando CPL, cliques, conversões e palavras que estão trazendo resultado — exatamente como mostrei ao Gustavo durante a reunião.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a Redentor <em>recebe</em></h2>
+  <p class="sec-intro">Tudo estruturado para que a Carla possa focar no que faz de melhor — atender e fechar contratos.</p>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business mantido e postado</h3><p>Manutenção mensal do perfil (nota 90) + postagem estratégica + atualização de endereço para a Barra da Tijuca em maio.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🖥️</div><div><h3>Landing Page nichada para refrigeração</h3><p>Página com copy direcionada ao setor, storytelling de dores do público, cases e formulário condicional integrado.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Google Ads — nicho + localização</h3><p>Campanhas com palavras de baixo custo e alta intenção. Aproveitamento dos dados históricos do Google Ads anterior.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">✅</div><div><h3>Formulário condicional de qualificação</h3><p>Só passa quem tem o perfil MQL da Redentor. Carla fala apenas com quem já está pronto para conversar.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">💬</div><div><h3>Alerta de lead no WhatsApp</h3><p>Notificação automática com nome, telefone e respostas do formulário. Lead quente, contato imediato.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📈</div><div><h3>Dashboard em tempo real</h3><p>CPL, cliques, conversões, palavras-chave que converteram. Tudo rastreado, como mostrei ao Gustavo durante a reunião.</p></div></div>
+  </div>
+
+  <div class="bonus-box">
+    <h3>Bônus: Estratégia para o Curso da Carla</h3>
+    <p>Como o Gustavo mencionou, a Carla vai lançar um curso para o setor de refrigeração. Quando isso acontecer, vamos criar uma campanha específica para o evento — usando o mesmo público do Google Ads mas com uma copy focada no curso. O participante do curso que não é cliente da Redentor vira lead qualificado na mesma hora. Isso não gera custo adicional de gestão dentro do plano.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FASE 2 -->
+<section class="bg-black">
+  <div class="sec-label">Vis&atilde;o de Crescimento</div>
+  <h2 class="sec-title">Fase 1 agora. <em>Fase 2 quando crescer.</em></h2>
+  <p class="sec-intro">Começamos enxuto e escalamos com dados — não com achismo.</p>
+  <div class="fase-box">
+    <h3>Fase 1 — Esta proposta</h3>
+    <p>Estrutura completa para captar leads qualificados no Google.</p>
+    <ul>
+      <li>Google Business mantido + postagem mensal</li>
+      <li>Landing page nichada para refrigeração/climatização</li>
+      <li>Google Ads busca — nicho + localização</li>
+      <li>Formulário condicional + alerta WhatsApp</li>
+      <li>Dashboard em tempo real</li>
+    </ul>
+  </div>
+  <div style="height:2px"></div>
+  <div class="fase-box" style="border-left-color:rgba(232,103,26,0.3);margin-top:2px;">
+    <h3 style="color:var(--muted)">Fase 2 — Quando o volume de leads crescer</h3>
+    <p>Com dados em mãos e leads chegando, adicionamos:</p>
+    <ul>
+      <li>Agente de IA para qualificação automática dos leads (SDR 24/7)</li>
+      <li>Campanha de remarketing para leads que não converteram</li>
+      <li>CRM para rastrear o funil do clique ao contrato assinado</li>
+      <li>Meta Ads para o curso da Carla e captação de topo de funil</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Simples, <em>sem surpresas.</em></h2>
+  <p class="sec-intro">Sem taxa de setup. Sem letra miúda. Início em até 2 dias úteis após assinatura.</p>
+  <div class="inv-layout">
+    <div>
+      <div class="compare-table">
+        <div class="compare-hdr"><span>Custo de montar internamente</span></div>
+        <div class="c-row"><span>Gestor de Google Ads</span><span>R$ 1.500</span></div>
+        <div class="c-row"><span>Configuração Google Business</span><span>R$ 400</span></div>
+        <div class="c-row"><span>Landing Page nichada (copy + design)</span><span>R$ 1.500</span></div>
+        <div class="c-row"><span>Formulário condicional + automação</span><span>R$ 500</span></div>
+        <div class="c-row"><span>Dashboard e relatórios mensais</span><span>R$ 300</span></div>
+        <div class="c-total"><span>Total interno</span><span>R$ 4.200</span></div>
+      </div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Fase 1 &mdash; Redentor Contabilidade</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">por m&ecirc;s &middot; contrato 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Google Business mantido + postagem mensal</li>
+            <li>Landing page nichada para refrigeração</li>
+            <li>Google Ads — nicho + localização RJ</li>
+            <li>Formulário condicional de qualificação</li>
+            <li>Alerta de lead no WhatsApp</li>
+            <li>Dashboard em tempo real</li>
+            <li>Atualização de endereço (Barra da Tijuca) incluída</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de m&iacute;dia sugerida (separado)</span>
+          <span>R$ 500/m&ecirc;s</span>
+        </div>
+      </div>
+      <div class="inv-note">In&iacute;cio em at&eacute; 2 dias &uacute;teis &middot; Setup em 7&ndash;10 dias &middot; Sem taxa de setup &middot; Sem letras mi&uacute;das.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do contrato ao <em>primeiro lead qualificado</em></h2>
+  <p class="sec-intro">Onboarding ágil — em 7 a 10 dias a Redentor já está captando leads qualificados no Google.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Assinatura &amp; Briefing com a Carla</h3><p>Contrato assinado, acessos às contas configurados. Briefing completo com a Carla sobre as principais dores do cliente de refrigeração/climatização — para a LP e os anúncios falarem a língua dela.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2–5</span><h3>LP + Estrutura de Campanhas</h3><p>Landing page em produção, formulário condicional configurado, Google Business atualizado com postagem. Acesso ao histórico do Google Ads anterior para aproveitar os dados.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–10</span><h3>Campanhas no Ar</h3><p>Google Ads ativo com as palavras-chave do nicho. Alerta de lead configurado. Primeiros leads chegando no WhatsApp da Carla qualificados e com perfil.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relatório</h3><p>Análise completa: investimento, leads gerados, custo por lead, palavras que converteram. Ajuste de estratégia para o ciclo 2. E se a mudança para a Barra da Tijuca estiver próxima, já atualizamos tudo.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h2>Carla, a Redentor já tem o<br><em>melhor produto do nicho.</em></h2>
+  <p>Agora é hora de deixar o Google trabalhar para vocês — para que os donos de empresa de refrigeração e climatização do Rio encontrem a Redentor antes de encontrar qualquer outro contador.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Redentor%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
