@@ -1,1 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Minha Flor Doceria</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#07060A;
+  --white:#F8F4EE;
+  --cream:#EDE5D8;
+  --orange:#E8671A;
+  --rose:#C4526A;
+  --gold:#C9A84C;
+  --dark:#0F0D12;
+  --card:#161318;
+  --border:rgba(255,255,255,0.07);
+  --muted:rgba(248,244,238,0.42);
+  --font-display:"Cormorant Garamond",serif;
+  --font-body:"DM Sans",sans-serif;
+  --font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
 
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(7,6,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--rose);color:var(--white);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(196,82,106,0.14) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 65%);pointer-events:none;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--rose);text-transform:uppercase;margin-bottom:24px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--rose);}
+
+.hero h1{font-family:var(--font-display);font-size:clamp(52px,13vw,100px);font-weight:600;line-height:0.95;margin-bottom:12px;opacity:0;animation:up .8s ease forwards .25s;font-style:italic;}
+.hero h1 span{display:block;font-style:normal;font-weight:600;font-size:clamp(24px,5vw,44px);color:var(--rose);letter-spacing:0.02em;}
+
+.hero-tagline{display:inline-flex;align-items:center;gap:10px;background:rgba(196,82,106,0.07);border:1px solid rgba(196,82,106,0.2);padding:10px 18px;margin-bottom:28px;border-radius:2px;opacity:0;animation:up .8s ease forwards .38s;}
+.hero-tagline span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;color:var(--rose);text-transform:uppercase;}
+
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .5s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .62s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--rose);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--rose);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(32px,9vw,58px);font-weight:600;line-height:1.05;margin-bottom:14px;font-style:italic;}
+.sec-title em{color:var(--rose);font-style:italic;}
+.sec-title strong{font-style:normal;font-weight:600;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+/* DIAGNÓSTICO */
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:32px;font-weight:400;color:rgba(196,82,106,0.13);line-height:1;flex-shrink:0;width:36px;font-style:italic;}
+.diag-item h3{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* PÚBLICO */
+.pub-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:44px;}
+.pub-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.pub-icon{width:40px;height:40px;background:rgba(196,82,106,0.07);border:1px solid rgba(196,82,106,0.18);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.pub-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.pub-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* FOOD PORN */
+.foodporn-box{background:var(--card);border:1px solid rgba(196,82,106,0.2);padding:28px 24px;margin-bottom:44px;position:relative;overflow:hidden;}
+.foodporn-box::after{content:"🎬";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:80px;opacity:0.06;pointer-events:none;line-height:1;}
+.foodporn-box h3{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--rose);margin-bottom:12px;font-style:italic;}
+.foodporn-box p{font-size:14px;color:var(--muted);line-height:1.8;max-width:580px;}
+.foodporn-box strong{color:var(--white);font-weight:600;}
+
+/* ESTRATÉGIA */
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;transition:border-color .25s;}
+.strat-item:active{border-left-color:var(--rose);}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(196,82,106,0.1);border:1px solid rgba(196,82,106,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--rose);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(196,82,106,0.08);border:1px solid rgba(196,82,106,0.18);color:var(--rose);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(196,82,106,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--rose);font-style:italic;line-height:1.6;}
+
+/* IA FLOW */
+.ia-box{background:var(--card);border:1px solid rgba(201,168,76,0.2);padding:28px 24px;margin-top:28px;border-radius:2px;}
+.ia-box h3{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--gold);margin-bottom:12px;font-style:italic;}
+.ia-box p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.ia-flow{display:flex;flex-direction:column;gap:10px;}
+.ia-step{display:flex;gap:12px;align-items:flex-start;}
+.ia-dot{width:24px;height:24px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+.ia-step p{font-size:13px;color:var(--muted);line-height:1.65;}
+.ia-step strong{color:var(--white);font-weight:600;}
+.ia-example{margin-top:6px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(201,168,76,0.25);padding:8px 12px;}
+.ia-example span{font-size:11px;color:var(--gold);font-style:italic;line-height:1.6;}
+
+/* ENTREGÁVEIS */
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(196,82,106,0.07);border:1px solid rgba(196,82,106,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INSTAGRAM */
+.insta-box{background:var(--card);border-left:3px solid var(--rose);padding:24px;margin-bottom:28px;}
+.insta-box h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:16px;letter-spacing:0.04em;}
+.insta-list{display:flex;flex-direction:column;gap:10px;}
+.insta-item{display:flex;gap:12px;align-items:flex-start;}
+.insta-bullet{width:20px;height:20px;background:rgba(196,82,106,0.1);border:1px solid rgba(196,82,106,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--rose);flex-shrink:0;margin-top:1px;}
+.insta-item p{font-size:13px;color:var(--muted);line-height:1.65;}
+.insta-item strong{color:var(--white);font-weight:600;}
+
+/* INDICAÇÃO */
+.indica-box{background:var(--card);border:1px solid rgba(201,168,76,0.2);padding:28px 24px;margin-top:28px;}
+.indica-box h3{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--gold);margin-bottom:12px;font-style:italic;}
+.indica-box p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:12px;}
+.indica-box .roi{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.12);padding:16px 20px;border-radius:2px;margin-top:16px;}
+.indica-box .roi p{font-size:13px;color:var(--white);line-height:1.7;margin-bottom:0;}
+.indica-box .roi span{color:var(--gold);}
+
+/* INVESTIMENTO */
+.compare-table{background:var(--card);border-radius:2px;overflow:hidden;margin-bottom:28px;}
+.compare-hdr{padding:14px 20px;border-bottom:1px solid var(--border);}
+.compare-hdr span{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
+.c-row{display:flex;justify-content:space-between;align-items:center;padding:13px 20px;border-bottom:1px solid var(--border);gap:12px;}
+.c-row:last-child{border-bottom:none;}
+.c-row span:first-child{font-size:12px;color:var(--muted);flex:1;}
+.c-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-decoration:line-through;opacity:.45;flex-shrink:0;}
+.c-total{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(255,255,255,.02);border-top:1px solid var(--border);}
+.c-total span:first-child{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.c-total span:last-child{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--muted);text-decoration:line-through;opacity:.3;font-style:italic;}
+.inv-card{background:var(--black);border:1px solid rgba(196,82,106,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--rose),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--rose);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:600;line-height:1;color:var(--white);margin-bottom:6px;font-style:italic;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;font-style:normal;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--rose);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(196,82,106,0.05);border:1px solid rgba(196,82,106,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--rose);font-weight:500;flex-shrink:0;}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;padding:0 24px 22px;}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--rose),rgba(196,82,106,0.06));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--rose);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(196,82,106,0.15);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--rose);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* FOOTER */
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(32px,9vw,56px);font-weight:600;line-height:1.1;margin-bottom:16px;font-style:italic;}
+.footer-cta h2 em{color:var(--rose);font-style:italic;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--rose);color:var(--white);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--white);margin-bottom:4px;font-style:italic;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--rose);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}
+  hr.div{margin:0 48px;}
+  .hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .pub-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+  .footer-cta{padding:88px 48px 100px;}
+  .cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Minha%20Flor%20Doceria%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; 2026</p>
+  <h1>Minha Flor<br><span>Doceria</span></h1>
+  <div class="hero-tagline"><span>✦ Barra &amp; Penha &middot; 10 anos de recompra</span></div>
+  <p class="hero-sub">Meta Ads com food porn + Agente de IA vendendo diretamente pelo Anota A&iacute; &mdash; para transformar cada curioso no Instagram em pedido confirmado no WhatsApp.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta &amp; IA</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997 + R$ 297 IA</span></div>
+    <div class="pill"><span>M&iacute;dia sugerida</span><span>R$ 1.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Contrato</span><span>6 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">O que est&aacute; <em>travando</em> o crescimento</h2>
+  <p class="sec-intro">Johnny e Cl&aacute;udia, a Minha Flor tem um produto que se vende sozinho depois do primeiro contato &mdash; o desafio &eacute; ampliar o alcance sem perder a qualidade do atendimento.</p>
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Tr&aacute;fego anterior sem estrutura comercial</h3><p>Chegavam leads, mas sem cadência de atendimento estruturada para convertê-los. O anúncio funcionava, o funil quebrava depois. Isso vai mudar agora com o Agente de IA.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>O curioso n&atilde;o converte no Anota A&iacute;</h3><p>O Anota Aí converte quem já decidiu comprar. O lead que vem do tráfego e pede "queria saber mais" precisa de um primeiro contato que qualifique e direcione — sem perder a venda.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Foco apenas no carro-chefe</h3><p>O bolo de cenoura carrega a marca — mas as tortas premium da Barra (a R$ 74–129) e o corporativo são canais de alto valor que ainda estão subexplorados nos anúncios.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Localiza&ccedil;&atilde;o invis&iacute;vel no Instagram</h3><p>Barra x Penha não aparecem visualmente no perfil. Quem chega pelo anúncio não sabe onde fica a loja mais próxima — e isso custa presenciais e pedidos corporativos.</p></div></div>
+    <div class="diag-item"><div class="diag-num">05</div><div><h3>Recompra manual e cansativa</h3><p>Johnny já faz disparos de reativação manualmente. Com remarketing via tráfego pago e os números do Anota Aí, isso vira automático — reaparecendo para quem já comprou antes.</p></div></div>
+    <div class="diag-item"><div class="diag-num">06</div><div><h3>Programa de indica&ccedil;&atilde;o inexplorado</h3><p>10 anos de clientes fiéis que trazem amigos pela mão. Com uma estrutura de indicação, cada cliente satisfeito vira um canal de aquisição com custo por lead de R$ 2–3.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PÚBLICO -->
+<section class="bg-black">
+  <div class="sec-label">P&uacute;blico-Alvo</div>
+  <h2 class="sec-title">Dois p&uacute;blicos, <em>duas estrat&eacute;gias</em></h2>
+  <p class="sec-intro">Como a Cl&aacute;udia deixou claro: n&atilde;o &eacute; s&oacute; o consumidor final. O corporativo da Barra &eacute; um canal de alto volume que precisa de comunica&ccedil;&atilde;o pr&oacute;pria.</p>
+  <div class="pub-grid">
+    <div class="pub-item"><div class="pub-icon">👩</div><div><h3>Consumidor Final</h3><p>Moradores e frequentadores da Barra, Recreio e Jacarepaguá. Compram tortas premium para o café da tarde, datas comemorativas e presentes. Alta recompra após o primeiro pedido.</p></div></div>
+    <div class="pub-item"><div class="pub-icon">🏢</div><div><h3>Corporativo</h3><p>Empresas próximas da Barra que compram 2–3 bolos por semana para lanches, aniversários e comemorações. Ticket alto, frequência alta. Precisam de copy e oferta específica.</p></div></div>
+    <div class="pub-item"><div class="pub-icon">🎂</div><div><h3>Festas e Eventos</h3><p>Quem pensa em sobremesa para festa de aniversário ou evento corporativo. As tortas de 15cm e os bolos inteiros são a solução — mas precisam aparecer no momento da decisão.</p></div></div>
+    <div class="pub-item"><div class="pub-icon">📲</div><div><h3>Delivery Recorrente</h3><p>Cliente que comprou uma vez e voltou. Já no Anota Aí, já tem o número salvo. Remarketing via Meta Ads para reaparecer antes que ele peça do concorrente.</p></div></div>
+  </div>
+
+  <!-- FOOD PORN -->
+  <div class="sec-label" style="margin-top:0">Linguagem Criativa</div>
+  <h2 class="sec-title" style="font-size:clamp(24px,6vw,38px)">A estrat&eacute;gia &eacute; <em>food porn</em></h2>
+  <div class="foodporn-box">
+    <h3>Fazer a pessoa salivar antes de pensar no preço</h3>
+    <p>Vídeos que mostram a casca do brownie quebrando, o recheio da torta Supremo escorrendo, a fatia do cenoura sendo cortada com o garfo. <strong>O objetivo não é informar — é provocar desejo.</strong> Quando o anúncio é bom o suficiente para fazer a pessoa parar o scroll e salivar, o preço vira detalhe. A Minha Flor já tem o produto. A EmpresAtiva vai transformar esse produto em conteúdo que vende.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-dark">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads + IA para a <em>Minha Flor</em></h2>
+  <p class="sec-intro">Cinco camadas integradas para transformar o Instagram em canal de vendas previs&iacute;vel &mdash; sem depender s&oacute; de org&acirc;nico e sem sobrecarregar o Johnny.</p>
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Perfil otimizado + Destaques reorganizados</h3><div class="strat-tag">Base</div></div>
+      <p>Implementamos as melhorias discutidas na reunião: destaque de Localização (Barra e Penha visualmente), destaques minimalistas por ocasião (Natal, Namorados, Páscoa, Corporativo), endereço completo no Link Tree. A Yasmin recebe um briefing detalhado dos ajustes.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Campanhas Meta Ads — food porn + corporativo</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Duas linhas de campanha simultâneas. Linha 1: vídeos de food porn das tortas premium (Supremo, Oreo, Ninho Nutella) para consumidor final na Barra/Recreio. Linha 2: criativo específico para empresas da Barra com copy corporativa e desconto progressivo por CNPJ — como a Cláudia sugeriu. Pixel instalado, lookalike dos compradores do Anota Aí, teste A/B contínuo.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Agente de IA — SDR que vende pelo Anota Aí</h3><div class="strat-tag">IA</div></div>
+      <p>Quando o lead curioso manda mensagem no WhatsApp, o agente responde imediatamente como a "Lara da Minha Flor". Entende o que a pessoa quer, envia o link direto do produto no Anota Aí. Se a pessoa pedir "quero a torta Supremo", a IA já manda o link de compra. Quando qualificado para atendimento humano, o alerta chega para o Johnny ou para a atendente.</p>
+      <div class="strat-example"><span>Cliente: "Oi, vi o vídeo do brownie, quanto tá?" &mdash; IA: "Oi! Temos o combo brownie família por R$ X, deixa eu te mandar o link direto aqui 👇 [link Anota Aí]"</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Remarketing — reativar quem j&aacute; comprou</h3><div class="strat-tag">Recompra</div></div>
+      <p>Exportamos os números do Anota Aí e criamos uma audiência personalizada no Meta Ads. Quem já comprou começa a ver anúncios novos ("chegou torta nova", "volta pra tomar um cafezinho na Barra") — sem o Johnny precisar fazer disparos manuais. Frequência controlada para não virar spam.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>Programa de Indica&ccedil;&atilde;o estruturado</h3><div class="strat-tag">Org&acirc;nico</div></div>
+      <p>Após a compra, o cliente recebe uma mensagem: "Gostou? Indica 5 amigos e ganhe um bolo de pote de chocolate." Custo por lead qualificado: R$ 2–3. São leads de altíssima qualidade — amigos de quem já comprou e voltou. Transformamos a rede de clientes fiéis num canal de aquisição orgânica e escalável.</p>
+      <div class="strat-example"><span>Matemática: R$ 3,90 de bolo de pote → 5 leads qualificados → custo por lead R$ 0,78. Tráfego pago custa R$ 20/lead. A indicação custa R$ 0,78.</span></div>
+    </div>
+  </div>
+
+  <!-- IA FLOW -->
+  <div class="ia-box">
+    <h3>Como o Agente de IA funciona na prática</h3>
+    <p>O Anota Aí faz a automação do pedido. A IA faz a qualificação e a venda do curioso que o Anota Aí não converte.</p>
+    <div class="ia-flow">
+      <div class="ia-step"><div class="ia-dot">1</div><p><strong>Lead chega pelo anúncio</strong> — manda mensagem no WhatsApp com dúvida ou interesse.</p></div>
+      <div class="ia-step"><div class="ia-dot">2</div><p><strong>IA responde imediatamente</strong> — entende o que a pessoa quer, apresenta o produto e envia o link direto no Anota Aí.</p>
+        <div class="ia-example"><span>"Queria ver o cardápio" → IA identifica interesse em torta → "Olha essa torta Supremo que acabou de sair do forno 🎂 [link direto]"</span></div>
+      </div>
+      <div class="ia-step"><div class="ia-dot">3</div><p><strong>Cliente compra direto</strong> — ou tira mais dúvidas antes. Se pedir atendimento humano ou para evento corporativo, a IA sinaliza para a equipe assumir.</p></div>
+      <div class="ia-step"><div class="ia-dot">4</div><p><strong>Cardápio atualizado</strong> — sempre que o Johnny reajustar preços ou produtos no Anota Aí, avisa a EmpresAtiva para atualizar os links na IA. Zero alucinação.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a Minha Flor <em>recebe</em></h2>
+  <p class="sec-intro">Tudo pronto para o Johnny focar no produto e a Cl&aacute;udia focar no crescimento.</p>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Perfil Instagram reorganizado</h3><p>Destaques minimalistas, localização visível, Link Tree com endereços completos. Briefing para a Yasmin incluído.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎬</div><div><h3>Campanhas Meta Ads food porn</h3><p>Vídeos de food porn para tortas premium + campanha corporativa com desconto por CNPJ. Pixel, lookalike, A/B.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🤖</div><div><h3>Agente de IA — vendas pelo Anota Aí</h3><p>IA treinada com produtos e links do Anota Aí. Responde, qualifica e envia link direto de compra 24/7.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔄</div><div><h3>Remarketing — recompra autom&aacute;tica</h3><p>Audiência dos compradores do Anota Aí no Meta Ads. Reaparece para quem já comprou sem disparos manuais.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎁</div><div><h3>Programa de indica&ccedil;&atilde;o estruturado</h3><p>Fluxo de mensagem pós-compra, oferta de incentivo e captação de leads por R$ 0,78/lead via rede dos clientes fiéis.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 posts/m&ecirc;s com arte e copy</h3><p>Conteúdo de feed alinhado ao posicionamento food porn + datas sazonais (Dia dos Namorados, etc.).</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">💬</div><div><h3>Alerta de lead no WhatsApp</h3><p>Notificação quando lead qualificado ou corporativo precisa de atendimento humano. Johnny e Cláudia decidem quem assume.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📈</div><div><h3>Dashboard em tempo real</h3><p>CPL, alcance, seguidores, conversões. Acompanhamento mensal para ajustar criativos e verba.</p></div></div>
+  </div>
+
+  <!-- MELHORIAS INSTAGRAM -->
+  <div style="margin-top:44px;">
+    <div class="sec-label">Pontos de Melhoria do Instagram</div>
+    <h3 style="font-family:var(--font-display);font-size:22px;font-weight:600;font-style:italic;color:var(--white);margin-bottom:20px;">Como combinamos na reuni&atilde;o</h3>
+    <div class="insta-box">
+      <h3>Para a Yasmin implementar (briefing j&aacute; preparado)</h3>
+      <div class="insta-list">
+        <div class="insta-item"><div class="insta-bullet">1</div><p><strong>Destaque de Localiza&ccedil;&atilde;o</strong> — criar destaque visual com fotos/vídeos da loja da Barra e da Penha. Quem chega pelo anúncio precisa saber onde vocês estão.</p></div>
+        <div class="insta-item"><div class="insta-bullet">2</div><p><strong>Destaques minimalistas por ocasi&atilde;o</strong> — agrupar: Natal, Namorados (maior data!), P&aacute;scoa, Corporativo, Depoimentos. Remover "Pagamentos" (desnecessário hoje).</p></div>
+        <div class="insta-item"><div class="insta-bullet">3</div><p><strong>Link Tree com endere&ccedil;o completo</strong> — adicionar endere&ccedil;o das duas unidades no rodapé. Hoje está escondido nos cardápios e a pessoa não encontra facilmente.</p></div>
+        <div class="insta-item"><div class="insta-bullet">4</div><p><strong>Destaque de Depoimentos</strong> — clientes que trazem amigos pela mão são a maior prova social da Minha Flor. Esses momentos precisam estar em destaque no perfil.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Simples, <em>sem surpresas.</em></h2>
+  <p class="sec-intro">Com R$ 1.000 de verba e R$ 997 de gest&atilde;o, a Minha Flor ter&aacute; uma m&aacute;quina de vendas rodando 24h &mdash; enquanto o Johnny cuida da qualidade dos produtos.</p>
+  <div class="inv-layout">
+    <div>
+      <div class="compare-table">
+        <div class="compare-hdr"><span>Custo de montar internamente</span></div>
+        <div class="c-row"><span>Gestor de Meta Ads</span><span>R$ 1.500</span></div>
+        <div class="c-row"><span>Designer + Copywriter (food porn)</span><span>R$ 800</span></div>
+        <div class="c-row"><span>Configuração do Agente de IA</span><span>R$ 700</span></div>
+        <div class="c-row"><span>Remarketing e audiências personalizadas</span><span>R$ 500</span></div>
+        <div class="c-row"><span>Dashboard e relatórios mensais</span><span>R$ 300</span></div>
+        <div class="c-total"><span>Total interno</span><span>R$ 3.800</span></div>
+      </div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta &amp; IA &mdash; Minha Flor Doceria</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">gest&atilde;o de tr&aacute;fego &middot; por m&ecirc;s &middot; contrato 6 meses</div>
+        <div style="margin-top:16px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);padding:14px 18px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;gap:12px;"><span style="font-size:12px;color:var(--muted);">+ Agente de IA (add-on)</span><span style="font-family:var(--font-mono);font-size:14px;color:var(--gold);font-weight:600;">R$ 297/m&ecirc;s</span></div>
+        <div style="margin-top:8px;background:rgba(196,82,106,0.06);border:1px solid rgba(196,82,106,0.18);padding:14px 18px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;gap:12px;"><span style="font-size:12px;color:var(--muted);font-weight:600;">Total mensal</span><span style="font-family:var(--font-mono);font-size:15px;color:var(--rose);font-weight:700;">R$ 1.294/m&ecirc;s</span></div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Perfil Instagram + destaques reorganizados</li>
+            <li>Meta Ads food porn + campanha corporativa</li>
+            <li>Pixel + lookalike + teste A/B</li>
+            <li>Agente de IA treinado no Anota Aí</li>
+            <li>Remarketing com base do Anota Aí</li>
+            <li>Programa de indicação estruturado</li>
+            <li>4 posts/mês com arte e copy</li>
+            <li>Alerta de lead no WhatsApp</li>
+            <li>Dashboard em tempo real</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de m&iacute;dia sugerida (separado)</span>
+          <span>R$ 1.000/m&ecirc;s</span>
+        </div>
+      </div>
+      <div class="inv-note">In&iacute;cio em at&eacute; 2 dias &uacute;teis &middot; Setup em 10 dias &middot; Sem taxa de setup &middot; Sem letras mi&uacute;das.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do contrato ao <em>primeiro pedido</em></h2>
+  <p class="sec-intro">Onboarding &aacute;gil para que o Instagram e o WhatsApp da Minha Flor j&aacute; estejam vendendo em menos de 2 semanas.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Assinatura &amp; Briefing</h3><p>Contrato assinado, acessos configurados. Johnny envia os links ativos do Anota Aí para treinamento da IA. Briefing de produtos, preços e ocasiões sazonais.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2–5</span><h3>Setup &amp; Estrutura</h3><p>IA treinada com produtos e links do Anota Aí e testada com o Johnny. Pixel instalado. Audiências de remarketing criadas com os números exportados do Anota Aí. Briefing enviado para a Yasmin.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–10</span><h3>Campanhas no Ar</h3><p>Primeiros criativos food porn e campanha corporativa aprovados e ativos. Programa de indicação configurado. Minha Flor já está captando leads qualificados 24h.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relat&oacute;rio</h3><p>CPL, conversões, pedidos via IA, performance dos criativos. Ajuste para o ciclo 2 — priorizando o que mais converteu (food porn ou corporativo).</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h2>Johnny e Cl&aacute;udia, a Minha Flor<br><em>merece lotar o delivery.</em></h2>
+  <p>10 anos de produto que faz o cliente voltar. Agora &eacute; hora de usar isso a favor &mdash; com tráfego pago que transforma o Instagram num canal de vendas que funciona mesmo quando voc&ecirc;s est&atilde;o na cozinha.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Minha%20Flor%20Doceria%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
