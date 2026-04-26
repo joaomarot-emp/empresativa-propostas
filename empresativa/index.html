@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmpresAtiva — Sistema de Gestão de Tempo v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --surface2: #1c1c28;
+    --border: #2a2a3a;
+    --accent: #f97316;
+    --accent2: #fb923c;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --pink: #ec4899;
+    --text: #f1f0ee;
+    --muted: #6b6b80;
+    --tag: #23233a;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(–bg);
+color: var(–text);
+font-family: ‘DM Sans’, sans-serif;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+header {
+padding: 36px 48px 28px;
+border-bottom: 1px solid var(–border);
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.logo {
+font-family: ‘Syne’, sans-serif;
+font-weight: 800;
+font-size: 20px;
+letter-spacing: -0.5px;
+}
+.logo span { color: var(–accent); }
+
+.badge {
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+color: var(–muted);
+border: 1px solid var(–border);
+padding: 6px 14px;
+border-radius: 100px;
+letter-spacing: 0.5px;
+}
+
+.hero {
+padding: 56px 48px 40px;
+position: relative;
+}
+.hero::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0; bottom: 0;
+background: radial-gradient(ellipse 60% 50% at 50% -10%, rgba(249,115,22,0.10), transparent);
+pointer-events: none;
+}
+
+.hero-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+color: var(–accent);
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-bottom: 14px;
+}
+
+.hero h1 {
+font-family: ‘Syne’, sans-serif;
+font-size: clamp(28px, 4vw, 46px);
+font-weight: 800;
+line-height: 1.1;
+letter-spacing: -1.5px;
+margin-bottom: 14px;
+}
+.hero h1 em { font-style: normal; color: var(–accent); }
+
+.hero p {
+color: var(–muted);
+font-size: 14px;
+font-weight: 300;
+max-width: 560px;
+line-height: 1.7;
+}
+
+/* PILARES */
+.pillars {
+display: flex;
+gap: 10px;
+padding: 0 48px 40px;
+flex-wrap: wrap;
+}
+
+.pillar {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 8px 16px;
+border-radius: 100px;
+border: 1px solid var(–border);
+font-size: 12px;
+font-weight: 500;
+}
+
+.pillar-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* TABS */
+.tabs-container {
+padding: 0 48px;
+border-bottom: 1px solid var(–border);
+display: flex;
+gap: 0;
+overflow-x: auto;
+}
+
+.tab {
+font-family: ‘Syne’, sans-serif;
+font-size: 13px;
+font-weight: 600;
+color: var(–muted);
+padding: 16px 24px;
+border-bottom: 2px solid transparent;
+cursor: pointer;
+transition: all 0.2s;
+letter-spacing: 0.3px;
+white-space: nowrap;
+}
+.tab:hover { color: var(–text); }
+.tab.active { color: var(–accent); border-bottom-color: var(–accent); }
+
+.content { padding: 48px; }
+.panel { display: none; }
+.panel.active { display: block; }
+
+.section-title {
+font-family: ‘Syne’, sans-serif;
+font-size: 20px;
+font-weight: 700;
+letter-spacing: -0.5px;
+margin-bottom: 6px;
+}
+.section-sub {
+color: var(–muted);
+font-size: 13px;
+margin-bottom: 32px;
+font-weight: 300;
+line-height: 1.6;
+}
+
+.divider { height: 1px; background: var(–border); margin: 36px 0; }
+
+/* LEGEND */
+.legend {
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+padding: 16px 20px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 10px;
+margin-bottom: 28px;
+}
+.legend-item {
+display: flex;
+align-items: center;
+gap: 7px;
+font-size: 11px;
+color: var(–muted);
+}
+.legend-dot { width: 9px; height: 9px; border-radius: 3px; }
+
+/* WEEK GRID */
+.week-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 14px;
+margin-bottom: 36px;
+}
+
+.day-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+overflow: hidden;
+transition: border-color 0.2s;
+}
+.day-card:hover { border-color: rgba(249,115,22,0.4); }
+
+.day-header {
+padding: 12px 14px 10px;
+border-bottom: 1px solid var(–border);
+}
+.day-name {
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 13px;
+}
+.day-focus {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px;
+color: var(–muted);
+text-transform: uppercase;
+letter-spacing: 0.8px;
+margin-top: 2px;
+}
+
+.day-blocks { padding: 10px; display: flex; flex-direction: column; gap: 7px; }
+
+.time-block {
+border-radius: 7px;
+padding: 8px 10px;
+}
+
+.time-block.vendas      { background: rgba(249,115,22,0.10); border: 1px solid rgba(249,115,22,0.22); }
+.time-block.conteudo    { background: rgba(168,85,247,0.10); border: 1px solid rgba(168,85,247,0.22); }
+.time-block.infoproduto { background: rgba(236,72,153,0.10); border: 1px solid rgba(236,72,153,0.22); }
+.time-block.operacional { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.18); }
+.time-block.equipe      { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.18); }
+.time-block.bni         { background: rgba(34,197,94,0.10); border: 1px solid rgba(34,197,94,0.22); }
+.time-block.livre       { background: var(–surface2); border: 1px solid var(–border); }
+
+.block-time {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px;
+color: var(–muted);
+margin-bottom: 3px;
+}
+.block-label { font-size: 11px; font-weight: 500; line-height: 1.3; }
+
+.time-block.vendas .block-label      { color: var(–accent2); }
+.time-block.conteudo .block-label    { color: #c084fc; }
+.time-block.infoproduto .block-label { color: #f472b6; }
+.time-block.operacional .block-label { color: #60a5fa; }
+.time-block.equipe .block-label      { color: #fbbf24; }
+.time-block.bni .block-label         { color: #4ade80; }
+.time-block.livre .block-label       { color: var(–muted); }
+
+/* ALERTA BNI */
+.alert-bni {
+background: rgba(34,197,94,0.07);
+border: 1px solid rgba(34,197,94,0.2);
+border-radius: 10px;
+padding: 16px 20px;
+margin-bottom: 28px;
+font-size: 13px;
+color: var(–muted);
+font-weight: 300;
+line-height: 1.6;
+}
+.alert-bni strong { color: #4ade80; font-weight: 600; }
+
+/* PILARES DETAIL */
+.pilares-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 14px;
+margin-bottom: 36px;
+}
+
+.pilar-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 22px;
+}
+
+.pilar-header {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 14px;
+}
+
+.pilar-icon { font-size: 18px; }
+
+.pilar-title {
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 14px;
+}
+
+.pilar-tag {
+font-family: ‘DM Mono’, monospace;
+font-size: 10px;
+padding: 3px 10px;
+border-radius: 100px;
+margin-left: auto;
+}
+
+.items-list { display: flex; flex-direction: column; gap: 8px; }
+
+.item-row {
+display: flex;
+align-items: flex-start;
+gap: 8px;
+font-size: 12px;
+color: var(–muted);
+font-weight: 300;
+line-height: 1.5;
+}
+
+.item-dot {
+width: 5px; height: 5px;
+border-radius: 50%;
+flex-shrink: 0;
+margin-top: 5px;
+}
+
+/* SEMANA DETALHADA */
+.week-detail {
+display: flex;
+flex-direction: column;
+gap: 12px;
+margin-bottom: 36px;
+}
+
+.detail-row {
+display: grid;
+grid-template-columns: 110px 100px 1fr 120px;
+gap: 0;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 10px;
+overflow: hidden;
+transition: border-color 0.2s;
+}
+.detail-row:hover { border-color: rgba(249,115,22,0.3); }
+
+.detail-day {
+padding: 14px 16px;
+border-right: 1px solid var(–border);
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 13px;
+display: flex;
+align-items: center;
+}
+
+.detail-time {
+padding: 14px 14px;
+border-right: 1px solid var(–border);
+font-family: ‘DM Mono’, monospace;
+font-size: 10px;
+color: var(–muted);
+display: flex;
+align-items: center;
+line-height: 1.5;
+}
+
+.detail-desc {
+padding: 14px 16px;
+font-size: 13px;
+font-weight: 300;
+color: var(–muted);
+line-height: 1.5;
+display: flex;
+align-items: center;
+}
+.detail-desc strong { color: var(–text); font-weight: 500; }
+
+.detail-type {
+padding: 14px 14px;
+border-left: 1px solid var(–border);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.type-pill {
+font-family: ‘DM Mono’, monospace;
+font-size: 9px;
+padding: 4px 10px;
+border-radius: 100px;
+text-align: center;
+letter-spacing: 0.5px;
+}
+
+/* REGRAS */
+.rules-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 14px;
+}
+
+.rule-card {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 18px 20px;
+}
+.rule-icon { font-size: 18px; margin-bottom: 8px; }
+.rule-title {
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 13px;
+margin-bottom: 6px;
+}
+.rule-text {
+font-size: 12px;
+color: var(–muted);
+line-height: 1.6;
+font-weight: 300;
+}
+
+/* CONTEÚDO PANEL */
+.conteudo-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 14px;
+margin-bottom: 36px;
+}
+
+.ccard {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 12px;
+padding: 22px;
+}
+
+.ccard-title {
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 14px;
+margin-bottom: 14px;
+}
+
+.format-list { display: flex; flex-direction: column; gap: 10px; }
+
+.format-item {
+display: flex;
+align-items: flex-start;
+gap: 10px;
+padding: 10px 12px;
+background: var(–surface2);
+border-radius: 8px;
+border: 1px solid var(–border);
+}
+
+.format-emoji { font-size: 16px; flex-shrink: 0; }
+
+.format-body { flex: 1; }
+
+.format-name {
+font-size: 12px;
+font-weight: 500;
+margin-bottom: 2px;
+}
+
+.format-desc {
+font-size: 11px;
+color: var(–muted);
+font-weight: 300;
+line-height: 1.4;
+}
+
+/* GOLD RULE */
+.gold-rule {
+background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04));
+border: 1px solid rgba(249,115,22,0.2);
+border-radius: 12px;
+padding: 22px 26px;
+margin-bottom: 22px;
+}
+.gold-rule-title {
+font-family: ‘Syne’, sans-serif;
+font-weight: 700;
+font-size: 13px;
+color: var(–accent2);
+margin-bottom: 10px;
+}
+.gold-rule p {
+font-size: 13px;
+color: var(–muted);
+font-weight: 300;
+line-height: 1.7;
+}
+.gold-rule strong { color: var(–text); font-weight: 500; }
+
+@media (max-width: 900px) {
+header, .hero, .pillars, .tabs-container, .content { padding-left: 20px; padding-right: 20px; }
+.week-grid { grid-template-columns: 1fr; }
+.pilares-grid { grid-template-columns: 1fr; }
+.conteudo-grid { grid-template-columns: 1fr; }
+.rules-grid { grid-template-columns: 1fr; }
+.detail-row { grid-template-columns: 1fr; }
+.detail-day, .detail-time, .detail-desc, .detail-type { border: none; border-bottom: 1px solid var(–border); }
+.detail-type { border-bottom: none; }
+}
+
+.panel.active .day-card { animation: fadeUp 0.3s ease forwards; opacity: 0; }
+.panel.active .day-card:nth-child(1) { animation-delay: 0.00s; }
+.panel.active .day-card:nth-child(2) { animation-delay: 0.05s; }
+.panel.active .day-card:nth-child(3) { animation-delay: 0.10s; }
+.panel.active .day-card:nth-child(4) { animation-delay: 0.15s; }
+.panel.active .day-card:nth-child(5) { animation-delay: 0.20s; }
+
+.panel.active .pilar-card,
+.panel.active .ccard,
+.panel.active .detail-row { animation: fadeUp 0.3s ease forwards; opacity: 0; }
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="logo">Empres<span>Ativa</span> Digital</div>
+  <div class="badge">ROTINA ESTRATÉGICA v2.0</div>
+</header>
+
+<div class="hero">
+  <div class="hero-label">// Gestão de Tempo — João Marot</div>
+  <h1>Semana com<br><em>propósito.</em></h1>
+  <p>Rotina redesenhada com os 4 pilares reais do negócio: Vendas, Conteúdo, Infoproduto e Operação. BNI na terça, blocos protegidos, crescimento com consistência.</p>
+</div>
+
+<div class="pillars">
+  <div class="pillar">
+    <div class="pillar-dot" style="background:var(--accent)"></div>
+    Vendas
+  </div>
+  <div class="pillar">
+    <div class="pillar-dot" style="background:#a855f7"></div>
+    Conteúdo & Redes
+  </div>
+  <div class="pillar">
+    <div class="pillar-dot" style="background:#ec4899"></div>
+    Infoproduto
+  </div>
+  <div class="pillar">
+    <div class="pillar-dot" style="background:#3b82f6"></div>
+    Operação da Agência
+  </div>
+  <div class="pillar">
+    <div class="pillar-dot" style="background:#22c55e"></div>
+    BNI / Networking
+  </div>
+</div>
+
+<div class="tabs-container">
+  <div class="tab active" onclick="switchTab('semana')">Rotina Semanal</div>
+  <div class="tab" onclick="switchTab('pilares')">Os 4 Pilares</div>
+  <div class="tab" onclick="switchTab('conteudo')">Máquina de Conteúdo</div>
+  <div class="tab" onclick="switchTab('vendas')">Prospecção & Indicações</div>
+  <div class="tab" onclick="switchTab('regras')">Regras do Jogo</div>
+</div>
+
+<div class="content">
+
+  <!-- PANEL 1: ROTINA SEMANAL -->
+
+  <div class="panel active" id="panel-semana">
+
+```
+<div class="section-title">Rotina semanal — visão geral</div>
+<div class="section-sub">Cada dia tem um foco dominante. Você não faz tudo todo dia — você faz a coisa certa no dia certo.</div>
+
+<div class="alert-bni">
+  <strong>📍 BNI toda terça — 06h30 às 10h00.</strong> A terça é o seu dia de network e relacionamento. O período da tarde é para transformar conexões do BNI em oportunidades reais — follow-up, propostas, fechamento.
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(249,115,22,0.6)"></div> Vendas</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(168,85,247,0.6)"></div> Conteúdo</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(236,72,153,0.6)"></div> Infoproduto</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(59,130,246,0.5)"></div> Operação</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(245,158,11,0.5)"></div> Equipe</div>
+  <div class="legend-item"><div class="legend-dot" style="background:rgba(34,197,94,0.5)"></div> BNI</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#2a2a3a"></div> Buffer</div>
+</div>
+
+<div class="week-grid">
+
+  <!-- SEGUNDA -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-name">Segunda</div>
+      <div class="day-focus">VENDAS + OPERAÇÃO</div>
+    </div>
+    <div class="day-blocks">
+      <div class="time-block operacional">
+        <div class="block-time">08h00 – 09h00</div>
+        <div class="block-label">Revisão de budget + planejamento da semana</div>
+      </div>
+      <div class="time-block vendas">
+        <div class="block-time">09h00 – 11h00</div>
+        <div class="block-label">🔒 VENDAS — Prospecção ativa + propostas em andamento</div>
+      </div>
+      <div class="time-block conteudo">
+        <div class="block-time">11h00 – 12h00</div>
+        <div class="block-label">🔒 CONTEÚDO — Gravar ou escrever 1 peça da semana</div>
+      </div>
+      <div class="time-block equipe">
+        <div class="block-time">12h00 – 12h15</div>
+        <div class="block-label">Daily com equipe (10 min)</div>
+      </div>
+      <div class="time-block operacional">
+        <div class="block-time">14h00 – 17h00</div>
+        <div class="block-label">Calls com clientes / onboarding / otimizações</div>
+      </div>
+      <div class="time-block livre">
+        <div class="block-time">17h00 – 18h00</div>
+        <div class="block-label">Buffer — demandas urgentes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERÇA -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-name">Terça</div>
+      <div class="day-focus">BNI + COMERCIAL</div>
+    </div>
+    <div class="day-blocks">
+      <div class="time-block bni">
+        <div class="block-time">06h30 – 10h00</div>
+        <div class="block-label">🔒 BNI — Reunião semanal (networking estratégico)</div>
+      </div>
+      <div class="time-block vendas">
+        <div class="block-time">10h30 – 12h00</div>
+        <div class="block-label">🔒 VENDAS — Follow-up BNI + propostas do pipeline</div>
+      </div>
+      <div class="time-block operacional">
+        <div class="block-time">13h00 – 15h00</div>
+        <div class="block-label">Revisão de budget + otimizações urgentes</div>
+      </div>
+      <div class="time-block infoproduto">
+        <div class="block-time">15h00 – 17h00</div>
+        <div class="block-label">🔒 INFOPRODUTO — Construção (aula, módulo, estrutura)</div>
+      </div>
+      <div class="time-block livre">
+        <div class="block-time">17h00 – 18h00</div>
+        <div class="block-label">Buffer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUARTA -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-name">Quarta</div>
+      <div class="day-focus">CONTEÚDO + ANÚNCIOS</div>
+    </div>
+    <div class="day-blocks">
+      <div class="time-block operacional">
+        <div class="block-time">08h00 – 09h00</div>
+        <div class="block-label">Revisão de budget</div>
+      </div>
+      <div class="time-block conteudo">
+        <div class="block-time">09h00 – 11h00</div>
+        <div class="block-label">🔒 CONTEÚDO — Criar anúncio semanal + post redes sociais</div>
+      </div>
+      <div class="time-block vendas">
+        <div class="block-time">11h00 – 12h30</div>
+        <div class="block-label">🔒 VENDAS — Calls de fechamento / follow-up</div>
+      </div>
+      <div class="time-block operacional">
+        <div class="block-time">14h00 – 16h00</div>
+        <div class="block-label">Otimizações semanais (Google + Meta clientes)</div>
+      </div>
+      <div class="time-block equipe">
+        <div class="block-time">16h00 – 17h00</div>
+        <div class="block-label">Acompanhamento da equipe — bloqueios e dúvidas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUINTA -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-name">Quinta</div>
+      <div class="day-focus">INFOPRODUTO + VENDAS</div>
+    </div>
+    <div class="day-blocks">
+      <div class="time-block operacional">
+        <div class="block-time">08h00 – 09h00</div>
+        <div class="block-label">Revisão de budget</div>
+      </div>
+      <div class="time-block infoproduto">
+        <div class="block-time">09h00 – 11h00</div>
+        <div class="block-label">🔒 INFOPRODUTO — Construção (gravação, escrita, estrutura)</div>
+      </div>
+      <div class="time-block vendas">
+        <div class="block-time">11h00 – 12h30</div>
+        <div class="block-label">🔒 VENDAS — Prospecção / calls de retenção</div>
+      </div>
+      <div class="time-block operacional">
+        <div class="block-time">14h00 – 17h00</div>
+        <div class="block-label">Clientes — check-ins quinzenais / relatórios</div>
+      </div>
+      <div class="time-block livre">
+        <div class="block-time">17h00 – 18h00</div>
+        <div class="block-label">Buffer</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEXTA -->
+  <div class="day-card">
+    <div class="day-header">
+      <div class="day-name">Sexta</div>
+      <div class="day-focus">REVISÃO + CONTEÚDO</div>
+    </div>
+    <div class="day-blocks">
+      <div class="time-block operacional">
+        <div class="block-time">08h00 – 09h30</div>
+        <div class="block-label">Revisão semanal de budget + words negativas 7d</div>
+      </div>
+      <div class="time-block conteudo">
+        <div class="block-time">09h30 – 11h00</div>
+        <div class="block-label">🔒 CONTEÚDO — Planejar e agendar conteúdo da próxima semana</div>
+      </div>
+      <div class="time-block equipe">
+        <div class="block-time">11h00 – 12h00</div>
+        <div class="block-label">Review semanal da equipe — acertos e falhas</div>
+      </div>
+      <div class="time-block livre">
+        <div class="block-time">14h00 – 16h30</div>
+        <div class="block-label">Buffer grande — imprevistos da semana</div>
+      </div>
+      <div class="time-block vendas">
+        <div class="block-time">16h30 – 17h30</div>
+        <div class="block-label">Pipeline: atualizar propostas + planejar vendas da próxima semana</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="gold-rule">
+  <div class="gold-rule-title">⚡ A lógica por trás da semana</div>
+  <p>Os blocos com <strong>🔒</strong> são inegociáveis. Eles representam as atividades que ninguém da equipe pode fazer por você — só você vende, só você cria o infoproduto, só você dá a cara do conteúdo. <strong>O operacional tem horário. O estratégico tem prioridade.</strong></p>
+</div>
+```
+
+  </div>
+
+  <!-- PANEL 2: PILARES -->
+
+  <div class="panel" id="panel-pilares">
+
+```
+<div class="section-title">Os 4 pilares do seu crescimento</div>
+<div class="section-sub">Cada pilar tem uma cadência mínima semanal. Abaixo do mínimo, o crescimento trava.</div>
+
+<div class="pilares-grid">
+
+  <div class="pilar-card">
+    <div class="pilar-header">
+      <div class="pilar-icon">💰</div>
+      <div class="pilar-title">Vendas</div>
+      <div class="pilar-tag" style="background:rgba(249,115,22,0.12);color:var(--accent2);border:1px solid rgba(249,115,22,0.25)">4–5h / semana</div>
+    </div>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot" style="background:var(--accent)"></div>
+        Prospecção ativa: 5–10 contatos por semana (BNI + indicações + cold outreach)
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:var(--accent)"></div>
+        Follow-up do pipeline: toda proposta enviada recebe retorno em até 48h
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:var(--accent)"></div>
+        Calls de fechamento agendadas com antecedência — não improvisadas
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:var(--accent)"></div>
+        Retenção ativa: clientes em risco têm call marcada antes de pedir para sair
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:var(--accent)"></div>
+        BNI como pipeline: cada reunião deve gerar pelo menos 1 indicação qualificada
+      </div>
+    </div>
+  </div>
+
+  <div class="pilar-card">
+    <div class="pilar-header">
+      <div class="pilar-icon">📱</div>
+      <div class="pilar-title">Conteúdo & Redes Sociais</div>
+      <div class="pilar-tag" style="background:rgba(168,85,247,0.12);color:#c084fc;border:1px solid rgba(168,85,247,0.25)">3–4h / semana</div>
+    </div>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot" style="background:#a855f7"></div>
+        Mínimo: 3 posts por semana (1 educativo, 1 prova social, 1 bastidores/pessoal)
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#a855f7"></div>
+        1 Reels ou vídeo curto por semana — posicionamento de autoridade Google/Meta Ads
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#a855f7"></div>
+        Sexta é o dia de planejar e agendar tudo da próxima semana — sai da caixa de entrada
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#a855f7"></div>
+        Reaproveitar conteúdo: o que funcionar no Instagram vira anúncio, vira carrossel
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#a855f7"></div>
+        1 anúncio novo por semana para a EmpresAtiva — tráfego pago no próprio negócio
+      </div>
+    </div>
+  </div>
+
+  <div class="pilar-card">
+    <div class="pilar-header">
+      <div class="pilar-icon">🎓</div>
+      <div class="pilar-title">Infoproduto</div>
+      <div class="pilar-tag" style="background:rgba(236,72,153,0.12);color:#f472b6;border:1px solid rgba(236,72,153,0.25)">3–4h / semana</div>
+    </div>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot" style="background:#ec4899"></div>
+        2 blocos fixos por semana (ter tarde + qui manhã) — consistência é o único caminho
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#ec4899"></div>
+        Meta: 1 módulo concluído por semana (não importa o tamanho, importa avançar)
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#ec4899"></div>
+        Cada aula gravada pode virar conteúdo para redes — reaproveitamento total
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#ec4899"></div>
+        Começar a construir audiência paralela ao produto (lista de email, canal, comunidade)
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#ec4899"></div>
+        Não esperar o produto perfeito — o lançamento beta valida antes do produto completo
+      </div>
+    </div>
+  </div>
+
+  <div class="pilar-card">
+    <div class="pilar-header">
+      <div class="pilar-icon">⚙️</div>
+      <div class="pilar-title">Operação da Agência</div>
+      <div class="pilar-tag" style="background:rgba(59,130,246,0.12);color:#60a5fa;border:1px solid rgba(59,130,246,0.25)">10–12h / semana</div>
+    </div>
+    <div class="items-list">
+      <div class="item-row">
+        <div class="item-dot" style="background:#3b82f6"></div>
+        Revisão diária de budget: máximo 1h por dia — automatizar alertas para o que foge da meta
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#3b82f6"></div>
+        Otimizações semanais: delegadas para os gestores, João só aprova e valida
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#3b82f6"></div>
+        Daily de 10 min com equipe: bloqueios apenas — não relatório
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#3b82f6"></div>
+        Check-ins quinzenais com clientes: são o momento de retenção e upsell — não só relatório
+      </div>
+      <div class="item-row">
+        <div class="item-dot" style="background:#3b82f6"></div>
+        Meta: reduzir tempo operacional 20% nos próximos 60 dias via processos e delegação
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="section-title" style="margin-bottom:8px">Distribuição de tempo por semana</div>
+<div class="section-sub">40 horas semanais distribuídas pelos 4 pilares. Isso é o que vai mover o negócio.</div>
+
+<div class="week-detail">
+  <div class="detail-row">
+    <div class="detail-day">💰 Vendas</div>
+    <div class="detail-time">~5h / semana</div>
+    <div class="detail-desc"><strong>Seg manhã + Ter manhã + Qua manhã + Qui manhã + Sex fim tarde</strong> — prospecção, follow-up, fechamento, retenção</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(249,115,22,0.12);color:var(--accent2);border:1px solid rgba(249,115,22,0.25)">PRIORIDADE 1</div></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-day">📱 Conteúdo</div>
+    <div class="detail-time">~4h / semana</div>
+    <div class="detail-desc"><strong>Seg manhã + Qua manhã + Sex manhã</strong> — criação, anúncios próprios, planejamento e agendamento</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(168,85,247,0.12);color:#c084fc;border:1px solid rgba(168,85,247,0.25)">PRIORIDADE 2</div></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-day">🎓 Infoproduto</div>
+    <div class="detail-time">~4h / semana</div>
+    <div class="detail-desc"><strong>Ter tarde + Qui manhã</strong> — construção consistente, 1 módulo por semana, sem pular</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(236,72,153,0.12);color:#f472b6;border:1px solid rgba(236,72,153,0.25)">PRIORIDADE 2</div></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-day">⚙️ Operação</div>
+    <div class="detail-time">~12h / semana</div>
+    <div class="detail-desc"><strong>Todos os dias</strong> — budget diário, otimizações, equipe, clientes. Meta: reduzir com processos</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(59,130,246,0.12);color:#60a5fa;border:1px solid rgba(59,130,246,0.25)">SUSTENTAR</div></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-day">🌿 BNI</div>
+    <div class="detail-time">~4h / semana</div>
+    <div class="detail-desc"><strong>Terça 06h30–10h00</strong> — presença obrigatória + follow-up imediato das indicações no mesmo dia</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(34,197,94,0.12);color:#4ade80;border:1px solid rgba(34,197,94,0.25)">FIXO</div></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-day">🔲 Buffer</div>
+    <div class="detail-time">~5h / semana</div>
+    <div class="detail-desc"><strong>Fins de tarde</strong> — imprevistos, urgências, demandas que aparecem. Não agenda nada aqui com antecedência</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(107,107,128,0.12);color:var(--muted);border:1px solid var(--border)">RESERVA</div></div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- PANEL 3: CONTEÚDO -->
+
+  <div class="panel" id="panel-conteudo">
+
+```
+<div class="section-title">Máquina de conteúdo — sem tempo, sem inspiração</div>
+<div class="section-sub">O problema não é falta de conteúdo para criar. É falta de sistema para criar sem depender de tempo sobrando ou inspiração aparecendo.</div>
+
+<div class="gold-rule">
+  <div class="gold-rule-title">🧠 O princípio central</div>
+  <p>Você já tem conteúdo. <strong>Cada otimização que você faz, cada diagnóstico de conta, cada erro de cliente que você corrige</strong> — isso é conteúdo. O trabalho é transformar o que você já faz em peças que posicionam você como autoridade em tráfego pago.</p>
+</div>
+
+<div class="conteudo-grid">
+
+  <div class="ccard">
+    <div class="ccard-title">📅 Calendário editorial mínimo</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">🧠</div>
+        <div class="format-body">
+          <div class="format-name">Educativo (Segunda ou Quarta)</div>
+          <div class="format-desc">Dica prática de Google Ads ou Meta Ads. Carrossel, Reels de 60s ou post de texto. Ex: "Por que sua campanha não converte mesmo com budget alto"</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">🏆</div>
+        <div class="format-body">
+          <div class="format-name">Prova Social (Quarta ou Quinta)</div>
+          <div class="format-desc">Resultado de cliente (sem nome se necessário), print de CPL, antes/depois de campanha. O que mais converte na venda de agência.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">🎥</div>
+        <div class="format-body">
+          <div class="format-name">Bastidores / Pessoal (Sexta ou Sábado)</div>
+          <div class="format-desc">Dia na agência, reunião do BNI, aprendizado da semana, opinião sobre algo do mercado. Humaniza e cria conexão.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ccard">
+    <div class="ccard-title">♻️ Sistema de reaproveitamento</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">🎓</div>
+        <div class="format-body">
+          <div class="format-name">Aula do infoproduto → Reels</div>
+          <div class="format-desc">Cada módulo gravado vira um Reels de 60–90s. Você grava uma vez, usa duas vezes.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">📊</div>
+        <div class="format-body">
+          <div class="format-name">Post educativo → Anúncio próprio</div>
+          <div class="format-desc">Conteúdo que performa organicamente vai para tráfego pago. Você já sabe o que o público quer ver.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">💬</div>
+        <div class="format-body">
+          <div class="format-name">Insight do BNI → Post</div>
+          <div class="format-desc">Saiu do BNI com uma ideia, uma pergunta ou um aprendizado? Isso é o post da semana. Não inventa — captura o que já acontece.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ccard">
+    <div class="ccard-title">⚡ Processo sexta — planejamento semanal</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">1️⃣</div>
+        <div class="format-body">
+          <div class="format-name">Definir os 3 posts da próxima semana (09h30)</div>
+          <div class="format-desc">Tema, formato e dia de publicação. Não precisa estar pronto — só precisa estar definido.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">2️⃣</div>
+        <div class="format-body">
+          <div class="format-name">Criar ou gravar o que der (10h00)</div>
+          <div class="format-desc">O que vier pronto na sexta, já agenda. O que não vier, vai para segunda de manhã.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">3️⃣</div>
+        <div class="format-body">
+          <div class="format-name">Agendar tudo no Meta Business / Later (10h45)</div>
+          <div class="format-desc">Sai da semana com pelo menos 2 posts agendados. Nunca depender de "lembrar de postar".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ccard">
+    <div class="ccard-title">🚀 Anúncio semanal — EmpresAtiva</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">🎯</div>
+        <div class="format-body">
+          <div class="format-name">1 anúncio novo por semana (Quarta manhã)</div>
+          <div class="format-desc">Tráfego pago no próprio negócio. Quem vende tráfego pago para clientes precisa usar no próprio negócio — é prova e é aprendizado.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">📋</div>
+        <div class="format-body">
+          <div class="format-name">Formato mínimo viável</div>
+          <div class="format-desc">Copy + criativo simples (Canva ou celular). Não precisa ser produção. Precisa ser relevante e ter CTA claro.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">🔁</div>
+        <div class="format-body">
+          <div class="format-name">Aplicar RAG no próprio anúncio</div>
+          <div class="format-desc">O que funciona na EmpresAtiva, replica para clientes. O que não funciona, aprende antes de aplicar em quem paga.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <!-- PANEL 4: VENDAS -->
+
+  <div class="panel" id="panel-vendas">
+
+```
+<div class="section-title">Prospecção & Indicações</div>
+<div class="section-sub">Dois canais, prioridades diferentes. Indicações primeiro — sempre. Prospecção ativa com método, não com esforço.</div>
+
+<div class="gold-rule">
+  <div class="gold-rule-title">💡 O diagnóstico honesto</div>
+  <p>WhatsApp frio via Google Business Profile tem baixíssima conversão porque <strong>quem atende raramente é o decisor</strong>. E com carteira mista de nichos, a abordagem genérica não convence ninguém. Mas você tem 40 clientes satisfeitos — isso é um ativo de vendas dormindo que nunca foi ativado.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-title" style="margin-bottom:8px">Canal 1 — Indicações (prioridade máxima)</div>
+<div class="section-sub">O canal com maior taxa de conversão que existe. Prospect quente, credibilidade transferida, custo zero.</div>
+
+<div class="conteudo-grid">
+
+  <div class="ccard">
+    <div class="ccard-title">📋 Os 3 passos para ativar essa semana</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">1️⃣</div>
+        <div class="format-body">
+          <div class="format-name">Mapear os 3–5 melhores clientes</div>
+          <div class="format-desc">Quem tem resultado comprovado, te respeita e é comunicativo. Não manda para todos — começa pelos que indicam bem.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">2️⃣</div>
+        <div class="format-body">
+          <div class="format-name">Enviar a mensagem de pedido direto</div>
+          <div class="format-desc">Simples, humano, sem desconto nem comissão obrigatória. O pedido direto funciona porque é genuíno. Script abaixo.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">3️⃣</div>
+        <div class="format-body">
+          <div class="format-name">Criar o hábito no check-in quinzenal</div>
+          <div class="format-desc">A última pergunta de toda reunião de resultado: <em>"Você conhece alguém que poderia se beneficiar do que estamos fazendo aqui?"</em> Vira protocolo, não exceção.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ccard">
+    <div class="ccard-title">💬 Script — pedido de indicação</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">📲</div>
+        <div class="format-body">
+          <div class="format-name">Mensagem para os melhores clientes</div>
+          <div class="format-desc" style="font-style:italic;border-left:2px solid rgba(249,115,22,0.4);padding-left:10px;margin-top:6px">"[Nome], tô muito feliz com os resultados que estamos tendo juntos. Queria te pedir um favor: você conhece algum outro empresário que possa estar precisando de tráfego pago? Uma indicação sua vale muito mais do que qualquer prospecção que eu faça."</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">🔁</div>
+        <div class="format-body">
+          <div class="format-name">Pergunta padrão no check-in quinzenal</div>
+          <div class="format-desc" style="font-style:italic;border-left:2px solid rgba(249,115,22,0.4);padding-left:10px;margin-top:6px">"Antes de encerrar — você conhece alguém que está com dificuldade de atrair clientes? Seria ótimo ajudar alguém da sua rede."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="section-title" style="margin-bottom:8px">Canal 2 — Prospecção ativa (com método)</div>
+<div class="section-sub">WhatsApp frio funciona quando você fala com o decisor certo, da forma certa. Nicho e abordagem fazem toda a diferença.</div>
+
+<div class="conteudo-grid">
+
+  <div class="ccard">
+    <div class="ccard-title">🥇 Nichos onde você fala direto com o dono</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">🦷</div>
+        <div class="format-body">
+          <div class="format-name">Dentistas e médicos com consultório próprio</div>
+          <div class="format-desc">São PJ, decidem sozinhos, sentem a dor de agenda vazia. Alta consciência do problema, ciclo de decisão curto.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">💆</div>
+        <div class="format-body">
+          <div class="format-name">Clínicas de estética pequenas</div>
+          <div class="format-desc">A dona quase sempre atende o WhatsApp do negócio. Sente a dor de lotação irregular mês a mês.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">🏋️</div>
+        <div class="format-body">
+          <div class="format-name">Personal trainers com estúdio próprio</div>
+          <div class="format-desc">Empreendedor solo, precisa de alunos, decide na hora. Ticket compatível, dor clara, acesso direto.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">🐾</div>
+        <div class="format-body">
+          <div class="format-name">Pet shops pequenos</div>
+          <div class="format-desc">Dona do negócio atende direto. Alta recorrência de cliente, dor de visibilidade local bem definida.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ccard">
+    <div class="ccard-title">⚡ Processo — abordagem que funciona</div>
+    <div class="format-list">
+      <div class="format-item">
+        <div class="format-emoji">🔍</div>
+        <div class="format-body">
+          <div class="format-name">Passo 1 — Usar o GBP como inteligência</div>
+          <div class="format-desc">Antes de mandar mensagem: quantas avaliações tem? Responde bem? Tem site? Aparece nos primeiros resultados? Isso vira sua abertura.</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">🚫</div>
+        <div class="format-body">
+          <div class="format-name">Passo 2 — Nunca mandar mensagem genérica</div>
+          <div class="format-desc" style="font-style:italic;color:#ef4444;border-left:2px solid rgba(239,68,68,0.4);padding-left:10px;margin-top:4px">❌ "Oi, sou João da EmpresAtiva, trabalho com tráfego pago e gostaria de apresentar meu trabalho..."</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">✅</div>
+        <div class="format-body">
+          <div class="format-name">Passo 3 — Abordagem específica e consultiva</div>
+          <div class="format-desc" style="font-style:italic;border-left:2px solid rgba(34,197,94,0.4);padding-left:10px;margin-top:4px">✅ "Oi Dr. Carlos, vi que a Clínica X tem ótimas avaliações no Google mas não aparece nos primeiros resultados quando pesquiso 'dentista em Botafogo'. Trabalho com isso e consigo te mostrar exatamente o que está travando — posso mandar um diagnóstico rápido?"</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <div class="format-emoji">📊</div>
+        <div class="format-body">
+          <div class="format-name">Meta semanal</div>
+          <div class="format-desc">5–10 abordagens por semana, todas personalizadas. Qualidade sobre quantidade — 5 mensagens certas convertem mais que 50 genéricas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="section-title" style="margin-bottom:8px">Prioridade dos canais</div>
+<div class="section-sub">Não são concorrentes — são complementares. Mas têm ordem de esforço e retorno.</div>
+
+<div class="week-detail">
+  <div class="detail-row">
+    <div class="detail-day">🤝 Indicações</div>
+    <div class="detail-time">Prioridade 1</div>
+    <div class="detail-desc"><strong>40 clientes ativos = 40 fontes de indicação dormindo.</strong> Menor esforço, maior conversão, custo zero. Ativar essa semana.</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(34,197,94,0.12);color:#4ade80;border:1px solid rgba(34,197,94,0.25)">ATIVAR JÁ</div></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-day">🌿 BNI</div>
+    <div class="detail-time">Prioridade 2</div>
+    <div class="detail-desc"><strong>Networking quente com decisores presentes.</strong> Follow-up no mesmo dia da reunião enquanto a conexão está fresca.</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(249,115,22,0.12);color:var(--accent2);border:1px solid rgba(249,115,22,0.25)">CONSISTENTE</div></div>
+  </div>
+  <div class="detail-row">
+    <div class="detail-day">📲 Prospecção ativa</div>
+    <div class="detail-time">Prioridade 3</div>
+    <div class="detail-desc"><strong>5–10 abordagens personalizadas por semana.</strong> Nicho com decisor direto, mensagem específica baseada no GBP do prospect.</div>
+    <div class="detail-type"><div class="type-pill" style="background:rgba(59,130,246,0.12);color:#60a5fa;border:1px solid rgba(59,130,246,0.25)">COM MÉTODO</div></div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- PANEL 5: REGRAS -->
+
+  <div class="panel" id="panel-regras">
+
+```
+<div class="section-title">Regras do jogo</div>
+<div class="section-sub">Não são sugestões. São os combinados que fazem o sistema funcionar ou quebrar.</div>
+
+<div class="gold-rule">
+  <div class="gold-rule-title">🔑 A regra mais importante</div>
+  <p>Você é o único que vende. Isso significa que <strong>qualquer hora que você passa apagando incêndio operacional é hora que você não está crescendo</strong>. A equipe existe para liberar você para vender, criar conteúdo e construir o infoproduto — não para você gerenciar micro-tarefas deles.</p>
+</div>
+
+<div class="rules-grid">
+  <div class="rule-card">
+    <div class="rule-icon">🔒</div>
+    <div class="rule-title">Blocos com 🔒 são inegociáveis</div>
+    <div class="rule-text">Vendas, conteúdo e infoproduto têm horário fixo. Cliente que quer reunião nesse horário? Você oferece outro slot. O bloco não move.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-icon">📱</div>
+    <div class="rule-title">WhatsApp tem janela</div>
+    <div class="rule-text">Responder WhatsApp apenas nos buffers (17h–18h) e intervalo do almoço. Fora disso: silencioso. Urgência real é campanha parada — não cliente com dúvida.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-icon">📋</div>
+    <div class="rule-title">Se não está no ClickUp, não existe</div>
+    <div class="rule-text">Toda demanda — sua ou da equipe — vira tarefa com prazo e responsável. Pedido no WhatsApp sem tarefa no ClickUp não tem garantia de execução.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-icon">🎯</div>
+    <div class="rule-title">BNI = pipeline, não evento social</div>
+    <div class="rule-text">Cada reunião do BNI precisa gerar: 1 indicação qualificada OU 1 follow-up marcado. Saiu sem isso: o que pode fazer diferente na próxima?</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-icon">♻️</div>
+    <div class="rule-title">Nunca crie para um canal só</div>
+    <div class="rule-text">Cada peça de conteúdo serve pelo menos 2 canais: post vira anúncio, aula vira Reels, insight do BNI vira carrossel. Tempo é o recurso mais escasso.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-icon">📈</div>
+    <div class="rule-title">Operação só cresce até o limite</div>
+    <div class="rule-text">Com 40 clientes, o teto operacional está chegando. Crescer acima disso exige processo, delegação e automação — não mais horas suas no operacional.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-icon">🎓</div>
+    <div class="rule-title">Infoproduto: consistência > intensidade</div>
+    <div class="rule-text">2 horas toda terça e toda quinta valem mais que 8 horas num sábado esporádico. O que avança toda semana, termina. O que espera o momento ideal, nunca sai.</div>
+  </div>
+  <div class="rule-card">
+    <div class="rule-icon">🚫</div>
+    <div class="rule-title">Reuniões têm horário e duração</div>
+    <div class="rule-text">Daily: 10 minutos. Call de cliente: 45 minutos com pauta definida. Reunião sem pauta é conversa — e conversa não cabe no calendário de quem cresce.</div>
+  </div>
+</div>
+```
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+}
+</script>
+
+</body>
+</html>
