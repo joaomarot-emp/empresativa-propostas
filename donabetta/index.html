@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Dona Betta</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#07070A;
+  --white:#F5F3EE;
+  --orange:#E8671A;
+  --gold:#C9A84C;
+  --dark:#0E0E12;
+  --card:#161619;
+  --border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);
+  --accent:#D4A843;
+  --font-display:"Syne",sans-serif;
+  --font-body:"DM Sans",sans-serif;
+  --font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(7,7,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.16) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-40px;width:280px;height:280px;background:radial-gradient(circle,rgba(212,168,67,0.08) 0%,transparent 65%);pointer-events:none;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(44px,11vw,84px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(28px,8vw,48px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.oport-box{background:var(--card);border:1px solid rgba(232,103,26,0.2);padding:28px 24px;margin-bottom:44px;position:relative;overflow:hidden;}
+.oport-box::after{content:"🐢";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:80px;opacity:0.05;pointer-events:none;line-height:1;}
+.oport-box h3{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.oport-box p{font-size:14px;color:var(--muted);line-height:1.8;max-width:580px;}
+.oport-box strong{color:var(--white);font-weight:600;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;transition:border-color .25s;}
+.strat-item:active{border-left-color:var(--orange);}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* MODELO FIXO + VARIÁVEL */
+.modelo-box{background:var(--card);border:1px solid rgba(212,168,67,0.25);border-radius:4px;overflow:hidden;margin-bottom:28px;}
+.modelo-box::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--accent));}
+.modelo-body{padding:28px 24px;}
+.modelo-body h3{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--accent);margin-bottom:20px;}
+
+.modelo-cols{display:flex;flex-direction:column;gap:2px;}
+.modelo-col{background:rgba(255,255,255,0.02);padding:22px;border:1px solid var(--border);}
+.modelo-col-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:12px;}
+.modelo-col-label.fixo{color:var(--orange);}
+.modelo-col-label.variavel{color:var(--accent);}
+.modelo-col-price{font-family:var(--font-display);font-size:40px;font-weight:800;line-height:1;margin-bottom:6px;}
+.modelo-col-price.fixo{color:var(--white);}
+.modelo-col-price.variavel{color:var(--accent);}
+.modelo-col-price sub{font-size:16px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.modelo-col-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+.modelo-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.modelo-col li{font-size:12px;color:var(--muted);padding-left:18px;position:relative;line-height:1.6;}
+.modelo-col li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+.modelo-col li.acc::before{color:var(--accent);}
+
+.modelo-calc{background:rgba(212,168,67,0.06);border:1px solid rgba(212,168,67,0.15);padding:20px 24px;margin-top:16px;border-radius:2px;}
+.modelo-calc h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);gap:12px;}
+.calc-row:last-child{border-bottom:none;}
+.calc-row span:first-child{font-size:12px;color:var(--muted);}
+.calc-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--white);}
+.calc-row.hl span:last-child{color:var(--accent);font-weight:600;}
+.calc-row.total span:first-child{font-weight:700;color:var(--white);font-size:13px;}
+.calc-row.total span:last-child{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--accent));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:48px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:16px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;padding:0 24px 22px;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}
+  hr.div{margin:0 48px;}
+  .hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .modelo-cols{flex-direction:row;}
+  .modelo-col{flex:1;}
+  .inv-layout{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+  .footer-cta{padding:88px 48px 100px;}
+  .cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Dona%20Betta%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; E-commerce &middot; 2026</p>
+  <h1>Dona Betta<br><em>Street Wear</em></h1>
+  <p class="hero-sub">Arquitetura de Receita para e-commerce de moda — com modelo fixo + vari&aacute;vel alinhado ao crescimento real das vendas geradas pelo tr&aacute;fego pago.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Arquitetura de Receita</span></div>
+    <div class="pill"><span>Fee fixo</span><span>R$ 2.497/m&ecirc;s</span></div>
+    <div class="pill"><span>Vari&aacute;vel</span><span>3% sobre vendas do tr&aacute;fego</span></div>
+    <div class="pill"><span>Contrato</span><span>6 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">O que est&aacute; <em>travando</em> o e-commerce</h2>
+  <p class="sec-intro">Bianca e Mariana, a Dona Betta tem marca, base de clientes e 250 mil seguidores. O e-commerce n&atilde;o cresceu — o que faltou foi estrutura de performance dedicada.</p>
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Sem pessoa dedicada a performance</h3><p>Por meses sem um gestor de tráfego exclusivo. A equipe de 3 pessoas absorve demandas demais para conseguir escalar o e-commerce ao mesmo tempo.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>E-commerce estagnado em R$ 50k/mês</h3><p>A marca tem potencial muito maior — 250k seguidores e histórico de engajamento. O e-commerce trava porque não há investimento consistente e rastreado em tráfego pago.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Vendas pelo WhatsApp sem automação</h3><p>Grande parte do faturamento passa pelo WhatsApp — mas o atendimento é manual, com vendedoras usando telefones pessoais, limitação de disparo e sem qualificação prévia do lead.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Google Business na zona vermelha</h3><p>Nota 5.8/100 para loja de moda feminina. Fotos antigas da época beachwear, sem atualização para o posicionamento streetwear. Apenas 48 avaliações — concorrentes têm 443+.</p></div></div>
+    <div class="diag-item"><div class="diag-num">05</div><div><h3>3 lojas f&iacute;sicas sem visibilidade digital</h3><p>Barra Shopping, Barra Garden e Park Shopping (outlet) — nenhuma com Google Business otimizado, atualizado ou integrado à estratégia de tráfego local.</p></div></div>
+    <div class="diag-item"><div class="diag-num">06</div><div><h3>Sem rastreamento de origem das vendas</h3><p>Não há como saber se a venda veio do orgânico, do anúncio, do WhatsApp ou da loja física. Sem esse dado, impossível escalar o que funciona.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OPORTUNIDADE -->
+<section class="bg-black">
+  <div class="sec-label">Oportunidade</div>
+  <h2 class="sec-title">250k seguidores e <em>e-commerce para escalar</em></h2>
+  <p class="sec-intro">A base j&aacute; existe. O que a Dona Betta precisa &eacute; de estrutura de performance que transforme esse alcance em vendas mensur&aacute;veis e previs&iacute;veis.</p>
+
+  <div class="oport-box">
+    <h3>O streetwear "dona betta" tem um p&uacute;blico consolidado</h3>
+    <p>Uma marca que sobreviveu 5 anos, evoluiu do beachwear para um streetwear pr&oacute;prio — adaptable e clean, como a Bianca descreveu — e manteve a tartaruga como s&iacute;mbolo de continuidade. <strong>Esse posicionamento &uacute;nico &eacute; o que os an&uacute;ncios precisam comunicar.</strong> N&atilde;o &eacute; streetwear gen&eacute;rico. &Eacute; o estilo de quem quer se vestir bem sem abrir m&atilde;o do conforto — e que j&aacute; conhece a marca pelas lojas do Barra Shopping e Barra Garden.</p>
+  </div>
+
+  <!-- ESTRATÉGIA -->
+  <div class="sec-label" style="margin-top:0">Estrat&eacute;gia</div>
+  <h2 class="sec-title" style="font-size:clamp(24px,6vw,38px)">Arquitetura de Receita para a <em>Dona Betta</em></h2>
+  <p class="sec-intro">Seis camadas integradas — do an&uacute;ncio ao WhatsApp — para escalar o e-commerce com rastreamento completo.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Meta Ads + Google Ads — e-commerce de moda</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Campanhas de performance para o e-commerce: catálogo dinâmico de produtos no Meta (Instagram + Facebook), remarketing para visitantes do site, lookalike de compradores. Google Shopping para quem já está buscando. Criativos com o universo visual da Dona Betta — streetwear adaptado, clean, sem forçar o hype. Designer gráfico da EmpresAtiva produz as peças, equipe da Dona Betta aprova em até 2 dias.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Google Business — 3 lojas otimizadas</h3><div class="strat-tag">Local</div></div>
+      <p>Atualização completa dos perfis do Barra Shopping, Barra Garden e Park Shopping: fotos atuais do estilo streetwear, descrições alinhadas ao posicionamento, categorias corretas. Mutirão de avaliações positivas para sair da zona vermelha (5.8) e chegar na zona verde. Postagem mensal estratégica em cada perfil.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Agente de IA — SDR no WhatsApp</h3><div class="strat-tag">IA</div></div>
+      <p>Substituição do atendimento manual pelo WhatsApp. A IA faz o primeiro contato, entende o interesse da cliente (produto, tamanho, disponibilidade, retira em loja), envia links do e-commerce ou orienta para a loja mais próxima. Quando a cliente está pronta para comprar, a IA passa o alerta para a vendedora. Responde em texto e áudio — como um humano.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Disparo em Massa — base de clientes</h3><div class="strat-tag">Recompra</div></div>
+      <p>A base de contatos da Dona Betta (clientes que já compraram nas lojas ou pelo WhatsApp) recebe disparos automáticos com IA variando a mensagem para não parecer spam. Lançamentos, promoções, eventos sazonais. Cada disparo é personalizado com o nome da cliente — sem limitação de WhatsApp pessoal, sem bloqueio.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>Rastreamento + Dashboard em Tempo Real</h3><div class="strat-tag">Dados</div></div>
+      <p>Pixel e UTMs configurados para rastrear cada venda por origem: orgânico, Meta Ads, Google Ads, WhatsApp, loja física. Dashboard em tempo real com ROAS, vendas por canal, produtos mais convertidos. Micro-relatório semanal no WhatsApp — resumido, sem ansiedade de dados diários.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">06</div><h3>Escalonamento Estrat&eacute;gico</h3><div class="strat-tag">Escala</div></div>
+      <p>Quando o ROAS estiver estável — por exemplo, R$ 5k gerando R$ 25k em vendas — escalamos a verba com confiança. O modelo variável alinha os incentivos: quando a Dona Betta vende mais pelo tráfego, a EmpresAtiva cresce junto. Sem conflito de interesse.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a Dona Betta <em>recebe</em></h2>
+  <p class="sec-intro">Estrutura completa para Bianca e Mariana focarem na marca — n&atilde;o na opera&ccedil;&atilde;o de tráfego.</p>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads + Google Ads</h3><p>Cat&aacute;logo din&acirc;mico, remarketing, lookalike, Google Shopping. Gestor s&ecirc;nior dedicado com testes A/B cont&iacute;nuos.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>Designer gr&aacute;fico para an&uacute;ncios</h3><p>Cria&ccedil;&atilde;o de pe&ccedil;as em imagem e edi&ccedil;&atilde;o de v&iacute;deo para o tr&aacute;fego pago. Aprovadas pela equipe antes de subir.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business — 3 lojas</h3><p>Barra Shopping, Barra Garden e Park Shopping otimizados, atualizados e com mutiráo de avalia&ccedil;&otilde;es.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🤖</div><div><h3>Agente de IA no WhatsApp</h3><p>SDR que atende, qualifica e encaminha clientes. Responde em texto e &aacute;udio. Alerta para vendedora quando lead est&aacute; pronto.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📨</div><div><h3>Disparo em massa automatizado</h3><p>Base de clientes recebe lan&ccedil;amentos e promo&ccedil;&otilde;es com IA variando a mensagem. Sem bloqueio, sem manual.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Tempo real: ROAS, vendas por canal, produtos. Microrelat&oacute;rio semanal no WhatsApp — resumido e sem ansiedade.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔗</div><div><h3>Rastreamento completo UTM + Pixel</h3><p>Cada venda rastreada por origem. Fim da d&uacute;vida sobre de onde vem o faturamento do e-commerce.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📈</div><div><h3>Playbook comercial + Check-ins quinzenais</h3><p>Script de atendimento para o WhatsApp + reuni&otilde;es quinzenais de performance com ajuste de estrat&eacute;gia.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Modelo <em>fixo + vari&aacute;vel</em></h2>
+  <p class="sec-intro">Um modelo desenhado para e-commerce: fee fixo cobre a opera&ccedil;&atilde;o, vari&aacute;vel alinha os incentivos. Quando a Dona Betta vende mais, a EmpresAtiva cresce junto.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div class="modelo-box">
+        <div class="modelo-body">
+          <h3>Como funciona o modelo</h3>
+          <div class="modelo-cols">
+            <div class="modelo-col">
+              <div class="modelo-col-label fixo">Fixo mensal</div>
+              <div class="modelo-col-price fixo"><sub>R$</sub> 2.497</div>
+              <p class="modelo-col-desc">Cobre toda a operação independente do volume de vendas.</p>
+              <ul>
+                <li>Meta Ads + Google Ads</li>
+                <li>Designer gráfico para anúncios</li>
+                <li>Google Business — 3 lojas</li>
+                <li>Agente de IA no WhatsApp</li>
+                <li>Disparo em massa automatizado</li>
+                <li>Dashboard + relatório semanal</li>
+                <li>Check-ins quinzenais</li>
+              </ul>
+            </div>
+            <div class="modelo-col">
+              <div class="modelo-col-label variavel">Variável</div>
+              <div class="modelo-col-price variavel">3%</div>
+              <p class="modelo-col-desc">Sobre as vendas do e-commerce rastreadas pelo tráfego pago (UTM + Pixel).</p>
+              <ul>
+                <li class="acc">Só sobre vendas atribuídas ao tráfego</li>
+                <li class="acc">Rastreado via UTM + Pixel — transparente</li>
+                <li class="acc">Quanto mais a Dona Betta vende, mais cresce a parceria</li>
+                <li class="acc">Incentivo alinhado ao seu resultado real</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="modelo-calc">
+            <h4>Exemplo prático — cen&aacute;rio conservador (m&ecirc;s 3)</h4>
+            <div class="calc-row"><span>Verba em an&uacute;ncios</span><span>R$ 5.000</span></div>
+            <div class="calc-row"><span>Vendas geradas pelo tr&aacute;fego (ROAS 4x)</span><span>R$ 20.000</span></div>
+            <div class="calc-row"><span>Fee fixo EmpresAtiva</span><span>R$ 2.497</span></div>
+            <div class="calc-row hl"><span>Vari&aacute;vel (3% de R$ 20.000)</span><span>R$ 600</span></div>
+            <div class="calc-row total"><span>Total investido (gest&atilde;o + verba)</span><span>R$ 8.097</span></div>
+            <div class="calc-row total"><span>Vendas geradas</span><span style="color:var(--accent)">R$ 20.000</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Arquitetura de Receita &mdash; Dona Betta</div>
+        <div class="inv-price"><sub>R$</sub> 2.497</div>
+        <div class="inv-period">fee fixo &middot; + 3% vari&aacute;vel &middot; contrato 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Meta Ads + Google Ads (gestor sênior)</li>
+            <li>Designer gráfico para anúncios</li>
+            <li>Google Business — 3 lojas otimizadas</li>
+            <li>Agente de IA — SDR no WhatsApp</li>
+            <li>Disparo em massa automatizado</li>
+            <li>Rastreamento UTM + Pixel completo</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relatório semanal no WhatsApp</li>
+            <li>Check-ins quinzenais de performance</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de m&iacute;dia sugerida (separado)</span>
+          <span>R$ 3–5k/m&ecirc;s</span>
+        </div>
+      </div>
+      <div class="inv-note">In&iacute;cio em at&eacute; 2 dias &uacute;teis &middot; Setup em 10 dias &middot; Vari&aacute;vel apurado mensalmente com relat&oacute;rio de vendas atribu&iacute;das.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do contrato ao <em>primeiro ROAS positivo</em></h2>
+  <p class="sec-intro">Onboarding estruturado para que o e-commerce j&aacute; esteja rodando com rastreamento e an&uacute;ncios em menos de 2 semanas.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Assinatura &amp; Briefing</h3><p>Contrato assinado. Briefing com Bianca e Mariana sobre ICP da Dona Betta, produtos prioritários, sazonalidade e base de clientes para disparo. Acesso à conta de anúncios e ao site Tray.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2–5</span><h3>Setup &amp; Estrutura</h3><p>Pixel instalado, UTMs configurados, Google Business das 3 lojas atualizados. Agente de IA treinado e testado com a equipe. Primeiros criativos em produção para aprovação.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–10</span><h3>Campanhas no Ar</h3><p>Meta Ads + Google Shopping ativos. IA respondendo clientes no WhatsApp. Primeiro disparo para a base de clientes. Dashboard em tempo real liberado para Bianca e Mariana.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relat&oacute;rio</h3><p>ROAS por canal, vendas atribuídas ao tráfego (base do variável), produtos que mais converteram. Ajuste de criativos e verbas para o ciclo 2.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <h2>Bianca e Mariana, o e-commerce<br><em>pode ser muito maior.</em></h2>
+  <p>A Dona Betta tem marca, base e p&uacute;blico. A EmpresAtiva traz a estrutura de performance para transformar os 250 mil seguidores em vendas mensur&aacute;veis — e crescer junto com voc&ecirc;s.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Dona%20Betta%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
