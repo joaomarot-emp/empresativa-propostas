@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Elaine Cruz Concept Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --rose:#C2637A;--dark:#0C0C10;--card:#141418;
+  --border:rgba(255,255,255,0.07);--muted:rgba(245,243,238,0.42);
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(232,103,26,0.14) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(194,99,122,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.insight-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:24px;border-radius:2px;margin-bottom:28px;}
+.insight-box h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.insight-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.insight-box strong{color:var(--orange);font-weight:600;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.comercial-box{background:var(--card);border:1px solid rgba(201,168,76,0.2);padding:28px 24px;margin-top:32px;border-radius:2px;}
+.comercial-box::before{content:"";display:block;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:20px;margin-left:-24px;margin-right:-24px;margin-top:-20px;}
+.comercial-box h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold);margin-bottom:14px;}
+.comercial-steps{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
+.comercial-step{display:flex;gap:12px;align-items:flex-start;}
+.comercial-dot{width:24px;height:24px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+.comercial-step p{font-size:13px;color:var(--muted);line-height:1.65;}
+.comercial-step strong{color:var(--white);font-weight:600;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-layout{display:flex;flex-direction:column;gap:28px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:60px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-breakdown{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:16px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.contrato-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.15);padding:22px 24px;border-radius:2px;margin-top:16px;}
+.contrato-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.contrato-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.contrato-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{flex-direction:row;align-items:start;}
+  .inv-layout > *:first-child{flex:1;}
+  .inv-layout > *:last-child{width:360px;flex-shrink:0;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20estou%20pronta%20para%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Megahair &middot; Maio 2026</p>
+  <h1>Elaine Cruz<br><em>Concept Hair</em></h1>
+  <p class="hero-sub">Meta Ads estrat&eacute;gico + Acompanhamento Comercial semanal para estabilizar resultados, qualificar leads e treinar o time de vendas da Elan Cruz Concept Hair em Salvador e Lauro de Freitas.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta &amp; Comercial</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 1.500</span></div>
+    <div class="pill"><span>Verba sugerida</span><span>R$ 1.000–2.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Fidelidade</span><span>6 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">Por que os resultados <em>oscilam</em> todo m&ecirc;s</h2>
+  <p class="sec-intro">Elaine, voc&ecirc; foi precisa na reuni&atilde;o: tem meses muito bons e meses que n&atilde;o vira. O problema n&atilde;o &eacute; o criativo — &eacute; a intelig&ecirc;ncia do tráfego pago que est&aacute; burra.</p>
+
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Pixel sem feedback de qualifica&ccedil;&atilde;o</h3><p>O Meta entrega pessoas que "mandaram mensagem" — exatamente o que foi pedido. Sem devolver ao Meta quem são os leads qualificados, a plataforma nunca aprende a buscar o perfil certo. Resulta em oscilação: mês que o algoritmo acerta, vai bem. Mês que erra, vai mal.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Campanha direto para WhatsApp</h3><p>Campanha de mensagem traz volume — mas volume misto. Chega o público ideal junto com quem está só curiosando, o que consome energia do time de vendas com leads que nunca iam fechar. A solução é formulário condicional para filtrar antes do contato.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Gargalo comercial identificado</h3><p>Você mesma apontou o seu maior gargalo: a parte comercial. O lead chega, conversa, some. Não é necessariamente o preço — é falta de senso de urgência e de uma cadência de follow-up estruturada. O acompanhamento comercial semanal resolve isso.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Criativos sem storytelling de transforma&ccedil;&atilde;o</h3><p>Você se posiciona pro luxo — visual impecável, paleta de cores, vestimenta. Mas os resultados aparecem só em imagem de antes e depois. Para o posicionamento de luxo que você tem, o vídeo contando a história da transformação capilar (início, processo, emoção, resultado) vai amplificar o engajamento orgânico e a performance dos anúncios.</p></div></div>
+  </div>
+
+  <div class="insight-box" style="margin-top:28px;">
+    <h3>O Speed j&aacute; tem a lista que o Meta precisa</h3>
+    <p>Você usa o Speed com estrutura de CRM. <strong>Exportar os leads qualificados do Kanban e devolver ao Meta como p&uacute;blico de refer&ecirc;ncia</strong> é o passo que vai estabilizar os resultados de vez — o algoritmo vai começar a buscar apenas na zona certa. Provavelmente seu gestor atual nunca solicitou essa lista.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads estrat&eacute;gico + <em>Comercial integrado</em></h2>
+  <p class="sec-intro">Cinco camadas pensadas especificamente para a Elan Cruz Concept Hair — n&atilde;o &eacute; o mesmo pacote da Anne Ara&uacute;jo ou da Jane Motar&eacute;. &Eacute; o que funciona para Salvador e Lauro de Freitas.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Meta Ads com formul&aacute;rio condicional + feedback ao pixel</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Fim da campanha direto pro WhatsApp para público frio. A campanha leva para um formulário condicional que filtra: localização (Salvador ou Lauro de Freitas), tipo de transformação buscada e faixa de investimento. Quem não passa, não vira lead — não suja a inteligência do pixel. Os leads qualificados são devolvidos ao Meta sistematicamente para que o algoritmo aprenda a buscar só nessa zona. Campanhas de WhatsApp continuam, mas apenas para quem já interagiu com o perfil ou foi lead anteriormente — público quente.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Criativos de transforma&ccedil;&atilde;o — storytelling de lux</h3><div class="strat-tag">Criativos</div></div>
+      <p>Você tem a filmmaker. Vamos usar. A EmpresAtiva entrega os roteiros e os scripts — você passa para ela. O formato: você na frente do espelho com a cliente, contando a história antes de começar, processo, e a emoção do resultado final. No estilo visagista — não um before/after estático, mas uma narrativa que prende do início ao fim. Esse é o criativo que vai ampliar a entrega orgânica e performar nos anúncios. A equipe da EmpresAtiva faz a edição se necessário, mas como você já tem a filmmaker, o fluxo fica mais ágil.</p>
+      <div class="strat-example"><span>Script exemplo: Elaine na frente da câmera — "Ela chegou aqui querendo algo diferente. O cabelo dela tava assim..." — mostra o processo — "e esse foi o resultado". A cliente se emociona. Isso é o que conecta com quem ainda está decidindo.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Otimiza&ccedil;&atilde;o do perfil Instagram</h3><div class="strat-tag">Vitrine</div></div>
+      <p>Bio otimizada para conversão, destaques reorganizados com destaque de localização (Salvador e Lauro de Freitas com endereço — quem é de Salvador já clica), 4 peças por mês entregues pela equipe da EmpresAtiva para manter o feed alinhado ao posicionamento de luxo. A vitrine precisa estar no mesmo nível do que o anúncio promete.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Dashboard + relat&oacute;rio semanal</h3><div class="strat-tag">Dados</div></div>
+      <p>Monitoramento diário para identificar se alguma campanha saiu do eixo. Otimizações mais agressivas toda semana — identificação do criativo campeão e criação de variações sutis (mesmo estilo, ângulo diferente, roupa diferente, cabelo diferente) para manter o desempenho sem cansar o público. Relatório semanal no WhatsApp com investimento, impressões, leads e CPL. Dashboard em tempo real liberado para Elaine acompanhar quando quiser.</p>
+    </div>
+  </div>
+
+  <!-- BLOCO COMERCIAL EM DESTAQUE -->
+  <div class="comercial-box">
+    <h3>Acompanhamento Comercial Semanal</h3>
+    <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:18px;">Este &eacute; o diferencial que voc&ecirc; pediu na reuni&atilde;o e que foi acordado. N&atilde;o &eacute; s&oacute; um playbook — &eacute; presença semanal no seu comercial.</p>
+    <div class="comercial-steps">
+      <div class="comercial-step"><div class="comercial-dot">1</div><p><strong>Playbook comercial personalizado</strong> para a Elan Cruz Concept Hair — cadência de ligação, scripts de WhatsApp, protocolo de follow-up para quem sumiu, script de urgência (antecipação de manutenção com desconto)</p></div>
+      <div class="comercial-step"><div class="comercial-dot">2</div><p><strong>Reunião semanal de acompanhamento</strong> com o time de vendas — videochamada para revisar leads da semana, identificar onde estão falhando, calibrar o script e treinar objeções</p></div>
+      <div class="comercial-step"><div class="comercial-dot">3</div><p><strong>Estratégia de antecipação de manutenção</strong> — estruturar o ciclo de recompra com incentivo: cliente que antecipa a manutenção de 60 para 45 dias ganha condição especial. Gera caixa mais rápido e facilita a manutenção técnica</p></div>
+      <div class="comercial-step"><div class="comercial-dot">4</div><p><strong>Cadência de metas mensais</strong> — quanto custa o lead qualificado, quantos leads precisam para X vendas, onde a equipe está perdendo conversão. Sem comodismo, sem mês cinzento</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a Elan Cruz <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads com formul&aacute;rio condicional</h3><p>Conversão, lookalike de leads qualificados, retargeting. Feedback do Speed devolvido ao pixel para estabilizar os resultados.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎬</div><div><h3>Roteiros + scripts de v&iacute;deo</h3><p>Ide&aacute;s e roteiros prontos para a filmmaker gravar. Storytelling de transforma&ccedil;&atilde;o alinhado ao posicionamento de luxo.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 criativos/m&ecirc;s</h3><p>Pe&ccedil;as de imagem para feed e an&uacute;ncios. COP incluso. Equipe de design da EmpresAtiva — aprovação de Elaine antes de subir.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Otimiza&ccedil;&atilde;o do Instagram</h3><p>Bio, destaques, destaque de localiza&ccedil;&atilde;o (Salvador + Lauro de Freitas). Vitrine no mesmo n&iacute;vel do posicionamento de luxo.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📋</div><div><h3>Playbook comercial</h3><p>Cadência de ligação, scripts de WhatsApp, protocolo de follow-up e script de antecipação de manutenção.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📞</div><div><h3>Reuni&atilde;o semanal de vendas</h3><p>Videochamada semanal com o time comercial para revisar leads, calibrar scripts e treinar obje&ccedil;&otilde;es.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔔</div><div><h3>Alerta de lead no WhatsApp</h3><p>Novo lead qualificado chegando com nome, perfil e respostas do formul&aacute;rio — equipe entra em contato j&aacute; com contexto.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Tempo real: CPL, leads, criativos campe&otilde;es. Relat&oacute;rio semanal no WhatsApp — sem planilha, sem reuni&atilde;o longa.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">O que foi <em>acordado</em></h2>
+  <p class="sec-intro">Elaine, o que a gente bateu na reuni&atilde;o. Sem letras mi&uacute;das.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div style="background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;">
+        <h3 style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:18px;">Composi&ccedil;&atilde;o do fee mensal</h3>
+        <div class="inv-breakdown">
+          <div class="inv-line"><span>Gest&atilde;o Meta Ads (estrat&eacute;gico)</span><span>R$ 997</span></div>
+          <div class="inv-line"><span>Acompanhamento comercial semanal</span><span>R$ 503</span></div>
+          <div class="inv-line" style="border-bottom:none;padding-top:14px;border-top:1px solid var(--border);"><span style="font-weight:600;color:var(--white);font-size:13px;">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 1.500</span></div>
+        </div>
+        <div class="inv-media" style="margin-top:0;">
+          <span>Verba de an&uacute;ncios (pago direto ao Meta)</span>
+          <span>R$ 1.000–2.000/m&ecirc;s</span>
+        </div>
+      </div>
+
+      <div class="variavel-box">
+        <h4>Vari&aacute;vel — quando a verba escalar</h4>
+        <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 1.500</span></div>
+        <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+        <div class="var-row"><span>Ex: investe R$ 2.000 → excedente R$ 1.000</span><span>+ R$ 200 → ag&ecirc;ncia R$ 1.700</span></div>
+        <div class="var-row"><span>Por qu&ecirc;?</span><span>Quanto mais verba, mais complexidade estrat&eacute;gica</span></div>
+      </div>
+
+      <div class="contrato-box">
+        <h4>Fidelidade de 6 meses — como combinado</h4>
+        <p>Contrato de <strong>6 meses</strong> com aviso pr&eacute;vio ap&oacute;s esse prazo, sem multa. Elaine perguntou sobre fidelidade porque quer que d&ecirc; certo — n&atilde;o porque quer sair. Esse &eacute; o tempo m&iacute;nimo para a gente criar a intelig&ecirc;ncia do tráfego, estabilizar os resultados e o time comercial absorver o playbook. <strong>Daqui 3 meses a gente cresce — e o investimento cresce junto.</strong></p>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta &amp; Comercial — Elan Cruz Concept Hair</div>
+        <div class="inv-price"><sub>R$</sub> 1.500</div>
+        <div class="inv-period">por m&ecirc;s &middot; fidelidade 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Meta Ads com formulário condicional</li>
+            <li>Feedback de qualificação ao pixel (Speed)</li>
+            <li>Roteiros + scripts para a filmmaker</li>
+            <li>4 criativos/mês (imagem)</li>
+            <li>Otimização do perfil Instagram</li>
+            <li>Alerta de lead qualificado no WhatsApp</li>
+            <li>Playbook comercial personalizado</li>
+            <li>Reunião semanal de acompanhamento de vendas</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relatório semanal no WhatsApp</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de m&iacute;dia (pago ao Meta)</span>
+          <span>R$ 1.000–2.000/m&ecirc;s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da assinatura ao <em>primeiro lead qualificado</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Hoje</span><h3>Contrato + Briefing</h3><p>Elaine sinaliza a agência do Bruno sobre a transição. Recebe o contrato e o formulário de briefing: linhas de megahair, preços, localidades (Salvador e Lauro de Freitas) e acesso ao gerenciador de anúncios.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 1–5</span><h3>Estrutura + Formulário + Pixel</h3><p>Formulário condicional configurado. Pixel integrado com exportação do Speed (leads qualificados). Instagram otimizado. Primeiro roteiro de vídeo de transformação entregue para a filmmaker.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–7</span><h3>Campanhas no Ar</h3><p>Meta Ads rodando com formulário. Alertas de lead chegando no WhatsApp. Dashboard liberado. Primeira reunião de alinhamento comercial com playbook e cadência definidos.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 2 em diante</span><h3>Reuni&otilde;es Semanais de Vendas</h3><p>Toda semana: revisão dos leads da semana, onde estão travando, ajuste de script, treinamento de objeção e definição de meta para a próxima semana. Sem mês cinzento.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relat&oacute;rio</h3><p>CPL real, leads qualificados vs. desqualificados, criativos campeões, taxa de agendamento e conversões. Ajuste de campanha para o ciclo 2 com os dados reais da Elan Cruz Concept Hair.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Elaine, a constância<br><em>come&ccedil;a agora.</em></h2>
+  <p>Voc&ecirc; j&aacute; tem o posicionamento de luxo, a equipe e o processo de recompra. O que faltava era o tráfego pago inteligente e o comercial estruturado. A gente vai construir isso juntos — sem perder o gás.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20estou%20pronta%20para%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Vamos come&ccedil;ar
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
