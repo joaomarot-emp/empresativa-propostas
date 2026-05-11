@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Ramon Oliveira Hair Excellence</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.15) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.conf-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:28px 24px;border-radius:2px;margin-bottom:28px;}
+.conf-box h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold);margin-bottom:12px;}
+.conf-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.conf-box strong{color:var(--white);font-weight:600;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.gbp-card{background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;border-left:3px solid var(--gold);}
+.gbp-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+.gbp-score-num{font-family:var(--font-display);font-size:52px;font-weight:800;color:var(--gold);line-height:1;}
+.gbp-score-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.gbp-card p{font-size:13px;color:var(--muted);line-height:1.75;}
+.gbp-ranking{display:flex;flex-direction:column;gap:6px;margin-top:14px;}
+.gbp-rank-item{display:flex;align-items:center;gap:10px;}
+.gbp-rank-item .rpos{font-family:var(--font-mono);font-size:10px;color:var(--muted);width:24px;flex-shrink:0;}
+.gbp-rank-item .rbar{flex:1;height:5px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;}
+.gbp-rank-item .rfill{height:100%;border-radius:3px;background:rgba(255,255,255,0.15);}
+.gbp-rank-item.hl .rpos{color:var(--orange);}
+.gbp-rank-item.hl .rfill{background:var(--orange);}
+.gbp-rank-item .rname{font-size:10px;color:var(--muted);width:90px;flex-shrink:0;text-align:right;}
+.gbp-rank-item.hl .rname{color:var(--orange);}
+.gbp-rank-item .rcnt{font-family:var(--font-mono);font-size:10px;color:var(--muted);width:32px;text-align:right;flex-shrink:0;}
+
+.isca-box{background:var(--card);border-left:3px solid var(--green);padding:24px;margin-top:28px;}
+.isca-box h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.isca-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.isca-box strong{color:var(--white);font-weight:600;}
+
+.tres-cols{display:flex;flex-direction:column;gap:2px;margin-bottom:40px;}
+.col-item{padding:28px 24px;position:relative;overflow:hidden;}
+.col-item::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;}
+.col-meta{background:var(--card);}
+.col-meta::before{background:var(--orange);}
+.col-lp{background:var(--card);}
+.col-lp::before{background:var(--gold);}
+.col-gbp{background:var(--card);}
+.col-gbp::before{background:var(--green);}
+.col-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:10px;}
+.col-meta .col-label{color:var(--orange);}
+.col-lp .col-label{color:var(--gold);}
+.col-gbp .col-label{color:var(--green);}
+.col-item h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:10px;}
+.col-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.col-item ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:8px;}
+.col-item li{font-size:12px;color:var(--muted);padding-left:16px;position:relative;line-height:1.6;}
+.col-meta li::before{content:"→";position:absolute;left:0;color:var(--orange);font-size:11px;}
+.col-lp li::before{content:"→";position:absolute;left:0;color:var(--gold);font-size:11px;}
+.col-gbp li::before{content:"→";position:absolute;left:0;color:var(--green);font-size:11px;}
+
+.contra-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.22);padding:28px 24px;border-radius:2px;margin-bottom:28px;}
+.contra-box h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold);margin-bottom:12px;}
+.contra-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.contra-box strong{color:var(--white);font-weight:600;}
+
+.inv-layout{display:flex;flex-direction:column;gap:28px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:58px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-breakdown{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-line.bonus span:first-child{color:var(--gold);}
+.inv-line.bonus span:last-child{color:var(--gold);}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-includes li.gold-li::before{color:var(--gold);}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.semana-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.semana-box h4{font-size:14px;font-weight:600;color:var(--green);margin-bottom:10px;}
+.semana-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.semana-box strong{color:var(--white);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .tres-cols{flex-direction:row;}
+  .col-item{flex:1;}
+  .inv-layout{flex-direction:row;align-items:start;}
+  .inv-layout>*:first-child{flex:1;}
+  .inv-layout>*:last-child{width:360px;flex-shrink:0;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Contraproposta &middot; Bel&eacute;m PA &middot; Maio 2026</p>
+  <h1>Ramon Oliveira<br><em>Hair Excellence</em></h1>
+  <p class="hero-sub">Meta Ads focado em megahair + Landing Page + Otimiza&ccedil;&atilde;o do Google Business — tudo por R$ 997/m&ecirc;s. Resultado j&aacute; na primeira e segunda semana, ou a gente ajusta at&eacute; chegar l&aacute;.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta + Google (bônus)</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>Verba sugerida</span><span>R$ 1.400/m&ecirc;s</span></div>
+    <div class="pill"><span>Foco principal</span><span>Megahair</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CONFIANÇA -->
+<section class="bg-dark">
+  <div class="sec-label">Para o Ramon</div>
+  <h2 class="sec-title">Voc&ecirc; n&atilde;o quer o mais barato.<br><em>Quer quem vai trabalhar.</em></h2>
+  <p class="sec-intro">Essa frase voc&ecirc; disse na reuni&atilde;o — e &eacute; a frase certa. Aqui est&aacute; o que a EmpresAtiva entrega diferente de quem j&aacute; te decepcionou antes.</p>
+
+  <div class="conf-box">
+    <h3>Voc&ecirc; investiu R$ 1.100–1.300 e teve zero resultado.</h3>
+    <p>Isso n&atilde;o foi azar. Foi falta de estrutura: campanha sem formul&aacute;rio de qualifica&ccedil;&atilde;o, sem feedback ao pixel, sem cadência de otimiza&ccedil;&atilde;o semanal. <strong>Qualquer lead que chegava, chegava no WhatsApp — incluindo quem ia ficar 2h falando sobre ser cantora gospel sem dinheiro para fechar nada.</strong> A EmpresAtiva resolve exatamente isso: você s&oacute; fala com quem passou por um filtro de qualifica&ccedil;&atilde;o. Lead frio n&atilde;o chega nem no seu WhatsApp.</p>
+  </div>
+
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Campanha sem qualifica&ccedil;&atilde;o</h3><p>Antes: direto para WhatsApp, qualquer pessoa que clicasse virava lead. Agora: formulário condicional filtra localização, nível de serviço e faixa de investimento antes do primeiro contato.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Pixel sem intelig&ecirc;ncia</h3><p>O Meta entregava quem "mandou mensagem" — não quem é cliente real. Sem devolver os leads qualificados ao pixel, o algoritmo nunca aprende. Resultado: oscilação todo mês.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Sem cadência de otimiza&ccedil;&atilde;o</h3><p>O gestor anterior ficou inerte na 2ª e 3ª semanas — você mesmo foi lá ajustar. Aqui: monitoramento diário + otimização semanal agressiva de criativos. Você vai saber o que está acontecendo.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>GBP na 11ª posi&ccedil;&atilde;o em Bel&eacute;m</h3><p>97 avaliações, nota 4.8 — ótima qualidade. Mas sem website, sem fotos 360° e sem vídeos, o Google penaliza o perfil. O concorrente na 1ª posição tem 405 avaliações. Isso muda com a otimização.</p></div></div>
+  </div>
+
+  <!-- GBP RANKING -->
+  <div class="gbp-card" style="margin-top:28px;">
+    <div class="gbp-row">
+      <div>
+        <div class="gbp-score-num">62</div>
+        <div class="gbp-score-label">GBP Score · Razo&aacute;vel</div>
+      </div>
+      <p style="flex:1;min-width:200px;">Ramon Oliveira Hair Excellence est&aacute; na 11ª posi&ccedil;&atilde;o no ranking de Sal&atilde;o de Beleza em Bel&eacute;m. Com a otimiza&ccedil;&atilde;o, entra na zona verde e sobe no mapa — mais visibilidade org&acirc;nica sem pagar an&uacute;ncio.</p>
+    </div>
+    <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Ranking · Sal&atilde;o de Beleza · Bel&eacute;m</div>
+    <div class="gbp-ranking">
+      <div class="gbp-rank-item"><span class="rpos">1ª</span><div class="rbar"><div class="rfill" style="width:100%"></div></div><span class="rname" style="font-size:10px;">Barbear. Everton</span><span class="rcnt">405</span></div>
+      <div class="gbp-rank-item"><span class="rpos">2ª</span><div class="rbar"><div class="rfill" style="width:62%"></div></div><span class="rname" style="font-size:10px;">Cruzdalma Jets</span><span class="rcnt">250</span></div>
+      <div class="gbp-rank-item"><span class="rpos">3ª</span><div class="rbar"><div class="rfill" style="width:59%"></div></div><span class="rname" style="font-size:10px;">Salão Lídias</span><span class="rcnt">239</span></div>
+      <div class="gbp-rank-item"><span class="rpos">10ª</span><div class="rbar"><div class="rfill" style="width:49%"></div></div><span class="rname" style="font-size:10px;">Mika Bella Exc.</span><span class="rcnt">199</span></div>
+      <div class="gbp-rank-item hl"><span class="rpos">11ª</span><div class="rbar"><div class="rfill" style="width:24%"></div></div><span class="rname" style="font-size:10px;">Ramon Oliveira ✦</span><span class="rcnt">97</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA MECHA COMO ISCA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">O plano que j&aacute; funcionou <em>para voc&ecirc;</em></h2>
+  <p class="sec-intro">Em outubro/novembro voc&ecirc; encheu o m&ecirc;s inteiro com a campanha de mecha por R$ 750 — cliente que fechava mecha j&aacute; saía gastando R$ 1.000, R$ 1.500. A EmpresAtiva estrutura exatamente esse movimento, s&oacute; que agora com rastreamento, formul&aacute;rio e an&aacute;lise de cada real investido.</p>
+
+  <div class="isca-box">
+    <h3>Mecha como isca — sem sujar o Instagram</h3>
+    <p>Voc&ecirc; foi claro: n&atilde;o quer falar de pre&ccedil;o no Instagram, que &eacute; vitrine de luxo. <strong>Essa &eacute; exatamente a fun&ccedil;&atilde;o do tráfego pago:</strong> a campanha de mecha com pre&ccedil;o agressivo aparece s&oacute; para quem a gente quer mostrar — sem aparecer no seu feed, sem comprometer o posicionamento. A cliente chega no sal&atilde;o, v&ecirc; o ambiente, se sente no Dubai e ainda sai comprando produto ou agendando megahair. O Instagram continua impec&aacute;vel. O tráfego faz o trabalho sujo nos bastidores.</p>
+  </div>
+
+  <!-- 3 FRENTES -->
+  <div class="tres-cols" style="margin-top:28px;">
+    <div class="col-item col-meta">
+      <div class="col-label">Frente principal</div>
+      <h3>Meta Ads</h3>
+      <p>Instagram + Facebook. Foco total no megahair como servi&ccedil;o principal.</p>
+      <ul>
+        <li>Formul&aacute;rio condicional (filtra localização e orçamento)</li>
+        <li>Campanha de convers&atilde;o + lookalike de clientes</li>
+        <li>Campanha de mecha como isca (sem aparecer no feed)</li>
+        <li>4 criativos/m&ecirc;s — imagem e edi&ccedil;&atilde;o de v&iacute;deo</li>
+        <li>Alerta de lead qualificado no WhatsApp</li>
+        <li>Relat&oacute;rio semanal + dashboard tempo real</li>
+      </ul>
+    </div>
+    <div class="col-item col-lp">
+      <div class="col-label">Bônus 1</div>
+      <h3>Landing Page</h3>
+      <p>Site de captura mobile-first para linkagem no GBP e destino dos an&uacute;ncios.</p>
+      <ul>
+        <li>Portf&oacute;lio de resultados (antes e depois)</li>
+        <li>Depoimentos de clientes reais</li>
+        <li>Formul&aacute;rio de or&ccedil;amento / WhatsApp</li>
+        <li>Linkada ao Google Business Profile</li>
+        <li>SEO b&aacute;sico para aparecer em Bel&eacute;m</li>
+      </ul>
+    </div>
+    <div class="col-item col-gbp">
+      <div class="col-label">Bônus 2</div>
+      <h3>GBP Otimizado</h3>
+      <p>De 62 para zona verde — mais visibilidade org&acirc;nica no mapa de Bel&eacute;m.</p>
+      <ul>
+        <li>Website linkado (LP rec&eacute;m criada)</li>
+        <li>Fotos atuais + orienta&ccedil;&atilde;o para 360°</li>
+        <li>V&iacute;deos ativados no perfil</li>
+        <li>Resposta a avalia&ccedil;&otilde;es existentes</li>
+        <li>Mutiр&atilde;o de avalia&ccedil;&otilde;es positivas</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.15);padding:20px 24px;border-radius:2px;">
+    <p style="font-size:13px;color:var(--muted);line-height:1.8;"><strong style="color:var(--orange);">Por que concentrar no Meta e não dividir com Google Ads?</strong> Com R$ 1.400/m&ecirc;s de verba, dividir entre duas plataformas &eacute; como ir de Bel&eacute;m a Manaus de balsa quando tem avi&atilde;o dispon&iacute;vel. A verba concentrada no Instagram chega mais r&aacute;pido ao resultado. O Google fica cobrindo via GBP org&acirc;nico — sem custo de an&uacute;ncio.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">A contraproposta <em>que voc&ecirc; pediu</em></h2>
+  <p class="sec-intro">Sem aumentar o valor. Com dois bônus que sozinhos valeriam mais de R$ 1.500 no mercado.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div style="background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;">
+        <h3 style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:18px;">Composi&ccedil;&atilde;o do fee mensal</h3>
+        <div class="inv-breakdown">
+          <div class="inv-line"><span>Gest&atilde;o Meta Ads (estrat&eacute;gico)</span><span>R$ 997</span></div>
+          <div class="inv-line bonus"><span>⭐ Bônus Landing Page</span><span>incluso</span></div>
+          <div class="inv-line bonus"><span>⭐ Bônus Otimização GBP</span><span>incluso</span></div>
+          <div class="inv-line" style="border-bottom:none;padding-top:14px;border-top:1px solid var(--border);"><span style="font-weight:600;color:var(--white);font-size:13px;">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 997</span></div>
+        </div>
+        <div class="inv-media" style="margin-top:0;">
+          <span>Verba sugerida (pago direto ao Meta)</span>
+          <span>R$ 1.400/m&ecirc;s</span>
+        </div>
+      </div>
+
+      <div class="variavel-box">
+        <h4>Vari&aacute;vel — quando o resultado aparecer</h4>
+        <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 997</span></div>
+        <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+        <div class="var-row"><span>Ex: verba de R$ 1.400 → excedente R$ 400</span><span>+ R$ 80 → ag&ecirc;ncia R$ 1.077</span></div>
+        <div class="var-row"><span>Por qu&ecirc;?</span><span>Se voc&ecirc; investe mais, &eacute; porque est&aacute; crescendo</span></div>
+      </div>
+
+      <div class="semana-box">
+        <h4>Resultado na 1ª ou 2ª semana — n&atilde;o em 3 meses</h4>
+        <p>Voc&ecirc; deixou claro e a EmpresAtiva concorda: <strong>n&atilde;o tem sentido esperar 3 meses para ver se est&aacute; funcionando.</strong> J&aacute; na primeira semana com o formul&aacute;rio no ar e a campanha rodando, leads qualificados começam a chegar. Se n&atilde;o estiver funcionando, a gente ajusta — n&atilde;o fica inerte como o gestor anterior.</p>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta + Google — Ramon Oliveira Hair</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">por m&ecirc;s &middot; fidelidade 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Meta Ads — formul&aacute;rio condicional</li>
+            <li>Campanha megahair + campanha isca (mecha)</li>
+            <li>4 criativos/m&ecirc;s (imagem + v&iacute;deo)</li>
+            <li>Alerta de lead qualificado no WhatsApp</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relat&oacute;rio semanal no WhatsApp</li>
+            <li class="gold-li">⭐ Bônus: Landing Page de conversão</li>
+            <li class="gold-li">⭐ Bônus: Otimização GBP completa</li>
+            <li class="gold-li">⭐ Bônus: Mutirão de avaliações</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba sugerida (pago ao Meta)</span>
+          <span>R$ 1.400/m&ecirc;s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do pagamento ao <em>primeiro lead filtrado</em></h2>
+  <p class="sec-intro">Tudo no ar em at&eacute; 7 dias. Como prometido na reuni&atilde;o.</p>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Hoje</span><h3>Contrato + Pagamento</h3><p>Ramon aprova a proposta, assina o contrato e efetua o pagamento do primeiro mês. A EmpresAtiva envia também os 2 contatos de fornecedores de cabelo — incluindo a Roselie, mais de 20 anos no mercado, cabelo brasileiro do Sul, qualidade e preço competitivo.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 1–5</span><h3>Landing Page + GBP + Estrutura</h3><p>LP de conversão no ar com portfólio de resultados e formulário. GBP atualizado: website linkado, fotos atuais, início do mutirão de avaliações. Formulário condicional configurado com os critérios de qualificação da Ramon Oliveira Hair.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–7</span><h3>Meta Ads no Ar</h3><p>Campanha de megahair com formulário condicional ativa. Campanha de mecha como isca ativa (sem aparecer no feed do Instagram). Alerta de lead no WhatsApp configurado — leads chegam filtrados, não misturados.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 1–2</span><h3>Primeiros Leads Qualificados</h3><p>Ramon começa a receber alertas de leads que já passaram pelo formulário: moram em Belém ou arredores, têm orçamento compatível e já têm uma ideia do serviço que querem. Sem 2h de conversa com quem não vai fechar nada.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Relat&oacute;rio + Ajuste</h3><p>CPL real, leads qualificados, criativos campeões, conversões. Se o criativo da mecha estiver performando melhor que o do megahair, a gente dobra. Se o formulário estiver filtrando demais, a gente abre. Sem inércia.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Ramon, 20 anos de talento<br><em>merecem leads que fecham.</em></h2>
+  <p>Voc&ecirc; trata a cliente como rainha. O sal&atilde;o &eacute; um espet&aacute;culo. Os condom&iacute;nios ao redor s&atilde;o dos mais caros de Bel&eacute;m. A EmpresAtiva coloca a mulher certa na sua cadeira — filtrada, qualificada e pronta para fechar.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
