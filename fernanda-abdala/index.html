@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dra. Fernanda Abdala — Fisioterapia Pélvica para Gestantes | Jardins, SP</title>
+<meta name="description" content="Preparação do corpo para um parto normal seguro e humanizado. Atendimento individualizado para gestantes nos Jardins. Agende sua avaliação." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bege-claro: #F6F0E7;
+  --bege-medio: #ECE0CE;
+  --terracota: #C97B5C;
+  --terracota-escuro: #A8553A;
+  --verde-musgo: #4A5D4F;
+  --marrom-quente: #3D2E26;
+  --branco-quente: #FBF7F1;
+  --rosa-poeira: #E8C5B3;
+  --texto: #2B201A;
+  --texto-suave: #6B5B50;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Manrope', system-ui, sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  color:var(--texto);
+  background:var(--branco-quente);
+  line-height:1.6;
+  font-weight:400;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+
+.container{
+  width:100%;
+  max-width:1240px;
+  margin:0 auto;
+  padding:0 28px;
+}
+
+/* ===== TIPOGRAFIA ===== */
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.1;letter-spacing:-0.01em}
+h1{font-size:clamp(2.4rem, 5.5vw, 4.2rem)}
+h2{font-size:clamp(2rem, 4vw, 3.2rem)}
+h3{font-size:clamp(1.4rem, 2vw, 1.7rem)}
+
+.eyebrow{
+  font-family:var(--body);
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--terracota-escuro);
+  margin-bottom:1.2rem;
+}
+
+.serif-italic{font-family:var(--display);font-style:italic;font-weight:400}
+
+/* ===== CTA BOTÃO ===== */
+.btn-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  background:var(--terracota);
+  color:var(--branco-quente);
+  padding:18px 36px;
+  border:none;
+  border-radius:999px;
+  font-family:var(--body);
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:0.02em;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .3s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 8px 24px rgba(168,85,58,.25);
+}
+.btn-cta:hover{
+  background:var(--terracota-escuro);
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(168,85,58,.35);
+}
+.btn-cta .arrow{
+  display:inline-block;
+  transition:transform .3s;
+}
+.btn-cta:hover .arrow{transform:translateX(4px)}
+
+.btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--marrom-quente);
+  text-decoration:none;
+  font-weight:500;
+  font-size:0.95rem;
+  border-bottom:1px solid var(--marrom-quente);
+  padding-bottom:2px;
+  transition:opacity .25s;
+}
+.btn-secondary:hover{opacity:.6}
+
+/* ===== NAV ===== */
+.nav{
+  position:absolute;
+  top:0;left:0;right:0;
+  z-index:50;
+  padding:24px 0;
+}
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-family:var(--display);
+  font-size:1.4rem;
+  font-style:italic;
+  font-weight:500;
+  color:var(--marrom-quente);
+  letter-spacing:0.01em;
+}
+.logo span{color:var(--terracota-escuro)}
+.nav-cta{
+  font-size:0.9rem;
+  font-weight:500;
+  color:var(--marrom-quente);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.nav-cta::before{
+  content:"";
+  width:8px;height:8px;
+  background:var(--terracota);
+  border-radius:50%;
+  display:inline-block;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.5;transform:scale(1.3)}
+}
+
+/* ============================================
+   DOBRA 1 — HERO / SUPERPROMESSA + ABERTURA MAGNÉTICA
+============================================ */
+.hero{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at top right, rgba(232,197,179,.35), transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(236,224,206,.6), transparent 60%),
+    var(--bege-claro);
+  position:relative;
+  padding:140px 0 80px;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(201,123,92,.04) 0%, transparent 1.5px);
+  background-size:24px 24px;
+  pointer-events:none;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:80px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.hero-text h1{
+  color:var(--marrom-quente);
+  margin-bottom:1.5rem;
+}
+.hero-text h1 em{
+  font-style:italic;
+  color:var(--terracota-escuro);
+  font-weight:400;
+}
+.hero-sub{
+  font-size:1.15rem;
+  color:var(--texto-suave);
+  margin-bottom:2.2rem;
+  max-width:520px;
+  line-height:1.55;
+}
+.hero-ctas{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  flex-wrap:wrap;
+  margin-bottom:2.5rem;
+}
+.hero-trust{
+  display:flex;
+  gap:32px;
+  flex-wrap:wrap;
+  padding-top:2rem;
+  border-top:1px solid rgba(61,46,38,.12);
+}
+.trust-item{display:flex;flex-direction:column;gap:4px}
+.trust-num{
+  font-family:var(--display);
+  font-size:1.9rem;
+  font-weight:500;
+  color:var(--terracota-escuro);
+  line-height:1;
+}
+.trust-label{
+  font-size:0.78rem;
+  color:var(--texto-suave);
+  letter-spacing:0.04em;
+}
+
+.hero-visual{
+  position:relative;
+  aspect-ratio:4/5;
+  border-radius:200px 200px 12px 12px;
+  background:
+    linear-gradient(135deg, rgba(201,123,92,.15), rgba(232,197,179,.4)),
+    var(--rosa-poeira);
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(61,46,38,.18);
+}
+.hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(251,247,241,.5), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(168,85,58,.2), transparent 60%);
+}
+.hero-visual svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.hero-badge{
+  position:absolute;
+  bottom:24px;
+  left:-24px;
+  background:var(--branco-quente);
+  padding:18px 26px;
+  border-radius:80px;
+  box-shadow:0 12px 32px rgba(61,46,38,.15);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  z-index:3;
+}
+.hero-badge-icon{
+  width:42px;height:42px;
+  background:var(--verde-musgo);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--branco-quente);
+  font-family:var(--display);
+  font-size:1.3rem;
+  font-style:italic;
+}
+.hero-badge-text{font-size:0.82rem;line-height:1.3}
+.hero-badge-text strong{display:block;color:var(--marrom-quente);font-weight:600}
+.hero-badge-text span{color:var(--texto-suave);font-size:0.75rem}
+
+/* ============================================
+   DOBRA 2 — CONFLITO / TRANSFORMAÇÃO
+============================================ */
+.conflito{
+  background:var(--branco-quente);
+  padding:120px 0;
+  position:relative;
+}
+.conflito-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:80px;
+  align-items:center;
+}
+.conflito-aside{
+  position:sticky;
+  top:40px;
+}
+.conflito-aside h2{
+  color:var(--marrom-quente);
+  margin-bottom:1.5rem;
+}
+.conflito-aside h2 em{
+  font-style:italic;
+  color:var(--terracota-escuro);
+}
+.conflito-aside p{
+  color:var(--texto-suave);
+  font-size:1.05rem;
+  margin-bottom:2rem;
+  max-width:420px;
+}
+.dores{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+.dor{
+  background:var(--bege-claro);
+  border-radius:20px;
+  padding:32px 36px;
+  border-left:3px solid var(--terracota);
+  transition:transform .3s, box-shadow .3s;
+}
+.dor:hover{
+  transform:translateX(6px);
+  box-shadow:0 16px 40px rgba(61,46,38,.08);
+}
+.dor-quote{
+  font-family:var(--display);
+  font-style:italic;
+  font-size:1.35rem;
+  color:var(--marrom-quente);
+  line-height:1.35;
+  margin-bottom:0.8rem;
+}
+.dor-quote::before{content:"" ";color:var(--terracota);font-size:1.5em;line-height:0}
+.dor-quote::after{content:" """;color:var(--terracota);font-size:1.5em;line-height:0}
+.dor-context{
+  font-size:0.92rem;
+  color:var(--texto-suave);
+}
+
+.cta-inline{
+  margin-top:48px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.cta-inline-text{
+  font-family:var(--display);
+  font-style:italic;
+  color:var(--marrom-quente);
+  font-size:1.15rem;
+}
+
+/* ============================================
+   DOBRA 3 — VIRADA / COMO FUNCIONA
+============================================ */
+.virada{
+  background:var(--verde-musgo);
+  color:var(--branco-quente);
+  padding:130px 0;
+  position:relative;
+  overflow:hidden;
+}
+.virada::before{
+  content:"";
+  position:absolute;
+  top:-100px;right:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(circle, rgba(232,197,179,.15), transparent 70%);
+  border-radius:50%;
+}
+.virada-header{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 80px;
+  position:relative;
+}
+.virada .eyebrow{color:var(--rosa-poeira)}
+.virada h2{color:var(--branco-quente);margin-bottom:1.2rem}
+.virada h2 em{
+  font-style:italic;
+  color:var(--rosa-poeira);
+}
+.virada-header p{
+  color:rgba(251,247,241,.8);
+  font-size:1.1rem;
+  max-width:580px;
+  margin:0 auto;
+}
+
+.metodo{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:32px;
+  position:relative;
+}
+.passo{
+  background:rgba(251,247,241,.06);
+  border:1px solid rgba(251,247,241,.12);
+  border-radius:24px;
+  padding:40px 32px;
+  position:relative;
+  backdrop-filter:blur(8px);
+  transition:all .35s;
+}
+.passo:hover{
+  background:rgba(251,247,241,.1);
+  transform:translateY(-6px);
+}
+.passo-num{
+  font-family:var(--display);
+  font-style:italic;
+  font-size:3.5rem;
+  color:var(--rosa-poeira);
+  line-height:1;
+  margin-bottom:1.2rem;
+  opacity:.85;
+}
+.passo h3{
+  color:var(--branco-quente);
+  margin-bottom:0.8rem;
+}
+.passo p{
+  color:rgba(251,247,241,.75);
+  font-size:0.95rem;
+  line-height:1.6;
+}
+
+.virada-cta{
+  margin-top:64px;
+  text-align:center;
+}
+.virada-cta .btn-cta{
+  background:var(--rosa-poeira);
+  color:var(--marrom-quente);
+}
+.virada-cta .btn-cta:hover{
+  background:var(--branco-quente);
+}
+
+/* ============================================
+   DOBRA 4 — PROVA SOCIAL
+============================================ */
+.prova{
+  background:var(--bege-claro);
+  padding:130px 0;
+  position:relative;
+}
+.prova-header{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+  margin-bottom:64px;
+}
+.prova-header h2{
+  color:var(--marrom-quente);
+}
+.prova-header h2 em{
+  font-style:italic;
+  color:var(--terracota-escuro);
+}
+.prova-header p{
+  color:var(--texto-suave);
+  font-size:1.05rem;
+  max-width:480px;
+}
+
+.depoimentos{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:32px;
+}
+.depo-principal{
+  background:var(--branco-quente);
+  border-radius:28px;
+  padding:48px;
+  position:relative;
+  box-shadow:0 24px 60px rgba(61,46,38,.08);
+}
+.depo-principal::before{
+  content:""";
+  position:absolute;
+  top:24px;left:36px;
+  font-family:var(--display);
+  font-size:6rem;
+  color:var(--terracota);
+  line-height:1;
+  opacity:.25;
+}
+.depo-texto{
+  font-family:var(--display);
+  font-size:1.5rem;
+  font-style:italic;
+  font-weight:400;
+  color:var(--marrom-quente);
+  line-height:1.4;
+  margin:32px 0 32px;
+  position:relative;
+  z-index:2;
+}
+.depo-autor{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding-top:24px;
+  border-top:1px solid rgba(61,46,38,.1);
+}
+.depo-avatar{
+  width:56px;height:56px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--rosa-poeira), var(--terracota));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--display);
+  font-style:italic;
+  color:var(--branco-quente);
+  font-size:1.4rem;
+  font-weight:500;
+}
+.depo-info strong{
+  display:block;
+  color:var(--marrom-quente);
+  font-weight:600;
+  font-size:0.95rem;
+}
+.depo-info span{
+  color:var(--texto-suave);
+  font-size:0.85rem;
+}
+
+.depo-aside{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+.depo-mini{
+  background:var(--branco-quente);
+  padding:28px;
+  border-radius:20px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.depo-mini-texto{
+  font-family:var(--display);
+  font-style:italic;
+  color:var(--marrom-quente);
+  font-size:1.1rem;
+  line-height:1.4;
+  margin-bottom:20px;
+}
+.depo-mini .depo-autor{padding-top:16px}
+
+.placeholder-aviso{
+  margin-top:24px;
+  font-size:0.78rem;
+  color:var(--texto-suave);
+  font-style:italic;
+  text-align:center;
+  opacity:.65;
+}
+
+.credenciais{
+  margin-top:80px;
+  background:var(--branco-quente);
+  border-radius:24px;
+  padding:48px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:48px;
+  align-items:center;
+}
+.cred-foto{
+  width:120px;height:120px;
+  border-radius:50%;
+  background:linear-gradient(135deg, var(--rosa-poeira), var(--terracota));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--display);
+  color:var(--branco-quente);
+  font-size:2.6rem;
+  font-style:italic;
+  font-weight:500;
+}
+.cred-info h3{
+  font-family:var(--display);
+  color:var(--marrom-quente);
+  font-size:1.6rem;
+  margin-bottom:0.4rem;
+}
+.cred-info p{
+  color:var(--texto-suave);
+  font-size:0.95rem;
+  line-height:1.55;
+  max-width:520px;
+}
+
+/* ============================================
+   DOBRA 5 — CONVITE / OBJEÇÕES + FORMULÁRIO
+============================================ */
+.convite{
+  background:
+    linear-gradient(180deg, var(--branco-quente) 0%, var(--bege-medio) 100%);
+  padding:130px 0 100px;
+  position:relative;
+  overflow:hidden;
+}
+.convite::before{
+  content:"";
+  position:absolute;
+  top:10%;right:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(232,197,179,.4), transparent 70%);
+  border-radius:50%;
+}
+
+.convite-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+  position:relative;
+  z-index:2;
+}
+
+.convite-text h2{
+  color:var(--marrom-quente);
+  margin-bottom:1.5rem;
+}
+.convite-text h2 em{
+  font-style:italic;
+  color:var(--terracota-escuro);
+}
+.convite-text > p{
+  color:var(--texto-suave);
+  font-size:1.05rem;
+  margin-bottom:2.5rem;
+  max-width:480px;
+}
+
+.objecoes{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  margin-bottom:2rem;
+}
+.obj{
+  background:var(--branco-quente);
+  border-radius:14px;
+  padding:20px 24px;
+  cursor:pointer;
+  transition:all .3s;
+  border:1px solid transparent;
+}
+.obj:hover{border-color:var(--terracota);box-shadow:0 8px 20px rgba(61,46,38,.06)}
+.obj-pergunta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+.obj-pergunta strong{
+  color:var(--marrom-quente);
+  font-weight:600;
+  font-size:0.98rem;
+}
+.obj-toggle{
+  font-family:var(--display);
+  color:var(--terracota);
+  font-size:1.6rem;
+  line-height:1;
+  transition:transform .3s;
+  flex-shrink:0;
+}
+.obj.aberto .obj-toggle{transform:rotate(45deg)}
+.obj-resposta{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease, margin-top .3s;
+}
+.obj.aberto .obj-resposta{
+  max-height:260px;
+  margin-top:14px;
+}
+.obj-resposta p{
+  color:var(--texto-suave);
+  font-size:0.92rem;
+  line-height:1.6;
+}
+
+/* FORMULÁRIO */
+.form-card{
+  background:var(--branco-quente);
+  border-radius:28px;
+  padding:48px;
+  box-shadow:0 32px 70px rgba(61,46,38,.12);
+  position:relative;
+}
+.form-card::before{
+  content:"";
+  position:absolute;
+  top:-12px;left:48px;
+  background:var(--terracota);
+  color:var(--branco-quente);
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  padding:8px 16px;
+  border-radius:20px;
+}
+.form-card[data-label]::before{content:attr(data-label)}
+
+.form-card h3{
+  font-family:var(--display);
+  color:var(--marrom-quente);
+  font-size:1.9rem;
+  margin-bottom:0.6rem;
+  line-height:1.2;
+}
+.form-card h3 em{font-style:italic;color:var(--terracota-escuro)}
+.form-card .form-sub{
+  color:var(--texto-suave);
+  font-size:0.95rem;
+  margin-bottom:2rem;
+  line-height:1.5;
+}
+.form-group{margin-bottom:18px}
+.form-group label{
+  display:block;
+  font-size:0.78rem;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--marrom-quente);
+  margin-bottom:8px;
+}
+.form-group input,
+.form-group select{
+  width:100%;
+  padding:16px 18px;
+  border:1.5px solid rgba(61,46,38,.15);
+  border-radius:12px;
+  font-family:var(--body);
+  font-size:1rem;
+  color:var(--marrom-quente);
+  background:var(--bege-claro);
+  transition:border-color .25s, background .25s;
+  outline:none;
+}
+.form-group input:focus,
+.form-group select:focus{
+  border-color:var(--terracota);
+  background:var(--branco-quente);
+}
+.form-group input::placeholder{color:var(--texto-suave);opacity:.6}
+
+.form-submit{
+  width:100%;
+  background:var(--terracota);
+  color:var(--branco-quente);
+  border:none;
+  padding:20px;
+  border-radius:14px;
+  font-family:var(--body);
+  font-size:1.05rem;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:12px;
+  transition:background .25s, transform .2s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.form-submit:hover{
+  background:var(--terracota-escuro);
+  transform:translateY(-1px);
+}
+
+.form-rodape{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid rgba(61,46,38,.1);
+  font-size:0.78rem;
+  color:var(--texto-suave);
+  text-align:center;
+  line-height:1.55;
+}
+.form-rodape svg{
+  display:inline-block;
+  vertical-align:middle;
+  margin-right:4px;
+}
+
+.form-success{
+  display:none;
+  text-align:center;
+  padding:40px 20px;
+}
+.form-success.ativo{display:block}
+.form-success h3{margin-bottom:1rem}
+.form-success p{color:var(--texto-suave)}
+
+/* RODAPÉ */
+.footer{
+  background:var(--marrom-quente);
+  color:var(--bege-claro);
+  padding:60px 0 32px;
+  text-align:center;
+}
+.footer .logo{color:var(--bege-claro);margin-bottom:20px;display:inline-block}
+.footer .logo span{color:var(--rosa-poeira)}
+.footer-info{
+  font-size:0.88rem;
+  opacity:.75;
+  margin-bottom:24px;
+  line-height:1.6;
+}
+.footer-info p{margin-bottom:4px}
+.footer-legal{
+  font-size:0.75rem;
+  opacity:.5;
+  padding-top:24px;
+  border-top:1px solid rgba(251,247,241,.1);
+}
+
+/* ============================================
+   RESPONSIVO
+============================================ */
+@media (max-width: 900px){
+  .hero{padding:120px 0 60px;min-height:auto}
+  .hero-grid,
+  .conflito-grid,
+  .prova-header,
+  .convite-grid{
+    grid-template-columns:1fr;
+    gap:48px;
+  }
+  .conflito-aside{position:static}
+  .metodo{grid-template-columns:1fr;gap:20px}
+  .depoimentos{grid-template-columns:1fr}
+  .credenciais{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:24px;
+    padding:36px 24px;
+  }
+  .cred-foto{margin:0 auto}
+  .conflito,.virada,.prova,.convite{padding:80px 0}
+  .form-card{padding:36px 28px}
+  .depo-principal{padding:36px 28px}
+  .hero-visual{max-width:380px;margin:0 auto}
+  .hero-badge{left:0;bottom:12px}
+  .nav-cta{display:none}
+  h1{font-size:2.4rem}
+}
+
+@media (max-width: 480px){
+  .container{padding:0 20px}
+  .hero-ctas{flex-direction:column;align-items:flex-start;gap:18px}
+  .hero-trust{gap:20px}
+  .trust-num{font-size:1.5rem}
+  .dor{padding:24px}
+  .dor-quote{font-size:1.15rem}
+  .passo{padding:32px 24px}
+  .depo-texto{font-size:1.25rem}
+  .form-card{padding:32px 22px}
+  .form-card h3{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="logo">Dra. Fernanda <span>Abdala</span></div>
+    <a href="#agendar" class="nav-cta">Agendar avaliação</a>
+  </div>
+</nav>
+
+<!-- ============================================
+     DOBRA 1 — HERO / ABERTURA MAGNÉTICA
+============================================ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">Fisioterapia pélvica · Jardins, SP</div>
+      <h1>
+        Seu corpo foi feito <em>para esse parto</em>.<br>
+        Eu só vou te lembrar disso.
+      </h1>
+      <p class="hero-sub">
+        Acompanhamento individualizado para gestantes que querem chegar ao parto normal preparadas, seguras e confiantes — sem medo de lacerar, sem escapes de urina silenciados e sem se sentir mais uma na fila.
+      </p>
+      <div class="hero-ctas">
+        <a href="#agendar" class="btn-cta">
+          Quero agendar minha avaliação
+          <span class="arrow">→</span>
+        </a>
+        <a href="#metodo" class="btn-secondary">Como funciona</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-num">1:1</span>
+          <span class="trust-label">Atendimento individual</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">+200</span>
+          <span class="trust-label">Gestantes acompanhadas*</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">Jardins</span>
+          <span class="trust-label">Consultório em SP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <!-- Ilustração SVG abstrata feminina -->
+      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FBF7F1;stop-opacity:0.4"/>
+            <stop offset="100%" style="stop-color:#A8553A;stop-opacity:0.15"/>
+          </linearGradient>
+        </defs>
+        <!-- Curva orgânica representando gestação -->
+        <path d="M 100,200 Q 80,260 100,320 Q 130,400 200,420 Q 280,400 310,320 Q 330,260 310,200 Q 280,120 200,110 Q 130,120 100,200 Z"
+              fill="url(#grad1)" opacity="0.7"/>
+        <circle cx="200" cy="280" r="80" fill="#FBF7F1" opacity="0.25"/>
+        <circle cx="200" cy="280" r="50" fill="#C97B5C" opacity="0.3"/>
+        <!-- Linhas suaves -->
+        <path d="M 60,150 Q 200,180 340,150" stroke="#FBF7F1" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <path d="M 60,380 Q 200,410 340,380" stroke="#FBF7F1" stroke-width="1.5" fill="none" opacity="0.4"/>
+      </svg>
+
+      <div class="hero-badge">
+        <div class="hero-badge-icon">F</div>
+        <div class="hero-badge-text">
+          <strong>Indicação médica</strong>
+          <span>Parceria com obstetras</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DOBRA 2 — CONFLITO / TRANSFORMAÇÃO
+============================================ -->
+<section class="conflito">
+  <div class="container conflito-grid">
+    <div class="conflito-aside">
+      <div class="eyebrow">O que ninguém te contou</div>
+      <h2>Você não está <em>exagerando</em>. Você está sendo ignorada.</h2>
+      <p>
+        Escapar urina ao tossir não é "coisa normal da gravidez". Ter medo de lacerar de novo não é frescura. Sentir que está sozinha no meio da maior transformação da sua vida não é exagero seu — é a falha de um sistema que esqueceu de te preparar.
+      </p>
+      <div class="cta-inline">
+        <span class="cta-inline-text">Vamos mudar isso?</span>
+        <a href="#agendar" class="btn-cta">Agendar avaliação <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="dores">
+      <div class="dor">
+        <p class="dor-quote">Não sei o que está acontecendo com meu corpo e ninguém me explica direito.</p>
+        <p class="dor-context">A consulta com o obstetra dura 15 minutos. Você sai com mais dúvidas do que entrou. E o corpo continua mudando todos os dias.</p>
+      </div>
+      <div class="dor">
+        <p class="dor-quote">Quero ter um parto normal, mas tenho medo de lacerar.</p>
+        <p class="dor-context">Especialmente se já passou por isso antes. O medo paralisa — e o corpo entra na sala de parto tenso, sem preparo muscular, sem repertório.</p>
+      </div>
+      <div class="dor">
+        <p class="dor-quote">Estou com escapes de urina e me disseram que é normal.</p>
+        <p class="dor-context">Não é. A incontinência urinária de urgência (IUU) na gestação tem tratamento — e quanto antes você cuidar, melhor para o seu pós-parto.</p>
+      </div>
+      <div class="dor">
+        <p class="dor-quote">Me sinto sozinha. Meu parceiro apoia, mas não entende.</p>
+        <p class="dor-context">Porque ninguém entende como é estar dentro de um corpo que muda todos os dias. Aqui, eu entendo. E é por isso que esse acompanhamento existe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DOBRA 3 — VIRADA / COMO FUNCIONA
+============================================ -->
+<section class="virada" id="metodo">
+  <div class="container">
+    <div class="virada-header">
+      <div class="eyebrow">A virada</div>
+      <h2>Existe uma profissional <em>específica</em> para preparar seu corpo para o parto.</h2>
+      <p>É a fisioterapeuta pélvica. E o trabalho começa com uma avaliação individual — não com um protocolo de prateleira.</p>
+    </div>
+
+    <div class="metodo">
+      <div class="passo">
+        <div class="passo-num">i.</div>
+        <h3>Avaliação que escuta</h3>
+        <p>Mais de uma hora dedicada a entender seu histórico, sua gestação e o que seu corpo está pedindo. Você sai sabendo o que está acontecendo — sem termo técnico solto.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-num">ii.</div>
+        <h3>Plano só seu</h3>
+        <p>Nada de exercício genérico de internet. A frequência, a intensidade e o foco do tratamento são desenhados para a sua semana gestacional, seu sintoma e seu objetivo de parto.</p>
+      </div>
+      <div class="passo">
+        <div class="passo-num">iii.</div>
+        <h3>Preparo até o parto</h3>
+        <p>Trabalho de mobilidade pélvica, respiração, alívio de desconfortos, controle de IUU e estratégias práticas para o dia do nascimento. Para você chegar lá com repertório no corpo — não só na cabeça.</p>
+      </div>
+    </div>
+
+    <div class="virada-cta">
+      <a href="#agendar" class="btn-cta">
+        Quero começar pela avaliação
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DOBRA 4 — PROVA SOCIAL
+============================================ -->
+<section class="prova">
+  <div class="container">
+    <div class="prova-header">
+      <div>
+        <div class="eyebrow">Histórias reais</div>
+        <h2>O parto que ela <em>achou que não merecia</em>.</h2>
+      </div>
+      <p>De um primeiro parto traumático ao segundo descrito como "maravilhoso" — a diferença esteve no preparo. Esse é o tipo de virada que esse trabalho permite.</p>
+    </div>
+
+    <div class="depoimentos">
+      <div class="depo-principal">
+        <p class="depo-texto">
+          Eu cheguei aqui depois de um primeiro parto difícil. Tinha medo de tudo de novo. A Dra. Fernanda me explicou cada coisa que estava acontecendo no meu corpo, me preparou de verdade. Tive o parto que eu sonhei. Foi <em>maravilhoso</em> — e foi do meu jeito.
+        </p>
+        <div class="depo-autor">
+          <div class="depo-avatar">C</div>
+          <div class="depo-info">
+            <strong>Camila R.</strong>
+            <span>Mãe da Antonella · Acompanhamento na 2ª gestação</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="depo-aside">
+        <div class="depo-mini">
+          <p class="depo-mini-texto">"Pela primeira vez em meses, alguém me ouviu sobre os escapes. E me mostrou que tinha tratamento."</p>
+          <div class="depo-autor">
+            <div class="depo-avatar">J</div>
+            <div class="depo-info">
+              <strong>Júlia M.</strong>
+              <span>28 semanas</span>
+            </div>
+          </div>
+        </div>
+        <div class="depo-mini">
+          <p class="depo-mini-texto">"Cheguei achando que era luxo. Saí entendendo que era cuidado básico que ninguém tinha me oferecido."</p>
+          <div class="depo-autor">
+            <div class="depo-avatar">M</div>
+            <div class="depo-info">
+              <strong>Mariana L.</strong>
+              <span>34 semanas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="placeholder-aviso">* Depoimentos representativos do perfil das pacientes — substituir por depoimentos reais com autorização formal antes do tráfego.</p>
+
+    <div class="credenciais">
+      <div class="cred-foto">F</div>
+      <div class="cred-info">
+        <h3>Dra. Fernanda Abdala</h3>
+        <p>Fisioterapeuta pélvica com foco em saúde da mulher e gestantes. Atendimento clínico individualizado nos Jardins (SP), em parceria com obstetras de prática humanizada. CREFITO [nº a confirmar].</p>
+      </div>
+      <a href="#agendar" class="btn-cta">Falar com a Dra.</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DOBRA 5 — CONVITE / OBJEÇÕES + FORMULÁRIO
+============================================ -->
+<section class="convite" id="agendar">
+  <div class="container convite-grid">
+    <div class="convite-text">
+      <div class="eyebrow">O próximo passo</div>
+      <h2>Antes do "está caro", deixa eu <em>te perguntar</em> uma coisa.</h2>
+      <p>
+        Você consegue se imaginar daqui a três meses, no quarto, com seu bebê no peito, dizendo: <em>"eu consegui — foi do meu jeito"</em>?<br><br>
+        Se a resposta é sim, vamos conversar. Sem compromisso, sem pressão. A avaliação é o ponto de partida.
+      </p>
+
+      <div class="objecoes">
+        <div class="obj" onclick="this.classList.toggle('aberto')">
+          <div class="obj-pergunta">
+            <strong>"Não tenho certeza se consigo manter a rotina."</strong>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-resposta">
+            <p>A frequência é definida com você, na sua realidade. Tem paciente que vem 1x por semana, tem paciente que vem a cada 15 dias. O plano se adapta à sua agenda — e não o contrário.</p>
+          </div>
+        </div>
+        <div class="obj" onclick="this.classList.toggle('aberto')">
+          <div class="obj-pergunta">
+            <strong>"Meu obstetra não falou nada sobre isso."</strong>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-resposta">
+            <p>É comum. A fisioterapia pélvica ainda é pouco indicada de forma proativa, embora a literatura científica seja sólida sobre seus benefícios na preparação para o parto. Trabalho em diálogo com seu obstetra — não no lugar dele.</p>
+          </div>
+        </div>
+        <div class="obj" onclick="this.classList.toggle('aberto')">
+          <div class="obj-pergunta">
+            <strong>"E se não funcionar comigo?"</strong>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-resposta">
+            <p>O parto é multifatorial e nenhum profissional sério promete resultado garantido. O que posso te oferecer é preparo: você chega na sala de parto sabendo o que seu corpo é capaz de fazer — e isso muda tudo, independentemente do desfecho.</p>
+          </div>
+        </div>
+        <div class="obj" onclick="this.classList.toggle('aberto')">
+          <div class="obj-pergunta">
+            <strong>"Estou em qual semana? Já é tarde?"</strong>
+            <span class="obj-toggle">+</span>
+          </div>
+          <div class="obj-resposta">
+            <p>A janela ideal é entre a 20ª e a 36ª semana, mas mesmo gestantes mais avançadas se beneficiam de orientação focada para o dia do parto. Manda sua semana gestacional no formulário que te respondo com clareza.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card" data-label="Avaliação inicial">
+      <div id="form-conteudo">
+        <h3>Vamos conversar <em>sobre o seu parto</em>?</h3>
+        <p class="form-sub">Preencha seus dados e eu te respondo pessoalmente pelo WhatsApp em até algumas horas, dentro do horário comercial.</p>
+
+        <form id="lp-form" onsubmit="enviarForm(event)">
+          <div class="form-group">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Como você gostaria de ser chamada" required>
+          </div>
+          <div class="form-group">
+            <label for="telefone">WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(11) 9 0000-0000" required>
+          </div>
+          <div class="form-group">
+            <label for="semana">Em qual fase você está?</label>
+            <select id="semana" name="semana" required>
+              <option value="">Selecione</option>
+              <option>Estou tentando engravidar / pensando no parto</option>
+              <option>1º trimestre (até 13 semanas)</option>
+              <option>2º trimestre (14 a 27 semanas)</option>
+              <option>3º trimestre (28 semanas +)</option>
+              <option>Pós-parto</option>
+            </select>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Quero agendar minha avaliação
+            <span>→</span>
+          </button>
+
+          <div class="form-rodape">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Seus dados ficam apenas comigo. Sem listas, sem spam, sem ligação não solicitada.
+          </div>
+        </form>
+      </div>
+
+      <div class="form-success" id="form-sucesso">
+        <h3>Recebi seus dados <em>com carinho</em>.</h3>
+        <p>Em breve eu te chamo no WhatsApp para conversarmos sobre a sua gestação e marcarmos sua avaliação. Enquanto isso, respire fundo — você acabou de dar um passo importante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="footer">
+  <div class="container">
+    <div class="logo">Dra. Fernanda <span>Abdala</span></div>
+    <div class="footer-info">
+      <p>Fisioterapia Pélvica · Saúde da Mulher · Gestantes</p>
+      <p>Jardim Paulista · São Paulo, SP</p>
+    </div>
+    <div class="footer-legal">
+      © 2026 Dra. Fernanda Abdala — Todos os direitos reservados.<br>
+      Os conteúdos desta página têm caráter informativo e não substituem a consulta presencial. CREFITO/COFFITO compliance.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Máscara simples de telefone
+  document.getElementById('telefone').addEventListener('input', function(e){
+    let v = e.target.value.replace(/\D/g,'');
+    if(v.length>11) v = v.slice(0,11);
+    if(v.length>10){
+      v = v.replace(/^(\d{2})(\d{1})(\d{4})(\d{4}).*/, '($1) $2 $3-$4');
+    } else if(v.length>6){
+      v = v.replace(/^(\d{2})(\d{4,5})(\d{0,4}).*/, '($1) $2-$3');
+    } else if(v.length>2){
+      v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+    } else if(v.length>0){
+      v = v.replace(/^(\d{0,2})/, '($1');
+    }
+    e.target.value = v;
+  });
+
+  function enviarForm(e){
+    e.preventDefault();
+    // Em produção: enviar via fetch ou submit nativo para o destino (WhatsApp API, CRM, etc.)
+    document.getElementById('form-conteudo').style.display = 'none';
+    document.getElementById('form-sucesso').classList.add('ativo');
+  }
+</script>
+
+</body>
+</html>
