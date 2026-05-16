@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Khaeny Santos</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.15) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.math-box{background:var(--card);padding:24px;border-radius:2px;margin-bottom:28px;border-left:3px solid var(--orange);}
+.math-box h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:16px;}
+.math-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:12px;}
+.math-row:last-child{border-bottom:none;}
+.math-row span:first-child{font-size:13px;color:var(--muted);}
+.math-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.math-row.hl span:last-child{color:var(--orange);}
+.math-row.green span:last-child{color:var(--green);}
+.math-row.total{padding-top:14px;margin-top:4px;border-top:1px solid var(--border);}
+.math-row.total span:first-child{font-weight:600;color:var(--white);}
+.math-row.total span:last-child{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--gold);}
+
+.ref-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:22px 24px;border-radius:2px;margin-bottom:28px;}
+.ref-box h3{font-size:14px;font-weight:600;color:var(--green);margin-bottom:10px;}
+.ref-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.ref-box strong{color:var(--white);font-weight:600;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-layout{display:flex;flex-direction:column;gap:28px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-breakdown{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;padding:0 24px 22px;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{flex-direction:row;align-items:start;}
+  .inv-layout>*:first-child{flex:1;}
+  .inv-layout>*:last-child{width:360px;flex-shrink:0;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Mercado Imobili&aacute;rio &middot; Maio 2026</p>
+  <h1>Khaeny Santos<br><em>Corretor de Im&oacute;veis</em></h1>
+  <p class="hero-sub">Meta Ads focado no complexo Ilha Pura — gerar intelig&ecirc;ncia de dados, qualificar leads e construir a vitrine digital que vai transformar 16 anos de experi&ecirc;ncia em vendas previs&iacute;veis.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>Verba sugerida</span><span>R$ 1.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Nicho</span><span>Ilha Pura · RJ</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- A MATEMÁTICA -->
+<section class="bg-dark">
+  <div class="sec-label">A matem&aacute;tica do mercado</div>
+  <h2 class="sec-title">Quanto vale <em>um lead qualificado</em> no imobili&aacute;rio?</h2>
+  <p class="sec-intro">Khaeny, levantamos os n&uacute;meros ao vivo na reuni&atilde;o. Com a refer&ecirc;ncia do Grupo Soma e da Naira Leite, d&aacute; para entender exatamente o que esperar.</p>
+
+  <div class="math-box">
+    <h3>Funil de refer&ecirc;ncia — mercado imobili&aacute;rio (Grupo Soma)</h3>
+    <div class="math-row"><span>Leads gerados</span><span>5.754</span></div>
+    <div class="math-row hl"><span>Visitaram o imóvel (leads qualificados)</span><span>1.223 — 21%</span></div>
+    <div class="math-row hl"><span>Compraram</span><span>205 — 16% dos qualificados</span></div>
+    <div class="math-row"><span>Leads necessários para 1 venda</span><span>~33 leads</span></div>
+    <div class="math-row"><span>CPL estimado para Ilha Pura</span><span>R$ 30–50/lead</span></div>
+    <div class="math-row green"><span>Com R$ 1.000/mês → ~30 leads → ~1 venda</span><span>Ciclo de ~60 dias</span></div>
+    <div class="math-row total"><span>Comissão sobre imóvel de R$ 700k (6%)</span><span>R$ 42.000</span></div>
+  </div>
+
+  <div class="ref-box">
+    <h3>A refer&ecirc;ncia que voc&ecirc; j&aacute; conhece: Business Brokers</h3>
+    <p>A Yasmin come&ccedil;ou sozinha investindo pouco. Hoje investe entre R$ 10.000 e R$ 20.000/m&ecirc;s e tem seis corretores trabalhando para ela. <strong>N&atilde;o foi um salto &mdash; foi construção gradual, com a verba crescendo junto com o resultado.</strong> A EmpresAtiva acompanhou esse processo desde o in&iacute;cio. Com Khaeny Santos n&atilde;o ser&aacute; diferente.</p>
+  </div>
+
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Come&ccedil;ando do zero no digital</h3><p>16 anos de carteira orgânica por indicação — e isso é o maior ativo que você tem. Significa que quem chega já vem qualificado. A EmpresAtiva replica esse filtro no digital: só leads que já têm intenção de compra chegam para conversar com você.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Ciclo de venda de ~60 dias</h3><p>Imóvel não se vende como um copo. A inteligência que a EmpresAtiva gera no primeiro mês — qual perfil clica, qual converte, qual CPL está saindo — é o que permite escalar a verba com segurança no segundo e terceiro mês.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Ilha Pura como gancho — Estrada dos Bandeirantes como portf&oacute;lio</h3><p>Com R$ 1.000, a verba vai concentrada em um produto (Ilha Pura). Se o lead não fechar lá, Khaeny já tem opções na Estrada dos Bandeirantes — não perde o cliente. A EmpresAtiva estrutura o formulário para capturar o perfil e redirecionar quando necessário.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Instagram pessoal virando vitrine profissional</h3><p>O perfil atual tem lifestyle — viagens, fotos bem produzidas, estética que já comunica sofisticação. Isso é o ativo certo para o público de R$ 500k–1M. A EmpresAtiva organiza o perfil, arquiva o que não faz sentido e monta a vitrine para receber o tráfego pago.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads para <em>Khaeny Santos Im&oacute;veis</em></h2>
+  <p class="sec-intro">Quatro camadas para gerar intelig&ecirc;ncia no primeiro m&ecirc;s, qualificar os leads e construir a estrutura que vai crescer junto com o resultado.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Reestrutura&ccedil;&atilde;o da vitrine — Instagram profissional</h3><div class="strat-tag gold">Base</div></div>
+      <p>O Instagram atual (lifestyle, viagens, fotos bem produzidas) j&aacute; tem a est&eacute;tica certa para o p&uacute;blico de R$ 500k–1M. A EmpresAtiva arquiva o que n&atilde;o se encaixa, organiza o perfil com bio clara ("16 anos no mercado imobili&aacute;rio &middot; Especialista em Ilha Pura &middot; Zona Oeste RJ"), e monta os primeiros destaques. Equipe de design entrega a identidade visual para o feed. Quando o an&uacute;ncio levar o lead ao perfil, ele vai encontrar uma vitrine que refor&ccedil;a a confiança — n&atilde;o uma conta come&ccedil;ando do zero.</p>
+      <div class="strat-example"><span>Primeiro post fixado: quem é Khaeny Santos — 16 anos de mercado, especialista em Ilha Pura, ex-sócia de imobiliária consolidada, agora com CNPJ próprio. Autoridade antes do anúncio.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Meta Ads — Ilha Pura como produto de entrada</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Campanha focada em um produto: Ilha Pura. Formato em terceira pessoa — foco no imóvel, não na corretora — como você mesma preferiu na reunião e como o perfil Quadra 6 provou que funciona. Carrossel com fotos do produto, metragem, localização e diferencial ("a 5 minutos do Ilha Pura"). Segmentação para perfil de renda compatível com ticket R$ 500k–1M, zona oeste e adjacências. Formulário de qualificação antes do contato com você.</p>
+      <div class="strat-example"><span>Anúncio: "Apartamento Ilha Pura — 3 quartos, 89m², pronto para morar. Veja os detalhes →" Clicou? Formulário pergunta: tempo de compra, condição de pagamento, se mora ou quer morar na Zona Oeste. Lead qualificado vai para o WhatsApp de Khaeny com esse contexto já preenchido.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>4 criativos/m&ecirc;s — imagens e v&iacute;deos do produto</h3><div class="strat-tag">Criativos</div></div>
+      <p>A equipe de design da EmpresAtiva produz 4 pe&ccedil;as por m&ecirc;s: carross&eacute;is de produto (fotos do im&oacute;vel, planta, localiza&ccedil;&atilde;o), reels/v&iacute;deos em terceira pessoa mostrando os detalhes do Ilha Pura, e pe&ccedil;as institucionais de posicionamento de Khaeny Santos. Voc&ecirc; aprova antes de subir. A/B cont&iacute;nuo para identificar qual formato gera mais leads qualificados.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Dashboard + relat&oacute;rio semanal</h3><div class="strat-tag">Dados</div></div>
+      <p>Relat&oacute;rio em tempo real: CPL, leads gerados, taxa de qualifica&ccedil;&atilde;o, perfil dos leads (prazo de compra, condi&ccedil;&atilde;o de pagamento). Micro-relat&oacute;rio semanal no WhatsApp — direto e objetivo. No m&ecirc;s 2, com os dados reais do Ilha Pura, a gente apresenta o cen&aacute;rio de escala: quantos leads por m&ecirc;s, qual o CPL real e quanto investir para escalar o resultado.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que Khaeny <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📸</div><div><h3>Reestrutura&ccedil;&atilde;o do Instagram</h3><p>Arquivamento do pessoal, bio profissional, destaques organizados e identidade visual para o feed. Vitrine pronta antes do primeiro anúncio.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — Ilha Pura</h3><p>Campanha em terceira pessoa focada no imóvel, não na corretora. Segmentação de renda e localização. Formulário de qualificação antes do contato.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 criativos/m&ecirc;s</h3><p>Carross&eacute;is de produto, reels do Ilha Pura e pe&ccedil;as institucionais. Equipe de design da EmpresAtiva. Aprovação de Khaeny antes de subir.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📋</div><div><h3>Formul&aacute;rio de qualifica&ccedil;&atilde;o</h3><p>Prazo de compra, condi&ccedil;&atilde;o de pagamento e perfil do lead capturado antes do primeiro contato com Khaeny. Sem lead frio chegando no WhatsApp.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔔</div><div><h3>Alerta de lead no WhatsApp</h3><p>Notifica&ccedil;&atilde;o com nome, produto de interesse e respostas do formul&aacute;rio. Khaeny entra em contato j&aacute; sabendo o perfil do lead.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>CPL, leads qualificados, criativos campe&otilde;es. Relat&oacute;rio semanal no WhatsApp — sem planilha complicada.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Come&ccedil;ar pequeno, <em>crescer com dados</em></h2>
+  <p class="sec-intro">Como discutimos na reuni&atilde;o: R$ 1.000 de verba para gerar intelig&ecirc;ncia no primeiro m&ecirc;s. Quando o padr&atilde;o estiver mapeado, a gente escala junto.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div style="background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;">
+        <h3 style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:18px;">Composi&ccedil;&atilde;o do fee mensal</h3>
+        <div class="inv-breakdown">
+          <div class="inv-line"><span>Gest&atilde;o Meta Ads</span><span>R$ 997</span></div>
+          <div class="inv-line" style="border-bottom:none;padding-top:14px;border-top:1px solid var(--border);"><span style="font-weight:600;color:var(--white);font-size:13px;">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 997</span></div>
+        </div>
+        <div class="inv-media" style="margin-top:0;">
+          <span>Verba sugerida (pago direto ao Meta)</span>
+          <span>R$ 1.000/m&ecirc;s</span>
+        </div>
+      </div>
+
+      <div class="variavel-box">
+        <h4>Quando escalar (m&ecirc;s 2 em diante)</h4>
+        <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 997</span></div>
+        <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+        <div class="var-row"><span>Ex: investe R$ 2.000 → excedente R$ 1.000</span><span>+ R$ 200 → ag&ecirc;ncia R$ 1.197</span></div>
+        <div class="var-row"><span>Por qu&ecirc;?</span><span>Se voc&ecirc; escala, &eacute; porque est&aacute; vendendo</span></div>
+      </div>
+
+      <div style="background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.15);padding:22px 24px;border-radius:2px;margin-top:2px;">
+        <h4 style="font-size:14px;font-weight:600;color:var(--green);margin-bottom:10px;">Contrato de 6 meses</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;">Fidelidade de 6 meses com aviso prévio após esse prazo, sem multa. No mercado imobiliário, o ciclo de ~60 dias significa que os primeiros resultados de fechamento aparecem no mês 2 ou 3. 6 meses é o tempo certo para validar e escalar. <strong style="color:var(--white);">Sem letras miúdas — o que foi acordado, foi acordado.</strong></p>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta Ads — Khaeny Santos Im&oacute;veis</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">por m&ecirc;s &middot; contrato 6 meses</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Reestruturação do Instagram profissional</li>
+            <li>Identidade visual + bio + destaques</li>
+            <li>Meta Ads — Ilha Pura (em terceira pessoa)</li>
+            <li>Formulário de qualificação antes do contato</li>
+            <li>4 criativos/mês (carrossel + vídeo)</li>
+            <li>Alerta de lead qualificado no WhatsApp</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relatório semanal no WhatsApp</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba sugerida (pago ao Meta)</span>
+          <span>R$ 1.000/m&ecirc;s</span>
+        </div>
+      </div>
+      <div class="inv-note">In&iacute;cio em at&eacute; 2 dias &uacute;teis &middot; Vitrine no ar em 5 dias &middot; Campanhas ativas em 7 dias</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do contrato ao <em>primeiro lead qualificado</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Hoje</span><h3>Khaeny faz a limpeza do Instagram</h3><p>Arquiva posts pessoais que não se encaixam na vitrine profissional. Mantém o estilo lifestyle que já funciona — viagens, fotos produzidas. Envia acesso ao gerenciador de anúncios e fotos disponíveis do Ilha Pura para os criativos.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 1–5</span><h3>Vitrine Profissional</h3><p>Bio com posicionamento claro, destaques organizados (Ilha Pura, Sobre, Contato), identidade visual aplicada ao feed. Post de apresentação fixado: quem é Khaeny Santos e por que ela é referência em Ilha Pura.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–7</span><h3>Campanha no Ar</h3><p>Meta Ads ativo com o primeiro criativo de Ilha Pura. Formulário de qualificação configurado. Alerta de lead no WhatsApp ativo. Khaeny começa a receber leads com perfil, prazo de compra e condição de pagamento já preenchidos.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relat&oacute;rio + Cen&aacute;rio de Escala</h3><p>CPL real do Ilha Pura, perfil dos leads qualificados, criativos campeões. Com esses dados, a EmpresAtiva apresenta o cenário de escala para o mês 2 — quanto investir para aumentar o volume de leads sem perder a qualidade.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>16 anos de experi&ecirc;ncia.<br><em>Agora com visibilidade digital.</em></h2>
+  <p>Khaeny Santos j&aacute; sabe vender im&oacute;vel — faz isso h&aacute; 16 anos. A EmpresAtiva coloca essa experi&ecirc;ncia na frente do comprador certo de Ilha Pura, com a estrutura digital que transforma tráfego em leads qualificados e leads em visitas agendadas.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Vamos come&ccedil;ar
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
