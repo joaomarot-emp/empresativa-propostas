@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Grupo Carioca Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(232,103,26,0.14) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.tres-marcas{display:flex;flex-direction:column;gap:2px;margin-bottom:44px;}
+.marca-item{background:var(--card);padding:24px;border-left:3px solid transparent;display:flex;gap:18px;align-items:flex-start;}
+.marca-item.m1{border-left-color:var(--orange);}
+.marca-item.m2{border-left-color:var(--gold);}
+.marca-item.m3{border-left-color:var(--green);}
+.marca-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.marca-item h3{font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.marca-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.marca-item strong{color:var(--orange);}
+
+.prob-list{display:flex;flex-direction:column;gap:2px;margin-bottom:28px;}
+.prob-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.prob-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.prob-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.prob-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.green{background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);color:var(--green);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-layout{display:flex;flex-direction:column;gap:28px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:58px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-breakdown{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.contrato-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.15);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.contrato-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.contrato-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.contrato-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .prob-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{flex-direction:row;align-items:start;}
+  .inv-layout>*:first-child{flex:1;}
+  .inv-layout>*:last-child{width:360px;flex-shrink:0;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Arquitetura de Receita &middot; Mega Hair &middot; Maio 2026</p>
+  <h1>Grupo<br><em>Carioca Hair</em></h1>
+  <p class="hero-sub">Estrutura completa de tráfego pago, CRM, qualificação e playbook comercial — para colocar cliente na cadeira da Carioca Hair, escalar as unidades e estruturar o B2B da Mega Carioca — deixando de depender de uma agência engessada.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Arquitetura de Receita</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 2.497</span></div>
+    <div class="pill"><span>Verba inclusa at&eacute;</span><span>R$ 5.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Contrato inicial</span><span>3 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- AS 3 MARCAS -->
+<section class="bg-dark">
+  <div class="sec-label">O ecossistema</div>
+  <h2 class="sec-title">Duas marcas, <em>uma arquitetura</em></h2>
+  <p class="sec-intro">Leonardo, a EmpresAtiva entende que o Grupo Carioca n&atilde;o &eacute; um sal&atilde;o — s&atilde;o duas frentes distintas que precisam de estrat&eacute;gias, criativos e funis separados.</p>
+
+  <div class="tres-marcas">
+    <div class="marca-item m1">
+      <div class="marca-icon">💇</div>
+      <div>
+        <h3>Carioca Hair — <strong>Foco principal</strong></h3>
+        <p>Sal&atilde;o especializado em mega hair. Unidade de Caxias ativa, Recreio abrindo, Madureira e Downtown planejados. <strong>Prioridade 1: encher a cadeira.</strong> Margem maior, fidelização natural via manutenção, produto âncora para upsell dos demais serviços. O tráfego pago começa aqui.</p>
+      </div>
+    </div>
+    <div class="marca-item m2">
+      <div class="marca-icon">🪡</div>
+      <div>
+        <h3>Mega Carioca — Atacado B2B</h3>
+        <p>Fornecedor de cabelo brasileiro de alta qualidade. Ciclo longo e recorrente, cliente esconde o fornecedor por ser vantagem competitiva. Campanha separada, formulário condicional para donos de salão, nurturing de longo prazo. A EmpresAtiva j&aacute; atende Jan Mota e Anne R Hair — o mercado conhece a qualidade.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- O QUE ESTAVA ERRADO -->
+  <div class="sec-label" style="margin-top:0">O que a agência anterior errou</div>
+  <h2 class="sec-title" style="font-size:clamp(22px,5vw,34px);">O diagn&oacute;stico <em>honesto</em></h2>
+  <p class="sec-intro">Trinta minutos de conversa foram suficientes para entender onde o servi&ccedil;o anterior estava falhando.</p>
+  <div class="prob-list">
+    <div class="prob-item"><div class="prob-num">01</div><div><h3>Agência engessada</h3><p>Duas campanhas fixas por empresa, campanhas sazonais como "extra cobrado à parte", reunião mensal sem feedback operacional. Após 3 meses, ainda perguntando se a Mega Carioca vende cabelo de outras origens.</p></div></div>
+    <div class="prob-item"><div class="prob-num">02</div><div><h3>145 leads em 3 meses para 2 marcas</h3><p>Com R$ 2.000/mês investidos = CPL médio ~R$ 41. Volume baixo, 5 vendas fechadas. O problema não era o time comercial — eram os leads chegando sem qualificação de marketing.</p></div></div>
+    <div class="prob-item"><div class="prob-num">03</div><div><h3>Social media e tráfego falando línguas diferentes</h3><p>A ação do Dia das Mães (filmagem, marido com flores, videomake) ficou sem campanha de tráfego para amplificar. As duas equipes operavam em silos — sem calendário editorial integrado.</p></div></div>
+    <div class="prob-item"><div class="prob-num">04</div><div><h3>Zero alinhamento com o time comercial</h3><p>Reuniões mensais insuficientes para colher feedback de lead quality. Sem presença do comercial na leitura de performance, o ajuste de rota sempre chegava tarde — uma semana ou mais de investimento perdido.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Arquitetura</div>
+  <h2 class="sec-title">Como a EmpresAtiva <em>trabalha diferente</em></h2>
+  <p class="sec-intro">Sete camadas integradas — do an&uacute;ncio ao fechamento — com o time comercial presente em todas as leituras de performance.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Meta Ads — Carioca Hair (foco em cadeira)</h3><div class="strat-tag">Prioridade 1</div></div>
+      <p>Campanhas por est&aacute;gio de p&uacute;blico: frio (storytelling de transforma&ccedil;&atilde;o — alopecia, p&oacute;s-Covid, antes/depois), morno (retargeting de visitantes e interagentes) e quente (remarketing de leads que n&atilde;o fecharam). Formul&aacute;rio condicional antes do WhatsApp — filtra localiza&ccedil;&atilde;o (Caxias, Recreio, Madureira) e perfil de orçamento. Campanhas sazonais j&aacute; no calend&aacute;rio: Dia dos Namorados, Black Friday e datas de lançamento de unidades.</p>
+      <div class="strat-example"><span>O que foi para o Dia das Mães não acontece mais: calendário editorial e campanha de tráfego são construídos juntos, um mês antes. A ação na loja tem anúncio rodando no mesmo dia.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Google Ads — Carioca Hair (busca local por unidade)</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>O site da Carioca R est&aacute; ficando pronto — a campanha de Google Ads vai capturar quem pesquisa "mega hair Recreio", "mega hair Caxias" e termos relacionados. A agência anterior não fazia Google. A EmpresAtiva integra os dois canais com dashboards unificados para você ver de onde vem cada lead.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Meta Ads — Mega Carioca (B2B, donos de salão)</h3><div class="strat-tag gold">B2B</div></div>
+      <p>P&uacute;blico segmentado: donos e gestores de sal&atilde;o que trabalham com mega hair. V&iacute;deos endere&ccedil;ados ao dono — sem revelar fornecedor, sem comprometer a confidencialidade que os clientes exigem. Formulário condicional para filtrar quem &eacute; B2B de verdade. Ciclo longo — nurturing estruturado no CRM para manter o lead aquecido at&eacute; a primeira compra.</p>
+      <div class="strat-example"><span>"Zero processos e zero reclamações em 7 anos" — essa é a mensagem central para o B2B. Procedência, ética e consistência. Sem expor clientes.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Google Business Profile — todas as unidades</h3><div class="strat-tag">Org&acirc;nico</div></div>
+      <p>Mega Carioca e Carioca Hair com categorias corrigidas, fotos atualizadas, vídeos inseridos e postagens mensais. Estratégia de avaliações positivas integrada ao fluxo pós-atendimento — o time comercial aciona o pedido de avaliação após cada serviço. Autoridade orgânica que complementa o tráfego pago sem custo adicional de anúncio.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>CRM integrado — Como CRM com desconto de parceiro</h3><div class="strat-tag gold">CRM</div></div>
+      <p>A EmpresAtiva é parceira do Como CRM — 35% de desconto na mensalidade + acesso de usuário de marketing dentro do perfil de Leonardo sem custo adicional. Funis separados por frente (Carioca Hair — sal&atilde;o e tecimento; Mega Carioca — venda B2B), segmenta&ccedil;&atilde;o de n&uacute;meros por servi&ccedil;o, rota de leads via bot. Feedback quinzenal entre marketing e comercial com log de qualidade de lead: aceite, motivo de recusa, etapa do funil onde trava.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">06</div><h3>Playbook comercial + cadência de ligações</h3><div class="strat-tag gold">Comercial</div></div>
+      <p>Script para SDR e closer: objeções mapeadas por frente, cadência de ligação ativa (priorizando hor&aacute;rios em que os leads respondem — inclusive noturno), protocolo de resposta em at&eacute; 5 minutos para lead quente. Benchmark de convers&atilde;o: 8,69% de lead para venda — meta quinzenal revisada em reuni&atilde;o com o time comercial presente.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">07</div><h3>Reuni&otilde;es quinzenais com comercial obrigat&oacute;rio</h3><div class="strat-tag">Governan&ccedil;a</div></div>
+      <p>O que faltou na agência anterior: call de 15 minutos quinzenalmente com o comercial presente. Pauta: leads da quinzena, taxa de contato, agendamento, comparecimento e venda. Log de mudanças de criativos — o que mudou, quando mudou e qual foi o impacto. Sem surpresas, sem "mas a gente n&atilde;o sabia" depois de 3 meses.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que Leonardo <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — Carioca Hair + Mega Carioca</h3><p>Campanhas por est&aacute;gio (frio/morno/quente), formul&aacute;rio condicional, criativos por frente e calend&aacute;rio editorial integrado com social media.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔍</div><div><h3>Google Ads — Carioca Hair</h3><p>Busca local por unidade (Recreio, Caxias, Madureira). Integra&ccedil;&atilde;o com o site que est&aacute; ficando pronto. Dashboards unificados com Meta.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>Criativos por frente</h3><p>Imagens, carross&eacute;is e edi&ccedil;&atilde;o de v&iacute;deo por marca. Rota&ccedil;&atilde;o semanal com log de mudan&ccedil;as e impactos. Varia&ccedil;&otilde;es sazonais no calend&aacute;rio.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business Profile otimizado</h3><p>Categorias corrigidas, fotos e v&iacute;deos, postagens mensais e estrat&eacute;gia de avalia&ccedil;&otilde;es integrada ao fluxo p&oacute;s-atendimento.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">⚙️</div><div><h3>CRM — Como (35% desconto)</h3><p>Funis separados por frente, usu&aacute;rio de marketing da EmpresAtiva incluso, rota de leads por bot, segmenta&ccedil;&atilde;o de n&uacute;meros.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🤖</div><div><h3>Agente de IA — SDR 24/7</h3><p>Qualifica&ccedil;&atilde;o autom&aacute;tica de leads. Triagem por marca (Carioca Hair ou Mega Carioca). Alerta para o time comercial com contexto j&aacute; mapeado.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📋</div><div><h3>Playbook comercial</h3><p>Script por frente, cadência de ligação ativa com hor&aacute;rios otimizados, protocolo de follow-up e objeções mapeadas.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + reuni&otilde;es quinzenais</h3><p>Tempo real: CPL, leads por frente, taxa de convers&atilde;o. Reuni&otilde;es quinzenais com comercial obrigat&oacute;rio. Relat&oacute;rio semanal no WhatsApp.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Arquitetura completa. <em>Sem engessar.</em></h2>
+  <p class="sec-intro">Leonardo, caro &eacute; o que n&atilde;o se paga. O que a gente acordou na visita: estrutura completa com contrato inicial de 3 meses — feedback formal ao fim e decis&atilde;o conjunta de continuidade.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div style="background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;">
+        <h3 style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:18px;">Composi&ccedil;&atilde;o mensal</h3>
+        <div class="inv-breakdown">
+          <div class="inv-line"><span>Meta Ads — Carioca Hair + Mega Carioca</span><span>incluso</span></div>
+          <div class="inv-line"><span>Google Ads — Carioca Hair</span><span>incluso</span></div>
+          <div class="inv-line"><span>Criativos por frente (imagem + vídeo)</span><span>incluso</span></div>
+          <div class="inv-line"><span>Google Business Profile (todas as unidades)</span><span>incluso</span></div>
+          <div class="inv-line"><span>CRM Como (35% desconto + usuário marketing)</span><span>incluso</span></div>
+          <div class="inv-line"><span>Agente de IA — SDR 24/7</span><span>incluso</span></div>
+          <div class="inv-line"><span>Playbook comercial + reuni&otilde;es quinzenais</span><span>incluso</span></div>
+          <div class="inv-line" style="border-bottom:none;padding-top:14px;border-top:1px solid var(--border);"><span style="font-weight:600;color:var(--white);font-size:13px;">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 2.497</span></div>
+        </div>
+        <div class="inv-media" style="margin-top:0;">
+          <span>Verba de m&iacute;dia inclusa at&eacute; (pago ao Meta + Google)</span>
+          <span>R$ 5.000/m&ecirc;s</span>
+        </div>
+      </div>
+
+      <div class="variavel-box">
+        <h4>Acima de R$ 5.000 de verba</h4>
+        <div class="var-row"><span>At&eacute; R$ 5.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 2.497</span></div>
+        <div class="var-row"><span>Excedente acima de R$ 5.000</span><span>+ 20% sobre o excedente</span></div>
+        <div class="var-row"><span>Ex: investe R$ 7.000 → excedente R$ 2.000</span><span>+ R$ 400 → ag&ecirc;ncia R$ 2.897</span></div>
+        <div class="var-row"><span>Por qu&ecirc;?</span><span>Mais verba = mais campanhas e mais complexidade</span></div>
+      </div>
+
+      <div class="contrato-box">
+        <h4>Contrato inicial de 3 meses — como combinado na visita</h4>
+        <p>3 meses com feedback formal ao fim. Nesse per&iacute;odo a gente estrutura os funis, treina o time comercial, define o ICP de cada frente e valida o CPL real por marca. <strong>Ao fim dos 3 meses, decis&atilde;o conjunta: continua, ajusta escopo ou encerra.</strong> Sem pegadinha contratual. O que foi falado na visita &eacute; o que est&aacute; aqui.</p>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Arquitetura de Receita — Grupo Carioca Hair</div>
+        <div class="inv-price"><sub>R$</sub> 2.497</div>
+        <div class="inv-period">por m&ecirc;s &middot; contrato 3 meses &middot; verba at&eacute; R$ 5k inclusa</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Tudo incluso</h4>
+          <ul>
+            <li>Meta Ads — Carioca Hair + Mega Carioca</li>
+            <li>Google Ads — Carioca Hair (busca local)</li>
+            <li>Criativos por frente (imagem + vídeo)</li>
+            <li>Calendário editorial integrado com social media</li>
+            <li>Google Business Profile — todas as unidades</li>
+            <li>CRM Como (35% desconto + usuário marketing)</li>
+            <li>Agente de IA — SDR 24/7</li>
+            <li>Playbook comercial por marca</li>
+            <li>Reuniões quinzenais com comercial</li>
+            <li>Dashboard + relatório semanal no WhatsApp</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Verba de m&iacute;dia (pago ao Meta + Google)</span>
+          <span>at&eacute; R$ 5.000/m&ecirc;s incluso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do contrato ao <em>primeiro lead por frente</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 1</span><h3>Onboarding T&eacute;cnico</h3><p>Acesso às contas de anúncio (Meta e Google), CRM Como, site da Carioca R e perfis do Google Business. ICP por frente definido com Leonardo e equipe comercial. Calendário editorial integrado com social media para os próximos 30 dias — incluindo Dia dos Namorados.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 2</span><h3>Estrutura + Campanhas no Ar</h3><p>Formulários condicionais configurados por frente. Agente de IA treinado com os três fluxos. Google Business das unidades atualizado. Campanhas de Meta e Google Ads ativas — com relatório semanal no WhatsApp desde o primeiro lead.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Quinzena 1</span><h3>Primeira Reuni&atilde;o de Performance</h3><p>Leonardo + comercial + EmpresAtiva. Pauta: leads por frente, taxa de contato, onde estão travando, ajuste de criativos e segmentação. O que mudou na campanha e por quê — sem surpresas.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Fim do M&ecirc;s 3</span><h3>Feedback Formal + Decis&atilde;o Conjunta</h3><p>CPL real por frente, taxa de conversão, leads qualificados vs. total, unidades escalando. Com os dados dos 3 meses, decisão conjunta sobre escopo, verba e continuidade da parceria.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Leonardo, a roda j&aacute; gira.<br><em>Agora &eacute; encher a cadeira.</em></h2>
+  <p>7 anos de mercado, Jan Mota e Anne R Hair como clientes do atacado, expans&atilde;o em andamento. O que faltava era uma ag&ecirc;ncia que n&atilde;o engessa — que entende as duas marcas, fala com o comercial e ajusta antes de perder um m&ecirc;s de investimento.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
