@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Braports — Locação e venda de veículos de carga em todo o Rio de Janeiro. Fiorino, Bongo, 3/4, Toco, Truck e Bitruck. Contrato flexível, manutenção mensal e garantia de troca em 72h.">
-<title>Braports — A solução ideal para o seu negócio</title>
+<meta name="description" content="Braports — Locação e venda de caminhões e equipamentos no Rio de Janeiro. Contrato flexível a partir de 6 meses, manutenção mensal inclusa e troca garantida em 72h. 15 anos de mercado.">
+<title>Braports — Sua operação não pode parar. A nossa frota não deixa.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -391,6 +391,32 @@
   }
   .path-garantia strong { color: var(--azul-luminoso); font-weight: 700; }
 
+  .path-passos {
+    margin-bottom: 22px;
+    padding-top: 8px;
+  }
+  .path-passos-title {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+  }
+  .passo {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    font-size: 14px; color: rgba(255,255,255,0.92);
+    border-bottom: 1px dashed rgba(255,255,255,0.12);
+  }
+  .passo:last-child { border-bottom: none; }
+  .passo-num {
+    width: 26px; height: 26px;
+    background: var(--azul-luminoso); color: var(--azul-profundo);
+    border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px;
+    font-family: var(--font-display);
+  }
+
   .path-cta {
     width: 100%;
     background: var(--branco); color: var(--azul-profundo);
@@ -457,7 +483,7 @@
 
   .selos {
     display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 16px; margin-bottom: 60px;
+    gap: 16px; margin-bottom: 48px;
   }
   @media (max-width: 800px) { .selos { grid-template-columns: repeat(2, 1fr); } }
   .selo {
@@ -523,6 +549,219 @@
     transition: transform .2s;
   }
   .felipe-cta:hover { transform: translateY(-2px); }
+
+  /* CASE DO ARMAZÉM — prova social principal */
+  .case-armazem {
+    background: var(--branco);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-card);
+    border-top: 6px solid var(--azul-claro);
+    margin-bottom: 50px;
+  }
+  .case-badge {
+    display: inline-block;
+    background: var(--azul-profundo); color: var(--branco);
+    padding: 6px 14px; border-radius: 50px;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .case-grid {
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 32px; align-items: center;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 700px) {
+    .case-grid { grid-template-columns: 1fr; text-align: center; }
+    .case-armazem { padding: 28px; }
+  }
+  .case-numero {
+    text-align: center;
+    padding: 24px;
+    background: linear-gradient(160deg, var(--azul-profundo), var(--azul-marca));
+    border-radius: var(--radius-md);
+    color: var(--branco);
+  }
+  .case-numero-valor {
+    font-family: var(--font-display);
+    font-size: 76px; font-weight: 800;
+    line-height: 0.9; color: var(--azul-luminoso);
+  }
+  .case-numero-valor span {
+    font-size: 36px; margin-left: 4px;
+  }
+  .case-numero-label {
+    font-size: 13px; margin-top: 10px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.35;
+  }
+  .case-fala {
+    font-size: 16px; line-height: 1.6;
+    color: var(--grafite);
+    margin-bottom: 18px;
+  }
+  .case-assinatura {
+    display: flex; align-items: center; gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--cinza-borda);
+  }
+  @media (max-width: 700px) {
+    .case-assinatura { justify-content: center; }
+  }
+  .case-cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--azul-claro); color: var(--branco);
+    padding: 14px 26px; border-radius: 10px;
+    font-weight: 700; font-size: 14px;
+    text-decoration: none;
+    transition: background .2s, transform .2s;
+    border: none; cursor: pointer;
+    font-family: var(--font-body);
+  }
+  .case-cta:hover {
+    background: var(--azul-marca);
+    transform: translateY(-2px);
+  }
+
+  /* BLOCO TRANSFORMAÇÃO CLT → AGREGADO */
+  .transformacao {
+    background: linear-gradient(160deg, var(--azul-profundo) 0%, var(--azul-marca) 100%);
+    border-radius: var(--radius-lg);
+    padding: 44px;
+    color: var(--branco);
+    position: relative; overflow: hidden;
+  }
+  .transformacao::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .transformacao > * { position: relative; }
+  .transformacao-header { text-align: center; margin-bottom: 36px; }
+  .transformacao-eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--azul-luminoso);
+    margin-bottom: 12px;
+    padding: 6px 14px;
+    background: rgba(74,158,255,0.12);
+    border: 1px solid rgba(74,158,255,0.3);
+    border-radius: 50px;
+  }
+  .transformacao-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800; line-height: 1.05;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .transformacao-title .destaque { color: var(--azul-luminoso); }
+  .transformacao-comparativo {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px; align-items: stretch;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 800px) {
+    .transformacao-comparativo {
+      grid-template-columns: 1fr;
+    }
+    .seta-transforma {
+      transform: rotate(90deg);
+      justify-self: center;
+    }
+  }
+  .lado {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+  }
+  .lado-antes {
+    border-color: rgba(255,255,255,0.2);
+    opacity: 0.85;
+  }
+  .lado-depois {
+    background: rgba(74,158,255,0.12);
+    border-color: var(--azul-luminoso);
+    box-shadow: 0 8px 30px rgba(74,158,255,0.25);
+  }
+  .lado-rotulo {
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 14px;
+  }
+  .lado-depois .lado-rotulo { color: var(--azul-luminoso); }
+  .lado-valor {
+    font-family: var(--font-display);
+    font-size: 48px; font-weight: 800;
+    line-height: 1; margin-bottom: 6px;
+  }
+  .lado-depois .lado-valor { color: var(--azul-luminoso); }
+  .lado-valor-detalhe {
+    font-size: 18px; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+  }
+  .lado-detalhe {
+    font-size: 13px; color: rgba(255,255,255,0.7);
+    margin-bottom: 18px;
+  }
+  .lado-lista {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .lado-lista li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    font-size: 14px; line-height: 1.45;
+    color: rgba(255,255,255,0.88);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .lado-lista li:last-child { border-bottom: none; }
+  .lado-antes .lado-lista li::before {
+    content: "✗"; position: absolute; left: 0;
+    color: rgba(255,255,255,0.4); font-weight: 700;
+  }
+  .lado-depois .lado-lista li::before {
+    content: "✓"; position: absolute; left: 0;
+    color: var(--azul-luminoso); font-weight: 800;
+  }
+  .seta-transforma {
+    font-family: var(--font-display);
+    font-size: 60px; font-weight: 300;
+    color: var(--azul-luminoso);
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+  .transformacao-rodape {
+    text-align: center;
+    font-size: 17px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .transformacao-rodape strong {
+    color: var(--azul-luminoso);
+    font-weight: 700;
+  }
+  .transformacao .case-cta {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    background: var(--branco);
+    color: var(--azul-profundo);
+    padding: 16px 32px;
+    font-size: 15px;
+  }
+  .transformacao .case-cta:hover {
+    background: var(--azul-luminoso);
+    color: var(--azul-profundo);
+  }
 
   /* ============ DOBRA 5 — CONVITE / FORMULÁRIO ============ */
   .convite {
@@ -762,10 +1001,10 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="hero-tag">Atendemos todo o Rio de Janeiro</span>
-        <h1>A frota completa<br>que o seu negócio precisa <span class="destaque">— alugue ou compre.</span></h1>
+        <span class="hero-tag">15 anos no mercado · Todo o Rio de Janeiro</span>
+        <h1>Sua operação <span class="destaque">não pode parar.</span><br>A nossa frota não deixa.</h1>
         <p class="hero-sub">
-          Do Fiorino ao Bitruck, com ou sem motorista. <strong>Locação a partir de 6 meses</strong> com manutenção mensal inclusa, ou <strong>venda direta de seminovos</strong> com procedência. Tudo em uma só empresa.
+          Locação flexível de caminhões e equipamentos a partir de <strong>6 meses</strong>, com manutenção mensal inclusa e <strong>troca garantida em 72h</strong>. Também vendemos seminovos da nossa própria frota — com procedência comprovada.
         </p>
         <div class="hero-ctas">
           <a href="#convite" class="btn btn-primary btn-arrow" data-tipo="locacao">Quero ALUGAR um veículo</a>
@@ -773,8 +1012,8 @@
         </div>
         <div class="hero-trust">
           <span class="hero-trust-item">Frota rastreada e 100% segurada</span>
-          <span class="hero-trust-item">Atendimento rápido</span>
-          <span class="hero-trust-item">Sem burocracia</span>
+          <span class="hero-trust-item">Manutenção inclusa</span>
+          <span class="hero-trust-item">Resposta em horas, não em semanas</span>
         </div>
       </div>
       <div class="hero-visual">
@@ -837,25 +1076,25 @@
   <div class="container">
     <div class="section-header reveal">
       <div class="eyebrow">O problema do mercado</div>
-      <h2 class="section-title">O mercado deixou seu negócio <span class="destaque">amarrado.</span></h2>
-      <p class="section-lead">Locadoras pedem contrato de 36 meses. Concessionária desvaloriza 40% na troca. Locação diária é cara e travada. Resultado: motoristas e empresários perdem dinheiro todo mês esperando uma solução real.</p>
+      <h2 class="section-title">Locadora gigante te <span class="destaque">amarra.</span> Frota própria te <span class="destaque">drena.</span></h2>
+      <p class="section-lead">Quem precisa rodar no Rio sabe: ou aceita contrato de 36 meses da Localiza e Vamos, ou paga o preço alto da frota própria com manutenção, depreciação e capital parado. A Braports nasceu pra resolver os dois lados.</p>
     </div>
 
     <div class="dores-grid">
       <div class="dor reveal">
         <div class="dor-num">01</div>
-        <div class="dor-title">Contrato eterno nas grandes locadoras</div>
-        <p class="dor-text">Localiza, Vamos e outras só fecham com 12 a 36 meses. Quem precisa de menos tempo ou flexibilidade fica de fora — e perde a operação.</p>
+        <div class="dor-title">"Meu caminhão quebrou e eu estou parado."</div>
+        <p class="dor-text">Cada hora de operação travada vira multa contratual com o embarcador, motorista ocioso e cliente final reclamando. As grandes locadoras levam <strong>semanas</strong> pra responder uma urgência — quando respondem.</p>
       </div>
       <div class="dor reveal">
         <div class="dor-num">02</div>
-        <div class="dor-title">Desvalorização de 30%–40% na troca</div>
-        <p class="dor-text">Quem renova frota pela concessionária aceita o veículo seminovo bem abaixo do valor real. Margem que devia ser sua fica na mão da revenda.</p>
+        <div class="dor-title">"Operação parada custa mais que locação."</div>
+        <p class="dor-text">Faça a conta: 24h parado &gt; multa + cliente perdido + motorista ocioso. Em 2 dias parados, o custo já passa de qualquer locação mensal. E na frota própria ainda tem manutenção + depreciação + capital imobilizado.</p>
       </div>
       <div class="dor reveal">
         <div class="dor-num">03</div>
-        <div class="dor-title">Caminhão parado é dinheiro perdendo valor</div>
-        <p class="dor-text">Manutenção, seguro, IPVA, garagem. Cada dia parado é prejuízo. E quando quebra, encontrar substituição rápida no Rio é quase impossível.</p>
+        <div class="dor-title">"Sei dirigir, mas não consigo comprar caminhão."</div>
+        <p class="dor-text">Crédito negado, sem entrada, sem avalista. As locadoras tradicionais não atendem motorista autônomo — só fazem 12 a 36 meses. Resultado: o motorista fica preso no CLT ganhando R$ 2.500 quando podia faturar 3x mais agregando.</p>
       </div>
     </div>
 
@@ -880,7 +1119,7 @@
       <div class="path path-locacao reveal" id="path-locacao">
         <span class="path-badge">Para quem quer rodar</span>
         <h3 class="path-title">Locação Flexível<br>de Frota</h3>
-        <p class="path-desc">Alugue o veículo certo para a sua operação — do Fiorino ao Bitruck. Sem burocracia das grandes locadoras, com a flexibilidade que o seu negócio precisa.</p>
+        <p class="path-desc">Alugue o veículo certo para a sua operação — do Fiorino ao Bitruck, com ou sem motorista. Para empresas que precisam escalar sem amarrar capital e para motoristas que querem agregar em transportadora grande.</p>
 
         <ul class="path-bullets">
           <li><strong>Contrato a partir de 6 meses</strong> — sem ficar preso por 3 anos</li>
@@ -891,6 +1130,13 @@
 
         <div class="path-garantia">
           <strong>🛡 Garantia Braports:</strong> se a manutenção não for concluída em <strong>até 72 horas</strong>, fornecemos um veículo substituto sem custo adicional. Sua operação não para.
+        </div>
+
+        <div class="path-passos">
+          <div class="path-passos-title">Como começar em 3 passos</div>
+          <div class="passo"><span class="passo-num">1</span>Fale com o Felipe pelo WhatsApp e diga o modelo que precisa</div>
+          <div class="passo"><span class="passo-num">2</span>Receba a proposta com valor mensal e condições do calção</div>
+          <div class="passo"><span class="passo-num">3</span>Documentação assinada e veículo entregue em até 48h</div>
         </div>
 
         <button class="path-cta" data-tipo="locacao" onclick="abrirFormulario('locacao')">Solicitar orçamento de Locação</button>
@@ -924,9 +1170,9 @@
 <section class="prova">
   <div class="container">
     <div class="section-header reveal">
-      <div class="eyebrow">A frota da Braports</div>
-      <h2 class="section-title">Uma frota completa <span class="destaque">para qualquer operação</span></h2>
-      <p class="section-lead">Do pequeno empresário ao motorista autônomo que quer ser o próprio patrão — temos o veículo certo para cada perfil de negócio.</p>
+      <div class="eyebrow">Quem confia na Braports</div>
+      <h2 class="section-title">Frota completa e <span class="destaque">resultado comprovado.</span></h2>
+      <p class="section-lead">Do Fiorino ao Bitruck — temos o veículo certo para cada operação. E quem nos contrata para resolver, sai transformando a operação inteira.</p>
     </div>
 
     <!-- Frota visual -->
@@ -1036,17 +1282,63 @@
       </div>
     </div>
 
-    <!-- Quem assina -->
-    <div class="felipe-card reveal">
-      <div class="felipe-avatar">FA</div>
-      <div>
-        <div class="felipe-nome">Felipe Almeida</div>
-        <div class="felipe-cargo">Especialista em Transportes e Logística — Braports</div>
-        <p class="felipe-fala">A Braports nasceu para resolver o que o mercado não resolveu: dar acesso a frota de qualidade para quem quer trabalhar, sem amarrar o cliente a contratos engessados.</p>
+    <!-- Case real anonimizado: armazém 80% -->
+    <div class="case-armazem reveal">
+      <div class="case-badge">Case real · Cliente Braports</div>
+      <div class="case-grid">
+        <div class="case-numero">
+          <div class="case-numero-valor">80<span>%</span></div>
+          <div class="case-numero-label">de redução no tempo de operação no armazém</div>
+        </div>
+        <div class="case-corpo">
+          <p class="case-fala">Cliente do setor logístico estava com a operação travada: empilhadeiras paradas, separação atrasando, caminhões esperando na fila. Em poucos dias substituímos o maquinário, mantivemos a frota operando — e em algumas semanas o tempo de separação e carregamento caiu 80%.</p>
+          <div class="case-assinatura">
+            <div class="felipe-avatar">FA</div>
+            <div>
+              <div class="felipe-nome">Felipe Almeida</div>
+              <div class="felipe-cargo">Especialista em Transportes e Logística — Braports</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <a href="https://wa.me/5521964357696?text=Ol%C3%A1!%20Quero%20falar%20com%20o%20Felipe%20da%20Braports." class="felipe-cta" target="_blank" rel="noopener">
-        Falar com Felipe
+      <a href="https://wa.me/5521964357696?text=Ol%C3%A1!%20Quero%20conhecer%20outros%20cases%20da%20Braports." class="case-cta" target="_blank" rel="noopener">
+        Quero um diagnóstico da minha operação →
       </a>
+    </div>
+
+    <!-- Bloco CLT → Agregado (para motorista autônomo) -->
+    <div class="transformacao reveal">
+      <div class="transformacao-header">
+        <span class="transformacao-eyebrow">Para o motorista que quer parar de trabalhar pros outros</span>
+        <h3 class="transformacao-title">De CLT a agregado: a matemática <span class="destaque">que muda sua vida.</span></h3>
+      </div>
+      <div class="transformacao-comparativo">
+        <div class="lado lado-antes">
+          <div class="lado-rotulo">Hoje · CLT</div>
+          <div class="lado-valor">R$ 2.500</div>
+          <div class="lado-detalhe">salário fixo mensal</div>
+          <ul class="lado-lista">
+            <li>Plafond intransponível há anos</li>
+            <li>Horário do patrão, não o seu</li>
+            <li>Sem perspectiva de crescer</li>
+          </ul>
+        </div>
+        <div class="seta-transforma">→</div>
+        <div class="lado lado-depois">
+          <div class="lado-rotulo">Com Braports · Agregado</div>
+          <div class="lado-valor">R$ 8.000<span class="lado-valor-detalhe"> líquidos</span></div>
+          <div class="lado-detalhe">faturando como dono do seu horário</div>
+          <ul class="lado-lista">
+            <li>Diárias de R$ 1.300 em transportadora grande</li>
+            <li>22 dias úteis × R$ 1.300 = R$ 28.600 brutos</li>
+            <li>Menos locação Braports + combustível: <strong>~R$ 8.000 líquidos</strong></li>
+          </ul>
+        </div>
+      </div>
+      <p class="transformacao-rodape">
+        <strong>Sem precisar comprar caminhão.</strong> Sem análise de crédito reprovada. Sem entrada de R$ 80 mil.
+      </p>
+      <a href="#convite" class="case-cta" data-tipo="locacao">Quero ver como começar →</a>
     </div>
   </div>
 </section>
@@ -1056,14 +1348,14 @@
   <div class="container">
     <div class="convite-grid">
       <div class="reveal">
-        <span class="hero-tag">Resposta rápida no WhatsApp</span>
-        <h2 class="convite-headline">A escolha certa para <span class="destaque">mover seu negócio.</span></h2>
-        <p class="convite-sub">Deixe nome e telefone abaixo. Em poucos minutos, um especialista da Braports entra em contato para entender sua operação e enviar o melhor orçamento.</p>
+        <span class="hero-tag">Resposta rápida pelo WhatsApp</span>
+        <h2 class="convite-headline">Sua operação espera <span class="destaque">por uma resposta agora.</span></h2>
+        <p class="convite-sub">Deixe nome e WhatsApp abaixo. Um especialista da Braports vai te ligar para entender sua operação e enviar uma proposta sob medida. Sem call center, sem robô, sem letra miúda.</p>
         <ul class="convite-promessas">
-          <li>Atendimento por especialista — não por robô genérico</li>
-          <li>Orçamento sob medida para sua operação</li>
-          <li>Sem pegadinha, sem letra miúda</li>
-          <li>Atendemos toda a região metropolitana do Rio</li>
+          <li>Atendimento direto com Felipe Almeida — especialista em transportes e logística</li>
+          <li>Orçamento sob medida para sua operação (locação ou compra)</li>
+          <li>Veículo na sua porta em até 48h após documentação assinada</li>
+          <li>15 anos de mercado · Atendemos todo o Rio de Janeiro</li>
         </ul>
       </div>
 
