@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Delicata</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--rose:#C0726A;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.13) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:8px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-italian{font-family:var(--font-mono);font-size:11px;letter-spacing:0.22em;color:var(--muted);text-transform:lowercase;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .35s;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.cenario-box{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);padding:26px 24px;border-radius:2px;margin-bottom:28px;}
+.cenario-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--gold);margin-bottom:12px;}
+.cenario-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.cenario-box strong{color:var(--white);}
+
+.timeline-prep{display:flex;flex-direction:column;gap:2px;margin-bottom:28px;}
+.tp-item{background:var(--card);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;}
+.tp-mes{font-family:var(--font-display);font-size:16px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:80px;}
+.tp-item h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.tp-item p{font-size:12px;color:var(--muted);line-height:1.65;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.diag-item strong{color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-layout{display:flex;flex-direction:column;gap:28px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.nota-box{background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.12);padding:20px 24px;border-radius:2px;margin-top:2px;}
+.nota-box h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.nota-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.nota-box strong{color:var(--orange);}
+
+.tl-list{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.tl-list::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{flex-direction:row;align-items:start;}
+  .inv-layout>*:first-child{flex:1;}
+  .inv-layout>*:last-child{width:360px;flex-shrink:0;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Conversar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Mega Hair &middot; Barra Ol&iacute;mpica</p>
+  <h1><em>Delicata</em></h1>
+  <p class="hero-italian">dal italiano — delicada, refinada, boutique</p>
+  <p class="hero-sub">Meta Ads estruturado para a inaugura&ccedil;&atilde;o de setembro — com a cadeira cheia desde o primeiro dia, sem depend&ecirc;ncia de indica&ccedil;&atilde;o e sem expor o projeto antes da hora.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>Verba sugerida</span><span>R$ 500–1.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Inaugura&ccedil;&atilde;o</span><span>Setembro 2026</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CENÁRIO + CRONOGRAMA -->
+<section class="bg-dark">
+  <div class="sec-label">Cen&aacute;rio</div>
+  <h2 class="sec-title">Agosto prep. <em>Setembro abre.</em></h2>
+  <p class="sec-intro">Fabiene, entendemos exatamente onde voc&ecirc; est&aacute;: capital se esgota em agosto, obra nos finalmentes, inaugura&ccedil;&atilde;o em setembro. A estrat&eacute;gia tem que respeitar esse ritmo.</p>
+
+  <div class="cenario-box">
+    <h3>O contexto que a EmpresAtiva entende</h3>
+    <p>Obra com arquiteto e projeto, 3 cadeiras, 27m² na Barra Ol&iacute;mpica. Presta&ccedil;&atilde;o de R$2.500/m&ecirc;s. Capital integralmente alocado na estrutura. <strong>O tráfego pago entra em agosto — um m&ecirc;s antes da inaugura&ccedil;&atilde;o</strong> — para que no dia que a Delicata abrir as portas j&aacute; existam mulheres na fila de espera, n&atilde;o apenas na base de contatos pessoais.</p>
+  </div>
+
+  <div class="timeline-prep">
+    <div class="tp-item">
+      <div class="tp-mes">Jun–Jul</div>
+      <div>
+        <h4>Estrutura digital — sem custo de ag&ecirc;ncia</h4>
+        <p>Instagram da Delicata criado e posicionado como boutique de mega hair. Identidade visual alinhada com o conceito italiano. Primeiros posts de bastidores da obra — sem revelar localiza&ccedil;&atilde;o. Expectativa gerada antes da abertura.</p>
+      </div>
+    </div>
+    <div class="tp-item">
+      <div class="tp-mes">Agosto</div>
+      <div>
+        <h4>Tráfego pago entra — pr&eacute;-inaugura&ccedil;&atilde;o</h4>
+        <p>Meta Ads começa 30 dias antes. Campanha de pr&eacute;-cadastro: "Delicata abre em setembro — entre na lista de prioridade." Leads qualificados chegando antes da abertura. No dia 1, a agenda n&atilde;o est&aacute; vazia.</p>
+      </div>
+    </div>
+    <div class="tp-item">
+      <div class="tp-mes">Setembro</div>
+      <div>
+        <h4>Inaugura&ccedil;&atilde;o com agenda estruturada</h4>
+        <p>Campanhas de convers&atilde;o ativas. Lookalike do p&uacute;blico que j&aacute; demonstrou interesse no pr&eacute;-cadastro. Primeiras clientes agendadas, primeiros depoimentos reais, primeiros criativos com resultado.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIAGNÓSTICO -->
+  <div class="sec-label" style="margin-top:0">O que a EmpresAtiva viu</div>
+  <h2 class="sec-title" style="font-size:clamp(22px,5vw,34px);">Quatro pontos <em>para endere&ccedil;ar</em></h2>
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Instagram zero — e isso n&atilde;o precisa ser exposi&ccedil;&atilde;o</h3><p>Fabiene, voc&ecirc; mencionou que morre de vergonha de aparecer. A boa not&iacute;cia: <strong>n&atilde;o precisa aparecer para vender.</strong> A Anne R Hair e a Jan Mota aparecem porque construíram isso ao longo de anos. Uma sala boutique pode iniciar com foco no resultado das clientes — antes e depois de megahair, transforma&ccedil;&atilde;o, cabelos brasileiros do Sul. O rosto da Fabiene entra no ritmo que ela se sentir confort&aacute;vel.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Sala pequena &eacute; posicionamento, n&atilde;o limita&ccedil;&atilde;o</h3><p>27m² e 3 cadeiras n&atilde;o &eacute; pouco — &eacute; o que define a Delicata como boutique. O an&uacute;ncio comunica exclusividade: atendimento personalizado, agenda com hor&aacute;rios definidos, cabelo brasileiro selecionado. <strong>Capacidade limitada vira argumento de urg&ecirc;ncia:</strong> "Vagas limitadas — agende sua avalia&ccedil;&atilde;o."</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>A base pessoal n&atilde;o &eacute; suficiente para uma inaugura&ccedil;&atilde;o</h3><p>Voc&ecirc; j&aacute; tem clientes que acompanham desde o Werner e o Lal&aacute; Conte. Essas pessoas ir&atilde;o — mas n&atilde;o enchem uma agenda de 3 cadeiras de forma previsível. O tráfego pago traz pessoas novas no Barra Ol&iacute;mpica e adjacências que nunca ouviram falar da Fabiene e que est&atilde;o buscando mega hair agora.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Ticket m&eacute;dio alto exige segmenta&ccedil;&atilde;o precisa</h3><p>O p&uacute;blico que paga por cabelo brasileiro premium mora, trabalha ou circula na Barra da Tijuca, Barra Ol&iacute;mpica, Recreio, Jacarepagu&aacute;. O Meta Ads segmenta por renda estimada, comportamento de consumo e interesses — garantindo que o an&uacute;ncio chegue a quem tem fit com o posicionamento boutique da Delicata.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads para a <em>Delicata</em></h2>
+  <p class="sec-intro">Quatro camadas — do posicionamento ao primeiro agendamento — respeitando o capital limitado e o sigilo necess&aacute;rio at&eacute; setembro.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Posicionamento boutique antes da inaugura&ccedil;&atilde;o</h3><div class="strat-tag">Base</div></div>
+      <p>Instagram da Delicata posicionado como sal&atilde;o boutique de mega hair na Barra Ol&iacute;mpica. Criativos com foco em transforma&ccedil;&atilde;o — antes e depois de cabelos cacheados, lisos e ondulados com cabelo brasileiro do Sul. A Fabiene aparece no ritmo que quiser; o foco inicial &eacute; o resultado das clientes. Bio clara: o que &eacute;, onde &eacute;, como agendar.</p>
+      <div class="strat-example"><span>"Delicata — salão boutique de mega hair na Barra Olímpica. Atendimento exclusivo, cabelo brasileiro selecionado, 3 cadeiras. Agenda com horários definidos." Quem tem fit com o posicionamento já sente que é o lugar certo antes de clicar.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Campanha de pr&eacute;-cadastro — agosto</h3><div class="strat-tag">Pr&eacute;-inaugura&ccedil;&atilde;o</div></div>
+      <p>30 dias antes da abertura, Meta Ads com objetivo de gera&ccedil;&atilde;o de leads: "A Delicata abre em setembro — entre na lista de prioridade e garanta seu hor&aacute;rio antes de todo mundo." Formul&aacute;rio simples: nome, WhatsApp, tipo de cabelo. No dia da inaugura&ccedil;&atilde;o, existe uma lista de leads qualificados prontos para agendar. A agenda n&atilde;o come&ccedil;a do zero.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Campanha de convers&atilde;o — setembro em diante</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Formul&aacute;rio condicional com filtro de localiza&ccedil;&atilde;o (Barra Ol&iacute;mpica, Recreio, Jacarepagu&aacute;) e tipo de servi&ccedil;o desejado. Lead qualificado vai direto ao WhatsApp. Lookalike das primeiras clientes que agendaram para encontrar perfis similares. Segmenta&ccedil;&atilde;o por renda e comportamento para garantir fit com ticket m&eacute;dio elevado.</p>
+      <div class="strat-example"><span>Criativo de abertura: "Vagas limitadas — a Delicata tem apenas 3 cadeiras e atendimento com hora marcada. Seu mega hair merece uma experiência boutique." Escassez real, não apelo falso.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>GBP + Instagram vitrine</h3><div class="strat-tag gold">Autoridade</div></div>
+      <p>Google Business Profile criado e otimizado para "mega hair Barra Ol&iacute;mpica" desde agosto. Quando a cliente pesquisa antes de agendar, encontra um perfil organizado com fotos, categoria correta e avalia&ccedil;&otilde;es j&aacute; no primeiro m&ecirc;s. Cadência de pedido de avalia&ccedil;&atilde;o ap&oacute;s cada atendimento — a Delicata começa com autoridade digital desde o dia 1.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a Delicata <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🚀</div><div><h3>Campanha de pr&eacute;-cadastro (agosto)</h3><p>Lista de leads antes da inaugura&ccedil;&atilde;o. A agenda de setembro n&atilde;o come&ccedil;a vazia.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — convers&atilde;o (setembro+)</h3><p>Segmenta&ccedil;&atilde;o por localiza&ccedil;&atilde;o e renda. Formul&aacute;rio condicional. Lead qualificado vai ao WhatsApp.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 criativos/m&ecirc;s</h3><p>Foco em transforma&ccedil;&atilde;o de mega hair. A Fabiene aparece no ritmo que quiser — sem obrigatoriedade de se expor.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Instagram posicionado como boutique</h3><p>Bio, destaques e feed com identidade Delicata. Vitrine que converte antes do agendamento.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business Profile</h3><p>Criado e otimizado desde agosto. Categoria correta, fotos, cadência de avalia&ccedil;&otilde;es desde o primeiro atendimento.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Investimento, leads, custo por agendamento. Relat&oacute;rio semanal no WhatsApp — sem planilha.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Enxuto no in&iacute;cio, <em>escal&aacute;vel depois</em></h2>
+  <p class="sec-intro">Fabiene, a proposta mais simples para quem t&aacute; come&ccedil;ando — sem comprometer o caixa da abertura.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div style="background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;">
+        <h3 style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:18px;">Composi&ccedil;&atilde;o do fee mensal</h3>
+        <div style="display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-size:12px;color:var(--muted);">Gest&atilde;o Meta Ads</span><span style="font-family:var(--font-mono);font-size:13px;color:var(--white);">R$ 997</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0 0;border-top:none;margin-top:4px;"><span style="font-weight:600;color:var(--white);font-size:13px;">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 997</span></div>
+        </div>
+        <div style="margin-top:16px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;">
+          <span style="font-size:12px;color:var(--muted);">Verba sugerida (paga ao Meta)</span>
+          <span style="font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;">R$ 500–1.000/m&ecirc;s</span>
+        </div>
+      </div>
+
+      <div class="variavel-box">
+        <h4>Se a verba crescer junto com o faturamento</h4>
+        <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 997</span></div>
+        <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+        <div class="var-row"><span>Ex: investe R$ 1.500 → excedente R$ 500</span><span>+ R$ 100 → ag&ecirc;ncia R$ 1.097</span></div>
+        <div class="var-row"><span>Por qu&ecirc;?</span><span>Se escala, &eacute; porque est&aacute; faturando</span></div>
+      </div>
+
+      <div class="nota-box">
+        <h4>Quando come&ccedil;a o pagamento?</h4>
+        <p>A EmpresAtiva inicia a estrutura&ccedil;&atilde;o do Instagram e do GBP em junho/julho sem custo de ag&ecirc;ncia. <strong>O fee de R$997 começa em agosto</strong> — quando a campanha de pr&eacute;-cadastro entra no ar. Assim o capital de abril a julho fica intacto para a obra e o estoque.</p>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta Ads — Delicata Boutique</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">fee ag&ecirc;ncia/m&ecirc;s &middot; in&iacute;cio em agosto &middot; + verba ao Meta</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Campanha de pr&eacute;-cadastro (agosto)</li>
+            <li>Meta Ads convers&atilde;o (setembro+)</li>
+            <li>Segmenta&ccedil;&atilde;o por renda e localiza&ccedil;&atilde;o</li>
+            <li>Formul&aacute;rio condicional</li>
+            <li>4 criativos/mês (transforma&ccedil;&atilde;o)</li>
+            <li>Instagram posicionado como boutique</li>
+            <li>Google Business Profile criado</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relat&oacute;rio semanal no WhatsApp</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Fee come&ccedil;a</span>
+          <span>Agosto 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do "sim" ao <em>primeiro agendamento</em></h2>
+  <div class="tl-list">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Agora</span><h3>An&aacute;lise da proposta</h3><p>Fabiene avalia o plano no ritmo que a agenda permite. A EmpresAtiva est&aacute; dispon&iacute;vel para tirar d&uacute;vidas por WhatsApp — sem press&atilde;o de prazo.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Jun–Jul</span><h3>Estrutura digital (sem custo)</h3><p>Instagram da Delicata criado e posicionado. Identidade visual alinhada. Primeiros posts de bastidores da obra — sem revelar localiza&ccedil;&atilde;o ainda. GBP registrado.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Agosto</span><h3>Campanha de pr&eacute;-cadastro no ar — fee inicia</h3><p>Meta Ads começa com objetivo de pr&eacute;-cadastro. "Entre na lista de prioridade da Delicata." Leads chegando e sendo organizados antes da abertura.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Setembro</span><h3>Inaugura&ccedil;&atilde;o com agenda estruturada</h3><p>Campanha de convers&atilde;o ativa. Lookalike dos leads do pr&eacute;-cadastro. Primeiras clientes agendadas, primeiros resultados fotografados, primeiras avalia&ccedil;&otilde;es no Google.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Fabiene, delicata<br><em>&eacute; o que voc&ecirc; j&aacute; entrega.</em></h2>
+  <p>Werner, Lal&aacute; Conte, dom&iacute;lio na Ilha Pura e no Recreio, de domingo a domingo. Agora &eacute; hora de colocar o seu nome — mesmo que seja Delicata — na Barra Ol&iacute;mpica. A EmpresAtiva faz a parte digital; voc&ecirc; faz o que j&aacute; sabe: transforma&ccedil;&atilde;o de verdade.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Conversar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
