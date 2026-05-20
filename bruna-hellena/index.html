@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Studio Bruna Hellena</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.14) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.honesto-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.2);padding:26px 24px;border-radius:2px;margin-bottom:28px;}
+.honesto-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.honesto-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.honesto-box strong{color:var(--white);}
+
+.fases{display:flex;flex-direction:column;gap:2px;margin-bottom:28px;}
+.fase{background:var(--card);padding:22px 24px;border-left:3px solid transparent;display:flex;gap:16px;align-items:flex-start;}
+.fase.f1{border-left-color:var(--gold);}
+.fase.f2{border-left-color:var(--orange);}
+.fase-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px;}
+.fase.f1 .fase-lbl{color:var(--gold);}
+.fase.f2 .fase-lbl{color:var(--orange);}
+.fase-num{font-family:var(--font-display);font-size:32px;font-weight:800;line-height:1;flex-shrink:0;min-width:36px;}
+.fase.f1 .fase-num{color:rgba(201,168,76,0.2);}
+.fase.f2 .fase-num{color:rgba(232,103,26,0.2);}
+.fase h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.fase p{font-size:13px;color:var(--muted);line-height:1.7;}
+.fase strong{color:var(--white);}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.diag-item strong{color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.green{background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);color:var(--green);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-layout{display:flex;flex-direction:column;gap:28px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.conta-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.conta-box h4{font-size:14px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.conta-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.conta-row:last-child{border-bottom:none;}
+.conta-row span:first-child{font-size:12px;color:var(--muted);}
+.conta-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--green);}
+
+.tl-list{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.tl-list::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .fases{flex-direction:row;}
+  .fase{flex:1;}
+  .inv-layout{flex-direction:row;align-items:start;}
+  .inv-layout>*:first-child{flex:1;}
+  .inv-layout>*:last-child{width:360px;flex-shrink:0;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Conversar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Mega Hair &middot; S&atilde;o Gon&ccedil;alo</p>
+  <h1>Studio<br><em>Bruna Hellena</em></h1>
+  <p class="hero-sub">Meta Ads com foco em storytelling de transforma&ccedil;&atilde;o — para recuperar a visibilidade, atrair clientes de S&atilde;o Gon&ccedil;alo e reconquistar quem vinha de Cabo Frio, Niter&oacute;i e Itabora&iacute;.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>Verba sugerida</span><span>R$ 500–600/m&ecirc;s</span></div>
+    <div class="pill"><span>Nicho</span><span>Mega Hair &middot; Ponto Secret</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- HONESTIDADE + FASES -->
+<section class="bg-dark">
+  <div class="sec-label">Alinhamento</div>
+  <h2 class="sec-title">O que a EmpresAtiva <em>te falou na reuni&atilde;o</em></h2>
+  <p class="sec-intro">Bruna, a EmpresAtiva foi honesta e isso n&atilde;o muda aqui na proposta. O que foi dito fica registrado.</p>
+
+  <div class="honesto-box">
+    <h3>O que &eacute; real sobre tráfego pago</h3>
+    <p>O resultado n&atilde;o &eacute; imediato — pode acontecer r&aacute;pido, mas n&atilde;o &eacute; o padr&atilde;o. O algoritmo do Meta precisa de uma fase de aprendizado para encontrar o p&uacute;blico certo em S&atilde;o Gon&ccedil;alo. <strong>A EmpresAtiva s&oacute; faz sentido entrar se houver caixa para pelo menos 3 meses</strong> — assim a gente consegue criar intelig&ecirc;ncia, ajustar criativos e começar a colher resultado de verdade. Faturamento de R$5k: o ideal &eacute; investir no m&aacute;ximo R$500–600/m&ecirc;s em verba para n&atilde;o impactar a opera&ccedil;&atilde;o.</p>
+  </div>
+
+  <div class="fases">
+    <div class="fase f1">
+      <div class="fase-num">1</div>
+      <div>
+        <div class="fase-lbl">Antes de qualquer campanha</div>
+        <h3>Social Selling — voc&ecirc; mesma pode fazer</h3>
+        <p>Pega o conte&uacute;do que j&aacute; existe e mais engajou. Impulsiona por <strong>R$10/dia durante 7 dias</strong> (R$70 no total) segmentado para mulheres de S&atilde;o Gon&ccedil;alo e regi&atilde;o. Leva para o Instagram e converte pelo WhatsApp. Remove o Instabio da bio e deixa s&oacute; o link do WhatsApp. Enquanto isso, a EmpresAtiva manda uma aula com o passo a passo para você já começar agora.</p>
+      </div>
+    </div>
+    <div class="fase f2">
+      <div class="fase-num">2</div>
+      <div>
+        <div class="fase-lbl">Com caixa organizado para 3 meses</div>
+        <h3>Meta Ads gerenciado pela EmpresAtiva</h3>
+        <p>Campanha estruturada com storytelling de transforma&ccedil;&atilde;o, formul&aacute;rio condicional, segmenta&ccedil;&atilde;o por localiza&ccedil;&atilde;o e lookalike de quem j&aacute; interagiu. <strong>A EmpresAtiva entra quando o momento financeiro est&aacute; pronto</strong> — n&atilde;o antes. Essa &eacute; a proposta desta fase.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIAGNÓSTICO -->
+  <div class="sec-label" style="margin-top:0">O que a EmpresAtiva viu</div>
+  <h2 class="sec-title" style="font-size:clamp(22px,5vw,34px);">Seu diferencial &eacute; real — <em>s&oacute; precisa aparecer</em></h2>
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>M&eacute;todo pr&oacute;prio que poucos t&ecirc;m</h3><p>Adapta&ccedil;&atilde;o do ponto americano com desenho personalizado na cabe&ccedil;a da cliente — n&atilde;o &eacute; a coloca&ccedil;&atilde;o tradicional. <strong>Isso &eacute; diferencial de verdade.</strong> A Larissa Esp&iacute;ndola usa adesivado, atende blogueiras e tem 350k seguidores — mas &eacute; fraca em conte&uacute;do e as clientes dela percebem. Voc&ecirc; entrega um resultado diferente, para um p&uacute;blico diferente.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Clientes de longe sem tráfego pago</h3><p>Cabo Frio, S&atilde;o Pedro da Aldeia, Itabora&iacute;, Niter&oacute;i — vieram organicamente. <strong>Quando a gente anuncia para S&atilde;o Gon&ccedil;alo, que fica do lado</strong>, o potencial &eacute; ainda maior. O orgânico j&aacute; provou que o m&eacute;todo funciona e atrai — o tráfego pago amplifica isso.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Pre&ccedil;o acess&iacute;vel — e esse &eacute; um argumento forte</h3><p>Instala&ccedil;&atilde;o do m&eacute;todo por R$180. Pacote com cabelo vietnamita ~R$1.950 parcel&aacute;vel em at&eacute; 24x. A galera que vai atr&aacute;s da Larissa faz or&ccedil;amento, imagina que &eacute; caro porque &eacute; blogueira e n&atilde;o fecha. <strong>A Bruna tem qualidade e pre&ccedil;o que fecha — s&oacute; falta aparecer para quem est&aacute; buscando.</strong></p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Bloqueio criativo — resolvido com estrutura</h3><p>Tudo que voc&ecirc; precisa &eacute; de um trip&eacute;, o Cap Cut e uma cliente com hist&oacute;ria de transforma&ccedil;&atilde;o. A EmpresAtiva define a pauta criativa, o roteiro do v&iacute;deo e a estrutura do post. Voc&ecirc; grava. A gente edita e sobe. Sem depend&ecirc;ncia de social media externa.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads para o <em>Studio Bruna Hellena</em></h2>
+  <p class="sec-intro">Quatro camadas — do conte&uacute;do ao fechamento — com foco em storytelling real que converte melhor do que qualquer dancinha ou trend.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Storytelling de transforma&ccedil;&atilde;o — o conte&uacute;do que converte</h3><div class="strat-tag">Base</div></div>
+      <p>V&iacute;deos com hist&oacute;ria real: a cliente que tinha alopecia, queda p&oacute;s-covid, corte qu&iacute;mico, cabelo fino — e o que aconteceu depois do m&eacute;todo Ponto Secret. Trip&eacute; aberto, grava o processo, mostra o detalhe do desenho na cabe&ccedil;a, filma a rea&ccedil;&atilde;o. A EmpresAtiva faz a pauta, o roteiro e a edi&ccedil;&atilde;o. Voc&ecirc; grava. Esse tipo de conte&uacute;do converte mais do que 1.000 fotos est&aacute;ticas porque a mulher que t&aacute; assistindo pensa: "essa sou eu".</p>
+      <div class="strat-example"><span>"Essa cliente me procurou com queda severa pós-química. Ela chorava quando tirava o cabelo do ralo. Hoje, 3 meses depois com manutenção no Ponto Secret..." A quem tem a mesma história, esse vídeo não termina sem clicar no WhatsApp.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Meta Ads com segmenta&ccedil;&atilde;o local</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Campanha segmentada para S&atilde;o Gon&ccedil;alo, Niter&oacute;i e adjacências — o p&uacute;blico que j&aacute; veio organicamente e o que ainda n&atilde;o te conhece. Mulheres de 25–45 anos com interesse em beleza, megahair e cuidados capilares. Formul&aacute;rio condicional: filtra localiza&ccedil;&atilde;o e tipo de problema capilar. Lead qualificado vai direto ao WhatsApp da Bruna — sem intermedi&aacute;rios.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Posicionamento do Instagram — bio e perfil</h3><div class="strat-tag gold">Vitrine</div></div>
+      <p>Remove o Instabio da bio — link direto para o WhatsApp. Bio clara: o que &eacute; o Ponto Secret, para quem &eacute; e como agendar. Destaques com antes/depois, m&eacute;todo explicado e depoimentos. Quem chega pelo an&uacute;ncio precisa encontrar um perfil que confirme a autoridade — n&atilde;o um perfil parado com poucos posts.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Lookalike + retargeting para quem j&aacute; interagiu</h3><div class="strat-tag">Escala</div></div>
+      <p>Depois do primeiro m&ecirc;s, a gente cria um p&uacute;blico lookalike das mulheres que clicaram, comentaram ou foram ao WhatsApp — e o Meta vai buscar perfis similares em S&atilde;o Gon&ccedil;alo e regi&atilde;o. Retargeting para quem visitou o perfil mas n&atilde;o entrou em contato: "Ainda est&aacute; pensando? Vem conhecer o Ponto Secret." CPL cai conforme a intelig&ecirc;ncia do algoritmo matura.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que o Studio <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — segmenta&ccedil;&atilde;o local</h3><p>S&atilde;o Gon&ccedil;alo + regi&atilde;o. Formul&aacute;rio condicional. Lead qualificado vai direto ao WhatsApp.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎬</div><div><h3>Pauta + roteiro de v&iacute;deos</h3><p>A EmpresAtiva define a hist&oacute;ria, o roteiro e o que capturar. A Bruna grava. Conte&uacute;do de storytelling que converte.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 criativos/m&ecirc;s</h3><p>Edi&ccedil;&atilde;o de v&iacute;deo + imagens. Foco em antes/depois do Ponto Secret e hist&oacute;rias reais de transforma&ccedil;&atilde;o.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Instagram organizado como vitrine</h3><p>Bio com link direto para WhatsApp (sem Instabio). Destaques com m&eacute;todo, antes/depois e agendamento.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔄</div><div><h3>Lookalike + retargeting</h3><p>A partir do m&ecirc;s 2: p&uacute;blico similar ao que j&aacute; interagiu. CPL caindo conforme a intelig&ecirc;ncia matura.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Investimento, leads, custo por contato, criativos campe&otilde;es. Relat&oacute;rio semanal no WhatsApp.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Dentro do que <em>faz sentido financeiro</em></h2>
+  <p class="sec-intro">Bruna, os n&uacute;meros abaixo respeitam o que a gente conversou — 10% do faturamento em verba para n&atilde;o impactar o caixa da opera&ccedil;&atilde;o.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div style="background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;">
+        <h3 style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:18px;">Composi&ccedil;&atilde;o do fee mensal</h3>
+        <div style="display:flex;flex-direction:column;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);"><span style="font-size:12px;color:var(--muted);">Gest&atilde;o Meta Ads</span><span style="font-family:var(--font-mono);font-size:13px;color:var(--white);">R$ 997</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0 0;"><span style="font-weight:600;color:var(--white);font-size:13px;">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 997</span></div>
+        </div>
+        <div style="margin-top:16px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;">
+          <span style="font-size:12px;color:var(--muted);">Verba sugerida (paga ao Meta) &mdash; ~10% do faturamento</span>
+          <span style="font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;">R$ 500–600/m&ecirc;s</span>
+        </div>
+      </div>
+
+      <div class="conta-box">
+        <h4>Uma instala&ccedil;&atilde;o extra cobre o investimento</h4>
+        <div class="conta-row"><span>Pacote instala&ccedil;&atilde;o + cabelo vietnamita</span><span>~R$ 1.950</span></div>
+        <div class="conta-row"><span>Fee EmpresAtiva + verba (m&ecirc;s)</span><span>~R$ 1.500–1.600</span></div>
+        <div class="conta-row"><span>Resultado para empatar</span><span>1 instala&ccedil;&atilde;o/m&ecirc;s</span></div>
+        <div class="conta-row"><span>O restante das manutenes (R$180/cada)</span><span>Todo lucro</span></div>
+      </div>
+
+      <div class="variavel-box">
+        <h4>Se a verba crescer junto com o faturamento</h4>
+        <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 997</span></div>
+        <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+        <div class="var-row"><span>Por qu&ecirc;?</span><span>Se escala, &eacute; porque est&aacute; vendendo</span></div>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta Ads — Studio Bruna Hellena</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">fee ag&ecirc;ncia/m&ecirc;s &middot; + R$ 500–600 verba ao Meta</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Meta Ads — S&atilde;o Gon&ccedil;alo + regi&atilde;o</li>
+            <li>Formul&aacute;rio condicional</li>
+            <li>Pauta + roteiro de v&iacute;deos mensais</li>
+            <li>4 criativos/m&ecirc;s (edi&ccedil;&atilde;o de v&iacute;deo + imagem)</li>
+            <li>Instagram posicionado (bio + destaques)</li>
+            <li>Lookalike + retargeting (m&ecirc;s 2+)</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relat&oacute;rio semanal no WhatsApp</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Empate em</span>
+          <span>1 instala&ccedil;&atilde;o/m&ecirc;s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da an&aacute;lise ao <em>primeiro lead qualificado</em></h2>
+  <div class="tl-list">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Agora</span><h3>Social Selling — voc&ecirc; j&aacute; pode come&ccedil;ar</h3><p>Remove o Instabio da bio. Coloca s&oacute; o link do WhatsApp. Pega o conte&uacute;do que mais engajou, impulsiona por R$10/dia durante 7 dias para S&atilde;o Gon&ccedil;alo. A aula com o passo a passo chega no WhatsApp — &eacute; s&oacute; seguir.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">An&aacute;lise</span><h3>Proposta para o marido</h3><p>Bruna analisa a proposta e conversa com o marido sobre o momento certo para entrar com a EmpresAtiva. A EmpresAtiva est&aacute; dispon&iacute;vel para tirar d&uacute;vidas por WhatsApp — sem press&atilde;o.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Quando estiver pronta</span><h3>Briefing + Estrutura</h3><p>Acesso ao gerenciador de an&uacute;ncios. Bio e destaques do Instagram ajustados. Primeira pauta criativa definida com a Bruna. Campanha no ar em 7 dias.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">M&ecirc;s 1–3</span><h3>Aprendizado + Ajuste + Resultado</h3><p>Fase de aprendizado do algoritmo, ajuste de criativos e segmenta&ccedil;&atilde;o. A partir do m&ecirc;s 2, lookalike entra. M&ecirc;s 3: resultado acelerado com p&uacute;blico qualificado j&aacute; mapeado pelo Meta.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Bruna, o m&eacute;todo j&aacute; &eacute; seu.<br><em>Agora &eacute; fazer aparecer.</em></h2>
+  <p>Cabo Frio, S&atilde;o Pedro da Aldeia, Niter&oacute;i — vieram sem an&uacute;ncio. S&atilde;o Gon&ccedil;alo ainda n&atilde;o te encontrou de verdade. A EmpresAtiva muda isso — quando o momento for certo para voc&ecirc;.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20conversar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Conversar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
