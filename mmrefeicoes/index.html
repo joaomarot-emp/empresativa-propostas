@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x MM Refeições</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.15) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+/* VIABILIDADE */
+.viab-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:24px;border-radius:2px;margin-bottom:28px;}
+.viab-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:16px;}
+.viab-grid{display:flex;flex-direction:column;gap:2px;}
+.viab-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(46,204,113,0.1);}
+.viab-row:last-child{border-bottom:none;}
+.viab-row span:first-child{font-size:13px;color:var(--muted);}
+.viab-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--green);flex-shrink:0;}
+.viab-conclusion{margin-top:16px;padding-top:16px;border-top:1px solid rgba(46,204,113,0.2);font-size:13px;color:var(--muted);line-height:1.8;}
+.viab-conclusion strong{color:var(--white);}
+
+/* DIAGNÓSTICO ANOTA AÍ */
+.anotai-card{background:var(--card);border-left:3px solid var(--orange);padding:24px;margin-bottom:2px;}
+.anotai-card h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:14px;}
+.check-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);}
+.check-row:last-child{border-bottom:none;}
+.check-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.check-row p{font-size:13px;color:var(--muted);line-height:1.6;}
+.check-row p strong{color:var(--white);}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.green{background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);color:var(--green);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+/* JANELAS DE HORÁRIO */
+.janelas{display:flex;flex-direction:column;gap:2px;margin-top:14px;}
+.janela{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,0.03);padding:14px 18px;border-radius:2px;}
+.janela-time{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:100px;}
+.janela-desc{font-size:13px;color:var(--muted);}
+.janela-desc strong{color:var(--white);}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-layout{display:flex;flex-direction:column;gap:28px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-breakdown{display:flex;flex-direction:column;margin-bottom:20px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:22px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.fideliz-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.15);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.fideliz-box h4{font-size:14px;font-weight:600;color:var(--green);margin-bottom:10px;}
+.fideliz-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.fideliz-box strong{color:var(--white);}
+
+.addon-box{background:var(--card);border:1px solid rgba(201,168,76,0.2);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.addon-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.addon-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);gap:12px;}
+.addon-row:last-child{border-bottom:none;}
+.addon-row span:first-child{font-size:13px;color:var(--muted);flex:1;}
+.addon-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--gold);flex-shrink:0;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-layout{flex-direction:row;align-items:start;}
+  .inv-layout>*:first-child{flex:1;}
+  .inv-layout>*:last-child{width:360px;flex-shrink:0;}
+  .janelas{flex-direction:row;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Food &middot; Recreio &middot; Maio 2026</p>
+  <h1>MM<br><em>Refei&ccedil;&otilde;es</em></h1>
+  <p class="hero-sub">Meta Ads com campanhas nos hor&aacute;rios certos — almo&ccedil;o e noite — para migrar clientes do iFood e 99Food direto para o Anota A&iacute; e aumentar a margem em cada venda.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997</span></div>
+    <div class="pill"><span>Verba sugerida</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>Empate em</span><span>~10 refei&ccedil;&otilde;es extras/dia</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- VIABILIDADE -->
+<section class="bg-dark">
+  <div class="sec-label">Viabilidade</div>
+  <h2 class="sec-title">As contas <em>j&aacute; fecham</em></h2>
+  <p class="sec-intro">Marlon, a primeira coisa que a EmpresAtiva faz &eacute; verificar se o investimento &eacute; vi&aacute;vel para o seu neg&oacute;cio. Fizemos esse c&aacute;lculo juntos na reuni&atilde;o.</p>
+
+  <div class="viab-box">
+    <h3>C&aacute;lculo do ponto de equil&iacute;brio</h3>
+    <div class="viab-grid">
+      <div class="viab-row"><span>Investimento total mensal (fee + verba)</span><span>R$ 1.497</span></div>
+      <div class="viab-row"><span>Margem estimada por refeição (30%)</span><span>30% do ticket</span></div>
+      <div class="viab-row"><span>Vendas necessárias para cobrir o investimento</span><span>~R$ 4.990 em pedidos</span></div>
+      <div class="viab-row"><span>Prato mais vendido — frango à parmegiana</span><span>R$ 23</span></div>
+      <div class="viab-row"><span>Refei&ccedil;&otilde;es extras necess&aacute;rias para empatar</span><span>~200/m&ecirc;s</span></div>
+      <div class="viab-row"><span>Em dias &uacute;teis (seg–s&aacute;b, 22 dias)</span><span>~9–10/dia</span></div>
+    </div>
+    <div class="viab-conclusion">
+      <strong>Hoje voc&ecirc; j&aacute; vende entre 70 e 150 refei&ccedil;&otilde;es por dia.</strong> Vender mais 10 vindas do tráfego pago não &eacute; uma tarefa impossível — &eacute; um crescimento de 7 a 14%. E depois que o cliente comprou pela primeira vez e gostou, ele volta sem custo adicional de aquisi&ccedil;&atilde;o.
+    </div>
+  </div>
+
+  <!-- DIAGNÓSTICO ANOTA AÍ -->
+  <div class="sec-label" style="margin-top:0">Diagn&oacute;stico r&aacute;pido</div>
+  <h2 class="sec-title" style="font-size:clamp(22px,5vw,34px);">Anota A&iacute; + Instagram: <em>o que ajustar antes</em></h2>
+  <p class="sec-intro" style="margin-bottom:24px;">Antes de qualquer campanha rodar, dois ajustes aumentam imediatamente a convers&atilde;o de quem j&aacute; chega hoje.</p>
+
+  <div class="anotai-card">
+    <h3>Anota A&iacute; — correc&ccedil;&otilde;es priorit&aacute;rias</h3>
+    <div class="check-row"><div class="check-icon">🔴</div><p><strong>Hor&aacute;rio errado:</strong> perfil marcado para "abrir &agrave;s 8h" quando na verdade abre &agrave;s 5:30–5:40h. Pedidos sendo perdidos antes mesmo de tentar.</p></div>
+    <div class="check-row"><div class="check-icon">🔴</div><p><strong>Itens sem foto n&atilde;o vendem:</strong> os itens 7, 8 e 9 n&atilde;o t&ecirc;m imagem — e voc&ecirc; mesmo confirmou que s&atilde;o os que menos saem. Foto &eacute; desejo, &eacute; mental mesmo.</p></div>
+    <div class="check-row"><div class="check-icon">🟡</div><p><strong>Bebidas antes da comida:</strong> o cliente abre o cardápio querendo ver comida — bebida tem que ficar no final da lista. Reorganizar a ordem das categorias.</p></div>
+    <div class="check-row"><div class="check-icon">🟢</div><p><strong>Duas janelas de hor&aacute;rio j&aacute; configuradas:</strong> almo&ccedil;o e noite funcionando separados &mdash; &oacute;timo. A EmpresAtiva vai criar campanhas espec&iacute;ficas para cada janela.</p></div>
+  </div>
+
+  <div style="background:var(--card);border-left:3px solid rgba(201,168,76,0.5);padding:20px 24px;margin-top:2px;margin-bottom:0;border-radius:2px;">
+    <p style="font-size:13px;color:var(--muted);line-height:1.8;"><strong style="color:var(--gold);">Instagram:</strong> Dois posts desde a cria&ccedil;&atilde;o do perfil. A EmpresAtiva vai organizar o perfil como vitrine — bio clara, destaques com card&aacute;pio e fotos dos pratos mais vendidos — para que quem chega pelo an&uacute;ncio encontre credibilidade antes de clicar no link.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads para a <em>MM Refei&ccedil;&otilde;es</em></h2>
+  <p class="sec-intro">Tr&ecirc;s camadas — da segmenta&ccedil;&atilde;o geogr&aacute;fica &agrave; fideliza&ccedil;&atilde;o — com campanhas ligadas e desligadas no hor&aacute;rio exato em que seu p&uacute;blico tem fome.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Campanhas por janela de hor&aacute;rio</h3><div class="strat-tag">Core</div></div>
+      <p>Dois conjuntos de an&uacute;ncios com agendamento autom&aacute;tico — nenhum real desperdi&ccedil;ado fora do hor&aacute;rio de entrega.</p>
+      <div class="janelas">
+        <div class="janela"><div class="janela-time">11h &rarr; 14h</div><div class="janela-desc"><strong>Almo&ccedil;o</strong> — frango &agrave; parmegiana, pratos do dia, combos. P&uacute;blico: trabalhadores e moradores no raio de 4km que querem almo&ccedil;ar sem sair do escritório.</div></div>
+        <div class="janela"><div class="janela-time">18h &rarr; 22h</div><div class="janela-desc"><strong>Noite / Hambúrguer</strong> — combos, petiscos, lanches. P&uacute;blico: famílias e moradores da região buscando jantar em casa.</div></div>
+      </div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Segmenta&ccedil;&atilde;o geogr&aacute;fica — raio de 4km</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>An&uacute;ncios aparecem s&oacute; para quem mora ou trabalha dentro do raio de entrega: Bandeirante, Camorim, Curica, Ala M&eacute;xico, Ala Paran&aacute; — e o pr&oacute;prio Américas Even, que j&aacute; &eacute; cliente regular. Lead fora do raio n&atilde;o gasta verba. O bot&atilde;o do an&uacute;ncio vai direto para o WhatsApp ou para o card&aacute;pio do Anota A&iacute; — sem etapa extra.</p>
+      <div class="strat-example"><span>Criativo de almoço: "Frango à parmegiana por R$23 com entrega na sua porta. Peça agora no Anota Aí — sem taxa de plataforma." A mensagem fala do preço e elimina a barreira do iFood.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Fideliza&ccedil;&atilde;o — o cliente que comprou uma vez &eacute; seu para sempre</h3><div class="strat-tag green">Recorr&ecirc;ncia</div></div>
+      <p>Depois da primeira compra pelo Anota A&iacute;, o cliente entra na sua base direta — sem porcentagem de plataforma. Campanhas de remarketing aparecem para quem j&aacute; interagiu: "Faz um tempo — hoje tem frango &agrave; parmegiana." O custo por compra cai a cada m&ecirc;s conforme a base cresce. Tráfego pago paga a primeira aquisi&ccedil;&atilde;o; as pr&oacute;ximas 10, 20, 50 compras do mesmo cliente s&atilde;o de gra&ccedil;a.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que MM Refei&ccedil;&otilde;es <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — 2 janelas de hor&aacute;rio</h3><p>Almo&ccedil;o (11h–14h) e noite (18h–22h) com an&uacute;ncios separados. Verba s&oacute; roda quando voc&ecirc; est&aacute; aberto e entregando.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Segmenta&ccedil;&atilde;o geogr&aacute;fica — raio 4km</h3><p>Bandeirante, Camorim, Ala M&eacute;xico, Ala Paran&aacute;, Américas Even. Nenhum real em quem n&atilde;o pode receber entrega.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>Criativos — imagem e v&iacute;deo</h3><p>4 pe&ccedil;as por m&ecirc;s com foco nos pratos mais vendidos. Fotos que despertam desejo — igual os itens 1–5 que j&aacute; vendem mais no Anota A&iacute;.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Instagram organizado como vitrine</h3><p>Bio, destaques e posts com card&aacute;pio e pratos. Quem chega pelo an&uacute;ncio encontra credibilidade antes de clicar.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business otimizado</h3><p>Perfil atualizado com hor&aacute;rios corretos, fotos dos pratos e categoria certa para aparecer em "comida perto de mim".</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Investimento, leads, custo por pedido e criativos campe&otilde;es. Relat&oacute;rio semanal no WhatsApp — direto, sem planilha.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Simples e <em>mensur&aacute;vel</em></h2>
+  <p class="sec-intro">Marlon, os n&uacute;meros que calculamos juntos est&atilde;o aqui — formalizados para voc&ecirc; compartilhar com a sua s&oacute;cia.</p>
+
+  <div class="inv-layout">
+    <div>
+      <div style="background:var(--card);padding:24px;border-radius:2px;margin-bottom:2px;">
+        <h3 style="font-size:14px;font-weight:600;color:var(--white);margin-bottom:18px;">Composi&ccedil;&atilde;o mensal</h3>
+        <div class="inv-breakdown">
+          <div class="inv-line"><span>Gest&atilde;o Meta Ads (fee de ag&ecirc;ncia)</span><span>R$ 997</span></div>
+          <div class="inv-line"><span>Verba de an&uacute;ncios (paga ao Meta)</span><span>R$ 500</span></div>
+          <div class="inv-line" style="border-bottom:none;padding-top:14px;border-top:1px solid var(--border);"><span style="font-weight:600;color:var(--white);font-size:13px;">Total mensal</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 1.497</span></div>
+        </div>
+      </div>
+
+      <div class="fideliz-box">
+        <h4>O que acontece depois que o cliente compra pela primeira vez</h4>
+        <p>Ele entra na sua base do Anota A&iacute; direto — sem porcentagem do iFood ou 99Food. A segunda, terceira e d&eacute;cima compra n&atilde;o custam nada. <strong>O tráfego pago paga a aquisi&ccedil;&atilde;o uma vez; a recorr&ecirc;ncia &eacute; de gra&ccedil;a.</strong> Com uma m&eacute;dia de 100 refeições/dia, trazer 10 novos clientes fidelizados por m&ecirc;s j&aacute; supera o empate no terceiro m&ecirc;s.</p>
+      </div>
+
+      <div class="addon-box">
+        <h4>Add-ons dispon&iacute;veis quando quiser</h4>
+        <div class="addon-row"><span>Agente de IA — responde pedidos e d&uacute;vidas no WhatsApp automaticamente (melhor que o rob&ocirc; do Anota A&iacute;)</span><span>+ R$ 297</span></div>
+        <div class="addon-row"><span>Disparo em massa — oferta mensal para toda a base do Anota A&iacute;</span><span>+ R$ 300</span></div>
+      </div>
+    </div>
+
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Meta Ads — MM Refei&ccedil;&otilde;es</div>
+        <div class="inv-price"><sub>R$</sub> 997</div>
+        <div class="inv-period">fee ag&ecirc;ncia/m&ecirc;s &middot; + R$ 500 verba &middot; total R$ 1.497</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso no plano</h4>
+          <ul>
+            <li>Meta Ads — 2 janelas de hor&aacute;rio (almo&ccedil;o + noite)</li>
+            <li>Segmentação geográfica raio 4km</li>
+            <li>4 criativos/mês (imagem + vídeo)</li>
+            <li>Instagram organizado como vitrine</li>
+            <li>Google Business otimizado</li>
+            <li>Dashboard em tempo real</li>
+            <li>Relatório semanal no WhatsApp</li>
+          </ul>
+        </div>
+        <div class="inv-media">
+          <span>Empate em</span>
+          <span>~10 refei&ccedil;&otilde;es extras/dia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da decis&atilde;o ao <em>primeiro pedido pelo tráfego</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Amanh&atilde;</span><h3>Decis&atilde;o com a s&oacute;cia</h3><p>Marlon compartilha esta proposta com a esposa. A EmpresAtiva envia uma mensagem de acompanhamento para tirar qualquer d&uacute;vida antes da decis&atilde;o.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 1–3</span><h3>Briefing + Ajustes no Anota A&iacute;</h3><p>Acesso ao gerenciador de an&uacute;ncios do Instagram. Hor&aacute;rio do Anota A&iacute; corrigido. Fotos dos itens 7, 8 e 9 produzidas. Bebidas movidas para o final da lista.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 4–7</span><h3>Criativos + Campanhas no Ar</h3><p>Criativos de almo&ccedil;o e hambúrguer produzidos. Meta Ads ativo com as duas janelas de hor&aacute;rio. Instagram com bio e destaques organizados. Google Business atualizado.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 2</span><h3>Primeiro Relat&oacute;rio Semanal</h3><p>Investimento, pedidos gerados, custo por pedido, criativo campe&atilde;o. A EmpresAtiva j&aacute; apresenta os ajustes da semana 2 para maximizar o retorno.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Balan&ccedil;o do M&ecirc;s</h3><p>Pedidos do tráfego vs. meta de 200/m&ecirc;s. Novos clientes fidelizados no Anota A&iacute;. Decis&atilde;o de manter verba, escalar ou adicionar Google Ads.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Marlon, 10 pratos extras<br><em>por dia mudam o jogo.</em></h2>
+  <p>Voc&ecirc; j&aacute; vende entre 70 e 150 refei&ccedil;&otilde;es por dia. Trazer 10 a mais vindas do tráfego pago empata o investimento — e cada cliente que compra pelo Anota A&iacute; &eacute; seu para sempre, sem pagar porcentagem pro iFood.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Vamos come&ccedil;ar
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
