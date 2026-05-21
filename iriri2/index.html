@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Iriri Barbearia</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.15) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,9vw,72px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.unidades{display:flex;flex-direction:column;gap:2px;margin-bottom:28px;}
+.unidade{background:var(--card);padding:28px 24px;border-left:4px solid transparent;position:relative;}
+.unidade.u1{border-left-color:var(--orange);}
+.unidade.u2{border-left-color:var(--gold);}
+.unidade-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;}
+.unidade.u1 .unidade-lbl{color:var(--orange);}
+.unidade.u2 .unidade-lbl{color:var(--gold);}
+.unidade h3{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);margin-bottom:10px;}
+.unidade p{font-size:13px;color:var(--muted);line-height:1.75;}
+.unidade strong{color:var(--white);font-weight:600;}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;border-left:3px solid transparent;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.green{background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);color:var(--green);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* TABELA DE PREÇO POR UNIDADE */
+.preco-table{background:var(--card);border-radius:2px;overflow:hidden;margin-bottom:2px;}
+.preco-hdr{background:rgba(232,103,26,0.08);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.preco-hdr span:first-child{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);}
+.preco-hdr span:last-child{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.preco-row{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border);gap:12px;}
+.preco-row:last-child{border-bottom:none;}
+.preco-row .nome{font-size:13px;color:var(--white);}
+.preco-row .nome small{display:block;font-size:11px;color:var(--muted);margin-top:2px;}
+.preco-row .val{font-family:var(--font-display);font-size:22px;font-weight:800;flex-shrink:0;}
+.preco-row.u1 .val{color:var(--orange);}
+.preco-row.u2 .val{color:var(--gold);}
+.preco-row.total-row{background:rgba(255,255,255,0.02);border-top:2px solid var(--border);}
+.preco-row.total-row .nome{font-weight:700;color:var(--white);font-size:14px;}
+.preco-row.total-row .val{font-size:28px;color:var(--green);}
+
+.addon-box{background:var(--card);border:1px solid rgba(201,168,76,0.2);padding:22px 24px;border-radius:2px;margin-bottom:2px;}
+.addon-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.addon-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:12px;}
+.addon-row:last-child{border-bottom:none;}
+.addon-row span:first-child{font-size:13px;color:var(--muted);}
+.addon-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--gold);flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.trints-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.trints-box h4{font-size:14px;font-weight:600;color:var(--green);margin-bottom:10px;}
+.trints-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.trints-box strong{color:var(--white);}
+
+.contrato-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.15);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.contrato-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.contrato-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.contrato-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .unidades{flex-direction:row;}
+  .unidade{flex:1;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com João Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Barbearia &middot; Maio 2026</p>
+  <h1>Iriri<br><em>Barbearia</em></h1>
+  <p class="hero-sub">Meta Ads para duas unidades — Shopping Metropolitano e Center Shop — duas unidades, dois neg&oacute;cios independentes — cada um com o seu pr&oacute;prio investimento em marketing, dividido igualmente entre os s&oacute;cios.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads &middot; 2 unidades</span></div>
+    <div class="pill"><span>Metropolitano</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Center Shop</span><span>R$ 498,50/m&ecirc;s</span></div>
+    <div class="pill"><span>Social Media</span><span>R$ 500/loja/m&ecirc;s</span></div>
+    <div class="pill"><span>Por neg&oacute;cio</span><span>R$ 1.247,75/m&ecirc;s</span></div>
+    <div class="pill"><span>Total geral</span><span>R$ 2.495,50/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- AS 2 UNIDADES -->
+<section class="bg-dark">
+  <div class="sec-label">As duas unidades</div>
+  <h2 class="sec-title">Dois neg&oacute;cios, <em>dois p&uacute;blicos</em></h2>
+  <p class="sec-intro">Nilson, a estrat&eacute;gia de ter contas separadas por unidade &eacute; a certa — igual o Werner faz. A EmpresAtiva gerencia cada neg&oacute;cio de forma independente, com o seu pr&oacute;prio marketing e o seu pr&oacute;prio custo dividido entre os s&oacute;cios.</p>
+
+  <div class="unidades">
+    <div class="unidade u1">
+      <div class="unidade-lbl">Prioridade 1 &mdash; Foco imediato</div>
+      <h3>Shopping Metropolitano</h3>
+      <p>Nova unidade, R$ 41k investidos na obra, parceria com Vaguinho. <strong>Objetivo: girar capital r&aacute;pido.</strong> Homens que j&aacute; frequentam o Metropolitano, moram ou trabalham na regi&atilde;o. Campanha de aquisi&ccedil;&atilde;o agressiva para encher a cadeira desde a inaugura&ccedil;&atilde;o. Os 15-16k clientes do Trints v&atilde;o receber anuncio de remarketing: "Estamos no Metropolitano — vem visitar nossa nova casa."</p>
+    </div>
+    <div class="unidade u2">
+      <div class="unidade-lbl">Unidade 2 &mdash; 50% de desconto</div>
+      <h3>Center Shop</h3>
+      <p>Unidade j&aacute; ativa, base de clientes estabelecida. Campanha de manuten&ccedil;&atilde;o e reativa&ccedil;&atilde;o — reaparecer para quem j&aacute; conhece a Iriri, trazer novos clientes da regi&atilde;o do Center Shop e manter o fluxo enquanto o Metropolitano ganha traction. P&uacute;blicos completamente separados do Metropolitano.</p>
+    </div>
+  </div>
+
+  <!-- DIAGNÓSTICO -->
+  <div class="sec-label" style="margin-top:0">Diagn&oacute;stico</div>
+  <h2 class="sec-title" style="font-size:clamp(22px,5vw,34px);">O que a gente <em>resolve</em></h2>
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Sem tráfego pago estruturado</h3><p>Quem fazia antes "falava que fazia" — sem Facebook Ads funcionando, sem segmentação geográfica por unidade, sem relatório de resultado. A EmpresAtiva entrega campanha ativa no Facebook e Instagram com público segmentado por shopping e região.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>16k clientes no Trints parados</h3><p>Base enorme sendo subutilizada. Esses números vão para o Meta como público personalizado — campanhas de remarketing aparecem só para quem j&aacute; &eacute; cliente da Iriri. Custo por lead m&iacute;nimo, convers&atilde;o máxima.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Avalia&ccedil;&otilde;es negativas maliciosas no Google</h3><p>43 avaliações no Madureira Shopping — pessoas que nunca foram clientes. A solução não é reclamar: é criar uma cadência pós-serviço para que cada cliente satisfeito avalie no Google. De 43 para 400+ avaliações, as maliciosas ficam invisíveis.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Metropolitano inaugurando sem clientes</h3><p>R$ 41k investidos na obra. A barbearia não pode inaugurar esperando o boca a boca. Campanha de pré-inaugura&ccedil;&atilde;o no Meta para criar expectativa na região do shopping e trazer os clientes do Barra Shop para o novo endereço.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads para a <em>Iriri Barbearia</em></h2>
+  <p class="sec-intro">Cinco camadas — do an&uacute;ncio &agrave; cadeira cheia — com as duas unidades gerenciadas de forma independente.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Meta Ads — Metropolitano (aquisi&ccedil;&atilde;o + pr&eacute;-inaugura&ccedil;&atilde;o)</h3><div class="strat-tag">Prioridade</div></div>
+      <p>Campanha de aquisi&ccedil;&atilde;o para homens na &aacute;rea do Shopping Metropolitano — moram, trabalham ou frequentam o shopping. Formul&aacute;rio ou direto ao WhatsApp para agendar. Campanha de remarketing para a base do Trints: "A Iriri tá no Metropolitano — vem conhecer." Criativos mostrando o novo espaço, servi&ccedil;os diferenciados (camuflagem, barboterapia, camuflagem de barba) e a mini poltrona infantil como diferencial de conveniência para pais.</p>
+      <div class="strat-example"><span>Criativo de pré-inauguração: "A Iriri chegou no Metropolitano. Novo espaço, mesmo DNA. Agenda seu horário antes de abrir as portas." Gera expectativa antes da inauguração — cadeira cheia no primeiro dia.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Meta Ads — Center Shop (manuten&ccedil;&atilde;o + reativa&ccedil;&atilde;o)</h3><div class="strat-tag gold">Unidade 2</div></div>
+      <p>Conta separada, público separado. Campanha de manutenção para clientes existentes do Center Shop e aquisição de novos na região. Remarketing para quem j&aacute; visitou o perfil ou interagiu com posts. P&uacute;blicos completamente independentes — nenhum cliente do Center Shop vai ver anúncio do Metropolitano e vice-versa. Inteligência de dados aplicada na pr&aacute;tica.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Remarketing para a base do Trints</h3><div class="strat-tag green">16k clientes</div></div>
+      <p>Os 15-16k contatos cadastrados no Trints viram público personalizado no Meta. Anúncios aparecem só para eles — custo baixíssimo, conversão alta porque já conhecem a Iriri. Duas frentes: reativação de clientes que pararam de frequentar e migração dos clientes do Barra Shop para o Metropolitano. Também pode ser usado para disparo em massa via WhatsApp com ofertas mensais.</p>
+      <div class="strat-example"><span>"Faz tempo que a gente não se vê, mano. A Iriri tá nova no Metropolitano — primeiro corte lá tem condição especial. Agenda agora." Só aparece para quem j&aacute; foi cliente.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Cad&ecirc;ncia de avalia&ccedil;&otilde;es — de 43 para 400+</h3><div class="strat-tag">Reputa&ccedil;&atilde;o</div></div>
+      <p>Mensagem autom&aacute;tica ap&oacute;s cada servi&ccedil;o pedindo avalia&ccedil;&atilde;o no Google. Com 15k clientes na base, um disparo pontual j&aacute; gera centenas de avalia&ccedil;&otilde;es positivas. De 43 para 400+, as maliciosas ficam invisíveis no volume. A mesma cadência aplicada no Centro Metropolitano desde a inauguração — perfil novo já nasce com autoridade.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>Criativos + dashboard semanal</h3><div class="strat-tag">Dados</div></div>
+      <p>4 criativos por mês por conta — imagens e edição de vídeo. Criativos por serviço: corte, barba, camuflagem, barboterapia, mini poltrona infantil. Dashboard em tempo real com investimento, leads e custo por agendamento. Relatório semanal no WhatsApp — direto e sem planilha.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">06</div><h3>Social Media — capta&ccedil;&atilde;o presencial + postagens</h3><div class="strat-tag gold">Social Media</div></div>
+      <p>1 visita presencial por m&ecirc;s em cada unidade para capta&ccedil;&atilde;o de conte&uacute;do — fotos, v&iacute;deos de servi&ccedil;o, bastidores, depoimentos de clientes e momentos do ambiente. A equipe da EmpresAtiva vai at&eacute; o Metropolitano e o Center Shop, capta o material na loja e produz tudo na sequ&ecirc;ncia: edi&ccedil;&atilde;o de v&iacute;deos, artes para feed e stories, copy e publica&ccedil;&atilde;o. O Instagram de cada unidade cresce com conte&uacute;do real e aut&ecirc;ntico — n&atilde;o com template gen&eacute;rico.</p>
+      <div class="strat-example"><span>Exemplo de pauta de captação: vídeo de transformação (antes/depois de camuflagem), bastidores do novo espaço do Metropolitano, depoimento de cliente satisfeito, serviço diferenciado (barboterapia em detalhe) e a mini poltrona infantil em ação.</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que Nilson <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — Metropolitano</h3><p>Aquisi&ccedil;&atilde;o + pr&eacute;-inaugura&ccedil;&atilde;o. P&uacute;blico da regi&atilde;o do shopping. Formul&aacute;rio ou WhatsApp para agendamento.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — Center Shop</h3><p>Manuten&ccedil;&atilde;o + reativa&ccedil;&atilde;o. Conta e p&uacute;blico separados. Nenhum cliente vê an&uacute;ncio da unidade errada.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔄</div><div><h3>Remarketing — base do Trints</h3><p>15-16k clientes cadastrados viram p&uacute;blico personalizado no Meta. Reativa&ccedil;&atilde;o e migra&ccedil;&atilde;o para o Metropolitano.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>Criativos por unidade</h3><p>4 pe&ccedil;as/m&ecirc;s por conta (imagem + v&iacute;deo). Servi&ccedil;os diferenciados: camuflagem, barboterapia, mini poltrona infantil.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">⭐</div><div><h3>Cad&ecirc;ncia de avalia&ccedil;&otilde;es Google</h3><p>Mensagem p&oacute;s-servi&ccedil;o pedindo avalia&ccedil;&atilde;o. De 43 para 400+ avalia&ccedil;&otilde;es — maliciosas ficam invis&iacute;veis.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Tempo real: investimento, leads, custo por agendamento por unidade. Relat&oacute;rio semanal no WhatsApp — sem planilha.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📸</div><div><h3>Social Media — Metropolitano</h3><p>1 visita presencial/m&ecirc;s. Capta&ccedil;&atilde;o de fotos e v&iacute;deos na loja, edi&ccedil;&atilde;o completa, copy e publica&ccedil;&atilde;o no Instagram.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📸</div><div><h3>Social Media — Center Shop</h3><p>1 visita presencial/m&ecirc;s. Mesma estrutura: capta&ccedil;&atilde;o in loco, edi&ccedil;&atilde;o, stories e feed publicados.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Dois neg&oacute;cios, <em>dois investimentos separados</em></h2>
+  <p class="sec-intro">Nilson, cada unidade tem o seu pr&oacute;prio marketing e o seu pr&oacute;prio custo — dividido igualmente entre os s&oacute;cios. O total geral &eacute; o mesmo; o que muda &eacute; que cada neg&oacute;cio arca com a sua parte.</p>
+
+  <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:28px;">
+
+    <!-- METROPOLITANO -->
+    <div style="background:var(--card);border-left:4px solid var(--orange);padding:28px 24px;">
+      <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Neg&oacute;cio 1 &mdash; Shopping Metropolitano</div>
+      <div style="display:flex;flex-direction:column;gap:0;margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);"><span style="font-size:12px;color:var(--muted);">Meta Ads — Metropolitano</span><span style="font-family:var(--font-mono);font-size:13px;color:var(--white);">R$ 997</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);"><span style="font-size:12px;color:var(--muted);">Social Media — 1 visita presencial/m&ecirc;s + postagens</span><span style="font-family:var(--font-mono);font-size:13px;color:var(--white);">R$ 500</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0 0;border-top:none;"><span style="font-size:13px;font-weight:600;color:var(--white);">Total do neg&oacute;cio</span><span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange);">R$ 1.497</span></div>
+      </div>
+      <div style="background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.2);padding:14px 18px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <span style="font-size:12px;color:var(--muted);">Dividido entre os s&oacute;cios (÷ 2)</span>
+        <span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange);">R$ 748,50 <span style="font-size:12px;font-family:var(--font-body);font-weight:400;color:var(--muted);">por s&oacute;cio</span></span>
+      </div>
+      <div style="margin-top:12px;background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.1);padding:12px 16px;border-radius:2px;">
+        <span style="font-size:12px;color:var(--muted);">Verba de m&iacute;dia sugerida (pago ao Meta) &nbsp;&middot;&nbsp; </span><span style="font-family:var(--font-mono);font-size:12px;color:var(--orange);">R$ 500–1.000/m&ecirc;s</span>
+      </div>
+    </div>
+
+    <!-- CENTER SHOP -->
+    <div style="background:var(--card);border-left:4px solid var(--gold);padding:28px 24px;">
+      <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Neg&oacute;cio 2 &mdash; Center Shop &mdash; 50% de desconto no Meta Ads</div>
+      <div style="display:flex;flex-direction:column;gap:0;margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);"><span style="font-size:12px;color:var(--muted);">Meta Ads — Center Shop (50% de desconto)</span><span style="font-family:var(--font-mono);font-size:13px;color:var(--white);">R$ 498,50</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);"><span style="font-size:12px;color:var(--muted);">Social Media — 1 visita presencial/m&ecirc;s + postagens</span><span style="font-family:var(--font-mono);font-size:13px;color:var(--white);">R$ 500</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0 0;border-top:none;"><span style="font-size:13px;font-weight:600;color:var(--white);">Total do neg&oacute;cio</span><span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gold);">R$ 998,50</span></div>
+      </div>
+      <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);padding:14px 18px;border-radius:2px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <span style="font-size:12px;color:var(--muted);">Dividido entre os s&oacute;cios (÷ 2)</span>
+        <span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gold);">R$ 499,25 <span style="font-size:12px;font-family:var(--font-body);font-weight:400;color:var(--muted);">por s&oacute;cio</span></span>
+      </div>
+      <div style="margin-top:12px;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.1);padding:12px 16px;border-radius:2px;">
+        <span style="font-size:12px;color:var(--muted);">Verba de m&iacute;dia sugerida (pago ao Meta) &nbsp;&middot;&nbsp; </span><span style="font-family:var(--font-mono);font-size:12px;color:var(--gold);">R$ 500–1.000/m&ecirc;s</span>
+      </div>
+    </div>
+
+    <!-- TOTAL GERAL -->
+    <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border);padding:22px 24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Total geral (2 neg&oacute;cios)</div>
+        <div style="font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--white);">R$ 2.495,50<span style="font-size:14px;font-family:var(--font-body);font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Por s&oacute;cio (÷ 2)</div>
+        <div style="font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--green);">R$ 1.247,75<span style="font-size:13px;font-family:var(--font-body);font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="variavel-box">
+    <h4>Se quiser escalar a verba</h4>
+    <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s por conta em an&uacute;ncios</span><span>Incluso no fee de cada neg&oacute;cio</span></div>
+    <div class="var-row"><span>Excedente acima de R$ 1.000 por conta</span><span>+ 20% sobre o excedente</span></div>
+    <div class="var-row"><span>Ex: Metropolitano investe R$ 2.000 → excedente R$ 1.000</span><span>+ R$ 200 → fee R$ 1.697 (÷2 = R$ 848,50/s&oacute;cio)</span></div>
+  </div>
+
+  <div class="addon-box" style="margin-top:28px;">
+    <h4>Add-on dispon&iacute;vel — quando quiser</h4>
+    <div class="addon-row"><span>Agente de IA — secret&aacute;ria online 24/7 no WhatsApp (por unidade)</span><span>+ R$ 297/m&ecirc;s</span></div>
+    <div class="addon-row"><span>Disparo em massa — ofertas para os 15k do Trints (1.000 disparos/m&ecirc;s)</span><span>+ R$ 300/m&ecirc;s</span></div>
+  </div>
+
+  <div class="trints-box">
+    <h4>Os 15k do Trints s&atilde;o um ativo enorme</h4>
+    <p>Sem custo adicional, a EmpresAtiva j&aacute; usa essa base como p&uacute;blico personalizado no Meta para remarketing. Para disparo em massa via WhatsApp (30 por dia, 1.000/m&ecirc;s), &eacute; o add-on de R$ 300 — opcional, acrescenta quando fizer sentido.</p>
+  </div>
+
+  <div class="contrato-box">
+    <h4>Contrato de 6 meses</h4>
+    <p>Fidelidade de 6 meses com aviso pr&eacute;vio ap&oacute;s esse prazo, sem multa. <strong>O que foi combinado na reuni&atilde;o, est&aacute; aqui.</strong> Sem surpresa, sem letra mi&uacute;da.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da assinatura &agrave; <em>cadeira cheia no Metropolitano</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Contrato + Briefing</h3><p>Nilson passa: acesso às contas de anúncio de cada unidade, exportação de contatos do Trints (nome + telefone) para criar o público personalizado no Meta, e fotos/vídeos do novo espaço do Metropolitano para os criativos de pré-inauguração.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2–5</span><h3>Estrutura + Criativos</h3><p>Contas separadas configuradas. Público personalizado do Trints carregado no Meta. Criativos de pré-inauguração do Metropolitano em produção. Cadência de avaliações Google configurada para o Center Shop.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–7</span><h3>Campanhas no Ar</h3><p>Meta Ads ativo nas duas unidades. Remarketing da base do Trints rodando. Primeiros agendamentos chegando pelo Metropolitano antes mesmo da inauguração oficial.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeiro Relat&oacute;rio</h3><p>Investimento por unidade, leads gerados, custo por agendamento, criativos campeões. Decisão de manter, ajustar segmentação ou escalar a verba no Metropolitano conforme o movimento da inauguração.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Nilson, a Iriri tá pronta.<br><em>Agora &eacute; encher a cadeira.</em></h2>
+  <p>R$ 41k investidos na obra do Metropolitano, 15k clientes no Trints e um conceito de marca consolidado. A EmpresAtiva cuida do tráfego pago e do social media das duas unidades — do an&uacute;ncio ao conte&uacute;do, antes mesmo da inaugura&ccedil;&atilde;o.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
