@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Renata Santos Esmalteria</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.15) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(34px,9vw,70px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.diag-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:28px;}
+.diag-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.tpo-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:26px 24px;border-radius:2px;margin-bottom:28px;}
+.tpo-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:12px;}
+.tpo-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.tpo-box strong{color:var(--white);}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.diag-item strong{color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.ia-flow{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+.ia-step{display:flex;gap:12px;align-items:flex-start;}
+.ia-dot{width:24px;height:24px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+.ia-step p{font-size:13px;color:var(--muted);line-height:1.65;}
+.ia-step strong{color:var(--white);}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:2px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-breakdown{display:flex;flex-direction:column;margin-bottom:20px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:16px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.prox-box{background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.14);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.prox-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.prox-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.prox-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Esmalteria Premium &middot; Recreio dos Bandeirantes</p>
+  <h1>Renata<br><em>Santos</em></h1>
+  <p class="hero-sub">Meta Ads com formul&aacute;rio condicional + Agente de IA — para atrair s&oacute; quem tem perfil e poder aquisitivo para a fibra de vidro e o molde F1, sem desperdi&ccedil;ar o tempo do marido com curiosas e concorrentes.</p>
+  <div class="pills">
+    <div class="pill"><span>Meta Ads</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Agente de IA</span><span>R$ 297/m&ecirc;s</span></div>
+    <div class="pill"><span>Total</span><span>R$ 1.294/m&ecirc;s</span></div>
+    <div class="pill"><span>Nicho</span><span>Esmalteria premium &middot; Recreio</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">O que a EmpresAtiva <em>viu e ouviu</em></h2>
+  <p class="sec-intro">Renata, a conversa foi direta. Aqui est&aacute; o que ficou claro — e o que a gente vai resolver.</p>
+
+  <div class="diag-box">
+    <h3>Voc&ecirc; j&aacute; aparece em 1&ordf; posi&ccedil;&atilde;o no Google — o problema &eacute; quem chega no WhatsApp</h3>
+    <p>"Manicure Recreio" — Est&uacute;dio Renata Santos, primeira posi&ccedil;&atilde;o, organicamente. <strong>O Google est&aacute; funcionando.</strong> O que n&atilde;o est&aacute; funcionando &eacute; o tráfego pago que voc&ecirc; fazia sozinha: sem segmentação de renda, sem filtro de inten&ccedil;&atilde;o, o Instagram entregava anúncio para qualquer um — e aí chegavam curiosas, pessoas pedindo dinheiro e concorrentes consultando preço. A EmpresAtiva resolve isso com formulário condicional — s&oacute; vira lead quem passou pelo filtro.</p>
+  </div>
+
+  <div class="tpo-box">
+    <h3>O TPO &eacute; o seu diferencial mais poderoso — e ainda n&atilde;o est&aacute; sendo usado</h3>
+    <p>Voc&ecirc; n&atilde;o usa TPO — produto proibido pela Anvisa e pela vigil&acirc;ncia sanit&aacute;ria que ainda circula no mercado e causa rea&ccedil;&otilde;es alér gicas. <strong>Isso n&atilde;o &eacute; s&oacute; uma qualidade t&eacute;cnica — &eacute; um argumento de venda que pode viralizar.</strong> Mulheres que j&aacute; sofreram rea&ccedil;&atilde;o alér gica est&atilde;o ativamente buscando uma profissional segura. Um v&iacute;deo sobre isso &eacute; o criativo que a EmpresAtiva vai priorizar.</p>
+  </div>
+
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Leads desqualificados chegando no marido</h3><p>Ele responde r&aacute;pido — &oacute;timo. Mas ele perde tempo com quem nunca vai fechar. <strong>Com o Agente de IA filtrando antes, ele s&oacute; entra quando o lead est&aacute; pronto para agendar.</strong></p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Instagram sem posicionamento premium</h3><p>Voc&ecirc; tem fotos de qualidade, vestimenta profissional, m&eacute;todo hí brido premium Santos. <strong>A EmpresAtiva organiza o perfil como vitrine de esmalteria premium — Bio, destaques e feed falando com o p&uacute;blico da Barra e do Recreio.</strong></p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Pixel sem intelig&ecirc;ncia de p&uacute;blico</h3><p>Fazendo an&uacute;ncio direto pro WhatsApp, o Instagram n&atilde;o aprende quem &eacute; o cliente ideal — s&oacute; sabe que come&ccedil;ou uma conversa. <strong>Com formul&aacute;rio condicional, a gente devolve ao algoritmo quem realmente fechou — e ele passa a buscar s&oacute; esse perfil.</strong></p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Faturamento de R$17k com potencial de dobrar</h3><p>6 clientes/dia × R$130 × 22 dias = R$17k. Com os colaboradores bem aproveitados e um fluxo constante de leads qualificados, <strong>dobrar para 12 clientes/dia &eacute; poss&iacute;vel sem aumentar a estrutura f&iacute;sica.</strong></p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads + IA para o <em>Est&uacute;dio Renata Santos</em></h2>
+  <p class="sec-intro">Quatro camadas — do criativo ao agendamento — com o algoritmo treinado para encontrar mulheres que j&aacute; t&ecirc;m poder aquisitivo e real inten&ccedil;&atilde;o de contratar.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Criativo com a dor do TPO — o an&uacute;ncio que pode viralizar</h3><div class="strat-tag">Prioridade</div></div>
+      <p>Este &eacute; o primeiro criativo que a EmpresAtiva vai produzir. A mulher que j&aacute; teve rea&ccedil;&atilde;o al&eacute;rgica, a que tem medo de colocar por causa da alergia, a que desconfia de produtos usados por profissionais n&atilde;o certific ados — <strong>todas elas est&atilde;o esperando este anúncio.</strong> Quando chegar nelas, a objeção de preço n&atilde;o existe.</p>
+      <div class="strat-example"><span>"Essa cliente chegou com reação alérgica depois de uma manutenção de fibra de vidro. O produto usado era com TPO — proibido pela Anvisa. No Estúdio Renata Santos, a gente não usa. A gente cuidou da una dela e colocou de volta. Olha o resultado." Quem já sofreu isso, fecha sem barganha de preço.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Meta Ads com formul&aacute;rio condicional</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>An&uacute;ncios segmentados para mulheres no Recreio e Barra da Tijuca — por localiza&ccedil;&atilde;o, faixa et&aacute;ria e comportamento de consumo premium. Antes de chegar no WhatsApp, o lead responde: localiza&ccedil;&atilde;o e tipo de servi&ccedil;o de interesse. Quem n&atilde;o passa, n&atilde;o chega — nem concorrente, nem curiosa, nem quem vai pedir desconto. O marido s&oacute; ve lead com perfil.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Agente de IA — responde em segundos, a qualquer hora</h3><div class="strat-tag gold">IA 24h</div></div>
+      <p>Voc&ecirc; mesma disse: cliente &eacute; imediatista. Quer resposta agora. Se n&atilde;o responder naquele momento, passa para a outra. O Agente de IA responde em menos de 1 minuto — mesmo quando o marido est&aacute; no lazer, no fim de semana, de madrugada. Qualifica, tira d&uacute;vidas e aciona o marido s&oacute; quando o agendamento est&aacute; pronto para confirmar.</p>
+      <div class="ia-flow">
+        <div class="ia-step"><div class="ia-dot">1</div><p><strong>Lead passa pelo formul&aacute;rio</strong> — localiza&ccedil;&atilde;o e interesse j&aacute; confirmados</p></div>
+        <div class="ia-step"><div class="ia-dot">2</div><p><strong>IA responde em &lt; 1 min</strong> — tira d&uacute;vidas, fala do m&eacute;todo, sem TPO, agenda</p></div>
+        <div class="ia-step"><div class="ia-dot">3</div><p><strong>Alerta para o marido</strong> — nome, servi&ccedil;o desejado, hor&aacute;rio sugerido</p></div>
+        <div class="ia-step"><div class="ia-dot">4</div><p><strong>Marido confirma</strong> — lead j&aacute; educado, j&aacute; sabe o pre&ccedil;o, j&aacute; quer ir</p></div>
+      </div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Instagram vitrine + relat&oacute;rio semanal</h3><div class="strat-tag">Dados</div></div>
+      <p>Bio ajustada para falar com o p&uacute;blico premium do Recreio e da Barra. Destaques com m&eacute;todo h&iacute;brido premium Santos, portf&oacute;lio de resultados e informa&ccedil;&otilde;es sobre seguran&ccedil;a (sem TPO, produtos aprovados pela Anvisa). Dashboard em tempo real + relat&oacute;rio semanal no WhatsApp — investimento, leads, custo por agendamento e criativos campe&otilde;es.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que Renata <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — formul&aacute;rio condicional</h3><p>Segmenta&ccedil;&atilde;o Recreio + Barra. S&oacute; vira lead quem tem fit. Pixel treinando para o perfil ideal desde a semana 1.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>Criativos — TPO como 1&ordm; an&uacute;ncio</h3><p>4 pe&ccedil;as/m&ecirc;s. Dor → jornada → solu&ccedil;&atilde;o. Come&ccedil;amos pelo criativo com maior potencial de viraliza&ccedil;&atilde;o.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Instagram vitrine premium</h3><p>Bio, destaques e feed posicionados para esmalteria de refer&ecirc;ncia no Recreio. Portf&oacute;lio profissional visível.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🤖</div><div><h3>Agente de IA — 24h/7 dias</h3><p>Responde em &lt; 1 min. O marido s&oacute; &eacute; acionado quando o lead est&aacute; pronto para confirmar o hor&aacute;rio.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business mantido</h3><p>J&aacute; est&aacute; em 1&ordf; posi&ccedil;&atilde;o org&acirc;nica. A EmpresAtiva faz pequenos ajustes para manter a vantagem competitiva.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Tempo real: investimento, leads, CPL, criativos. Relat&oacute;rio semanal no grupo do WhatsApp — direto, sem planilha.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Dentro do que <em>faz sentido agora</em></h2>
+  <p class="sec-intro">Renata, voc&ecirc; mesma disse: est&aacute; dentro do que posso. A gente come&ccedil;a aqui, prova o resultado e cresce junto.</p>
+
+  <div class="inv-card">
+    <div class="inv-card-body">
+      <div class="inv-plan-lbl">Meta &amp; IA — Est&uacute;dio Renata Santos</div>
+      <div class="inv-price"><sub>R$</sub> 1.294</div>
+      <div class="inv-period">por m&ecirc;s &middot; contrato 6 meses</div>
+      <div class="inv-sep"></div>
+      <div class="inv-breakdown">
+        <div class="inv-line"><span>Gest&atilde;o Meta Ads</span><span>R$ 997</span></div>
+        <div class="inv-line"><span>Agente de IA — qualifica&ccedil;&atilde;o 24h</span><span>R$ 297</span></div>
+        <div class="inv-line" style="border-bottom:none;padding-top:14px;border-top:1px solid var(--border);"><span style="font-weight:600;color:var(--white);">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 1.294</span></div>
+      </div>
+      <div class="inv-sep"></div>
+      <div class="inv-includes">
+        <h4>Incluso no plano</h4>
+        <ul>
+          <li>Meta Ads com formul&aacute;rio condicional</li>
+          <li>Segmenta&ccedil;&atilde;o Recreio + Barra da Tijuca</li>
+          <li>Criativo TPO como prioridade (mês 1)</li>
+          <li>4 criativos/m&ecirc;s (imagem + v&iacute;deo)</li>
+          <li>Instagram posicionado como vitrine premium</li>
+          <li>Agente de IA — resposta em &lt; 1 min, 24h</li>
+          <li>Alerta de lead qualificado no WhatsApp do marido</li>
+          <li>Google Business otimizado (j&aacute; est&aacute; em 1&ordf; posi&ccedil;&atilde;o)</li>
+          <li>Dashboard em tempo real</li>
+          <li>Relat&oacute;rio semanal no WhatsApp</li>
+        </ul>
+      </div>
+      <div class="inv-media">
+        <span>Verba sugerida (paga direto ao Meta)</span>
+        <span>R$ 500–1.000/m&ecirc;s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="variavel-box">
+    <h4>Se quiser escalar a verba</h4>
+    <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 1.294</span></div>
+    <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+    <div class="var-row"><span>Ex: investe R$ 1.500 → excedente R$ 500</span><span>+ R$ 100 → ag&ecirc;ncia R$ 1.394</span></div>
+    <div class="var-row"><span>Por qu&ecirc;?</span><span>Se escala, &eacute; porque est&aacute; vendendo</span></div>
+  </div>
+
+  <div class="prox-box">
+    <h4>Pr&oacute;ximo passo — quando o caixa crescer</h4>
+    <p>Cursos de m&eacute;todo h&iacute;brido premium Santos, playbook comercial para o marido, CRM estruturado — <strong>tudo isso fica para a fase seguinte.</strong> Primeiro a gente coloca dinheiro dentro da casa, depois a gente constr&oacute;i o resto.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do fechamento ao <em>primeiro lead qualificado</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Amanh&atilde;</span><h3>Decis&atilde;o com o marido</h3><p>Renata compartilha a proposta. A EmpresAtiva retoma contato amanhã para colher o feedback. Sim ou n&atilde;o — ambos s&atilde;o respeitados.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 1–3</span><h3>Briefing + Acesso</h3><p>Acesso ao gerenciador de an&uacute;ncios do Meta. Agente de IA treinado com os servi&ccedil;os da Renata (fibra de vidro, molde F1, manutenções), preços, localização do novo espaço e protocolo de resposta.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 4–7</span><h3>Criativos + Campanhas no Ar</h3><p>Primeiro criativo: vídeo sobre TPO e segurança Anvisa. Meta Ads ativo com formul&aacute;rio condicional. Agente de IA respondendo leads. Instagram vitrine ajustado com m&eacute;todo h&iacute;brido premium Santos em destaque.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 2</span><h3>Primeiro Relat&oacute;rio</h3><p>Leads qualificados, custo por agendamento, criativo campe&atilde;o. A EmpresAtiva j&aacute; traz os ajustes para a semana 2 com base nos primeiros dados.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Balan&ccedil;o do 1&ordm; M&ecirc;s</h3><p>Clientes novos gerados, custo por cliente, criativos campe&otilde;es. Com esses dados, a gente decide: aumenta verba, testa novo p&uacute;blico ou mantém o ritmo.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Renata, o seu trabalho<br><em>&eacute; excelente. Falta aparecer.</em></h2>
+  <p>1&ordf; posi&ccedil;&atilde;o no Google, m&eacute;todo h&iacute;brido premium, sem TPO, cliente da Jan Mota como refer&ecirc;ncia de p&uacute;blico. A qualidade existe — o que falta &eacute; o anuncio certo chegando na mulher certa no Recreio e na Barra. A EmpresAtiva faz isso.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
