@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Marta Guimarães Mega Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,103,26,0.15) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(32px,8vw,68px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.start-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:26px 24px;border-radius:2px;margin-bottom:28px;}
+.start-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:12px;}
+.start-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.start-box strong{color:var(--white);}
+
+.fases{display:flex;flex-direction:column;gap:2px;margin-bottom:44px;}
+.fase{background:var(--card);padding:24px;border-left:3px solid transparent;display:flex;gap:16px;align-items:flex-start;}
+.fase.f1{border-left-color:var(--orange);}
+.fase.f2{border-left-color:var(--gold);}
+.fase.f3{border-left-color:var(--green);}
+.fase-icon{font-size:22px;flex-shrink:0;width:32px;}
+.fase-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:7px;}
+.fase.f1 .fase-lbl{color:var(--orange);}
+.fase.f2 .fase-lbl{color:var(--gold);}
+.fase.f3 .fase-lbl{color:var(--green);}
+.fase h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.fase p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:2px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"✓";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:16px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.prox-box{background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.14);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.prox-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.prox-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.prox-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:420px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .fases{flex-direction:row;}
+  .fase{flex:1;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Come&ccedil;ar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta de Entrada &middot; Mega Hair &middot; Recreio dos Bandeirantes</p>
+  <h1>Marta<br><em>Guimar&atilde;es</em></h1>
+  <p class="hero-sub">Meta Ads para o novo sal&atilde;o de mega hair no Recreio — construindo a presen&ccedil;a digital do zero e colocando as primeiras clientes na cadeira antes mesmo de abrir as portas.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano de entrada</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Fee mensal</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Verba sugerida</span><span>R$ 500–1.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Sal&atilde;o</span><span>Abrindo no Recreio</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PONTO DE PARTIDA -->
+<section class="bg-dark">
+  <div class="sec-label">Ponto de partida</div>
+  <h2 class="sec-title">Come&ccedil;ar do zero <em>&eacute; uma vantagem</em></h2>
+  <p class="sec-intro">Marta, zero Instagram e zero tráfego pago não é problema — é oportunidade. A gente constrói tudo do jeito certo desde o primeiro dia, sem ter que desfazer o que estava errado.</p>
+
+  <div class="start-box">
+    <h3>O Recreio &eacute; um dos mercados com maior potencial para mega hair no Rio</h3>
+    <p>P&uacute;blico de m&eacute;dio-alto poder aquisitivo, fam&iacute;lias estabelecidas, mulheres que j&aacute; consomem servi&ccedil;os de beleza premium na regi&atilde;o. <strong>Salon Werner, Iriri Barbearia, Clube Man — todos com presença no Recreio por uma raz&atilde;o.</strong> O mega hair ainda tem espa&ccedil;o para uma refer&ecirc;ncia especializada. A EmpresAtiva atende a regi&atilde;o e conhece o p&uacute;blico.</p>
+  </div>
+
+  <div class="fases">
+    <div class="fase f1">
+      <div class="fase-icon">🚀</div>
+      <div>
+        <div class="fase-lbl">Antes de abrir</div>
+        <h3>Pr&eacute;-inaugura&ccedil;&atilde;o</h3>
+        <p>Instagram criado e posicionado. Campanha de pré-cadastro no Meta: "Novo salão de mega hair no Recreio — entre na lista de prioridade." Primeiras clientes agendadas antes do primeiro dia.</p>
+      </div>
+    </div>
+    <div class="fase f2">
+      <div class="fase-icon">🎯</div>
+      <div>
+        <div class="fase-lbl">M&ecirc;s 1–2</div>
+        <h3>Aquisi&ccedil;&atilde;o</h3>
+        <p>Meta Ads com formul&aacute;rio condicional segmentado para o Recreio. Pixel treinando para encontrar o perfil ideal. Primeiros criativos de transforma&ccedil;&atilde;o para construir autoridade local.</p>
+      </div>
+    </div>
+    <div class="fase f3">
+      <div class="fase-icon">📈</div>
+      <div>
+        <div class="fase-lbl">M&ecirc;s 3+</div>
+        <h3>Escala</h3>
+        <p>Pixel inteligente, lookalike das clientes que fecharam, CPL caindo. Com os dados dos primeiros meses, a gente decide: mais verba, Google Ads, CRM ou Agente de IA.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTRATÉGIA -->
+  <div class="sec-label" style="margin-top:0">Estrat&eacute;gia</div>
+  <h2 class="sec-title" style="font-size:clamp(22px,5vw,36px);">Quatro camadas <em>desde o dia 1</em></h2>
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Instagram criado como vitrine de mega hair</h3><div class="strat-tag">Base</div></div>
+      <p>Bio clara — o que é, onde fica, como agendar. Destaques com serviços, antes/depois e localização. Feed com identidade visual de mega hair no Recreio. Quando a cliente vir o anúncio e entrar no perfil, vai encontrar credibilidade — não uma página vazia.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Campanha de pr&eacute;-cadastro — antes de abrir</h3><div class="strat-tag">Pr&eacute;-inaugura&ccedil;&atilde;o</div></div>
+      <p>An&uacute;ncio no Meta segmentado para mulheres no Recreio, Barra da Tijuca e adjacências. Objetivo: captação de leads antes da abertura. Formul&aacute;rio simples — nome, WhatsApp e tipo de servi&ccedil;o. No dia da inaugura&ccedil;&atilde;o, existe uma lista de mulheres querendo agendar.</p>
+      <div class="strat-example"><span>"Novo salão de mega hair chegando no Recreio. Especializado em transformação — do cacheado ao liso, com acabamento impecável. Entre na lista de prioridade e garanta seu horário antes de todo mundo."</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Meta Ads de convers&atilde;o — ap&oacute;s abertura</h3><div class="strat-tag">Aquisi&ccedil;&atilde;o</div></div>
+      <p>Campanha de transforma&ccedil;&atilde;o: antes/depois em v&iacute;deo, storytelling de cliente real. Formul&aacute;rio condicional filtra localização e tipo de servi&ccedil;o — lead desqualificado n&atilde;o consome o tempo da Marta. Remarketing para quem visitou o perfil mas n&atilde;o entrou em contato. Com o tempo, o pixel aprende e o custo por lead cai.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Google Business Profile — autoridade org&acirc;nica</h3><div class="strat-tag gold">GBP</div></div>
+      <p>Perfil criado com categoria correta de mega hair, fotos do sal&atilde;o, hor&aacute;rios e link para WhatsApp. Quando algu&eacute;m pesquisar "mega hair Recreio" no Google, a Marta Guimar&atilde;es aparece — sem pagar por clique. Cadência de avalia&ccedil;&otilde;es desde a primeira cliente.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que Marta <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Instagram criado do zero</h3><p>Bio, destaques, identidade visual de mega hair no Recreio. Vitrine pronta antes do primeiro an&uacute;ncio.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🚀</div><div><h3>Campanha de pr&eacute;-cadastro</h3><p>Lista de leads antes da inaugura&ccedil;&atilde;o. O sal&atilde;o n&atilde;o abre com agenda vazia.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — formul&aacute;rio condicional</h3><p>Segmenta&ccedil;&atilde;o Recreio + Barra. S&oacute; vira lead quem confirmou interesse real no servi&ccedil;o.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎨</div><div><h3>4 criativos/m&ecirc;s</h3><p>Imagem e v&iacute;deo com foco em transforma&ccedil;&atilde;o. A/B cont&iacute;nuo para encontrar o criativo campe&atilde;o.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business Profile</h3><p>Criado com categoria mega hair. Aparece nas buscas org&acirc;nicas desde a semana 1. Cadência de avalia&ccedil;&otilde;es.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Investimento, leads, custo por agendamento, criativos campe&otilde;es. Relat&oacute;rio no WhatsApp toda semana.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Enxuto no in&iacute;cio, <em>escal&aacute;vel depois</em></h2>
+  <p class="sec-intro">Come&ccedil;amos com o essencial — Meta Ads estruturado e Instagram do zero. Quando o sal&atilde;o estiver rodando e o resultado aparecer, a gente cresce junto.</p>
+
+  <div class="inv-card">
+    <div class="inv-card-body">
+      <div class="inv-plan-lbl">Meta Ads — Marta Guimar&atilde;es Mega Hair &middot; Recreio</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">fee ag&ecirc;ncia/m&ecirc;s &middot; contrato 6 meses</div>
+      <div class="inv-sep"></div>
+      <div class="inv-includes">
+        <h4>Incluso no plano</h4>
+        <ul>
+          <li>Instagram criado e posicionado do zero</li>
+          <li>Campanha de pr&eacute;-cadastro (pr&eacute;-inaugura&ccedil;&atilde;o)</li>
+          <li>Meta Ads com formul&aacute;rio condicional</li>
+          <li>Segmenta&ccedil;&atilde;o Recreio + Barra da Tijuca</li>
+          <li>4 criativos/m&ecirc;s (imagem + v&iacute;deo)</li>
+          <li>Google Business Profile criado</li>
+          <li>Dashboard em tempo real</li>
+          <li>Relat&oacute;rio semanal no WhatsApp</li>
+        </ul>
+      </div>
+      <div class="inv-media">
+        <span>Verba sugerida (paga direto ao Meta)</span>
+        <span>R$ 500–1.000/m&ecirc;s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="variavel-box">
+    <h4>Se quiser escalar a verba</h4>
+    <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 997</span></div>
+    <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+    <div class="var-row"><span>Ex: investe R$ 1.500 → excedente R$ 500</span><span>+ R$ 100 → ag&ecirc;ncia R$ 1.097</span></div>
+  </div>
+
+  <div class="prox-box">
+    <h4>Pr&oacute;ximos passos naturais — quando quiser</h4>
+    <p>Agente de IA para qualificar leads 24h: <strong>+ R$ 297/m&ecirc;s.</strong> Google Ads para capturar quem pesquisa mega hair no Recreio: <strong>+ 50% do Meta (R$ 498,50/m&ecirc;s).</strong> CRM + Playbook Comercial: <strong>Arquitetura completa por R$ 2.497/m&ecirc;s.</strong> Cada passo, no momento certo.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do zero ao <em>primeiro agendamento</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 1</span><h3>Briefing + Identidade</h3><p>Marta passa: nome do sal&atilde;o, cores/refer&ecirc;ncias de identidade visual, data prevista de abertura e fotos do espa&ccedil;o (mesmo em obra). A EmpresAtiva cria o Instagram e o GBP j&aacute; na primeira semana.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 2–5</span><h3>Instagram + GBP no Ar</h3><p>Perfil criado, bio posicionada, destaques estruturados. Google Business com categoria mega hair e localiza&ccedil;&atilde;o no Recreio. Campanha de pr&eacute;-cadastro configurada e pronta para rodar.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dias 6–7</span><h3>Campanha de Pr&eacute;-cadastro no Ar</h3><p>Meta Ads ativo com objetivo de capta&ccedil;&atilde;o de leads antes da abertura. Primeiras mulheres do Recreio entrando na lista de prioridade.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Inaugura&ccedil;&atilde;o</span><h3>Campanha de Convers&atilde;o</h3><p>Meta Ads muda o objetivo: de pr&eacute;-cadastro para convers&atilde;o. Formul&aacute;rio condicional ativo. Lista de pr&eacute;-cadastro abordada para confirmar agendamento. Primeiro relat&oacute;rio semanal entregue.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Balan&ccedil;o + Pr&oacute;ximo Passo</h3><p>Leads gerados, custo por agendamento, criativo campe&atilde;o. Com os dados do primeiro m&ecirc;s, a gente decide: aumenta verba, adiciona IA ou expande para Google Ads.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Marta, do zero<br><em>&eacute; a melhor forma de come&ccedil;ar.</em></h2>
+  <p>Nenhum erro anterior para corrigir, nenhum pixel sujado, nenhum p&uacute;blico errado treinado. A EmpresAtiva constr&oacute;i tudo do jeito certo desde o primeiro an&uacute;ncio — e o Recreio vai conhecer a Marta Guimar&atilde;es antes mesmo de ela abrir as portas.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Come&ccedil;ar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
