@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Ana Costa Mega Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(232,103,26,0.14) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(34px,9vw,70px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.gap-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:28px;}
+.gap-box h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.gap-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gap-box strong{color:var(--white);}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.diag-item strong{color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.green{background:rgba(46,204,113,0.08);border-color:rgba(46,204,113,0.2);color:var(--green);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-blocos{display:flex;flex-direction:column;gap:2px;margin-bottom:2px;}
+.inv-bloco{padding:28px 24px;border-left:4px solid transparent;}
+.inv-bloco.b1{background:var(--card);border-left-color:var(--orange);}
+.inv-bloco.b2{background:var(--card);border-left-color:var(--gold);}
+.inv-bloco-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;}
+.inv-bloco.b1 .inv-bloco-lbl{color:var(--orange);}
+.inv-bloco.b2 .inv-bloco-lbl{color:var(--gold);}
+.inv-bloco h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:16px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-subtotal{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0 0;border-top:1px solid var(--border);margin-top:4px;}
+.inv-subtotal span:first-child{font-size:13px;font-weight:600;color:var(--white);}
+
+.inv-total-card{background:linear-gradient(135deg,rgba(232,103,26,0.08),rgba(201,168,76,0.05));border:1px solid rgba(232,103,26,0.25);padding:28px 24px;border-radius:2px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;}
+.inv-total-card .lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.inv-total-card .total-val{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);}
+.inv-total-card .total-val sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-total-card .total-period{font-size:12px;color:var(--muted);margin-top:4px;}
+.inv-total-card .breakdown{display:flex;flex-direction:column;gap:8px;}
+.inv-total-card .brow{display:flex;justify-content:space-between;gap:24px;}
+.inv-total-card .brow span:first-child{font-size:12px;color:var(--muted);}
+.inv-total-card .brow span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+
+.inv-media{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;margin-top:2px;gap:12px;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.variavel-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.variavel-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.antigo-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.antigo-box h4{font-size:14px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.antigo-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.antigo-row:last-child{border-bottom:none;}
+.antigo-row span:first-child{font-size:13px;color:var(--muted);}
+.antigo-row span:last-child{font-family:var(--font-mono);font-size:13px;}
+.antigo-row.bad span:last-child{color:#E74C3C;}
+.antigo-row.good span:last-child{color:var(--green);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.08));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Marketing 360&deg; &middot; Mega Hair &middot; Del Castilho &mdash; Zona Norte RJ</p>
+  <h1>Ana Costa<br><em>Mega Hair</em></h1>
+  <p class="hero-sub">Arquitetura completa de marketing — tráfego pago, agente de IA, CRM, playbook comercial, social media e captação profissional de conteúdo. De R$150k para R$250k com estrutura, dados e método.</p>
+  <div class="pills">
+    <div class="pill"><span>Arquitetura</span><span>R$ 1.997/m&ecirc;s</span></div>
+    <div class="pill"><span>Social Media + Filmagem</span><span>R$ 1.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Total</span><span>R$ 2.997/m&ecirc;s</span></div>
+    <div class="pill"><span>Merca do</span><span>10+ anos em Del Castilho</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">O que a EmpresAtiva ouviu</div>
+  <h2 class="sec-title">George, o neg&oacute;cio <em>j&aacute; funciona</em></h2>
+  <p class="sec-intro">R$150k de faturamento mensal, R$3.000 investidos em anúncios, 10 anos em Del Castilho. O que falta não é resultado — é mensuração, estrutura comercial e conteúdo que vende.</p>
+
+  <div class="gap-box">
+    <h3>O problema com a assessoria atual n&atilde;o &eacute; o pre&ccedil;o — &eacute; a falta de dados</h3>
+    <p>Voc&ecirc; mesmo fazia o tráfego, terceirizou por R$1.500/m&ecirc;s e o resultado ficou igual ao que voc&ecirc; j&aacute; entregava sozinho. <strong>O real problema: ningu&eacute;m te diz quantos leads entraram, quantos foram abordados, quantos fecharam e de qual campanha vieram.</strong> Sem esse dado, você está voando no escuro mesmo investindo R$3.000/mês em anúncio. A EmpresAtiva muda isso no primeiro mês.</p>
+  </div>
+
+  <div class="diag-list">
+    <div class="diag-item"><div class="diag-num">01</div><div><h3>Sem mensuração por campanha</h3><p>Fatura bem, mas não sabe de onde vem cada cliente. <strong>Sem saber qual campanha fecha mais, você não consegue escalar o que funciona nem cortar o que não funciona.</strong> Dashboard em tempo real + UTM em todas as campanhas — isso vai estar no ar na semana 1.</p></div></div>
+    <div class="diag-item"><div class="diag-num">02</div><div><h3>Comercial na garra, sem CRM</h3><p>George nos leads novos, recepcionista nos clientes antigos — na garra. Funciona até certo ponto. <strong>Com CRM, playbook e cadência estruturada, dois atendentes bem treinados conseguem o que três na garra não conseguem.</strong> R$250k é possível com a mesma verba de anúncio, s&oacute; com estrutura comercial.</p></div></div>
+    <div class="diag-item"><div class="diag-num">03</div><div><h3>Conteúdo sem storytelling</h3><p>Imagens de cabelo de trás n&atilde;o vendem mais. <strong>O que vende &eacute; mostrar a transforma&ccedil;&atilde;o completa: a dor da mulher antes, o processo no sal&atilde;o e o resultado com acabamento perfeito na frente.</strong> Com filmagem mensal profissional, a Ana Costa tem conte&uacute;do que a assessoria atual nunca entregou.</p></div></div>
+    <div class="diag-item"><div class="diag-num">04</div><div><h3>Google Business subutilizado</h3><p>Aparece na busca de "Mega Hair Del Castilho", mas est&aacute; na zona vermelha de relev&acirc;ncia e tem s&oacute; 4 avalia&ccedil;&otilde;es. <strong>Com 10 anos de clientes fi&eacute;is, isso &eacute; f&aacute;cil de resolver.</strong> Uma cadência de pedido de avalia&ccedil;&atilde;o pós-atendimento e o GBP fica na zona verde em 30 dias.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Marketing 360&deg;</div>
+  <h2 class="sec-title">Do an&uacute;ncio ao <em>fechamento — tudo estruturado</em></h2>
+  <p class="sec-intro">Seis camadas integradas — tráfego, IA, CRM, comercial, conteúdo e filmagem — para George só precisar cobrar resultado.</p>
+
+  <div class="strat-list">
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">01</div><h3>Meta Ads — storytelling de transforma&ccedil;&atilde;o</h3><div class="strat-tag">Core</div></div>
+      <p>Campanhas segmentadas para Del Castilho e Zona Norte — mulheres que j&aacute; t&ecirc;m mega hair (p&uacute;blico quente, converte mais r&aacute;pido) e mulheres que nunca colocaram mas sofrem com queda, alopecia ou lateral destruída de trança (p&uacute;blico frio, precisa de educa&ccedil;&atilde;o antes do pre&ccedil;o). Formul&aacute;rio condicional — lead desqualificado n&atilde;o chega no comercial. Criativos com antes/depois em v&iacute;deo, com &ecirc;nfase no acabamento frontal — o diferencial que o conte&uacute;do atual n&atilde;o mostra.</p>
+      <div class="strat-example"><span>"Essa cliente chegou com a lateral destruída depois de anos de trança. A gente colocou mega hair com acabamento personalizado na frente — sem aquela franjas quadrada. Ela mesma conta o que sentiu." É esse vídeo que vende R$1.800 sem objeção de preço.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">02</div><h3>Google Ads + Landing Page + GBP</h3><div class="strat-tag">Busca</div></div>
+      <p>Quem pesquisa "mega hair Del Castilho" j&aacute; encontra a Ana Costa organicamente — a EmpresAtiva garante que continue assim e adiciona campanha paga para capturar quem pesquisa termos relacionados. Landing page de convers&atilde;o para o Google. GBP corrigido: zona vermelha para verde, avalia&ccedil;&otilde;es de 4 para 40+ em 60 dias com cadência pós-atendimento.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">03</div><h3>Agente de IA — qualifica&ccedil;&atilde;o antes do George</h3><div class="strat-tag gold">IA</div></div>
+      <p>Lead chega no WhatsApp, o Agente de IA j&aacute; sabe que &eacute; mega hair em Del Castilho, qualifica por tipo de servi&ccedil;o (instala&ccedil;&atilde;o, manutenção, compra de cabelo) e n&iacute;vel de transforma&ccedil;&atilde;o desejado. S&oacute; aciona George ou a recepcionista quando o lead est&aacute; pronto. Construído em N8N com Evolution API — sem WhatsApp Web, sem queda, sem dependência de app aberto.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">04</div><h3>Como CRM + Playbook Comercial</h3><div class="strat-tag gold">Comercial</div></div>
+      <p>Fim da garra. CRM com funil estruturado: triagem, follow-up, contato futuro, MQL, agendado. Cada lead tem uma tarefa com data — ninguém some no meio do caminho. Playbook com script por tipo de cliente (nova, j&aacute; tem mega, manutenção), cadência de 5 tentativas e tratamento de objeção de preço. Reuni&atilde;o quinzenal com o time comercial para leitura de performance e ajuste de abordagem.</p>
+      <div class="strat-example"><span>A cliente que disse "deixa eu pensar" e você nunca mais ligou? Com o CRM, ela recebe uma tarefa de retorno em 3 dias automaticamente. Com o playbook, a recepcionista sabe exatamente o que dizer na segunda tentativa.</span></div>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">05</div><h3>Social Media — estrat&eacute;gia de conte&uacute;do</h3><div class="strat-tag">Orgânico</div></div>
+      <p>Instagram da Ana Costa posicionado como refer&ecirc;ncia em mega hair na Zona Norte — bio, destaques e feed alinhados. Pauta mensal de conte&uacute;do: transforma&ccedil;&atilde;o (autoridade), processo do sal&atilde;o (t&eacute;cnico), depoimento de cliente (conex&atilde;o) e resposta de obje&ccedil;&otilde;es frequentes. O orgânico alinhado ao tráfego pago amplifica o resultado — quando as duas frentes falam a mesma língua, o custo por lead cai.</p>
+    </div>
+    <div class="strat-item">
+      <div class="strat-top"><div class="strat-num">06</div><h3>Filmagem profissional mensal</h3><div class="strat-tag green">Produ&ccedil;&atilde;o</div></div>
+      <p>1 dia de captação por mês no salão em Del Castilho — videomakerprofissional, equipamento de luz e &aacute;udio. Pauta definida com antecedência: quais clientes gravar, qual hist&oacute;ria contar, quais &acirc;ngulos capturar (processo, acabamento frontal, depoimento espontâneo). O material bruto &eacute; editado pela EmpresAtiva — entregues v&iacute;deos prontos para anúncio e para o feed. Nenhum v&iacute;deo de lapela sentado lendo roteiro.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a Ana Costa <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — storytelling</h3><p>Campanhas segmentadas por p&uacute;blico (quente + frio). Formul&aacute;rio condicional. Lead sem perfil n&atilde;o chega no George.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔍</div><div><h3>Google Ads + Landing Page</h3><p>Captura quem pesquisa mega hair na Zona Norte. LP integrada com as campanhas de busca.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business otimizado</h3><p>Zona vermelha → verde. De 4 para 40+ avaliações em 60 dias. Aparece antes da concorrência.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🤖</div><div><h3>Agente de IA — N8N + Evolution API</h3><p>Qualifica em segundos, nunca cai, sem WhatsApp Web. George só entra quando o lead está pronto.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">⚙️</div><div><h3>Como CRM + treinamento</h3><p>Funil estruturado, tarefas com data, sem lead perdido no meio do caminho. Time treinado.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📋</div><div><h3>Playbook + Reuni&otilde;es quinzenais</h3><p>Script por tipo de cliente, cadência de 5 tentativas, objeção de preço tratada. George cobra, a EmpresAtiva entrega.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Social Media — pauta mensal</h3><p>Instagram alinhado com o tráfego pago. Feed, bio, destaques e pauta de conte&uacute;do que vende.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎬</div><div><h3>Filmagem profissional mensal</h3><p>1 dia de captação no salão. Videomakerprofissional, pauta definida, edição completa entregue.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Looker em tempo real: leads por campanha, custo por convers&atilde;o, criativos campe&otilde;es. Relat&oacute;rio semanal no WhatsApp.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📲</div><div><h3>Disparo em massa</h3><p>At&eacute; 1.000 disparos/m&ecirc;s para base de leads e clientes. IA varia as mensagens — sem risco de banimento.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Marketing 360&deg; — <em>tudo dentro de um pacote</em></h2>
+  <p class="sec-intro">George, aqui est&aacute; o detalhamento completo do que foi acordado — dois blocos claros, um total fechado.</p>
+
+  <div class="inv-blocos">
+    <div class="inv-bloco b1">
+      <div class="inv-bloco-lbl">Bloco 1 — Arquitetura de Receita</div>
+      <h3>Tráfego pago + IA + CRM + Comercial</h3>
+      <div class="inv-line"><span>Meta Ads + Google Ads</span><span>incluso</span></div>
+      <div class="inv-line"><span>Landing Page</span><span>incluso</span></div>
+      <div class="inv-line"><span>Google Business Profile</span><span>incluso</span></div>
+      <div class="inv-line"><span>Agente de IA (N8N + Evolution API)</span><span>incluso</span></div>
+      <div class="inv-line"><span>Como CRM + treinamento do time</span><span>incluso</span></div>
+      <div class="inv-line"><span>Playbook Comercial + reuni&otilde;es quinzenais</span><span>incluso</span></div>
+      <div class="inv-line"><span>Disparo em massa (1.000/m&ecirc;s)</span><span>incluso</span></div>
+      <div class="inv-line"><span>Dashboard Looker + relat&oacute;rio semanal</span><span>incluso</span></div>
+      <div class="inv-subtotal"><span>Subtotal Arquitetura</span><span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange);">R$ 1.997</span></div>
+    </div>
+    <div class="inv-bloco b2">
+      <div class="inv-bloco-lbl">Bloco 2 — Social Media + Produ&ccedil;&atilde;o Audiovisual</div>
+      <h3>Conte&uacute;do que vende no org&acirc;nico e no pago</h3>
+      <div class="inv-line"><span>Estrat&eacute;gia e pauta mensal de conte&uacute;do</span><span>incluso</span></div>
+      <div class="inv-line"><span>Gerenciamento do Instagram (bio, destaques, feed)</span><span>incluso</span></div>
+      <div class="inv-line"><span>1 dia de filmagem profissional/m&ecirc;s no sal&atilde;o</span><span>incluso</span></div>
+      <div class="inv-line"><span>Edi&ccedil;&atilde;o completa dos v&iacute;deos captados</span><span>incluso</span></div>
+      <div class="inv-line"><span>V&iacute;deos prontos para an&uacute;ncio e para o feed</span><span>incluso</span></div>
+      <div class="inv-subtotal"><span>Subtotal Social Media + Filmagem</span><span style="font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--gold);">R$ 1.000</span></div>
+    </div>
+  </div>
+
+  <div class="inv-total-card" style="margin-top:2px;">
+    <div>
+      <div class="lbl">Total mensal — pacote completo</div>
+      <div class="total-val"><sub>R$</sub> 2.997</div>
+      <div class="total-period">por m&ecirc;s &middot; contrato 6 meses</div>
+    </div>
+    <div class="breakdown">
+      <div class="brow"><span>Arquitetura de Receita</span><span>R$ 1.997</span></div>
+      <div class="brow"><span>Social Media + Filmagem</span><span>R$ 1.000</span></div>
+      <div class="brow"><span style="color:var(--white);font-weight:600;">Total ag&ecirc;ncia/m&ecirc;s</span><span style="color:var(--orange);font-weight:700;">R$ 2.997</span></div>
+    </div>
+  </div>
+
+  <div class="inv-media">
+    <span>Verba de m&iacute;dia j&aacute; investida (paga direto ao Meta + Google)</span>
+    <span>~R$ 3.000/m&ecirc;s — mantém o que j&aacute; funciona</span>
+  </div>
+
+  <div class="variavel-box">
+    <h4>Se quiser escalar a verba</h4>
+    <div class="var-row"><span>At&eacute; R$ 5.000/m&ecirc;s em an&uacute;ncios (Meta + Google)</span><span>Incluso no R$ 2.997</span></div>
+    <div class="var-row"><span>Excedente acima de R$ 5.000</span><span>+ 20% sobre o excedente</span></div>
+    <div class="var-row"><span>Por qu&ecirc;?</span><span>Mais verba = mais campanhas e mais complexidade</span></div>
+  </div>
+
+  <div class="antigo-box">
+    <h4>Compara&ccedil;&atilde;o com a assessoria atual</h4>
+    <div class="antigo-row"><span>Assessoria atual — fee mensal</span><span class="bad">R$ 1.500/m&ecirc;s</span></div>
+    <div class="antigo-row"><span>Dashboard com dados de convers&atilde;o por campanha</span><span class="bad">N&atilde;o entregou</span></div>
+    <div class="antigo-row"><span>Mensuração de leads — quantos entraram, fecharam</span><span class="bad">N&atilde;o entregou</span></div>
+    <div class="antigo-row"><span>CRM + playbook comercial</span><span class="bad">N&atilde;o entregou</span></div>
+    <div class="antigo-row"><span>Filmagem profissional mensal</span><span class="bad">N&atilde;o entregou</span></div>
+    <div class="antigo-row"><span>EmpresAtiva — fee mensal (tudo incluso)</span><span class="good">R$ 2.997/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do fechamento ao <em>primeiro lead rastreado</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Hoje</span><h3>Proposta + Fechamento</h3><p>George avalia a proposta e retorna. Contrato assinado e grupo de WhatsApp criado com toda a equipe da EmpresAtiva. Primeiros acessos solicitados: gerenciador de anúncios, Instagram e WhatsApp Business.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 1</span><h3>Estrutura T&eacute;cnica</h3><p>Agente de IA configurado com os serviços da Ana Costa. Como CRM com os funis. Dashboard Looker conectado. GBP das duas unidades corrigido. Meta Ads e Google Ads estruturados com UTM em todas as campanhas.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Semana 2</span><h3>Campanhas no Ar + Playbook</h3><p>Meta Ads e Google Ads ativos. Agente de IA respondendo leads. Playbook comercial entregue. Primeira sessão de treinamento com George e recepcionista sobre o CRM e a cadência de abordagem.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">1&ordf; Filmagem</span><h3>Captação de Conte&uacute;do no Sal&atilde;o</h3><p>Videomaker vai a Del Castilho. Pauta definida com antecedência: clientes selecionados, histórias mapeadas, ângulos planejados. Material editado e entregue em até 5 dias — vídeos prontos para anúncio e feed.</p></div>
+    <div class="tl-item"><div class="tl-dot"></div><span class="tl-day">Dia 30</span><h3>Primeira Reuni&atilde;o de Performance</h3><p>Leads por campanha, taxa de conversão, custo por agendamento, criativos campeões. George vê pela primeira vez de onde vem cada cliente. Ajuste de estratégia para o segundo mês.</p></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>George, de R$150k<br><em>para R$250k &eacute; estrutura.</em></h2>
+  <p>10 anos de mercado, R$3.000/m&ecirc;s em an&uacute;ncio, 10 anos de clientes fidelizados em Del Castilho. A Ana Costa n&atilde;o precisa de mais verba — precisa saber o que funciona, ter um comercial que fecha e conte&uacute;do que conta hist&oacute;ria. A EmpresAtiva entrega os tr&ecirc;s.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
