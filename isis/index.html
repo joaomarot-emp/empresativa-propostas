@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Isis Bittencourt Concept Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--purple:#9B59B6;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.12) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(30px,8vw,64px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.diag-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.diag-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.tecnica-box{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.tecnica-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:12px;}
+.tecnica-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.tecnica-box strong{color:var(--white);}
+
+.ozempic-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.ozempic-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:12px;}
+.ozempic-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.ozempic-box strong{color:var(--white);}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.diag-item strong{color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.green{background:rgba(46,204,113,0.07);border-color:rgba(46,204,113,0.2);color:var(--green);}
+.strat-tag.purple{background:rgba(155,89,182,0.08);border-color:rgba(155,89,182,0.22);color:var(--purple);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.65;}
+
+.ia-flow{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.ia-step{display:flex;gap:12px;align-items:flex-start;}
+.ia-dot{width:22px;height:22px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--gold);flex-shrink:0;margin-top:2px;}
+.ia-step p{font-size:13px;color:var(--muted);line-height:1.6;}
+.ia-step p strong{color:var(--white);}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:2px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-breakdown{display:flex;flex-direction:column;margin-bottom:20px;}
+.inv-line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.inv-line:last-child{border-bottom:none;}
+.inv-line span:first-child{font-size:12px;color:var(--muted);}
+.inv-line span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"&#10003;";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:16px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;flex-wrap:wrap;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.var-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.var-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.fase2-box{background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.14);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.fase2-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.fase2-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.fase2-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.06));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Mega Hair Premium &middot; Salvador, Bahia</p>
+  <h1>Isis Bittencourt<br><em>Concept Hair</em></h1>
+  <p class="hero-sub">Meta Ads com formul&aacute;rio condicional + Agente de IA — para levar a t&eacute;cnica exclusiva de aplica&ccedil;&atilde;o da Isis para mulheres autônomas e empres&aacute;rias em Salvador que j&aacute; est&atilde;o prontas para pagar R$3k a R$12k por resultado de verdade.</p>
+  <div class="pills">
+    <div class="pill"><span>Meta Ads</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Agente de IA</span><span>R$ 297/m&ecirc;s</span></div>
+    <div class="pill"><span>Total</span><span>R$ 1.294/m&ecirc;s</span></div>
+    <div class="pill"><span>Ticket m&eacute;dio</span><span>R$ 3k &ndash; R$ 12k/instala&ccedil;&atilde;o</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">O que a EmpresAtiva <em>ouviu e entendeu</em></h2>
+  <p class="sec-intro">Isis, a conversa foi rica. Aqui est&aacute; o que ficou claro — e o que a gente vai mudar.</p>
+
+  <div class="tecnica-box">
+    <h3>A t&eacute;cnica da Isis &eacute; o maior ativo do sal&atilde;o — e ainda n&atilde;o est&aacute; sendo comunicada</h3>
+    <p>M&eacute;todo adesivado em cabelo de base reta e cheio, <strong>sem repicar, sem desbastar</strong> — uma t&eacute;cnica que a pr&oacute;pria Jan Mota passou a usar depois que a Isis apresentou no curso. Qualquer outro profissional repica. A Isis n&atilde;o. Isso &eacute; um diferencial de mercado que poucas consiguem comunicar bem — e &eacute; exatamente o que vai afastar a obje&ccedil;&atilde;o de pre&ccedil;o. <strong>A EmpresAtiva constro&oacute;i os criativos em cima disso.</strong></p>
+  </div>
+
+  <div class="ozempic-box">
+    <h3>O v&iacute;deo sobre Ozempic e Mounjaro est&aacute; esperando h&aacute; 3 meses — a EmpresAtiva entrega na semana 1</h3>
+    <p>Isis pediu esse v&iacute;deo para a ag&ecirc;ncia anterior h&aacute; mais de tr&ecirc;s meses. N&atilde;o foi feito. <strong>Mulheres que tomam Ozempic e Mounjaro est&atilde;o perdendo cabelo e buscando urgentemente uma solu&ccedil;&atilde;o de qualidade.</strong> O algoritmo do Meta l&ecirc; o v&iacute;deo e entrega para quem pesquisa sobre queda de cabelo, efeitos colaterais de emagrecedores e alopecias. Quando esse p&uacute;blico chega, o pre&ccedil;o n&atilde;o &eacute; obje&ccedil;&atilde;o — &eacute; urgencia.</p>
+  </div>
+
+  <div class="diag-box">
+    <h3>Tráfego pago gera 6 a 12 clientes/m&ecirc;s — aquém do que a t&eacute;cnica merece</h3>
+    <p>O forte atual &eacute; org&acirc;nico e indica&ccedil;&atilde;o — &oacute;timo. Mas o tráfego gerava clientes frios, sem qualifica&ccedil;&atilde;o, e a agem&acirc;ncia anterior n&atilde;o mensurava nada. <strong>Com formul&aacute;rio condicional, s&oacute; chega no WhatsApp quem confirmou localiza&ccedil;&atilde;o e n&iacute;vel de transforma&ccedil;&atilde;o desejado</strong> — o algoritmo aprende quem fechou e passa a buscar s&oacute; esse perfil.</p>
+  </div>
+
+  <div class="diag-list">
+    <div class="diag-item">
+      <div class="diag-num">01</div>
+      <div>
+        <h3>Queda de R$120k para R$70k — concorr&ecirc;ncia de pre&ccedil;o</h3>
+        <p>Concorr&ecirc;ncia em Salvador vende mega hair de etnia como se fosse natural. O p&uacute;blico compra barato e volta frustrado. <strong>A solu&ccedil;&atilde;o n&atilde;o &eacute; baixar pre&ccedil;o — &eacute; comunicar o diferencial t&eacute;cnico da Isis para quem j&aacute; passou por essa frustra&ccedil;&atilde;o.</strong> &Eacute; exatamente esse p&uacute;blico que os criativos v&atilde;o alcan&ccedil;ar.</p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">02</div>
+      <div>
+        <h3>Engajamento baixo para o tamanho da p&aacute;gina</h3>
+        <p>A pr&oacute;pria nova pessoa de marketing identificou isso. <strong>O problema n&atilde;o &eacute; o p&uacute;blico — &eacute; o conte&uacute;do. Conte&uacute;do gen&eacute;rico n&atilde;o engaja p&uacute;blico premium.</strong> Storytelling de transforma&ccedil;&atilde;o — dor, jornada, resultado — engaja e converte. A EmpresAtiva manda as refer&ecirc;ncias para a equipe de marketing na semana 1.</p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">03</div>
+      <div>
+        <h3>GBP com nota 4,4 e sem avalia&ccedil;&otilde;es incentivadas</h3>
+        <p>O sal&atilde;o j&aacute; tem anos de clientes satisfeitos — mas quem pesquisa no Google encontra pouca prova social. <strong>Um pedido simples ap&oacute;s cada instala&ccedil;&atilde;o j&aacute; resolve. A EmpresAtiva estrutura essa cad&ecirc;ncia com o comercial.</strong></p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">04</div>
+      <div>
+        <h3>Sem CRM — leads perdidos no WhatsApp</h3>
+        <p>S&oacute; depender do WhatsApp significa perder a pessoa que disse &ldquo;me fala em novembro&rdquo;. <strong>O Agente de IA qualifica, a EmpresAtiva entrega refer&ecirc;ncias de CRM para organizar triagem, followup e agendamento futuro</strong> — sem deixar lead escapar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads + IA para o <em>Isis Bittencourt Concept Hair</em></h2>
+  <p class="sec-intro">Quatro camadas — do criativo ao agendamento — com o algoritmo treinado para encontrar mulheres em Salvador que j&aacute; tiveram frustra&ccedil;&otilde;es com mega hair ou que perderam cabelo por Ozempic e Mounjaro.</p>
+
+  <div class="strat-list">
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">01</div>
+        <h3>V&iacute;deo Ozempic e Mounjaro — o criativo que a Isis pediu h&aacute; 3 meses</h3>
+        <div class="strat-tag">Prioridade semana 1</div>
+      </div>
+      <p>A EmpresAtiva manda as refer&ecirc;ncias para a equipe de marketing na semana 1 e esse vídeo entra no ar como primeiro criativo. Mulheres que est&atilde;o tomando esses medicamentos e j&aacute; percebem queda capilar est&atilde;o buscando urgentemente uma solu&ccedil;&atilde;o. Quando esse an&uacute;ncio chegar nelas, o ticket de R$3k n&atilde;o &eacute; obje&ccedil;&atilde;o — &eacute; investimento.</p>
+      <div class="strat-example">
+        <span>"Voc&ecirc; est&aacute; tomando Ozempic ou Mounjaro e percebeu queda de cabelo? Isso acontece. Mas tem solu&ccedil;&atilde;o. [cliente antes e depois] Sem repicar. Sem desbastar. O m&eacute;todo que permite instala&ccedil;&atilde;o perfeita mesmo em cabelo danificado." Quem est&aacute; passando por isso fecha sem barganha de pre&ccedil;o.</span>
+      </div>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">02</div>
+        <h3>Storytelling da t&eacute;cnica exclusiva — dor, jornada, resultado</h3>
+        <div class="strat-tag">Diferencial</div>
+      </div>
+      <p>Todo m&ecirc;s: um caso real de cliente que chegou com frustrac&atilde;o de outro profissional (cabelo repicado, resultado ruim, des confian&ccedil;a) e saiu transformada pelo m&eacute;todo adesivado da Isis. <strong>O algoritmo do Meta l&ecirc; esse vídeo e entrega para mulheres que j&aacute; pesquisam sobre transforma&ccedil;&atilde;o capilar</strong> — o p&uacute;blico que a Isis quer alcan&ccedil;ar: autônomas e empres&aacute;rias de 25 a 45 anos em Salvador que j&aacute; passaram por frustra&ccedil;&atilde;o com mega hair.</p>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">03</div>
+        <h3>Formul&aacute;rio condicional — s&oacute; chega quem tem perfil</h3>
+        <div class="strat-tag">Aquisi&ccedil;&atilde;o</div>
+      </div>
+      <p>An&uacute;ncios segmentados por localiza&ccedil;&atilde;o (Salvador e arredores) e perfil de consumo premium. Antes de chegar no WhatsApp, o lead responde: onde fica, que transforma&ccedil;&atilde;o busca. Quem n&atilde;o tem perfil, n&atilde;o entra — sem gastar o tempo do comercial com curiosas. <strong>A gente devolve ao algoritmo quem fechou e ele aprende a buscar s&oacute; esse perfil.</strong></p>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">04</div>
+        <h3>Agente de IA — responde em segundos, fora do hor&aacute;rio</h3>
+        <div class="strat-tag gold">IA 24h</div>
+      </div>
+      <p>O comercial da Isis j&aacute; responde r&aacute;pido no hor&aacute;rio comercial — &oacute;timo. O Agente de IA entra fora do expediente: noite, manh&atilde;, final de semana. P&uacute;blico premium n&atilde;o espera. <strong>A IA qualifica, tira d&uacute;vidas sobre o m&eacute;todo e aciona o comercial s&oacute; quando o lead est&aacute; pronto para agendar a avalia&ccedil;&atilde;o.</strong></p>
+      <div class="ia-flow">
+        <div class="ia-step"><div class="ia-dot">1</div><p><strong>Lead passa pelo formul&aacute;rio</strong> — localiza&ccedil;&atilde;o e inten&ccedil;&atilde;o j&aacute; confirmados</p></div>
+        <div class="ia-step"><div class="ia-dot">2</div><p><strong>IA responde em &lt; 1 min</strong> — apresenta a t&eacute;cnica, tira d&uacute;vidas, educa sobre o m&eacute;todo</p></div>
+        <div class="ia-step"><div class="ia-dot">3</div><p><strong>Alerta no grupo</strong> — comercial recebe nome, interesse e hist&oacute;rico da conversa</p></div>
+        <div class="ia-step"><div class="ia-dot">4</div><p><strong>Comercial fecha</strong> — lead j&aacute; educado, j&aacute; entendeu o diferencial, j&aacute; quer agendar</p></div>
+      </div>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">05</div>
+        <h3>Remarketing para clientes recorrentes — reativa&ccedil;&atilde;o de manutenção</h3>
+        <div class="strat-tag purple">Recorr&ecirc;ncia</div>
+      </div>
+      <p>Em Salvador o ciclo de manutenção &eacute; de 30 a 40 dias — mais curto que o padrão nacional por causa do calor e dos h&aacute;bitos de lavagem. <strong>Campanha de remarketing para quem j&aacute; &eacute; cliente, com oferta &uacute;nica por m&ecirc;s</strong> — n&atilde;o tr&ecirc;s promo&ccedil;&otilde;es ao mesmo tempo. Uma mensagem clara, um call to action, uma decis&atilde;o f&aacute;cil.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que Isis <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — formul&aacute;rio condicional</h3><p>Segmenta&ccedil;&atilde;o Salvador premium. Lead sem perfil n&atilde;o chega no WhatsApp. Algoritmo treinado para buscar autônomas e empres&aacute;rias 25-45 anos.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎬</div><div><h3>Refer&ecirc;ncias de criativos — semana 1</h3><p>Prioridade: v&iacute;deo Ozempic e Mounjaro. Depois: t&eacute;cnica exclusiva, dor-jornada-resultado. A EmpresAtiva direciona a equipe de marketing da Isis.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Instagram vitrine premium</h3><p>Bio, destaques e posts fixados posicionados para extensionist de refer&ecirc;ncia em Salvador. Conta como vitrine, n&atilde;o como portf&oacute;lio gen&eacute;rico.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🤖</div><div><h3>Agente de IA — 24h/7 dias</h3><p>Responde fora do hor&aacute;rio comercial. Educa sobre o m&eacute;todo adesivado. Aciona o comercial s&oacute; quando o lead est&aacute; pronto.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>Google Business otimizado</h3><p>Nota 4,4 para nota 5. Cadência de pedido de avalia&ccedil;&atilde;o ap&oacute;s cada instala&ccedil;&atilde;o. A press&atilde;o s&atilde;o positiva como prova social para novos leads.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>O que a ag&ecirc;ncia anterior n&atilde;o entregou: dados em tempo real. Relat&oacute;rio semanal no WhatsApp — investimento, leads, CPL, criativos campe&otilde;es.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Come&ccedil;a aqui, <em>escala com dados</em></h2>
+  <p class="sec-intro">Isis, esse &eacute; o primeiro passo — Meta Ads com IA. Quando a gente souber o que R$1.000 de verba gera em faturamento adicional, a decis&atilde;o de escalar &eacute; sua e da sua irm&atilde; com dados na m&atilde;o.</p>
+
+  <div class="inv-card">
+    <div class="inv-card-body">
+      <div class="inv-plan-lbl">Meta &amp; IA &mdash; Isis Bittencourt Concept Hair</div>
+      <div class="inv-price"><sub>R$</sub> 1.294</div>
+      <div class="inv-period">por m&ecirc;s &middot; contrato 6 meses</div>
+      <div class="inv-sep"></div>
+      <div class="inv-breakdown">
+        <div class="inv-line"><span>Gest&atilde;o Meta Ads</span><span>R$ 997</span></div>
+        <div class="inv-line"><span>Agente de IA — qualifica&ccedil;&atilde;o 24h</span><span>R$ 297</span></div>
+        <div class="inv-line" style="border-bottom:none;padding-top:14px;border-top:1px solid var(--border);"><span style="font-weight:600;color:var(--white);">Total ag&ecirc;ncia/m&ecirc;s</span><span style="font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--orange);">R$ 1.294</span></div>
+      </div>
+      <div class="inv-sep"></div>
+      <div class="inv-includes">
+        <h4>Incluso no plano</h4>
+        <ul>
+          <li>Meta Ads com formul&aacute;rio condicional</li>
+          <li>Segmenta&ccedil;&atilde;o Salvador — autônomas e empres&aacute;rias 25-45 anos</li>
+          <li>Refer&ecirc;ncias de criativos para a equipe da Isis (semana 1)</li>
+          <li>Prioridade: v&iacute;deo Ozempic e Mounjaro</li>
+          <li>Instagram posicionado como vitrine premium</li>
+          <li>Agente de IA — resposta em &lt; 1 min, 24h/7 dias</li>
+          <li>Alerta de lead qualificado no grupo do WhatsApp</li>
+          <li>Google Business otimizado + cadência de avalia&ccedil;&otilde;es</li>
+          <li>Dashboard em tempo real</li>
+          <li>Relat&oacute;rio semanal no WhatsApp</li>
+        </ul>
+      </div>
+      <div class="inv-media">
+        <span>Verba sugerida inicial (paga direto ao Meta)</span>
+        <span>R$ 1.000/m&ecirc;s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="var-box">
+    <h4>Escala com previsibilidade</h4>
+    <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 1.294</span></div>
+    <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+    <div class="var-row"><span>Ex: investe R$ 2.000 → excedente R$ 1.000</span><span>+ R$ 200 → ag&ecirc;ncia R$ 1.494</span></div>
+    <div class="var-row"><span>Quando escalar?</span><span>Quando R$1k tiver previsibilidade de retorno</span></div>
+  </div>
+
+  <div class="fase2-box">
+    <h4>Fase 2 — Arquitetura Completa</h4>
+    <p>CRM implementado, playbook comercial para o time de atendimento, reuni&otilde;es quinzenais de alinhamento de vendas, Google Ads em paralelo ao Meta: <strong>Arquitetura de Receita por R$ 2.497/m&ecirc;s.</strong> Quando o Meta estiver gerando previsibilidade, a gente conversa sobre expandir.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da conversa com a irm&atilde; ao <em>primeiro lead qualificado</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Esta semana</span>
+      <h3>Decis&atilde;o com a s&oacute;cia</h3>
+      <p>Isis e a irm&atilde; analisam a proposta juntas. Retorno pelo WhatsApp confirmando o fechamento.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Briefing + Refer&ecirc;ncias de Criativos</h3>
+      <p>Acesso ao gerenciador de an&uacute;ncios do Meta. A EmpresAtiva j&aacute; manda as refer&ecirc;ncias para a equipe de marketing da Isis na semana 1 — prioridade para o v&iacute;deo sobre Ozempic e Mounjaro e para o storytelling da t&eacute;cnica exclusiva.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 4–7</span>
+      <h3>Criativos + Campanhas no Ar</h3>
+      <p>Meta Ads ativo com formul&aacute;rio condicional. Agente de IA configurado com a voz e o m&eacute;todo da Isis. Instagram ajustado como vitrine. GBP otimizado e cadência de avalia&ccedil;&otilde;es ativada.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Primeiro Relat&oacute;rio</h3>
+      <p>Leads qualificados, custo por lead, criativo campe&atilde;o. A EmpresAtiva j&aacute; traz ajustes para a semana 2 com base nos primeiros dados.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 30</span>
+      <h3>Balan&ccedil;o do 1&ordm; M&ecirc;s</h3>
+      <p>Leads qualificados, instala&ccedil;&otilde;es agendadas, faturamento adicional gerado. Com esses dados, Isis e a irm&atilde; decidem: mant&eacute;m a verba, dobra, ou j&aacute; conversa sobre Arquitetura Completa.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Isis, a t&eacute;cnica &eacute; exclusiva.<br><em>Falta aparecer para quem precisa dela.</em></h2>
+  <p>8 anos de sal&atilde;o, m&eacute;todo que a Jan Mota passou a usar, ticket de R$3k a R$12k e um p&uacute;blico que n&atilde;o briga por pre&ccedil;o quando entende o diferencial. O que faltava era o criativo certo, o filtro de lead certo e a IA para n&atilde;o perder nenhuma cliente que chegou fora do hor&aacute;rio. A EmpresAtiva faz isso.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
