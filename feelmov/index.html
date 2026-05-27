@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FeelMov Premium Studio | O único programa de saúde personalizado da Barra</title>
+<meta name="description" content="Treine com exclusividade na Barra da Tijuca. Máximo 4 alunos por horário, personal 1:1, nutricionista integrado e avaliação mensal com ultrassom muscular. Vagas limitadas a 100 alunos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1116;
+    --ink-2:#1A1F26;
+    --bone:#F5F1EA;
+    --bone-2:#EAE3D6;
+    --gold:#B8945C;
+    --gold-soft:#D4B886;
+    --line:rgba(184,148,92,0.25);
+    --muted:#6B7280;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bone);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:-0.01em;line-height:1.15}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);font-weight:500}
+
+  /* === TOP BAR === */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(14,17,22,0.85);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(184,148,92,0.15);
+    padding:14px 0;
+  }
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--bone);letter-spacing:0.04em}
+  .logo span{color:var(--gold)}
+  .top-cta{
+    background:var(--gold);color:var(--ink);
+    padding:10px 22px;border-radius:2px;text-decoration:none;
+    font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+    transition:all 0.3s ease;
+  }
+  .top-cta:hover{background:var(--gold-soft);transform:translateY(-1px)}
+
+  /* === DOBRA 1 — HERO === */
+  .hero{
+    background:var(--ink);color:var(--bone);
+    padding:140px 0 100px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;top:0;right:0;width:50%;height:100%;
+    background:linear-gradient(135deg,transparent 0%,rgba(184,148,92,0.04) 50%,transparent 100%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;
+    position:relative;z-index:2;
+  }
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    margin-bottom:24px;
+  }
+  .hero-eyebrow::before{
+    content:'';width:32px;height:1px;background:var(--gold);
+  }
+  .hero h1{
+    font-size:clamp(38px,5vw,62px);color:var(--bone);
+    margin-bottom:22px;font-weight:500;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold-soft);font-weight:400}
+  .hero-sub{
+    font-size:18px;color:rgba(245,241,234,0.75);
+    margin-bottom:36px;max-width:540px;font-weight:300;
+  }
+  .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
+  .btn-primary{
+    background:var(--gold);color:var(--ink);
+    padding:18px 36px;border-radius:2px;text-decoration:none;
+    font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+    transition:all 0.3s ease;display:inline-flex;align-items:center;gap:12px;
+    border:1px solid var(--gold);
+  }
+  .btn-primary:hover{background:transparent;color:var(--gold)}
+  .btn-secondary{
+    background:transparent;color:var(--bone);
+    padding:18px 36px;border-radius:2px;text-decoration:none;
+    font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    transition:all 0.3s ease;border:1px solid rgba(245,241,234,0.3);
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+  .hero-meta{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:32px;
+    padding-top:36px;border-top:1px solid rgba(184,148,92,0.2);
+    max-width:480px;
+  }
+  .meta-item .num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;color:var(--gold);font-weight:500;line-height:1;
+  }
+  .meta-item .lbl{
+    font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+    color:rgba(245,241,234,0.6);margin-top:8px;
+  }
+
+  /* === HERO VIDEO === */
+  .hero-video{
+    position:relative;aspect-ratio:9/16;max-width:420px;margin:0 auto;
+    border-radius:4px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+    border:1px solid rgba(184,148,92,0.2);
+  }
+  .video-placeholder{
+    width:100%;height:100%;
+    background:linear-gradient(135deg,#1A1F26 0%,#0E1116 100%);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:var(--bone);position:relative;
+    background-image:linear-gradient(135deg,rgba(14,17,22,0.85),rgba(14,17,22,0.75)),
+      url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80');
+    background-size:cover;background-position:center;
+  }
+  .play-circle{
+    width:90px;height:90px;border-radius:50%;
+    background:rgba(184,148,92,0.95);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:transform 0.3s ease;
+    box-shadow:0 10px 40px rgba(184,148,92,0.4);
+  }
+  .play-circle:hover{transform:scale(1.08)}
+  .play-circle::after{
+    content:'';width:0;height:0;
+    border-left:22px solid var(--ink);
+    border-top:14px solid transparent;
+    border-bottom:14px solid transparent;
+    margin-left:6px;
+  }
+  .video-label{
+    position:absolute;bottom:24px;left:24px;right:24px;
+    text-align:center;
+  }
+  .video-label .eyebrow{margin-bottom:8px;display:block}
+  .video-label p{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--bone)}
+
+  /* === DOBRA 2 — TRANSFORMAÇÃO/CONFLITO === */
+  .dobra2{padding:110px 0;background:var(--bone)}
+  .section-head{text-align:center;max-width:760px;margin:0 auto 70px}
+  .section-head h2{font-size:clamp(32px,4vw,48px);margin:20px 0 16px}
+  .section-head h2 em{font-style:italic;color:var(--gold);font-weight:400}
+  .section-head p{font-size:17px;color:var(--muted);font-weight:300;line-height:1.7}
+
+  .conflict-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--line);background:var(--ink);
+  }
+  .conflict-col{padding:48px 44px;color:var(--bone)}
+  .conflict-col.problem{background:var(--ink-2);border-right:1px solid rgba(184,148,92,0.15)}
+  .conflict-col.solution{background:var(--ink);position:relative}
+  .conflict-col.solution::before{
+    content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);
+  }
+  .conflict-col h3{
+    font-size:24px;margin-bottom:24px;color:var(--bone);
+    padding-bottom:16px;border-bottom:1px solid rgba(184,148,92,0.2);
+    display:flex;align-items:center;gap:12px;
+  }
+  .conflict-col.problem h3{color:rgba(245,241,234,0.7)}
+  .conflict-col.solution h3{color:var(--gold-soft)}
+  .conflict-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+  .conflict-list li{
+    font-size:15px;color:rgba(245,241,234,0.85);
+    padding-left:28px;position:relative;line-height:1.55;
+  }
+  .conflict-list li::before{
+    content:'';position:absolute;left:0;top:9px;
+    width:14px;height:1px;background:var(--gold);
+  }
+  .conflict-col.problem .conflict-list li::before{background:rgba(245,241,234,0.3)}
+
+  /* === DOBRA 3 — COMO FUNCIONA === */
+  .dobra3{padding:110px 0;background:var(--ink);color:var(--bone)}
+  .dobra3 .section-head h2{color:var(--bone)}
+  .dobra3 .section-head h2 em{color:var(--gold-soft)}
+  .dobra3 .section-head p{color:rgba(245,241,234,0.65)}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:64px}
+  .step{position:relative}
+  .step-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:64px;color:var(--gold);font-weight:400;
+    line-height:1;margin-bottom:20px;
+    border-bottom:1px solid rgba(184,148,92,0.3);padding-bottom:16px;
+  }
+  .step h4{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;color:var(--bone);margin-bottom:14px;font-weight:600;
+  }
+  .step p{
+    font-size:14px;color:rgba(245,241,234,0.7);
+    line-height:1.65;font-weight:300;
+  }
+
+  .equipment-callout{
+    background:rgba(184,148,92,0.06);
+    border:1px solid rgba(184,148,92,0.2);
+    padding:36px 44px;text-align:center;
+    border-radius:2px;
+  }
+  .equipment-callout .eyebrow{margin-bottom:14px;display:block}
+  .equipment-callout p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;color:var(--bone);font-weight:400;
+    max-width:780px;margin:0 auto;line-height:1.4;
+  }
+  .equipment-callout p em{color:var(--gold-soft);font-style:italic}
+
+  /* === DOBRA 4 — PROVA SOCIAL === */
+  .dobra4{padding:110px 0;background:var(--bone-2)}
+  .social-top{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+    margin-bottom:64px;text-align:center;
+  }
+  .social-stat{
+    background:var(--bone);padding:36px 24px;
+    border:1px solid var(--line);border-radius:2px;
+  }
+  .social-stat .big{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;color:var(--gold);font-weight:600;line-height:1;
+  }
+  .social-stat .small{
+    font-size:12px;letter-spacing:0.16em;text-transform:uppercase;
+    color:var(--muted);margin-top:10px;font-weight:500;
+  }
+
+  .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .testimonial{
+    background:var(--bone);padding:36px 32px;
+    border:1px solid var(--line);border-radius:2px;
+    display:flex;flex-direction:column;
+  }
+  .quote-mark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:64px;color:var(--gold);line-height:0.6;
+    margin-bottom:16px;font-weight:600;
+  }
+  .testimonial p{
+    font-size:15px;color:var(--ink-2);
+    line-height:1.65;margin-bottom:24px;flex:1;
+    font-style:italic;font-weight:300;
+  }
+  .testimonial-author{
+    padding-top:20px;border-top:1px solid var(--line);
+    display:flex;flex-direction:column;gap:4px;
+  }
+  .testimonial-author strong{
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px;color:var(--ink);font-weight:600;
+  }
+  .testimonial-author span{
+    font-size:12px;color:var(--muted);
+    letter-spacing:0.08em;text-transform:uppercase;
+  }
+  .testimonial-note{
+    background:rgba(184,148,92,0.08);
+    border:1px dashed var(--gold);padding:14px;
+    margin-top:32px;text-align:center;font-size:13px;
+    color:var(--muted);
+  }
+
+  /* === DOBRA 5 — OBJEÇÕES + CTA FINAL === */
+  .dobra5{padding:110px 0;background:var(--bone)}
+  .obj-wrap{max-width:880px;margin:0 auto 80px}
+  .obj{
+    background:var(--bone-2);
+    border:1px solid var(--line);
+    margin-bottom:14px;border-radius:2px;
+    transition:all 0.3s ease;
+  }
+  .obj:hover{border-color:var(--gold)}
+  .obj summary{
+    padding:24px 28px;cursor:pointer;
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;color:var(--ink);font-weight:600;
+    list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;
+  }
+  .obj summary::-webkit-details-marker{display:none}
+  .obj summary::after{
+    content:'+';font-size:28px;color:var(--gold);
+    transition:transform 0.3s ease;font-weight:300;
+  }
+  .obj[open] summary::after{content:'−'}
+  .obj-body{
+    padding:0 28px 28px;font-size:15px;
+    color:var(--ink-2);line-height:1.7;
+  }
+  .obj-body strong{color:var(--gold);font-weight:600}
+
+  /* CTA FINAL */
+  .final-cta{
+    background:var(--ink);color:var(--bone);
+    padding:80px 60px;border-radius:2px;
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .final-cta::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 40%,rgba(184,148,92,0.15) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .final-cta-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+  .final-cta h2{
+    font-size:clamp(34px,4.2vw,52px);color:var(--bone);
+    margin:20px 0 24px;
+  }
+  .final-cta h2 em{font-style:italic;color:var(--gold-soft);font-weight:400}
+  .final-cta p{
+    font-size:18px;color:rgba(245,241,234,0.8);
+    margin-bottom:40px;font-weight:300;line-height:1.7;
+  }
+  .scarcity-bar{
+    display:inline-flex;align-items:center;gap:12px;
+    background:rgba(184,148,92,0.12);
+    border:1px solid var(--gold);
+    padding:12px 24px;border-radius:2px;
+    font-size:13px;color:var(--gold-soft);
+    letter-spacing:0.08em;text-transform:uppercase;font-weight:500;
+    margin-bottom:36px;
+  }
+  .scarcity-dot{
+    width:8px;height:8px;border-radius:50%;background:var(--gold);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1}
+    50%{opacity:0.4}
+  }
+  .promise-list{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:18px 32px;text-align:left;
+    margin:40px auto;max-width:640px;
+  }
+  .promise-list li{
+    list-style:none;font-size:15px;color:rgba(245,241,234,0.85);
+    padding-left:28px;position:relative;line-height:1.5;
+  }
+  .promise-list li::before{
+    content:'✓';position:absolute;left:0;top:0;
+    color:var(--gold);font-weight:600;
+  }
+
+  /* === FOOTER === */
+  .footer{
+    background:var(--ink-2);color:rgba(245,241,234,0.7);
+    padding:60px 0 40px;
+  }
+  .footer-grid{
+    display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;
+    margin-bottom:40px;
+  }
+  .footer h5{
+    font-family:'Cormorant Garamond',serif;font-size:20px;
+    color:var(--bone);margin-bottom:16px;font-weight:600;
+  }
+  .footer p, .footer a{
+    font-size:14px;color:rgba(245,241,234,0.7);
+    text-decoration:none;line-height:1.8;font-weight:300;
+  }
+  .footer a:hover{color:var(--gold)}
+  .footer-bottom{
+    padding-top:30px;border-top:1px solid rgba(184,148,92,0.15);
+    text-align:center;font-size:12px;color:rgba(245,241,234,0.4);
+  }
+
+  /* === FLOATING WHATSAPP === */
+  .float-wa{
+    position:fixed;bottom:24px;right:24px;z-index:50;
+    background:#25D366;color:#fff;
+    width:60px;height:60px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(37,211,102,0.4);
+    text-decoration:none;font-size:28px;
+    transition:transform 0.3s ease;
+  }
+  .float-wa:hover{transform:scale(1.1)}
+
+  /* === RESPONSIVE === */
+  @media (max-width:900px){
+    .hero{padding:120px 0 80px}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-meta{grid-template-columns:1fr;gap:20px;text-align:left}
+    .hero-video{max-width:300px}
+    .conflict-grid{grid-template-columns:1fr}
+    .conflict-col.problem{border-right:none;border-bottom:1px solid rgba(184,148,92,0.15)}
+    .steps{grid-template-columns:1fr 1fr;gap:24px}
+    .social-top{grid-template-columns:1fr 1fr;gap:16px}
+    .testimonials{grid-template-columns:1fr}
+    .final-cta{padding:60px 32px}
+    .promise-list{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr;gap:32px}
+    .dobra2,.dobra3,.dobra4,.dobra5{padding:80px 0}
+  }
+  @media (max-width:500px){
+    .steps{grid-template-columns:1fr}
+    .social-top{grid-template-columns:1fr 1fr}
+    .hero h1{font-size:36px}
+    .btn-primary,.btn-secondary{padding:16px 24px;font-size:12px}
+    .hero-cta-row{flex-direction:column}
+    .btn-primary,.btn-secondary{width:100%;justify-content:center}
+    .conflict-col{padding:32px 24px}
+    .final-cta{padding:50px 24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="logo">FeelMov<span>.</span></div>
+    <a href="#agendar" class="top-cta">Agendar Visita</a>
+  </div>
+</div>
+
+<!-- ===== DOBRA 1 — HERO ===== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="eyebrow">Premium Studio · Barra da Tijuca</span>
+      </div>
+      <h1>Treine com a previsibilidade que sua agenda exige e a <em>exclusividade</em> que seu padrão pede.</h1>
+      <p class="hero-sub">O único programa de saúde 100% personalizado da Barra: máximo 4 alunos por horário, personal 1:1, nutricionista integrado e avaliação mensal com ultrassom muscular — tudo em uma única mensalidade.</p>
+
+      <div class="hero-cta-row">
+        <a href="#agendar" class="btn-primary">Agendar Visita Privativa →</a>
+        <a href="#como-funciona" class="btn-secondary">Conhecer o método</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="num">4</div>
+          <div class="lbl">Alunos por horário<br>(no máximo)</div>
+        </div>
+        <div class="meta-item">
+          <div class="num">5.0</div>
+          <div class="lbl">Avaliação<br>Google</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-video">
+      <div class="video-placeholder" onclick="playVideo()">
+        <div class="play-circle"></div>
+        <div class="video-label">
+          <span class="eyebrow">Tour pelo Studio</span>
+          <p>Conheça o espaço</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 2 — TRANSFORMAÇÃO / CONFLITO ===== -->
+<section class="dobra2">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">A diferença que se sente na primeira hora</span>
+      <h2>Você não precisa de mais uma academia.<br>Você precisa de um <em>sistema</em> que respeita seu tempo.</h2>
+      <p>Quem chegou até aqui já tentou personal em condomínio, academia cheia, app de treino, dieta solta. O que falta não é esforço — é integração. Veja a diferença lado a lado.</p>
+    </div>
+
+    <div class="conflict-grid">
+      <div class="conflict-col problem">
+        <h3>Academia tradicional &amp; personal avulso</h3>
+        <ul class="conflict-list">
+          <li>Fila no aparelho, treino que estica para 1h30</li>
+          <li>Ficha genérica que não considera sua composição corporal</li>
+          <li>Personal cobra à parte e some quando você precisa remarcar</li>
+          <li>Nutricionista em outro endereço, sem conversar com o treino</li>
+          <li>Sem reavaliação — você não sabe se está evoluindo</li>
+          <li>Ambiente barulhento, lotado, sem privacidade</li>
+        </ul>
+      </div>
+      <div class="conflict-col solution">
+        <h3>FeelMov Premium Studio</h3>
+        <ul class="conflict-list">
+          <li>Treino completo em exatamente 1 hora, sem revezamento</li>
+          <li>Programa baseado em avaliação com bioimpedância e ultrassom muscular</li>
+          <li>Personal 1:1 sempre disponível — sua agenda muda, o treino acompanha</li>
+          <li>Nutricionista integrado: plano alimentar conversa com o treino</li>
+          <li>Reavaliação mensal: nada de platô, ajustes baseados em dados</li>
+          <li>Ambiente silencioso, máximo 4 alunos por horário, café e chá inclusos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 3 — COMO FUNCIONA ===== -->
+<section class="dobra3" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">O método FeelMov</span>
+      <h2>Quatro passos para sair da estagnação<br>e voltar a <em>ver evolução</em> no espelho.</h2>
+      <p>O que torna o FeelMov único não é só a estrutura — é a sequência. Cada etapa alimenta a próxima, e tudo acontece sob o mesmo teto, com a mesma equipe.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Avaliação Física Completa</h4>
+        <p>1 hora com o coordenador técnico: anamnese, bioimpedância avançada, ultrassom muscular e testes de mobilidade. Você sai com um diagnóstico real de onde está.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Plano Alimentar Personalizado</h4>
+        <p>Consulta com o nutricionista: cardápio desenhado a partir da sua avaliação, do seu objetivo e da sua rotina. Sem dietas restritivas, sem fórmulas prontas.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Programa de Treino 1:1</h4>
+        <p>Seu personal monta o treino lendo a avaliação e o plano alimentar. Ajustes em tempo real durante a sessão, com a técnica certa para sua idade e condição.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Acompanhamento Mensal</h4>
+        <p>Nova bioimpedância a cada 30 dias. Treino e plano são revisados juntos pelo personal e pelo nutricionista. Você acompanha sua evolução em números.</p>
+      </div>
+    </div>
+
+    <div class="equipment-callout">
+      <span class="eyebrow">Diferencial técnico</span>
+      <p>O FeelMov é o <em>único studio premium da Barra</em> com ultrassom muscular para leitura da composição interna do músculo — o mesmo equipamento usado em consultórios de medicina do esporte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 4 — PROVA SOCIAL ===== -->
+<section class="dobra4">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Quem treina aqui</span>
+      <h2>Médicos, empresários e quem já passou dos 40 escolheram a <em>previsibilidade</em>.</h2>
+    </div>
+
+    <div class="social-top">
+      <div class="social-stat">
+        <div class="big">76%</div>
+        <div class="small">Alunos com 40+ anos</div>
+      </div>
+      <div class="social-stat">
+        <div class="big">5.0</div>
+        <div class="small">Avaliação no Google</div>
+      </div>
+      <div class="social-stat">
+        <div class="big">1h</div>
+        <div class="small">Duração previsível do treino</div>
+      </div>
+      <div class="social-stat">
+        <div class="big">Anual</div>
+        <div class="small">Plano mais escolhido</div>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p>Tentei várias academias e personal em casa, mas só aqui consegui rotina. Em uma hora termino o treino, tomo um café e sigo o dia. Para a minha agenda de plantões, é o único formato que funcionou.</p>
+        <div class="testimonial-author">
+          <strong>Dra. Fabiola M.</strong>
+          <span>Médica · Aluna desde 2024</span>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p>O que me convenceu foi a avaliação com ultrassom. Tenho 62 anos e nunca tinha visto um lugar que mede a saúde do músculo por dentro. Em três meses, recuperei força que achei que tinha perdido para sempre.</p>
+        <div class="testimonial-author">
+          <strong>Carlos R.</strong>
+          <span>Empresário · 62 anos</span>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <p>Meu marido e eu treinamos juntos, em horários diferentes. O personal conhece nossos planos alimentares e o nutricionista ajusta tudo no mesmo lugar. Acabou aquela história de marcar três consultas em três endereços.</p>
+        <div class="testimonial-author">
+          <strong>Patrícia L.</strong>
+          <span>Aluna do plano anual</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-note">
+      [PLACEHOLDER] · Depoimentos textuais ilustrativos para layout. Substituir por depoimentos reais (texto + foto/vídeo) com autorização de uso antes da publicação.
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOBRA 5 — OBJEÇÕES + CTA FINAL ===== -->
+<section class="dobra5">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2>Antes de agendar, você provavelmente quer <em>saber isto</em>.</h2>
+    </div>
+
+    <div class="obj-wrap">
+      <details class="obj">
+        <summary>Vale o investimento?</summary>
+        <div class="obj-body">
+          O FeelMov inclui em uma única mensalidade: <strong>personal 1:1, nutricionista integrado, bioimpedância e ultrassom mensais, ambiente exclusivo</strong>. Se você somar esses serviços em separado na região (personal a R$ 120–150/h, consulta nutricional, avaliação corporal e mensalidade de academia), o gasto ultrapassa facilmente R$ 2.000/mês. Aqui, o pacote anual sai pela fração do que você gastaria contratando tudo solto.
+        </div>
+      </details>
+      <details class="obj">
+        <summary>Tem flexibilidade se eu não puder ir 3x por semana?</summary>
+        <div class="obj-body">
+          Sim. Você reagenda quando precisar. Pode trocar dias, alternar manhã e noite, ajustar à sua agenda de plantões, viagens ou reuniões — e sempre haverá um personal disponível para te receber. <strong>Previsibilidade total, sem perder aulas.</strong>
+        </div>
+      </details>
+      <details class="obj">
+        <summary>Funciona para quem tem mais de 40 ou alguma limitação?</summary>
+        <div class="obj-body">
+          <strong>76% dos nossos alunos têm 40 anos ou mais.</strong> Atendemos médicos, empresários, aposentados e pessoas com histórico de lesão ou cirurgia. O programa é desenhado para longevidade, ganho de força funcional e qualidade de vida — não para fisiculturismo. A avaliação inicial mapeia exatamente o que pode e o que não pode ser feito.
+        </div>
+      </details>
+      <details class="obj">
+        <summary>Nunca ouvi falar do FeelMov. Como sei se é sério?</summary>
+        <div class="obj-body">
+          Inauguramos em março de 2024 e já temos <strong>avaliação 5.0 no Google</strong>, com alta taxa de fidelização — a maioria dos alunos escolhe o plano anual. O modelo de studio premium ainda é raro no Rio (mais comum em São Paulo), por isso a melhor forma de entender é vir conhecer pessoalmente.
+        </div>
+      </details>
+      <details class="obj">
+        <summary>Ainda tem vaga no meu horário?</summary>
+        <div class="obj-body">
+          Trabalhamos com <strong>limite de 4 alunos por horário</strong>. Alguns horários nobres já estão fechados (segundas, quartas e sextas das 8h e horários do início da noite). Reservar uma visita é a forma mais segura de garantir o horário que combina com sua rotina antes que ele feche.
+        </div>
+      </details>
+      <details class="obj">
+        <summary>E a localização?</summary>
+        <div class="obj-body">
+          Estamos no <strong>A3 Offices, Av. das Américas, 11.365</strong> — entre o final da Barra (pós-Alvorada) e o início do Recreio. Atendemos principalmente alunos das regiões da Pedra de Itaúna, Recreio, Blue Houses e condomínios de casas do entorno, com fácil acesso e estacionamento.
+        </div>
+      </details>
+    </div>
+
+    <!-- CTA FINAL -->
+    <div class="final-cta" id="agendar">
+      <div class="final-cta-inner">
+        <div class="scarcity-bar">
+          <span class="scarcity-dot"></span>
+          Algumas faixas de horário já fecharam · Vagas restantes para 2026
+        </div>
+        <span class="eyebrow">Sua visita privativa</span>
+        <h2>Reserve uma <em>visita guiada</em> sem compromisso e sinta a diferença.</h2>
+        <p>Você vai conhecer o studio pessoalmente, entender exatamente como o programa funciona, conversar com a equipe e tirar todas as dúvidas — antes de qualquer decisão.</p>
+
+        <ul class="promise-list">
+          <li>Tour completo pelo studio premium</li>
+          <li>Conversa com o coordenador técnico</li>
+          <li>Apresentação do método e dos equipamentos</li>
+          <li>Verificação de disponibilidade no seu horário</li>
+        </ul>
+
+        <a href="https://wa.me/5521971621071?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20FeelMov%20Premium." class="btn-primary" style="margin-top:20px">
+          Agendar Visita pelo WhatsApp →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h5>FeelMov Premium Studio</h5>
+        <p>O único programa de saúde personalizado da Barra da Tijuca. Treine com exclusividade, integração e dados — em um único endereço.</p>
+      </div>
+      <div>
+        <h5>Endereço</h5>
+        <p>Av. das Américas, 11.365<br>Loja SS102 — A3 Offices<br>Barra da Tijuca · RJ</p>
+      </div>
+      <div>
+        <h5>Contato</h5>
+        <p>
+          WhatsApp: <a href="https://wa.me/5521971621071">(21) 97162-1071</a><br>
+          E-mail: <a href="mailto:contato@feelmov.com.br">contato@feelmov.com.br</a><br>
+          Instagram: <a href="https://instagram.com/feelmovstudio">@feelmovstudio</a>
+        </p>
+        <p style="margin-top:14px">
+          Seg–Sex: 6h às 21h<br>
+          Sáb: 8h às 13h
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 FeelMov Premium Studio · Todos os direitos reservados · Termos de Uso · Política de Privacidade
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5521971621071?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20FeelMov%20Premium." class="float-wa" aria-label="WhatsApp">
+  💬
+</a>
+
+<script>
+  function playVideo(){
+    alert('Placeholder: substituir pelo vídeo institucional da academia (tour pelo studio, 30–45s, formato 9:16 ou 16:9).');
+  }
+  // Smooth scroll para âncoras
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',function(e){
+      const t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    });
+  });
+</script>
+
+</body>
+</html>
