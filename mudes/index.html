@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Mudes</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--blue:#3498DB;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.12) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(52,152,219,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,10vw,76px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.problema-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.problema-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.problema-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.problema-box strong{color:var(--white);}
+
+.solucao-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.solucao-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:12px;}
+.solucao-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.solucao-box strong{color:var(--white);}
+
+.avatar-box{background:rgba(52,152,219,0.05);border:1px solid rgba(52,152,219,0.2);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.avatar-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--blue);margin-bottom:14px;}
+.avatar-grid{display:flex;flex-direction:column;gap:10px;}
+.avatar-item{background:rgba(255,255,255,0.03);padding:16px;border-radius:2px;border-left:2px solid rgba(52,152,219,0.3);}
+.avatar-item h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.avatar-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.avatar-item strong{color:var(--blue);}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.diag-item strong{color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.blue{background:rgba(52,152,219,0.08);border-color:rgba(52,152,219,0.2);color:var(--blue);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.65;}
+
+.filtro-flow{display:flex;flex-direction:column;gap:8px;margin-top:14px;}
+.filtro-step{display:flex;gap:12px;align-items:flex-start;}
+.filtro-dot{width:22px;height:22px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:9px;color:var(--orange);flex-shrink:0;margin-top:2px;}
+.filtro-dot.ok{background:rgba(46,204,113,0.1);border-color:rgba(46,204,113,0.25);color:var(--green);}
+.filtro-step p{font-size:13px;color:var(--muted);line-height:1.6;}
+.filtro-step p strong{color:var(--white);}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:2px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"&#10003;";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:16px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;flex-wrap:wrap;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.conta-card{background:var(--card);border:1px solid var(--border);padding:24px;border-radius:2px;margin-top:2px;}
+.conta-card h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.conta-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.conta-row:last-child{border-bottom:none;}
+.conta-row span:first-child{font-size:12px;color:var(--muted);}
+.conta-row span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--white);}
+.conta-row.dest span:last-child{color:var(--orange);font-family:var(--font-display);font-size:18px;font-weight:800;}
+
+.var-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.var-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.fase2-box{background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.14);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.fase2-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.fase2-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.fase2-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.06));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .avatar-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Mudes%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; RH &amp; Recrutamento &middot; Rio de Janeiro</p>
+  <h1><em>Mudes</em></h1>
+  <p class="hero-sub">Meta Ads com formul&aacute;rio condicional e CNPJ obrigat&oacute;rio — para que cada lead que chegar no comercial seja de uma empresa real, n&atilde;o um candidato. Primeira vez que a Mudes ter&aacute; um gestor focado em atrair a ponta certa do funil.</p>
+  <div class="pills">
+    <div class="pill"><span>Meta Ads</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Verba inicial</span><span>R$ 1.000+/m&ecirc;s</span></div>
+    <div class="pill"><span>Foco</span><span>Est&aacute;gio &middot; Advocacia &middot; Contabilidade</span></div>
+    <div class="pill"><span>Contrato</span><span>3 meses renovável</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">O que a EmpresAtiva <em>ouviu e entendeu</em></h2>
+  <p class="sec-intro">Rodrigo e Mariana foram diretos. A EmpresAtiva tamb&eacute;m.</p>
+
+  <div class="problema-box">
+    <h3>O problema n&atilde;o &eacute; volume de leads — &eacute; que metade deles s&atilde;o candidatos</h3>
+    <p>No Google: 18 leads em meses, CPL alto, maioria fora do perfil. No Meta: 40+ leads, mas <strong>50% eram candidatos a vagas, n&atilde;o empresas querendo contratar.</strong> Com formul&aacute;rio exigindo CNPJ, quem n&atilde;o &eacute; empresa n&atilde;o consegue preencher — e n&atilde;o vira lead. O custo por lead qualificado cai porque o algoritmo aprende exatamente quem converte.</p>
+  </div>
+
+  <div class="solucao-box">
+    <h3>A solu&ccedil;&atilde;o &eacute; nichar o avatar — e bater na dor certa de cada um</h3>
+    <p>O Rodrigo foi expl&iacute;cito: escritório de advocacia e contabilidade contratam muito estagiário. <strong>Um an&uacute;ncio falando com o dono de escritório de advocacia sobre a dor de contratar o estagiário certo &eacute; infinitamente mais efetivo do que um an&uacute;ncio gen&eacute;rico sobre "programa de est&aacute;gio".</strong> A EmpresAtiva cria o roteiro, a Mudes grava, a EmpresAtiva edita e sobe.</p>
+  </div>
+
+  <!-- AVATARES -->
+  <div class="avatar-box">
+    <h3>Avatares definidos na reuni&atilde;o</h3>
+    <div class="avatar-grid">
+      <div class="avatar-item">
+        <h4>Escritório de Advocacia</h4>
+        <p>Principal foco de est&aacute;gio. Alta demanda por estagiários de direito, processo constante. <strong>Dor: encontrar o candidato certo sem gastar tempo do sócio em seleção.</strong></p>
+      </div>
+      <div class="avatar-item">
+        <h4>Escritório de Contabilidade</h4>
+        <p>Segundo foco de est&aacute;gio. Demanda recorrente, ticket previsível. <strong>Dor: turnover alto de estagiários e processo de admissão trabalhoso.</strong></p>
+      </div>
+      <div class="avatar-item">
+        <h4>Restaurantes e Hospitalidade</h4>
+        <p>Foco de jovem aprendiz (curso de turismo e hospitalidade j&aacute; existente). <strong>Dor: cota obrigatória do Ministério do Trabalho sem estrutura para contratar.</strong></p>
+      </div>
+      <div class="avatar-item">
+        <h4>PME com turnover alto</h4>
+        <p>Foco de vagas profissionais e CLT. <strong>Dor: contratar por indicação do primo, errar, demitir, contratar de novo — ciclo caro e improdutivo.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="diag-list" style="margin-top:20px;">
+    <div class="diag-item">
+      <div class="diag-num">01</div>
+      <div>
+        <h3>Agência anterior demorou 8 meses para sugerir o Meta</h3>
+        <p>O Rodrigo disse isso na reuni&atilde;o. A EmpresAtiva come&ccedil;a pelo Meta — &eacute; a primeira decis&atilde;o, n&atilde;o a &uacute;ltima. <strong>Sem 8 meses de tentativa e erro no lugar errado.</strong></p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">02</div>
+      <div>
+        <h3>Site institucional da funda&ccedil;&atilde;o n&atilde;o &eacute; o destino do an&uacute;ncio</h3>
+        <p>O Rodrigo foi claro: o site da Mudes &eacute; institucional, a pessoa se confunde. <strong>O tráfego pago vai para landing pages espec&iacute;ficas por servi&ccedil;o — est&aacute;gio, jovem aprendiz, vagas profissionais</strong> — focadas em converter empresa.</p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">03</div>
+      <div>
+        <h3>V&iacute;deo &eacute; 3x mais barato que imagem em CPL</h3>
+        <p>A EmpresAtiva mostrou na reuni&atilde;o: lead de campanha em v&iacute;deo custo R$28, lead de imagem custo R$102 — mesmo conta. <strong>O formato &eacute; v&iacute;deo. A EmpresAtiva entrega o roteiro, a Mudes grava, a EmpresAtiva edita.</strong></p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">04</div>
+      <div>
+        <h3>Google ficou mais caro e menos efetivo</h3>
+        <p>O Rodrigo e a Mariana j&aacute; perceberam isso. A EmpresAtiva confirma: com o ChatGPT, o Google est&aacute; reduzindo os espa&ccedil;os de an&uacute;ncio e o CPL subiu. <strong>Meta Ads como canal principal — Google fica para uma fase 2 quando o Meta j&aacute; tiver previsibilidade.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads para a <em>Mudes</em></h2>
+  <p class="sec-intro">Tr&ecirc;s camadas — do criativo ao alerta no WhatsApp do comercial — com formul&aacute;rio que garante que s&oacute; empresa com CNPJ ativo chega na Mariana.</p>
+
+  <div class="strat-list">
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">01</div>
+        <h3>Documento de avatar e dores — antes de qualquer an&uacute;ncio</h3>
+        <div class="strat-tag">Semana 1</div>
+      </div>
+      <p>A EmpresAtiva cria um documento estruturado com o perfil ideal de cada cliente, as dores espec&iacute;ficas de cada avatar e as solu&ccedil;&otilde;es que a Mudes entrega. <strong>Esse documento guia todo o conte&uacute;do: roteiros de v&iacute;deo, copy dos an&uacute;ncios e perguntas do formul&aacute;rio.</strong> &Eacute; o que a ag&ecirc;ncia anterior n&atilde;o fez em 8 meses.</p>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">02</div>
+        <h3>V&iacute;deo com roteiro da EmpresAtiva — dor, jornada, solu&ccedil;&atilde;o</h3>
+        <div class="strat-tag gold">80% do resultado</div>
+      </div>
+      <p>A EmpresAtiva escreve o roteiro. O Rodrigo ou a Mariana gravam. A EmpresAtiva edita e sobe como an&uacute;ncio. Um v&iacute;deo por avatar priorit&aacute;rio no primeiro m&ecirc;s: advocacia e contabilidade para est&aacute;gio.</p>
+      <div class="strat-example">
+        <span>"Voc&ecirc; &eacute; dono de escritório de advocacia e j&aacute; perdeu tempo com processos de seleção que n&atilde;o entregaram o candidato certo? A Mudes cuida do processo inteiro — triagem, seleção e toda a burocracia legal do programa. Voc&ecirc; recebe o estagiário pronto para come&ccedil;ar." O advogado que assiste isso clica antes de terminar.</span>
+      </div>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">03</div>
+        <h3>Formul&aacute;rio com CNPJ obrigat&oacute;rio — zero candidato</h3>
+        <div class="strat-tag blue">Filtro</div>
+      </div>
+      <p>Quem clica no an&uacute;ncio cai no formul&aacute;rio — n&atilde;o no WhatsApp. Para avan&ccedil;ar, precisa preencher o CNPJ. Se n&atilde;o tem CNPJ ativo, n&atilde;o consegue completar e n&atilde;o vira lead. <strong>Candidato n&atilde;o passa. Empresa passa.</strong></p>
+      <div class="filtro-flow">
+        <div class="filtro-step"><div class="filtro-dot">1</div><p>Empresa v&ecirc; o an&uacute;ncio e clica → cai no formul&aacute;rio</p></div>
+        <div class="filtro-step"><div class="filtro-dot">2</div><p>Pergunta 1: <strong>Qual o CNPJ da sua empresa?</strong> (campo validado)</p></div>
+        <div class="filtro-step"><div class="filtro-dot">3</div><p>Pergunta 2: <strong>Qual servi&ccedil;o voc&ecirc; busca?</strong> (est&aacute;gio / jovem aprendiz / vaga profissional / PCD)</p></div>
+        <div class="filtro-step"><div class="filtro-dot ok">✓</div><p><strong>Alerta no WhatsApp do comercial</strong>: empresa, CNPJ, servi&ccedil;o de interesse. Primeira mensagem autom&aacute;tica j&aacute; sai.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que a Mudes <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">📄</div><div><h3>Documento de avatar e dores</h3><p>Perfil ideal de cada cliente, dores espec&iacute;ficas por avatar, solu&ccedil;&otilde;es da Mudes. Base para todo o conte&uacute;do. Semana 1.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎬</div><div><h3>Roteiro de v&iacute;deo + edi&ccedil;&atilde;o</h3><p>A EmpresAtiva escreve o roteiro por avatar. A Mudes grava. A EmpresAtiva edita. 1 v&iacute;deo por avatar priorit&aacute;rio/m&ecirc;s.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — formul&aacute;rio com CNPJ</h3><p>Campanhas por avatar nichado. Formul&aacute;rio que bloqueia candidatos. Algoritmo treinado para buscar dono/gestor de empresa.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🏠</div><div><h3>Landing pages por servi&ccedil;o</h3><p>Tráfego direto para p&aacute;gina de est&aacute;gio, jovem aprendiz ou vaga profissional — nunca para o site institucional da funda&ccedil;&atilde;o.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔔</div><div><h3>Alerta + mensagem autom&aacute;tica</h3><p>Lead qualificado chega → alerta no grupo com CNPJ, empresa e servi&ccedil;o → primeira mensagem autom&aacute;tica j&aacute; vai para a empresa via WhatsApp.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Investimento, leads qualificados (empresa), CPL real, an&uacute;ncio campe&atilde;o. Semanal no WhatsApp para Mariana e Rodrigo.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">A conta que o <em>Rodrigo mesmo fez</em></h2>
+  <p class="sec-intro">Na reuni&atilde;o, o Rodrigo calculou ao vivo. A EmpresAtiva confirma a conta.</p>
+
+  <div class="inv-card">
+    <div class="inv-card-body">
+      <div class="inv-plan-lbl">Meta Ads &mdash; Mudes</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">fee ag&ecirc;ncia/m&ecirc;s &middot; contrato 3 meses renovável</div>
+      <div class="inv-sep"></div>
+      <div class="inv-includes">
+        <h4>Incluso</h4>
+        <ul>
+          <li>Documento de avatar e dores (semana 1)</li>
+          <li>Roteiro de v&iacute;deo por avatar + edi&ccedil;&atilde;o</li>
+          <li>Meta Ads com formul&aacute;rio condicional e CNPJ obrigat&oacute;rio</li>
+          <li>Segmenta&ccedil;&atilde;o por avatar: advocacia, contabilidade, hospitalidade, PME</li>
+          <li>Landing pages por servi&ccedil;o (est&aacute;gio / jovem aprendiz / vagas)</li>
+          <li>Alerta de lead qualificado no WhatsApp comercial</li>
+          <li>Mensagem autom&aacute;tica de primeiro contato via WhatsApp</li>
+          <li>Dashboard em tempo real</li>
+          <li>Relat&oacute;rio semanal no WhatsApp</li>
+        </ul>
+      </div>
+      <div class="inv-media">
+        <span>Verba m&iacute;nima sugerida (paga direto ao Meta)</span>
+        <span>R$ 1.000/m&ecirc;s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="conta-card">
+    <h4>A conta do Rodrigo — ao vivo na reuni&atilde;o</h4>
+    <div class="conta-row"><span>Fee EmpresAtiva</span><span>R$ 997</span></div>
+    <div class="conta-row"><span>Verba Meta (ex: R$ 3.000)</span><span>R$ 3.000</span></div>
+    <div class="conta-row"><span>Vari&aacute;vel: 20% sobre excedente de R$ 1.000 (R$ 2.000 a mais)</span><span>R$ 400</span></div>
+    <div class="conta-row dest"><span>Total mensal com R$ 3k de verba</span><span>R$ 1.397</span></div>
+  </div>
+
+  <div class="var-box" style="margin-top:2px;">
+    <h4>Tabela de variável por verba</h4>
+    <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 997</span></div>
+    <div class="var-row"><span>R$ 1.500 de verba → excedente R$ 500</span><span>+ R$ 100 → ag&ecirc;ncia R$ 1.097</span></div>
+    <div class="var-row"><span>R$ 2.000 de verba → excedente R$ 1.000</span><span>+ R$ 200 → ag&ecirc;ncia R$ 1.197</span></div>
+    <div class="var-row"><span>R$ 3.000 de verba → excedente R$ 2.000</span><span>+ R$ 400 → ag&ecirc;ncia R$ 1.397</span></div>
+    <div class="var-row"><span>Lgica: se a Mudes cresce, a EmpresAtiva cresce junto</span><span>Interesses alinhados</span></div>
+  </div>
+
+  <div class="fase2-box">
+    <h4>Fase 2 — quando o Meta tiver previsibilidade</h4>
+    <p><strong>Google Ads</strong> com landing page por servi&ccedil;o: <strong>+ R$ 498,50/m&ecirc;s (50% do Meta).</strong><br>
+    <strong>Arquitetura Completa</strong> — CRM, playbook comercial para o time da Mariana, reuni&otilde;es quinzenais de vendas: <strong>R$ 2.497/m&ecirc;s.</strong><br>
+    Começa no Meta. Prova o resultado. Depois decide onde expandir.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da rescis&atilde;o ao <em>primeiro lead empresa</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Amanh&atilde;</span>
+      <h3>Posicionamento da Mudes</h3>
+      <p>Rodrigo verifica a rescis&atilde;o com a ag&ecirc;ncia anterior e alinha internamente com a diretoria financeira. Retorno pelo WhatsApp confirmando a decis&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Documento de Avatar + Acesso</h3>
+      <p>A EmpresAtiva entrega o documento de avatar e dores — base de tudo. Acesso ao gerenciador de an&uacute;ncios do Meta. Alinhamento com Mariana sobre identidade visual e materiais da Mudes.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 4–7</span>
+      <h3>Roteiro + Grava&ccedil;&atilde;o + Formul&aacute;rio</h3>
+      <p>Roteiro do primeiro v&iacute;deo entregue (advocacia para est&aacute;gio). Rodrigo ou Mariana gravam. Formul&aacute;rio com CNPJ obrigat&oacute;rio configurado. Landing page por servi&ccedil;o ajustada.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 8–10</span>
+      <h3>Campanhas no Ar</h3>
+      <p>Meta Ads ativo. Primeiro alerta de lead empresa chegando no grupo do WhatsApp com CNPJ, raz&atilde;o social e servi&ccedil;o de interesse.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 30</span>
+      <h3>Balan&ccedil;o do 1&ordm; M&ecirc;s</h3>
+      <p>Leads empresa gerados, CPL real, taxa de convers&atilde;o por avatar, an&uacute;ncio campe&atilde;o. Rodrigo e Mariana decidem: mantém verba, aumenta, ou ativa segundo avatar.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Mudes, a pr&oacute;xima ag&ecirc;ncia<br><em>n&atilde;o vai levar 8 meses para sugerir o certo.</em></h2>
+  <p>A EmpresAtiva come&ccedil;a pelo Meta — &eacute; a primeira decis&atilde;o, n&atilde;o a &uacute;ltima. Formul&aacute;rio com CNPJ, v&iacute;deo com roteiro, avatar nichado em advocacia e contabilidade. A Mariana s&oacute; vai falar com empresa.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Mudes%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.598.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
