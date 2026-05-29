@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Trend Stud.io</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.12) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(30px,8vw,64px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.campea-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.campea-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:12px;}
+.campea-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.campea-box strong{color:var(--white);}
+
+.regra-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.regra-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.regra-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.regra-box strong{color:var(--white);}
+
+.gbp-box{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.gbp-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:12px;}
+.gbp-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gbp-box strong{color:var(--white);}
+
+.diag-list{display:flex;flex-direction:column;gap:2px;}
+.diag-item{background:var(--card);padding:24px;display:flex;gap:18px;align-items:flex-start;}
+.diag-num{font-family:var(--font-display);font-size:30px;font-weight:800;color:rgba(232,103,26,0.12);line-height:1;flex-shrink:0;width:36px;}
+.diag-item h3{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--white);margin-bottom:6px;}
+.diag-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.diag-item strong{color:var(--orange);}
+
+.strat-list{display:flex;flex-direction:column;gap:2px;}
+.strat-item{background:var(--card);padding:24px;}
+.strat-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.strat-num{width:28px;height:28px;background:rgba(232,103,26,0.1);border:1px solid rgba(232,103,26,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:11px;color:var(--orange);flex-shrink:0;border-radius:2px;}
+.strat-item h3{font-size:14px;font-weight:600;color:var(--white);flex:1;}
+.strat-tag{display:inline-block;background:rgba(232,103,26,0.08);border:1px solid rgba(232,103,26,0.18);color:var(--orange);font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:4px 10px;text-transform:uppercase;border-radius:2px;flex-shrink:0;}
+.strat-tag.gold{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);color:var(--gold);}
+.strat-tag.green{background:rgba(46,204,113,0.07);border-color:rgba(46,204,113,0.2);color:var(--green);}
+.strat-item p{font-size:13px;color:var(--muted);line-height:1.75;}
+.strat-example{margin-top:10px;background:rgba(255,255,255,0.03);border-left:2px solid rgba(232,103,26,0.3);padding:10px 14px;}
+.strat-example span{font-size:12px;color:var(--orange);font-style:italic;line-height:1.65;}
+
+.regras-grid{display:flex;flex-direction:column;gap:2px;margin-top:14px;}
+.regra-item{background:rgba(255,255,255,0.03);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;border-left:2px solid var(--border);}
+.regra-item.ok{border-left-color:var(--green);}
+.regra-item.no{border-left-color:rgba(232,103,26,0.4);}
+.regra-icon{font-size:13px;flex-shrink:0;margin-top:1px;}
+.regra-item p{font-size:13px;color:var(--muted);line-height:1.6;}
+.regra-item p strong{color:var(--white);}
+
+.taco-grid{display:flex;flex-direction:column;gap:2px;margin-top:14px;}
+.taco-item{background:rgba(255,255,255,0.03);padding:14px 18px;border-left:2px solid rgba(201,168,76,0.25);}
+.taco-item h4{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em;font-family:var(--font-mono);}
+.taco-item p{font-size:12px;color:var(--muted);line-height:1.6;}
+
+.entreg-grid{display:flex;flex-direction:column;gap:2px;}
+.entreg-item{background:var(--card);padding:22px;display:flex;gap:16px;align-items:flex-start;}
+.entreg-icon{width:42px;height:42px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;border-radius:2px;}
+.entreg-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entreg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:2px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"&#10003;";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-media{margin-top:16px;background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.12);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:2px;gap:12px;flex-wrap:wrap;}
+.inv-media span:first-child{font-size:12px;color:var(--muted);}
+.inv-media span:last-child{font-family:var(--font-mono);font-size:13px;color:var(--orange);font-weight:500;flex-shrink:0;}
+
+.var-box{background:var(--card);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.var-box h4{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.var-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.var-row:last-child{border-bottom:none;}
+.var-row span:first-child{font-size:12px;color:var(--muted);}
+.var-row span:last-child{font-family:var(--font-mono);font-size:12px;color:var(--gold);}
+
+.fase2-box{background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.14);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.fase2-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.fase2-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.fase2-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.06));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;}
+  .entreg-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Beleza &amp; Mega Hair &middot; Niter&oacute;i</p>
+  <h1>Trend<br><em>Stud.io</em></h1>
+  <p class="hero-sub">Meta Ads — mantendo a campanha de unhas intocada e replicando a estrutura campe&atilde; para mega hair e manuten&ccedil;&atilde;o. O anúncio que enche a agenda de quarta a sexta j&aacute; existe: a EmpresAtiva adapta ele para virar a chave do cabelo.</p>
+  <div class="pills">
+    <div class="pill"><span>Meta Ads</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Campanha de unhas</span><span>Intocada</span></div>
+    <div class="pill"><span>Novo foco</span><span>Mega hair &middot; manuten&ccedil;&atilde;o</span></div>
+    <div class="pill"><span>Retorno</span><span>Segunda-feira</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico</div>
+  <h2 class="sec-title">O que a EmpresAtiva <em>viu e ouviu</em></h2>
+  <p class="sec-intro">Ang&eacute;lica, a conversa foi direta e t&eacute;cnica — igual voc&ecirc; gosta. Aqui est&aacute; o que ficou claro.</p>
+
+  <div class="campea-box">
+    <h3>A campanha de unhas j&aacute; tem o DNA do que funciona — s&oacute; falta replicar</h3>
+    <p>Desde dezembro funcionando. Agenda cheia quarta, quinta e sexta. Oferta clara (gel R$139), biosseguran&ccedil;a, variedade de material — <strong>a Ang&eacute;lica mesma criou a l&oacute;gica do v&iacute;deo e o gestor s&oacute; botou para girar.</strong> Esse &eacute; o DNA: gancho com oferta, variedade de produto, segurança. A EmpresAtiva replica essa mesma estrutura para mega hair e manuten&ccedil;&atilde;o. A chave do cabelo j&aacute; existe — s&oacute; falta a serradura certa.</p>
+  </div>
+
+  <div class="regra-box">
+    <h3>A regra de ouro: n&atilde;o mexer em nada que est&aacute; funcionando</h3>
+    <p>Ang&eacute;lica j&aacute; tentou tirar verba das unhas para testar o mega — movimento caiu, a equipe reclamou. <strong>A EmpresAtiva n&atilde;o toca na campanha de unhas. Ponto.</strong> O novo an&uacute;ncio de mega hair entra como uma camada adicional — com verba pr&oacute;pria quando fizer sentido — sem canibalizar o que j&aacute; enche a agenda.</p>
+  </div>
+
+  <div class="gbp-box">
+    <h3>GBP com 150 avalia&ccedil;&otilde;es — 149 de cinco estrelas. Nota 97/100 a caminho.</h3>
+    <p>A Ang&eacute;lica gerencia o Google Meu Neg&oacute;cio desde o in&iacute;cio e a equipe pede avalia&ccedil;&atilde;o ativamente. <strong>Faltam s&oacute; tr&ecirc;s pontos para nota 100: uma postagem por m&ecirc;s (pega do Instagram e joga l&aacute;), mais avalia&ccedil;&otilde;es e o opcional foto 360&ordm;.</strong> Cliente que vem do Google j&aacute; chega quente — &eacute; a pr&oacute;pria Ang&eacute;lica que disse isso na reuni&atilde;o.</p>
+  </div>
+
+  <div class="diag-list">
+    <div class="diag-item">
+      <div class="diag-num">01</div>
+      <div>
+        <h3>A chave do cabelo n&atilde;o virou ainda — &eacute; quest&atilde;o de criativo</h3>
+        <p>Dois gestores anteriores, nenhum conseguiu. Ang&eacute;lica percebeu sozinha: n&atilde;o replicou o racioc&iacute;nio do an&uacute;ncio de unhas para o cabelo. <strong>A EmpresAtiva monta o roteiro adaptado da estrutura campe&atilde; — Ang&eacute;lica grava do jeito dela, Sara edita.</strong> A conta muda s&oacute; o produto.</p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">02</div>
+      <div>
+        <h3>Manuten&ccedil;&atilde;o de mega &eacute; o produto mais subestimado</h3>
+        <p>A partir de R$250 online, R$350 no sal&atilde;o. Cliente que instalou em outro lugar e quer uma manuten&ccedil;&atilde;o mais pr&oacute;xima e acess&iacute;vel — &eacute; um p&uacute;blico que j&aacute; conhece mega hair e est&aacute; prontp para pagar. <strong>An&uacute;ncio direto para esse perfil pode ser o teste mais r&aacute;pido de resultado.</strong></p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">03</div>
+      <div>
+        <h3>Ang&eacute;lica responde os leads — a IA n&atilde;o &eacute; prioridade agora</h3>
+        <p>16 anos de vendas, ela mesma cuida de cada clique. <strong>A EmpresAtiva trabalha para que os leads que chegam j&aacute; sejam qualificados — via formul&aacute;rio condicional</strong> — e Ang&eacute;lica fecha com quem tem perfil, sem desperdi&ccedil;ar tempo com curiosas.</p>
+      </div>
+    </div>
+    <div class="diag-item">
+      <div class="diag-num">04</div>
+      <div>
+        <h3>An&uacute;ncio campe&atilde;o vai saturar — e precisa de variantes prontas</h3>
+        <p>A Ang&eacute;lica j&aacute; sabe disso: mudou a cor de cabelo no v&iacute;deo para ter alternativas. <strong>A EmpresAtiva cria as varia&ccedil;&otilde;es na mesma COP do campe&atilde;o antes da satura&ccedil;&atilde;o acontecer</strong> — n&atilde;o depois. Queda de performance &eacute; prevenida, n&atilde;o remediada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Meta Ads para o <em>Trend Stud.io</em></h2>
+  <p class="sec-intro">Quatro camadas — mantendo o que funciona e destravando o mega hair com a mesma l&oacute;gica que encheu a agenda de unhas.</p>
+
+  <div class="strat-list">
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">01</div>
+        <h3>Campanha de unhas — intocada, s&oacute; var&iacute;antes do campe&atilde;o</h3>
+        <div class="strat-tag green">N&atilde;o mexe</div>
+      </div>
+      <p>A EmpresAtiva n&atilde;o altera o que est&aacute; enchendo a agenda. Mas cria variantes do an&uacute;ncio atual — mesma COP, outro tom de esmalte, outro look, outra abertura — <strong>para que quando o atual saturar, j&aacute; haja substituto pronto sem perda de performance.</strong></p>
+      <div class="regras-grid">
+        <div class="regra-item ok"><div class="regra-icon">&#10003;</div><p><strong>Mantido:</strong> estrutura, oferta R$139, biosseguran&ccedil;a, variedade</p></div>
+        <div class="regra-item ok"><div class="regra-icon">&#10003;</div><p><strong>Adicionado:</strong> variantes antes da satura&ccedil;&atilde;o — cor diferente, abertura diferente</p></div>
+        <div class="regra-item no"><div class="regra-icon">&#10007;</div><p><strong>Nunca:</strong> tirar verba das unhas para o mega — j&aacute; foi tentado e o movimento caiu</p></div>
+      </div>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">02</div>
+        <h3>Novo an&uacute;ncio de mega hair — DNA do campe&atilde;o de unhas</h3>
+        <div class="strat-tag">Desafio principal</div>
+      </div>
+      <p>A EmpresAtiva monta o roteiro adaptando a mesma estrutura: gancho com oferta ou transforma&ccedil;&atilde;o, processo t&eacute;cnico (cabelo peruano ou Liga Rosa), resultado final. <strong>Ang&eacute;lica grava do jeito dela — com a identidade e a autenticidade que ela mesma exige</strong> — e Sara edita. A EmpresAtiva s&oacute; garante que a COP esteja certa.</p>
+      <div class="strat-example">
+        <span>"Voc&ecirc; j&aacute; fez mega hair em outro sal&atilde;o e quer fazer a manuten&ccedil;&atilde;o sem precisar cruzar a cidade? Aqui no Trend Stud.io a gente faz a partir de R$250 — com cabelo peruano e premium. Agenda aberta." Quem j&aacute; usa mega hair e est&aacute; em Niter&oacute;i clica antes de terminar.</span>
+      </div>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">03</div>
+        <h3>Formul&aacute;rio condicional — s&oacute; chega quem pode ir at&eacute; o sal&atilde;o</h3>
+        <div class="strat-tag">Qualifica&ccedil;&atilde;o</div>
+      </div>
+      <p>An&uacute;ncios segmentados para mulheres em Niter&oacute;i e regi&atilde;o. Antes de chegar no WhatsApp da Ang&eacute;lica, a lead responde: bairro e tipo de servi&ccedil;o. <strong>Curiosas e quem est&aacute; longe demais n&atilde;o entram.</strong> Ang&eacute;lica s&oacute; fala com quem j&aacute; passou pelo filtro — 16 anos de vendas n&atilde;o desperdi&ccedil;am tempo com quem n&atilde;o tem perfil.</p>
+    </div>
+
+    <div class="strat-item">
+      <div class="strat-top">
+        <div class="strat-num">04</div>
+        <h3>Otimiza&ccedil;&atilde;o do Instagram — metodologia TACO</h3>
+        <div class="strat-tag gold">Posicionamento</div>
+      </div>
+      <p>A EmpresAtiva estrutura o perfil para que o conte&uacute;do org&acirc;nico trabalhe junto com o an&uacute;ncio — n&atilde;o contra ele. Bio, destaques e posts fixados alinhados com o p&uacute;blico ideal. A grade de conte&uacute;do segue a metodologia TACO:</p>
+      <div class="taco-grid">
+        <div class="taco-item"><h4>T — T&eacute;cnico</h4><p>Conte&uacute;do sobre cabelo peruano, Liga Rosa, m&eacute;todo de aplica&ccedil;&atilde;o — fala com quem j&aacute; &eacute; cliente e valoriza a qualidade t&eacute;cnica</p></div>
+        <div class="taco-item"><h4>A — Autoridade</h4><p>Transforma&ccedil;&otilde;es antes e depois, casos de cabelo complexo — chama novos seguidores que se identificam com o resultado</p></div>
+        <div class="taco-item"><h4>C — Conex&atilde;o</h4><p>Rotina do sal&atilde;o, equipe, bastidores — Ang&eacute;lica que faz isso naturalmente com a autenticidade que ela mesma exige</p></div>
+        <div class="taco-item"><h4>O — Obje&ccedil;&atilde;o</h4><p>D&uacute;vidas frequentes sobre mega hair, biosseguran&ccedil;a, manutenção — quebra obje&ccedil;&atilde;o antes do primeiro contato</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">Entreg&aacute;veis</div>
+  <h2 class="sec-title">O que o Trend Stud.io <em>recebe</em></h2>
+  <div class="entreg-grid">
+    <div class="entreg-item"><div class="entreg-icon">🎯</div><div><h3>Meta Ads — campanha de unhas + mega hair</h3><p>Unhas intocada com variantes do campe&atilde;o. Novo an&uacute;ncio de mega hair e manuten&ccedil;&atilde;o com formul&aacute;rio condicional. Segmenta&ccedil;&atilde;o Niter&oacute;i e regi&atilde;o.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">✏️</div><div><h3>Roteiros de v&iacute;deo + sugest&otilde;es de conte&uacute;do</h3><p>A EmpresAtiva entrega o roteiro e a COP. Ang&eacute;lica grava do jeito dela. Sara edita. A identidade do sal&atilde;o permanece 100% aut&ecirc;ntica.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📱</div><div><h3>Otimiza&ccedil;&atilde;o do Instagram — TACO</h3><p>Bio, destaques e posts fixados. Grade de conte&uacute;do org&acirc;nico alinhada com o an&uacute;ncio. Cada pilar trabalhando com o p&uacute;blico certo.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📍</div><div><h3>GBP — de 97 para 100</h3><p>A EmpresAtiva entrega o relat&oacute;rio de desempenho e orienta a postagem mensal. 3 pontos para nota 100 — est&aacute; ao alcance.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">🔔</div><div><h3>Alerta de lead qualificado</h3><p>Novo lead com formul&aacute;rio respondido → alerta no grupo com nome, bairro e servi&ccedil;o de interesse. Ang&eacute;lica entra em contato com context.</p></div></div>
+    <div class="entreg-item"><div class="entreg-icon">📊</div><div><h3>Dashboard + relat&oacute;rio semanal</h3><p>Investimento, custo por lead, an&uacute;ncios ativos, campe&atilde;o da semana. Ang&eacute;lica acompanha sem precisar entrar no Ads Manager.</p></div></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Dentro do que <em>j&aacute; faz sentido</em></h2>
+  <p class="sec-intro">Ang&eacute;lica, voc&ecirc; mesma fez a conta: R$997 de ag&ecirc;ncia + R$1.000 de verba = dentro da casa dos R$2.000 que &eacute; o orçamento atual. Igual ao que j&aacute; paga, com muito mais estrat&eacute;gia.</p>
+
+  <div class="inv-card">
+    <div class="inv-card-body">
+      <div class="inv-plan-lbl">Meta Ads &mdash; Trend Stud.io</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">fee ag&ecirc;ncia/m&ecirc;s &middot; contrato 6 meses &middot; aviso pr&eacute;vio de 30 dias &middot; sem multa</div>
+      <div class="inv-sep"></div>
+      <div class="inv-includes">
+        <h4>Incluso</h4>
+        <ul>
+          <li>Gest&atilde;o Meta Ads — unhas (variantes do campe&atilde;o) + mega hair (novo)</li>
+          <li>Formul&aacute;rio condicional para leads de mega hair e manuten&ccedil;&atilde;o</li>
+          <li>Roteiros de v&iacute;deo e sugest&otilde;es de conte&uacute;do mensais</li>
+          <li>Otimiza&ccedil;&atilde;o do Instagram — bio, destaques, grade TACO</li>
+          <li>Google Business — relat&oacute;rio + orienta&ccedil;&atilde;o para nota 100</li>
+          <li>Alerta de lead qualificado no WhatsApp</li>
+          <li>Dashboard em tempo real</li>
+          <li>Relat&oacute;rio semanal no WhatsApp</li>
+        </ul>
+      </div>
+      <div class="inv-media">
+        <span>Verba em an&uacute;ncios (paga direto ao Meta)</span>
+        <span>R$ 1.000/m&ecirc;s j&aacute; praticado</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="var-box">
+    <h4>Quando o mega hair decolar — escala com previsibilidade</h4>
+    <div class="var-row"><span>At&eacute; R$ 1.000/m&ecirc;s em an&uacute;ncios</span><span>Incluso no R$ 997</span></div>
+    <div class="var-row"><span>Excedente acima de R$ 1.000</span><span>+ 20% sobre o excedente</span></div>
+    <div class="var-row"><span>Ex: R$ 1.500 → excedente R$ 500</span><span>+ R$ 100 → ag&ecirc;ncia R$ 1.097</span></div>
+    <div class="var-row"><span>Ex: R$ 2.000 → excedente R$ 1.000</span><span>+ R$ 200 → ag&ecirc;ncia R$ 1.197</span></div>
+    <div class="var-row"><span>A EmpresAtiva s&oacute; cresce quando o Trend Stud.io cresce</span><span>Interesses alinhados</span></div>
+  </div>
+
+  <div class="fase2-box">
+    <h4>Quando o faturamento dobrar — pr&oacute;ximos passos</h4>
+    <p><strong>Google Ads</strong> para quem pesquisa ativamente: <strong>+ R$ 498,50/m&ecirc;s.</strong> <strong>Agente de IA</strong> para quando a agenda de resposta da Ang&eacute;lica n&atilde;o der conta de todas as frentes: <strong>+ R$ 297/m&ecirc;s.</strong> Por ora, a Ang&eacute;lica responde — e responde bem. A IA fica para quando o volume justificar.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da segunda-feira ao <em>primeiro an&uacute;ncio de mega hair</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Segunda-feira</span>
+      <h3>Decis&atilde;o da Ang&eacute;lica</h3>
+      <p>A EmpresAtiva retoma o contato na segunda. Ang&eacute;lica decide. Sim ou n&atilde;o — ambos s&atilde;o respeitados.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Acesso + An&aacute;lise do Campe&atilde;o</h3>
+      <p>Acesso ao gerenciador de an&uacute;ncios. A EmpresAtiva analisa o an&uacute;ncio de unhas, identifica a COP exata e monta o roteiro adaptado para mega hair e manuten&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 4–7</span>
+      <h3>Roteiro + Grava&ccedil;&atilde;o + Formul&aacute;rio</h3>
+      <p>Roteiro entregue. Ang&eacute;lica grava do jeito dela, Sara edita. Formul&aacute;rio condicional configurado. Variantes do campe&atilde;o de unhas criadas para prevenção de satura&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 8–10</span>
+      <h3>Campanhas no Ar</h3>
+      <p>Meta Ads ativo — unhas com variantes e mega hair com formul&aacute;rio. Primeiro alerta de lead qualificado chegando no WhatsApp da Ang&eacute;lica.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 30</span>
+      <h3>Balan&ccedil;o do 1&ordm; M&ecirc;s</h3>
+      <p>Leads de mega hair gerados, custo por lead, an&uacute;ncio campe&atilde;o. Ang&eacute;lica decide: mant&eacute;m o investimento, escala ou refina o criativo para o segundo m&ecirc;s.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Ang&eacute;lica, a chave do cabelo<br><em>j&aacute; est&aacute; no anúncio de unhas.</em></h2>
+  <p>Voc&ecirc; mesma criou a l&oacute;gica do v&iacute;deo campe&atilde;o. Oferta, variedade, biosseguran&ccedil;a — e encheu a agenda. A EmpresAtiva pega essa mesma l&oacute;gica, adapta para mega hair e manuten&ccedil;&atilde;o, e sobe sem mexer no que j&aacute; funciona. A serradura j&aacute; existe.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fechar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
