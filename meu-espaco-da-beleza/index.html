@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Meu Espaço de Beleza</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.12) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(46,204,113,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:44px;}
+
+.ativo-box{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.ativo-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:12px;}
+.ativo-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.ativo-box strong{color:var(--white);}
+
+.logica-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:20px;}
+.logica-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:12px;}
+.logica-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.logica-box strong{color:var(--white);}
+
+.cadencia{display:flex;flex-direction:column;gap:2px;margin-top:24px;}
+.cad-item{background:var(--card);padding:20px 24px;display:flex;gap:20px;align-items:center;}
+.cad-num{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:44px;line-height:1;}
+.cad-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.cad-item p{font-size:12px;color:var(--muted);line-height:1.6;}
+.cad-item.atual{background:rgba(232,103,26,0.06);border-left:2px solid var(--orange);}
+.cad-tag{display:inline-block;margin-left:10px;font-family:var(--font-mono);font-size:9px;letter-spacing:0.13em;padding:3px 8px;border-radius:2px;background:rgba(232,103,26,0.12);color:var(--orange);text-transform:uppercase;border:1px solid rgba(232,103,26,0.2);}
+.cad-tag.green{background:rgba(46,204,113,0.1);color:var(--green);border-color:rgba(46,204,113,0.2);}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:24px;display:flex;gap:16px;align-items:flex-start;}
+.como-icon{width:40px;height:40px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:2px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:22px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.inv-includes li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"&#10003;";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+
+.fase2-box{background:rgba(232,103,26,0.04);border:1px solid rgba(232,103,26,0.14);padding:22px 24px;border-radius:2px;margin-top:2px;}
+.fase2-box h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:10px;}
+.fase2-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.fase2-box strong{color:var(--orange);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.06));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Disparo em Massa &middot; Meu Espa&ccedil;o de Beleza &middot; Recreio</p>
+  <h1>4.000 leads.<br><em>J&aacute; qualificados.</em><br>Prontos para reativar.</h1>
+  <p class="hero-sub">A base existe, o trabalho j&aacute; foi feito. A EmpresAtiva estrutura o disparo em massa no WhatsApp com cad&ecirc;ncia segura — come&ccedil;ando com 30 por dia e escalando conforme o n&uacute;mero tiver seguran&ccedil;a — para transformar leads parados em clientes na agenda.</p>
+  <div class="pills">
+    <div class="pill"><span>Servi&ccedil;o</span><span>Disparo em Massa</span></div>
+    <div class="pill"><span>Valor</span><span>R$ 497/m&ecirc;s</span></div>
+    <div class="pill"><span>Base</span><span>4.000 leads qualificados</span></div>
+    <div class="pill"><span>Cad&ecirc;ncia inicial</span><span>30 disparos/dia</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- POR QUE FÁCIL SENTIDO -->
+<section class="bg-dark">
+  <div class="sec-label">Por que faz sentido agora</div>
+  <h2 class="sec-title">A base j&aacute; existe. <em>S&oacute; falta ativar.</em></h2>
+  <p class="sec-intro">Mariana, a decis&atilde;o foi acertada. Antes de gastar com tráfego pago, a gente monetiza o que j&aacute; est&aacute; na m&atilde;o.</p>
+
+  <div class="ativo-box">
+    <h3>4.000 leads qualificados — clientes reais, n&atilde;o lista fria</h3>
+    <p>N&atilde;o &eacute; lista comprada, n&atilde;o &eacute; lead aleat&oacute;rio. <strong>S&atilde;o pessoas que j&aacute; passaram pelo Meu Espa&ccedil;o de Beleza ou pelos profissionais que atuam l&aacute; — pessoas que j&aacute; conhecem a qualidade, j&aacute; t&ecirc;m confian&ccedil;a e s&oacute; precisam de um motivo para voltar.</strong> Esse &eacute; o p&uacute;blico mais f&aacute;cil de converter que existe. Sem anúncio, sem verba, sem plataforma.</p>
+  </div>
+
+  <div class="logica-box">
+    <h3>Come&ccedil;ar pelo disparo &eacute; a estrat&eacute;gia certa antes do tráfego pago</h3>
+    <p>Com a nova recepcionista entrando agora na quarta-feira, o momento &eacute; ideal para testar o fluxo comercial com um p&uacute;blico j&aacute; aquecido — <strong>antes de investir em tráfego pago e receber leads frios que precisam de mais trabalho para fechar.</strong> O disparo reativa clientes que j&aacute; confiam no sal&atilde;o, gera agenda, gera caixa — e aí o tráfego pago entra num negócio j&aacute; aquecido.</p>
+  </div>
+
+  <!-- CADÊNCIA -->
+  <div class="sec-label" style="margin-top:44px;margin-bottom:16px;">Cad&ecirc;ncia de escala — segura e progressiva</div>
+  <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px;">A EmpresAtiva n&atilde;o come&ccedil;a com volume alto — come&ccedil;a com segur&ccedil;a e vai escalando conforme o n&uacute;mero do WhatsApp mostrar que suporta sem risco de banimento.</p>
+
+  <div class="cadencia">
+    <div class="cad-item atual">
+      <div class="cad-num">30</div>
+      <div>
+        <h3>Fase 1 — Disparo inicial<span class="cad-tag">Come&ccedil;o</span></h3>
+        <p>30 disparos/dia → ~1.000/m&ecirc;s. O n&uacute;mero vai sendo "aquecido" progressivamente. A IA varia as mensagens para n&atilde;o parecer disparo em massa pro WhatsApp. Monitoramento di&aacute;rio de resposta e sinal de alerta.</p>
+      </div>
+    </div>
+    <div class="cad-item">
+      <div class="cad-num">50</div>
+      <div>
+        <h3>Fase 2 — Escala moderada<span class="cad-tag green">Quando seguro</span></h3>
+        <p>Se a fase 1 estiver fluindo sem problema durante 2-3 semanas, sobe para 50/dia → ~1.500/mês. A gente define juntos o momento de escalar.</p>
+      </div>
+    </div>
+    <div class="cad-item">
+      <div class="cad-num">100+</div>
+      <div>
+        <h3>Fase 3+ — Escala plena<span class="cad-tag green">Com dados</span></h3>
+        <p>Com o n&uacute;mero aquecido e o hist&oacute;rico de resposta positivo, a gente aumenta para 100, 200/dia. <strong>4.000 leads a 30/dia levam ~4 meses — a 100/dia s&atilde;o 40 dias.</strong> O ritmo &eacute; de Mariana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- COMO FUNCIONA -->
+<section class="bg-black">
+  <div class="sec-label">Como funciona</div>
+  <h2 class="sec-title">O que a EmpresAtiva <em>entrega</em></h2>
+  <p class="sec-intro">Simples, transparente, sem complicação. O foco &eacute; reativar os 4.000 com seguran&ccedil;a e gerar agenda para a nova recepcionista converter.</p>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">🤖</div>
+      <div>
+        <h3>IA variando as mensagens</h3>
+        <p>Cada disparo chega diferente — a IA muda o texto, o gancho, a estrutura. O WhatsApp n&atilde;o identifica como spam e o n&uacute;mero fica protegido.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📋</div>
+      <div>
+        <h3>Cad&ecirc;ncia de 30/dia</h3>
+        <p>Comece sem risco. 30 disparos por dia, todos os dias &uacute;teis. A gente monitora as respostas e os sinais do WhatsApp antes de escalar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">✍️</div>
+      <div>
+        <h3>Copy estrat&eacute;gica por segmento</h3>
+        <p>Mensagem diferente para quem sumiu h&aacute; 1 m&ecirc;s, 3 meses ou 6 meses. Abordagem personalizada por perfil de servi&ccedil;o — cabelo, unhas, est&eacute;tica.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Relat&oacute;rio de respostas</h3>
+        <p>Quem respondeu, quem clicou, quem demonstrou interesse. Semanal no WhatsApp — a recepcionista sabe exatamente quem dar continuidade.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de lead respondido</h3>
+        <p>Quando um lead responde ao disparo, a recepcionista recebe aviso imediato — nome, hist&oacute;rico e contexto para a abordagem j&aacute; ir personalizada.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📈</div>
+      <div>
+        <h3>Escala progressiva com crit&eacute;rios</h3>
+        <p>A EmpresAtiva define com Mariana quando subir a cad&ecirc;ncia — baseado em resposta, taxa de retorno e sa&uacute;de do n&uacute;mero. Sem apressar, sem arriscar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Simple e direto — <em>R$ 497/m&ecirc;s</em></h2>
+  <p class="sec-intro">Sem verba de an&uacute;ncio, sem taxa de plataforma, sem custo adicional. A EmpresAtiva cuida de tudo — tecnologia, IA, copy e cad&ecirc;ncia.</p>
+
+  <div class="inv-card">
+    <div class="inv-card-body">
+      <div class="inv-plan-lbl">Disparo em Massa &mdash; Meu Espa&ccedil;o de Beleza</div>
+      <div class="inv-price"><sub>R$</sub> 497</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade m&iacute;nima &middot; aviso pr&eacute;vio de 30 dias</div>
+      <div class="inv-sep"></div>
+      <div class="inv-includes">
+        <h4>Incluso</h4>
+        <ul>
+          <li>Estrutura&ccedil;&atilde;o da base de 4.000 leads por segmento</li>
+          <li>Cad&ecirc;ncia inicial de 30 disparos/dia via Evolution API</li>
+          <li>IA variando as mensagens para prote&ccedil;&atilde;o do n&uacute;mero</li>
+          <li>Copy estrat&eacute;gica por tempo de inatividade e perfil de servi&ccedil;o</li>
+          <li>Alerta de lead respondido para a recepcionista</li>
+          <li>Relat&oacute;rio semanal de respostas e desempenho</li>
+          <li>Escalada progressiva da cad&ecirc;ncia com crit&eacute;rios definidos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="fase2-box">
+    <h4>Quando a base estiver ativa — fase seguinte natural</h4>
+    <p>Com os 4.000 reativados gerando agenda, o pr&oacute;ximo passo &eacute; tráfego pago no Meta para captar novos leads — e aí o comercial j&aacute; est&aacute; treinado e a recepcionista j&aacute; tem experi&ecirc;ncia com o fluxo. <strong>Meta Ads: R$ 997/m&ecirc;s.</strong> Quando Mariana sentir que &eacute; a hora, a EmpresAtiva est&aacute; pronta.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao <em>primeiro disparo</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Decis&atilde;o</h3>
+      <p>Mariana confirma. A EmpresAtiva j&aacute; inicia a estrutura&ccedil;&atilde;o da base e a configura&ccedil;&atilde;o do disparo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–2</span>
+      <h3>Segmenta&ccedil;&atilde;o da base</h3>
+      <p>Mariana envia a lista de 4.000 leads. A EmpresAtiva organiza por tempo de inatividade (1 m&ecirc;s, 3 meses, 6+ meses) e por tipo de servi&ccedil;o. Copy personalizada para cada grupo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 3</span>
+      <h3>Primeiros 30 disparos</h3>
+      <p>Cad&ecirc;ncia come&ccedil;a. 30 disparos no primeiro dia — os mais recentes e aquecidos primeiro. A recepcionista j&aacute; est&aacute; de olho nas respostas desde a quarta-feira.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Primeiro relat&oacute;rio</h3>
+      <p>Taxa de resposta, perfil de quem respondeu, mensagem que melhor converteu. A EmpresAtiva j&aacute; traz recomendação: mant&eacute;m 30/dia ou sobe para 50.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Escala com seguran&ccedil;a</h3>
+      <p>Com o hist&oacute;rico de resposta positivo e o n&uacute;mero aquecido, a cad&ecirc;ncia sobe. A meta &eacute; cobrir os 4.000 no menor tempo poss&iacute;vel — sem arriscar o n&uacute;mero.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Mariana, os 4.000<br><em>j&aacute; confiam no sal&atilde;o.</em></h2>
+  <p>N&atilde;o &eacute; necess&aacute;rio convencer nenhum deles. &Eacute; s&oacute; aparecer de novo, com a mensagem certa, na hora certa — e a recepcionista que entra na quarta j&aacute; tem uma agenda para trabalhar. A EmpresAtiva cuida do disparo. O sal&atilde;o cuida da convers&atilde;o.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
