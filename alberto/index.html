@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x LAABX</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+/* FASES */
+.fases{display:flex;flex-direction:column;gap:3px;}
+.fase{background:var(--card);border-left:3px solid var(--border);padding:28px 24px;position:relative;}
+.fase.active{border-left-color:var(--orange);background:rgba(232,103,26,0.04);}
+.fase.manutencao{border-left-color:var(--gold);background:rgba(201,168,76,0.03);}
+.fase-num{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--muted);text-transform:uppercase;margin-bottom:10px;}
+.fase-num span{color:var(--orange);}
+.fase.manutencao .fase-num span{color:var(--gold);}
+.fase h3{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:8px;}
+.fase p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.fase .price-tag{font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--orange);}
+.fase.manutencao .price-tag{color:var(--gold);}
+.fase .price-tag sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);}
+.fase-tag{display:inline-block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;padding:4px 10px;border-radius:2px;background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);text-transform:uppercase;margin-bottom:14px;}
+.fase.manutencao .fase-tag{background:rgba(201,168,76,0.08);color:var(--gold);border-color:rgba(201,168,76,0.2);}
+.fase-porta{background:rgba(46,204,113,0.04);border-left:3px solid rgba(46,204,113,0.3);padding:28px 24px;}
+.fase-porta h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:8px;}
+.fase-porta p{font-size:13px;color:var(--muted);line-height:1.8;}
+.fase-porta strong{color:var(--white);}
+
+/* ENTREGÁVEIS */
+.entrega-grid{display:flex;flex-direction:column;gap:2px;}
+.entrega-item{background:var(--card);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;}
+.entrega-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.entrega-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.entrega-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.entrega-item .tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:2px 7px;border-radius:2px;margin-left:8px;text-transform:uppercase;}
+.tag-google{background:rgba(66,133,244,0.1);color:#4285F4;border:1px solid rgba(66,133,244,0.2);}
+.tag-meta{background:rgba(24,119,242,0.1);color:#66AAFF;border:1px solid rgba(24,119,242,0.15);}
+.tag-ambos{background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);}
+
+/* INVESTIMENTO CARDS */
+.inv-grid{display:flex;flex-direction:column;gap:3px;margin-bottom:20px;}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.22);border-radius:4px;overflow:hidden;}
+.inv-card.gold{border-color:rgba(201,168,76,0.22);}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-card.gold::before{background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.3));}
+.inv-card-body{padding:26px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:10px;}
+.inv-card.gold .inv-plan-lbl{color:var(--gold);}
+.inv-price{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);margin-bottom:5px;}
+.inv-price sub{font-size:17px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:22px;}
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-includes h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:13px;}
+.inv-includes ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.inv-includes li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-includes li::before{content:"&#10003;";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+.inv-card.gold .inv-includes li::before{color:var(--gold);}
+
+/* CONTEXTO */
+.ctx-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);padding:24px;border-radius:2px;margin-bottom:20px;}
+.ctx-box h4{font-size:14px;font-weight:600;color:var(--gold);margin-bottom:10px;}
+.ctx-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.ctx-box strong{color:var(--white);}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-dot.gold{background:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.18);}
+.tl-dot.green{background:var(--green);box-shadow:0 0 0 3px rgba(46,204,113,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.gold{color:var(--gold);}
+.tl-day.green{color:var(--green);}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .entrega-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-grid{flex-direction:row;}
+  .inv-card{flex:1;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Setup + Mentoria &middot; LAABX &middot; Laborat&oacute;rio das Extens&otilde;es &middot; Tatuap&eacute;</p>
+  <h1>O laborat&oacute;rio<br>merece uma base<br><em>bem estruturada.</em></h1>
+  <p class="hero-sub">Voc&ecirc; entende o neg&oacute;cio melhor do que qualquer agência vai entender. O que falta &eacute; uma estrutura de tráfego configurada com intelig&ecirc;ncia — pronta para o lan&ccedil;amento da LAABX com demanda gerada antes mesmo de abrir as portas.</p>
+  <div class="pills">
+    <div class="pill"><span>M&ecirc;s 1</span><span>R$ 1.997 — Setup + Mentoria</span></div>
+    <div class="pill"><span>Manuten&ccedil;&atilde;o</span><span>R$ 497/m&ecirc;s</span></div>
+    <div class="pill"><span>Frentes</span><span>Google Ads + Meta Ads</span></div>
+    <div class="pill"><span>Reinaugura&ccedil;&atilde;o</span><span>Estrat&eacute;gia de aquecimento inclusa</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CONTEXTO -->
+<section class="bg-dark">
+  <div class="sec-label">O momento da LAABX</div>
+  <h2 class="sec-title">Duas frentes.<br><em>Um &uacute;nico objetivo:</em><br>chegar ao lan&ccedil;amento<br>com demanda gerada.</h2>
+  <p class="sec-intro">Durante a reforma, o tráfego pago n&atilde;o gera venda — gera autoridade, desejo e antecipa&ccedil;&atilde;o. A estrutura precisa estar pronta e aquecida para que, no dia da reinaugura&ccedil;&atilde;o, a agenda j&aacute; esteja sendo disputada.</p>
+
+  <div class="ctx-box">
+    <h4>Por que o formato setup + mentoria faz mais sentido agora</h4>
+    <p>Alberto tem formaç&atilde;o para gerir o neg&oacute;cio e já operou tráfego — <strong>o que falta &eacute; especializaç&atilde;o e estrutura, n&atilde;o ter algu&eacute;m fazendo no lugar dele.</strong> Durante os dois meses de reforma, n&atilde;o &eacute; vi&aacute;vel pagar gestão mensal plena sem retorno imediato. A proposta certa &eacute; configurar tudo bem feito no m&ecirc;s 1, treinar Alberto na execu&ccedil;&atilde;o, e a EmpresAtiva faz a supervis&atilde;o mensal — at&eacute; a reinaugura&ccedil;&atilde;o justificar o pacote completo.</p>
+  </div>
+
+  <!-- FASES -->
+  <div class="fases">
+    <div class="fase active">
+      <div class="fase-num">Fase <span>01</span> &mdash; M&ecirc;s 1</div>
+      <span class="fase-tag">Setup + Mentoria Intensiva</span>
+      <h3>Estrutura, identidade e estrat&eacute;gia de lan&ccedil;amento</h3>
+      <p>A EmpresAtiva configura as contas do zero, alinha identidade visual com a nova marca LAABX, define a estrat&eacute;gia de aquecimento para a reinaugura&ccedil;&atilde;o e faz a transfer&ecirc;ncia de conhecimento para Alberto executar com autonomia — com suporte direto durante todo o m&ecirc;s.</p>
+      <div class="price-tag"><sub>R$</sub> 1.997 <sub style="font-size:12px;">— pagamento &uacute;nico</sub></div>
+    </div>
+    <div class="fase manutencao">
+      <div class="fase-num">Fase <span>02</span> &mdash; Mensal</div>
+      <span class="fase-tag">Manuten&ccedil;&atilde;o + Supervis&atilde;o</span>
+      <h3>Alberto executa. EmpresAtiva orienta.</h3>
+      <p>Uma reuni&atilde;o mensal de alinhamento + an&aacute;lise completa das campanhas: o que est&aacute; funcionando, o que precisa corrigir, qual o pr&oacute;ximo movimento estrat&eacute;gico. Alberto mantém o controle, a EmpresAtiva garante que o caminho est&aacute; certo.</p>
+      <div class="price-tag"><sub>R$</sub> 497<sub>/m&ecirc;s</sub></div>
+    </div>
+    <div class="fase-porta">
+      <h3>Porta aberta &mdash; Gest&atilde;o completa p&oacute;s-reinaugura&ccedil;&atilde;o</h3>
+      <p>Quando a LAABX reinaugurar e o fluxo de caixa estiver recuperado, a transi&ccedil;&atilde;o para gest&atilde;o mensal plena &eacute; natural. <strong>Meta Ads: R$ 997/m&ecirc;s &middot; Google Ads: R$ 997/m&ecirc;s &middot; Arquitetura completa: R$ 2.497/m&ecirc;s.</strong> Alberto decide quando — sem press&atilde;o, sem fidelidade forçada.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS MÊS 1 -->
+<section class="bg-black">
+  <div class="sec-label">O que a EmpresAtiva entrega no M&ecirc;s 1</div>
+  <h2 class="sec-title">Setup completo.<br><em>Nas duas frentes.</em></h2>
+  <p class="sec-intro">Google Ads e Meta Ads configurados com a identidade LAABX — estrutura de aquecimento para a reinaugura&ccedil;&atilde;o j&aacute; rodando antes de abrir as portas.</p>
+
+  <div class="entrega-grid">
+    <div class="entrega-item">
+      <div class="entrega-icon">🔍</div>
+      <div>
+        <h3>Diagn&oacute;stico das contas atuais<span class="tag tag-ambos">Google + Meta</span></h3>
+        <p>An&aacute;lise do que foi feito antes — o que salvar, o que descartar, onde estava perdendo dinheiro. Ponto de partida claro para a reestrutura&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+    <div class="entrega-item">
+      <div class="entrega-icon">🏗️</div>
+      <div>
+        <h3>Reestrutura&ccedil;&atilde;o completa das campanhas<span class="tag tag-ambos">Google + Meta</span></h3>
+        <p>Estrutura de campanha alinhada com a nova identidade LAABX — nomenclatura, segmenta&ccedil;&atilde;o, objetivos, p&uacute;blicos e criativos orientados para a reinaugura&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+    <div class="entrega-item">
+      <div class="entrega-icon">🌐</div>
+      <div>
+        <h3>Orienta&ccedil;&atilde;o para Landing Page<span class="tag tag-google">Google</span></h3>
+        <p>Brief detalhado de como deve ser a LP da LAABX para converter visitas em leads qualificados — hierarquia, copy, CTA e integra&ccedil;&atilde;o com o formulário de qualificação.</p>
+      </div>
+    </div>
+    <div class="entrega-item">
+      <div class="entrega-icon">📱</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o do Google Meu Neg&oacute;cio<span class="tag tag-google">Google</span></h3>
+        <p>Reedi&ccedil;&atilde;o completa do GBP para a nova marca LAABX — textos, categorias, fotos, posicionamento. Tudo conversando com a nova identidade.</p>
+      </div>
+    </div>
+    <div class="entrega-item">
+      <div class="entrega-icon">🎨</div>
+      <div>
+        <h3>Brief de criativos + orienta&ccedil;&atilde;o editorial<span class="tag tag-meta">Meta</span></h3>
+        <p>Roteiro de v&iacute;deos e imagens para o videomaker — o que capturar, como mostrar o diferencial do laborat&oacute;rio, a t&eacute;cnica invis&iacute;vel, o processo de personaliza&ccedil;&atilde;o. Alberto grava, a EmpresAtiva orienta.</p>
+      </div>
+    </div>
+    <div class="entrega-item">
+      <div class="entrega-icon">🔥</div>
+      <div>
+        <h3>Estrat&eacute;gia de aquecimento pr&eacute;-lan&ccedil;amento<span class="tag tag-ambos">Google + Meta</span></h3>
+        <p>Como gerar desejo sem revelar a reforma — conteúdo de autoridade, posicionamento de especialista, constru&ccedil;&atilde;o de antecipa&ccedil;&atilde;o para que a reinaugura&ccedil;&atilde;o j&aacute; tenha fila de espera.</p>
+      </div>
+    </div>
+    <div class="entrega-item">
+      <div class="entrega-icon">📊</div>
+      <div>
+        <h3>Dashboard Looker Studio configurado<span class="tag tag-ambos">Google + Meta</span></h3>
+        <p>Painel em tempo real para Alberto acompanhar gastos, leads e desempenho das campanhas — total transpar&ecirc;ncia, sem depender de relat&oacute;rio de agência para entender os n&uacute;meros.</p>
+      </div>
+    </div>
+    <div class="entrega-item">
+      <div class="entrega-icon">🎓</div>
+      <div>
+        <h3>Mentoria de transfer&ecirc;ncia de conhecimento<span class="tag tag-ambos">Google + Meta</span></h3>
+        <p>Alberto aprende a operar o que foi configurado com autonomia — como ler os dados, quando ajustar, o que nunca mexer. Suporte direto com Jo&atilde;o Marot durante todo o m&ecirc;s via WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- MANUTENÇÃO MENSAL -->
+<section class="bg-dark">
+  <div class="sec-label">Manuten&ccedil;&atilde;o mensal &mdash; R$ 497/m&ecirc;s</div>
+  <h2 class="sec-title">Voc&ecirc; executa.<br><em>A EmpresAtiva<br>garante o caminho.</em></h2>
+  <p class="sec-intro">Uma reunião por m&ecirc;s, an&aacute;lise completa das campanhas e um plano de a&ccedil;&atilde;o claro para o m&ecirc;s seguinte. Alberto mant&eacute;m o controle — a EmpresAtiva garante que nenhum erro pass&aacute; despercebido.</p>
+
+  <div class="entrega-grid" style="margin-bottom:0;">
+    <div class="entrega-item" style="background:rgba(201,168,76,0.03);border-left:2px solid rgba(201,168,76,0.2);">
+      <div class="entrega-icon" style="background:rgba(201,168,76,0.07);border-color:rgba(201,168,76,0.15);">📋</div>
+      <div>
+        <h3>Reuni&atilde;o mensal de alinhamento</h3>
+        <p>1h com Jo&atilde;o Marot analisando os resultados do m&ecirc;s — o que performou, o que n&atilde;o performou e as decis&otilde;es estrat&eacute;gicas para o m&ecirc;s seguinte.</p>
+      </div>
+    </div>
+    <div class="entrega-item" style="background:rgba(201,168,76,0.03);border-left:2px solid rgba(201,168,76,0.2);">
+      <div class="entrega-icon" style="background:rgba(201,168,76,0.07);border-color:rgba(201,168,76,0.15);">🔎</div>
+      <div>
+        <h3>An&aacute;lise das campanhas ativas</h3>
+        <p>Diagn&oacute;stico mensal das campanhas do Google e Meta — identifica&ccedil;&atilde;o de desperd&iacute;cio de verba, oportunidades n&atilde;o exploradas e ajustes t&eacute;cnicos priorit&aacute;rios.</p>
+      </div>
+    </div>
+    <div class="entrega-item" style="background:rgba(201,168,76,0.03);border-left:2px solid rgba(201,168,76,0.2);">
+      <div class="entrega-icon" style="background:rgba(201,168,76,0.07);border-color:rgba(201,168,76,0.15);">🗺️</div>
+      <div>
+        <h3>Plano de a&ccedil;&atilde;o para o m&ecirc;s seguinte</h3>
+        <p>Saindo de cada reunião com um roteiro claro: o que testar, o que escalar, qual criativo priorizar, quanto investir em cada frente.</p>
+      </div>
+    </div>
+    <div class="entrega-item" style="background:rgba(201,168,76,0.03);border-left:2px solid rgba(201,168,76,0.2);">
+      <div class="entrega-icon" style="background:rgba(201,168,76,0.07);border-color:rgba(201,168,76,0.15);">💬</div>
+      <div>
+        <h3>Suporte via WhatsApp</h3>
+        <p>D&uacute;vidas pontuais respondidas ao longo do m&ecirc;s — para Alberto n&atilde;o ficar travado em uma d&uacute;vida t&eacute;cnica por dias enquanto as campanhas continuam rodando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Dois momentos.<br><em>Um valor justo<br>para cada fase.</em></h2>
+
+  <div class="inv-grid">
+    <div class="inv-card">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">M&ecirc;s 1 &mdash; Setup + Mentoria Intensiva</div>
+        <div class="inv-price"><sub>R$</sub> 1.997</div>
+        <div class="inv-period">pagamento &uacute;nico &middot; sem fidelidade</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso</h4>
+          <ul>
+            <li>Diagn&oacute;stico completo Google Ads + Meta Ads</li>
+            <li>Reestrutura&ccedil;&atilde;o das duas contas (identidade LAABX)</li>
+            <li>Otimiza&ccedil;&atilde;o do Google Meu Neg&oacute;cio</li>
+            <li>Brief de criativos para o videomaker</li>
+            <li>Estrat&eacute;gia de aquecimento pr&eacute;-reinaugura&ccedil;&atilde;o</li>
+            <li>Dashboard Looker Studio configurado</li>
+            <li>Mentoria completa de transfer&ecirc;ncia de conhecimento</li>
+            <li>Suporte direto via WhatsApp durante todo o m&ecirc;s</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="inv-card gold">
+      <div class="inv-card-body">
+        <div class="inv-plan-lbl">Manuten&ccedil;&atilde;o Mensal &mdash; p&oacute;s Setup</div>
+        <div class="inv-price"><sub>R$</sub> 497</div>
+        <div class="inv-period">por m&ecirc;s &middot; sem fidelidade &middot; aviso pr&eacute;vio de 30 dias</div>
+        <div class="inv-sep"></div>
+        <div class="inv-includes">
+          <h4>Incluso</h4>
+          <ul>
+            <li>Reuni&atilde;o mensal de alinhamento (1h)</li>
+            <li>An&aacute;lise das campanhas ativas</li>
+            <li>Plano de a&ccedil;&atilde;o para o m&ecirc;s seguinte</li>
+            <li>Suporte via WhatsApp para d&uacute;vidas pontuais</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fase-porta">
+    <h3>Gest&atilde;o completa &mdash; quando a LAABX reinaugurar</h3>
+    <p>Ap&oacute;s a reinaugura&ccedil;&atilde;o, com o faturamento recuperado e os resultados validados, a transi&ccedil;&atilde;o para a gest&atilde;o plena &eacute; natural. <strong>Meta Ads: R$ 997/m&ecirc;s &middot; Google Ads: R$ 997/m&ecirc;s &middot; Arquitetura de Receita: R$ 2.497/m&ecirc;s</strong> (inclui CRM + playbook comercial + reuni&otilde;es quinzenais com time de vendas). Alberto decide o momento — sem press&atilde;o.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim &agrave;<br><em>LAABX no ar.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Alberto compartilha os materiais</h3>
+      <p>Lista de servi&ccedil;os da nova reinaugura&ccedil;&atilde;o + layout criado com IA. A EmpresAtiva j&aacute; começa a estruturar o posicionamento e a estrat&eacute;gia de aquecimento com base nesse material.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–5</span>
+      <h3>Diagn&oacute;stico e acesso &agrave;s contas</h3>
+      <p>Alberto concede acesso &agrave;s contas do Google Ads e Meta Ads. A EmpresAtiva faz o diagn&oacute;stico completo do que j&aacute; existe — o que salvar, o que jogar fora, onde estava sangrando verba.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Reestrutura&ccedil;&atilde;o + identidade LAABX</h3>
+      <p>Contas reestruturadas com a nova identidade. Google Meu Neg&oacute;cio atualizado. Brief de criativos entregue para o videomaker. Campanha de aquecimento configurada.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3–4</span>
+      <h3>Mentoria de execu&ccedil;&atilde;o + painel ao vivo</h3>
+      <p>Alberto aprende a operar o que foi estruturado. Dashboard Looker Studio entregue. Suporte direto para qualquer d&uacute;vida t&eacute;cnica que aparecer durante a opera&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot gold"></div>
+      <span class="tl-day gold">M&ecirc;s 2+</span>
+      <h3>Manuten&ccedil;&atilde;o mensal — Alberto no controle</h3>
+      <p>A EmpresAtiva faz a supervis&atilde;o mensal enquanto a reforma acontece. Tudo pronto para o dia da reinaugura&ccedil;&atilde;o — com a demanda j&aacute; gerada.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot green"></div>
+      <span class="tl-day green">Reinaugura&ccedil;&atilde;o</span>
+      <h3>LAABX no ar — gest&atilde;o plena disponível</h3>
+      <p>Com faturamento recuperado e resultados validados, a transi&ccedil;&atilde;o para gest&atilde;o completa &eacute; natural. A estrutura j&aacute; est&aacute; pronta, o passo &eacute; de Alberto.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Alberto, a LAABX<br><em>precisa chegar pronta</em><br>ao dia da reinaugura&ccedil;&atilde;o.</h2>
+  <p>Voc&ecirc; tem 30 anos de experi&ecirc;ncia, um conceito &uacute;nico e um videomaker a postos. A EmpresAtiva estrutura a base de tráfego — para que quando as portas abrirem, a fila j&aacute; esteja formada.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
