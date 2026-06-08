@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Staff Eventos RJ</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--blue:#4A9EFF;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(201,168,76,0.09) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,26,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.diag-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.diag-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+.estrategia{display:flex;flex-direction:column;gap:2px;margin-top:8px;}
+.est-item{background:var(--card);padding:24px;border-left:3px solid var(--border);}
+.est-item.google{border-left-color:#4285F4;}
+.est-item.meta{border-left-color:#1877F2;}
+.est-plat{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;}
+.est-item.google .est-plat{color:#4285F4;}
+.est-item.meta .est-plat{color:#66AAFF;}
+.est-item h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--white);margin-bottom:8px;}
+.est-item p{font-size:13px;color:var(--muted);line-height:1.8;}
+.est-item strong{color:var(--white);}
+.kw-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.kw-pill{background:rgba(66,133,244,0.08);border:1px solid rgba(66,133,244,0.2);padding:5px 10px;border-radius:2px;font-family:var(--font-mono);font-size:10px;color:#4285F4;}
+.kw-pill.meta{background:rgba(24,119,242,0.08);border-color:rgba(24,119,242,0.2);color:#66AAFF;}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:24px;display:flex;gap:16px;align-items:flex-start;}
+.como-icon{width:40px;height:40px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.plat-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:2px 7px;border-radius:2px;margin-left:8px;text-transform:uppercase;}
+.tag-g{background:rgba(66,133,244,0.1);color:#4285F4;border:1px solid rgba(66,133,244,0.2);}
+.tag-m{background:rgba(24,119,242,0.1);color:#66AAFF;border:1px solid rgba(24,119,242,0.15);}
+.tag-b{background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);}
+
+/* INVESTIMENTO */
+.inv-main{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-main::before{content:"";display:block;height:3px;background:linear-gradient(90deg,#4285F4,var(--orange),#1877F2);}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-cols{display:flex;flex-direction:column;gap:20px;}
+.inv-col h4{font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:12px;}
+.inv-col.gcol h4{color:#4285F4;}
+.inv-col.mcol h4{color:#66AAFF;}
+.inv-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-col li{font-size:12px;color:var(--white);padding-left:18px;position:relative;line-height:1.5;}
+.inv-col li::before{content:"\2713";position:absolute;left:0;font-size:11px;font-weight:700;}
+.inv-col.gcol li::before{color:#4285F4;}
+.inv-col.mcol li::before{color:#66AAFF;}
+
+.opcional{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.2);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.opcional::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--green),rgba(46,204,113,0.3));}
+.opc-body{padding:24px;}
+.opc-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--green);text-transform:uppercase;margin-bottom:10px;}
+.opc-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:3px 8px;background:rgba(46,204,113,0.1);color:var(--green);border:1px solid rgba(46,204,113,0.2);border-radius:2px;margin-bottom:14px;}
+.opc-price{font-family:var(--font-display);font-size:40px;font-weight:800;color:var(--white);margin-bottom:6px;}
+.opc-price sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.opc-period{font-size:12px;color:var(--muted);margin-bottom:18px;}
+.opc-body p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;}
+.opc-body strong{color:var(--white);}
+.opc-ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:4px;}
+.opc-ul li{font-size:12px;color:var(--white);padding-left:18px;position:relative;line-height:1.5;}
+.opc-ul li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-size:11px;font-weight:700;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .inv-cols{flex-direction:row;}
+  .inv-col{flex:1;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Google + Meta Ads &middot; Staff Eventos RJ &middot; Buffet &amp; Catering</p>
+  <h1>25 anos de<br>tradi&ccedil;&atilde;o.<br><em>Zero visibilidade<br>no digital.</em></h1>
+  <p class="hero-sub">Eliana, a Staff Eventos tem portf&oacute;lio, equipe e reputaçã de sobra. O que falta &eacute; uma estratégia de tráfego que funcione — que fa&ccedil;a o Google e o Instagram trabalhar para gerar orçamentos qualificados todo m&ecirc;s, n&atilde;o s&oacute; quando o boca a boca aparece.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Google + Meta Ads</span></div>
+    <div class="pill"><span>Valor</span><span>R$ 1.497/m&ecirc;s</span></div>
+    <div class="pill"><span>Nicho</span><span>Buffet &middot; Catering &middot; Eventos</span></div>
+    <div class="pill"><span>Opcional</span><span>IA + Disparos &mdash; R$ 497/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">O problema — por que o tr&aacute;fego n&atilde;o deu certo antes</div>
+  <h2 class="sec-title">N&atilde;o &eacute; o mercado.<br><em>&Eacute; a estrat&eacute;gia.</em></h2>
+  <p class="sec-intro">Eliana, o Google Ads para buffet funciona — quando tem a estrutura certa. O problema quase sempre &eacute; o mesmo: palavras-chave amplas demais, an&uacute;ncio genérico, sem landing page dedicada. Verba gasta em clique que nunca ia virar orçamento.</p>
+
+  <div class="diag-box">
+    <h3>O que normalmente falha no tr&aacute;fego de buffet</h3>
+    <p>Campanhas que miram "buffet" sem qualificar o tipo de evento. An&uacute;ncios que levam para a p&aacute;gina inicial do site, n&atilde;o para uma página focada em captura. Sem remarketing — a pessoa pesquisou, visitou e sumiu para sempre. <strong>A EmpresAtiva estrutura cada frente separada por inten&ccedil;&atilde;o: casamento, corporativo, coffee break — p&uacute;blico diferente, an&uacute;ncio diferente, resultado diferente.</strong></p>
+  </div>
+
+  <div class="gold-box">
+    <h3>O ativo que a Staff j&aacute; tem — e precisa ser usado</h3>
+    <p>Instagram bem estruturado, 25 anos de portfólio, fotos profissionais, experi&ecirc;ncia com ALUF, eventos corporativos e casamentos de alto padr&atilde;o. <strong>Esse material &eacute; a munição dos criativos do Meta — a EmpresAtiva usa o que j&aacute; existe, sem precisar criar do zero.</strong></p>
+  </div>
+
+  <div class="green-box">
+    <h3>O momento certo: eventos s&atilde;o planejados com anteced&ecirc;ncia</h3>
+    <p>Casamento &eacute; decidido 6 a 12 meses antes. Evento corporativo, 1 a 3 meses. <strong>Quem aparece agora no Google captura o planejador que est&aacute; pesquisando hoje — antes que ele feche com o concorrente.</strong> A pesquisa de palavras-chave mostra volume alto e CPC acess&iacute;vel para buffet RJ, buffet casamento, coffee break corporativo.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Estrat&eacute;gia</div>
+  <h2 class="sec-title">Duas frentes.<br><em>Uma complementa<br>a outra.</em></h2>
+  <p class="sec-intro">Google captura quem j&aacute; est&aacute; buscando buffet. Meta captura quem ainda n&atilde;o pesquisou e faz o remarketing de quem visitou e n&atilde;o converteu. Juntos, cobrem todo o funil.</p>
+
+  <div class="estrategia">
+    <div class="est-item google">
+      <div class="est-plat">Google Ads &mdash; Inten&ccedil;&atilde;o de busca</div>
+      <h3>Captura ativa: quem j&aacute; quer contratar</h3>
+      <p>Campanhas segmentadas por tipo de evento — <strong>casamento, corporativo, coffee break, buffet completo</strong> — com palavras-chave de alta inten&ccedil;&atilde;o. Quem pesquisa "buffet casamento RJ" est&aacute; prontos para solicitar orçamento. A EmpresAtiva garante que a Staff aparece nessa hora.</p>
+      <div class="kw-pills">
+        <span class="kw-pill">buffet para casamento</span>
+        <span class="kw-pill">buffet rj</span>
+        <span class="kw-pill">servi&ccedil;o de buffet</span>
+        <span class="kw-pill">coffee break corporativo</span>
+        <span class="kw-pill">buffet completo</span>
+        <span class="kw-pill">catering eventos rio</span>
+        <span class="kw-pill">festa corporativa buffet</span>
+      </div>
+    </div>
+    <div class="est-item meta">
+      <div class="est-plat">Meta Ads &mdash; Remarketing + P&uacute;blico frio</div>
+      <h3>Reimpacto e amplia&ccedil;&atilde;o: quem visitou e quem ainda n&atilde;o conhece</h3>
+      <p>Dois objetivos no Meta: <strong>(1) Remarketing</strong> — reimpactar quem clicou no Google e n&atilde;o solicitou or&ccedil;amento, com as fotos impec&aacute;veis do portf&oacute;lio da Staff. <strong>(2) P&uacute;blico frio</strong> — impactar decisores de RH corporativo, noivas, eventos de debutantes nos melhores bairros do Rio com criativos visuais do buffet em a&ccedil;&atilde;o.</p>
+      <div class="kw-pills">
+        <span class="kw-pill meta">Remarketing visitantes</span>
+        <span class="kw-pill meta">Lookalike clientes</span>
+        <span class="kw-pill meta">RH corporativo RJ</span>
+        <span class="kw-pill meta">Noivas Zona Sul</span>
+        <span class="kw-pill meta">Zona Sul D'Oeste</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Tudo que a Staff<br><em>precisa para gerar<br>or&ccedil;amentos.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">🔍</div>
+      <div>
+        <h3>Pesquisa e estrutura de palavras-chave<span class="plat-tag tag-g">Google</span></h3>
+        <p>Mapeamento completo por tipo de evento — casamento, corporativo, coffee break. S&oacute; palavras com intenç&atilde;o real de contratação, sem desperd&iacute;cio de verba em cliques gen&eacute;ricos.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📄</div>
+      <div>
+        <h3>Landing page de captura de or&ccedil;amento<span class="plat-tag tag-g">Google</span></h3>
+        <p>P&aacute;gina focada em converter o clique em solicitaç&atilde;o de orçamento — sem distrações, com portfólio visual da Staff, formulário e CTA direto pro WhatsApp.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎨</div>
+      <div>
+        <h3>Criativos com portf&oacute;lio da Staff<span class="plat-tag tag-m">Meta</span></h3>
+        <p>A EmpresAtiva usa as fotos e v&iacute;deos j&aacute; existentes da Staff para criar an&uacute;ncios visuais que param o scroll — imagens, carross&eacute;is e v&iacute;deos curtos do buffet em a&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Remarketing ativo<span class="plat-tag tag-m">Meta</span></h3>
+        <p>Quem clicou no Google e n&atilde;o solicitou orçamento vai ser reimpactado no Instagram e Facebook com o portfólio da Staff — at&eacute; converter ou descartar definitivamente.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real<span class="plat-tag tag-b">Google + Meta</span></h3>
+        <p>Grupo no WhatsApp: cada solicita&ccedil;&atilde;o de or&ccedil;amento chega imediatamente para Eliana ou o comercial da Staff — nome, evento, data estimada. Nenhum cliente esfria.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard Looker Studio<span class="plat-tag tag-b">Google + Meta</span></h3>
+        <p>Painel unificado: gastos, cliques, leads e custo por orçamento solicitado — Google e Meta em um lugar só. Eliana acompanha os n&uacute;meros em tempo real, sem depender de relat&oacute;rio.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o semanal<span class="plat-tag tag-b">Google + Meta</span></h3>
+        <p>Toda semana: palavras que s&atilde;o negativas adicionadas, an&uacute;ncios que n&atilde;o performam pausados, verba realocada para o que converte. Melhora cont&iacute;nua, sem esperar um m&ecirc;s.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto via WhatsApp<span class="plat-tag tag-b">Google + Meta</span></h3>
+        <p>Jo&atilde;o Marot acess&iacute;vel durante o m&ecirc;s — sem ticket, sem esperar dias por resposta. Alinhamentos r&aacute;pidos e decis&otilde;es estratégicas com agilidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Um valor.<br><em>Duas plataformas.<br>Resultado mensur&aacute;vel.</em></h2>
+  <p class="sec-intro">R$ 1.497/m&ecirc;s com Google e Meta Ads gerenciados juntos — sem fidelidade, sem taxa de setup, sem surpresa.</p>
+
+  <div class="inv-main">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Google + Meta Ads &mdash; Staff Eventos RJ</div>
+      <div class="inv-price"><sub>R$</sub> 1.497</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade m&iacute;nima &middot; aviso pr&eacute;vio de 30 dias</div>
+      <div class="inv-sep"></div>
+      <div class="inv-cols">
+        <div class="inv-col gcol">
+          <h4>Google Ads incluso</h4>
+          <ul>
+            <li>Pesquisa e estrutura de keywords por tipo de evento</li>
+            <li>Cria&ccedil;&atilde;o e gest&atilde;o das campanhas de busca</li>
+            <li>Landing page de captura de or&ccedil;amento</li>
+            <li>Otimiza&ccedil;&atilde;o semanal e negativação de palavras</li>
+          </ul>
+        </div>
+        <div class="inv-col mcol">
+          <h4>Meta Ads incluso</h4>
+          <ul>
+            <li>Remarketing para visitantes do Google</li>
+            <li>Campanhas para p&uacute;blico frio (corporativo + noivas)</li>
+            <li>Criativos com portfólio existente da Staff</li>
+            <li>Otimiza&ccedil;&atilde;o semanal dos an&uacute;ncios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+        <li style="font-size:12px;color:var(--white);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">&#10003;</span>Alerta de leads em tempo real no WhatsApp</li>
+        <li style="font-size:12px;color:var(--white);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">&#10003;</span>Dashboard Looker Studio unificado (Google + Meta)</li>
+        <li style="font-size:12px;color:var(--white);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:var(--orange);">&#10003;</span>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa.</strong> O valor investido diretamente no Google e Meta &eacute; definido com Eliana de acordo com a meta de or&ccedil;amentos mensais.</p>
+    </div>
+  </div>
+
+  <!-- OPCIONAL -->
+  <div class="opcional">
+    <div class="opc-body">
+      <div class="opc-label">Opcional &mdash; Acelere a convers&atilde;o</div>
+      <div class="opc-tag">Add-on</div>
+      <div class="opc-price"><sub>R$</sub> 497<sub>/m&ecirc;s</sub></div>
+      <div class="opc-period">adicionado ao plano principal quando fizer sentido</div>
+      <p>Quando o volume de leads crescer, responder r&aacute;pido e manter o relacionamento com quem n&atilde;o fechou ainda vai ser o diferencial de convers&atilde;o. O add-on resolve isso.</p>
+      <ul class="opc-ul">
+        <li><strong>Agente de IA no WhatsApp</strong> — responde leads 24h, faz pr&eacute;-qualifica&ccedil;&atilde;o (tipo de evento, data, n&uacute;mero de pessoas) e agenda a conversa com Eliana</li>
+        <li><strong>Disparo em Massa</strong> — reengaja contatos que j&aacute; orçaram mas n&atilde;o fecharam, com ofertas sazonais e disponibilidade de agenda (at&eacute; 1.000 disparos/m&ecirc;s)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao primeiro<br><em>or&ccedil;amento pelo<br>tráfego.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Eliana confirma — briefing inicial</h3>
+      <p>Quais eventos t&ecirc;m maior ticket e margem, quais regi&otilde;es do Rio a Staff prefere atender, qual a sazonalidade da agenda. A EmpresAtiva monta a estratégia a partir disso.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Acesso &agrave;s contas + diagn&oacute;stico</h3>
+      <p>Eliana concede acesso ao Google Ads atual. A EmpresAtiva faz o diagn&oacute;stico — o que j&aacute; rodou, o que estava desperdi&ccedil;ando verba, o que aproveitar na reestrutura&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1–2</span>
+      <h3>Campanhas no ar — Google + Meta</h3>
+      <p>Landing page publicada, Google Ads ativo com keywords por tipo de evento, Meta Ads com remarketing configurado. Grupo de alertas no WhatsApp j&aacute; funcionando.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3–4</span>
+      <h3>Primeiros dados reais — otimiza&ccedil;&atilde;o</h3>
+      <p>Quais palavras-chave geraram cliques qualificados, qual criativo no Meta teve mais engajamento, qual p&uacute;blico converteu melhor. Ajustes imediatos com base nos dados.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Escala — mais verba ou add-on de IA</h3>
+      <p>Com o custo por lead definido e o padr&atilde;o de convers&atilde;o estabelecido, a decis&atilde;o de escalar &eacute; simples: mais verba = mais or&ccedil;amentos. E se o volume crescer, o Agente de IA entra para n&atilde;o perder nenhum.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Eliana, 25 anos<br>de tradi&ccedil;&atilde;o<br><em>merecem o digital<br>funcionando.</em></h2>
+  <p>A Staff Eventos tem tudo que o cliente de alto padr&atilde;o procura. O que falta &eacute; aparecer para esse cliente quando ele pesquisa — e reaparecer quando ele ainda est&aacute; decidindo. A EmpresAtiva cuida disso.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
