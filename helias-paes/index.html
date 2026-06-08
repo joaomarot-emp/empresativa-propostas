@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Helias Paes Hair Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.diag-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.diag-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+/* PRODUTOS */
+.prod-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:24px;}
+.prod-item{background:var(--card);padding:20px 24px;display:flex;gap:16px;align-items:center;}
+.prod-item.hero-prod{background:rgba(232,103,26,0.05);border-left:2px solid var(--orange);}
+.prod-num{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:36px;line-height:1;}
+.prod-item h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.prod-item p{font-size:12px;color:var(--muted);line-height:1.6;}
+.prod-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.13em;padding:2px 7px;border-radius:2px;background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);text-transform:uppercase;margin-left:8px;}
+
+/* JORNADA */
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:32px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:24px;display:flex;gap:16px;align-items:flex-start;}
+.como-icon{width:40px;height:40px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.inv-ul li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:4px;}
+.inv-note strong{color:var(--white);}
+
+.verba-destaque{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:20px 24px;border-radius:2px;margin-top:3px;margin-bottom:3px;}
+.verba-destaque h4{font-size:13px;font-weight:600;color:var(--green);margin-bottom:8px;}
+.verba-destaque p{font-size:12px;color:var(--muted);line-height:1.8;}
+.verba-destaque strong{color:var(--white);}
+
+.opcional{background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.2);border-radius:4px;overflow:hidden;margin-top:3px;}
+.opcional::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,0.3));}
+.opc-body{padding:24px;}
+.opc-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.opc-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:3px 8px;background:rgba(201,168,76,0.08);color:var(--gold);border:1px solid rgba(201,168,76,0.2);border-radius:2px;margin-bottom:12px;}
+.opc-price{font-family:var(--font-display);font-size:40px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.opc-price sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.opc-period{font-size:12px;color:var(--muted);margin-bottom:16px;}
+.opc-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.opc-ul li{font-size:12px;color:var(--white);padding-left:18px;position:relative;line-height:1.5;}
+.opc-ul li::before{content:"\2713";position:absolute;left:0;color:var(--gold);font-size:11px;font-weight:700;}
+.opc-body p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:14px;}
+.opc-body strong{color:var(--white);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-dot.gold{background:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.gold{color:var(--gold);}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .prod-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads &middot; Helias Paes Hair Studio &middot; Votorantim SP</p>
+  <h1>R$ 4.000/semana<br>investidos.<br><em>Resultado aquém<br>do esperado.</em></h1>
+  <p class="hero-sub">Helias, o problema n&atilde;o &eacute; o produto — &eacute; a estrat&eacute;gia. Cola l&iacute;quida, pente de a&ccedil;o e prensa seladora s&atilde;o soluções que o profissional de mega hair precisa, mas ainda n&atilde;o sabe que existem. A EmpresAtiva estrutura o Meta Ads para ativar essa consci&ecirc;ncia — e transformar venda espor&aacute;dica em fluxo previs&iacute;vel.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads &mdash; B2B</span></div>
+    <div class="pill"><span>Valor</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>P&uacute;blico</span><span>Profissionais de mega hair</span></div>
+    <div class="pill"><span>Opcionais</span><span>IA · Social Media · GBP</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">O diagn&oacute;stico — por que o tráfego n&atilde;o tá entregando</div>
+  <h2 class="sec-title">N&atilde;o &eacute; falta de verba.<br><em>&Eacute; falta de estrat&eacute;gia<br>B2B.</em></h2>
+  <p class="sec-intro">Investir R$ 4.000 por semana e ter resultado abaixo do esperado tem uma causa. A EmpresAtiva identificou tr&ecirc;s pontos cr&iacute;ticos durante a an&aacute;lise.</p>
+
+  <div class="diag-box">
+    <h3>O Instagram est&aacute; falando com o p&uacute;blico errado</h3>
+    <p>O perfil atual transmite a sensaç&atilde;o de um sal&atilde;o de beleza para o consumidor final — n&atilde;o de um fornecedor de soluç&otilde;es para profissionais de mega hair. <strong>Quando um gestor de sal&atilde;o chega no perfil depois de ver o an&uacute;ncio, n&atilde;o fica claro que voc&ecirc; vende para ele — e ele sai sem converter.</strong> Bio, destaques e posts fixados precisam comunicar as tr&ecirc;s soluções com clareza para quem &eacute; profissional.</p>
+  </div>
+
+  <div class="diag-box">
+    <h3>An&uacute;ncios n&atilde;o aparecem no feed — e prejudicam a convers&atilde;o</h3>
+    <p>Os criativos do tráfego pago n&atilde;o est&atilde;o fixados no perfil orgânico. <strong>Quando um lead curioso entra no Instagram para pesquisar mais sobre o produto antes de comprar, n&atilde;o encontra consist&ecirc;ncia — e desaparece.</strong> O anúncio precisa ter respaldo no feed.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>O gancho certo atrai o algoritmo certo</h3>
+    <p>Voc&ecirc; j&aacute; usa "voc&ecirc; que trabalha com mega hair" nos an&uacute;ncios — e isso &eacute; exatamente o que funciona. <strong>O Meta entende esse gancho e passa a entregar o an&uacute;ncio para quem trabalha com mega hair.</strong> A EmpresAtiva estrutura todos os criativos nessa linha — e renova periodicamente para evitar a satura&ccedil;&atilde;o que j&aacute; aconteceu.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>A estrat&eacute;gia de portf&oacute;lio vai aumentar o ticket m&eacute;dio</h3>
+    <p>Concentrar verba no produto com maior fluxo de venda (prensa seladora ou cola) e, ao converter o lead, apresentar o portfólio completo via WhatsApp. <strong>Quem entrou pela cola pode sair com a cola + o pente + a prensa.</strong> &Eacute; a l&oacute;gica do corretor de im&oacute;veis — vende um, mostra o portf&oacute;lio inteiro.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRODUTOS -->
+<section class="bg-black">
+  <div class="sec-label">Os produtos — foco da campanha</div>
+  <h2 class="sec-title">Tr&ecirc;s soluções.<br><em>Uma estrat&eacute;gia<br>de entrada.</em></h2>
+  <p class="sec-intro">A EmpresAtiva concentra verba no produto com maior volume de vendas e usa os outros como portf&oacute;lio de upsell via WhatsApp — maximizando o ticket m&eacute;dio sem diluir a verba em tr&ecirc;s campanhas simultâneas.</p>
+
+  <div class="prod-grid">
+    <div class="prod-item hero-prod">
+      <div class="prod-num">01</div>
+      <div>
+        <h3>Prensa Seladora<span class="prod-tag">Produto estrela</span></h3>
+        <p>Maior volume de vendas e produto com diferencial visual mais f&aacute;cil de demonstrar em v&iacute;deo — concentração de verba aqui no início.</p>
+      </div>
+    </div>
+    <div class="prod-item hero-prod">
+      <div class="prod-num">02</div>
+      <div>
+        <h3>Cola L&iacute;quida<span class="prod-tag">Alta sa&iacute;da</span></h3>
+        <p>Produto de recorrência — quem compra uma vez, compra sempre. Entrada natural para o portfólio completo.</p>
+      </div>
+    </div>
+    <div class="prod-item">
+      <div class="prod-num">03</div>
+      <div>
+        <h3>Pente de A&ccedil;o</h3>
+        <p>Portf&oacute;lio de upsell — apresentado via WhatsApp para quem j&aacute; converteu em outro produto.</p>
+      </div>
+    </div>
+    <div class="prod-item" style="background:rgba(232,103,26,0.03);border-left:2px solid rgba(232,103,26,0.12);">
+      <div class="prod-num" style="color:var(--muted);font-size:18px;">+</div>
+      <div>
+        <h3 style="color:var(--muted);">Fita Adesiva + outros insumos</h3>
+        <p>Complemento natural do portfólio — mencionado no WhatsApp comercial ap&oacute;s a primeira convers&atilde;o.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- COMO FUNCIONA -->
+<section class="bg-dark">
+  <div class="sec-label">Como funciona — a jornada do profissional</div>
+  <h2 class="sec-title">Do an&uacute;ncio<br><em>ao pedido no<br>WhatsApp.</em></h2>
+  <p class="sec-intro">O profissional de mega hair n&atilde;o pesquisa no Google — ele &eacute; impactado enquanto navega no Instagram. A estrat&eacute;gia &eacute; ativar a consci&ecirc;ncia de que o produto existe e que resolve o problema dele.</p>
+
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>An&uacute;ncio com gancho profissional</h3>
+        <p>"Voc&ecirc; que trabalha com mega hair..." — o Meta identifica o gancho e entrega o an&uacute;ncio para quem trabalha no mercado de mega hair. Profissional para de rolar. Se identifica.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Clique → Formulário qualificado ou WhatsApp</h3>
+        <p>Perguntas condicionais filtram o perfil ideal antes do contato — voc&ecirc; &eacute; dono de sal&atilde;o? Quantos atendimentos por semana? Elimina curiosos antes de chegarem ao comercial.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Alerta para o comercial (cunhado)</h3>
+        <p>Lead qualificado chega no WhatsApp com nome, contato e respostas do formulário. O comercial aborda j&aacute; sabendo o perfil — sem desperdi&ccedil;ar tempo com quem nunca ia comprar.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Produto 1 converte → portfólio no WhatsApp</h3>
+        <p>Fechou a prensa? O comercial apresenta a cola, a fita, o pente. Um contato, m&uacute;ltiplas possibilidades de venda. Ticket m&eacute;dio aumenta sem custo adicional de an&uacute;ncio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Tudo que o Helias Paes<br><em>precisa para vender<br>mais para profissionais.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📱</div>
+      <div>
+        <h3>Reestrutura&ccedil;&atilde;o do perfil para B2B</h3>
+        <p>Bio, destaques e 9 posts fixados comunicando as 3 soluções para o profissional de mega hair — quando o lead chegar no perfil ap&oacute;s ver o an&uacute;ncio, encontra consist&ecirc;ncia.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Criativos com gancho profissional</h3>
+        <p>Script + edi&ccedil;&atilde;o dos v&iacute;deos gravados por Helias. Gancho "voc&ecirc; que trabalha com mega hair" em todos os an&uacute;ncios. Renova&ccedil;&atilde;o peri&oacute;dica para evitar saturação.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎯</div>
+      <div>
+        <h3>Segmenta&ccedil;&atilde;o por p&uacute;blico profissional</h3>
+        <p>P&uacute;blicos de donos de sal&atilde;o, profissionais de est&eacute;tica, instrutores de mega hair — o Meta entrega para quem realmente vai comprar, n&atilde;o para consumidor final.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">✅</div>
+      <div>
+        <h3>Formulário de qualifica&ccedil;&atilde;o condicional</h3>
+        <p>Perguntas que filtram o profissional antes do contato — elimina curiosos e garante que o comercial s&oacute; fale com quem tem potencial real de compra.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Grupo no WhatsApp: cada lead qualificado chega com nome, contato e respostas — para o cunhado comercial abordar imediatamente, sem deixar esfriar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard Looker Studio</h3>
+        <p>Gastos, leads e desempenho por an&uacute;ncio em tempo real. Helias acompanha o que est&aacute; funcionando — sem precisar perguntar para a agência o que est&aacute; acontecendo.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o semanal</h3>
+        <p>An&uacute;ncios que saturam s&atilde;o renovados. Verba concentrada no produto com melhor custo por lead. Ajustes cont&iacute;nuos sem esperar um m&ecirc;s para agir.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s — sem ticket de suporte, sem esperar. Decis&otilde;es estrat&eacute;gicas tomadas com agilidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">R$ 997/m&ecirc;s.<br><em>Tudo incluso.<br>Sem surpresas.</em></h2>
+  <p class="sec-intro">Mesmo valor que Helias j&aacute; paga ao gestor atual — com equipe completa, estrat&eacute;gia B2B e resultado mensur&aacute;vel.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Meta Ads &mdash; Helias Paes Hair Studio &middot; B2B Mega Hair</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade forçada &middot; aviso pr&eacute;vio de 30 dias</div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Reestrutura&ccedil;&atilde;o do perfil Instagram para B2B (bio + 9 posts fixados)</li>
+        <li>Criativos com gancho profissional — script, edi&ccedil;&atilde;o e renova&ccedil;&atilde;o peri&oacute;dica</li>
+        <li>Segmenta&ccedil;&atilde;o de p&uacute;blico profissional de mega hair</li>
+        <li>Formulário de qualifica&ccedil;&atilde;o condicional (filtra curiosos)</li>
+        <li>Alerta de leads em tempo real no WhatsApp</li>
+        <li>Dashboard Looker Studio em tempo real</li>
+        <li>Otimiza&ccedil;&atilde;o semanal das campanhas</li>
+        <li>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p class="inv-note">&#9888;&#65039; <strong>Verba de an&uacute;ncios n&atilde;o inclusa.</strong> O valor investido diretamente no Meta &eacute; definido com Helias — a EmpresAtiva recomenda concentra&ccedil;&atilde;o inicial no produto de maior volume para otimizar o custo por lead.</p>
+    </div>
+  </div>
+
+  <div class="verba-destaque">
+    <h4>Sobre a verba acima de R$ 1.000 — combinado na reuni&atilde;o</h4>
+    <p>Normalmente, quando a verba de an&uacute;ncios ultrapassa R$ 1.000/m&ecirc;s, a EmpresAtiva cobra 20% sobre o excedente (padr&atilde;o de mercado). <strong>No in&iacute;cio da parceria com Helias, o valor fixo de R$ 997 permanece independente da verba investida</strong> — para construir confiança com resultados reais antes de ajustar o modelo.</p>
+  </div>
+
+  <!-- OPCIONAIS -->
+  <div class="sec-label" style="margin-top:32px;margin-bottom:8px;">Add-ons indicados para o Helias</div>
+  <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:20px;">Os tr&ecirc;s add-ons abaixo foram discutidos na reuni&atilde;o. Podem ser inclu&iacute;dos agora ou adicionados conforme o neg&oacute;cio for escalando.</p>
+
+  <div class="opcional">
+    <div class="opc-body">
+      <div class="opc-label">Add-on 1 &mdash; Social Media</div>
+      <div class="opc-tag">Recomendado agora</div>
+      <div class="opc-price"><sub>R$</sub> 297<sub>/m&ecirc;s</sub></div>
+      <div class="opc-period">4 posts org&acirc;nicos/m&ecirc;s + perfil otimizado</div>
+      <p>O Instagram precisa transmitir autoridade B2B assim que o potencial cliente chega ap&oacute;s ver o an&uacute;ncio. Este add-on mant&eacute;m o perfil publicando regularmente — <strong>4 posts org&acirc;nicos por m&ecirc;s com padroniza&ccedil;&atilde;o visual voltada para o profissional de mega hair</strong>: quebra de objeçã, demonstra&ccedil;&atilde;o de produto e diferencial de quem vende para B2B.</p>
+      <ul class="opc-ul">
+        <li>4 posts org&acirc;nicos mensais (imagem ou carrossel)</li>
+        <li>Padroniza&ccedil;&atilde;o visual alinhada com a identidade B2B reestruturada</li>
+        <li>Conte&uacute;do educativo e de autoridade para o profissional de mega hair</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="opcional" style="margin-top:3px;">
+    <div class="opc-body">
+      <div class="opc-label">Add-on 2 &mdash; Google Business Profile</div>
+      <div class="opc-tag">Recomendado agora</div>
+      <div class="opc-price"><sub>R$</sub> 297<sub>/m&ecirc;s</sub></div>
+      <div class="opc-period">otimiza&ccedil;&atilde;o + SEO local + manuten&ccedil;&atilde;o mensal</div>
+      <p>Helias j&aacute; paga R$ 600/m&ecirc;s ao gestor atual pelo GBP — <strong>e o perfil est&aacute; com nota 6.2, categoria errada (concorrendo com Carrefour e a&ccedil;aiteria) e postagens desatualizadas.</strong> A EmpresAtiva assume por R$ 297/m&ecirc;s: menos da metade do valor atual, com resultado real e pontua&ccedil;&atilde;o crescente.</p>
+      <ul class="opc-ul">
+        <li>Otimiza&ccedil;&atilde;o completa do perfil: categoria correta, descri&ccedil;&atilde;o, fotos e m&iacute;dias</li>
+        <li>SEO local — posicionamento nas buscas do Google Maps</li>
+        <li>Postagem mensal para manter ativa&ccedil;&atilde;o e pontua&ccedil;&atilde;o crescente</li>
+        <li>Monitoramento progressivo at&eacute; pontua&ccedil;&atilde;o pr&oacute;xima de 10</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="opcional" style="margin-top:3px;">
+    <div class="opc-body">
+      <div class="opc-label">Add-on 3 &mdash; Agente de IA + Disparo em Massa</div>
+      <div class="opc-tag">Quando o volume crescer</div>
+      <div class="opc-price"><sub>R$</sub> 497<sub>/m&ecirc;s</sub></div>
+      <div class="opc-period">qualifica&ccedil;&atilde;o autom&aacute;tica + 1.000 disparos/m&ecirc;s</div>
+      <p>Com o fluxo de leads crescendo, o comercial (cunhado) n&atilde;o consegue responder todos a tempo. <strong>O Agente de IA faz a primeira abordagem 24h por dia</strong> — qualifica se &eacute; profissional ou consumidor final, descobre o produto de interesse e aquece o lead antes do contato humano. O Disparo em Massa reativa quem or&ccedil;ou mas n&atilde;o fechou.</p>
+      <ul class="opc-ul">
+        <li><strong>Agente de IA no WhatsApp</strong> — qualifica&ccedil;&atilde;o autom&aacute;tica B2B com script personalizado para mega hair</li>
+        <li><strong>Disparo em Massa</strong> — at&eacute; 1.000 disparos/m&ecirc;s para reengajamento de leads frios</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do aviso pr&eacute;vio<br><em>ao primeiro lead<br>qualificado.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot gold"></div>
+      <span class="tl-day gold">Esta semana</span>
+      <h3>Helias avisa o gestor atual + extrai o m&aacute;ximo dele</h3>
+      <p>Aviso pr&eacute;vio dado agora. Durante o m&ecirc;s restante: solicitar ao gestor atual as melhorias do Google Meu Neg&oacute;cio com base no relat&oacute;rio que a EmpresAtiva enviar — chegando j&aacute; na velocidade certa quando a EmpresAtiva assumir.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 1 &mdash; In&iacute;cio</span>
+      <h3>Briefing + acesso + reestrutura&ccedil;&atilde;o do Instagram</h3>
+      <p>Helias concede acesso &agrave;s contas. Bio, destaques e 9 posts fixados reestruturados para B2B. Script dos primeiros criativos entregue — Helias grava, a EmpresAtiva edita.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Campanhas no ar — p&uacute;blico profissional</h3>
+      <p>Primeiros an&uacute;ncios publicados com gancho B2B. Formulário de qualifica&ccedil;&atilde;o configurado. Grupo de alertas no WhatsApp do cunhado pronto. Dashboard Looker Studio entregue.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3–4</span>
+      <h3>Otimiza&ccedil;&atilde;o com dados reais</h3>
+      <p>Qual produto gerou mais custo-por-lead, qual gancho converteu melhor, qual p&uacute;blico demonstrou maior inten&ccedil;&atilde;o de compra. Verba concentrada no que funciona.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Escala — mais verba ou add-on de IA</h3>
+      <p>Com custo por lead definido e padr&atilde;o de convers&atilde;o estabelecido, a decis&atilde;o de escalar &eacute; simples. E se o volume de leads crescer mais que o cunhado consegue atender — o Agente de IA entra.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Helias, o produto<br>&eacute; bom. O público<br><em>&eacute; quem precisa<br>encontrar.</em></h2>
+  <p>Voc&ecirc; j&aacute; provou que d&aacute; para vender — quando o sobrinho fazia o tráfego, o negócio rodava. A EmpresAtiva entrega a estrat&eacute;gia B2B que o negócio precisa, com uma equipe completa dedicada — e resultado mensur&aacute;vel desde a primeira semana.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
