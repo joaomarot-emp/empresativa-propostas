@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Fios e Formas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--pink:#E8679A;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,154,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.insight-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.insight-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.insight-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.insight-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+.servicos-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:24px;}
+.serv-item{background:var(--card);padding:18px 24px;display:flex;gap:14px;align-items:center;}
+.serv-item.destaque{background:rgba(232,103,26,0.05);border-left:2px solid var(--orange);}
+.serv-emoji{font-size:22px;flex-shrink:0;min-width:32px;}
+.serv-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.serv-item p{font-size:12px;color:var(--muted);line-height:1.6;}
+
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:32px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:24px;display:flex;gap:16px;align-items:flex-start;}
+.como-icon{width:40px;height:40px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.inv-ul li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+.inv-note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:4px;}
+.inv-note strong{color:var(--white);}
+
+.addon-grid{display:flex;flex-direction:column;gap:3px;margin-top:16px;}
+.addon{background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.18);border-radius:3px;padding:20px 24px;}
+.addon-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+.addon-price{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.addon-price sub{font-size:12px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.addon h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.addon p{font-size:12px;color:var(--muted);line-height:1.7;}
+.addon strong{color:var(--white);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .servicos-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .addon-grid{flex-direction:row;}
+  .addon{flex:1;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads &middot; Fios e Formas &middot; Governador Valadares MG</p>
+  <h1>Mega hair,<br>mechas e terapia.<br><em>Governador Valadares<br>precisa te encontrar.</em></h1>
+  <p class="hero-sub">Rayssa, o Fios e Formas &eacute; refer&ecirc;ncia em alongamento, mechas e terapia capilar em Governador Valadares. A EmpresAtiva estrutura a campanha certa no Meta Ads para transformar esse reconhecimento em agenda cheia — todo m&ecirc;s.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Valor</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Plataformas</span><span>Instagram + Facebook</span></div>
+    <div class="pill"><span>Cidade</span><span>Governador Valadares MG</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- POR QUE META -->
+<section class="bg-dark">
+  <div class="sec-label">Por que Meta Ads para o Fios e Formas</div>
+  <h2 class="sec-title">Servi&ccedil;o de beleza<br><em>&eacute; decis&atilde;o visual.<br>E visual vive no<br>Instagram.</em></h2>
+  <p class="sec-intro">Mega hair, mechas e terapia capilar s&atilde;o servi&ccedil;os que a cliente decide pelo que ela v&ecirc; — o resultado, a transforma&ccedil;&atilde;o, a qualidade do acabamento. O Meta Ads leva isso para frente da mulher certa, na cidade certa, no momento certo.</p>
+
+  <div class="insight-box">
+    <h3>Governador Valadares tem p&uacute;blico — e o Meta sabe onde ele est&aacute;</h3>
+    <p>A cidade tem mais de 280 mil habitantes. <strong>Mulheres entre 20 e 50 anos, que valorizam cabelo, que j&aacute; fizeram ou pensam em fazer mega hair ou mechas — todas est&atilde;o no Instagram.</strong> A EmpresAtiva segmenta exatamente esse perfil na regi&atilde;o do sal&atilde;o, sem desperdi&ccedil;ar verba em quem nunca vai agendar.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>O diferencial do Fios e Formas precisa aparecer antes da concorr&ecirc;ncia</h3>
+    <p>Refer&ecirc;ncia em alongamento de mega hair, mechas e terapia capilar — <strong>isso &eacute; um diferencial real que a campanha vai colocar na frente de quem est&aacute; considerando fazer o procedimento.</strong> Antes de ela pesquisar no Google, antes de ela perguntar para a amiga, ela j&aacute; vai conhecer o Fios e Formas.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>Meta faz o visual trabalhar por voc&ecirc; — mesmo quando o sal&atilde;o est&aacute; cheio</h3>
+    <p>An&uacute;ncios rodando 24h, capturando interesse de mulheres que ainda n&atilde;o t&ecirc;m hor&aacute;rio marcado. <strong>Quando o sal&atilde;o abre na manhã seguinte, a agenda j&aacute; tem pedidos aguardando resposta.</strong> O tráfego gera demanda cont&iacute;nua — n&atilde;o s&oacute; quando a Rayssa tem tempo de postar no Instagram.</p>
+  </div>
+
+  <!-- SERVIÇOS FOCO -->
+  <p class="sec-label" style="margin-top:44px;margin-bottom:16px;">Servi&ccedil;os foco das campanhas</p>
+  <div class="servicos-grid">
+    <div class="serv-item destaque">
+      <div class="serv-emoji">💇‍♀️</div>
+      <div>
+        <h3>Alongamento de Mega Hair</h3>
+        <p>Ticket alto, transforma&ccedil;&atilde;o visual impactante — ideal para an&uacute;ncio de resultado. P&uacute;blico que j&aacute; pensa em fazer ou quer mudar.</p>
+      </div>
+    </div>
+    <div class="serv-item destaque">
+      <div class="serv-emoji">🎨</div>
+      <div>
+        <h3>Mechas e Colora&ccedil;&atilde;o</h3>
+        <p>Alta recorr&ecirc;ncia — cliente volta a cada 6-8 semanas. An&uacute;ncio de antes/depois tem alto engajamento e gera agendamento.</p>
+      </div>
+    </div>
+    <div class="serv-item">
+      <div class="serv-emoji">✨</div>
+      <div>
+        <h3>Terapia Capilar</h3>
+        <p>Diferencial de cuidado e sa&uacute;de do fio — p&uacute;blico que j&aacute; fez mega ou quem tem cabelo danificado buscando recupera&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+    <div class="serv-item">
+      <div class="serv-emoji">📅</div>
+      <div>
+        <h3>Manuten&ccedil;&atilde;o e Recorr&ecirc;ncia</h3>
+        <p>Campanha de remarketing para clientes que j&aacute; visitaram o perfil ou fizeram procedimento — reativa quem est&aacute; na hora da manuten&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- JORNADA -->
+<section class="bg-black">
+  <div class="sec-label">Como funciona — do an&uacute;ncio ao agendamento</div>
+  <h2 class="sec-title">Da mulher<br>desconhecida<br><em>&agrave; cliente<br>agendada.</em></h2>
+
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>An&uacute;ncio aparece no feed ou stories</h3>
+        <p>Uma mulher de Governador Valadares v&ecirc; o resultado de um mega, uma mecha bem feita ou a transforma&ccedil;&atilde;o de uma cliente real do Fios e Formas. Ela para de rolar. Se identifica.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Clique direto para o WhatsApp ou formulário</h3>
+        <p>O an&uacute;ncio leva a cliente diretamente para o WhatsApp do sal&atilde;o ou para um formulário com perguntas de qualifica&ccedil;&atilde;o — sem rodeios, sem perder o interesse.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Alerta para a Rayssa — lead chegou</h3>
+        <p>Notifica&ccedil;&atilde;o imediata no grupo do WhatsApp: nome da pessoa, servi&ccedil;o de interesse e contato. A Rayssa aborda na hora — quando o interesse ainda est&aacute; quente.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Agendamento confirmado</h3>
+        <p>Lead qualificado, abordado r&aacute;pido, hor&aacute;rio marcado. O tráfego entregou demanda — o sal&atilde;o entrega o servi&ccedil;o. Essa &eacute; a parceria certa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Tudo que o Fios e<br>Formas precisa para<br><em>lotar a agenda.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas</h3>
+        <p>Estrutura completa no Meta Ads — objetivos certos, p&uacute;blicos segmentados por interesse em cabelo e beleza, segmenta&ccedil;&atilde;o geogr&aacute;fica em Governador Valadares e regi&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎨</div>
+      <div>
+        <h3>Criativos: imagens, carross&eacute;is e v&iacute;deos</h3>
+        <p>Equipe de design da EmpresAtiva cria os an&uacute;ncios — antes/depois de mega, mechas em destaque, v&iacute;deos de procedimento. Rayssa grava, a EmpresAtiva edita.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📄</div>
+      <div>
+        <h3>Landing page de captura</h3>
+        <p>P&aacute;gina focada em converter o clique em agendamento — mostra os servi&ccedil;os, os resultados do sal&atilde;o e leva direto para o WhatsApp ou formulário.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">✅</div>
+      <div>
+        <h3>Formulário condicional de qualifica&ccedil;&atilde;o</h3>
+        <p>Perguntas que filtram o lead antes do contato — servi&ccedil;o de interesse, disponibilidade, localiza&ccedil;&atilde;o. Rayssa fala s&oacute; com quem realmente tem inten&ccedil;&atilde;o de agendar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada lead que chega aparece imediatamente no WhatsApp da Rayssa — nome, servi&ccedil;o e contato. Velocidade de resposta = taxa de convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard Looker Studio</h3>
+        <p>Painel em tempo real: gastos, leads gerados, custo por lead e desempenho de cada an&uacute;ncio. A Rayssa acompanha os n&uacute;meros sem precisar perguntar nada.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o semanal</h3>
+        <p>Toda semana: criativos que n&atilde;o performam s&atilde;o trocados, p&uacute;blicos refinados, verba concentrada no que converte. Melhora cont&iacute;nua sem esperar o m&ecirc;s acabar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s — d&uacute;vidas, alinhamentos e decis&otilde;es r&aacute;pidas sem burocracia. A Rayssa nunca fica sem resposta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Um valor fixo.<br><em>Agenda cheia<br>todo m&ecirc;s.</em></h2>
+  <p class="sec-intro">R$ 997/m&ecirc;s com gest&atilde;o completa do Meta Ads — sem fidelidade forçada, sem taxa de setup, sem surpresa.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Meta Ads &mdash; Fios e Formas &middot; Governador Valadares MG</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade m&iacute;nima &middot; aviso pr&eacute;vio de 30 dias</div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa das campanhas no Instagram e Facebook</li>
+        <li>Criativos: imagens, carross&eacute;is e edi&ccedil;&atilde;o de v&iacute;deos</li>
+        <li>Landing page de captura de agendamentos</li>
+        <li>Formulário condicional de qualifica&ccedil;&atilde;o de leads</li>
+        <li>Alerta de leads em tempo real no WhatsApp</li>
+        <li>Dashboard Looker Studio em tempo real</li>
+        <li>Otimiza&ccedil;&atilde;o semanal das campanhas</li>
+        <li>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p class="inv-note">&#9888;&#65039; <strong>Verba de an&uacute;ncios n&atilde;o inclusa.</strong> O valor investido diretamente no Meta &eacute; definido com a Rayssa de acordo com a meta de agendamentos mensais. A EmpresAtiva recomenda o valor ideal para o objetivo.</p>
+    </div>
+  </div>
+
+  <!-- ADD-ONS -->
+  <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;margin-top:4px;">Add-ons dispon&iacute;veis</p>
+  <div class="addon-grid">
+    <div class="addon">
+      <div class="addon-lbl">Agente de IA + Disparo em Massa</div>
+      <div class="addon-price"><sub>R$</sub> 497<sub>/m&ecirc;s</sub></div>
+      <h4>Quando o volume crescer</h4>
+      <p><strong>IA responde leads 24h</strong> e faz pr&eacute;-qualifica&ccedil;&atilde;o antes de chegar para a Rayssa. <strong>Disparo em massa</strong> reengaja clientes que j&aacute; visitaram e n&atilde;o agendaram (1.000 disparos/m&ecirc;s).</p>
+    </div>
+    <div class="addon">
+      <div class="addon-lbl">Google Business Profile</div>
+      <div class="addon-price"><sub>R$</sub> 297<sub>/m&ecirc;s</sub></div>
+      <h4>Aparecer nas buscas do Google Maps</h4>
+      <p>Otimiza&ccedil;&atilde;o do GBP do Fios e Formas para aparecer nas primeiras posi&ccedil;&otilde;es quando algu&eacute;m pesquisar <strong>"sal&atilde;o de beleza Governador Valadares"</strong> no Google.</p>
+    </div>
+    <div class="addon">
+      <div class="addon-lbl">Social Media</div>
+      <div class="addon-price"><sub>R$</sub> 297<sub>/m&ecirc;s</sub></div>
+      <h4>Consist&ecirc;ncia no feed org&acirc;nico</h4>
+      <p><strong>4 posts org&acirc;nicos por m&ecirc;s</strong> com padroniza&ccedil;&atilde;o visual — para o perfil ter consist&ecirc;ncia quando a potencial cliente chega pelo an&uacute;ncio e vai pesquisar o Instagram.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao primeiro<br><em>agendamento pelo<br>tráfego.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Rayssa confirma — briefing inicial</h3>
+      <p>Quais servi&ccedil;os t&ecirc;m maior ticket e disponibilidade na agenda agora, qual a regi&atilde;o de atua&ccedil;&atilde;o priorit&aacute;ria em Governador Valadares, principais diferenciais do sal&atilde;o. A EmpresAtiva monta a estrat&eacute;gia com base nisso.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Acesso &agrave;s contas + script de criativos</h3>
+      <p>Rayssa concede acesso ao Meta Ads. A EmpresAtiva entrega o script dos primeiros criativos — Rayssa grava, a equipe de design edita. Sem complicar, sem perder tempo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1–2</span>
+      <h3>Campanhas no ar</h3>
+      <p>Landing page publicada, campanhas ativas, grupo de alertas configurado. Os primeiros leads j&aacute; chegam para a Rayssa nessa semana — com nome, servi&ccedil;o e contato.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3–4</span>
+      <h3>Otimiza&ccedil;&atilde;o com dados reais</h3>
+      <p>Qual criativo gerou mais interesse, qual p&uacute;blico converteu melhor, qual servi&ccedil;o teve mais procura. A EmpresAtiva ajusta tudo — e a agenda do Fios e Formas vai enchendo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Previsibilidade e escala</h3>
+      <p>Com o padr&atilde;o de custo por lead definido, a decis&atilde;o de aumentar verba &eacute; simples. Mais investimento = mais agendamentos. A Rayssa controla o ritmo.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Rayssa, Governador<br>Valadares j&aacute; conhece<br><em>o Fios e Formas.<br>Agora &eacute; hora<br>de lotar a agenda.</em></h2>
+  <p>O sal&atilde;o &eacute; refer&ecirc;ncia na cidade. O que falta &eacute; uma campanha que leve isso para frente de quem ainda n&atilde;o conhece — e que re-impacte quem j&aacute; viu mas ainda n&atilde;o agendou. A EmpresAtiva cuida disso.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
