@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Emerson Health</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--teal:#2EC4B6;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(46,196,182,0.07) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,26,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.diag-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.diag-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.teal-box{background:rgba(46,196,182,0.04);border:1px solid rgba(46,196,182,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.teal-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--teal);margin-bottom:10px;}
+.teal-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.teal-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:24px;display:flex;gap:16px;align-items:flex-start;}
+.como-icon{width:40px;height:40px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--teal),var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:16px;}
+
+.modelo-split{display:flex;flex-direction:column;gap:3px;margin-bottom:22px;}
+.modelo-parte{padding:20px 22px;border-radius:2px;}
+.modelo-parte.fixo{background:rgba(46,196,182,0.05);border:1px solid rgba(46,196,182,0.2);}
+.modelo-parte.var{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);}
+.mp-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+.fixo .mp-lbl{color:var(--teal);}
+.var .mp-lbl{color:var(--orange);}
+.mp-price{font-family:var(--font-display);font-size:40px;font-weight:800;color:var(--white);line-height:1;margin-bottom:4px;}
+.mp-price sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.mp-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+.mp-desc strong{color:var(--white);}
+
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+/* CENÁRIOS */
+.cenarios{display:flex;flex-direction:column;gap:3px;margin-top:24px;}
+.cen-item{padding:18px 22px;background:var(--card);display:flex;align-items:center;gap:16px;}
+.cen-item.destaque{background:rgba(46,204,113,0.05);border-left:2px solid var(--green);}
+.cen-vendas{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:52px;line-height:1;}
+.cen-item h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.cen-item p{font-size:11px;color:var(--muted);line-height:1.5;}
+.cen-total{font-family:var(--font-mono);font-size:11px;color:var(--green);margin-top:2px;}
+
+.alerta-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:22px 24px;border-radius:2px;margin-top:16px;}
+.alerta-box h4{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:8px;}
+.alerta-box p{font-size:12px;color:var(--muted);line-height:1.8;}
+.alerta-box strong{color:var(--white);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .modelo-split{flex-direction:row;}
+  .modelo-parte{flex:1;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.455-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Google + Meta Ads &middot; Emerson Health &middot; Sa&uacute;de Mental Digital</p>
+  <h1>A travessia<br>come&ccedil;a quando<br><em>a pessoa certa<br>encontra a Emerson.</em></h1>
+  <p class="hero-sub">Gianlucca, a Emerson Health tem produto, miss&atilde;o e prova social. O que falta &eacute; uma estrat&eacute;gia de tráfego que respeite as restri&ccedil;&otilde;es das plataformas — e que entregue leads qualificados que conseguem e querem pagar pelo tratamento. A EmpresAtiva estrutura isso.</p>
+  <div class="pills">
+    <div class="pill"><span>Plataformas</span><span>Google Ads + Meta Ads</span></div>
+    <div class="pill"><span>Fixo</span><span>R$ 2.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Vari&aacute;vel</span><span>8% sobre faturamento via tráfego</span></div>
+    <div class="pill"><span>M&iacute;dia sugerida</span><span>R$ 3.000/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">O diagn&oacute;stico — por que o tráfego trava</div>
+  <h2 class="sec-title">O problema n&atilde;o &eacute;<br>o produto. &Eacute; a<br><em>copy e a copy<br>dos an&uacute;ncios.</em></h2>
+  <p class="sec-intro">A Emerson Health trocou indicação de influenciador por tráfego pago — e tropeçou nas políticas. Isso &eacute; resolvido. N&atilde;o com gambiarras, mas com copy profissional que comunica a mesma dor sem as palavras que disparam o bloqueio.</p>
+
+  <div class="diag-box">
+    <h3>Palavras bloqueadas — o problema &eacute; t&eacute;cnico, n&atilde;o estrutural</h3>
+    <p>Google e Meta bloqueiam termos como "vic&iacute;o", "depend&ecirc;ncia", "apostas" e "álcool" diretamente nos an&uacute;ncios e nas landing pages rastreadas pelo pixel. <strong>O site da Emerson j&aacute; usa a linguagem certa: "mudar a rela&ccedil;&atilde;o com", "travessia", "cuidado". A EmpresAtiva replica essa linguagem nos an&uacute;ncios e resolve o problema de bloqueio.</strong> Concorrentes como cl&iacute;nicas de cannabis medicinal j&aacute; provam que esse nicho &eacute; veicula&ccedil;&atilde;o poss&iacute;vel — s&oacute; precisa da copy certa.</p>
+  </div>
+
+  <div class="diag-box">
+    <h3>140 leads por dia a R$ 0,38 — mas nenhum comprava</h3>
+    <p>R$ 100/dia gerando 140 leads &eacute; um volume alto com custo baixo — mas a maioria era p&uacute;blico C/D sem capacidade de pagar R$ 599. <strong>O problema n&atilde;o era o volume, era a qualifica&ccedil;&atilde;o. Formulário nativo condicional filtra o lead antes de chegar pro comercial — s&oacute; passa quem tem inten&ccedil;&atilde;o real e capacidade de contratar.</strong></p>
+  </div>
+
+  <div class="teal-box">
+    <h3>A linguagem do site j&aacute; &eacute; a solu&ccedil;&atilde;o — falta replicar nos an&uacute;ncios</h3>
+    <p>"O cuidado certo para a sua travessia" — essa &eacute; a tagline da Emerson. <strong>N&atilde;o fala em vício. N&atilde;o fala em dependência. Fala em mudan&ccedil;a, em cuidado, em travessia.</strong> Essa &eacute; exatamente a copy que passa nas políticas do Google e do Meta. A EmpresAtiva padroniza isso em todos os an&uacute;ncios e na landing page.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>B2B &eacute; a frente que muda o jogo — e vai entrar na estrat&eacute;gia</h3>
+    <p>Empresas com NR1, RH corporativo, conv&ecirc;nios — esse p&uacute;blico tem or&ccedil;amento e precisa do produto Emerson por conformidade e bem-estar. <strong>A EmpresAtiva conecta a Emerson com o contato da Avig (NR1 em SP) e inclui uma frente B2B no Google Ads — LinkedIn tamb&eacute;m pode entrar como teste nessa frente.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Estrat&eacute;gia completa.<br><em>Do an&uacute;ncio ao<br>fechamento.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">✍️</div>
+      <div>
+        <h3>Copy de an&uacute;ncios que passa nas pol&iacute;ticas</h3>
+        <p>Toda a copy dos an&uacute;ncios no Google e Meta ser&aacute; criada com a linguagem da Emerson — "mudar a rela&ccedil;&atilde;o", "travessia", "cuidado" — evitando os termos que disparam bloqueio sem perder o apelo emocional.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎯</div>
+      <div>
+        <h3>Formulário nativo condicional no Meta</h3>
+        <p>Perguntas que filtram o ICP antes de chegar ao comercial — s&oacute; passa quem tem perfil e inten&ccedil;&atilde;o real. Elimina os 140 leads/dia desqualificados e entrega leads que conseguem e querem pagar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔍</div>
+      <div>
+        <h3>Google Ads com keywords de inten&ccedil;&atilde;o</h3>
+        <p>Campanhas com palavras que passam nas pol&iacute;ticas e ainda capturam inten&ccedil;&atilde;o real: "psicólogo para jogadores", "tratamento online comportamental", "terapia para mudar h&aacute;bitos". Frente B2B separada para RH corporativo e NR1.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📄</div>
+      <div>
+        <h3>Landing page profissional otimizada</h3>
+        <p>P&aacute;gina que replica a linguagem do site da Emerson, otimizada para convers&atilde;o e com tags de pixel limpas — sem enviar o nome da depend&ecirc;ncia para o pixel (problema que a equipe j&aacute; identificou).</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎨</div>
+      <div>
+        <h3>Criativos — imagens e v&iacute;deos</h3>
+        <p>Designer gr&aacute;fico da EmpresAtiva cria as artes dos an&uacute;ncios — cards, stories e carross&eacute;is — com a identidade visual da Emerson e a copy que passa nas pol&iacute;ticas.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Lead qualificado chega imediatamente no WhatsApp do time comercial da Emerson — nome, resposta do formulário e contato. O SDR aborda quando o interesse ainda est&aacute; quente.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard + Relat&oacute;rio semanal</h3>
+        <p>Painel Looker Studio em tempo real: CPL, ROAS, taxa de convers&atilde;o, faturamento via tráfego. Relat&oacute;rio semanal para acompanhar o progresso e embasar a vari&aacute;vel de 8%.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">⚙️</div>
+      <div>
+        <h3>Automa&ccedil;&otilde;es de WhatsApp</h3>
+        <p>Fluxos autom&aacute;ticos de follow-up para leads que n&atilde;o responderam na primeira abordagem — cadência de recontato sem sobrecarregar o time de SDR.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento — modelo fixo + vari&aacute;vel</div>
+  <h2 class="sec-title">Quanto mais a<br>Emerson cresce,<br><em>mais a EmpresAtiva<br>ganha.</em></h2>
+  <p class="sec-intro">O modelo alinha os interesses das duas partes — base garantida para a EmpresAtiva operar, vari&aacute;vel que escala conforme os resultados. Parceria de verdade.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Google + Meta Ads &mdash; Emerson Health &middot; Modelo Fixo + Vari&aacute;vel</div>
+      <div class="modelo-split">
+        <div class="modelo-parte fixo">
+          <div class="mp-lbl">Fixo mensal</div>
+          <div class="mp-price"><sub>R$</sub> 2.000<sub>/m&ecirc;s</sub></div>
+          <p class="mp-desc">Opera&ccedil;&atilde;o completa: gest&atilde;o Google + Meta, copy, criativos, landing page, formulários, alertas, dashboard e relat&oacute;rios semanais.</p>
+        </div>
+        <div class="modelo-parte var">
+          <div class="mp-lbl">Vari&aacute;vel sobre resultado</div>
+          <div class="mp-price">8%<sub> do faturamento</sub></div>
+          <p class="mp-desc">Calculado sobre o faturamento <strong>gerado via tráfego pago</strong> (rastreado pelo dashboard). Quanto mais a Emerson vende, mais a EmpresAtiva ganha.</p>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o Google Ads + Meta Ads (as duas plataformas)</li>
+        <li>Copy de an&uacute;ncios que passa nas pol&iacute;ticas de sa&uacute;de das plataformas</li>
+        <li>Formulário nativo condicional de qualifica&ccedil;&atilde;o de leads</li>
+        <li>Landing page profissional com pixel limpo</li>
+        <li>Designer gr&aacute;fico — criativos para Google e Meta</li>
+        <li>Alerta de leads em tempo real no WhatsApp</li>
+        <li>Dashboard Looker Studio em tempo real</li>
+        <li>Automa&ccedil;&otilde;es de WhatsApp para follow-up</li>
+        <li>Relat&oacute;rio semanal de performance</li>
+        <li>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">M&iacute;dia sugerida: R$ 3.000/m&ecirc;s</strong> investidos diretamente no Google e Meta — separado do fee de gest&atilde;o. Contrato de <strong style="color:var(--white);">6 meses</strong> para gerar a intelig&ecirc;ncia necess&aacute;ria e escalar com previsibilidade.</p>
+    </div>
+  </div>
+
+  <!-- CENÁRIOS -->
+  <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--muted);text-transform:uppercase;margin-bottom:12px;">Exemplo de cen&aacute;rios &mdash; faturamento Emerson x custo EmpresAtiva</p>
+  <div class="cenarios">
+    <div class="cen-item">
+      <div class="cen-vendas">8</div>
+      <div>
+        <h4>8 vendas/m&ecirc;s &mdash; R$ 4.792 faturados</h4>
+        <p>Fixo R$ 2.000 + vari&aacute;vel R$ 383 (8% × R$ 4.792)</p>
+        <div class="cen-total">Custo EmpresAtiva: R$ 2.383/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen-item destaque">
+      <div class="cen-vendas">15</div>
+      <div>
+        <h4>15 vendas/m&ecirc;s &mdash; R$ 8.985 faturados</h4>
+        <p>Fixo R$ 2.000 + vari&aacute;vel R$ 719 (8% × R$ 8.985)</p>
+        <div class="cen-total">Custo EmpresAtiva: R$ 2.719/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen-item destaque">
+      <div class="cen-vendas">30</div>
+      <div>
+        <h4>30 vendas/m&ecirc;s &mdash; R$ 17.970 faturados</h4>
+        <p>Fixo R$ 2.000 + vari&aacute;vel R$ 1.437 (8% × R$ 17.970)</p>
+        <div class="cen-total">Custo EmpresAtiva: R$ 3.437/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen-item">
+      <div class="cen-vendas" style="font-size:18px;color:var(--gold);">meta</div>
+      <div>
+        <h4>Meta declarada: 2 vendas/dia &mdash; R$ 35.940/m&ecirc;s</h4>
+        <p>Fixo R$ 2.000 + vari&aacute;vel R$ 2.875 (8% × R$ 35.940)</p>
+        <div class="cen-total" style="color:var(--gold);">Custo EmpresAtiva: R$ 4.875/m&ecirc;s &mdash; com Emerson faturando R$ 36k</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alerta-box">
+    <h4>Por que 6 meses de contrato?</h4>
+    <p>O nicho de sa&uacute;de mental com restri&ccedil;&otilde;es de plataforma precisa de tempo para calibrar copy, testar criativos e aquecer o pixel com dados do p&uacute;blico certo. <strong>M&ecirc;s 1 &eacute; estrutura&ccedil;&atilde;o. M&ecirc;s 2 &eacute; aprendizado. Meses 3-6 s&atilde;o escala.</strong> Resultado sustent&aacute;vel n&atilde;o acontece em 30 dias — e a EmpresAtiva precisa desse prazo para entregar o que foi prometido.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao primeiro<br><em>lead qualificado.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Gianlucca confirma — contrato e acesso &agrave;s contas</h3>
+      <p>EmpresAtiva envia o contrato. Gianlucca concede acesso ao Google Ads e Meta Ads. Jo&atilde;o Marot envia o contato da Avig (NR1 em SP) para explorar a frente B2B.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Diagn&oacute;stico + briefing de ICP</h3>
+      <p>An&aacute;lise das campanhas anteriores — o que bloqueou, o que funcionou, o que o pixel registrou. Alinhamento do ICP: quem tem o perfil ideal para pagar R$ 599/m&ecirc;s pelo tratamento.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1–2</span>
+      <h3>Copy aprovada + primeiros an&uacute;ncios no ar</h3>
+      <p>Landing page publicada com pixel limpo. Formulário condicional configurado no Meta. Campanhas no Google com keywords que passam nas pol&iacute;ticas. Grupo de alertas no WhatsApp ativo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3–4</span>
+      <h3>Primeiros leads qualificados + otimiza&ccedil;&atilde;o</h3>
+      <p>Dados reais de qual copy passa, qual p&uacute;blico converte, qual hor&aacute;rio tem melhor CPL. O comercial da Emerson j&aacute; recebe leads com perfil correto — sem desperdi&ccedil;ar tempo com quem n&atilde;o vai fechar.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2–3</span>
+      <h3>Previsibilidade — quanto custa cada venda</h3>
+      <p>Com o padr&atilde;o de custo por lead e taxa de convers&atilde;o definidos, a decis&atilde;o de escalar verba &eacute; baseada em dados: cada R$ X investido gera Y vendas. A escalada come&ccedil;a aqui.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 4–6</span>
+      <h3>Escala — rumo &agrave;s 2 vendas/dia</h3>
+      <p>Com a intelig&ecirc;ncia gerada, a verba de R$ 3.000 vai ser otimizada para o máximo de vendas. Se a meta de 2/dia for vi&aacute;vel com essa verba — a EmpresAtiva vai provar. Se precisar de mais verba — vai mostrar os n&uacute;meros que justificam.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Gianlucca, a miss&atilde;o<br>&eacute; nobre.<br><em>A estrat&eacute;gia<br>precisa ser &agrave;s<br>mesma altura.</em></h2>
+  <p>A Emerson Health nasceu para fazer o bem num mercado tomado por produtos que fazem o mal. Isso merece uma estrat&eacute;gia de tráfego que funciona — com copy profissional, leads qualificados e um parceiro que cresce junto. A EmpresAtiva est&aacute; pronta.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.455-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
