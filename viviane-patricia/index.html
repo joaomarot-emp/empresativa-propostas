@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Viviane Patricia</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--blonde:#E8C84C;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,200,76,0.08) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,26,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero h1 .blond{color:var(--blonde);}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-title .blond{color:var(--blonde);}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.insight-box{background:rgba(232,200,76,0.04);border:1px solid rgba(232,200,76,0.2);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.insight-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--blonde);margin-bottom:10px;}
+.insight-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.insight-box strong{color:var(--white);}
+
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+/* MECHAS EXPRESS DESTAQUE */
+.mechas-card{background:linear-gradient(135deg,rgba(232,200,76,0.06) 0%,rgba(232,103,26,0.04) 100%);border:1px solid rgba(232,200,76,0.25);border-radius:4px;padding:28px 24px;margin-bottom:20px;position:relative;overflow:hidden;}
+.mechas-card::before{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(232,200,76,0.1) 0%,transparent 70%);pointer-events:none;}
+.mechas-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--blonde);text-transform:uppercase;margin-bottom:12px;}
+.mechas-title{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--white);margin-bottom:6px;line-height:1.1;}
+.mechas-title em{color:var(--blonde);}
+.mechas-price{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--blonde);margin-bottom:8px;line-height:1;}
+.mechas-price sub{font-size:16px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.mechas-desc{font-size:13px;color:var(--muted);line-height:1.8;}
+.mechas-desc strong{color:var(--white);}
+.mechas-tag{display:inline-block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;padding:4px 10px;border-radius:2px;background:rgba(232,200,76,0.1);color:var(--blonde);border:1px solid rgba(232,200,76,0.25);text-transform:uppercase;margin-top:14px;}
+
+/* JORNADA */
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:32px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--blonde),var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.inv-ul li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+
+.escala-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:20px 24px;border-radius:2px;margin-top:16px;}
+.escala-box h4{font-size:13px;font-weight:600;color:var(--green);margin-bottom:8px;}
+.escala-box p{font-size:12px;color:var(--muted);line-height:1.8;}
+.escala-box strong{color:var(--white);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads &middot; Viviane Patricia &middot; Duque de Caxias RJ</p>
+  <h1>A refer&ecirc;ncia<br>em mega hair<br>para <span class="blond">loiras</span><br><em>em Caxias.</em></h1>
+  <p class="hero-sub">Viviane, voc&ecirc; tem 10 anos de experi&ecirc;ncia, um sub-nicho que ningu&eacute;m explorou em Duque de Caxias e um servi&ccedil;o inovador prestes a ser lan&ccedil;ado. A EmpresAtiva coloca tudo isso em frente das loiras certas — antes da concorr&ecirc;ncia perceber que esse espa&ccedil;o existe.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Valor</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Sub-nicho</span><span>Mega hair para loiras</span></div>
+    <div class="pill"><span>Lan&ccedil;amento</span><span>Mechas Express 45</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- POSICIONAMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">O diferencial — por que isso vai funcionar</div>
+  <h2 class="sec-title">Caxias tem<br>muita loira.<br><em>Mas s&oacute; uma<br>especialista.</em></h2>
+  <p class="sec-intro">A EmpresAtiva trabalha h&aacute; 4 anos com mega hair. O que diferencia quem explode de quem continua no mesmo n&iacute;vel &eacute; uma coisa: o sub-nicho. E Viviane j&aacute; tem o dela.</p>
+
+  <div class="insight-box">
+    <h3>Mega hair para loiras — ningu&eacute;m est&aacute; fazendo isso em Caxias</h3>
+    <p>Qualquer profissional faz mega hair. Pouqu&iacute;ssimas fazem mega hair <em>para loiras com qualidade</em> — porque coloração em cabelo de mega &eacute; uma t&eacute;cnica completamente diferente. <strong>Quando uma loira em Caxias pesquisar quem entende do assunto, o Instagram vai entregar o an&uacute;ncio da Viviane. Sem concorr&ecirc;ncia direta.</strong></p>
+  </div>
+
+  <div class="orange-box">
+    <h3>Voc&ecirc; j&aacute; tem tudo que um an&uacute;ncio precisa — s&oacute; falta direcionamento</h3>
+    <p>Viviane produz o pr&oacute;prio conte&uacute;do, tem facilidade para gravar v&iacute;deos, tem ajudante no sal&atilde;o e j&aacute; atende clientes de visibilidade (a subprefeita de Caxias, por exemplo). <strong>A EmpresAtiva direciona o que gravar, a equipe de design edita, e os an&uacute;ncios come&ccedil;am a rodar com o conte&uacute;do que voc&ecirc; j&aacute; sabe produzir.</strong></p>
+  </div>
+
+  <!-- MECHAS EXPRESS 45 -->
+  <div class="mechas-card">
+    <div class="mechas-label">&#9733; Estrela da campanha — lan&ccedil;amento exclusivo</div>
+    <div class="mechas-title"><em>Mechas Express 45</em></div>
+    <div class="mechas-price"><sub>R$</sub> 510 <sub>com tratamento incluso</sub></div>
+    <p class="mechas-desc">Mechas de alta qualidade em at&eacute; 45 minutos — t&eacute;cnica exclusiva rec&eacute;m desenvolvida. <strong>Ningu&eacute;m em Caxias est&aacute; oferecendo isso.</strong> Uma inova&ccedil;&atilde;o t&eacute;cnica no mercado de beleza &eacute; exatamente o tipo de diferencial que um an&uacute;ncio magnético precisa para explodir — especialmente quando a pr&oacute;pria profissional filma o processo ao vivo com cronômetro.</p>
+    <div class="mechas-tag">&#9660; Principal atrativo da campanha</div>
+  </div>
+
+  <div class="green-box">
+    <h3>O lan&ccedil;amento certo na hora certa</h3>
+    <p>Viviane acabou de fazer o workshop, est&aacute; testando a t&eacute;cnica e j&aacute; pensou no nome — <strong>Mechas Express 45. Esse &eacute; o momento de entrar com tráfego pago: antes de qualquer outra profissional de Caxias perceber que essa t&eacute;cnica existe.</strong> A EmpresAtiva garante que o lan&ccedil;amento tenha visibilidade antes da janela de oportunidade fechar.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- JORNADA -->
+<section class="bg-black">
+  <div class="sec-label">Do an&uacute;ncio ao agendamento</div>
+  <h2 class="sec-title">A loira certa<br><em>encontra Viviane<br>no Instagram.</em></h2>
+
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>An&uacute;ncio no feed ou stories — Duque de Caxias</h3>
+        <p>Uma loira de Caxias v&ecirc; um v&iacute;deo de Viviane mostrando as Mechas Express 45 — cronômetro na tela, antes e depois, resultado impec&aacute;vel em 45 minutos. Ela para de rolar. Quer saber mais.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Clique → WhatsApp com qualifica&ccedil;&atilde;o autom&aacute;tica</h3>
+        <p>An&uacute;ncio leva para formulário ou WhatsApp com perguntas de qualificação: mora ou se desloca para Caxias? Quer mega ou mechas? J&aacute; tem loi? Chega qualificada para a ajudante agendar.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Alerta no WhatsApp — ajudante j&aacute; recebe</h3>
+        <p>Notifica&ccedil;&atilde;o imediata: nome, servi&ccedil;o de interesse e contato. A ajudante que j&aacute; responde o WhatsApp do sal&atilde;o aborda na hora — nenhum lead esfria.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Avalia&ccedil;&atilde;o agendada → procedimento fechado</h3>
+        <p>Lead qualificado, j&aacute; ciente do servi&ccedil;o e do pre&ccedil;o. A convers&atilde;o &eacute; muito mais f&aacute;cil quando a pessoa chega sabendo o que quer — e j&aacute; confia na especialista que ela viu no an&uacute;ncio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Tudo para<br><em>o lan&ccedil;amento<br>das Mechas Express 45.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas</h3>
+        <p>Estrutura de campanhas no Meta Ads — objetivos certos, p&uacute;blico segmentado por mulheres de Caxias com interesse em cabelo e beleza, segmenta&ccedil;&atilde;o geogr&aacute;fica na regi&atilde;o do sal&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Script + edi&ccedil;&atilde;o dos criativos</h3>
+        <p>A EmpresAtiva passa o roteiro exato do v&iacute;deo de lan&ccedil;amento das Mechas Express 45. Viviane grava (j&aacute; tem facilidade para isso). A equipe de design edita com gancho, CTA e identidade visual.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📄</div>
+      <div>
+        <h3>Landing page de agendamento</h3>
+        <p>P&aacute;gina focada em converter o clique — mostra a t&eacute;cnica, o resultado, o pre&ccedil;o e leva direto para o WhatsApp ou formul&aacute;rio com qualificação.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">✅</div>
+      <div>
+        <h3>Formulário de qualifica&ccedil;&atilde;o</h3>
+        <p>Perguntas que filtram o lead antes de chegar para a ajudante — mora ou se desloca para Caxias? Qual servi&ccedil;o quer? Elimina curiosos, entrega quem tem inten&ccedil;&atilde;o real.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada lead qualificado chega imediatamente no WhatsApp da ajudante — nome, interesse e contato. Velocidade de resposta &eacute; taxa de convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard Looker Studio</h3>
+        <p>Painel em tempo real: gastos, leads, custo por lead e melhores an&uacute;ncios. Viviane acompanha o retorno do investimento sem precisar perguntar nada para a agência.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o semanal</h3>
+        <p>An&uacute;ncios que saturam s&atilde;o renovados. O que performa melhor recebe mais verba. Ajustes cont&iacute;nuos — sem esperar o m&ecirc;s acabar para agir.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s — direcionamento de conte&uacute;do, alinhamentos e decis&otilde;es sem burocracia. Viviane grava, Jo&atilde;o direciona.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">R$ 997/m&ecirc;s.<br><em>Simples e previs&iacute;vel.</em></h2>
+  <p class="sec-intro">Gest&atilde;o completa do Meta Ads — sem fidelidade for&ccedil;ada, sem taxa de setup, com aviso pr&eacute;vio de 30 dias para sair. Primeiro m&ecirc;s j&aacute; com o lan&ccedil;amento das Mechas Express 45.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Meta Ads &mdash; Viviane Patricia &middot; Mega Hair para Loiras &middot; Duque de Caxias</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade m&iacute;nima &middot; aviso pr&eacute;vio de 30 dias para sair</div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa das campanhas no Instagram e Facebook</li>
+        <li>Script + edi&ccedil;&atilde;o dos criativos (Viviane grava, EmpresAtiva edita)</li>
+        <li>Landing page de agendamento otimizada</li>
+        <li>Formulário de qualifica&ccedil;&atilde;o de leads</li>
+        <li>Alerta de leads em tempo real no WhatsApp da ajudante</li>
+        <li>Dashboard Looker Studio em tempo real</li>
+        <li>Otimiza&ccedil;&atilde;o semanal das campanhas</li>
+        <li>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa.</strong> M&iacute;nimo recomendado de R$ 500/m&ecirc;s investido diretamente no Meta — a EmpresAtiva orienta o valor ideal para o objetivo de agendamentos mensais.</p>
+    </div>
+  </div>
+
+  <div class="escala-box">
+    <h4>Quando os resultados aparecerem — pr&oacute;ximos passos naturais</h4>
+    <p>Com o lan&ccedil;amento das Mechas Express 45 gerando agenda, o pr&oacute;ximo passo &eacute; otimizar o Google Meu Neg&oacute;cio (+R$ 297/m&ecirc;s) para capturar quem pesquisa "mega hair Duque de Caxias" organicamente — <strong>Viviane ainda n&atilde;o aparece no Google, e esse &eacute; um p&uacute;blico diferente, mais velho, que usa a busca para decidir.</strong> Quando Viviane quiser, a EmpresAtiva expande.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao primeiro<br><em>agendamento<br>das Mechas Express.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 20 — retorno combinado</span>
+      <h3>Viviane confirma — come&ccedil;amos</h3>
+      <p>Viviane d&aacute; o sinal verde. A EmpresAtiva inicia o briefing: perfil ideal de cliente (as loiras de Caxias), estilo dos criativos e roteiro do v&iacute;deo de lan&ccedil;amento das Mechas Express 45.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Script entregue — Viviane grava</h3>
+      <p>Jo&atilde;o passa o roteiro exato: como abrir o v&iacute;deo, o que mostrar, onde posicionar o cronômetro, o antes/depois e o CTA. Viviane grava com a ajudante e manda o bruto.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Campanhas no ar — Caxias v&ecirc; as Mechas Express 45</h3>
+      <p>V&iacute;deo editado, landing page publicada, formulário ativo, grupo de alertas configurado para a ajudante. As primeiras loiras de Caxias come&ccedil;am a ver o an&uacute;ncio nessa semana.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3–4</span>
+      <h3>Primeiros dados — otimiza&ccedil;&atilde;o</h3>
+      <p>Qual gancho do v&iacute;deo teve mais clique, qual p&uacute;blico de Caxias converteu melhor, qual CTA gerou mais contato. A EmpresAtiva ajusta e j&aacute; passa o pr&oacute;ximo script para Viviane gravar.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Previsibilidade e escala</h3>
+      <p>Com o custo por agendamento definido, a decis&atilde;o de aumentar verba &eacute; simples. Mais investimento = mais loiras de Caxias chegando para a Viviane. E a Mechas Express 45 j&aacute; &eacute; refer&ecirc;ncia na cidade.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Viviane, Caxias<br>ainda n&atilde;o tem<br><em>uma especialista<br>em mega para<br>loiras.</em></h2>
+  <p>Voc&ecirc; tem 10 anos de experi&ecirc;ncia, um sub-nicho que ningu&eacute;m explorou e um servi&ccedil;o inovador que ningú&eacute;m est&aacute; fazendo na cidade. A janela de oportunidade est&aacute; aberta. A EmpresAtiva coloca as Mechas Express 45 na frente das loiras certas — antes de qualquer outra profissional perceber o que voc&ecirc; est&aacute; lancando.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
