@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Hernandes Beauty & Clínica</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--red:#E84040;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,64,64,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.diag-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.diag-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+/* ESTRATÉGIA DOIS NEGÓCIOS */
+.dois-neg{display:flex;flex-direction:column;gap:3px;margin-bottom:24px;}
+.neg-item{padding:24px;display:flex;gap:16px;align-items:flex-start;}
+.neg-item.salao{background:rgba(232,103,26,0.05);border-left:3px solid var(--orange);}
+.neg-item.clinica{background:rgba(232,64,64,0.04);border-left:3px solid var(--red);}
+.neg-icon{font-size:26px;flex-shrink:0;margin-top:2px;}
+.neg-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;}
+.salao .neg-lbl{color:var(--orange);}
+.clinica .neg-lbl{color:var(--red);}
+.neg-item h3{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--white);margin-bottom:6px;}
+.neg-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.neg-item strong{color:var(--white);}
+.neg-seta{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:16px 24px;text-align:center;font-size:13px;color:var(--green);font-weight:600;}
+
+/* JORNADA */
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:32px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.plat-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:2px 7px;border-radius:2px;margin-left:6px;text-transform:uppercase;}
+.tag-m{background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);}
+.tag-s{background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.2);}
+.tag-g{background:rgba(46,204,113,0.1);color:var(--green);border:1px solid rgba(46,204,113,0.2);}
+
+/* INVESTIMENTO */
+.inv-pacote{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-pacote::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold),var(--green));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:16px;}
+.inv-total{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-total sub{font-size:17px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+
+.inv-breakdown{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--card);}
+.inv-linha.meta{border-left:3px solid var(--orange);}
+.inv-linha.social{border-left:3px solid var(--gold);}
+.inv-linha.gbp{border-left:3px solid var(--green);}
+.inv-linha-nome{font-size:13px;font-weight:600;color:var(--white);}
+.inv-linha-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.inv-linha-valor{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--white);flex-shrink:0;margin-left:12px;}
+.inv-linha.meta .inv-linha-valor{color:var(--orange);}
+.inv-linha.social .inv-linha-valor{color:var(--gold);}
+.inv-linha.gbp .inv-linha-valor{color:var(--green);}
+
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+.futuro-box{background:rgba(232,64,64,0.04);border:1px solid rgba(232,64,64,0.15);padding:22px 24px;border-radius:2px;margin-top:3px;}
+.futuro-box h4{font-size:13px;font-weight:600;color:var(--red);margin-bottom:8px;}
+.futuro-box p{font-size:12px;color:var(--muted);line-height:1.8;}
+.futuro-box strong{color:var(--white);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .dois-neg{flex-direction:row;}
+  .neg-item{flex:1;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads + Social Media + GBP &middot; Hernandes Beauty &amp; Cl&iacute;nica &middot; Bangu RJ</p>
+  <h1>Dois neg&oacute;cios.<br>Um ecossistema.<br><em>Bangu inteiro<br>como cliente.</em></h1>
+  <p class="hero-sub">Bia, a Hernandes Beauty tem 5 anos de confian&ccedil;a e a Hernandes Cl&iacute;nica tem o diferencial da biomedicina. A EmpresAtiva estrutura uma estrat&eacute;gia que usa o sal&atilde;o para atrair e a cl&iacute;nica para converter — com an&uacute;ncios magn&eacute;ticos que fazem o p&uacute;blico certo chegar pronto para fechar.</p>
+  <div class="pills">
+    <div class="pill"><span>Meta Ads</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Social Media</span><span>R$ 297/m&ecirc;s</span></div>
+    <div class="pill"><span>Google Meu Neg&oacute;cio</span><span>R$ 297/m&ecirc;s</span></div>
+    <div class="pill"><span>Total</span><span>R$ 1.591/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA 2 NEGÓCIOS -->
+<section class="bg-dark">
+  <div class="sec-label">A estrat&eacute;gia — dois neg&oacute;cios, uma m&aacute;quina</div>
+  <h2 class="sec-title">O sal&atilde;o atrai.<br><em>A cl&iacute;nica converte.<br>A Bia cresce.</em></h2>
+  <p class="sec-intro">Essa &eacute; a l&oacute;gica que surgiu naturalmente na nossa conversa — e &eacute; exatamente o que a EmpresAtiva vai estruturar nas campanhas.</p>
+
+  <div class="dois-neg">
+    <div class="neg-item salao">
+      <div class="neg-icon">✂️</div>
+      <div>
+        <div class="neg-lbl">Porta de entrada</div>
+        <h3>Hernandes Beauty</h3>
+        <p>Salão com 5 anos de refer&ecirc;ncia em Bangu. <strong>Cílios como serviço âncora</strong> — ticket acess&iacute;vel, alta recorr&ecirc;ncia, f&aacute;cil de demonstrar. Atrai o novo p&uacute;blico das novas profissionais e reativa quem sumiu. Dentro do sal&atilde;o, a cliente conhece a cl&iacute;nica.</p>
+      </div>
+    </div>
+    <div class="neg-item clinica">
+      <div class="neg-icon">💉</div>
+      <div>
+        <div class="neg-lbl">Convers&atilde;o de alto ticket</div>
+        <h3>Hernandes Cl&iacute;nica</h3>
+        <p>Harmoniza&ccedil;&atilde;o facial com a credencial da biomedicina. <strong>Ticket alto, confian&ccedil;a já construída</strong> pelo relacionamento do sal&atilde;o. Cliente que j&aacute; confia na Bia &eacute; a mais f&aacute;cil de converter para o primeiro procedimento — com desconto de apresenta&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+  </div>
+  <div class="neg-seta">✦ Cliente do sal&atilde;o → recebe cartão com desconto → agenda na cl&iacute;nica → ticket m&eacute;dio dobra ✦</div>
+
+  <div style="margin-top:24px;">
+    <div class="diag-box">
+      <h3>Por que o tráfego anterior n&atilde;o funcionou</h3>
+      <p>R$ 400 de gest&atilde;o + R$ 600 de m&iacute;dia — e o criativo n&atilde;o gerava desejo. O problema nunca foi o investimento, foi a copy e o criativo. <strong>An&uacute;ncio ruim com R$ 1.000 d&aacute; zero resultado. An&uacute;ncio magn&eacute;tico com R$ 500 vende todo dia.</strong> O primeiro passo da EmpresAtiva &eacute; construir o criativo que fala com a mulher de Bangu — pela dor certa, na linguagem certa.</p>
+    </div>
+    <div class="gold-box">
+      <h3>Novas profissionais = novo p&uacute;blico j&aacute; existente</h3>
+      <p>As novas meninas do sal&atilde;o vêm de outros bairros e já têm seu pr&oacute;prio p&uacute;blico. <strong>O remarketing vai reimpactar esse p&uacute;blico misturado — quem já seguia antes, quem acompanhou as novas e quem ainda n&atilde;o conhece o Hernandes.</strong> Uma campanha, múltiplos públicos sendo reativados ao mesmo tempo.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- COMO FUNCIONA -->
+<section class="bg-black">
+  <div class="sec-label">Do an&uacute;ncio ao agendamento</div>
+  <h2 class="sec-title">O criativo certo<br><em>j&aacute; chega pronto<br>para fechar.</em></h2>
+  <p class="sec-intro">Bia, você mesmo disse isso na nossa conversa: n&atilde;o adianta o tráfego se o an&uacute;ncio n&atilde;o gera desejo. A EmpresAtiva n&atilde;o cria qualquer an&uacute;ncio — cria o an&uacute;ncio que quebra a objeç&atilde;o antes mesmo de a pessoa entrar em contato.</p>
+
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>An&uacute;ncio magn&eacute;tico no Instagram/Facebook</h3>
+        <p>Uma mulher de Bangu v&ecirc; um v&iacute;deo mostrando o resultado de uma cliente real do sal&atilde;o — cílios perfeitos, unha de gel por R$ 99, ou a transforma&ccedil;&atilde;o de um preenchimento. O criativo foi feito para falar com a dor dela — e ela para de rolar.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Clique → WhatsApp ou formulário qualificado</h3>
+        <p>An&uacute;ncio leva direto para o WhatsApp do sal&atilde;o ou para um formulário que filtra: qual serviço tem interesse, mora em Bangu ou arredores, disponibilidade de hor&aacute;rio. Chega pronto para a recepcionista agendar.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Alerta para a recepcionista — lead chegou</h3>
+        <p>Notifica&ccedil;&atilde;o imediata no WhatsApp: nome, serviço de interesse e contato. A recepcionista, treinada pela EmpresAtiva no CRM, aborda quando o interesse ainda est&aacute; quente — sem deixar esfriar.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Cliente no sal&atilde;o → apresenta&ccedil;&atilde;o da cl&iacute;nica</h3>
+        <p>Dentro do atendimento, a equipe apresenta a Hernandes Cl&iacute;nica com o cartão de desconto para o primeiro procedimento. Uma visita ao sal&atilde;o pode virar duas fontes de receita — sem custo adicional de an&uacute;ncio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Tr&ecirc;s frentes.<br><em>Um pacote completo.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o de campanhas<span class="plat-tag tag-m">Meta Ads</span></h3>
+        <p>Campanhas estruturadas no Instagram e Facebook — p&uacute;blicos segmentados por localiza&ccedil;&atilde;o (Bangu e arredores), interesses em beleza e comportamento. An&uacute;ncios para novo p&uacute;blico e remarketing para quem j&aacute; seguia.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Criativos magn&eacute;ticos<span class="plat-tag tag-m">Meta Ads</span></h3>
+        <p>A equipe de design da EmpresAtiva edita v&iacute;deos gravados pela Bia e pelas meninas do sal&atilde;o — criativos que quebram obje&ccedil;&atilde;o, mostram o resultado e fazem a pessoa j&aacute; chegar querendo fechar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📄</div>
+      <div>
+        <h3>Landing page de agendamento<span class="plat-tag tag-m">Meta Ads</span></h3>
+        <p>P&aacute;gina que converte o clique em agendamento — portf&oacute;lio visual do sal&atilde;o, servi&ccedil;os em destaque, CTA direto para WhatsApp ou formulário.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">✅</div>
+      <div>
+        <h3>Formulário condicional de qualifica&ccedil;&atilde;o<span class="plat-tag tag-m">Meta Ads</span></h3>
+        <p>Perguntas que filtram o lead antes de chegar para a recepcionista — elimina curiosos, garante que quem entra em contato tem inten&ccedil;&atilde;o real de agendar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📱</div>
+      <div>
+        <h3>Perfil otimizado + 4 posts/m&ecirc;s<span class="plat-tag tag-s">Social Media</span></h3>
+        <p>Vitrine do Instagram alinhada com os an&uacute;ncios — bio, destaques e posts fixados mostrando os servi&ccedil;os e as profissionais. 4 posts org&acirc;nicos por m&ecirc;s com padroniza&ccedil;&atilde;o visual e copy estrat&eacute;gica.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🗺️</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o do Google Meu Neg&oacute;cio<span class="plat-tag tag-g">GBP</span></h3>
+        <p>Perfil otimizado para aparecer nas 3 primeiras posi&ccedil;&otilde;es quando algu&eacute;m pesquisar "sal&atilde;o de beleza Bangu" no Google. O p&uacute;blico mais velho de Bangu usa o Google — e ele vai encontrar o Hernandes Beauty.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real<span class="plat-tag tag-m">Meta Ads</span></h3>
+        <p>Cada lead qualificado aparece imediatamente no WhatsApp da recepcionista — nome, servi&ccedil;o de interesse e contato. Velocidade de resposta &eacute; taxa de convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard + relat&oacute;rios<span class="plat-tag tag-m">Meta Ads</span></h3>
+        <p>Painel Looker Studio em tempo real: gastos, leads, custo por lead, melhores an&uacute;ncios. Bia acompanha os n&uacute;meros sem precisar perguntar — transpar&ecirc;ncia total do investimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Tr&ecirc;s servi&ccedil;os.<br><em>Um valor justo.</em></h2>
+  <p class="sec-intro">Meta Ads, Social Media e Google Meu Neg&oacute;cio em um pacote — sem fidelidade for&ccedil;ada, sem taxa de setup, com aviso pr&eacute;vio de 30 dias para sa&iacute;r.</p>
+
+  <div class="inv-pacote">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Pacote Hernandes Beauty &amp; Cl&iacute;nica &middot; Bangu RJ</div>
+      <div class="inv-total"><sub>R$</sub> 1.591</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade &middot; aviso pr&eacute;vio de 30 dias para sair</div>
+
+      <div class="inv-breakdown">
+        <div class="inv-linha meta">
+          <div>
+            <div class="inv-linha-nome">Meta Ads — Instagram &amp; Facebook</div>
+            <div class="inv-linha-sub">Campanhas, criativos, landing page, formulário, alertas, dashboard</div>
+          </div>
+          <div class="inv-linha-valor">R$ 997</div>
+        </div>
+        <div class="inv-linha social">
+          <div>
+            <div class="inv-linha-nome">Social Media</div>
+            <div class="inv-linha-sub">Perfil otimizado + 4 posts org&acirc;nicos mensais</div>
+          </div>
+          <div class="inv-linha-valor">R$ 297</div>
+        </div>
+        <div class="inv-linha gbp">
+          <div>
+            <div class="inv-linha-nome">Google Meu Neg&oacute;cio</div>
+            <div class="inv-linha-sub">Otimiza&ccedil;&atilde;o e posicionamento org&acirc;nico local</div>
+          </div>
+          <div class="inv-linha-valor">R$ 297</div>
+        </div>
+      </div>
+
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa das campanhas no Instagram e Facebook</li>
+        <li>Criativos: edi&ccedil;&atilde;o de v&iacute;deos + imagens + carross&eacute;is</li>
+        <li>Landing page de captura de agendamentos</li>
+        <li>Formulário condicional de qualifica&ccedil;&atilde;o de leads</li>
+        <li>Alerta de leads em tempo real no WhatsApp</li>
+        <li>Dashboard Looker Studio + otimiza&ccedil;&atilde;o semanal</li>
+        <li>Perfil do Instagram otimizado + 4 posts/m&ecirc;s alinhados com o tráfego</li>
+        <li>Google Meu Neg&oacute;cio otimizado para buscas locais em Bangu</li>
+        <li>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa.</strong> O valor investido diretamente no Meta &eacute; definido com a Bia de acordo com a meta de agendamentos — a EmpresAtiva recomenda o valor ideal para o objetivo.</p>
+    </div>
+  </div>
+
+  <div class="futuro-box">
+    <h4>Quando a cl&iacute;nica estiver pronta para escalar — Hernandes Cl&iacute;nica com tráfego pr&oacute;prio</h4>
+    <p>Com o sal&atilde;o gerando fluxo e a cl&iacute;nica convertendo clientes do sal&atilde;o, o pr&oacute;ximo passo &eacute; uma campanha dedicada &agrave; Hernandes Cl&iacute;nica — harmoniza&ccedil;&atilde;o facial para p&uacute;blico de maior poder aquisitivo, ancorada na credencial da Bia como biomédica. <strong>Segundo plano Meta Ads: +R$ 997/m&ecirc;s quando fizer sentido.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao primeiro<br><em>agendamento.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Esta semana</span>
+      <h3>Bia confirma — briefing inicial</h3>
+      <p>Alinhamento do ICP: qual servi&ccedil;o do sal&atilde;o tem mais sa&iacute;da e menor obje&ccedil;&atilde;o de pre&ccedil;o para virar isca nos an&uacute;ncios. Defini&ccedil;&atilde;o do gancho do primeiro criativo — a EmpresAtiva faz a sugest&atilde;o e a Bia grava.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–5</span>
+      <h3>Reestrutura&ccedil;&atilde;o do perfil + script de criativos</h3>
+      <p>Bio, destaques e posts fixados alinhados com a nova fase do Hernandes Beauty. Script dos primeiros v&iacute;deos entregue para a Bia e para as meninas do sal&atilde;o gravarem. GBP começa a ser otimizado.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Campanhas no ar — Bangu recebe os an&uacute;ncios</h3>
+      <p>Primeiros an&uacute;ncios publicados. Formulário condicional ativo. Grupo de alertas no WhatsApp da recepcionista configurado. Dashboard Looker Studio entregue. Os primeiros leads chegam essa semana.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3–4</span>
+      <h3>Dados reais — otimiza&ccedil;&atilde;o e primeiro relat&oacute;rio</h3>
+      <p>Qual criativo gerou mais interesse, qual servi&ccedil;o teve mais pedido, qual p&uacute;blico de Bangu converteu melhor. A EmpresAtiva ajusta — e os pr&oacute;ximos 4 posts org&acirc;nicos j&aacute; refletem o que est&aacute; funcionando.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Escala + cl&iacute;nica entrando no funil</h3>
+      <p>Com o sal&atilde;o com agenda cheia e a cl&iacute;nica recebendo clientes de dentro, a decis&atilde;o de criar a campanha dedicada &agrave; Hernandes Cl&iacute;nica j&aacute; tem base de p&uacute;blico e confian&ccedil;a constru&iacute;da.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Bia, Bangu j&aacute;<br>conhece o Hernandes.<br><em>Agora &eacute; hora de<br>Bangu inteiro<br>agendar.</em></h2>
+  <p>Cinco anos de confian&ccedil;a, uma cl&iacute;nica nova com credencial de biomédica e novas profissionais com novos p&uacute;blicos — a EmpresAtiva conecta tudo isso num anúncio que a mulher de Bangu n&atilde;o vai conseguir ignorar. Só precisamos do criativo certo.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
