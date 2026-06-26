@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Dra. Luciana Pepino</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--rose:#C9637A;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(201,99,122,0.07) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,26,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.insight-box{background:rgba(201,99,122,0.04);border:1px solid rgba(201,99,122,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.insight-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--rose);margin-bottom:10px;}
+.insight-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.insight-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+/* ESCOPO GRID */
+.escopo-grid{display:flex;flex-direction:column;gap:2px;}
+.escopo-item{background:var(--card);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;}
+.escopo-item.destaque{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.esc-icon{width:40px;height:40px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.escopo-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.escopo-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.plat-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:2px 7px;border-radius:2px;margin-left:6px;text-transform:uppercase;}
+.tag-m{background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);}
+.tag-g{background:rgba(66,133,244,0.1);color:#4285F4;border:1px solid rgba(66,133,244,0.2);}
+.tag-b{background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.2);}
+.tag-gbp{background:rgba(46,204,113,0.1);color:var(--green);border:1px solid rgba(46,204,113,0.2);}
+
+/* INVESTIMENTO */
+.inv-main{background:var(--black);border:1px solid rgba(232,103,26,0.3);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-main::before{content:"";display:block;height:3px;background:linear-gradient(90deg,#4285F4,var(--orange),var(--rose),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:16px;}
+
+.inv-split{display:flex;flex-direction:column;gap:3px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.arq{border-left:3px solid var(--orange);}
+.inv-linha.gbp{border-left:3px solid var(--green);}
+.inv-linha-info h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;}
+.inv-linha-valor{font-family:var(--font-display);font-size:22px;font-weight:800;flex-shrink:0;}
+.inv-linha.arq .inv-linha-valor{color:var(--orange);}
+.inv-linha.gbp .inv-linha-valor{color:var(--green);}
+.inv-total-box{background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);}
+.inv-total-val{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;}
+
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+/* CENÁRIOS VARIÁVEL */
+.cenarios{display:flex;flex-direction:column;gap:3px;margin-top:20px;}
+.cen{background:var(--card);padding:18px 20px;display:flex;align-items:center;gap:16px;}
+.cen.atual{background:rgba(232,103,26,0.05);border-left:2px solid var(--orange);}
+.cen.potencial{background:rgba(46,204,113,0.04);border-left:2px solid var(--green);}
+.cen-verba{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--muted);flex-shrink:0;min-width:80px;line-height:1;}
+.cen.atual .cen-verba{color:var(--orange);}
+.cen.potencial .cen-verba{color:var(--green);}
+.cen h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.cen p{font-size:11px;color:var(--muted);line-height:1.6;}
+.cen-total{font-family:var(--font-mono);font-size:11px;font-weight:600;margin-top:3px;}
+.cen.atual .cen-total{color:var(--orange);}
+.cen.potencial .cen-total{color:var(--green);}
+
+.formula-box{background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.15);padding:20px 24px;border-radius:2px;margin-top:16px;}
+.formula-box h4{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:10px;}
+.formula-box p{font-size:12px;color:var(--muted);line-height:1.8;}
+.formula-box strong{color:var(--white);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .escopo-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Arquitetura de Receita &middot; Dra. Luciana Pepino &middot; Cirurgia Pl&aacute;stica</p>
+  <h1>N&atilde;o &eacute; gest&atilde;o<br>de tráfego.<br><em>&Eacute; arquitetura<br>completa de receita.</em></h1>
+  <p class="hero-sub">Dra. Luciana, a cl&iacute;nica j&aacute; investe R$ 15.000/m&ecirc;s em an&uacute;ncios. A quest&atilde;o n&atilde;o &eacute; quanto est&aacute; sendo investido — &eacute; quanto esse investimento est&aacute; gerando de retorno mensur&aacute;vel, com leads qualificados, pipeline organizado e time comercial convertendo. A EmpresAtiva entrega a estrutura completa para isso.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Arquitetura de Receita</span></div>
+    <div class="pill"><span>Gest&atilde;o</span><span>R$ 2.497/m&ecirc;s — tudo incluso</span></div>
+    <div class="pill"><span>Vari&aacute;vel</span><span>+10% sobre verba acima de R$ 10k</span></div>
+    <div class="pill"><span>Frentes</span><span>Meta Ads + Google Ads</span></div>
+  </div>
+</section>
+
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO COM DADOS REAIS -->
+<section class="bg-dark">
+  <div class="sec-label">Diagn&oacute;stico — dados reais do &uacute;ltimo m&ecirc;s</div>
+  <h2 class="sec-title">R$ 23.510 investidos.<br><em>O que os n&uacute;meros<br>est&atilde;o dizendo.</em></h2>
+  <p class="sec-intro">A EmpresAtiva acessou as contas de Meta Ads e Google Ads da Dra. Luciana para analisar o desempenho real dos &uacute;ltimos 30 dias. O que encontramos confirma a oportunidade — e aponta onde est&atilde;o as maiores perdas de verba hoje.</p>
+
+  <!-- TOTAIS -->
+  <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:24px;">
+    <div style="background:var(--card);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #1877F2;">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;color:#66AAFF;text-transform:uppercase;margin-bottom:4px;">Meta Ads — &uacute;ltimos 30 dias</div>
+        <div style="font-size:13px;color:var(--muted);">49.715 cliques &middot; 1.378.231 impress&otilde;es &middot; CPC m&eacute;dio R$ 0,27</div>
+      </div>
+      <div style="font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--white);flex-shrink:0;margin-left:16px;">R$ 13.610</div>
+    </div>
+    <div style="background:var(--card);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-left:3px solid #4285F4;">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;color:#4285F4;text-transform:uppercase;margin-bottom:4px;">Google Ads — &uacute;ltimos 30 dias</div>
+        <div style="font-size:13px;color:var(--muted);">2.099 cliques &middot; 138 convers&otilde;es &middot; CPA m&eacute;dio R$ 71,74</div>
+      </div>
+      <div style="font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--white);flex-shrink:0;margin-left:16px;">R$ 9.899</div>
+    </div>
+    <div style="background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.2);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;color:var(--orange);text-transform:uppercase;margin-bottom:4px;">Total investido nas duas plataformas</div>
+        <div style="font-size:13px;color:var(--muted);">Somente nos &uacute;ltimos 30 dias</div>
+      </div>
+      <div style="font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--orange);flex-shrink:0;margin-left:16px;">R$ 23.510</div>
+    </div>
+  </div>
+
+  <!-- OPORTUNIDADES IDENTIFICADAS -->
+  <div style="display:flex;flex-direction:column;gap:16px;">
+
+    <div class="diag-box">
+      <h3>&#9888;&#65039; R$ 2.110 rodando no Tintim — pode ser eliminado</h3>
+      <p>A campanha <strong>"contato_site (rmkt_lista_tintin)"</strong> usa o Tintim como rastreador de lista para remarketing, gerando R$ 2.110 de gasto no &uacute;ltimo m&ecirc;s. Com a estrutura da EmpresAtiva, <strong>esse rastreamento migra para a plataforma pr&oacute;pria — sem custo de ferramenta adicional, com rastreamento mais preciso e sem depend&ecirc;ncia de terceiros.</strong></p>
+    </div>
+
+    <div class="diag-box">
+      <h3>&#9888;&#65039; R$ 913 no YouTube sem nenhuma convers&atilde;o</h3>
+      <p>A campanha <strong>"videoview_youtube"</strong> consumiu R$ 912 no &uacute;ltimo m&ecirc;s com 67.605 impress&otilde;es e <strong>zero convers&otilde;es registradas</strong>. Verba que pode ser realocada para as campanhas de busca que efetivamente geram resultado — como ninfoplastia e lipoaspira&ccedil;&atilde;o.</p>
+    </div>
+
+    <div class="diag-box">
+      <h3>&#9888;&#65039; Abdominoplastia: CPA R$ 142 vs Ninfoplastia: CPA R$ 41</h3>
+      <p>A campanha de <strong>ninfoplastia &eacute; a mais eficiente do Google</strong>: 53 convers&otilde;es a R$ 41,46 cada. Abdominoplastia gera apenas 12 convers&otilde;es a R$ 142 cada — <strong>3,4× mais cara por lead</strong>. A EmpresAtiva reestrutura a distribui&ccedil;&atilde;o de verba para priorizar o que converte melhor.</p>
+    </div>
+
+    <div class="gold-box">
+      <h3>&#9733; DSA broad: R$ 74 com 10 convers&otilde;es — CPA R$ 7,47</h3>
+      <p>A campanha <strong>"seo_dsa (broad)"</strong> &eacute; a mais eficiente de toda a conta: 10 convers&otilde;es a apenas R$ 7,47 cada com um gasto de R$ 74. <strong>Essa campanha est&aacute; com verba m&iacute;nima e deveria ser escalada imediatamente.</strong> Com mais budget, poderia gerar dezenas de convers&otilde;es adicionais ao menor CPA de toda a conta.</p>
+    </div>
+
+    <div class="gold-box">
+      <h3>&#9733; R$ 1.562 em "visitas_perfil" com CPC R$ 0,05 — volume sem qualifica&ccedil;&atilde;o</h3>
+      <p>30.380 cliques por R$ 1.562 soa bem — mas CPC de R$ 0,05 indica tráfego de baixa qualidade sem inten&ccedil;&atilde;o real. <strong>Com formul&aacute;rio condicional e qualifica&ccedil;&atilde;o via IA, esse volume de interesses pode ser filtrado para entregar s&oacute; quem tem perfil real de paciente.</strong></p>
+    </div>
+
+  </div>
+</section><hr class="div">
+
+<!-- POR QUE ARQUITETURA -->
+<section class="bg-dark">
+  <div class="sec-label">Por que Arquitetura de Receita — e n&atilde;o s&oacute; gest&atilde;o de tráfego</div>
+  <h2 class="sec-title">R$ 15.000/m&ecirc;s<br>em an&uacute;ncios s&oacute;<br><em>escala quando<br>tudo est&aacute; integrado.</em></h2>
+  <p class="sec-intro">Em cirurgia pl&aacute;stica, o lead n&atilde;o compra no primeiro contato. O ciclo de decis&atilde;o &eacute; longo — pesquisa, compara, avalia, agenda consulta, orça e decide. Cada etapa desse caminho precisa estar mapeada e assistida.</p>
+
+  <div class="insight-box">
+    <h3>A maior perda n&atilde;o &eacute; nos an&uacute;ncios — &eacute; depois do clique</h3>
+    <p>Com R$ 15.000/m&ecirc;s em m&iacute;dia, a cl&iacute;nica j&aacute; gera um volume alto de leads. <strong>A quest&atilde;o &eacute;: quantos desses leads s&atilde;o atendidos na hora certa, com a abordagem certa, e acompanhados at&eacute; o fechamento?</strong> A maioria das cl&iacute;nicas de alto investimento perde receita n&atilde;o nos an&uacute;ncios — mas no processo comercial que vem depois.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>Cirurgia pl&aacute;stica &eacute; high ticket — o comercial precisa ser proporcional</h3>
+    <p>Uma paciente que vai fazer abdominoplastia ou cirurgia &iacute;ntima n&atilde;o fecha em um contato. Ela pesquisa v&iacute;deos, compara m&eacute;dicos, lê depoimentos, agenda consulta, ouve o orçamento e decide em semanas. <strong>O pipeline comercial precisa ser gerenciado com CRM, cadência de follow-up e playbook — ou esse lead que custou R$ 150 em m&iacute;dia simplesmente desaparece.</strong></p>
+  </div>
+
+  <div class="insight-box">
+    <h3>Google + Meta juntos capturam todos os est&aacute;gios da jornada</h3>
+    <p><strong>Google</strong> captura quem j&aacute; est&aacute; buscando ativamente — "abdominoplastia S&atilde;o Paulo", "n&iacute;nfoplastia custo", "cirurgi&atilde; pl&aacute;stica &iacute;ntima SP". <strong>Meta</strong> captura quem ainda est&aacute; na fase de considera&ccedil;&atilde;o — mulheres que se identificam com o resultado mas ainda n&atilde;o pesquisaram. <strong>Remarketing</strong> re-impacta quem visitou o site, assistiu ao v&iacute;deo, mas n&atilde;o agendou. As tr&ecirc;s frentes juntas cobrem todo o funil.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESCOPO COMPLETO -->
+<section class="bg-black">
+  <div class="sec-label">Escopo completo — o que a EmpresAtiva entrega</div>
+  <h2 class="sec-title">Tudo que a cl&iacute;nica<br><em>precisa para escalar<br>com previsibilidade.</em></h2>
+
+  <div class="escopo-grid">
+    <div class="escopo-item destaque">
+      <div class="esc-icon">🎯</div>
+      <div>
+        <h3>Gest&atilde;o de campanhas<span class="plat-tag tag-m">Meta</span><span class="plat-tag tag-g">Google</span></h3>
+        <p>Estrutura completa nas duas plataformas — campanhas de busca no Google para inten&ccedil;&atilde;o ativa, campanhas de prospec&ccedil;&atilde;o e remarketing no Meta para funil completo.</p>
+      </div>
+    </div>
+    <div class="escopo-item destaque">
+      <div class="esc-icon">📄</div>
+      <div>
+        <h3>Landing pages de alta convers&atilde;o<span class="plat-tag tag-b">High Ticket</span></h3>
+        <p>P&aacute;ginas dedicadas por procedimento — abdominoplastia, c&iacute;ntima feminina, corpo. Copy focada em quebrar objeções e qualificar a paciente antes da consulta.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">🔔</div>
+      <div>
+        <h3>Rastreamento centralizado — sem Tintim<span class="plat-tag tag-b">Plataforma EmpresAtiva</span></h3>
+        <p>Todos os leads rastreados diretamente na plataforma da EmpresAtiva — pixel + CAPI configurados, alerta em tempo real no WhatsApp. <strong>A cl&iacute;nica n&atilde;o precisa mais do Tintim</strong> nem de qualquer rastreador externo adicional.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">🤖</div>
+      <div>
+        <h3>Agente de IA para qualifica&ccedil;&atilde;o<span class="plat-tag tag-b">SDR autom&aacute;tico</span></h3>
+        <p>IA que faz a primeira abordagem 24h — identifica o procedimento de interesse, coleta informa&ccedil;&otilde;es pr&eacute;vias e agenda a consulta. O time comercial entra s&oacute; com leads j&aacute; aquecidos.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">📋</div>
+      <div>
+        <h3>CRM + Pipeline comercial<span class="plat-tag tag-b">RD Station ou Kommo</span></h3>
+        <p>A EmpresAtiva configura o pipeline dentro do CRM que a Dra. Luciana j&aacute; utiliza — <strong>RD Station</strong> (atual) ou Kommo. Etapas claras do funil, hist&oacute;rico de cada paciente e alertas de follow-up. Sem troca de ferramenta, sem retrabalho.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">📖</div>
+      <div>
+        <h3>Playbook comercial<span class="plat-tag tag-b">Time de vendas</span></h3>
+        <p>Roteiro completo de abordagem para cada procedimento — como responder d&uacute;vidas frequentes, como conduzir o lead da consulta ao fechamento, cadência de follow-up.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">👥</div>
+      <div>
+        <h3>Reuni&otilde;es quinzenais com time comercial<span class="plat-tag tag-b">Mentoria</span></h3>
+        <p>Jo&atilde;o Marot conduz reuni&otilde;es quinzenais com a equipe de atendimento/comercial da cl&iacute;nica — an&aacute;lise de performance, ajuste de abordagem e metas de convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">🎨</div>
+      <div>
+        <h3>Criativos — v&iacute;deos, imagens e carross&eacute;is<span class="plat-tag tag-m">Meta</span></h3>
+        <p>Equipe de design da EmpresAtiva cria e edita os an&uacute;ncios visuais — depoimentos de pacientes, antes/depois (dentro das diretrizes do CFM), demonstra&ccedil;&atilde;o de resultados.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">📊</div>
+      <div>
+        <h3>Dashboard Looker Studio<span class="plat-tag tag-b">Tempo real</span></h3>
+        <p>Painel unificado: verba investida, leads por procedimento, custo por lead, taxa de agendamento, taxa de fechamento e ROAS. Vis&atilde;o completa do retorno sobre cada real investido.</p>
+      </div>
+    </div>
+    <div class="escopo-item">
+      <div class="esc-icon">🌐</div>
+      <div>
+        <h3>Google Business Profile<span class="plat-tag tag-gbp">GBP</span></h3>
+        <p>Perfil otimizado para aparecer nas buscas locais por cirurgia pl&aacute;stica em SP — categorias corretas, fotos, respostas a avalia&ccedil;&otilde;es e postagens mensais para pontua&ccedil;&atilde;o crescente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento — modelo claro e justo</div>
+  <h2 class="sec-title">Fixo previs&iacute;vel.<br><em>Vari&aacute;vel que cresce<br>com a cl&iacute;nica.</em></h2>
+  <p class="sec-intro">O modelo foi desenhado para ser justo em ambas as dire&ccedil;&otilde;es: a EmpresAtiva opera com uma base s&oacute;lida e escala a remunera&ccedil;&atilde;o quando o investimento em m&iacute;dia escala — refletindo a complexidade real da opera&ccedil;&atilde;o.</p>
+
+  <div class="inv-main">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Arquitetura de Receita Completa &mdash; Dra. Luciana Pepino &middot; Cirurgia Pl&aacute;stica SP</div>
+
+      <div class="inv-split">
+        <div class="inv-linha arq" style="padding:22px 20px;">
+          <div class="inv-linha-info">
+            <h4>Arquitetura de Receita Completa — tudo incluso</h4>
+            <p>Meta Ads + Google Ads + GBP + CRM + Playbook + Reuni&otilde;es quinzenais + IA + Landing Pages + Dashboard + Criativos + Rastreamento centralizado EmpresAtiva</p>
+          </div>
+          <div class="inv-linha-valor" style="font-size:28px;">R$ 2.497<span style="font-size:11px;font-weight:400;color:var(--muted);font-family:var(--font-body);">/m&ecirc;s</span></div>
+        </div>
+        <div style="background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:14px 20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:18px;">✅</span>
+          <p style="font-size:12px;color:var(--muted);line-height:1.7;"><strong style="color:var(--green);">GBP j&aacute; incluso neste valor</strong> — o Google Business Profile est&aacute; dentro do pacote. N&atilde;o h&aacute; custo adicional separado.</p>
+        </div>
+      </div>
+
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o Meta Ads + Google Ads (as duas plataformas)</li>
+        <li>Landing pages por procedimento (abdominoplastia, c&iacute;ntima feminina, corpo)</li>
+        <li>Rastreamento completo — pixel + CAPI + alertas em tempo real</li>
+        <li>Agente de IA para qualifica&ccedil;&atilde;o e agendamento autom&aacute;tico</li>
+        <li>CRM configurado e pipeline estruturado — <strong>RD Station</strong> (atual da Dra. Luciana) ou Kommo</li>
+        <li>Playbook comercial por procedimento</li>
+        <li>Reuni&otilde;es quinzenais com time comercial</li>
+        <li>Criativos: edi&ccedil;&atilde;o de v&iacute;deos + imagens + carross&eacute;is</li>
+        <li>Dashboard Looker Studio unificado (Meta + Google)</li>
+        <li>Google Business Profile otimizado e mantido (incluso no pacote)</li>
+        <li>Rastreamento centralizado na plataforma EmpresAtiva — <strong>sem necessidade de Tintim</strong> ou qualquer outro rastreador externo</li>
+        <li>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa</strong> — investida diretamente nas plataformas (Meta e Google). A vari&aacute;vel de gest&atilde;o &eacute; calculada sobre o excedente de verba acima de R$ 10.000/m&ecirc;s.</p>
+    </div>
+  </div>
+
+  <!-- VARIÁVEL -->
+  <div class="formula-box">
+    <h4>Como funciona a vari&aacute;vel de gest&atilde;o</h4>
+    <p>At&eacute; <strong>R$ 10.000/m&ecirc;s</strong> de verba de an&uacute;ncios investida: gest&atilde;o fixa de R$ 2.997 (Arquitetura + GBP). Acima de R$ 10.000: <strong>+20% sobre o excedente</strong>. Exemplo: verba de R$ 15.000 → excedente de R$ 5.000 → +R$ 1.000 de vari&aacute;vel → total de gest&atilde;o: <strong>R$ 3.497/m&ecirc;s</strong>. Isso reflete que operar R$ 15.000 em m&iacute;dia com qualidade exige significativamente mais trabalho do que operar R$ 5.000.</p>
+  </div>
+
+  <!-- CENÁRIOS -->
+  <p style="font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--muted);text-transform:uppercase;margin-top:20px;margin-bottom:12px;">Cen&aacute;rios &mdash; custo total de gest&atilde;o por n&iacute;vel de verba</p>
+  <div class="cenarios">
+    <div class="cen">
+      <div class="cen-verba">R$ 5k</div>
+      <div>
+        <h4>Verba at&eacute; R$ 5.000/m&ecirc;s</h4>
+        <p>Sem excedente. Gest&atilde;o fixa.</p>
+        <div class="cen-total">Total: R$ 2.497/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen">
+      <div class="cen-verba">R$ 10k</div>
+      <div>
+        <h4>Verba at&eacute; R$ 10.000/m&ecirc;s</h4>
+        <p>Sem excedente. Gest&atilde;o fixa.</p>
+        <div class="cen-total">Total: R$ 2.497/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen atual">
+      <div class="cen-verba">R$ 15k</div>
+      <div>
+        <h4>Verba de R$ 15.000/m&ecirc;s</h4>
+        <p>Excedente R$ 5.000 &times; 10% = R$ 500 de vari&aacute;vel</p>
+        <div class="cen-total">Total: R$ 2.997/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen">
+      <div class="cen-verba">R$ 20k</div>
+      <div>
+        <h4>Verba de R$ 20.000/m&ecirc;s</h4>
+        <p>Excedente R$ 10.000 &times; 10% = R$ 1.000 de vari&aacute;vel</p>
+        <div class="cen-total">Total: R$ 3.497/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen atual">
+      <div class="cen-verba">R$ 23,5k</div>
+      <div>
+        <h4>Verba atual: R$ 23.510/m&ecirc;s — cen&aacute;rio real</h4>
+        <p>Excedente R$ 13.510 &times; 10% = R$ 1.351 de vari&aacute;vel</p>
+        <div class="cen-total">Total: R$ 3.848/m&ecirc;s</div>
+      </div>
+    </div>
+    <div class="cen potencial">
+      <div class="cen-verba">R$ 30k</div>
+      <div>
+        <h4>Verba de R$ 30.000/m&ecirc;s — escala plena</h4>
+        <p>Excedente R$ 20.000 &times; 10% = R$ 2.000 de vari&aacute;vel</p>
+        <div class="cen-total">Total: R$ 4.497/m&ecirc;s &mdash; gerindo R$ 30k em m&iacute;dia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim &agrave;<br><em>m&aacute;quina de receita<br>funcionando.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Dra. Luciana confirma — auditoria das contas</h3>
+      <p>Acesso ao Google Ads e Meta Ads atuais. A EmpresAtiva faz o diagn&oacute;stico completo — o que est&aacute; funcionando, o que est&aacute; desperdi&ccedil;ando verba e onde est&atilde;o as maiores oportunidades de otimiza&ccedil;&atilde;o imediata.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1</span>
+      <h3>Briefing comercial + mapeamento de ICP</h3>
+      <p>Quem &eacute; a paciente ideal por procedimento? Qual o ticket m&eacute;dio de cada cirurgia? Quais as obje&ccedil;&otilde;es mais comuns? Quais as d&uacute;vidas frequentes que atrasam o fechamento? A estrat&eacute;gia &eacute; montada a partir disso.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Landing pages + CRM + IA configurados</h3>
+      <p>P&aacute;ginas dedicadas por procedimento publicadas. Kommo CRM com pipeline configurado para a equipe. Agente de IA treinado com as informa&ccedil;&otilde;es da cl&iacute;nica — pronto para atender leads 24h.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 3</span>
+      <h3>Campanhas reestruturadas + playbook entregue</h3>
+      <p>Campanhas no Meta e Google reestruturadas com a nova estrat&eacute;gia. Playbook comercial entregue para o time. Primeira reuni&atilde;o de alinhamento com a equipe de atendimento.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2</span>
+      <h3>Previsibilidade — custo por consulta agendada</h3>
+      <p>Com dados reais de ambas as plataformas, o dashboard j&aacute; mostra: quanto custa cada lead por procedimento, qual a taxa de agendamento, qual a taxa de fechamento. Decis&otilde;es de verba baseadas em n&uacute;meros reais.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 3+</span>
+      <h3>Escala com intelig&ecirc;ncia</h3>
+      <p>Com a estrutura completa rodando, a decis&atilde;o de aumentar verba para R$ 20k, R$ 25k ou R$ 30k &eacute; baseada em dados — sabendo exatamente quantas consultas e procedimentos isso vai gerar.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Dra. Luciana,<br>R$ 15.000/m&ecirc;s<br><em>merece uma estrutura<br>&agrave; mesma altura.</em></h2>
+  <p>Um investimento de R$ 15.000 em m&iacute;dia com uma estrutura comercial incompleta &eacute; o maior desperd&iacute;cio que existe no marketing m&eacute;dico. A EmpresAtiva fecha o gap — da captura do lead ao fechamento da cirurgia — para que cada real investido gere o m&aacute;ximo de retorno poss&iacute;vel.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.455-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
