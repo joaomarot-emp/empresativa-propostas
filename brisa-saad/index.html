@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Brisa Saad</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(46,204,113,0.05) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.insight-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.insight-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.insight-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.insight-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+/* OFERTA DESTAQUE */
+.oferta-card{background:linear-gradient(135deg,rgba(232,103,26,0.07) 0%,rgba(201,168,76,0.04) 100%);border:1px solid rgba(232,103,26,0.22);border-radius:4px;padding:28px 24px;margin-bottom:20px;position:relative;overflow:hidden;}
+.oferta-card::before{content:"";position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:radial-gradient(circle,rgba(232,103,26,0.1) 0%,transparent 70%);pointer-events:none;}
+.oferta-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.oferta-titulo{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--white);margin-bottom:6px;line-height:1.1;}
+.oferta-titulo em{color:var(--orange);}
+.oferta-price{font-family:var(--font-display);font-size:42px;font-weight:800;color:var(--orange);margin-bottom:4px;line-height:1;}
+.oferta-price sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.oferta-compare{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.compare-pill{background:rgba(255,255,255,0.03);border:1px solid var(--border);padding:8px 14px;border-radius:2px;font-size:11px;color:var(--muted);}
+.compare-pill strong{color:var(--white);}
+.oferta-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-top:14px;}
+.oferta-desc strong{color:var(--white);}
+
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:32px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.inv-ul li{font-size:13px;color:var(--white);padding-left:22px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:12px;font-weight:700;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads &middot; Brisa Saad &middot; Salvador BA</p>
+  <h1>Acabamento<br>imperceptível.<br><em>Pre&ccedil;o que<br>ningu&eacute;m acredita.</em></h1>
+  <p class="hero-sub">Brisa, voc&ecirc; entrega resultado de qualidade muito acima do que cobra. A EmpresAtiva transforma essa discrep&acirc;ncia em oferta que ningu&eacute;m em Salvador consegue ignorar — e as duas unidades, Federa&ccedil;&atilde;o e Matatu, deixam de depender s&oacute; de indica&ccedil;&atilde;o.</p>
+  <div class="pills">
+    <div class="pill"><span>Plano</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Valor</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Verba inicial</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>Unidades</span><span>Federa&ccedil;&atilde;o + Matatu</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-dark">
+  <div class="sec-label">A estrat&eacute;gia — curto prazo com oferta agressiva</div>
+  <h2 class="sec-title">Resultado r&aacute;pido<br>precisa de<br><em>oferta que<br>ningu&eacute;m recusa.</em></h2>
+  <p class="sec-intro">Brisa, voc&ecirc; precisa de fluxo de caixa agora — n&atilde;o em 3 meses. A estrat&eacute;gia certa &eacute; uma oferta agressiva que traga gente de Salvador rapidamente, deixando a constru&ccedil;&atilde;o de autoridade e ticket m&eacute;dio mais alto para a fase seguinte.</p>
+
+  <!-- OFERTA -->
+  <div class="oferta-card">
+    <div class="oferta-label">&#9733; Oferta de lan&ccedil;amento — quebra de objeção imediata</div>
+    <div class="oferta-titulo">Instala&ccedil;&atilde;o de <em>Mega Hair</em></div>
+    <div class="oferta-price"><sub>R$</sub> 500 <sub>cabelo de qualidade</sub></div>
+    <div class="oferta-compare">
+      <div class="compare-pill">Refer&ecirc;ncia de Salvador: <strong>R$ 2.000</strong></div>
+      <div class="compare-pill">Refer&ecirc;ncia premium: <strong>R$ 15.000 a R$ 20.000</strong></div>
+      <div class="compare-pill">Brisa Saad: <strong style="color:var(--orange);">R$ 500</strong></div>
+    </div>
+    <p class="oferta-desc">A pessoa que vê esse pre&ccedil;o ao lado dos resultados de antes/depois j&aacute; chega sabendo que est&aacute; abaixo do mercado. <strong>A objeção de pre&ccedil;o &eacute; quebrada antes mesmo do primeiro contato — ela s&oacute; precisa agendar.</strong></p>
+  </div>
+
+  <div style="margin-top:24px;">
+    <div class="insight-box">
+      <h3>Antes/depois sozinho n&atilde;o gera urg&ecirc;ncia — pre&ccedil;o + resultado, sim</h3>
+      <p>Um v&iacute;deo de transforma&ccedil;&atilde;o impressiona, mas n&atilde;o cria pressa — a pessoa interessada manda mensagem sem saber quanto custa e a conversa esfria. <strong>Quando o an&uacute;ncio j&aacute; mostra o pre&ccedil;o justo ao lado do resultado de qualidade, a pessoa pensa "vou nela agora" — exatamente como voc&ecirc; mesma descreveu na nossa conversa.</strong></p>
+    </div>
+    <div class="gold-box">
+      <h3>Os casos de alopecia s&atilde;o o seu maior ativo de credibilidade</h3>
+      <p>O carrossel de uma cliente que chegou com o cabelo destru&iacute;do por outro profissional e saiu transformada &eacute; o tipo de conte&uacute;do que choca e convence. <strong>A EmpresAtiva usa esse material — e outros como ele — como prova social nos an&uacute;ncios, mostrando que voc&ecirc; resolve o que outros estragaram.</strong></p>
+    </div>
+    <div class="green-box">
+      <h3>Duas unidades = dobro de captação na mesma campanha</h3>
+      <p>Com Federa&ccedil;&atilde;o e Matatu, a segmenta&ccedil;&atilde;o geogr&aacute;fica do Meta cobre uma &aacute;rea maior de Salvador. <strong>A campanha j&aacute; nasce pensando nas duas unidades — capturando clientes pr&oacute;ximos de cada uma, sem depender s&oacute; de indica&ccedil;&atilde;o de lojas de cabelo.</strong></p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- JORNADA -->
+<section class="bg-black">
+  <div class="sec-label">Do an&uacute;ncio ao agendamento</div>
+  <h2 class="sec-title">De curiosa<br><em>a cliente marcada.</em></h2>
+
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>An&uacute;ncio com prova social + pre&ccedil;o justo</h3>
+        <p>Uma mulher de Salvador v&ecirc; o antes/depois de um caso de recupera&ccedil;&atilde;o capilar com o pre&ccedil;o de R$ 500 ao lado. O choque do resultado + a surpresa do pre&ccedil;o fazem ela parar de rolar.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Pré-qualifica&ccedil;&atilde;o antes do WhatsApp</h3>
+        <p>Perguntas r&aacute;pidas filtram quem mora em Salvador (ou pode se deslocar) e qual transforma&ccedil;&atilde;o busca — mega, manuten&ccedil;&atilde;o, alongamento. S&oacute; depois disso ela chega no WhatsApp.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Alerta no grupo — Brisa sabe que chegou lead</h3>
+        <p>Notifica&ccedil;&atilde;o imediata: nome e interesse da pessoa. J&aacute; qualificada, sem curiosa perguntando "nem sei porque eu cliquei" — exatamente o problema que voc&ecirc; mencionou querer evitar.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Agendamento confirmado em uma das duas unidades</h3>
+        <p>Cliente j&aacute; sabe o pre&ccedil;o, j&aacute; viu o resultado, j&aacute; decidiu. A convers&atilde;o &eacute; r&aacute;pida porque a objeção foi quebrada antes mesmo do primeiro contato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIFERENCIAL DO RASTREAMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">O diferencial — rastreamento que a maioria das agências n&atilde;o entrega</div>
+  <h2 class="sec-title">Cada venda<br>treina o algoritmo<br><em>para achar mais<br>gente como ela.</em></h2>
+  <p class="sec-intro">99% das agências param no lead. A EmpresAtiva conecta diretamente ao WhatsApp da Brisa para rastrear quem realmente vira cliente.</p>
+
+  <div class="insight-box">
+    <h3>O Meta aprende com quem compra — n&atilde;o s&oacute; com quem clica</h3>
+    <p>A EmpresAtiva rastreia todo mundo que entra em contato pelo WhatsApp do Studio. <strong>Esses dados s&atilde;o devolvidos para o Meta Ads, ensinando o algoritmo a buscar mais pessoas com o mesmo perfil de quem realmente fecha.</strong> Resultado: cada real investido fica mais inteligente m&ecirc;s ap&oacute;s m&ecirc;s — n&atilde;o &eacute; sorte, &eacute; aprendizado de m&aacute;quina aplicado de verdade.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Tudo para a Brisa<br><em>parar de depender<br>s&oacute; de indica&ccedil;&atilde;o.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas</h3>
+        <p>Estrutura de campanhas no Meta Ads — p&uacute;blico segmentado para Salvador, cobrindo as &aacute;reas de Federa&ccedil;&atilde;o e Matatu, com interesse em cabelo e mega hair.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Edi&ccedil;&atilde;o dos v&iacute;deos do Instagram</h3>
+        <p>A equipe de design edita o material que voc&ecirc; j&aacute; tem — os antes/depois, os casos de recupera&ccedil;&atilde;o, o acabamento imperceptível — transformando em anúncios com gancho, CTA e identidade visual.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">✅</div>
+      <div>
+        <h3>Pré-qualifica&ccedil;&atilde;o de leads</h3>
+        <p>Perguntas que filtram quem mora em Salvador (ou pode se deslocar) e qual transforma&ccedil;&atilde;o busca, antes de chegar ao WhatsApp. Elimina curiosos, entrega quem tem inten&ccedil;&atilde;o real.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada lead qualificado aparece imediatamente no WhatsApp da Brisa — nome, interesse e contato. Velocidade de resposta &eacute; taxa de convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard + relat&oacute;rio de melhores an&uacute;ncios</h3>
+        <p>Painel em tempo real mostrando gasto, leads e qual criativo gera mais resultado — para a EmpresAtiva replicar o "campe&atilde;o" antes que ele sature (15 a 20 dias de ciclo de vida do an&uacute;ncio).</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Renova&ccedil;&atilde;o de criativos a cada ciclo</h3>
+        <p>Quando o an&uacute;ncio campe&atilde;o satura, a EmpresAtiva passa script de uma nova vers&atilde;o — Brisa grava, a equipe edita, e o resultado continua fluindo sem interrup&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🗺️</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o do Google Meu Neg&oacute;cio</h3>
+        <p>Perfil otimizado para aparecer nas tr&ecirc;s primeiras posi&ccedil;&otilde;es quando algu&eacute;m pesquisar "mega hair Salvador" — ao lado de Studio Hair e Mari Mega, refor&ccedil;ando a Brisa Saad como refer&ecirc;ncia.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Reuni&otilde;es mensais + suporte direto</h3>
+        <p>Acompanhamento de resultados todo m&ecirc;s, sempre melhorando com base nos dados reais. Suporte direto com Jo&atilde;o Marot durante o m&ecirc;s para alinhamentos r&aacute;pidos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">R$ 997/m&ecirc;s.<br><em>Come&ccedil;ando pequeno,<br>escalando com<br>seguran&ccedil;a.</em></h2>
+  <p class="sec-intro">Gest&atilde;o completa do Meta Ads — sem fidelidade for&ccedil;ada, com anúncios no ar em at&eacute; 5 dias ap&oacute;s o in&iacute;cio. Verba inicial baixa para validar o movimento antes de escalar.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Meta Ads &mdash; Brisa Saad Mega Hair &middot; Salvador BA</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade m&iacute;nima</div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa das campanhas no Instagram</li>
+        <li>Edi&ccedil;&atilde;o dos v&iacute;deos e conte&uacute;dos j&aacute; existentes</li>
+        <li>Pré-qualifica&ccedil;&atilde;o de leads antes do WhatsApp</li>
+        <li>Alerta de leads em tempo real no WhatsApp</li>
+        <li>Dashboard com relat&oacute;rio de melhores an&uacute;ncios</li>
+        <li>Renova&ccedil;&atilde;o de criativos a cada ciclo de satura&ccedil;&atilde;o</li>
+        <li>Otimiza&ccedil;&atilde;o do Google Meu Neg&oacute;cio inclusa</li>
+        <li>Rastreamento de vendas devolvido ao algoritmo do Meta</li>
+        <li>Reuni&otilde;es mensais + suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa.</strong> Come&ccedil;ando em R$ 500/m&ecirc;s, conforme alinhado — escalando progressivamente conforme os resultados validarem.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">J&aacute; est&aacute; fechado.<br><em>Em 5 dias, no ar.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Formul&aacute;rio + contrato + pagamento</h3>
+      <p>A EmpresAtiva envia o formul&aacute;rio com dados cadastrais (pessoa f&iacute;sica ou jur&iacute;dica) para gerar o contrato. Brisa escolhe Pix ou cart&atilde;o de cr&eacute;dito para o pagamento.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 1</span>
+      <h3>Grupo criado + coleta de acessos</h3>
+      <p>Canal de comunica&ccedil;&atilde;o do projeto criado. Reuni&atilde;o para colher acessos &agrave;s contas, entender o perfil real do p&uacute;blico e por onde ele navega.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 2–4</span>
+      <h3>Estrat&eacute;gia + edi&ccedil;&atilde;o dos primeiros criativos</h3>
+      <p>Defini&ccedil;&atilde;o da oferta de lan&ccedil;amento e do p&uacute;blico-alvo com base nos acessos coletados. A equipe de design edita os primeiros v&iacute;deos enviados pela Brisa.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">At&eacute; o dia 5</span>
+      <h3>Anúncios no ar</h3>
+      <p>Primeira campanha publicada com a oferta certa, para o p&uacute;blico certo. Os primeiros leads come&ccedil;am a chegar no WhatsApp da Brisa.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 1</span>
+      <h3>Primeira reuni&atilde;o mensal de resultados</h3>
+      <p>An&aacute;lise de quais an&uacute;ncios geraram mais leads, qual o custo por lead e como est&aacute; a convers&atilde;o nas duas unidades. Ajustes com base nos dados reais.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Escala com seguran&ccedil;a</h3>
+      <p>Com o custo por lead e taxa de convers&atilde;o validados, a decis&atilde;o de aumentar a verba de R$ 500 para R$ 1.000 ou mais &eacute; baseada em dados — sem depender s&oacute; de indica&ccedil;&atilde;o nunca mais.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Brisa, Salvador<br>vai saber<br><em>do seu trabalho<br>al&eacute;m das<br>lojas de cabelo.</em></h2>
+  <p>Voc&ecirc; tem qualidade que entrega muito mais do que cobra. A EmpresAtiva coloca isso na frente de quem precisa em Salvador — com a oferta certa, no momento certo, sem depender de repost de loja de cabelo para ser vista.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
