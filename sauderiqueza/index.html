@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Expo Saúde & Riqueza</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--red:#E84040;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.12) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.urgencia-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(232,64,64,0.1);border:1px solid rgba(232,64,64,0.3);padding:8px 16px;border-radius:2px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;color:var(--red);text-transform:uppercase;margin-bottom:20px;opacity:0;animation:up .7s ease forwards .05s;}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.diag-box{background:rgba(232,64,64,0.04);border:1px solid rgba(232,64,64,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.diag-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--red);margin-bottom:10px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+
+/* TIMELINE DO LANÇAMENTO */
+.lancamento-timeline{display:flex;flex-direction:column;gap:2px;margin-bottom:24px;}
+.lt-item{background:var(--card);padding:20px 24px;border-left:3px solid var(--border);display:flex;gap:16px;align-items:flex-start;}
+.lt-item.fase1{border-left-color:var(--orange);}
+.lt-item.fase2{border-left-color:var(--gold);}
+.lt-item.fase3{border-left-color:var(--green);}
+.lt-item.urgente{border-left-color:var(--red);background:rgba(232,64,64,0.03);}
+.lt-periodo{font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;}
+.fase1 .lt-periodo{color:var(--orange);}
+.fase2 .lt-periodo{color:var(--gold);}
+.fase3 .lt-periodo{color:var(--green);}
+.urgente .lt-periodo{color:var(--red);}
+.lt-item h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.lt-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.lt-item strong{color:var(--white);}
+.lt-num{font-family:var(--font-display);font-size:32px;font-weight:800;flex-shrink:0;min-width:40px;line-height:1;margin-top:2px;}
+.fase1 .lt-num{color:var(--orange);}
+.fase2 .lt-num{color:var(--gold);}
+.fase3 .lt-num{color:var(--green);}
+.urgente .lt-num{color:var(--red);}
+
+/* INGRESSOS */
+.ingressos-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.ing-item{background:var(--card);padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.ing-item.anchor{background:rgba(232,103,26,0.05);border-left:3px solid var(--orange);}
+.ing-item.premium{background:rgba(201,168,76,0.04);border-left:3px solid var(--gold);}
+.ing-nome{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.ing-desc{font-size:11px;color:var(--muted);}
+.ing-price{font-family:var(--font-display);font-size:22px;font-weight:800;flex-shrink:0;color:var(--white);}
+.ing-item.anchor .ing-price{color:var(--orange);}
+.ing-item.premium .ing-price{color:var(--gold);}
+
+/* VERBA */
+.verba-grid{display:flex;flex-direction:column;gap:3px;margin-bottom:20px;}
+.verba-item{background:var(--card);padding:20px 22px;}
+.verba-item.recomendado{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.2);}
+.verba-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
+.verba-recomendado .verba-lbl{color:var(--green);}
+.verba-item.recomendado .verba-lbl{color:var(--green);}
+.verba-total{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.verba-item.recomendado .verba-total{color:var(--green);}
+.verba-breakdown{font-size:12px;color:var(--muted);line-height:1.8;margin-top:6px;}
+.verba-breakdown strong{color:var(--white);}
+.verba-projecao{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.12);padding:12px 16px;border-radius:2px;margin-top:10px;}
+.verba-projecao p{font-size:11px;color:var(--muted);line-height:1.7;}
+.verba-projecao strong{color:var(--green);}
+
+/* ENTREGÁVEIS */
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-main{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-main::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold),var(--green));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:20px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+.roi-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.18);padding:22px 24px;border-radius:2px;margin-top:3px;}
+.roi-box h4{font-size:14px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.roi-cenarios{display:flex;flex-direction:column;gap:2px;}
+.roi-item{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.roi-item.meta{background:rgba(46,204,113,0.04);border-left:2px solid var(--green);}
+.roi-desc{font-size:12px;color:var(--muted);}
+.roi-desc strong{color:var(--white);}
+.roi-val{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);flex-shrink:0;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .ingressos-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="urgencia-tag">&#9888; 43 dias para o evento &mdash; 20 de agosto &mdash; 0 vendas at&eacute; agora</div>
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Lan&ccedil;amento de Evento &middot; Expo Sa&uacute;de &amp; Riqueza &middot; Barra da Tijuca RJ</p>
+  <h1>Evento com<br>palestrantes de<br>autoridade real.<br><em>Zero vendas.<br>43 dias.</em></h1>
+  <p class="hero-sub">Gustavo, o problema nunca foi o evento. Dr. Eduardo Corassa e R&ocirc;mulo Amaro s&atilde;o nomes que vendem. O que quebrou foi a estrat&eacute;gia de tráfego — sem pixel, sem p&aacute;gina de convers&atilde;o, sem remarketing. A EmpresAtiva vira isso em 48 horas e estrutura o lan&ccedil;amento completo at&eacute; o dia 20.</p>
+  <div class="pills">
+    <div class="pill"><span>Evento</span><span>20 de agosto de 2026</span></div>
+    <div class="pill"><span>Capacidade</span><span>400 pessoas</span></div>
+    <div class="pill"><span>Ingressos</span><span>R$ 97 a R$ 997</span></div>
+    <div class="pill"><span>Local</span><span>Hotel Plaza Rio &middot; Barra da Tijuca</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">O que quebrou — e como corrigir</div>
+  <h2 class="sec-title">N&atilde;o foi falta<br>de evento.<br><em>Foi falta de<br>estrutura.</em></h2>
+  <p class="sec-intro">R$ 2.000 gastos, 0 vendas, 45 dias com gestor errado. Tudo isso &eacute; revers&iacute;vel — mas requer a&ccedil;&atilde;o imediata.</p>
+
+  <div class="diag-box">
+    <h3>&#9888; Campanha direto para checkout — sem aquecimento, sem pixel</h3>
+    <p>A campanha rodou com objetivo de "visualiza&ccedil;&otilde;es de p&aacute;gina" mandando tráfego frio direto para o Sympla. <strong>Tráfego frio nunca compra ingresso de evento no primeiro clique.</strong> Sem pixel instalado, sem landing page pr&oacute;pria, sem remarketing — o Meta n&atilde;o tinha dado algum para aprender quem converte. Resultado: 2.198 visitas, R$ 544 gastos, zero vendas.</p>
+  </div>
+
+  <div class="diag-box">
+    <h3>&#9888; Gestor especializado em imobili&aacute;rio — formato errado para evento</h3>
+    <p>Lançamento de evento presencial exige funil completo: aquecimento de p&uacute;blico, construção de desejo, urgência e fechamento agressivo. <strong>Não &eacute; a mesma estrat&eacute;gia de formul&aacute;rio nativo para imobi&aacute;ria.</strong> O gestor admitiu n&atilde;o ter essa expertise — 45 dias depois de receber o pagamento.</p>
+  </div>
+
+  <div class="orange-box">
+    <h3>O que a EmpresAtiva faz diferente</h3>
+    <p>A EmpresAtiva j&aacute; trabalhou na equipe de tráfego de eventos com 600 a 800 pessoas, com ticket a partir de R$ 397 at&eacute; R$ 997 — e aplica a mesma l&oacute;gica aqui: <strong>30 dias de aquecimento e constru&ccedil;&atilde;o de autoridade dos palestrantes, seguidos de 13 dias de ofensiva agressiva de venda de ingressos com urgência real.</strong> Com o pixel instalado, o Meta aprende quem compra e escala para esse p&uacute;blico.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>&#9733; Os ativos que voc&ecirc;s t&ecirc;m s&atilde;o poderosos — s&oacute; precisam ser usados certo</h3>
+    <p>Dr. Corassa (referência em biohacking, curou o pr&oacute;prio câncer com alimentação) e R&ocirc;mulo Amaro (ex-diretor da L'Or&eacute;al, escalou dezenas de empresas no RJ). <strong>Esses nomes vendem — mas precisam de criativos que contem essa história com urgência e prova social, não apenas posts est&aacute;ticos.</strong> Jéssica e equipe já produzem vídeo — esse material é o combustível do lançamento.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRUTURA DO LANÇAMENTO -->
+<section class="bg-black">
+  <div class="sec-label">A estrat&eacute;gia — 43 dias em 3 fases</div>
+  <h2 class="sec-title">Aquecimento.<br>Constru&ccedil;&atilde;o.<br><em>Ofensiva.</em></h2>
+  <p class="sec-intro">O tempo &eacute; curto mas suficiente para um lançamento comprimido que funciona. A chave &eacute; n&atilde;o desperdiçar nenhum dia a partir de agora.</p>
+
+  <div class="lancamento-timeline">
+    <div class="lt-item urgente">
+      <div class="lt-num">0</div>
+      <div>
+        <div class="lt-periodo">Hoje — Imediato</div>
+        <h3>Pixel instalado + p&aacute;gina de convers&atilde;o no ar</h3>
+        <p>Instala&ccedil;&atilde;o do Pixel Meta na página de vendas existente (exposaudeeriqueza.com.br). Configura&ccedil;&atilde;o do evento de compra no Sympla para rastreamento. A partir desse momento o Meta começa a coletar dados de quem visita e compra. <strong>Cada dia sem pixel &eacute; dado desperdi&ccedil;ado.</strong></p>
+      </div>
+    </div>
+    <div class="lt-item fase1">
+      <div class="lt-num">1</div>
+      <div>
+        <div class="lt-periodo">Dias 1–20 &mdash; Aquecimento e Autoridade</div>
+        <h3>Constru&ccedil;&atilde;o de desejo — Dr. Corassa + R&ocirc;mulo Amaro</h3>
+        <p>Criativos de v&iacute;deo usando o material j&aacute; produzido por J&eacute;ssica e equipe: <strong>história do Dr. Corassa</strong> (curou o pr&oacute;prio câncer, ajudou outros), <strong>trajet&oacute;ria de R&ocirc;mulo Amaro</strong> (L'Or&eacute;al para empresário de impacto no RJ). Objetivo: criar desejo e reconhecimento dos palestrantes no p&uacute;blico-alvo. Sem falar de preço ainda.</p>
+      </div>
+    </div>
+    <div class="lt-item fase2">
+      <div class="lt-num">2</div>
+      <div>
+        <div class="lt-periodo">Dias 21–30 &mdash; Apresenta&ccedil;&atilde;o do Evento</div>
+        <h3>O evento + a oferta — primeiros ingressos</h3>
+        <p>Criativos apresentando o evento com data, local e a proposta: <strong>Sa&uacute;de &amp; Riqueza em um s&oacute; dia, com os dois especialistas, na Barra da Tijuca</strong>. Foco no ingresso START (R$ 97) como porta de entrada — preço acess&iacute;vel que quebra a objeção inicial. Remarketing para quem assistiu os v&iacute;deos da fase 1.</p>
+      </div>
+    </div>
+    <div class="lt-item fase3">
+      <div class="lt-num">3</div>
+      <div>
+        <div class="lt-periodo">Dias 31–43 &mdash; Ofensiva de Fechamento</div>
+        <h3>Urg&ecirc;ncia real + vagas limitadas + escassez</h3>
+        <p>Campanha agressiva com contagem regressiva real (400 vagas, X j&aacute; vendidas), urgência de preço (últimos dias do lote atual), depoimentos de quem j&aacute; comprou. <strong>O remarketing aqui &eacute; brutal</strong> — quem visitou, quem assistiu mais de 75% do v&iacute;deo, quem iniciou compra mas n&atilde;o finalizou, recebe an&uacute;ncio diferente com apelo emocional direto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INGRESSOS E META -->
+<section class="bg-dark">
+  <div class="sec-label">Os ingressos — estrat&eacute;gia de preço</div>
+  <h2 class="sec-title">Vender vagas.<br><em>N&atilde;o apenas<br>ingressos.</em></h2>
+  <p class="sec-intro">A EmpresAtiva trabalha com o tráfego ancorado no ingresso mais acess&iacute;vel para gerar volume — e usa o remarketing dentro do evento para escalar o ticket m&eacute;dio.</p>
+
+  <div class="ingressos-grid">
+    <div class="ing-item anchor">
+      <div>
+        <div class="ing-nome">START &mdash; Isca principal do tráfego</div>
+        <div class="ing-desc">Acesso &agrave;s palestras &middot; Coffee Break &middot; Certificado &middot; E-book</div>
+      </div>
+      <div class="ing-price">R$ 97</div>
+    </div>
+    <div class="ing-item">
+      <div>
+        <div class="ing-nome">EXPERIENCE</div>
+        <div class="ing-desc">Fotos profissionais &middot; Sorteios &middot; Certificado</div>
+      </div>
+      <div class="ing-price">R$ 167</div>
+    </div>
+    <div class="ing-item">
+      <div>
+        <div class="ing-nome">EXECUTIVE</div>
+        <div class="ing-desc">Assentos frente &middot; Networking premium &middot; Foto oficial</div>
+      </div>
+      <div class="ing-price">R$ 467</div>
+    </div>
+    <div class="ing-item premium">
+      <div>
+        <div class="ing-nome">BLACK &mdash; Jantar com palestrantes</div>
+        <div class="ing-desc">Tudo do EXECUTIVE + jantar + acesso direto aos palestrantes</div>
+      </div>
+      <div class="ing-price">R$ 997</div>
+    </div>
+  </div>
+
+  <div class="orange-box">
+    <h3>Por que o tráfego foca no R$ 97 — não no R$ 997</h3>
+    <p>A decis&atilde;o de comprar um ingresso de R$ 997 nunca acontece no primeiro an&uacute;ncio. <strong>O ciclo correto: an&uacute;ncio leva para o START a R$ 97 → pessoa compra e entra no ecosistema → dentro do evento (ou pelo email/WhatsApp), a EmpresAtiva estrutura o upsell para EXECUTIVE e BLACK.</strong> Mais pessoas dentro = mais receita total. O ticket m&eacute;dio real do evento pode ser muito maior que R$ 97 se o upsell interno estiver estruturado.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- VERBA NECESSÁRIA -->
+<section class="bg-black">
+  <div class="sec-label">Verba de m&iacute;dia — o que &eacute; necess&aacute;rio para o resultado</div>
+  <h2 class="sec-title">Quanto investir<br><em>para lotar<br>o evento.</em></h2>
+  <p class="sec-intro">Com 43 dias at&eacute; o evento e 400 vagas para preencher, a verba de m&iacute;dia precisa ser proporcional ao objetivo. A EmpresAtiva apresenta tr&ecirc;s cen&aacute;rios.</p>
+
+  <div class="verba-grid">
+    <div class="verba-item">
+      <div class="verba-lbl">Cen&aacute;rio m&iacute;nimo &mdash; resultado parcial</div>
+      <div class="verba-total">R$ 5.000</div>
+      <div class="verba-breakdown">
+        <strong>~R$ 120/dia</strong> distribuídos entre aquecimento e conversão<br>
+        Estimativa: CPL de R$ 25-40 → <strong>125 a 200 leads qualificados</strong><br>
+        Com taxa de convers&atilde;o de 15-25%: <strong>19 a 50 ingressos vendidos</strong><br>
+        Receita estimada (ticket m&eacute;dio R$ 150): R$ 2.850 a R$ 7.500
+      </div>
+      <div class="verba-projecao" style="background:rgba(232,103,26,0.04);border-color:rgba(232,103,26,0.15);">
+        <p>&#9888; Com esse orçamento, dificilmente lotar&aacute; o evento. Indicado apenas se o caixa n&atilde;o permitir mais.</p>
+      </div>
+    </div>
+    <div class="verba-item recomendado">
+      <div class="verba-lbl">&#9733; Cen&aacute;rio recomendado &mdash; meta de 150-250 pessoas</div>
+      <div class="verba-total">R$ 10.000 a R$ 15.000</div>
+      <div class="verba-breakdown">
+        <strong>R$ 230-350/dia</strong> ao longo dos 43 dias<br>
+        Distribui&ccedil;&atilde;o: 40% aquecimento &middot; 60% convers&atilde;o e remarketing<br>
+        Estimativa: CPL R$ 20-35 → <strong>285 a 750 leads qualificados</strong><br>
+        Com taxa de convers&atilde;o 15-25%: <strong>43 a 188 ingressos</strong><br>
+        Receita estimada (ticket m&eacute;dio R$ 150): R$ 6.450 a R$ 28.200
+      </div>
+      <div class="verba-projecao">
+        <p><strong>Com R$ 15.000 de verba + upsell interno bem estruturado, o evento tem potencial real de empatar ou sair no positivo.</strong></p>
+      </div>
+    </div>
+    <div class="verba-item">
+      <div class="verba-lbl">Cen&aacute;rio agressivo &mdash; meta de lota&ccedil;&atilde;o total (400 pessoas)</div>
+      <div class="verba-total">R$ 20.000 a R$ 30.000</div>
+      <div class="verba-breakdown">
+        <strong>R$ 465-700/dia</strong> — campanha em escala máxima<br>
+        Exige criativos em alta rota&ccedil;&atilde;o (novo a cada 5-7 dias)<br>
+        CPL alvo: R$ 15-25 → <strong>800 a 2.000 leads qualificados</strong><br>
+        Com taxa de convers&atilde;o 15-25%: <strong>120 a 500 ingressos</strong>
+      </div>
+      <div class="verba-projecao" style="background:rgba(201,168,76,0.04);border-color:rgba(201,168,76,0.15);">
+        <p style="color:rgba(201,168,76,0.7);">&#9733; <strong style="color:var(--gold);">Cenário de lota&ccedil;&atilde;o total — requer tamb&eacute;m esfor&ccedil;o org&acirc;nico intenso dos palestrantes e entrevistadores paralelamente.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gold-box">
+    <h3>O multiplicador que a EmpresAtiva n&atilde;o controla — mas pode potencializar</h3>
+    <p>Dr. Corassa e R&ocirc;mulo Amaro t&ecirc;m base de seguidores pr&oacute;pria. Alan Matheus (patrocinador) tem rede no imobili&aacute;rio. A Dra. Iglesias Passos tem p&uacute;blico de liderança. <strong>A EmpresAtiva prepara o kit completo de divulga&ccedil;&atilde;o para cada um — story pr&oacute;prio, link personalizado, texto para WhatsApp — para que cada palestrante seja um canal de venda paralelo ao tráfego pago.</strong> Organicamente, se cada um converter apenas 10 pessoas da pr&oacute;pria rede, j&aacute; s&atilde;o 50 ingressos a custo zero.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">O que a EmpresAtiva entrega</div>
+  <h2 class="sec-title">Tudo que o<br><em>lan&ccedil;amento<br>precisa.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">⚡</div>
+      <div>
+        <h3>Pixel + rastreamento em 48h</h3>
+        <p>Pixel Meta instalado na página de vendas, evento de compra configurado no Sympla. A partir da&#237; o Meta começa a aprender quem converte e o remarketing passa a funcionar de verdade.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Roteiro e edi&ccedil;&atilde;o dos criativos de v&iacute;deo</h3>
+        <p>Script completo para cada fase do lançamento — v&iacute;deo de autoridade dos palestrantes, v&iacute;deo de apresenta&ccedil;&atilde;o do evento, v&iacute;deo de urgência. A equipe da Jéssica grava, a EmpresAtiva edita para an&uacute;ncio.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas no Meta</h3>
+        <p>Estrutura por fase: aquecimento, apresenta&ccedil;&atilde;o e fechamento. P&uacute;blicos personalizados por engagement de v&iacute;deo e remarketing de visitantes da p&aacute;gina. Otimiza&ccedil;&atilde;o di&aacute;ria nos &uacute;ltimos 15 dias.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Remarketing agressivo na reta final</h3>
+        <p>Quem assistiu 75%+ do v&iacute;deo, quem visitou a p&aacute;gina de vendas, quem iniciou compra no Sympla e n&atilde;o finalizou — cada perfil recebe um criativo específico e uma abordagem de urgência diferente.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📦</div>
+      <div>
+        <h3>Kit de divulga&ccedil;&atilde;o para os palestrantes</h3>
+        <p>Story editado, texto para WhatsApp, link personalizado para rastreamento por palestrante. Cada um divulga para a pr&oacute;pria rede com material profissional — e a EmpresAtiva rastreia quantos ingressos cada canal gerou.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard de vendas em tempo real</h3>
+        <p>Painel com ingressos vendidos por categoria, gasto de m&iacute;dia, custo por ingresso e proje&ccedil;&atilde;o de lotação. Gustavo acompanha diariamente sem precisar pedir relat&oacute;rio.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alertas di&aacute;rios de vendas</h3>
+        <p>Notifica&ccedil;&atilde;o toda vez que uma nova venda &eacute; confirmada no Sympla — para o time saber em tempo real quantas vagas foram preenchidas e quantas restam para gerar urgência real nos an&uacute;ncios.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte di&aacute;rio com Jo&atilde;o Marot</h3>
+        <p>Acompanhamento intensivo — especialmente na &uacute;ltima semana antes do evento. Decis&otilde;es r&aacute;pidas de orçamento, troca de criativo e escala conforme os dados do dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento — fee de gest&atilde;o</div>
+  <h2 class="sec-title">Fee &uacute;nico pelo<br><em>projeto de<br>lan&ccedil;amento.</em></h2>
+  <p class="sec-intro">Este &eacute; um projeto de lan&ccedil;amento com prazo fixo — 43 dias at&eacute; o evento. O fee de gest&atilde;o &eacute; cobrado uma &uacute;nica vez e cobre toda a opera&ccedil;&atilde;o at&eacute; o dia 20 de agosto.</p>
+
+  <div class="inv-main">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Projeto de Lan&ccedil;amento &mdash; Expo Sa&uacute;de &amp; Riqueza &middot; at&eacute; 20 de agosto</div>
+      <div class="inv-price"><sub>R$</sub> 2.500</div>
+      <div class="inv-period">fee &uacute;nico de gest&atilde;o &middot; + verba de an&uacute;ncios separada</div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Instala&ccedil;&atilde;o do Pixel Meta e configura&ccedil;&atilde;o de rastreamento de vendas</li>
+        <li>Roteiro e edi&ccedil;&atilde;o dos criativos de v&iacute;deo (todas as fases)</li>
+        <li>Gest&atilde;o completa das campanhas Meta Ads (43 dias)</li>
+        <li>Estrutura de remarketing por engagement e visitas</li>
+        <li>Kit de divulga&ccedil;&atilde;o para palestrantes e mediadores</li>
+        <li>Dashboard de vendas em tempo real</li>
+        <li>Alertas di&aacute;rios de novas vendas</li>
+        <li>Otimiza&ccedil;&atilde;o di&aacute;ria na &uacute;ltima semana pr&eacute;-evento</li>
+        <li>Suporte direto com Jo&atilde;o Marot durante todo o projeto</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa</strong> — investida diretamente no Meta pelo Gustavo, conforme o cen&aacute;rio escolhido (m&iacute;nimo R$ 5.000, recomendado R$ 10.000 a R$ 15.000).</p>
+    </div>
+  </div>
+
+  <!-- ROI -->
+  <div class="roi-box">
+    <h4>Retorno sobre o investimento — cen&aacute;rios reais</h4>
+    <div class="roi-cenarios">
+      <div class="roi-item">
+        <div><div class="roi-desc"><strong>Verba R$ 5k + fee R$ 2.500</strong> &middot; total investido R$ 7.500</div><div class="roi-desc">Projeção: 19-50 ingressos &middot; receita R$ 2.850-7.500</div></div>
+        <div class="roi-val" style="color:var(--muted);">Empate</div>
+      </div>
+      <div class="roi-item">
+        <div><div class="roi-desc"><strong>Verba R$ 10k + fee R$ 2.500</strong> &middot; total investido R$ 12.500</div><div class="roi-desc">Projeção: 50-120 ingressos &middot; receita R$ 7.500-18.000</div></div>
+        <div class="roi-val">+R$ 5k</div>
+      </div>
+      <div class="roi-item meta">
+        <div><div class="roi-desc"><strong>Verba R$ 15k + fee R$ 2.500 + upsell interno</strong></div><div class="roi-desc">Projeção: 100-200 pessoas &middot; ticket m&eacute;dio R$ 200 &middot; receita R$ 20-40k</div></div>
+        <div class="roi-val">+R$ 17k</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Gustavo,<br>43 dias &eacute; o que<br><em>resta para<br>o evento acontecer<br>do jeito certo.</em></h2>
+  <p>O Dr. Corassa cura câncer com alimentação. R&ocirc;mulo Amaro escalou dezenas de empresas no RJ. Alan Matheus &eacute; refer&ecirc;ncia no imobili&aacute;rio de alto padrão. A EmpresAtiva &eacute; quem estrutura o tráfego para que esse evento aconteça — com as 400 cadeiras ocupadas.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar%20imediatamente!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot agora
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
