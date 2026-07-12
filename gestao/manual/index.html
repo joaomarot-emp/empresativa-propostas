@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Gestão — EmpresAtiva Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c0e; --panel:#151519; --panel-2:#1b1b21;
+    --line:#2a2a31; --line-soft:#232329;
+    --ink:#f4f4f2; --ink-mid:#c4c4cc; --ink-dim:#8a8a94;
+    --brand:#ff6a00; --brand-soft:#ff8a3d;
+    --grow:#3ee08a; --grow-dim:rgba(62,224,138,.12);
+    --com:#4d9dff; --com-dim:rgba(77,157,255,.12);
+    --stop:#ff5252;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(1300px 700px at 88% -8%, rgba(255,106,0,.09), transparent 60%), var(--bg);
+    color:var(--ink); font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 100px}
+
+  /* ---- Sticky nav ---- */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(12,12,14,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-in{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:11px 20px}
+  .nav-brand{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;
+    letter-spacing:.2em;color:var(--brand);text-transform:uppercase;flex-shrink:0;
+  }
+  .nav-pills{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
+  .nav-pills::-webkit-scrollbar{display:none}
+  .nav-pills a{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+    color:var(--ink-dim);text-decoration:none;padding:6px 11px;border-radius:999px;
+    white-space:nowrap;transition:all .15s;letter-spacing:.03em;
+  }
+  .nav-pills a:hover{color:var(--ink);background:var(--panel)}
+  .nav-pills a.active{color:#111;background:var(--brand);font-weight:600}
+
+  /* ---- Cover ---- */
+  header.cover{padding:66px 0 40px;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--brand)}
+  h1.title{font-family:"Archivo";font-weight:900;font-size:clamp(34px,7vw,62px);
+    line-height:1;letter-spacing:-.025em;margin:20px 0 16px}
+  h1.title .em{color:var(--brand)}
+  .cover .lead{font-size:17px;color:var(--ink-mid);max-width:62ch}
+  .cover-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-dim)}
+  .cover-meta b{color:var(--ink-mid);font-weight:500}
+
+  /* ---- Section skeleton ---- */
+  section{padding:52px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:64px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--brand)}
+  h2{font-family:"Archivo";font-weight:800;font-size:clamp(24px,4vw,32px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin-bottom:26px;max-width:64ch}
+
+  p{color:var(--ink-mid);font-size:15.5px}
+  b,strong{color:var(--ink);font-weight:600}
+  .accent{color:var(--brand-soft)}
+
+  /* ---- Objetivo hero ---- */
+  .goal{display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px 32px;margin-top:6px}
+  .goal .big{font-family:"Archivo";font-weight:900;font-size:clamp(30px,6vw,46px);letter-spacing:-.03em}
+  .goal .from{color:var(--ink-dim)} .goal .to{color:var(--brand)}
+  .goal .arw{color:var(--brand);font-size:28px}
+  .goal .note{font-size:14px;color:var(--ink-mid);max-width:34ch;border-left:2px solid var(--brand);padding-left:14px}
+
+  /* ---- Stage badge ---- */
+  .stage{display:inline-flex;align-items:center;gap:10px;background:var(--grow-dim);
+    border:1px solid rgba(62,224,138,.3);color:var(--grow);border-radius:999px;
+    padding:8px 16px;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;margin-bottom:20px}
+  .stage::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grow)}
+
+  /* ---- Gargalos grid ---- */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .gcard{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:22px;border-top:2px solid var(--stop)}
+  .gcard .gnum{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--stop);margin-bottom:8px}
+  .gcard h3{font-family:"Archivo";font-size:19px;font-weight:700;margin-bottom:8px}
+  .gcard p{font-size:14px;color:var(--ink-mid);line-height:1.5}
+
+  /* ---- Org chart ---- */
+  .org{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:34px 24px;margin-top:6px}
+  .node{border:1px solid var(--line);border-radius:11px;padding:14px 18px;text-align:center;background:var(--panel-2)}
+  .node .role{font-family:"Archivo";font-weight:700;font-size:16px}
+  .node .fn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);
+    text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+  .node.ceo{border-color:var(--brand);background:linear-gradient(180deg,rgba(255,106,0,.14),var(--panel-2));max-width:340px;margin:0 auto}
+  .node.ceo .role{color:var(--brand-soft)}
+  .stem{width:1px;height:26px;background:var(--line);margin:0 auto}
+  .tier{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2px}
+  .col{display:flex;flex-direction:column;align-items:center;gap:0}
+  .node.lab{border-style:dashed;border-color:var(--brand-soft)}
+  .node.lab .fn{color:var(--brand-soft)}
+  .lab-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--brand-soft);
+    margin-top:8px;letter-spacing:.05em}
+  .sub-stem{width:1px;height:20px;background:var(--line)}
+
+  /* ---- Papéis ---- */
+  .role-card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:24px;margin-bottom:14px}
+  .role-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .role-top h3{font-family:"Archivo";font-size:22px;font-weight:800}
+  .role-goal{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--brand-soft);
+    text-transform:uppercase;letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cols h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:10px}
+  .cols .does h4{color:var(--grow)} .cols .not h4{color:var(--stop)}
+  .cols ul{list-style:none}
+  .cols li{font-size:14px;color:var(--ink-mid);padding:4px 0 4px 20px;position:relative;line-height:1.45}
+  .does li::before{content:"→";position:absolute;left:0;color:var(--grow);font-weight:600}
+  .not li::before{content:"×";position:absolute;left:0;color:var(--stop);font-weight:600}
+
+  /* ---- Áreas ---- */
+  .area{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:20px 22px;margin-bottom:12px;display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+  .area-main{flex:1;min-width:200px}
+  .area h3{font-family:"Archivo";font-size:18px;font-weight:700;margin-bottom:4px}
+  .area .obj{font-size:14px;color:var(--ink-mid)}
+  .area .kpis{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .kpi{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-mid);
+    background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+  .area.gap{border-left:2px solid var(--brand)}
+  .area .flag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--brand);margin-top:6px}
+
+  /* ---- Rituais ---- */
+  .grid-rit{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rit{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px 22px}
+  .rit .when{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--brand);margin-bottom:6px;display:flex;justify-content:space-between}
+  .rit .when .dur{color:var(--ink-dim)}
+  .rit h3{font-family:"Archivo";font-size:18px;font-weight:700;margin-bottom:8px}
+  .rit .who{font-size:13px;color:var(--ink-dim);margin-bottom:10px}
+  .rit ul{list-style:none} .rit li{font-size:14px;color:var(--ink-mid);padding:2px 0 2px 16px;position:relative}
+  .rit li::before{content:"·";position:absolute;left:4px;color:var(--brand)}
+
+  /* ---- CEO time hero viz ---- */
+  .ceo-viz{background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px 32px;margin-top:6px}
+  .ceo-viz .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:4px}
+  .ceo-viz .h{font-family:"Archivo";font-size:20px;font-weight:700;margin-bottom:22px}
+  .ceo-viz .h .accent{color:var(--brand-soft)}
+  .barblock{margin-bottom:24px}
+  .barblock:last-of-type{margin-bottom:0}
+  .barlabel{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+  .barlabel .l{font-family:"IBM Plex Mono",monospace;letter-spacing:.05em;color:var(--ink-dim);text-transform:uppercase;font-size:11px}
+  .barlabel .l.now{color:var(--ink-mid)} .barlabel .l.goal{color:var(--brand-soft)}
+  .bar{display:flex;height:38px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+  .seg{display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;
+    font-size:12px;font-weight:600;color:#0c0c0e;transition:width 1s cubic-bezier(.2,.7,.3,1)}
+  .seg.est{background:var(--brand)} .seg.com{background:var(--grow)} .seg.op{background:#3a3a42;color:var(--ink-mid)}
+  .barlegend{display:flex;gap:18px;margin-top:20px;flex-wrap:wrap;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim)}
+  .barlegend span{display:flex;align-items:center;gap:7px}
+  .barlegend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .dot-est{background:var(--brand)} .dot-com{background:var(--grow)} .dot-op{background:#3a3a42}
+
+  /* ---- KPI pillars ---- */
+  .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+  .kpil{background:var(--panel);border:1px solid var(--line-soft);border-radius:11px;padding:16px 18px}
+  .kpil h4{font-family:"Archivo";font-size:15px;font-weight:700;margin-bottom:8px}
+  .kpil .kpis{gap:5px}
+
+  /* ---- Roadmap ---- */
+  .phase{display:flex;gap:20px;margin-bottom:12px}
+  .phase-rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+  .phase-dot{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:13px;color:#0c0c0e;
+    background:var(--brand);width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+  .phase-line{width:2px;flex:1;background:var(--line);margin-top:6px}
+  .phase:last-child .phase-line{display:none}
+  .phase-body{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:20px 22px;flex:1;margin-bottom:4px}
+  .phase-body .pt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:2px}
+  .phase-body h3{font-family:"Archivo";font-size:19px;font-weight:700;margin-bottom:12px}
+  .phase-body h3 .accent{color:var(--brand-soft)}
+  .phase-body ul{list-style:none}
+  .phase-body li{font-size:14.5px;color:var(--ink-mid);padding:4px 0 4px 20px;position:relative}
+  .phase-body li::before{content:"→";position:absolute;left:0;color:var(--brand)}
+  .warnbox{margin-top:12px;padding:12px 14px;background:rgba(255,82,82,.07);
+    border:1px solid rgba(255,82,82,.25);border-radius:9px;font-size:13.5px;color:var(--ink-mid)}
+  .warnbox b{color:var(--stop)}
+
+  /* ---- North star ---- */
+  .north{background:linear-gradient(160deg,rgba(255,106,0,.13),var(--panel));
+    border:1px solid var(--brand);border-radius:18px;padding:40px 36px}
+  .north .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+  .north .thesis{font-family:"Archivo";font-weight:800;font-size:clamp(22px,4vw,30px);
+    line-height:1.2;letter-spacing:-.015em;margin-bottom:22px}
+  .north .thesis .strike{color:var(--ink-dim);text-decoration:line-through;text-decoration-color:var(--stop)}
+  .north .thesis .em{color:var(--brand-soft)}
+  .north .shift{display:grid;gap:10px}
+  .north .shift div{font-size:15px;color:var(--ink-mid);padding-left:20px;position:relative}
+  .north .shift div::before{content:"▸";position:absolute;left:0;color:var(--brand)}
+  .north .shift b{color:var(--ink)}
+
+  footer{padding-top:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.03em}
+
+  @media(max-width:680px){
+    .grid-2,.grid-rit,.kpi-grid,.cols,.tier{grid-template-columns:1fr}
+    .goal{flex-direction:column;align-items:flex-start;gap:14px}
+    .nav-brand{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){.seg{transition:none}}
+  @media print{
+    nav{display:none} body{background:#fff;color:#111}
+    section{border-color:#eee} .gcard,.role-card,.area,.rit,.org,.phase-body,.kpil{background:#fff;border-color:#ddd}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <span class="nav-brand">EmpresAtiva</span>
+    <div class="nav-pills">
+      <a href="#visao">Visão</a>
+      <a href="#diagnostico">Diagnóstico</a>
+      <a href="#organograma">Organograma</a>
+      <a href="#papeis">Papéis</a>
+      <a href="#areas">Áreas</a>
+      <a href="#rituais">Rituais</a>
+      <a href="#kpis">KPIs</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#norte">Norte</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="cover">
+    <div class="eyebrow">Manual de Gestão · v1.0</div>
+    <h1 class="title">Como a <span class="em">EmpresAtiva</span><br>é gerida.</h1>
+    <p class="lead">O documento de referência da empresa: estrutura, papéis, áreas, rituais, indicadores e o plano de 90 dias. Companheiro do <b style="color:var(--ink)">Manual de Autonomia</b> — juntos, formam o sistema de gestão.</p>
+    <div class="cover-meta">
+      <span><b>Vigência</b> Julho / 2026</span>
+      <span><b>Meta 12 meses</b> R$40k → R$100k/mês</span>
+      <span><b>Time</b> João · Karol · Miguel · Nathalia</span>
+    </div>
+  </header>
+
+  <!-- 01 -->
+  <section id="visao">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Visão geral</h2></div>
+    <p class="sec-sub">A EmpresAtiva ajuda empresas a crescer com tráfego pago, implementação comercial, automação, IA, landing pages e GBP — hoje ~40 clientes, com um time enxuto fortemente apoiado por automação.</p>
+    <div class="goal">
+      <div class="big"><span class="from">R$40k</span> <span class="arw">▸</span> <span class="to">R$100k</span></div>
+      <div class="note">em 12 meses, <b style="color:var(--ink)">sem aumentar proporcionalmente a dependência do fundador</b>. O foco não é vender mais — é crescer de forma previsível.</div>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section id="diagnostico">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Diagnóstico</h2></div>
+    <p class="sec-sub">A empresa já passou da fase de sobrevivência: tem processos, automação madura, time fixo, metodologia própria e receita recorrente. O próximo desafio não é estruturar uma agência — é estruturar uma empresa.</p>
+    <div class="stage">Estágio: Profissionalização inicial</div>
+    <p style="margin-bottom:22px">O maior problema não é operacional. São <b>quatro gargalos</b> conectados — e todos passam por concentração.</p>
+    <div class="grid-2">
+      <div class="gcard">
+        <div class="gnum">Gargalo 01</div>
+        <h3>João é o centro</h3>
+        <p>Você acumula CEO, comercial, head de tráfego, especialista em IA, especialista em automação e estrategista. Enquanto quase toda decisão passa por você, o crescimento é limitado pela sua agenda.</p>
+      </div>
+      <div class="gcard">
+        <div class="gnum">Gargalo 02</div>
+        <h3>Valor percebido</h3>
+        <p>A agência entrega muito mais do que o cliente enxerga — análises automáticas, dashboard, alertas, CAPI, CRM, IA. Mas ele vê "campanhas". Você entrega uma estrutura de crescimento. A distância entre as duas coisas é o que faz o cliente cancelar fácil.</p>
+      </div>
+      <div class="gcard">
+        <div class="gnum">Gargalo 03</div>
+        <h3>Comercial sem motor</h3>
+        <p>O crescimento depende quase só de você. Não há aquisição previsível. Para chegar a R$100k, é preciso ativar três canais: <b>indicação, prospecção e conteúdo</b> — sendo indicação a alavanca de maior ROI hoje parada.</p>
+      </div>
+      <div class="gcard">
+        <div class="gnum">Gargalo 04</div>
+        <h3>Conhecimento concentrado</h3>
+        <p>Toda a inteligência — IA, n8n, automações, integrações — está na sua cabeça. Isso não é gargalo de crescimento: é <b>risco existencial</b>. Duas semanas fora e o stack fica sem dono.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section id="organograma">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Organograma</h2></div>
+    <p class="sec-sub">Repare na mudança central: IA e Automação <b>saem da operação</b> e viram um Build Lab — área de inovação que cria ativos para a empresa inteira. Não é tarefa diária; é vantagem competitiva.</p>
+    <div class="org">
+      <div class="node ceo">
+        <div class="role">João</div>
+        <div class="fn">CEO · Estratégia · Comercial</div>
+      </div>
+      <div class="stem"></div>
+      <div class="tier">
+        <div class="col">
+          <div class="node" style="width:100%">
+            <div class="role">Karol</div>
+            <div class="fn">Coordenação de Operações</div>
+          </div>
+          <div class="sub-stem"></div>
+          <div class="node" style="width:100%">
+            <div class="role">Miguel</div>
+            <div class="fn">Gestor de Tráfego</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="node" style="width:100%">
+            <div class="role">Nathalia</div>
+            <div class="fn">Design + Landing Pages</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="node lab" style="width:100%">
+            <div class="role">Build Lab</div>
+            <div class="fn">IA + Automações</div>
+          </div>
+          <div class="lab-tag">▸ área do João · inovação, não operação</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section id="papeis">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Papéis</h2></div>
+    <p class="sec-sub">Cada papel definido pelo que <b>faz</b> e — igualmente importante — pelo que <b>deixa de fazer</b>. É o "deixa de fazer" que tira o João da operação.</p>
+
+    <div class="role-card">
+      <div class="role-top"><h3>João</h3><span class="role-goal">Objetivo: crescimento previsível</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li>Estratégia e crescimento</li><li>Comercial e grandes clientes</li>
+          <li>Inovação: IA e automações (Build Lab)</li><li>Ritual mensal de resultado com o cliente</li><li>Leitura dos indicadores</li>
+        </ul></div>
+        <div class="not"><h4>Deixa de fazer</h4><ul>
+          <li>Revisar campanha diariamente</li><li>Responder dúvida operacional</li>
+          <li>Organizar fila de tarefas</li><li>Cobrar prazo de designer</li><li>Revisar anúncios</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-top"><h3>Karol</h3><span class="role-goal">Objetivo: virar Coordenadora de Operações</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li>Qualidade e liderança da operação</li><li>Distribuição das contas</li>
+          <li>Treinamento e 1:1 com o Miguel</li><li>GBP</li>
+          <li>Manutenção do stack (destravar, não construir)</li><li>Melhorias da entrega</li>
+        </ul></div>
+        <div class="not"><h4>Deixa de fazer</h4><ul>
+          <li>Esperar o João pra decidir otimização</li><li>Segurar 33 contas na mão sozinha</li>
+          <li>Mexer em contrato ou verba do cliente sem alinhar</li><li>Construir automação nova</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-top"><h3>Miguel</h3><span class="role-goal">Objetivo: assumir carteira própria</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li>Execução das campanhas</li><li>Otimizações de rotina</li>
+          <li>Operação do dia a dia sob a Karol</li>
+        </ul></div>
+        <div class="not"><h4>Deixa de fazer</h4><ul>
+          <li>Levar dúvida técnica direto ao João</li><li>Decidir sozinho fora da rotina</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-top"><h3>Nathalia</h3><span class="role-goal">Entrega de criativo e conversão</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li>Criativos</li><li>Landing pages</li><li>Identidade visual</li><li>Materiais comerciais</li>
+        </ul></div>
+        <div class="not"><h4>Ponto em aberto</h4><ul>
+          <li>Definir se é CLT ou PJ — se PJ, é ponto único de falha no criativo</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section id="areas">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Áreas da empresa</h2></div>
+    <p class="sec-sub">Organize por área, não por pessoa. Cada área tem um objetivo e KPIs próprios — mesmo que hoje uma pessoa cubra várias.</p>
+
+    <div class="area">
+      <div class="area-main"><h3>Comercial</h3><div class="obj">Trazer novos clientes.</div></div>
+      <div class="kpis"><span class="kpi">Leads</span><span class="kpi">Reuniões</span><span class="kpi">Conversão</span><span class="kpi">Ticket</span><span class="kpi">Receita nova</span></div>
+    </div>
+
+    <div class="area">
+      <div class="area-main"><h3>Operação</h3><div class="obj">Entregar resultado.</div></div>
+      <div class="kpis"><span class="kpi">Contas auditadas</span><span class="kpi">SLA</span><span class="kpi">Performance</span><span class="kpi">Pendências</span><span class="kpi">Retrabalho</span></div>
+    </div>
+
+    <div class="area gap">
+      <div class="area-main"><h3>Customer Success</h3><div class="obj">Reter clientes e gerar indicação.</div>
+      <div class="flag">▸ Dono interino: João (ritual mensal) · 1º cargo a contratar ao escalar</div></div>
+      <div class="kpis"><span class="kpi">Churn</span><span class="kpi">NPS</span><span class="kpi">Tempo médio</span><span class="kpi">Upsell</span><span class="kpi">Indicações</span></div>
+    </div>
+
+    <div class="area">
+      <div class="area-main"><h3>Financeiro</h3><div class="obj">Sustentar a saúde do negócio.</div></div>
+      <div class="kpis"><span class="kpi">Receita</span><span class="kpi">Margem</span><span class="kpi">Caixa</span><span class="kpi">MRR</span></div>
+    </div>
+
+    <div class="area">
+      <div class="area-main"><h3>Inovação (Build Lab)</h3><div class="obj">Criar vantagem competitiva. Área do João.</div></div>
+      <div class="kpis"><span class="kpi">IA</span><span class="kpi">Automações</span><span class="kpi">Novos produtos</span></div>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section id="rituais">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Sistema de reuniões</h2></div>
+    <p class="sec-sub">Quatro rituais — nem um a mais. Reunião estruturada substitui interrupção constante; é o que para de "apagar incêndio".</p>
+    <div class="grid-rit">
+      <div class="rit">
+        <div class="when"><span>Segunda · Operação</span><span class="dur">30 min</span></div>
+        <h3>Prioridades da semana</h3>
+        <div class="who">João · Karol · Miguel</div>
+        <ul><li>Prioridades</li><li>Gargalos</li><li>Clientes críticos</li></ul>
+      </div>
+      <div class="rit">
+        <div class="when"><span>Sexta · Performance</span><span class="dur">45 min</span></div>
+        <h3>Indicadores da semana</h3>
+        <div class="who">Time de operação</div>
+        <ul><li>Clientes</li><li>Campanhas</li><li>SLA</li><li>Pendências</li></ul>
+      </div>
+      <div class="rit">
+        <div class="when"><span>Mensal · Resultado</span><span class="dur">com o cliente</span></div>
+        <h3>Valor percebido</h3>
+        <div class="who">João + cliente</div>
+        <ul><li>Resultado de negócio</li><li>Oportunidades</li><li>Próximos passos</li></ul>
+      </div>
+      <div class="rit">
+        <div class="when"><span>Mensal · Estratégia</span><span class="dur">só equipe</span></div>
+        <h3>Melhorar a máquina</h3>
+        <div class="who">Time</div>
+        <ul><li>Processos</li><li>Melhorias</li><li>IA e inovação</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section id="kpis">
+    <div class="sec-head"><span class="sec-num">07</span><h2>KPIs estratégicos</h2></div>
+    <p class="sec-sub">Cinco pilares. O quinto — o tempo do CEO — é o mais importante de todos: é o termômetro real de que você está saindo da operação.</p>
+
+    <div class="ceo-viz">
+      <div class="cap">Pilar CEO · o indicador que importa</div>
+      <div class="h">Onde o João gasta o tempo <span class="accent">— hoje vs. meta</span></div>
+
+      <div class="barblock">
+        <div class="barlabel"><span class="l now">Hoje</span></div>
+        <div class="bar">
+          <div class="seg est" style="width:15%">15%</div>
+          <div class="seg com" style="width:20%">20%</div>
+          <div class="seg op" style="width:65%">Operação 65%</div>
+        </div>
+      </div>
+
+      <div class="barblock">
+        <div class="barlabel"><span class="l goal">Meta para sustentar R$100k</span></div>
+        <div class="bar">
+          <div class="seg est" data-w="35" style="width:35%">35%</div>
+          <div class="seg com" data-w="45" style="width:45%">45%</div>
+          <div class="seg op" data-w="20" style="width:20%">Op. 20%</div>
+        </div>
+      </div>
+
+      <div class="barlegend">
+        <span><i class="dot-est"></i> Estratégia</span>
+        <span><i class="dot-com"></i> Comercial</span>
+        <span><i class="dot-op"></i> Operação</span>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpil"><h4>Comercial</h4><div class="kpis"><span class="kpi">Receita nova</span><span class="kpi">Taxa de fechamento</span><span class="kpi">Ticket médio</span></div></div>
+      <div class="kpil"><h4>Clientes</h4><div class="kpis"><span class="kpi">Churn</span><span class="kpi">Indicações</span><span class="kpi">Upsell</span></div></div>
+      <div class="kpil"><h4>Operação</h4><div class="kpis"><span class="kpi">SLA</span><span class="kpi">Entregas</span><span class="kpi">Performance</span></div></div>
+      <div class="kpil"><h4>Pessoas</h4><div class="kpis"><span class="kpi">Autonomia</span><span class="kpi">Treinamentos</span><span class="kpi">Erros recorrentes</span></div></div>
+    </div>
+  </section>
+
+  <!-- 08 -->
+  <section id="roadmap">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Roadmap de 90 dias</h2></div>
+    <p class="sec-sub">Três fases, uma dependendo da outra. Primeiro tira o João da operação; depois blinda a retenção; só então constrói previsibilidade comercial.</p>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">30</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 1 · 30 dias</div>
+        <h3>Tirar o João da <span class="accent">operação diária</span></h3>
+        <ul>
+          <li>Formalizar a Karol como Coordenadora de Operações</li>
+          <li>Implantar a Matriz de Autonomia (já criada)</li>
+          <li>Redirecionar toda dúvida operacional para a Karol — sem exceção</li>
+          <li>Definir KPIs de entrega por cliente</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">60</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 2 · 60 dias</div>
+        <h3>Fortalecer <span class="accent">retenção e valor percebido</span></h3>
+        <ul>
+          <li>Criar um Scorecard Executivo por cliente (reaproveitando a análise 4.2.1)</li>
+          <li>Padronizar a reunião mensal de resultado — dono: João</li>
+          <li>Estruturar o processo de Customer Success</li>
+          <li>Implantar fluxo de pedido de indicação aos 40 clientes satisfeitos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">90</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 3 · 90 dias</div>
+        <h3>Construir <span class="accent">previsibilidade de crescimento</span></h3>
+        <ul>
+          <li>Estruturar o funil comercial com metas semanais</li>
+          <li>Definir metas por área (Comercial, Operação, CS, Financeiro)</li>
+          <li>Criar o dashboard executivo de KPIs</li>
+        </ul>
+        <div class="warnbox"><b>Encarar a conta:</b> 40 clientes × ~R$1.000 = R$40k. Chegar a R$100k com 3 pessoas não vem de volume — vem de <b>subir ticket</b> (mix pró-Arquitetura de Receita) <b>+ 1 contratação</b>. A pergunta desta fase é qual cargo entra primeiro: CS (blinda retenção) ou júnior de automação (blinda o Build Lab).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 -->
+  <section id="norte" style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">09</span><h2>O norte estratégico</h2></div>
+    <div class="north">
+      <div class="cap">A decisão que reorganiza todas as outras</div>
+      <div class="thesis">A EmpresAtiva deixa de ser uma <span class="strike">agência de tráfego</span> e passa a ser uma <span class="em">empresa de crescimento baseada em tecnologia.</span></div>
+      <div class="shift">
+        <div>Você deixa de vender <b>gestão de anúncios</b> e passa a vender <b>um sistema de aquisição e crescimento</b>.</div>
+        <div>IA e automação deixam de ser tarefa do fundador e viram o <b>diferencial competitivo</b> da empresa.</div>
+        <div>A gestão deixa de ser orientada por <b>entregas</b> (campanhas, criativos, LPs) e passa a ser orientada por <b>resultado de negócio</b> — aquisição, retenção, rentabilidade e escala.</div>
+      </div>
+    </div>
+    <footer>
+      <span>EMPRESATIVA DIGITAL · MANUAL DE GESTÃO V1.0 · JULHO 2026</span>
+      <span>REVISAR A CADA FASE</span>
+    </footer>
+  </section>
+
+</div>
+
+<script>
+  // scrollspy
+  const pills = document.querySelectorAll('.nav-pills a');
+  const secs = [...document.querySelectorAll('section[id]')];
+  const map = {};
+  pills.forEach(p=>map[p.getAttribute('href').slice(1)]=p);
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        pills.forEach(p=>p.classList.remove('active'));
+        map[e.target.id]?.classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>obs.observe(s));
+
+  // animate the goal bars on first view
+  const viz = document.querySelector('.ceo-viz');
+  if(viz){
+    const segs = viz.querySelectorAll('.seg[data-w]');
+    const vobs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          segs.forEach(s=>{ s.style.width='0%'; requestAnimationFrame(()=>{ s.style.width=s.dataset.w+'%'; }); });
+          vobs.disconnect();
+        }
+      });
+    },{threshold:.4});
+    vobs.observe(viz);
+  }
+</script>
+</body>
+</html>
