@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seção 10 — O Produto de Crescimento · Manual de Gestão EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c0e; --panel:#151519; --panel-2:#1b1b21;
+    --line:#2a2a31; --line-soft:#232329;
+    --ink:#f4f4f2; --ink-mid:#c4c4cc; --ink-dim:#8a8a94;
+    --brand:#ff6a00; --brand-soft:#ff8a3d;
+    --grow:#3ee08a; --grow-dim:rgba(62,224,138,.12);
+    --com:#4d9dff; --com-dim:rgba(77,157,255,.12);
+    --stop:#ff5252; --stop-dim:rgba(255,82,82,.09);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(1300px 700px at 88% -8%, rgba(255,106,0,.09), transparent 60%), var(--bg);
+    color:var(--ink); font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 100px}
+
+  /* ---- Sticky nav ---- */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(12,12,14,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-in{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:11px 20px}
+  .nav-brand{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;
+    letter-spacing:.2em;color:var(--brand);text-transform:uppercase;flex-shrink:0;
+  }
+  .nav-pills{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
+  .nav-pills::-webkit-scrollbar{display:none}
+  .nav-pills a{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+    color:var(--ink-dim);text-decoration:none;padding:6px 11px;border-radius:999px;
+    white-space:nowrap;transition:all .15s;letter-spacing:.03em;
+  }
+  .nav-pills a:hover{color:var(--ink);background:var(--panel)}
+  .nav-pills a.active{color:#111;background:var(--brand);font-weight:600}
+
+  /* ---- Cover ---- */
+  header.cover{padding:60px 0 40px;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--brand)}
+  h1.title{font-family:"Archivo";font-weight:900;font-size:clamp(32px,6.5vw,58px);
+    line-height:1;letter-spacing:-.025em;margin:20px 0 16px}
+  h1.title .em{color:var(--brand)}
+  .cover .lead{font-size:17px;color:var(--ink-mid);max-width:64ch}
+  .cover-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-dim)}
+  .cover-meta b{color:var(--ink-mid);font-weight:500}
+
+  /* ---- Section skeleton ---- */
+  section{padding:52px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:64px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--brand)}
+  h2{font-family:"Archivo";font-weight:800;font-size:clamp(23px,4vw,30px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin-bottom:26px;max-width:66ch}
+
+  p{color:var(--ink-mid);font-size:15.5px}
+  b,strong{color:var(--ink);font-weight:600}
+  .accent{color:var(--brand-soft)}
+  .lead-p{max-width:70ch;margin-bottom:16px}
+
+  /* ---- Tese: risk inversion ---- */
+  .tese{background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px 32px;margin-top:6px}
+  .tese .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px}
+  .tese .line{font-family:"Archivo";font-weight:800;font-size:clamp(20px,3.4vw,27px);
+    line-height:1.25;letter-spacing:-.015em;margin-bottom:6px}
+  .tese .line .strike{color:var(--ink-dim);text-decoration:line-through;text-decoration-color:var(--stop)}
+  .tese .line .em{color:var(--brand-soft)}
+
+  .flip{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .flipcard{border-radius:12px;padding:20px 22px;border:1px solid var(--line-soft)}
+  .flipcard.bad{background:var(--stop-dim);border-color:rgba(255,82,82,.28)}
+  .flipcard.good{background:var(--grow-dim);border-color:rgba(62,224,138,.3)}
+  .flipcard .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .flipcard.bad .tag{color:var(--stop)} .flipcard.good .tag{color:var(--grow)}
+  .flipcard h4{font-family:"Archivo";font-size:17px;font-weight:700;margin-bottom:8px}
+  .flipcard p{font-size:14px;color:var(--ink-mid);line-height:1.5}
+
+  /* ---- Convergência: one build → gargalos ---- */
+  .converge{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:30px 28px;margin-top:6px}
+  .converge .core{border:1px solid var(--brand);border-radius:11px;padding:16px 20px;text-align:center;
+    background:linear-gradient(180deg,rgba(255,106,0,.14),var(--panel-2));max-width:420px;margin:0 auto}
+  .converge .core .role{font-family:"Archivo";font-weight:800;font-size:19px;color:var(--brand-soft)}
+  .converge .core .fn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);
+    text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+  .fork{display:flex;justify-content:center;gap:0;margin:4px 0}
+  .fork .stem{width:1px;height:26px;background:var(--line)}
+  .conv-tier{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2px}
+  .conv-node{border:1px solid var(--line-soft);border-radius:11px;padding:16px 18px;background:var(--panel-2)}
+  .conv-node .g{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--stop);margin-bottom:6px}
+  .conv-node h4{font-family:"Archivo";font-size:15px;font-weight:700;margin-bottom:6px}
+  .conv-node p{font-size:13px;color:var(--ink-mid);line-height:1.45}
+  .conv-node .fix{margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:.04em;color:var(--grow);border-top:1px solid var(--line-soft);padding-top:9px}
+
+  /* ---- Motor: diagnostic funnel ---- */
+  .funnel{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:26px 24px;margin-top:6px}
+  .funnel .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:4px}
+  .funnel .h{font-family:"Archivo";font-size:18px;font-weight:700;margin-bottom:20px}
+  .funnel .h .accent{color:var(--brand-soft)}
+  .step{display:grid;grid-template-columns:120px 1fr auto;gap:14px;align-items:center;
+    border:1px solid var(--line-soft);border-radius:10px;padding:13px 16px;margin-bottom:8px;background:var(--panel-2)}
+  .step .metric{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--ink);letter-spacing:.02em}
+  .step .desc{font-size:13px;color:var(--ink-mid);line-height:1.4}
+  .step .ctrl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;
+    text-transform:uppercase;padding:4px 9px;border-radius:6px;white-space:nowrap}
+  .ctrl.you{color:var(--grow);background:var(--grow-dim);border:1px solid rgba(62,224,138,.3)}
+  .ctrl.shared{color:var(--com);background:var(--com-dim);border:1px solid rgba(77,157,255,.3)}
+  .ctrl.client{color:var(--ink-dim);background:#26262c;border:1px solid var(--line)}
+  .step.brk{border-color:var(--stop);background:var(--stop-dim);position:relative}
+  .step.brk .metric{color:var(--stop)}
+  .brk-tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--stop);display:flex;align-items:center;gap:7px;
+    margin:14px 0 6px;padding-left:2px}
+  .brk-tag::before{content:"◆";font-size:9px}
+  .funnel-note{margin-top:16px;font-size:13.5px;color:var(--ink-mid);border-left:2px solid var(--brand);padding-left:14px}
+
+  /* ---- Regras do motor ---- */
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  .rule{background:var(--panel);border:1px solid var(--line-soft);border-radius:11px;padding:16px 18px}
+  .rule .n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--brand);margin-bottom:8px}
+  .rule h4{font-family:"Archivo";font-size:15px;font-weight:700;margin-bottom:6px}
+  .rule p{font-size:13px;color:var(--ink-mid);line-height:1.45}
+
+  /* ---- Mapa de remédios ---- */
+  .remedy{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:20px 22px;margin-bottom:12px;border-left:2px solid var(--stop)}
+  .remedy-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .remedy-top .sig{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
+    color:var(--stop);text-transform:uppercase}
+  .remedy-top h3{font-family:"Archivo";font-size:18px;font-weight:700}
+  .remedy-top .cause{font-size:13px;color:var(--ink-dim)}
+  .remedy-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .rcol{border-radius:10px;padding:14px 16px;border:1px solid var(--line-soft)}
+  .rcol.diy{background:var(--grow-dim);border-color:rgba(62,224,138,.28)}
+  .rcol.dfy{background:var(--com-dim);border-color:rgba(77,157,255,.28)}
+  .rcol .lab{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:8px;font-weight:600}
+  .rcol.diy .lab{color:var(--grow)} .rcol.dfy .lab{color:var(--com)}
+  .rcol p{font-size:13.5px;color:var(--ink-mid);line-height:1.45}
+  .rcol .src{margin-top:8px;font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-dim)}
+  .remedy.svc{border-left-color:var(--com)}
+  .remedy.svc .sig{color:var(--com)}
+
+  /* ---- Honestidade box ---- */
+  .honest{background:linear-gradient(160deg,var(--com-dim),var(--panel));
+    border:1px solid rgba(77,157,255,.35);border-radius:var(--radius);padding:28px 30px;margin-top:6px}
+  .honest .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--com);margin-bottom:12px}
+  .honest .big{font-family:"Archivo";font-weight:800;font-size:clamp(19px,3.2vw,25px);
+    line-height:1.28;letter-spacing:-.01em;margin-bottom:16px}
+  .honest .big .em{color:var(--com)}
+  .honest p{font-size:14.5px;color:var(--ink-mid);max-width:68ch}
+  .quote-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .qbox{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:10px;padding:15px 17px}
+  .qbox .qt{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px}
+  .qbox.self .qt{color:var(--com)} .qbox.data .qt{color:var(--grow)}
+  .qbox .msg{font-size:14px;color:var(--ink);line-height:1.5;font-style:italic}
+
+  /* ---- Armadilha warnbox ---- */
+  .trap{margin-top:6px;padding:26px 28px;background:var(--stop-dim);
+    border:1px solid rgba(255,82,82,.3);border-radius:var(--radius)}
+  .trap .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--stop);margin-bottom:12px;display:flex;align-items:center;gap:9px}
+  .trap .cap::before{content:"▲"}
+  .trap .big{font-family:"Archivo";font-weight:800;font-size:clamp(19px,3.2vw,25px);
+    line-height:1.28;margin-bottom:14px}
+  .trap .big .em{color:var(--stop)}
+  .trap p{font-size:14.5px;color:var(--ink-mid);max-width:70ch;margin-bottom:14px}
+  .trap-rule{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+    display:flex;gap:14px;align-items:flex-start}
+  .trap-rule .k{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;color:#0c0c0e;
+    background:var(--grow);border-radius:6px;padding:4px 8px;white-space:nowrap;margin-top:1px}
+  .trap-rule .v{font-size:14px;color:var(--ink-mid)}
+  .trap-rule .v b{color:var(--ink)}
+
+  /* ---- Roadmap phases (reuso do idioma do manual) ---- */
+  .phase{display:flex;gap:20px;margin-bottom:12px}
+  .phase-rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+  .phase-dot{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:13px;color:#0c0c0e;
+    background:var(--brand);width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+  .phase-line{width:2px;flex:1;background:var(--line);margin-top:6px}
+  .phase:last-child .phase-line{display:none}
+  .phase-body{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:20px 22px;flex:1;margin-bottom:4px}
+  .phase-body .pt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:2px}
+  .phase-body h3{font-family:"Archivo";font-size:19px;font-weight:700;margin-bottom:6px}
+  .phase-body h3 .accent{color:var(--brand-soft)}
+  .phase-body .maps{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--grow);
+    margin-bottom:12px;letter-spacing:.02em}
+  .phase-body ul{list-style:none}
+  .phase-body li{font-size:14.5px;color:var(--ink-mid);padding:4px 0 4px 20px;position:relative}
+  .phase-body li::before{content:"→";position:absolute;left:0;color:var(--brand)}
+
+  /* ---- KPI expansão ---- */
+  .kexp{background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px 32px;margin-top:6px}
+  .kexp .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:4px}
+  .kexp .h{font-family:"Archivo";font-size:20px;font-weight:700;margin-bottom:6px}
+  .kexp .h .accent{color:var(--brand-soft)}
+  .kexp .desc{font-size:14.5px;color:var(--ink-mid);max-width:66ch;margin-bottom:24px}
+  .math{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+  .mbox{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--line-soft);
+    border-radius:11px;padding:18px 20px}
+  .mbox .ml{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px}
+  .mbox .mv{font-family:"Archivo";font-weight:900;font-size:clamp(22px,4vw,30px);letter-spacing:-.02em}
+  .mbox .ms{font-size:12px;color:var(--ink-dim);margin-top:4px}
+  .mbox.a .mv{color:var(--ink-mid)} .mbox.b .mv{color:var(--grow)} .mbox.c .mv{color:var(--brand)}
+  .marw{display:grid;place-items:center;font-size:22px;color:var(--brand);flex:0 0 auto}
+  .kexp .form{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-mid);
+    background:var(--panel);border:1px solid var(--line-soft);border-radius:9px;padding:14px 16px;line-height:1.6}
+  .kexp .form b{color:var(--brand-soft)}
+
+  /* ---- North (fechamento) ---- */
+  .north{background:linear-gradient(160deg,rgba(255,106,0,.13),var(--panel));
+    border:1px solid var(--brand);border-radius:18px;padding:38px 34px;margin-top:6px}
+  .north .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+  .north .thesis{font-family:"Archivo";font-weight:800;font-size:clamp(21px,3.6vw,28px);
+    line-height:1.24;letter-spacing:-.015em;margin-bottom:20px}
+  .north .thesis .em{color:var(--brand-soft)}
+  .north .shift{display:grid;gap:10px}
+  .north .shift div{font-size:15px;color:var(--ink-mid);padding-left:20px;position:relative}
+  .north .shift div::before{content:"▸";position:absolute;left:0;color:var(--brand)}
+  .north .shift b{color:var(--ink)}
+
+  footer{padding-top:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.03em}
+
+  @media(max-width:680px){
+    .flip,.conv-tier,.remedy-cols,.quote-row,.rules{grid-template-columns:1fr}
+    .step{grid-template-columns:1fr;gap:8px}
+    .step .ctrl{justify-self:start}
+    .nav-brand{display:none}
+  }
+  @media print{
+    nav{display:none} body{background:#fff;color:#111}
+    section{border-color:#eee}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <span class="nav-brand">EmpresAtiva · §10</span>
+    <div class="nav-pills">
+      <a href="#tese">Tese</a>
+      <a href="#convergencia">Convergência</a>
+      <a href="#motor">Motor</a>
+      <a href="#remedios">Remédios</a>
+      <a href="#honestidade">Honestidade</a>
+      <a href="#armadilha">Armadilha</a>
+      <a href="#roadmap10">Encaixe</a>
+      <a href="#kpi10">KPI</a>
+      <a href="#norte10">Norte</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="cover">
+    <div class="eyebrow">Adendo ao Manual de Gestão · Seção 10</div>
+    <h1 class="title">O Produto de<br><span class="em">Crescimento.</span></h1>
+    <p class="lead">O sistema operacional do Norte. Um portal de diagnóstico que torna o valor visível, dispara a oferta certa no ponto exato da dor e vira o motor de retenção e expansão da carteira — <b style="color:var(--ink)">sem assumir risco que a EmpresAtiva não controla</b>.</p>
+    <div class="cover-meta">
+      <span><b>Conecta</b> Norte · Gargalos 02·03·04 · Roadmap</span>
+      <span><b>Nasce em</b> Fase 2 (Scorecard)</span>
+      <span><b>Vira produto em</b> Fase 3 (Dashboard)</span>
+    </div>
+  </header>
+
+  <!-- 10.1 -->
+  <section id="tese">
+    <div class="sec-head"><span class="sec-num">10.1</span><h2>A tese corrigida</h2></div>
+    <p class="sec-sub">A tese da Sequoia diz "cobre por resultado". Para tráfego pago de negócio local isso é uma armadilha: a venda acontece na cadeira do salão, fora do nosso sistema, dependendo de gente que não treinamos. Prometer pay-per-sale é apostar na operação comercial dos outros.</p>
+
+    <div class="tese">
+      <div class="cap">A leitura certa para a nossa realidade</div>
+      <div class="line">Não é <span class="strike">software cobrando por venda</span>.</div>
+      <div class="line">É um <span class="em">motor de diagnóstico</span> que dispara a oferta certa no ponto da dor.</div>
+
+      <div class="flip">
+        <div class="flipcard bad">
+          <div class="tag">Pay-per-sale · o que NÃO fazemos</div>
+          <h4>Assumir o risco alheio</h4>
+          <p>Quando a venda do cliente falha, nós pagamos. Atraímos os piores processos comerciais — quem tem venda ruim é quem mais quer empurrar o risco pra cima da gente.</p>
+        </div>
+        <div class="flipcard good">
+          <div class="tag">Motor de diagnóstico · o que fazemos</div>
+          <h4>Monetizar o gargalo</h4>
+          <p>Quando a venda do cliente falha, nós vendemos o remédio. Monetizamos justamente as etapas do funil que não controlamos — em vez de apostar nelas. O risco vira receita.</p>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:18px" class="lead-p">Isso encaixa no que a EmpresAtiva já é: temos a instrumentação (Chatwoot vendo lead qualificado e agendamento, Windsor puxando métrica, CRM), os produtos (skills de criativo, OPV, Método Militar) e o braço de fechamento (Esquadrão da Venda). O portal só conecta o que já existe numa superfície única.</p>
+  </section>
+
+  <!-- 10.2 -->
+  <section id="convergencia">
+    <div class="sec-head"><span class="sec-num">10.2</span><h2>A convergência</h2></div>
+    <p class="sec-sub">O manual trata "valor percebido" e "comercial sem motor" como dois problemas. São dois sintomas do mesmo buraco — e o portal fecha os dois com um único build. Ele também é o Customer Success que a Seção 05 admite não ter.</p>
+
+    <div class="converge">
+      <div class="core">
+        <div class="role">O Portal de Diagnóstico</div>
+        <div class="fn">um build · três gargalos</div>
+      </div>
+      <div class="fork"><div class="stem"></div></div>
+      <div class="conv-tier">
+        <div class="conv-node">
+          <div class="g">Gargalo 02</div>
+          <h4>Valor percebido</h4>
+          <p>Torna visível o funil inteiro, a inteligência, os alertas, o CAPI, o CRM. O cliente para de ver "campanhas" e passa a ver a estrutura de crescimento.</p>
+          <div class="fix">▸ vira retenção</div>
+        </div>
+        <div class="conv-node">
+          <div class="g">Gargalo 03</div>
+          <h4>Comercial sem motor</h4>
+          <p>A mesma tela que mostra o valor dispara a oferta no ponto da dor — aula quando o CTR cai, Esquadrão quando o lead não é respondido.</p>
+          <div class="fix">▸ vira expansão</div>
+        </div>
+        <div class="conv-node">
+          <div class="g">Gargalo 04 · Áreas</div>
+          <h4>CS inexistente</h4>
+          <p>O portal É o Customer Success automatizado. Por isso o 1º hire deixa de ser CS humano — vira o júnior de automação, que também blinda o risco existencial.</p>
+          <div class="fix">▸ resolve a contratação da Fase 3</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:18px" class="lead-p">A pergunta em aberto do roadmap — "CS ou júnior de automação primeiro?" — tem resposta óbvia à luz disto: <b>o júnior de automação</b>. É ele quem constrói e mantém o portal (que faz o papel do CS) e, ao fazê-lo com documentação, desarma o conhecimento concentrado.</p>
+  </section>
+
+  <!-- 10.3 -->
+  <section id="motor">
+    <div class="sec-head"><span class="sec-num">10.3</span><h2>O motor de diagnóstico</h2></div>
+    <p class="sec-sub">O erro que mata 90% das ferramentas assim: o cliente abre, vê seis métricas amarelas e congela. O motor aponta UM gargalo por vez — o que trava o resto agora. Caminha o funil de cima pra baixo e crava a primeira etapa que quebra em relação ao benchmark.</p>
+
+    <div class="funnel">
+      <div class="cap">Exemplo · salão / estética</div>
+      <div class="h">O funil, do que controlamos ao que <span class="accent">não controlamos</span></div>
+
+      <div class="step">
+        <div class="metric">CTR</div>
+        <div class="desc">O criativo engancha? Primeiro filtro de atenção.</div>
+        <div class="ctrl you">Controlamos</div>
+      </div>
+      <div class="step">
+        <div class="metric">CPL</div>
+        <div class="desc">Custo por lead — oferta e página estão de pé?</div>
+        <div class="ctrl you">Controlamos</div>
+      </div>
+      <div class="step">
+        <div class="metric">% qualificado</div>
+        <div class="desc">A segmentação atrai o cliente certo, não curioso?</div>
+        <div class="ctrl you">Controlamos</div>
+      </div>
+
+      <div class="brk-tag">Primeira etapa abaixo do benchmark = o gargalo. É aqui que o motor para.</div>
+      <div class="step brk">
+        <div class="metric">% agendado</div>
+        <div class="desc">Lead qualificado vira horário na agenda? Aqui entra o comercial do cliente — e o dado mostra que ele está travando.</div>
+        <div class="ctrl shared">Influenciamos</div>
+      </div>
+
+      <div class="step">
+        <div class="metric">% compareceu</div>
+        <div class="desc">Confirmação e lembrete. Ops de agenda.</div>
+        <div class="ctrl shared">Influenciamos</div>
+      </div>
+      <div class="step">
+        <div class="metric">Venda</div>
+        <div class="desc">Fechamento na cadeira — preço, vendedor, atendimento.</div>
+        <div class="ctrl client">Cliente controla</div>
+      </div>
+
+      <div class="funnel-note">Regra de ouro: nunca diagnostique num degrau abaixo do ponto onde nosso controle chega. Aqui, CTR/CPL/qualificado estão OK — logo o remédio <b>não</b> é criativo. É o comercial. Vender aula de criativo aqui seria errar o diagnóstico e queimar confiança.</div>
+    </div>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="n">Regra 01</div>
+        <h4>Um gargalo por vez</h4>
+        <p>Problema lá embaixo quase sempre nasce de um problema lá em cima. Resolve-se de cima pra baixo, um degrau de cada vez.</p>
+      </div>
+      <div class="rule">
+        <div class="n">Regra 02</div>
+        <h4>Benchmark por vertical</h4>
+        <p>Salão converte diferente de doceria. Sem benchmark por etapa e por nicho, "alto" e "baixo" não significam nada.</p>
+      </div>
+      <div class="rule">
+        <div class="n">Regra 03</div>
+        <h4>Piso de volume</h4>
+        <p>Abaixo de X leads no período, o portal não diagnostica — mostra "coletando dados". Nunca disparar oferta em cima de ruído estatístico.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10.4 -->
+  <section id="remedios">
+    <div class="sec-head"><span class="sec-num">10.4</span><h2>O mapa de remédios</h2></div>
+    <p class="sec-sub">Cada vazamento tem remédio em dois degraus: <b style="color:var(--grow)">DIY</b> (aula, escala e margem alta, prepara o cliente pro serviço) e <b style="color:var(--com)">DFY</b> (serviço nosso). O mesmo diagnóstico roteia pro degrau que faz sentido para cada cliente.</p>
+
+    <div class="remedy">
+      <div class="remedy-top"><span class="sig">CTR baixo</span><h3>Criativo não engancha</h3><span class="cause">fadiga ou ângulo fraco</span></div>
+      <div class="remedy-cols">
+        <div class="rcol diy"><div class="lab">DIY · aula</div><p>"Criativo que converte" — hook, ângulo, molde de Reels de oferta.</p><div class="src">skill: meta-copy-criativo · molde-reels-oferta</div></div>
+        <div class="rcol dfy"><div class="lab">DFY · serviço</div><p>Produção de criativo pela Nathalia via framework OPV.</p><div class="src">Nathalia · OPV</div></div>
+      </div>
+    </div>
+
+    <div class="remedy">
+      <div class="remedy-top"><span class="sig">CTR ok · CPL alto</span><h3>Oferta ou página fracas</h3><span class="cause">a promessa não fecha</span></div>
+      <div class="remedy-cols">
+        <div class="rcol diy"><div class="lab">DIY · aula</div><p>Aula de oferta e ângulo — como construir uma promessa que reduz CPL.</p><div class="src">skill: gestao-trafego-empresativa</div></div>
+        <div class="rcol dfy"><div class="lab">DFY · serviço</div><p>Reestruturação de campanha + nova landing page.</p><div class="src">Operação · Nathalia (LP)</div></div>
+      </div>
+    </div>
+
+    <div class="remedy svc">
+      <div class="remedy-top"><span class="sig">Muito lead · pouco qualificado</span><h3>Segmentação atrai o curioso errado</h3><span class="cause">culpa quase sempre nossa</span></div>
+      <div class="remedy-cols">
+        <div class="rcol dfy" style="grid-column:1 / -1"><div class="lab">Serviço interno · não é oferta</div><p>Isto normalmente é ajuste nosso de público/oferta, não algo a vender pro cliente. Entra na rotina da Operação — e, se for o caso, numa das mensagens de auto-incriminação da 10.5.</p><div class="src">Operação (Karol/Miguel)</div></div>
+      </div>
+    </div>
+
+    <div class="remedy svc">
+      <div class="remedy-top"><span class="sig">Qualificado · pouco agendamento</span><h3>O comercial do cliente trava</h3><span class="cause">o gargalo mais lucrativo pra nós</span></div>
+      <div class="remedy-cols">
+        <div class="rcol diy"><div class="lab">DIY · treinamento</div><p>Treinamento de atendimento e resposta no WhatsApp — velocidade e script.</p><div class="src">skill: social-media / conteúdo comercial</div></div>
+        <div class="rcol dfy"><div class="lab">DFY · Esquadrão da Venda</div><p>Implementação comercial: script, cadência, SDR, follow-up, CRM operado. É o que estende nosso controle pro fechamento.</p><div class="src">Esquadrão da Venda</div></div>
+      </div>
+    </div>
+
+    <div class="remedy svc">
+      <div class="remedy-top"><span class="sig">Agenda cheia · ninguém aparece</span><h3>Falta confirmação e lembrete</h3><span class="cause">ops de agenda</span></div>
+      <div class="remedy-cols">
+        <div class="rcol dfy" style="grid-column:1 / -1"><div class="lab">DFY · automação</div><p>Fluxo de confirmação e lembrete no WhatsApp (Evolution + n8n). Recupera comparecimento sem esforço do cliente.</p><div class="src">Build Lab · n8n · Evolution API</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10.5 -->
+  <section id="honestidade">
+    <div class="sec-head"><span class="sec-num">10.5</span><h2>A honestidade que decide tudo</h2></div>
+    <p class="sec-sub">Esta é a escolha de design que separa "minha agência vigia meu funil e me entrega o conserto" (retenção brutal) de "toda vez que dá problema eles me culpam e me vendem curso" (churn). Acertar isto importa mais que o resto.</p>
+
+    <div class="honest">
+      <div class="cap">O princípio inegociável</div>
+      <div class="big">O motor precisa, às vezes, apontar a culpa como <span class="em">NOSSA</span> — e não vender nada.</div>
+      <p>São as mensagens auto-incriminatórias que compram o direito de, mais tarde, o motor apontar para o cliente. Se ele sempre aponta pro cliente, fede a máquina de venda e o cliente sente na hora. A honestidade nos casos que são culpa nossa é o que torna crível a cobrança nos casos que são culpa dele.</p>
+
+      <div class="quote-row">
+        <div class="qbox self">
+          <div class="qt">Culpa nossa · não vende nada</div>
+          <div class="msg">"Seu criativo cansou esta semana. Nós já estamos trocando — você não precisa fazer nada."</div>
+        </div>
+        <div class="qbox data">
+          <div class="qt">Culpa do cliente · o dado acusa sozinho</div>
+          <div class="msg">"Geramos 43 leads qualificados. 9 foram respondidos em até 1h."</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:18px" class="lead-p">Repare no segundo caso: sem acusação, sem adjetivo. O número fala. É irrefutável e não soa como ataque — e é exatamente aí que a oferta de treinamento comercial ou do Esquadrão entra com legitimidade.</p>
+  </section>
+
+  <!-- 10.6 -->
+  <section id="armadilha">
+    <div class="sec-head"><span class="sec-num">10.6</span><h2>A armadilha</h2></div>
+    <p class="sec-sub">O aviso honesto, de builder para builder. O portal é um produto do Build Lab, e Build Lab é área do João. Feito errado, ele piora exatamente os dois gargalos que o manual mais quer resolver.</p>
+
+    <div class="trap">
+      <div class="cap">Risco existencial disfarçado de execução do Norte</div>
+      <div class="big">Construir o portal sozinho e escondido transforma a nossa vantagem competitiva no nosso maior <span class="em">ponto único de falha</span>.</div>
+      <p>A Fase 1 existe para <b>tirar o João da operação</b>. O Gargalo 04 diz que conhecimento concentrado é risco existencial — "duas semanas fora e o stack fica sem dono". Se o portal nascer só na cabeça do João, sem documentação e sem o júnior junto, ele aprofunda os Gargalos 01 e 04 enquanto finge executar o Norte.</p>
+      <div class="trap-rule">
+        <span class="k">REGRA</span>
+        <div class="v">O <b>júnior de automação entra antes ou durante</b> o build do portal — nunca depois. Cada peça do motor nasce <b>documentada</b>. Se for tratado como "eu construo e depois passo", ele nunca passa. Você conhece esse padrão.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10.7 -->
+  <section id="roadmap10">
+    <div class="sec-head"><span class="sec-num">10.7</span><h2>Onde encaixa no roadmap</h2></div>
+    <p class="sec-sub">O portal não pede uma fase nova. Ele já está latente no roadmap da Seção 08 — só não foi nomeado como o produto estratégico que é. A sequência que você desenhou já está certa.</p>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">30</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 1 · pré-requisito</div>
+        <h3>Tirar o João da <span class="accent">operação</span></h3>
+        <div class="maps">▸ sem isto, não há mão para construir o portal</div>
+        <ul>
+          <li>Karol coordenando · Matriz de Autonomia ativa</li>
+          <li>É a folga de agenda que libera o João para o Build Lab</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">60</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 2 · o MVP nasce aqui</div>
+        <h3>Scorecard Executivo <span class="accent">= o portal, sem tela</span></h3>
+        <div class="maps">▸ o "Scorecard por cliente" do roadmap É o MVP do motor de diagnóstico</div>
+        <ul>
+          <li>Motor roda no n8n: Windsor + Chatwoot + CRM → lógica "primeiro degrau que quebra" + benchmark</li>
+          <li>Entrega v1 pelo <b style="color:var(--ink)">WhatsApp</b>, como o briefing semanal — sem portal ainda</li>
+          <li>Valida a lógica de diagnóstico e a conversão da oferta em 5 clientes</li>
+          <li>Se a aula não converte no WhatsApp, não vai converter numa tela mais bonita</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">90</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 3 · vira produto</div>
+        <h3>Dashboard executivo <span class="accent">= a área do cliente</span></h3>
+        <div class="maps">▸ o "dashboard executivo" do roadmap é o portal de verdade</div>
+        <ul>
+          <li>O scorecard validado vira a superfície única com acesso por cliente</li>
+          <li>Júnior de automação já dentro, construindo documentado</li>
+          <li>Responde a pergunta de contratação: entra automação, não CS</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10.8 -->
+  <section id="kpi10">
+    <div class="sec-head"><span class="sec-num">10.8</span><h2>O KPI que falta</h2></div>
+    <p class="sec-sub">Os cinco pilares da Seção 07 não capturam a coisa mais importante que o portal cria. É diferente de "receita nova" (comercial, cliente novo). É upsell disparado pela máquina, no cliente que já existe, sem o João vender.</p>
+
+    <div class="kexp">
+      <div class="cap">6º indicador · a prova de que o Norte funcionou</div>
+      <div class="h">Receita de Expansão via Diagnóstico <span class="accent">(REvD)</span></div>
+      <div class="desc">O termômetro real do Norte. O manual diz que a gestão passa a ser orientada por "resultado de negócio — rentabilidade e escala". REvD é literalmente rentabilidade e escala <b>sem volume</b>: cada cliente comprando remédio ao longo do tempo, automaticamente.</div>
+
+      <div class="math">
+        <div class="mbox a"><div class="ml">Hoje</div><div class="mv">R$40k</div><div class="ms">~40 clientes × ~R$1.000</div></div>
+        <div class="marw">▸</div>
+        <div class="mbox b"><div class="ml">A alavanca</div><div class="mv">+REvD</div><div class="ms">remédio recorrente por cliente</div></div>
+        <div class="marw">▸</div>
+        <div class="mbox c"><div class="ml">Meta</div><div class="mv">R$100k</div><div class="ms">sem depender de volume</div></div>
+      </div>
+
+      <div class="form">REvD = Σ (aulas + treinamentos + serviços DFY + Esquadrão) <b>disparados pelo diagnóstico</b>, por mês.<br>É a resposta matemática da warnbox da Fase 3 — e é o "$6 para cada $1" da tese da Sequoia, só que dentro da própria carteira.</div>
+    </div>
+  </section>
+
+  <!-- 10.9 -->
+  <section id="norte10" style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">10.9</span><h2>Fechamento</h2></div>
+    <div class="north">
+      <div class="cap">O que esta seção reorganiza</div>
+      <div class="thesis">O portal de diagnóstico é o <span class="em">sistema operacional do Norte</span> — transforma "empresa de crescimento baseada em tecnologia" de frase de manifesto em produto que fatura.</div>
+      <div class="shift">
+        <div>Desarma os <b>Gargalos 02 e 03</b> com um único build, e é o <b>Customer Success</b> que a empresa ainda não tem.</div>
+        <div>Responde a pergunta de contratação do roadmap: entra o <b>júnior de automação</b>, que blinda o Gargalo 04 ao construir documentado.</div>
+        <div>Não assume risco que não controlamos — <b>monetiza o gargalo</b> em vez de apostar nele. Menos copiável que virar mais um SaaS de bid.</div>
+        <div>O único jeito de dar errado é o João <b>construir sozinho e escondido</b>. Aí vira o Gargalo 04 turbinado.</div>
+      </div>
+    </div>
+    <footer>
+      <span>EMPRESATIVA DIGITAL · MANUAL DE GESTÃO · SEÇÃO 10 · JULHO 2026</span>
+      <span>COMPANHEIRA DAS SEÇÕES 01–09</span>
+    </footer>
+  </section>
+
+</div>
+
+<script>
+  const pills = document.querySelectorAll('.nav-pills a');
+  const secs = [...document.querySelectorAll('section[id]')];
+  const map = {};
+  pills.forEach(p=>map[p.getAttribute('href').slice(1)]=p);
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        pills.forEach(p=>p.classList.remove('active'));
+        map[e.target.id]?.classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
