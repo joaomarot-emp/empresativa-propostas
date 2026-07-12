@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seção 11 — O Tempo do Fundador · Manual de Gestão EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c0e; --panel:#151519; --panel-2:#1b1b21;
+    --line:#2a2a31; --line-soft:#232329;
+    --ink:#f4f4f2; --ink-mid:#c4c4cc; --ink-dim:#8a8a94;
+    --brand:#ff6a00; --brand-soft:#ff8a3d;
+    --grow:#3ee08a; --grow-dim:rgba(62,224,138,.12);
+    --com:#4d9dff; --com-dim:rgba(77,157,255,.12);
+    --stop:#ff5252; --stop-dim:rgba(255,82,82,.09);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(1300px 700px at 88% -8%, rgba(255,106,0,.09), transparent 60%), var(--bg);
+    color:var(--ink); font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 100px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(12,12,14,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+  .nav-in{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:11px 20px}
+  .nav-brand{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;
+    letter-spacing:.2em;color:var(--brand);text-transform:uppercase;flex-shrink:0}
+  .nav-pills{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
+  .nav-pills::-webkit-scrollbar{display:none}
+  .nav-pills a{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;
+    color:var(--ink-dim);text-decoration:none;padding:6px 11px;border-radius:999px;
+    white-space:nowrap;transition:all .15s;letter-spacing:.03em}
+  .nav-pills a:hover{color:var(--ink);background:var(--panel)}
+  .nav-pills a.active{color:#111;background:var(--brand);font-weight:600}
+
+  /* cover */
+  header.cover{padding:60px 0 40px;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--brand)}
+  h1.title{font-family:"Archivo";font-weight:900;font-size:clamp(32px,6.5vw,58px);
+    line-height:1;letter-spacing:-.025em;margin:20px 0 16px}
+  h1.title .em{color:var(--brand)}
+  .cover .lead{font-size:17px;color:var(--ink-mid);max-width:64ch}
+  .cover-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-dim)}
+  .cover-meta b{color:var(--ink-mid);font-weight:500}
+
+  /* section */
+  section{padding:52px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:64px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--brand)}
+  h2{font-family:"Archivo";font-weight:800;font-size:clamp(23px,4vw,30px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin-bottom:26px;max-width:66ch}
+  p{color:var(--ink-mid);font-size:15.5px}
+  b,strong{color:var(--ink);font-weight:600}
+  .accent{color:var(--brand-soft)}
+  .lead-p{max-width:70ch;margin-bottom:16px}
+
+  /* 11.1 duas velocidades */
+  .frame{background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px 32px;margin-top:6px}
+  .frame .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
+  .frame .line{font-family:"Archivo";font-weight:800;font-size:clamp(20px,3.4vw,27px);
+    line-height:1.28;letter-spacing:-.015em}
+  .frame .line .em{color:var(--brand-soft)} .frame .line .dim{color:var(--ink-dim)}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .vcard{border-radius:12px;padding:20px 22px;border:1px solid var(--line-soft);background:var(--panel)}
+  .vcard.now{border-top:2px solid var(--com)}
+  .vcard.dest{border-top:2px solid var(--grow)}
+  .vcard .vt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:8px}
+  .vcard.now .vt{color:var(--com)} .vcard.dest .vt{color:var(--grow)}
+  .vcard .vh{font-family:"Archivo";font-weight:900;font-size:clamp(24px,4vw,32px);
+    letter-spacing:-.02em;margin-bottom:6px}
+  .vcard .vs{font-size:13.5px;color:var(--ink-mid);line-height:1.5}
+
+  /* alocação mini-bars (eco da Seção 07) */
+  .alloc{margin-top:22px}
+  .alloc .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px}
+  .barblock{margin-bottom:16px}
+  .barlabel{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--ink-mid);margin-bottom:7px}
+  .barlabel.goal{color:var(--brand-soft)}
+  .bar{display:flex;height:34px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+  .seg{display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;font-weight:600;color:#0c0c0e}
+  .seg.est{background:var(--brand)} .seg.com{background:var(--grow)} .seg.op{background:#3a3a42;color:var(--ink-mid)}
+  .barlegend{display:flex;gap:18px;margin-top:6px;flex-wrap:wrap;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim)}
+  .barlegend span{display:flex;align-items:center;gap:7px}
+  .barlegend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .dot-est{background:var(--brand)} .dot-com{background:var(--grow)} .dot-op{background:#3a3a42}
+
+  /* legenda expandida dos eixos */
+  .axes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+  .axis{background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:18px 20px}
+  .axis.est{border-top:2px solid var(--brand)}
+  .axis.com{border-top:2px solid var(--grow)}
+  .axis.op{border-top:2px solid #3a3a42}
+  .axis .an{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .axis.est .an{color:var(--brand-soft)} .axis.com .an{color:var(--grow)} .axis.op .an{color:var(--ink-dim)}
+  .axis .an i{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .axis.est .an i{background:var(--brand)} .axis.com .an i{background:var(--grow)} .axis.op .an i{background:#3a3a42}
+  .axis .aq{font-family:"Archivo";font-size:16px;font-weight:700;margin-bottom:8px;line-height:1.2}
+  .axis .ad{font-size:13px;color:var(--ink-mid);line-height:1.5;margin-bottom:10px}
+  .axis .ax{font-size:12.5px;color:var(--ink-dim);line-height:1.45}
+  .axis .ax b{color:var(--ink-mid);font-weight:600}
+  .axis .who{margin-top:11px;font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:.04em;text-transform:uppercase;border-top:1px solid var(--line-soft);padding-top:9px}
+  .axis.est .who{color:var(--brand-soft)} .axis.com .who{color:var(--grow)} .axis.op .who{color:var(--ink-dim)}
+  .axis-tldr{margin-top:12px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;
+    padding:14px 16px;font-size:13.5px;color:var(--ink-mid);line-height:1.55}
+  .axis-tldr b{color:var(--brand-soft)}
+
+  /* 11.2 week grid */
+  .weekcap{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim)}
+  .weekcap span{display:flex;align-items:center;gap:7px}
+  .weekcap i{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .lg-build{background:var(--brand)} .lg-com{background:var(--grow)}
+  .lg-op{background:#3a3a42} .lg-fam{background:var(--com)}
+
+  .week{display:flex;flex-direction:column;gap:8px}
+  .wday{display:grid;grid-template-columns:120px 1fr 60px;gap:12px;align-items:stretch;
+    background:var(--panel);border:1px solid var(--line-soft);border-radius:11px;padding:12px 14px}
+  .wday .dname{display:flex;flex-direction:column;justify-content:center}
+  .wday .dname .d{font-family:"Archivo";font-weight:700;font-size:15px}
+  .wday .dname .sub{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--ink-dim);
+    text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+  .wblocks{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .wb{border-radius:8px;padding:8px 11px;font-size:12px;line-height:1.25;min-width:0}
+  .wb .t{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.03em;display:block;opacity:.85}
+  .wb .a{font-weight:600;font-size:12.5px}
+  .wb.build{background:rgba(255,106,0,.16);border:1px solid rgba(255,106,0,.4);color:var(--brand-soft)}
+  .wb.build .a{color:var(--brand-soft)}
+  .wb.com{background:var(--grow-dim);border:1px solid rgba(62,224,138,.35);color:var(--grow)}
+  .wb.com .a{color:var(--grow)}
+  .wb.op{background:#212127;border:1px solid var(--line);color:var(--ink-mid)}
+  .wb.fam{background:var(--com-dim);border:1px solid rgba(77,157,255,.3);color:var(--com)}
+  .wb.fam .a{color:var(--com)}
+  .wday .dtot{display:flex;align-items:center;justify-content:flex-end;
+    font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--ink-mid)}
+  .weeksum{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+  .sumbox{flex:1;min-width:130px;background:var(--panel);border:1px solid var(--line-soft);
+    border-radius:11px;padding:14px 16px;text-align:center}
+  .sumbox .sv{font-family:"Archivo";font-weight:900;font-size:26px;letter-spacing:-.02em}
+  .sumbox.a .sv{color:var(--ink)} .sumbox.b .sv{color:var(--brand)} .sumbox.c .sv{color:var(--com)}
+  .sumbox .sl{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--ink-dim);margin-top:4px}
+
+  /* 11.3 regra do bloco */
+  .rule-hero{background:linear-gradient(160deg,rgba(255,106,0,.14),var(--panel));
+    border:1px solid var(--brand);border-radius:var(--radius);padding:28px 30px;margin-top:6px}
+  .rule-hero .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+  .rule-hero .big{font-family:"Archivo";font-weight:900;font-size:clamp(24px,4.5vw,36px);
+    letter-spacing:-.02em;line-height:1.05;margin-bottom:8px}
+  .rule-hero .big .em{color:var(--brand-soft)}
+  .rule-hero p{font-size:14.5px;color:var(--ink-mid);max-width:66ch}
+  .rules3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  .r3{background:var(--panel);border:1px solid var(--line-soft);border-radius:11px;padding:16px 18px}
+  .r3 .n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--brand);margin-bottom:8px}
+  .r3 h4{font-family:"Archivo";font-size:15px;font-weight:700;margin-bottom:6px}
+  .r3 p{font-size:13px;color:var(--ink-mid);line-height:1.45}
+  .r3 .x{color:var(--stop);font-weight:600}
+
+  /* 11.4 foco por fase (reuso phase) */
+  .phase{display:flex;gap:20px;margin-bottom:12px}
+  .phase-rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+  .phase-dot{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:13px;color:#0c0c0e;
+    background:var(--brand);width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+  .phase-line{width:2px;flex:1;background:var(--line);margin-top:6px}
+  .phase:last-child .phase-line{display:none}
+  .phase-body{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);
+    padding:20px 22px;flex:1;margin-bottom:4px}
+  .phase-body .pt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:2px}
+  .phase-body h3{font-family:"Archivo";font-size:19px;font-weight:700;margin-bottom:8px}
+  .phase-body h3 .accent{color:var(--brand-soft)}
+  .phase-body .one{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--grow);
+    background:var(--grow-dim);border:1px solid rgba(62,224,138,.25);border-radius:7px;
+    padding:8px 11px;margin-bottom:12px;display:inline-block}
+  .phase-body ul{list-style:none}
+  .phase-body li{font-size:14px;color:var(--ink-mid);padding:4px 0 4px 20px;position:relative}
+  .phase-body li::before{content:"→";position:absolute;left:0;color:var(--brand)}
+
+  /* 11.5 filtro CEO vs operação */
+  .filtro{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  .fcol{border-radius:var(--radius);padding:22px 24px;border:1px solid var(--line-soft)}
+  .fcol.ceo{background:var(--grow-dim);border-color:rgba(62,224,138,.28)}
+  .fcol.op{background:#1a1a1f}
+  .fcol .ft{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;margin-bottom:4px;font-weight:600}
+  .fcol.ceo .ft{color:var(--grow)} .fcol.op .ft{color:var(--ink-dim)}
+  .fcol h3{font-family:"Archivo";font-size:18px;font-weight:700;margin-bottom:14px}
+  .fcol ul{list-style:none}
+  .fcol li{font-size:14px;color:var(--ink-mid);padding:5px 0 5px 22px;position:relative;line-height:1.4}
+  .fcol.ceo li::before{content:"↑";position:absolute;left:0;color:var(--grow);font-weight:700}
+  .fcol.op li::before{content:"↓";position:absolute;left:0;color:var(--ink-dim);font-weight:700}
+  .filtro-q{margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:16px 18px;font-size:14.5px;color:var(--ink-mid)}
+  .filtro-q b{color:var(--brand-soft)}
+
+  /* 11.6 inegociáveis */
+  .locks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+  .lock{background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;
+    padding:16px 18px;border-left:2px solid var(--com);display:flex;gap:12px;align-items:flex-start}
+  .lock .ic{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--com);
+    background:var(--com-dim);border:1px solid rgba(77,157,255,.3);border-radius:6px;
+    padding:4px 8px;white-space:nowrap;margin-top:1px}
+  .lock .lb{font-family:"Archivo";font-size:15px;font-weight:700;margin-bottom:3px}
+  .lock .ls{font-size:13px;color:var(--ink-mid);line-height:1.4}
+
+  /* 11.7 saída */
+  .exit{background:linear-gradient(160deg,var(--grow-dim),var(--panel));
+    border:1px solid rgba(62,224,138,.4);border-radius:18px;padding:36px 34px;margin-top:6px}
+  .exit .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--grow);margin-bottom:14px}
+  .exit .thesis{font-family:"Archivo";font-weight:800;font-size:clamp(21px,3.6vw,28px);
+    line-height:1.24;letter-spacing:-.015em;margin-bottom:20px}
+  .exit .thesis .em{color:var(--grow)}
+  .exit .shift{display:grid;gap:10px}
+  .exit .shift div{font-size:15px;color:var(--ink-mid);padding-left:20px;position:relative}
+  .exit .shift div::before{content:"▸";position:absolute;left:0;color:var(--grow)}
+  .exit .shift b{color:var(--ink)}
+  .dday{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:16px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .dday .k{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;color:#0c0c0e;
+    background:var(--grow);border-radius:6px;padding:5px 9px;white-space:nowrap}
+  .dday .v{font-size:14.5px;color:var(--ink-mid)}
+  .dday .v b{color:var(--ink)}
+
+  .warnbox{margin-top:16px;padding:14px 16px;background:var(--stop-dim);
+    border:1px solid rgba(255,82,82,.25);border-radius:9px;font-size:13.5px;color:var(--ink-mid)}
+  .warnbox b{color:var(--stop)}
+
+  footer{padding-top:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.03em}
+
+  @media(max-width:680px){
+    .duo,.rules3,.filtro,.locks{grid-template-columns:1fr}
+    .wday{grid-template-columns:1fr;gap:8px}
+    .wday .dtot{justify-content:flex-start}
+    .nav-brand{display:none}
+  }
+  @media print{nav{display:none}body{background:#fff;color:#111}section{border-color:#eee}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <span class="nav-brand">EmpresAtiva · §11</span>
+    <div class="nav-pills">
+      <a href="#enquadramento">Enquadramento</a>
+      <a href="#semana">A semana</a>
+      <a href="#bloco">A regra</a>
+      <a href="#foco">Foco por fase</a>
+      <a href="#filtro">O filtro</a>
+      <a href="#inegociaveis">Inegociáveis</a>
+      <a href="#saida">A saída</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="cover">
+    <div class="eyebrow">Adendo ao Manual de Gestão · Seção 11</div>
+    <h1 class="title">O Tempo do<br><span class="em">Fundador.</span></h1>
+    <p class="lead">A gestão de tempo para tracionar de R$40k a R$100k respeitando os limites reais da sua agenda. A tese é uma só: <b style="color:var(--ink)">o problema nunca foi quantidade de horas — é a alocação delas</b>. Você não precisa trabalhar 70h. Precisa blindar as horas certas, por um sprint com data para acabar.</p>
+    <div class="cover-meta">
+      <span><b>Conversa com</b> Seção 07 (tempo do CEO) · Seção 08 (roadmap)</span>
+      <span><b>Regime de travessia</b> ~40h · 90 dias</span>
+      <span><b>Regime de destino</b> ~30h</span>
+    </div>
+  </header>
+
+  <!-- 11.1 -->
+  <section id="enquadramento">
+    <div class="sec-head"><span class="sec-num">11.1</span><h2>O enquadramento</h2></div>
+    <p class="sec-sub">A pergunta "quanto tempo preciso disponibilizar" está quase certa. O eixo real não é quantas horas — é em quê. Acordar mais cedo para fazer mais operação não traciona nada; só antecipa o esgotamento. Existem duas velocidades, e elas exigem respostas diferentes.</p>
+
+    <div class="frame">
+      <div class="cap">A frase que organiza tudo</div>
+      <div class="line">Seu tempo é <span class="em">suficiente para o destino</span>,<br><span class="dim">insuficiente para a travessia.</span></div>
+
+      <div class="duo">
+        <div class="vcard dest">
+          <div class="vt">Destino · regime permanente</div>
+          <div class="vh">~30h</div>
+          <div class="vs">Um CEO que já saiu da operação — com Karol coordenando, júnior no Build Lab e o portal fazendo retenção — cabe o trabalho de comercial, estratégia e rituais em ~30h focadas. Você não tem problema de quantidade. Tem problema de composição.</div>
+        </div>
+        <div class="vcard now">
+          <div class="vt">Travessia · próximos 90 dias</div>
+          <div class="vh">~40h</div>
+          <div class="vs">Tirar você da operação, montar o Scorecard e o motor comercial é trabalho aditivo — vem por cima de tocar a empresa. Para trabalhar menos depois, você trabalha mais agora. Por um período fechado. É aqui que acordar cedo faz sentido.</div>
+        </div>
+      </div>
+
+      <div class="alloc">
+        <div class="cap">O que realmente muda — eco da Seção 07</div>
+        <div class="barblock">
+          <div class="barlabel">Hoje</div>
+          <div class="bar">
+            <div class="seg est" style="width:15%">15%</div>
+            <div class="seg com" style="width:20%">20%</div>
+            <div class="seg op" style="width:65%">Operação 65%</div>
+          </div>
+        </div>
+        <div class="barblock">
+          <div class="barlabel goal">Meta para sustentar R$100k</div>
+          <div class="bar">
+            <div class="seg est" style="width:35%">35%</div>
+            <div class="seg com" style="width:45%">45%</div>
+            <div class="seg op" style="width:20%">Op. 20%</div>
+          </div>
+        </div>
+        <div class="barlegend">
+          <span><i class="dot-est"></i> Estratégia + Build</span>
+          <span><i class="dot-com"></i> Comercial</span>
+          <span><i class="dot-op"></i> Operação</span>
+        </div>
+      </div>
+
+      <div class="axes">
+        <div class="axis est">
+          <div class="an"><i></i> Estratégia + Build</div>
+          <div class="aq">Constrói a máquina · futuro</div>
+          <div class="ad">Pensar e construir os ativos que fazem a empresa crescer sem depender mais de você. Não gera resultado hoje — planta o que gera resultado daqui a meses. É o mais fácil de adiar (nunca é urgente) e o mais importante de proteger. Vai no bloco 6h–8h.</div>
+          <div class="ax"><b>Na prática:</b> desenhar o portal/Scorecard, construir fluxos no n8n, documentar o que só está na sua cabeça, treinar Karol e júnior, criar skills e SOPs, decidir tier de produto, ler os números e definir rumos.</div>
+          <div class="who">▸ Área do João · Build Lab</div>
+        </div>
+
+        <div class="axis com">
+          <div class="an"><i></i> Comercial</div>
+          <div class="aq">Alimenta a máquina · crescimento</div>
+          <div class="ad">Tudo que resulta em cliente novo entrando ou cliente atual pagando mais. Alavanca direta do faturamento — é onde seu tempo precisa passar de 20% para 45%.</div>
+          <div class="ax"><b>Na prática:</b> trabalhar o BNI pedindo indicação com método (por isso a terça inteira conta aqui), fechar reuniões e negociar ticket alto, prospecção e parcerias, ritual mensal de resultado (que também é upsell), expansão via portal.</div>
+          <div class="who">▸ Vender · fechar · expandir</div>
+        </div>
+
+        <div class="axis op">
+          <div class="an"><i></i> Operação</div>
+          <div class="aq">Roda a máquina · presente</div>
+          <div class="ad">A entrega do que já foi vendido: o que precisa acontecer para os ~40 clientes atuais seguirem satisfeitos esta semana. Trabalho legítimo e necessário — mas não é seu. É da Karol e do Miguel.</div>
+          <div class="ax"><b>Na prática:</b> revisar campanha, otimização de rotina, responder dúvida no WhatsApp, organizar fila de tarefas, cobrar prazo, apagar incêndio. É a coluna "deixa de fazer" do seu papel na Seção 04.</div>
+          <div class="who">▸ Karol · Miguel · não precisa de você</div>
+        </div>
+      </div>
+
+      <div class="axis-tldr">
+        <b>Fronteira fina (Comercial × Estratégia):</b> <i>pensar/montar</i> o funil comercial é Estratégia; <i>executar</i> a conversa de venda é Comercial. Montar o motor de indicação é Build; pedir a indicação é Comercial. Regra de bolso: <b>Build</b> constrói o futuro, <b>Comercial</b> traz a receita, <b>Operação</b> mantém o hoje girando — máximo de tempo nos dois primeiros, mínimo no terceiro.</div>
+    </div>
+  </section>
+
+  <!-- 11.2 -->
+  <section id="semana">
+    <div class="sec-head"><span class="sec-num">11.2</span><h2>A semana da travessia</h2></div>
+    <p class="sec-sub">Três das suas cinco manhãs já estão comprometidas (BNI na terça, apoio à Yasmin na quarta e sexta). A manhã é o horário nobre de trabalho profundo — e o único bloco 100% seu, todo dia, é <b>6h–8h</b>, antes de qualquer interrupção. É nele que a travessia acontece. A noite fica para a família.</p>
+
+    <div class="weekcap">
+      <span><i class="lg-build"></i> Build (crescimento)</span>
+      <span><i class="lg-com"></i> Comercial</span>
+      <span><i class="lg-op"></i> Operação / dia</span>
+      <span><i class="lg-fam"></i> Família (protegido)</span>
+    </div>
+
+    <div class="week">
+      <div class="wday">
+        <div class="dname"><div class="d">Segunda</div><div class="sub">manhã livre</div></div>
+        <div class="wblocks">
+          <div class="wb build"><span class="t">6h–8h</span><span class="a">Bloco de Build</span></div>
+          <div class="wb op"><span class="t">8h30–16h30</span><span class="a">Operação → comercial</span></div>
+          <div class="wb fam"><span class="t">17h</span><span class="a">Crianças</span></div>
+        </div>
+        <div class="dtot">~9h</div>
+      </div>
+
+      <div class="wday">
+        <div class="dname"><div class="d">Terça</div><div class="sub">BNI = comercial</div></div>
+        <div class="wblocks">
+          <div class="wb com"><span class="t">6h30–10h</span><span class="a">BNI · trabalhar indicação</span></div>
+          <div class="wb op"><span class="t">10h30–16h30</span><span class="a">Dia</span></div>
+          <div class="wb fam"><span class="t">17h</span><span class="a">Crianças</span></div>
+        </div>
+        <div class="dtot">~9h</div>
+      </div>
+
+      <div class="wday">
+        <div class="dname"><div class="d">Quarta</div><div class="sub">apoio Yasmin</div></div>
+        <div class="wblocks">
+          <div class="wb build"><span class="t">6h–8h</span><span class="a">Bloco de Build</span></div>
+          <div class="wb fam"><span class="t">até 11h</span><span class="a">Apoio Yasmin</span></div>
+          <div class="wb op"><span class="t">11h–16h30</span><span class="a">Dia</span></div>
+          <div class="wb fam"><span class="t">17h</span><span class="a">Crianças</span></div>
+        </div>
+        <div class="dtot">~7h</div>
+      </div>
+
+      <div class="wday">
+        <div class="dname"><div class="d">Quinta</div><div class="sub">manhã livre</div></div>
+        <div class="wblocks">
+          <div class="wb build"><span class="t">6h–8h</span><span class="a">Bloco de Build</span></div>
+          <div class="wb op"><span class="t">8h30–16h30</span><span class="a">Dia</span></div>
+          <div class="wb fam"><span class="t">17h</span><span class="a">Crianças</span></div>
+        </div>
+        <div class="dtot">~9h</div>
+      </div>
+
+      <div class="wday">
+        <div class="dname"><div class="d">Sexta</div><div class="sub">apoio Yasmin</div></div>
+        <div class="wblocks">
+          <div class="wb build"><span class="t">6h–8h</span><span class="a">Bloco de Build</span></div>
+          <div class="wb fam"><span class="t">até 11h</span><span class="a">Apoio Yasmin</span></div>
+          <div class="wb op"><span class="t">11h–16h30</span><span class="a">Revisão + dia</span></div>
+          <div class="wb fam"><span class="t">17h</span><span class="a">Crianças</span></div>
+        </div>
+        <div class="dtot">~7h</div>
+      </div>
+    </div>
+
+    <div class="weeksum">
+      <div class="sumbox a"><div class="sv">~41h</div><div class="sl">Semana total</div></div>
+      <div class="sumbox b"><div class="sv">8h</div><div class="sl">Build dedicado (4×2h)</div></div>
+      <div class="sumbox c"><div class="sv">0h</div><div class="sl">À noite / fim de semana</div></div>
+    </div>
+    <p style="margin-top:16px" class="lead-p">Repare no que <b>não</b> está aqui: terça não tem bloco de build. Acordar às 5h30 para espremer 50 minutos antes do BNI é ansiedade cronometrada, não trabalho profundo — o BNI já é o seu comercial da terça. Quatro manhãs reais de 2h valem mais que cinco em que uma é de mentira.</p>
+  </section>
+
+  <!-- 11.3 -->
+  <section id="bloco">
+    <div class="sec-head"><span class="sec-num">11.3</span><h2>A regra do bloco</h2></div>
+    <p class="sec-sub">O bloco 6h–8h é a coisa mais frágil do plano. A operação é urgente e viciante — vai tentar comer essa manhã todo dia. Se comer, você acordou cedo à toa. Três regras protegem o bloco.</p>
+
+    <div class="rule-hero">
+      <div class="cap">A regra mãe</div>
+      <div class="big">O bloco é <span class="em">BUILD ONLY.</span></div>
+      <p>Nunca operação. Nunca "só um ajuste rápido". Nunca WhatsApp, Slack ou e-mail. Celular longe, notificações mudas. O valor dessas horas vem exatamente de acontecerem <b>antes</b> de clientes e equipe começarem a demandar sua atenção. Basta uma exceção para o vício operacional reconquistar a manhã.</p>
+    </div>
+
+    <div class="rules3">
+      <div class="r3">
+        <div class="n">Regra 01</div>
+        <h4>Sem WhatsApp</h4>
+        <p>Zero comunicação reativa no bloco. O mundo espera até as 8h. <span class="x">Se abriu o WhatsApp, o bloco acabou.</span></p>
+      </div>
+      <div class="r3">
+        <div class="n">Regra 02</div>
+        <h4>Foco único por fase</h4>
+        <p>O bloco serve à <b>fase atual do roadmap</b>, não a um cardápio de temas. Um alvo por vez — trocar de assunto todo dia mata a profundidade.</p>
+      </div>
+      <div class="r3">
+        <div class="n">Regra 03</div>
+        <h4>Operação não invade</h4>
+        <p>Urgência operacional vai para a Karol, não para a sua manhã. <span class="x">Se você resolveu incêndio às 6h, falhou.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11.4 -->
+  <section id="foco">
+    <div class="sec-head"><span class="sec-num">11.4</span><h2>O foco de cada bloco, por fase</h2></div>
+    <p class="sec-sub">O erro comum é picar a semana em cinco temas ("segunda estratégia, quarta produto, quinta prospecção"). Isso destrói a continuidade que o build exige. O bloco não muda de assunto por dia — muda de assunto por <b>fase</b>. Um alvo até concluir.</p>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">30</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 1 · dias 1–30</div>
+        <h3>Tirar você da <span class="accent">operação</span></h3>
+        <div class="one">▸ TODA manhã: documentar + treinar a Karol</div>
+        <ul>
+          <li>Formalizar a Karol como Coordenadora · Matriz de Autonomia ativa</li>
+          <li>Documentar o que está só na sua cabeça (começa a desarmar o Gargalo 04)</li>
+          <li>Redirecionar toda dúvida operacional para a Karol — sem exceção</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">60</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 2 · dias 31–60</div>
+        <h3>Construir o <span class="accent">motor do Scorecard</span></h3>
+        <div class="one">▸ TODA manhã: motor de diagnóstico no n8n (com o júnior)</div>
+        <ul>
+          <li>Lógica "primeiro degrau que quebra" + benchmarks por vertical</li>
+          <li>Entrega v1 pelo WhatsApp, como o briefing semanal — sem portal ainda</li>
+          <li>Validar diagnóstico e conversão da oferta em 5 clientes (ver Seção 10)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-rail"><div class="phase-dot">90</div><div class="phase-line"></div></div>
+      <div class="phase-body">
+        <div class="pt">Fase 3 · dias 61–90</div>
+        <h3>Ligar a <span class="accent">máquina comercial</span></h3>
+        <div class="one">▸ TODA manhã: aquisição previsível</div>
+        <ul>
+          <li>Estruturar o funil comercial com metas semanais</li>
+          <li>Ativar indicação nos 40 clientes + trabalhar o BNI com método</li>
+          <li>Empacotar o portal como tier de performance (Seção 10)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11.5 -->
+  <section id="filtro">
+    <div class="sec-head"><span class="sec-num">11.5</span><h2>O filtro do que importa</h2></div>
+    <p class="sec-sub">Fora do bloco, o dia vai tentar te puxar de volta para a operação. O filtro é uma pergunta única, feita antes de aceitar qualquer tarefa na sua agenda. Ela decide o que cresce a empresa e o que só a mantém girando.</p>
+
+    <div class="filtro">
+      <div class="fcol ceo">
+        <div class="ft">Trabalho de CEO · protege e prioriza</div>
+        <h3>Cresce a empresa</h3>
+        <ul>
+          <li>Vender e fechar ticket alto</li>
+          <li>Estratégia e novos produtos (Build Lab)</li>
+          <li>Ritual mensal de resultado com o cliente</li>
+          <li>Formar e destravar a Karol e o júnior</li>
+          <li>Ler os números e decidir com base neles</li>
+        </ul>
+      </div>
+      <div class="fcol op">
+        <div class="ft">Trabalho de operação · delega ou elimina</div>
+        <h3>Só mantém girando</h3>
+        <ul>
+          <li>Revisar campanha diariamente</li>
+          <li>Responder dúvida operacional no WhatsApp</li>
+          <li>Organizar fila de tarefas do time</li>
+          <li>Cobrar prazo de designer</li>
+          <li>Apagar incêndio pontual</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="filtro-q">A pergunta, antes de aceitar qualquer coisa na agenda: <b>"Isso só eu posso fazer como CEO — ou é operação que a Karol/júnior assume?"</b> Se é operação, não entra no seu dia. Delegar isso não é abrir mão de qualidade; é a única forma de a alocação da Seção 07 sair de 65% para 20%.</p>
+    </div>
+  </section>
+
+  <!-- 11.6 -->
+  <section id="inegociaveis">
+    <div class="sec-head"><span class="sec-num">11.6</span><h2>Os inegociáveis</h2></div>
+    <p class="sec-sub">Sprint sustentável tem fronteiras rígidas dos dois lados. Assim como o bloco de build é intocável para a operação, estes compromissos são intocáveis para o trabalho. Eles não são o que você corta para crescer — são o combustível que o crescimento existe para proteger.</p>
+
+    <div class="locks">
+      <div class="lock">
+        <span class="ic">TODA NOITE</span>
+        <div><div class="lb">A noite é família</div><div class="ls">Nada de trabalho após buscar as crianças. Comprimir a família para tracionar o negócio é troca ruim — o custo aparece em poucos meses.</div></div>
+      </div>
+      <div class="lock">
+        <span class="ic">17h</span>
+        <div><div class="lb">Buscar as crianças</div><div class="ls">Âncora do fim do expediente, seg–sex. O dia de trabalho termina aqui — o que não coube, coube no bloco da manhã.</div></div>
+      </div>
+      <div class="lock">
+        <span class="ic">QUA · SEX</span>
+        <div><div class="lb">Apoio à Yasmin</div><div class="ls">Manhãs de quarta e sexta até as 11h. O bloco de build 6h–8h acontece antes, sem conflito.</div></div>
+      </div>
+      <div class="lock">
+        <span class="ic">TER</span>
+        <div><div class="lb">BNI</div><div class="ls">Não é tempo perdido — é o canal comercial de indicação (Gargalo 03). Conta como comercial, desde que você trabalhe a indicação com método.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11.7 -->
+  <section id="saida" style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">11.7</span><h2>A condição de saída</h2></div>
+    <p class="sec-sub">Esta é a parte que quase todo plano de produtividade esquece — e a mais importante. O ritmo de ~40h com manhã cedo <b>tem prazo de validade</b>. A manhã cedo é andaime, não fundação.</p>
+
+    <div class="exit">
+      <div class="cap">O sucesso não é manter isto para sempre</div>
+      <div class="thesis">O objetivo do sprint é você <span class="em">voltar para as ~30h e trabalhar menos</span> — porque a operação saiu do seu colo e a máquina roda sozinha.</div>
+      <div class="shift">
+        <div>Se em 6 meses você ainda acorda às 6h para <b>apagar incêndio operacional</b>, você não tracionou — só terceirizou o seu descanso para o negócio.</div>
+        <div>Treino, família e os jantares não são luxo a cortar: são o <b>combustível que o sprint existe para devolver</b> a você do outro lado.</div>
+        <div>Acorde cedo para <b>construir a saída</b>, não para alimentar a jaula.</div>
+      </div>
+
+      <div class="dday">
+        <span class="k">DIA D</span>
+        <div class="v">Marque no calendário <b>a data de encerramento do sprint (dia 90)</b>. Nela, revise a alocação: se a operação caiu para ~20%, o bloco 6h–8h vira opcional e você recupera as manhãs. O sprint termina — por design.</div>
+      </div>
+
+      <div class="warnbox"><b>O risco a vigiar:</b> um sprint de 90 dias sem data de saída vira o novo normal permanente. É assim que fundador troca "trabalhar duro por um trimestre" por "acordar às 6h para sempre". Não caia nessa — o dia D é o que impede.</div>
+    </div>
+
+    <footer>
+      <span>EMPRESATIVA DIGITAL · MANUAL DE GESTÃO · SEÇÃO 11 · JULHO 2026</span>
+      <span>REVISAR NO DIA D</span>
+    </footer>
+  </section>
+
+</div>
+
+<script>
+  const pills = document.querySelectorAll('.nav-pills a');
+  const secs = [...document.querySelectorAll('section[id]')];
+  const map = {};
+  pills.forEach(p=>map[p.getAttribute('href').slice(1)]=p);
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        pills.forEach(p=>p.classList.remove('active'));
+        map[e.target.id]?.classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
