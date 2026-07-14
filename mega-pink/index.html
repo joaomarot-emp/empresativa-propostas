@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta de Sociedade · Meu Mega Pink</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F3F4;--paper-2:#FBF9FA;--ink:#1C1418;--ink-soft:#3A2F35;
+    --stone:#6B5D63;--line:#E3DADE;--magenta:#A61250;--magenta-br:#D4266E;
+    --champagne:#B0895E;--champagne-soft:#F3E9DE;--magenta-wash:#F7E4EC;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 28px;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--magenta);font-weight:500;}
+
+  /* HERO */
+  header.hero{background:var(--ink);color:var(--paper);padding:70px 0 58px;border-bottom:3px solid var(--magenta);}
+  .hero .kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--magenta-br);margin-bottom:26px;}
+  .hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(38px,7vw,70px);
+    line-height:0.98;letter-spacing:-0.02em;margin:0;}
+  .hero h1 em{font-style:italic;font-weight:500;color:var(--magenta-br);}
+  .hero .sub{font-size:clamp(18px,2.4vw,22px);color:#D8CCD2;max-width:600px;margin:22px 0 0;line-height:1.5;}
+  .hero .from{margin-top:36px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:#B5A6AD;letter-spacing:.04em;}
+  .hero .from b{color:var(--paper);font-weight:500;}
+
+  /* DEAL SUMMARY STRIP */
+  .deal{background:var(--magenta);color:#fff;}
+  .deal .wrap{padding:26px 28px;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between;}
+  .deal .d-item{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;color:#F6D6E2;}
+  .deal .d-item b{display:block;font-family:"Fraunces",serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-0.01em;margin-top:3px;}
+
+  section{padding:54px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--magenta);letter-spacing:.1em;}
+  h2{font-family:"Fraunces",serif;font-weight:700;font-size:clamp(26px,4vw,36px);
+    line-height:1.06;letter-spacing:-0.015em;margin:6px 0 18px;}
+  h3{font-family:"Fraunces",serif;font-weight:600;font-size:20px;letter-spacing:-0.01em;margin:26px 0 10px;}
+  p{margin:0 0 16px;}
+  .lead{font-size:20px;color:var(--ink-soft);}
+  strong{font-weight:600;color:var(--ink);}
+  .accent{color:var(--magenta);font-weight:600;}
+
+  /* EQUITY SPLIT VISUAL */
+  .equity{margin:30px 0 10px;}
+  .bar{display:flex;height:82px;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  .bar .ane{flex:75;background:var(--magenta);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 26px;}
+  .bar .joao{flex:25;background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 20px;}
+  .bar .lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.85;}
+  .bar .num{font-family:"Fraunces",serif;font-weight:900;font-size:34px;line-height:1;letter-spacing:-0.02em;margin-top:2px;}
+  .bar .who-sm{font-size:12px;opacity:.75;font-family:"IBM Plex Mono",monospace;margin-top:3px;}
+  .eq-cap{display:flex;justify-content:space-between;margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--stone);}
+
+  /* WHY FAIR CARDS */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0 4px;}
+  .why .card{border:1px solid var(--line);border-radius:6px;background:var(--paper-2);padding:20px;}
+  .why .card .ico{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--magenta);font-weight:600;margin-bottom:8px;}
+  .why .card p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.45;}
+
+  /* CALLOUTS */
+  .note{border-left:3px solid var(--champagne);background:linear-gradient(90deg,var(--champagne-soft),transparent 90%);
+    padding:18px 22px;margin:24px 0;border-radius:0 4px 4px 0;}
+  .note .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:#8A6842;font-weight:600;display:block;margin-bottom:7px;}
+  .note p{margin:0;font-size:16px;color:var(--ink-soft);}
+  .note.pink{border-left-color:var(--magenta);background:linear-gradient(90deg,var(--magenta-wash),transparent 90%);}
+  .note.pink .tag{color:var(--magenta);}
+
+  /* TWO SIDES */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:24px 0;background:var(--paper-2);}
+  .side{padding:24px 22px;}
+  .side.ane{background:var(--magenta-wash);border-right:1px solid #EAD3DD;}
+  .side .who{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-bottom:3px;}
+  .side.ane .who{color:var(--magenta);}
+  .side.joao .who{color:var(--ink);}
+  .side .name{font-family:"Fraunces",serif;font-weight:700;font-size:21px;margin-bottom:14px;letter-spacing:-0.01em;}
+  .side ul{list-style:none;margin:0;padding:0;}
+  .side li{font-size:15px;line-height:1.4;padding:8px 0 8px 20px;position:relative;border-top:1px solid rgba(0,0,0,.06);color:var(--ink-soft);}
+  .side li:first-child{border-top:none;}
+  .side.ane li::before{content:"◆";position:absolute;left:0;top:8px;color:var(--magenta);font-size:10px;}
+  .side.joao li::before{content:"▪";position:absolute;left:0;top:7px;color:var(--ink);font-size:12px;}
+
+  /* MONEY */
+  .flow{display:grid;gap:2px;margin:22px 0;border-radius:6px;overflow:hidden;border:1px solid var(--line);}
+  .flow-row{display:grid;grid-template-columns:1.1fr 2fr;background:var(--paper-2);}
+  .flow-row .k{padding:13px 16px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border-right:1px solid var(--line);display:flex;align-items:center;}
+  .flow-row .v{padding:13px 16px;font-size:15px;color:var(--ink-soft);line-height:1.45;}
+
+  /* CLEAN LIST */
+  ul.clean{list-style:none;padding:0;margin:16px 0;}
+  ul.clean li{padding:12px 0 12px 30px;position:relative;border-bottom:1px solid var(--line);font-size:16px;color:var(--ink-soft);line-height:1.45;}
+  ul.clean li::before{content:"✓";position:absolute;left:2px;top:11px;color:var(--magenta);font-weight:700;font-family:"IBM Plex Mono",monospace;}
+  ul.clean li b{color:var(--ink);}
+
+  .body ul{padding-left:20px;} .body li{margin:6px 0;}
+
+  /* PHASES */
+  .phase{display:grid;grid-template-columns:116px 1fr;gap:22px;padding:18px 0;border-top:1px solid var(--line);}
+  .phase:first-child{border-top:none;}
+  .ph-tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);font-weight:600;}
+  .ph-time{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--stone);margin-top:4px;}
+  .phase h3{margin:0 0 6px;font-size:18px;} .phase p{margin:0;font-size:15px;color:var(--ink-soft);}
+  .phase ul{margin:8px 0 0;padding-left:18px;font-size:14.5px;color:var(--ink-soft);} .phase li{margin:3px 0;}
+
+  /* CLOSE */
+  .close{background:var(--ink);color:var(--paper);border-radius:10px;padding:38px 34px;margin:30px 0 6px;}
+  .close .eyebrow{color:var(--magenta-br);}
+  .close h2{color:var(--paper);margin-top:8px;}
+  .close p{color:#D8CCD2;}
+  .close .steps{list-style:none;padding:0;margin:20px 0 0;}
+  .close .steps li{padding:12px 0 12px 34px;position:relative;border-top:1px solid #33272E;color:#E8DEE3;font-size:16px;line-height:1.45;}
+  .close .steps li:first-child{border-top:none;}
+  .close .steps li span{position:absolute;left:0;top:11px;font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--magenta-br);font-weight:600;}
+
+  footer{background:var(--ink);color:#9C8F95;padding:30px 0;font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.7;border-top:1px solid #33272E;}
+  footer b{color:var(--paper);font-weight:500;}
+
+  @media (max-width:680px){
+    body{font-size:17px;} .wrap{padding:0 20px;}
+    .why{grid-template-columns:1fr;}
+    .split{grid-template-columns:1fr;} .side.ane{border-right:none;border-bottom:1px solid #EAD3DD;}
+    .phase{grid-template-columns:1fr;gap:6px;}
+    .flow-row{grid-template-columns:1fr;} .flow-row .k{border-right:none;border-bottom:1px solid var(--line);}
+    .bar{height:auto;flex-direction:column;} .bar .ane,.bar .joao{padding:16px 20px;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  a:focus-visible{outline:2px solid var(--magenta-br);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Proposta de Sociedade</div>
+    <h1>Meu Mega <em>Pink</em></h1>
+    <p class="sub">Uma proposta para transformar a sua autoridade e o seu produto em uma operação de venda de cabelo organizada, digital e que escala — sem você perder o controle nem sobrecarregar sua rotina.</p>
+    <div class="from"><b>Para:</b> Ane Araújo &nbsp;·&nbsp; <b>De:</b> João Marot &nbsp;·&nbsp; <b>Marca:</b> Meu Mega Pink</div>
+  </div>
+</header>
+
+<div class="deal">
+  <div class="wrap">
+    <div class="d-item">Participação<b>Ane 75% · João 25%</b></div>
+    <div class="d-item">Quem investe<b>Caixa da empresa</b></div>
+    <div class="d-item">Quem constrói vendas<b>João</b></div>
+    <div class="d-item">Formato<b>Sociedade formal</b></div>
+  </div>
+</div>
+
+<div class="wrap body">
+
+<!-- 0 -->
+<section>
+  <span class="sec-num">01</span>
+  <h2>A demanda já é sua. Falta só a estrutura.</h2>
+  <p class="lead">Você já provou o mais difícil: tem o produto certo, a técnica que quase ninguém domina e uma autoridade real — as pessoas procuram pelo nome dos perfis que <em>você</em> criou, não por "tipo de cabelo". O que segura o crescimento hoje não é falta de procura. É o negócio depender de você aparecer e responder tudo no artesanal.</p>
+  <p>Minha proposta é simples: eu monto e opero a máquina de vendas digital por trás da sua marca, para que o Meu Mega Pink venda de forma organizada para a rede que você já tem — e amplie essa rede — atendendo consumidor final, suas alunas revendedoras e salões que querem um cabelo premium. Você continua sendo a autoridade e a dona do negócio. Eu cuido de fazer vender.</p>
+</section>
+
+<!-- 1 -->
+<section>
+  <span class="sec-num">02</span>
+  <h2>O que eu entrego</h2>
+  <p>Minha parte não é "rodar uns anúncios". É construir a operação inteira de vendas e tocá‑la no dia a dia, no mesmo padrão que aplico nos clientes da EmpresAtiva:</p>
+  <ul class="clean">
+    <li><b>Aquisição de clientes:</b> tráfego pago no Meta e no Google, com criativos, funil e otimização semanal.</li>
+    <li><b>Loja e catálogo:</b> site/checkout e catálogo dos seus perfis como produtos ("perfil 3 em 1" como carro‑chefe).</li>
+    <li><b>Funil de vendas:</b> do primeiro contato no Instagram/DM até o pedido fechado, com atendimento estruturado.</li>
+    <li><b>Automação e CRM:</b> cada lead rastreado por origem, sem perder venda, com follow‑up automático.</li>
+    <li><b>Canal de revenda:</b> estrutura para suas alunas comprarem e revenderem nos salões delas.</li>
+    <li><b>Gestão por números:</b> painel de custo por venda, ticket médio, margem e retorno — decisão com dado, não no achismo.</li>
+  </ul>
+</section>
+
+<!-- 2 EQUITY -->
+<section>
+  <span class="sec-num">03</span>
+  <h2>A estrutura da sociedade</h2>
+  <p>Proponho uma divisão enxuta e de baixo risco para você: <strong>você fica com 75% e o controle do negócio; eu fico com 25%</strong>, que se consolidam ao longo do tempo conforme eu entrego (mais sobre isso abaixo).</p>
+
+  <div class="equity">
+    <div class="bar">
+      <div class="ane">
+        <span class="lbl">Sócia majoritária · controle</span>
+        <span class="num">75%</span>
+        <span class="who-sm">Ane Araújo — produto, marca, autoridade e capital</span>
+      </div>
+      <div class="joao">
+        <span class="lbl">Sócio operacional</span>
+        <span class="num">25%</span>
+        <span class="who-sm">João — operação e crescimento</span>
+      </div>
+    </div>
+    <div class="eq-cap"><span>◆ maior fatia e decisão final com você</span><span>▪ trabalho + estrutura</span></div>
+  </div>
+
+  <h3>Por que essa divisão é justa pra você</h3>
+  <div class="why">
+    <div class="card"><div class="ico">Você banca</div><p>O capital de estoque e anúncios vem do seu lado. Quem assume o risco financeiro fica com a maior fatia — é justo que seja você.</p></div>
+    <div class="card"><div class="ico">É seu produto</div><p>A marca, a técnica e a audiência são suas e continuam suas. Eu construo em cima do que você já criou, não o contrário.</p></div>
+    <div class="card"><div class="ico">Você decide</div><p>Com 75% você mantém o controle. Nenhuma decisão grande do negócio acontece por cima de você.</p></div>
+  </div>
+
+  <div class="note pink">
+    <span class="tag">Meu 25% eu preciso merecer</span>
+    <p>Minha participação se consolida ao longo de <strong>4 anos (vesting)</strong>. Na prática: se eu não entregar o que estou prometendo, você não fica presa a um sócio ausente segurando 25% do seu negócio. Eu ganho a fatia conforme construo — o risco é meu, não seu.</p>
+  </div>
+</section>
+
+<!-- 3 FUNÇÕES -->
+<section>
+  <span class="sec-num">04</span>
+  <h2>Quem faz o quê</h2>
+  <p>Cada uma cuida do que domina. Sem pisar no pé da outra e sem zona cinzenta.</p>
+  <div class="split">
+    <div class="side ane">
+      <div class="who">Você lidera</div>
+      <div class="name">Ane</div>
+      <ul>
+        <li>Compra e curadoria do cabelo — qualidade e fornecimento</li>
+        <li>Técnica e definição dos perfis/produtos</li>
+        <li>Autoridade e conteúdo — aparecer, transformar, ensinar</li>
+        <li>Relacionamento com as alunas revendedoras</li>
+        <li>Atendimento técnico de alto nível</li>
+      </ul>
+    </div>
+    <div class="side joao">
+      <div class="who">Eu lidero</div>
+      <div class="name">João</div>
+      <ul>
+        <li>Tráfego pago, funil e criativos</li>
+        <li>Site, catálogo, checkout e automação</li>
+        <li>CRM, atendimento comercial e pós‑venda</li>
+        <li>Estrutura do canal de revenda</li>
+        <li>Precificação com dados, margem e painéis</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:15px;color:var(--stone);">As decisões grandes — preço, mix de produtos, quanto investir, contratações e metas — a gente toma <strong>junto</strong>, com sua palavra final como sócia majoritária.</p>
+</section>
+
+<!-- 4 INVESTIMENTO -->
+<section>
+  <span class="sec-num">05</span>
+  <h2>Como funciona o dinheiro</h2>
+  <p>Transparência total, porque sociedade que dá certo é sociedade com conta clara. O negócio tem <strong>caixa próprio</strong> (conta da empresa), separado da sua conta pessoal.</p>
+  <div class="flow">
+    <div class="flow-row"><div class="k">Estoque</div><div class="v">Aporte inicial seu, registrado como investimento na empresa — não some, fica documentado como seu.</div></div>
+    <div class="flow-row"><div class="k">Anúncios</div><div class="v">Saem do caixa da empresa (aporte inicial seu). É o negócio investindo em crescer, com prestação de contas em cima de cada real.</div></div>
+    <div class="flow-row"><div class="k">Estrutura de vendas</div><div class="v">Entra por minha conta — ferramentas, automação, CRM e o sistema todo. É a minha contribuição, sem custo pra você.</div></div>
+    <div class="flow-row"><div class="k">Lucro</div><div class="v">Depois de pagar cabelo, anúncios e operação, o lucro é dividido <strong>75% você / 25% eu</strong>.</div></div>
+  </div>
+  <div class="note">
+    <span class="tag">O compromisso enxuto</span>
+    <p>Esse é o cenário de <strong>menor risco pra você</strong>: eu entro com trabalho e estrutura, provo o resultado com números antes de qualquer coisa crescer, e sua exposição fica no capital de estoque e mídia que você já ia investir de qualquer jeito para vender.</p>
+  </div>
+</section>
+
+<!-- 5 MÁQUINA -->
+<section>
+  <span class="sec-num">06</span>
+  <h2>Por onde vamos vender</h2>
+  <p>Três canais, um só motor girando por trás da sua marca:</p>
+  <ul class="clean">
+    <li><b>Consumidor final:</b> venda direta online, com recompra e indicação.</li>
+    <li><b>Alunas revendedoras:</b> elas compram para revender nos salões — receita mais constante e previsível.</li>
+    <li><b>Salões premium:</b> donos de salão que querem um cabelo diferenciado para as clientes deles.</li>
+  </ul>
+  <div class="note pink">
+    <span class="tag">O posicionamento continua o seu</span>
+    <p>Nada de brigar por preço com cabelo genérico. A gente vende <strong>marca, autoridade e resultado</strong> — o perfil que os clientes já procuram pelo nome. O tráfego só amplifica o que você já construiu; ele não troca a sua autoridade por promessa de "cabelo barato".</p>
+  </div>
+</section>
+
+<!-- 6 PROTEÇÃO -->
+<section>
+  <span class="sec-num">07</span>
+  <h2>Como a gente protege as duas partes</h2>
+  <p>Uma sociedade séria se escreve no papel, não no aperto de mão — isso protege você tanto quanto a mim. O que proponho deixar claro desde o início:</p>
+  <ul class="clean">
+    <li><b>Empresa formal:</b> CNPJ e conta próprios do Meu Mega Pink, separados da sua pessoa física.</li>
+    <li><b>Sua marca pessoal é 100% sua:</b> a sociedade é só sobre o Meu Mega Pink. A marca "Ane Araújo", seus cursos e sua autoridade continuam inteiramente suas.</li>
+    <li><b>Meu vesting protege você:</b> minha fatia se consolida em 4 anos. Se eu sair antes ou não entregar, você não fica com um sócio fantasma.</li>
+    <li><b>Tudo que eu construir fica na empresa:</b> site, sistema, base de clientes e automações são da sociedade — patrimônio do negócio, não meu pessoal.</li>
+    <li><b>Regras de saída claras:</b> como cada um entra e sai, e como se calcula o valor da participação, definido antes de começar.</li>
+  </ul>
+</section>
+
+<!-- 7 FASES -->
+<section>
+  <span class="sec-num">08</span>
+  <h2>Como sai do papel</h2>
+  <div class="phase">
+    <div><div class="ph-tag">Fase 0</div><div class="ph-time">antes de tudo</div></div>
+    <div><h3>Alinhamento</h3><p>A gente fecha os termos desta proposta e formaliza. Nada começa antes disso combinado.</p></div>
+  </div>
+  <div class="phase">
+    <div><div class="ph-tag">Fase 1</div><div class="ph-time">~30–45 dias</div></div>
+    <div><h3>Fundação</h3><ul><li>CNPJ e conta da empresa</li><li>Catálogo com os 3 primeiros perfis</li><li>Site, checkout e funil de pedido</li><li>CRM, automação e rastreamento</li><li>Conta de anúncios da empresa</li></ul></div>
+  </div>
+  <div class="phase">
+    <div><div class="ph-tag">Fase 2</div><div class="ph-time">~30–60 dias</div></div>
+    <div><h3>Validação</h3><p>Primeiras campanhas, medir custo por venda, ticket e margem, e ativar as primeiras revendedoras. Provar que a conta fecha antes de acelerar.</p></div>
+  </div>
+  <div class="phase">
+    <div><div class="ph-tag">Fase 3</div><div class="ph-time">escala</div></div>
+    <div><h3>Escala</h3><p>Aumentar os anúncios com segurança, estruturar o time de vendas e abrir de vez o canal de atacado para as alunas.</p></div>
+  </div>
+  <div class="phase">
+    <div><div class="ph-tag">Fase 4</div><div class="ph-time">expansão</div></div>
+    <div><h3>Expansão</h3><p>Levar para fora (já chega procura de Argentina e EUA) e, se fizer sentido, um curso de revenda apoiado na sua autoridade.</p></div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section style="border-bottom:none;padding-bottom:20px;">
+  <div class="close">
+    <div class="eyebrow">Próximo passo</div>
+    <h2>Vamos tirar do artesanal.</h2>
+    <p>Você já tem a parte mais difícil pronta: o produto, a técnica e a autoridade. Eu entro pra construir a máquina que faz isso virar venda todo dia, assumindo o risco do meu lado. Se fizer sentido pra você, proponho três passos:</p>
+    <ul class="steps">
+      <li><span>1</span>Você me diz o que acha desta estrutura e ajustamos o que precisar.</li>
+      <li><span>2</span>Alinhamos os números do começo — quanto de estoque e de mídia para arrancar.</li>
+      <li><span>3</span>Formalizamos a empresa e eu começo a Fase 1.</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <b>Meu Mega Pink</b> · Proposta de sociedade — Ane Araújo &amp; João Marot.<br>
+    Documento de proposta para alinhamento. Os termos aqui são a base para o contrato de sociedade, a ser formalizado com apoio contábil e jurídico.
+  </div>
+</footer>
+
+</body>
+</html>
