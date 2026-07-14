@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Studio Rejane Nascimento</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(46,204,113,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.diag-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.diag-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.diag-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.diag-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+/* JORNADA IA */
+.ia-flow{display:flex;flex-direction:column;gap:2px;margin-top:8px;}
+.ia-step{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ia-step.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.ia-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:32px;line-height:1;margin-top:2px;}
+.ia-step h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.ia-step p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-main{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-main::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold),var(--green));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:16px;}
+
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.meta{border-left:3px solid var(--orange);}
+.inv-linha.ia{border-left:3px solid var(--green);}
+.inv-linha-info h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;}
+.inv-linha-valor{font-family:var(--font-display);font-size:22px;font-weight:800;flex-shrink:0;}
+.inv-linha.meta .inv-linha-valor{color:var(--orange);}
+.inv-linha.ia .inv-linha-valor{color:var(--green);}
+.inv-total-box{background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);}
+.inv-total-val{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;}
+
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+.comparativo{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:22px 24px;border-radius:2px;margin-top:3px;}
+.comparativo h4{font-size:13px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.comp-grid{display:flex;flex-direction:column;gap:2px;}
+.comp-item{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.comp-item.atual{border-left:2px solid rgba(232,64,64,0.5);}
+.comp-item.novo{background:rgba(46,204,113,0.04);border-left:2px solid var(--green);}
+.comp-desc{font-size:12px;color:var(--muted);}
+.comp-desc strong{color:var(--white);}
+.comp-val{font-family:var(--font-display);font-size:16px;font-weight:800;flex-shrink:0;}
+.comp-item.atual .comp-val{color:rgba(232,64,64,0.8);}
+.comp-item.novo .comp-val{color:var(--green);}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.455-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads + IA &middot; Studio Rejane Nascimento &middot; Cascadura RJ</p>
+  <h1>Sua agenda j&aacute;<br>est&aacute; cheia.<br><em>A das meninas<br>ainda n&atilde;o.</em></h1>
+  <p class="hero-sub">Rejane, em 25 anos voc&ecirc; construiu uma carteira s&oacute;lida. O que falta agora &eacute; lotar a agenda das suas manicures — com clientes de Cascadura que chegam qualificados, sabendo o pre&ccedil;o e prontos para agendar. A EmpresAtiva faz isso com tráfego local e IA respondendo 24h no seu WhatsApp.</p>
+  <div class="pills">
+    <div class="pill"><span>Meta Ads</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Agente de IA</span><span>R$ 497/m&ecirc;s</span></div>
+    <div class="pill"><span>Total</span><span>R$ 1.494/m&ecirc;s</span></div>
+    <div class="pill"><span>Foco</span><span>Manicure + Neodesign &middot; Cascadura</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-label">O que foi errado antes — e como fica diferente agora</div>
+  <h2 class="sec-title">6 meses pagando<br>por cliente<br><em>de S&atilde;o Paulo.</em></h2>
+  <p class="sec-intro">Rejane, o que aconteceu com a agência anterior n&atilde;o foi azar. Foi estrutura errada desde o início. A EmpresAtiva n&atilde;o repete esse erro.</p>
+
+  <div class="diag-box">
+    <h3>Tráfego sem segmenta&ccedil;&atilde;o geogr&aacute;fica — o erro mais caro do mercado</h3>
+    <p>A agência anterior n&atilde;o restringiu o an&uacute;ncio para Cascadura e arredores. Resultado: leads de S&atilde;o Paulo, Minas, outros estados — pessoas que nunca iriam at&eacute; o seu sal&atilde;o. <strong>A EmpresAtiva configura o tráfego especificamente para a sua regi&atilde;o de Cascadura — cada centavo de verba atinge s&oacute; quem pode chegar at&eacute; você.</strong></p>
+  </div>
+
+  <div class="diag-box">
+    <h3>Crescimento de seguidores n&atilde;o &eacute; resultado para sal&atilde;o presencial</h3>
+    <p>A agência justificava "alcançando gente de longe" como m&eacute;trica de sucesso. Mas sal&atilde;o presencial tem um &uacute;nico resultado que importa: <strong>cliente sentada na cadeira.</strong> &Eacute; exatamente isso que a EmpresAtiva mede e entrega — n&atilde;o visualiza&ccedil;&atilde;o, n&atilde;o seguidor.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>O que a EmpresAtiva entrega de diferente</h3>
+    <p>Tráfego 100% local (Cascadura e bairros pr&oacute;ximos). An&uacute;ncios em v&iacute;deo que mostram o pre&ccedil;o e o resultado — a pessoa j&aacute; chega sabendo o que quer. Rastreamento de onde vem cada contato. IA respondendo 24h para nenhum lead esfriar. <strong>E se você quiser sair, s&oacute; 30 dias de aviso — sem contrato de 6 meses.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">A estratégia — foco nas manicures</div>
+  <h2 class="sec-title">An&uacute;ncio que desperta<br><em>desejo imediato.</em></h2>
+  <p class="sec-intro">O an&uacute;ncio de antes e depois &eacute; o que todo mundo faz. A EmpresAtiva cria o criativo que para o scroll — mostrando o resultado, o pre&ccedil;o e o endere&ccedil;o, para a mulher de Cascadura pensar "quero isso agora".</p>
+
+  <div class="gold-box">
+    <h3>Por que focar primeiro em unhas — e n&atilde;o em cachos</h3>
+    <p>Sua agenda de cachos e permanente j&aacute; est&aacute; lotada. O gargalo est&aacute; nas duas manicures com espa&ccedil;o na agenda. <strong>Com R$ 500 de verba, a EmpresAtiva foca toda a energia em uma frente — unhas — at&eacute; encher aquela agenda. Depois expande para cachos, aumentando ainda mais o faturamento do estúdio.</strong></p>
+  </div>
+
+  <div class="diag-box">
+    <h3>O criativo que funciona — vídeo com pre&ccedil;o e ambiente</h3>
+    <p>A EmpresAtiva passa o script exato: Rejane grava mostrando o espaço, os servi&ccedil;os, o resultado e o pre&ccedil;o. A equipe de design edita. <strong>O an&uacute;ncio chega para a mulher de Cascadura j&aacute; com a informa&ccedil;&atilde;o completa — ela entra em contato s&oacute; para confirmar o agendamento.</strong> Mesmo modelo que j&aacute; funciona com clientes de neodesign em Niterói e Caxias.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- COMO FUNCIONA A IA -->
+<section class="bg-dark">
+  <div class="sec-label">O Agente de IA — sua funcionária 24h</div>
+  <h2 class="sec-title">Voc&ecirc; atende na<br>quinta. O lead chega<br><em>na quarta &agrave; noite.</em></h2>
+  <p class="sec-intro">O tráfego gera interessados a qualquer hora. Sem a IA, uma pessoa que entrou em contato quinta &agrave; noite j&aacute; escolheu outro sal&atilde;o at&eacute; você responder na quinta de manh&atilde;. Com a IA, ela recebe resposta em segundos.</p>
+
+  <div class="ia-flow">
+    <div class="ia-step hl">
+      <div class="ia-num">1</div>
+      <div>
+        <h3>Lead entra no WhatsApp do estúdio</h3>
+        <p>Qualquer hora do dia ou da noite — inclusive nos dias que voc&ecirc; n&atilde;o est&aacute; no sal&atilde;o (segunda, terça, quarta).</p>
+      </div>
+    </div>
+    <div class="ia-step">
+      <div class="ia-num">2</div>
+      <div>
+        <h3>IA responde imediatamente como se fosse humana</h3>
+        <p>Apresenta o estúdio, responde d&uacute;vidas sobre servi&ccedil;os e pre&ccedil;os, pergunta qual servi&ccedil;o quer e para quando. Conversa natural, sem robô aparente.</p>
+      </div>
+    </div>
+    <div class="ia-step">
+      <div class="ia-num">3</div>
+      <div>
+        <h3>IA qualifica — descobre se a pessoa vai fechar</h3>
+        <p>Pergunta se mora em Cascadura ou arredores, qual servi&ccedil;o quer, qual disponibilidade. S&oacute; passa para Rejane quem est&aacute; pronto para agendar.</p>
+      </div>
+    </div>
+    <div class="ia-step hl">
+      <div class="ia-num">4</div>
+      <div>
+        <h3>Alerta no WhatsApp de Rejane — pronta para agendar</h3>
+        <p>"Rejane, entra em contato com [nome] — ela quer fazer neodesign na próxima semana." Voc&ecirc; agenda no Trinks. A IA j&aacute; fez todo o trabalho pr&eacute;vio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">O que est&aacute; incluso</div>
+  <h2 class="sec-title">Tudo para lotar<br><em>a agenda das<br>manicures.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas</h3>
+        <p>Campanhas no Instagram e Facebook segmentadas exclusivamente para Cascadura e bairros pr&oacute;ximos — sem desperdiçar verba com quem n&atilde;o vai aparecer no sal&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Script + edi&ccedil;&atilde;o dos v&iacute;deos</h3>
+        <p>A EmpresAtiva passa o roteiro exato dos takes. Rejane grava. A equipe de design edita com gancho, pre&ccedil;o e CTA — o criativo que desperta desejo imediato, diferente do antes e depois que todo mundo faz.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🤖</div>
+      <div>
+        <h3>Agente de IA no WhatsApp</h3>
+        <p>Responde leads 24h, qualifica quem &eacute; potencial cliente e avisa Rejane quando algu&eacute;m est&aacute; pronto para agendar — para n&atilde;o perder nenhum contato nos dias que o sal&atilde;o n&atilde;o est&aacute; aberto.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📍</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o do Google Meu Neg&oacute;cio</h3>
+        <p>Perfil com nota 6.7 (zona amarela) vai para a zona verde — aparecer entre os 3 primeiros quando algu&eacute;m pesquisar "sal&atilde;o de beleza Cascadura" ou "manicure Cascadura" no Google.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Todo contato novo chegando no WhatsApp aparece com nome, telefone e servi&ccedil;o de interesse — mesmo quando Rejane est&aacute; com a m&atilde;o no cabelo de uma cliente.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard em tempo real</h3>
+        <p>Painel Looker Studio mostrando quanto foi gasto, quantos leads chegaram, qual an&uacute;ncio gerou mais resultado e custo por lead — tudo visível a qualquer hora.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Rastreamento de origem de cada lead</h3>
+        <p>A EmpresAtiva sabe se cada contato veio do tráfego pago, do org&acirc;nico ou de indica&ccedil;&atilde;o — para saber exatamente o que est&aacute; gerando resultado e o que precisar melhorar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s — alinhamentos r&aacute;pidos, orienta&ccedil;&atilde;o de novos takes para gravar e decis&otilde;es estrat&eacute;gicas sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Dois servi&ccedil;os.<br><em>Um valor justo.</em></h2>
+  <p class="sec-intro">R$ 200 a mais do que voc&ecirc; pagava antes — com tráfego local, IA 24h, rastreamento e resultado real.</p>
+
+  <div class="inv-main">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Meta Ads + Agente de IA &mdash; Studio Rejane Nascimento &middot; Cascadura RJ</div>
+
+      <div class="inv-split">
+        <div class="inv-linha meta">
+          <div class="inv-linha-info">
+            <h4>Meta Ads — Instagram &amp; Facebook</h4>
+            <p>Gest&atilde;o completa, criativos em v&iacute;deo, segmenta&ccedil;&atilde;o local Cascadura, GBP, dashboard e rastreamento</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha ia">
+          <div class="inv-linha-info">
+            <h4>Agente de IA no WhatsApp</h4>
+            <p>Resposta 24h, qualifica&ccedil;&atilde;o de leads e alerta para Rejane quando pronto para agendar</p>
+          </div>
+          <div class="inv-linha-valor">R$ 497<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total mensal</h4>
+            <p>Sem fidelidade &middot; aviso pr&eacute;vio de 30 dias para sair</p>
+          </div>
+          <div class="inv-total-val">R$ 1.494<span style="font-size:13px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Meta Ads com segmenta&ccedil;&atilde;o 100% local — s&oacute; Cascadura e arredores</li>
+        <li>Script + edi&ccedil;&atilde;o dos criativos em v&iacute;deo</li>
+        <li>Agente de IA respondendo WhatsApp 24h</li>
+        <li>Otimiza&ccedil;&atilde;o do Google Meu Neg&oacute;cio inclusa</li>
+        <li>Rastreamento de origem de cada lead</li>
+        <li>Dashboard Looker Studio em tempo real</li>
+        <li>Alerta de leads no WhatsApp de Rejane</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa.</strong> M&iacute;nimo recomendado de <strong style="color:var(--white);">R$ 500/m&ecirc;s</strong> investidos diretamente no Meta — para come&ccedil;ar focado em unhas e, quando estiver vendendo, expandir para cachos e permanente.</p>
+    </div>
+  </div>
+
+  <div class="comparativo">
+    <h4>Comparativo com a agência anterior</h4>
+    <div class="comp-grid">
+      <div class="comp-item atual">
+        <div>
+          <div class="comp-desc"><strong>Antes</strong> — agência anterior por 6 meses</div>
+          <div class="comp-desc">Tráfego para Brasil inteiro · sem segmentação local · 1 cliente em 6 meses · contrato de 6 meses</div>
+        </div>
+        <div class="comp-val">~R$ 800/m&ecirc;s</div>
+      </div>
+      <div class="comp-item novo">
+        <div>
+          <div class="comp-desc"><strong>Agora</strong> — EmpresAtiva</div>
+          <div class="comp-desc">Tráfego s&oacute; Cascadura · IA 24h · rastreamento · sem fidelidade · aviso pr&eacute;vio de 30 dias</div>
+        </div>
+        <div class="comp-val">R$ 1.494/m&ecirc;s</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao primeiro<br><em>agendamento<br>pelo tráfego.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje / amanh&atilde;</span>
+      <h3>Rejane confirma ap&oacute;s conversa com o marido</h3>
+      <p>A EmpresAtiva fica &agrave; disposi&ccedil;&atilde;o para qualquer d&uacute;vida antes da decis&atilde;o. Assim que confirmar, o processo come&ccedil;a imediatamente.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 1</span>
+      <h3>Acesso + script dos v&iacute;deos</h3>
+      <p>A EmpresAtiva acessa a conta do Meta e o Google Meu Neg&oacute;cio. Jo&atilde;o envia o roteiro exato dos takes para Rejane gravar — simples, direto, s&oacute; filmar.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 2–5</span>
+      <h3>Edi&ccedil;&atilde;o + configura&ccedil;&atilde;o da IA + GBP</h3>
+      <p>Equipe de design edita os v&iacute;deos. Agente de IA configurado no WhatsApp do estúdio. GBP come&ccedil;a a ser otimizado para Cascadura.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>An&uacute;ncios no ar — Cascadura v&ecirc;</h3>
+      <p>Primeiras campanhas publicadas. IA ativa no WhatsApp. Dashboard entregue. Os primeiros leads de Cascadura chegam no WhatsApp do estúdio.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Agenda das manicures lotando — pr&oacute;xima frente</h3>
+      <p>Com as manicures com agenda cheia, a pr&oacute;xima decis&atilde;o &eacute; expandir o tráfego para cachos e permanente — ou contratar mais uma profissional para atender a demanda gerada.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Rejane, 25 anos<br>de reputa&ccedil;&atilde;o.<br><em>Agora &eacute; hora<br>de lotar a agenda<br>das meninas tamb&eacute;m.</em></h2>
+  <p>Voc&ecirc; j&aacute; sabe fazer o servi&ccedil;o. Voc&ecirc; j&aacute; tem o espa&ccedil;o. Voc&ecirc; j&aacute; tem as profissionais. O que falta &eacute; um tráfego que chegue na mulher de Cascadura — com o pre&ccedil;o certo, no momento certo, e uma IA que responda quando voc&ecirc; est&aacute; com a m&atilde;o no cabelo de outra cliente.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.455-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
