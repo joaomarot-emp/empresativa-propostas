@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Saco para Delivery</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--roxo:#8B2FC9;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(139,47,201,0.1) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(232,103,26,0.07) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+
+.roxo-box{background:rgba(139,47,201,0.05);border:1px solid rgba(139,47,201,0.2);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.roxo-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--roxo);margin-bottom:10px;}
+.roxo-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.roxo-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+/* ESCOPO GRID */
+.escopo-grid{display:flex;flex-direction:column;gap:2px;}
+.esc-item{background:var(--card);padding:22px 24px;display:flex;gap:14px;align-items:flex-start;}
+.esc-item.meta{border-left:3px solid var(--orange);}
+.esc-item.social{border-left:3px solid var(--roxo);}
+.esc-item.influ{border-left:3px solid var(--green);}
+.esc-icon{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:2px;}
+.esc-item.meta .esc-icon{background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);}
+.esc-item.social .esc-icon{background:rgba(139,47,201,0.07);border:1px solid rgba(139,47,201,0.15);}
+.esc-item.influ .esc-icon{background:rgba(46,204,113,0.06);border:1px solid rgba(46,204,113,0.14);}
+.esc-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.esc-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.esc-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:2px 7px;border-radius:2px;margin-left:6px;text-transform:uppercase;}
+.tag-m{background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);}
+.tag-s{background:rgba(139,47,201,0.1);color:var(--roxo);border:1px solid rgba(139,47,201,0.2);}
+.tag-i{background:rgba(46,204,113,0.1);color:var(--green);border:1px solid rgba(46,204,113,0.2);}
+
+/* INVESTIMENTO */
+.inv-main{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-main::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--roxo),var(--green));}
+.inv-body{padding:28px 24px;}
+.inv-plan-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:16px;}
+
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.meta{border-left:3px solid var(--orange);}
+.inv-linha.social{border-left:3px solid var(--roxo);}
+.inv-linha.influ{border-left:3px solid var(--green);}
+.inv-linha-info h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;}
+.inv-linha-valor{font-family:var(--font-display);font-size:20px;font-weight:800;flex-shrink:0;}
+.inv-linha.meta .inv-linha-valor{color:var(--orange);}
+.inv-linha.social .inv-linha-valor{color:var(--roxo);}
+.inv-linha.influ .inv-linha-valor{color:var(--green);}
+
+.inv-total-box{background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.2);padding:20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.inv-total-box p{font-size:11px;color:var(--muted);}
+.inv-total-val{font-family:var(--font-display);font-size:36px;font-weight:800;color:var(--orange);flex-shrink:0;}
+
+.variavel-box{background:rgba(232,103,26,0.03);border:1px solid rgba(232,103,26,0.12);padding:18px 20px;margin-top:2px;border-radius:2px;}
+.variavel-box p{font-size:12px;color:var(--muted);line-height:1.8;}
+.variavel-box strong{color:var(--white);}
+
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .escopo-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads + Social Media + Influenciadores &middot; Saco para Delivery &middot; Rio de Janeiro</p>
+  <h1>57 mil seguidores.<br>Franquias em<br>expans&atilde;o.<br><em>Uma ag&ecirc;ncia<br>& altura.</em></h1>
+  <p class="hero-sub">Hezio, o Saco para Delivery tem identidade visual s&oacute;lida, base de seguidores expressiva e um modelo de franquia em crescimento. O que falta &eacute; uma ag&ecirc;ncia que entregue o básico muito bem feito — artes, anúncios e influenciadores — com consist&ecirc;ncia e resultado mensur&aacute;vel toda semana.</p>
+  <div class="pills">
+    <div class="pill"><span>Meta Ads</span><span>R$ 1.500/m&ecirc;s</span></div>
+    <div class="pill"><span>Social Media</span><span>R$ 1.000/m&ecirc;s</span></div>
+    <div class="pill"><span>Influenciadores</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>Total</span><span>R$ 3.000/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O QUE MUDA -->
+<section class="bg-dark">
+  <div class="sec-label">O que a EmpresAtiva entrega diferente</div>
+  <h2 class="sec-title">O b&aacute;sico<br>muito bem feito.<br><em>Toda semana.<br>Sem falhar.</em></h2>
+  <p class="sec-intro">Hezio, voc&ecirc; mesmo disse: o contrato &eacute; simples, n&atilde;o &eacute; muito trabalho — mas precisa ser entregue com consist&ecirc;ncia. A EmpresAtiva transforma isso em sistema.</p>
+
+  <div class="orange-box">
+    <h3>An&uacute;ncios com rastreamento real — n&atilde;o s&oacute; impulsionamento semanal</h3>
+    <p>Impulsionar post toda segunda &eacute; diferente de gerir campanha com estrat&eacute;gia. A EmpresAtiva estrutura as campanhas no Gerenciador de An&uacute;ncios com pixel, p&uacute;blicos e objetivo correto — <strong>para que a verba de R$ 3.000/m&ecirc;s gere mais leads e pedidos, n&atilde;o s&oacute; mais visualiza&ccedil;&otilde;es.</strong> E voc&ecirc; acompanha tudo no dashboard em tempo real.</p>
+  </div>
+
+  <div class="roxo-box">
+    <h3>Artes padronizadas para matriz e franqueados — entregues no prazo</h3>
+    <p>3 artes por semana, mesma vers&atilde;o para todos os franqueados, mais 1 Reels semanal para a matriz. <strong>Cada arte produzida dentro da paleta de cores e identidade visual do Saco para Delivery — e entregue at&eacute; sexta para o franqueado ter o conte&uacute;do da semana seguinte pronto.</strong> Sistema de entrega organizado, sem correr atr&aacute;s da ag&ecirc;ncia.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>Gest&atilde;o de influenciadores com profissionalismo — at&eacute; os contratos</h3>
+    <p>Voc&ecirc; fecha a parceria e indica a ag&ecirc;ncia. A EmpresAtiva cuida de todo o restante: <strong>briefing para o influenciador, comunicado oficial, acompanhamento do contrato junto ao jur&iacute;dico e confirma&ccedil;&atilde;o de entrega do conte&uacute;do.</strong> Processo profissional que protege a marca e evita mal-entendido com parceiros.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESCOPO COMPLETO -->
+<section class="bg-black">
+  <div class="sec-label">Escopo detalhado — o que entra em cada servi&ccedil;o</div>
+  <h2 class="sec-title">Tr&ecirc;s frentes.<br><em>Um time.</em></h2>
+
+  <div class="escopo-grid">
+    <div class="esc-item meta">
+      <div class="esc-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o de campanhas semanais<span class="esc-tag tag-m">Meta Ads</span></h3>
+        <p>Estrutura no Gerenciador (n&atilde;o s&oacute; bot&atilde;o impulsionar), p&uacute;blicos segmentados, objetivo de campanha correto por semana, otimiza&ccedil;&atilde;o de verba e dashboard de resultados.</p>
+      </div>
+    </div>
+    <div class="esc-item meta">
+      <div class="esc-icon">📊</div>
+      <div>
+        <h3>Dashboard + relat&oacute;rio semanal<span class="esc-tag tag-m">Meta Ads</span></h3>
+        <p>Painel Looker Studio com gastos, alcance, leads e pedidos gerados por cada an&uacute;ncio. Relat&oacute;rio toda semana no grupo — para Hezio saber exatamente o que a verba gerou.</p>
+      </div>
+    </div>
+    <div class="esc-item social">
+      <div class="esc-icon">🎨</div>
+      <div>
+        <h3>3 artes semanais para franqueados<span class="esc-tag tag-s">Social Media</span></h3>
+        <p>Mesma arte para todos os franqueados, dentro da paleta e identidade visual do Saco para Delivery. Entrega at&eacute; sexta para a semana seguinte — sem atraso, sem cobran&ccedil;a de urgência.</p>
+      </div>
+    </div>
+    <div class="esc-item social">
+      <div class="esc-icon">🎬</div>
+      <div>
+        <h3>1 Reels semanal para a matriz<span class="esc-tag tag-s">Social Media</span></h3>
+        <p>Roteiro, edi&ccedil;&atilde;o e publica&ccedil;&atilde;o do Reels semanal no Instagram @sacoparadelivery — alinhado com o tema da campanha de an&uacute;ncios daquela semana para consistência entre org&acirc;nico e pago.</p>
+      </div>
+    </div>
+    <div class="esc-item influ">
+      <div class="esc-icon">🤝</div>
+      <div>
+        <h3>Briefing e comunicado para influenciadores<span class="esc-tag tag-i">Influenciadores</span></h3>
+        <p>Hezio fecha a parceria. A EmpresAtiva elabora o briefing oficial da marca, envia o comunicado para o influenciador e faz o acompanhamento junto ao jur&iacute;dico at&eacute; o contrato assinado.</p>
+      </div>
+    </div>
+    <div class="esc-item influ">
+      <div class="esc-icon">✅</div>
+      <div>
+        <h3>Confirma&ccedil;&atilde;o de entrega e relat&oacute;rio<span class="esc-tag tag-i">Influenciadores</span></h3>
+        <p>Monitoramento de que o conte&uacute;do prometido foi publicado pelo influenciador no prazo combinado. Relat&oacute;rio de alcance e engagement de cada parceria para comparar resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">Tr&ecirc;s servi&ccedil;os.<br><em>Um valor fechado.</em></h2>
+  <p class="sec-intro">Fee mensal fixo que cobre toda a opera&ccedil;&atilde;o — sem surpresa, sem cobran&ccedil;a extra por arte adicional ou reuni&atilde;o de alinhamento.</p>
+
+  <div class="inv-main">
+    <div class="inv-body">
+      <div class="inv-plan-lbl">Pacote Completo &mdash; Saco para Delivery &middot; Meta Ads + Social Media + Influenciadores</div>
+
+      <div class="inv-split">
+        <div class="inv-linha meta">
+          <div class="inv-linha-info">
+            <h4>Meta Ads — Gest&atilde;o de campanhas semanais</h4>
+            <p>Gest&atilde;o completa das campanhas semanais no Meta Ads</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.500<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha social">
+          <div class="inv-linha-info">
+            <h4>Social Media — 12 artes + 4 Reels mensais</h4>
+            <p>Produ&ccedil;&atilde;o semanal para matriz e franqueados dentro da identidade visual da marca</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.000<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha influ">
+          <div class="inv-linha-info">
+            <h4>Gest&atilde;o de Influenciadores</h4>
+            <p>Briefing, comunicados, acompanhamento de contratos e confirma&ccedil;&atilde;o de entrega</p>
+          </div>
+          <div class="inv-linha-valor">R$ 500<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total mensal de gest&atilde;o</h4>
+            <p>Sem fidelidade m&iacute;nima &middot; aviso pr&eacute;vio de 30 dias para sair</p>
+          </div>
+          <div class="inv-total-val">R$ 3.000<span style="font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+
+      <div class="variavel-box">
+        <p>&#9888;&#65039; <strong>Verba de an&uacute;ncios n&atilde;o inclusa</strong> — R$ 3.000/m&ecirc;s investidos diretamente no Meta por Hezio, conforme a opera&ccedil;&atilde;o atual. A EmpresAtiva gerencia a verba com estrat&eacute;gia — n&atilde;o apenas impulsiona.</p>
+      </div>
+
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa de campanhas no Gerenciador de An&uacute;ncios Meta</li>
+        <li>Dashboard Looker Studio + relat&oacute;rio semanal de resultados</li>
+        <li>12 artes mensais para franqueados (dentro da identidade visual)</li>
+        <li>4 Reels mensais para o Instagram @sacoparadelivery</li>
+        <li>Briefing e comunicados oficiais para influenciadores</li>
+        <li>Acompanhamento de contratos junto ao jur&iacute;dico</li>
+        <li>Confirma&ccedil;&atilde;o de entrega e relat&oacute;rio de cada parceria</li>
+        <li>Suporte direto com Jo&atilde;o Marot via WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da decis&atilde;o<br><em>ao primeiro<br>conte&uacute;do entregue.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Hezio confirma — alinhamento inicial</h3>
+      <p>Reuni&atilde;o r&aacute;pida para entender o calend&aacute;rio editorial atual, receber acesso ao Gerenciador de An&uacute;ncios e ao Instagram, e alinhar o tema da primeira semana de conte&uacute;do.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Briefing de marca + primeiras artes</h3>
+      <p>A EmpresAtiva recebe o guia de identidade visual do Saco para Delivery, o padr&atilde;o de artes atual e os temas das pr&oacute;ximas semanas. As primeiras 3 artes j&aacute; entram em produ&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1</span>
+      <h3>Primeira semana completa no ar</h3>
+      <p>3 artes entregues para os franqueados, Reels publicado no @sacoparadelivery, campanha da semana rodando no Meta com estrutura correta. Dashboard j&aacute; mostrando os primeiros dados.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 1</span>
+      <h3>Ritmo estabelecido + primeiro relat&oacute;rio mensal</h3>
+      <p>Ap&oacute;s 4 semanas, relat&oacute;rio completo: alcance das artes, desempenho dos an&uacute;ncios por semana, resultado das parcerias com influenciadores. Base para as decis&otilde;es do m&ecirc;s seguinte.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Hezio, o Saco<br>para Delivery<br><em>merece uma<br>ag&ecirc;ncia que<br>entrega todo<br>m&ecirc;s.</em></h2>
+  <p>Consist&ecirc;ncia &eacute; o que constr&oacute;i marca. 3 artes toda semana, an&uacute;ncio toda segunda, influenciador com briefing profissional — a EmpresAtiva transforma isso em sistema que funciona sem precisar cobrar nada.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.455-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
