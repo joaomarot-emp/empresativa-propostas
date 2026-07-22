@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Vantia — Plano Fixo</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;--blue:#3B82F6;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+.blue-box{background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.blue-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--blue);margin-bottom:10px;}
+.blue-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.blue-box strong{color:var(--white);}
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+.plat-tag{display:inline-block;font-family:var(--font-mono);font-size:8px;letter-spacing:0.12em;padding:2px 7px;border-radius:2px;margin-left:6px;text-transform:uppercase;}
+.tag-m{background:rgba(232,103,26,0.1);color:var(--orange);border:1px solid rgba(232,103,26,0.2);}
+.tag-g{background:rgba(59,130,246,0.1);color:var(--blue);border:1px solid rgba(59,130,246,0.2);}
+.tag-lp{background:rgba(46,204,113,0.1);color:var(--green);border:1px solid rgba(46,204,113,0.2);}
+.cenarios{display:flex;flex-direction:column;gap:3px;margin-top:8px;}
+.cenario-item{background:var(--card);padding:18px 22px;}
+.cenario-item.destaque{background:rgba(46,204,113,0.05);border:1px solid rgba(46,204,113,0.18);}
+.cenario-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;}
+.cenario-item.destaque .cenario-lbl{color:var(--green);}
+.cenario-num{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.cenario-item.destaque .cenario-num{color:var(--green);}
+.cenario-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+.cenario-desc strong{color:var(--white);}
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:6px;}
+.inv-card.variavel::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--green));}
+.inv-card.fixo::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--blue));}
+.inv-body{padding:28px 24px;}
+.inv-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:52px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:17px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-price-plus{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--green);margin-bottom:4px;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:22px;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+.variavel-exemplo{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:18px 20px;border-radius:2px;margin-top:6px;}
+.variavel-exemplo h4{font-size:12px;font-weight:600;color:var(--green);margin-bottom:10px;}
+.variavel-exemplo p{font-size:12px;color:var(--muted);line-height:1.8;}
+.variavel-exemplo strong{color:var(--white);}
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}.como-grid{display:grid;grid-template-columns:1fr 1fr;}.footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+
+</head>
+<body>
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Falar com Jo&atilde;o Marot</a>
+</div>
+
+<section class="hero">
+  <p class="badge">Plano Fixo &middot; Previs&iacute;vel &middot; Vantia &middot; usevantia.com.br</p>
+  <h1>Previs&iacute;vel.<br>Sem surpresa.<br><em>Todo m&ecirc;s<br>o mesmo valor.</em></h1>
+  <p class="hero-sub">Cristiney, neste modelo o custo da EmpresAtiva &eacute; fixo e previs&iacute;vel — independente de quantos clientes chegarem via tráfego. Ideal para quem quer controle total do budget de marketing e sem percentual sobre resultado.</p>
+  <div class="pills">
+    <div class="pill"><span>Fee fixo</span><span>R$ 2.500/m&ecirc;s</span></div>
+    <div class="pill"><span>Vari&aacute;vel</span><span>Nenhum</span></div>
+    <div class="pill"><span>Verba</span><span>R$ 2k–4k/m&ecirc;s</span></div>
+    <div class="pill"><span>Canais</span><span>Google + Meta Ads</span></div>
+  </div>
+</section>
+
+
+<hr class="div">
+<!-- CONTEXTO -->
+<section class="bg-dark">
+  <div class="sec-label">O mercado — oportunidade clara</div>
+  <h2 class="sec-title">Leiloeiros que<br>usam planilha<br><em>v&atilde;o perder<br>para quem usa<br>Vantia.</em></h2>
+  <p class="sec-intro">Cristiney, a Vantia tem diferenciais reais que a concorr&ecirc;ncia n&atilde;o entrega — blockchain, assinatura digital, KYC autom&aacute;tico, automatiza&ccedil;&atilde;o de p&oacute;s-leil&atilde;o. O problema n&atilde;o &eacute; o produto. &Eacute; que o leiloeiro que precisa da Vantia ainda n&atilde;o sabe que ela existe.</p>
+
+  <div class="orange-box">
+    <h3>Google Ads — capturar quem j&aacute; est&aacute; buscando</h3>
+    <p>Palavras como "plataforma de leil&atilde;o", "sistema para leiloeiro" t&ecirc;m cerca de 170 buscas/m&ecirc;s com baixa concorr&ecirc;ncia e CPC em torno de R$ 2,50. <strong>Quem pesquisa j&aacute; tem inten&ccedil;&atilde;o de compra — a EmpresAtiva captura esse momento com uma landing page que converte direto para trial ou demonstra&ccedil;&atilde;o.</strong></p>
+  </div>
+
+  <div class="blue-box">
+    <h3>Meta Ads — audiência cirúrgica de leiloeiros oficiais</h3>
+    <p>A EmpresAtiva raspa os dados das Juntas Comerciais (nome, telefone, e-mail dos leiloeiros habilitados) e sobe como audiência customizada no Meta. <strong>Somente leiloeiros oficiais v&ecirc;em o an&uacute;ncio — zero desperd&iacute;cio de verba com p&uacute;blico irrelevante.</strong> Criativo comparativo mostrando o que a concorr&ecirc;ncia n&atilde;o entrega, sem citar nomes.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>Landing page de convers&atilde;o — inclusa no escopo</h3>
+    <p>A p&aacute;gina do usevantia.com.br &eacute; institucional. O tráfego pago precisa de uma LP dedicada: <strong>proposta de valor em 5 segundos, prova social (EBL como powered by Vantia), CTA direto para trial ou demo, sem menu, sem distração.</strong> A EmpresAtiva produz e publica.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>O p&uacute;blico certo — leiloeiro jovem, rec&eacute;m-chegado ao mercado</h3>
+    <p>O leiloeiro estabelecido h&aacute; 20 anos tem resist&ecirc;ncia a mudar de sistema. <strong>O leiloeiro que acabou de tirar a carteira quer a ferramenta certa desde o início — sem carregar o peso de sistema legado.</strong> &Eacute; esse perfil que a EmpresAtiva foca na segmenta&ccedil;&atilde;o.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">O que est&aacute; incluso nos dois planos</div>
+  <h2 class="sec-title">Mesmo escopo.<br><em>Modelos de<br>pagamento<br>diferentes.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">🔍</div>
+      <div>
+        <h3>Google Ads — inten&ccedil;&atilde;o de compra<span class="plat-tag tag-g">Google</span></h3>
+        <p>Campanhas de busca com keywords de nicho ("plataforma leil&atilde;o", "sistema leiloeiro"). Quem pesquisa j&aacute; quer — a EmpresAtiva garante que a Vantia aparece na frente.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎯</div>
+      <div>
+        <h3>Meta Ads — audiência de leiloeiros<span class="plat-tag tag-m">Meta</span></h3>
+        <p>Lista customizada de leiloeiros oficiais das Juntas Comerciais. Criativo comparativo focado nos diferenciais da Vantia. Verba concentrada em quem pode assinar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🖥️</div>
+      <div>
+        <h3>Landing page de convers&atilde;o<span class="plat-tag tag-lp">LP</span></h3>
+        <p>P&aacute;gina dedicada ao tráfego pago — proposta de valor clara, EBL como prova social, CTA direto para trial ou demo. Produzida e publicada pela EmpresAtiva.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard em tempo real</h3>
+        <p>Painel Looker Studio com gasto, leads, trials iniciados e custo por aquisi&ccedil;&atilde;o — por canal (Google e Meta). Cristiney acompanha sem precisar pedir relat&oacute;rio.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔄</div>
+      <div>
+        <h3>Rastreamento de convers&atilde;o por canal</h3>
+        <p>Pixel Meta + Google Tag configurados na LP. A EmpresAtiva sabe exatamente qual canal gerou cada trial e cada assinatura — dado essencial para otimizar a verba m&ecirc;s a m&ecirc;s.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s — decis&otilde;es r&aacute;pidas de criativo, verba e otimiza&ccedil;&atilde;o sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Do sim ao<br><em>primeiro trial<br>via tráfego.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 1</span>
+      <h3>Acesso + briefing da Vantia</h3>
+      <p>Acesso ao Google Ads e Meta Ads. A EmpresAtiva recebe os materiais da marca, os diferenciais do produto e os dados de clientes atuais para montar a audiência customizada das Juntas Comerciais.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 2–7</span>
+      <h3>Landing page + audiência customizada</h3>
+      <p>LP de convers&atilde;o produzida e publicada. Lista de leiloeiros oficiais das Juntas Comerciais processada e carregada no Meta como audiência customizada. Pixel e rastreamento configurados.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Campanhas no ar — Google e Meta simult&acirc;neos</h3>
+      <p>Google Ads com keywords de nicho. Meta Ads com a audiência de leiloeiros. Dashboard entregue. Os primeiros trials v&ecirc;m de leiloeiros que j&aacute; estavam buscando uma solu&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 1+</span>
+      <h3>Otimiza&ccedil;&atilde;o baseada em dados reais</h3>
+      <p>Com os primeiros dados de custo por trial e taxa de convers&atilde;o para assinatura, a EmpresAtiva redistribui a verba entre Google e Meta conforme o que est&aacute; gerando mais assinante.</p>
+    </div>
+  </div>
+</section>
+
+
+<hr class="div">
+
+<!-- INVESTIMENTO P2 -->
+<section class="bg-black">
+  <div class="sec-label">Investimento — Plano Fixo</div>
+  <h2 class="sec-title">R$ 2.500/m&ecirc;s.<br><em>Sem percentual.<br>Sem surpresa.</em></h2>
+  <p class="sec-intro">Mesmo escopo completo do Plano Parceria — Google Ads, Meta Ads, landing page, rastreamento e dashboard. A diferen&ccedil;a &eacute; que o custo n&atilde;o varia com o resultado.</p>
+
+  <div class="inv-card fixo">
+    <div class="inv-body">
+      <div class="inv-lbl">Plano Fixo &mdash; Fee &Uacute;nico Mensal</div>
+      <div class="inv-price"><sub>R$</sub> 2.500</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem percentual sobre resultado &middot; sem fidelidade m&iacute;nima</div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa Google Ads + Meta Ads</li>
+        <li>Audiência customizada de leiloeiros oficiais (Juntas Comerciais)</li>
+        <li>Landing page de convers&atilde;o produzida e publicada</li>
+        <li>Pixel Meta + Google Tag + rastreamento de trials e assinaturas</li>
+        <li>Dashboard Looker Studio em tempo real</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa</strong> — investida diretamente pela Vantia. Recomendado: <strong style="color:var(--white);">R$ 500/m&ecirc;s Google + R$ 1.500–3.500/m&ecirc;s Meta</strong> (total R$ 2.000–4.000/m&ecirc;s).</p>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;">
+    <div class="sec-label">ROI esperado com verba de R$ 2.000–4.000/m&ecirc;s</div>
+    <div class="cenarios">
+      <div class="cenario-item">
+        <div class="cenario-lbl">Verba R$ 2.000/m&ecirc;s &middot; CPL estimado R$ 80–120</div>
+        <div class="cenario-num">17–25 leads/m&ecirc;s</div>
+        <div class="cenario-desc">Taxa de convers&atilde;o 20–30% &rarr; <strong>3–7 novos assinantes/m&ecirc;s</strong> &middot; MRR gerado: R$ 1.050–2.450</div>
+      </div>
+      <div class="cenario-item destaque">
+        <div class="cenario-lbl">&#9733; Verba R$ 3.000/m&ecirc;s &middot; CPL estimado R$ 60–90 (audiência aquecida)</div>
+        <div class="cenario-num">33–50 leads/m&ecirc;s</div>
+        <div class="cenario-desc">Taxa de convers&atilde;o 20–30% &rarr; <strong>7–15 novos assinantes/m&ecirc;s</strong> &middot; MRR gerado: R$ 2.450–5.250</div>
+      </div>
+      <div class="cenario-item">
+        <div class="cenario-lbl">Verba R$ 4.000/m&ecirc;s &middot; escala m&aacute;xima</div>
+        <div class="cenario-num">45–65 leads/m&ecirc;s</div>
+        <div class="cenario-desc">Taxa de convers&atilde;o 20–30% &rarr; <strong>9–20 novos assinantes/m&ecirc;s</strong> &middot; MRR gerado: R$ 3.150–7.000</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="green-box" style="margin-top:16px;">
+    <h3>Por que o Plano Fixo pode ser a escolha certa</h3>
+    <p>Se a Vantia escalar rapidamente — 15, 20 novos assinantes por m&ecirc;s via tráfego — o Plano Fixo &eacute; financeiramente mais eficiente do que o Plano Parceria. <strong>Com o custo previs&iacute;vel em R$ 2.500, todo o upside do crescimento fica 100% com a Vantia.</strong></p>
+  </div>
+</section>
+
+
+<div class="footer-cta">
+  <h2>Cristiney, o<br>leiloeiro que<br><em>precisa da Vantia<br>ainda n&atilde;o sabe<br>que ela existe.</em></h2>
+  <p>Produto superior &agrave; concorr&ecirc;ncia, nicho com baixa disputa no digital, audiência cirúrgica de leiloeiros oficiais dispon&iacute;vel. A EmpresAtiva coloca a Vantia na frente de quem pode assinar — com a estrat&eacute;gia certa para cada canal.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
