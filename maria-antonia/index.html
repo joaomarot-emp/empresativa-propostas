@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Salão da Antônia</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(46,204,113,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+/* OFERTA ISCA */
+.oferta-card{background:linear-gradient(135deg,rgba(232,103,26,0.07) 0%,rgba(201,168,76,0.03) 100%);border:1px solid rgba(232,103,26,0.22);border-radius:4px;padding:28px 24px;margin-bottom:20px;}
+.oferta-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.oferta-titulo{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);margin-bottom:6px;line-height:1.15;}
+.oferta-titulo em{color:var(--orange);}
+.oferta-price{font-family:var(--font-display);font-size:48px;font-weight:800;color:var(--orange);line-height:1;margin-bottom:4px;}
+.oferta-price sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.oferta-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-top:14px;}
+.oferta-desc strong{color:var(--white);}
+.oferta-brindes{display:flex;flex-direction:column;gap:2px;margin-top:16px;}
+.oferta-brinde{background:rgba(255,255,255,0.03);border:1px solid var(--border);padding:10px 14px;font-size:12px;color:var(--muted);}
+.oferta-brinde strong{color:var(--white);}
+
+/* JORNADA */
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:32px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* ENTREGÁVEIS */
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:6px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-price{font-family:var(--font-display);font-size:56px;font-weight:800;line-height:1;color:var(--white);margin-bottom:6px;}
+.inv-price sub{font-size:18px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.inv-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+.roi-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:22px 24px;border-radius:2px;margin-top:3px;}
+.roi-box h4{font-size:13px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.roi-itens{display:flex;flex-direction:column;gap:2px;}
+.roi-item{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.roi-item.meta{background:rgba(46,204,113,0.04);border-left:2px solid var(--green);}
+.roi-desc{font-size:12px;color:var(--muted);}
+.roi-desc strong{color:var(--white);}
+.roi-val{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);flex-shrink:0;}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta Estrat&eacute;gica &middot; Meta Ads &middot; Sal&atilde;o da Ant&ocirc;nia &middot; Formosa GO</p>
+  <h1>26 anos de<br>mercado.<br><em>Nenhuma<br>concorrente<br>fazendo<br>tráfego pago.</em></h1>
+  <p class="hero-sub">Maria Ant&ocirc;nia, em Formosa as principais profissionais de mega hair ainda dependem de indica&ccedil;&atilde;o. Isso significa que a mulher que pesquisa "mega hair Formosa" hoje n&atilde;o encontra nenhum an&uacute;ncio. A EmpresAtiva coloca o seu sal&atilde;o na frente dessas mulheres — com a oferta certa, na hora certa.</p>
+  <div class="pills">
+    <div class="pill"><span>Servi&ccedil;o</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Valor</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Verba m&iacute;nima</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>In&iacute;cio</span><span>17 de agosto</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OCEANO AZUL -->
+<section class="bg-dark">
+  <div class="sec-label">O mercado de Formosa — a oportunidade &eacute; agora</div>
+  <h2 class="sec-title">Eliane Aplix<br>n&atilde;o faz<br><em>tráfego pago.<br>Nenhuma faz.</em></h2>
+  <p class="sec-intro">Maria Ant&ocirc;nia, conversamos sobre isso na nossa reuni&atilde;o. Analisei as suas principais concorrentes em Formosa e o cen&aacute;rio &eacute; claro.</p>
+
+  <div class="green-box">
+    <h3>&#9733; Oceano azul — o leil&atilde;o de an&uacute;ncios est&aacute; barato porque ningu&eacute;m est&aacute; disputando</h3>
+    <p>Quando nenhuma concorrente est&aacute; anunciando, o custo por clique cai e a chance de resultado sobe. <strong>A mulher de Formosa que pesquisa mega hair no Instagram hoje n&atilde;o encontra nenhum an&uacute;ncio — ela vai ver o seu primeiro.</strong> Esse momento tem prazo: quando uma concorrente perceber essa oportunidade, o custo vai subir. A vantagem &eacute; agora.</p>
+  </div>
+
+  <div class="orange-box">
+    <h3>A isca certa para Formosa — manuten&ccedil;&atilde;o ponto americano a R$ 200</h3>
+    <p>Conversamos sobre isso. Mega hair completo a R$ 1.800 precisa de convencimento — a mulher que n&atilde;o conhece acha caro. Manutenção de ponto americano a R$ 200 &eacute; diferente: <strong>quem j&aacute; tem mega hair precisa de manutenção todo m&ecirc;s. Ela j&aacute; conhece o serviço, j&aacute; sabe o valor — s&oacute; precisa de uma raz&atilde;o para escolher voc&ecirc;.</strong> Esse &eacute; o an&uacute;ncio que converte de imediato.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>O novo endere&ccedil;o e o novo nome chegam na hora certa</h3>
+    <p>Sair do aluguel e ir para o espa&ccedil;o pr&oacute;prio &eacute; um marco. <strong>Come&ccedil;ar o tráfego pago junto com a mudan&ccedil;a &eacute; o momento ideal — o an&uacute;ncio j&aacute; apresenta o novo endere&ccedil;o e o novo posicionamento do estúdio, criando autoridade desde o primeiro dia na nova fase.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OFERTA ISCA -->
+<section class="bg-black">
+  <div class="sec-label">A oferta — o que vai aparecer para as mulheres de Formosa</div>
+  <h2 class="sec-title">O an&uacute;ncio que<br><em>para o scroll.</em></h2>
+  <p class="sec-intro">Voc&ecirc; n&atilde;o precisa gravar v&iacute;deo se n&atilde;o se sentir &agrave; vontade. A equipe de design da EmpresAtiva cria a imagem ou o v&iacute;deo narrado — voc&ecirc; s&oacute; aparece nos resultados.</p>
+
+  <div class="oferta-card">
+    <div class="oferta-lbl">&#9733; Oferta principal — manutenção de mega hair</div>
+    <div class="oferta-titulo">Manuten&ccedil;&atilde;o de <em>Mega Hair</em><br>Ponto Americano</div>
+    <div class="oferta-price"><sub>a partir de R$</sub> 200</div>
+    <div class="oferta-desc">
+      Limpeza + instala&ccedil;&atilde;o + escova.<br>
+      <strong>Para as mulheres de Formosa que j&aacute; usam mega hair e est&atilde;o na hora da manuten&ccedil;&atilde;o.</strong><br>
+      Elas j&aacute; sabem o que querem — s&oacute; precisam encontrar voc&ecirc;.
+    </div>
+    <div class="oferta-brindes">
+      <div class="oferta-brinde">+ <strong>Brinde sugerido:</strong> botox capilar incluso na manutenção — diferencial que nenhuma concorrente est&aacute; oferecendo</div>
+      <div class="oferta-brinde">+ <strong>Urg&ecirc;ncia real:</strong> "Apenas X vagas este m&ecirc;s" — agenda da Ant&ocirc;nia tem limite, isso &eacute; uma raz&atilde;o real para agir agora</div>
+    </div>
+  </div>
+
+  <!-- JORNADA -->
+  <div class="sec-label" style="margin-top:40px;">Do an&uacute;ncio ao agendamento</div>
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>Mulher de Formosa v&ecirc; o an&uacute;ncio</h3>
+        <p>No Instagram, enquanto ela rola o feed. O an&uacute;ncio mostra o resultado de uma manutenção, o pre&ccedil;o de R$ 200 e o nome do sal&atilde;o. Ela para. "Preciso disso."</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Ela clica e vai para o WhatsApp</h3>
+        <p>Direto — sem formul&aacute;rio, sem site. O contato chega no WhatsApp do sal&atilde;o com interesse confirmado no servi&ccedil;o.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Resposta r&aacute;pida — agendamento confirmado</h3>
+        <p>Voc&ecirc; j&aacute; responde r&aacute;pido. A EmpresAtiva orienta um script simples para responder enquanto est&aacute; atendendo — pergunta disponibilidade e confirma a vaga. Nos primeiros 5 minutos, a chance de converter &eacute; muito maior.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Cliente na cadeira — manutenção vira mega novo</h3>
+        <p>A pessoa que veio para manutenção v&ecirc; o seu trabalho, vê os cabelos dispon&iacute;veis, v&ecirc; o ambiente. <strong>Parte delas vai perguntar sobre mega hair novo — o ticket de R$ 1.800 entra naturalmente.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sec-label">O que a EmpresAtiva entrega</div>
+  <h2 class="sec-title">Tudo que o<br><em>tráfego precisa<br>para funcionar.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas</h3>
+        <p>Campanhas no Instagram segmentadas exclusivamente para Formosa — mulheres entre 25 e 50 anos que podem pagar pelo servi&ccedil;o e moram na &aacute;rea de atendimento do sal&atilde;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Cria&ccedil;&atilde;o dos criativos</h3>
+        <p>Se voc&ecirc; quiser gravar um v&iacute;deo, a EmpresAtiva passa o script e edita. Se preferir n&atilde;o gravar, a equipe de design cria imagens profissionais ou v&iacute;deos narrados com os seus resultados.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📍</div>
+      <div>
+        <h3>Google Meu Neg&oacute;cio criado e otimizado</h3>
+        <p>Voc&ecirc; ainda n&atilde;o aparece quando algu&eacute;m pesquisa "mega hair Formosa" no Google. A EmpresAtiva cria e otimiza o perfil — gr&aacute;tis, com resultado imediato para quem pesquisa.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Relat&oacute;rio mensal transparente</h3>
+        <p>Quanto foi investido, quantas pessoas chegaram, quais an&uacute;ncios geraram mais resultado. Voc&ecirc; acompanha tudo — sem precisar confiar s&oacute; na palavra da ag&ecirc;ncia.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada vez que uma pessoa entra em contato via an&uacute;ncio, voc&ecirc; recebe um aviso — para n&atilde;o perder nenhum contato enquanto est&aacute; com a m&atilde;o no cabelo de outra cliente.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s. Se precisar mudar a oferta, criar um novo criativo ou ajustar a segmenta&ccedil;&atilde;o, a decis&atilde;o &eacute; r&aacute;pida — sem esperar "vamos olhar, vamos olhar".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">R$ 997/m&ecirc;s.<br><em>Sem fidelidade.<br>Com resultado.</em></h2>
+  <p class="sec-intro">Voc&ecirc; mencionou o medo de investir e n&atilde;o ter retorno. A EmpresAtiva n&atilde;o prende em contrato longo — se n&atilde;o estiver gerando resultado, voc&ecirc; avisa e sai. Simples assim.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">Meta Ads &mdash; Sal&atilde;o da Ant&ocirc;nia &middot; Formosa GO</div>
+      <div class="inv-price"><sub>R$</sub> 997</div>
+      <div class="inv-period">por m&ecirc;s &middot; sem fidelidade m&iacute;nima &middot; aviso pr&eacute;vio para sair</div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa das campanhas no Instagram / Facebook</li>
+        <li>Segmenta&ccedil;&atilde;o exclusiva para mulheres de Formosa GO</li>
+        <li>Cria&ccedil;&atilde;o dos criativos (imagem ou v&iacute;deo narrado pela equipe)</li>
+        <li>Google Meu Neg&oacute;cio criado e otimizado</li>
+        <li>Alerta de leads em tempo real no WhatsApp</li>
+        <li>Relat&oacute;rio mensal com transparência total</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;">&#9888;&#65039; <strong style="color:var(--white);">Verba de an&uacute;ncios n&atilde;o inclusa.</strong> M&iacute;nimo recomendado: <strong style="color:var(--white);">R$ 500/m&ecirc;s</strong> — equivale a R$ 16,67/dia investidos diretamente no Meta via cart&atilde;o de cr&eacute;dito. Total no primeiro m&ecirc;s: <strong style="color:var(--white);">R$ 1.497</strong>.</p>
+    </div>
+  </div>
+
+  <div class="roi-box">
+    <h4>O que R$ 500 de verba pode gerar em Formosa</h4>
+    <div class="roi-itens">
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc"><strong>CPL estimado:</strong> R$ 15–30 (oceano azul, baixa concorr&ecirc;ncia)</div>
+          <div class="roi-desc">17 a 33 mulheres interessadas por m&ecirc;s</div>
+        </div>
+        <div class="roi-val" style="color:var(--muted);">leads</div>
+      </div>
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc"><strong>Taxa de convers&atilde;o 20–30%</strong> (voc&ecirc; j&aacute; responde r&aacute;pido)</div>
+          <div class="roi-desc">3 a 10 agendamentos confirmados</div>
+        </div>
+        <div class="roi-val" style="color:var(--gold);">clientes</div>
+      </div>
+      <div class="roi-item meta">
+        <div>
+          <div class="roi-desc"><strong>Ticket manutenção R$ 200 × 5 clientes</strong></div>
+          <div class="roi-desc">Receita extra: R$ 1.000 — j&aacute; paga a verba de an&uacute;ncios do m&ecirc;s</div>
+        </div>
+        <div class="roi-val">R$ 1.000+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Come&ccedil;ando junto<br><em>com o novo<br>endere&ccedil;o.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora</span>
+      <h3>Proposta para analisar com calma</h3>
+      <p>A EmpresAtiva envia esta proposta para Maria Ant&ocirc;nia analisar antes do dia 17 de agosto. Qualquer d&uacute;vida, Jo&atilde;o Marot est&aacute; dispon&iacute;vel no WhatsApp.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">17 de agosto</span>
+      <h3>Retomada do contato — decis&atilde;o</h3>
+      <p>Jo&atilde;o retoma o contato conforme combinado. Maria Ant&ocirc;nia j&aacute; estar&aacute; no novo endere&ccedil;o e com o novo nome definido — momento ideal para iniciar.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1 ap&oacute;s confirm.</span>
+      <h3>Acesso + Google Meu Neg&oacute;cio</h3>
+      <p>Acesso ao Instagram e Meta Ads. Google Meu Neg&oacute;cio criado com o novo nome e endere&ccedil;o — j&aacute; aparecendo no Google quando algu&eacute;m pesquisar mega hair em Formosa.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Primeiros an&uacute;ncios no ar</h3>
+      <p>Criativo pronto, campanha publicada, segmenta&ccedil;&atilde;o configurada para Formosa. As primeiras mulheres interessadas em manutenção de mega hair v&ecirc;em o an&uacute;ncio e chegam no WhatsApp.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Dados reais — decis&atilde;o de escala</h3>
+      <p>Com os primeiros n&uacute;meros em m&atilde;os — custo por lead, agendamentos confirmados, receita gerada — a decis&atilde;o de aumentar a verba &eacute; baseada em dado real, n&atilde;o em estimativa.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Maria Ant&ocirc;nia,<br>26 anos de<br><em>reputação.<br>Agora &eacute; hora<br>de Formosa<br>inteira saber.</em></h2>
+  <p>Voc&ecirc; construiu um negócio s&oacute;lido dependendo de indica&ccedil;&atilde;o. Imagina o que acontece quando as mulheres de Formosa que nunca ouviram falar de voc&ecirc; começarem a ver seu trabalho todo dia no Instagram — com pre&ccedil;o justo e oferta irrecus&aacute;vel. A EmpresAtiva faz isso acontecer.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
