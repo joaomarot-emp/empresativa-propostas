@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Beleza Fashion</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(46,204,113,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+
+/* COMO FUNCIONA — simples */
+.passo-grid{display:flex;flex-direction:column;gap:2px;}
+.passo-item{background:var(--card);padding:22px 24px;display:flex;gap:18px;align-items:flex-start;}
+.passo-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.p-num{font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:40px;line-height:1;margin-top:2px;}
+.passo-item h3{font-size:14px;font-weight:600;color:var(--white);margin-bottom:5px;}
+.passo-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* ENTREGÁVEIS */
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.agencia{border-left:3px solid var(--orange);}
+.inv-linha.meta{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;}
+.inv-linha-valor{font-family:var(--font-display);font-size:20px;font-weight:800;flex-shrink:0;}
+.inv-linha.agencia .inv-linha-valor{color:var(--orange);}
+.inv-linha.meta .inv-linha-valor{color:#1877F2;}
+.inv-total-box{background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);}
+.inv-total-val{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+
+/* ROI */
+.roi-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:22px 24px;border-radius:2px;margin-top:3px;}
+.roi-box h4{font-size:13px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.roi-itens{display:flex;flex-direction:column;gap:2px;}
+.roi-item{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.roi-item.destaque{background:rgba(46,204,113,0.04);border-left:2px solid var(--green);}
+.roi-desc{font-size:12px;color:var(--muted);}
+.roi-desc strong{color:var(--white);}
+.roi-val{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);flex-shrink:0;}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}
+  .como-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta &middot; Meta Ads &middot; Beleza Fashion &middot; Parque Fluminense &middot; Duque de Caxias RJ</p>
+  <h1>L&uacute;cia, vamos<br>trazer novas<br><em>clientes para<br>o seu sal&atilde;o.</em></h1>
+  <p class="hero-sub">Como conversamos hoje, a ideia &eacute; simples: aparecer para as mulheres de Duque de Caxias que querem fazer uma progressiva — com uma oferta que elas n&atilde;o conseguem ignorar. Voc&ecirc; atende, fideliza. A EmpresAtiva cuida dos an&uacute;ncios.</p>
+  <div class="pills">
+    <div class="pill"><span>Servi&ccedil;o</span><span>An&uacute;ncios no Instagram</span></div>
+    <div class="pill"><span>Foco</span><span>Progressiva a partir de R$ 100</span></div>
+    <div class="pill"><span>Ag&ecirc;ncia</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>An&uacute;ncios</span><span>R$ 500/m&ecirc;s (direto ao Instagram)</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- COMO FUNCIONA — linguagem simples -->
+<section class="bg-dark">
+  <div class="sec-label">Como funciona — do an&uacute;ncio &agrave; cliente no sal&atilde;o</div>
+  <h2 class="sec-title">Simples assim:<br><em>mulher v&ecirc;,<br>se interessa,<br>entra em<br>contato.</em></h2>
+  <p class="sec-intro">L&uacute;cia, como eu expliquei hoje na nossa conversa — n&atilde;o tem segredo. Veja como funciona do come&ccedil;o ao fim.</p>
+
+  <div class="passo-grid">
+    <div class="passo-item hl">
+      <div class="p-num">1</div>
+      <div>
+        <h3>A EmpresAtiva cria o an&uacute;ncio</h3>
+        <p>Um v&iacute;deo mostrando o resultado da progressiva — antes, durante e depois. Voc&ecirc; vai gravar alguns takes simples de 10 segundos cada (manda do jeito que ficar, sem precisar editar) ou aparece na frente do celular lendo o que eu mando por escrito. A minha equipe de design monta tudo.</p>
+      </div>
+    </div>
+    <div class="passo-item">
+      <div class="p-num">2</div>
+      <div>
+        <h3>O an&uacute;ncio aparece s&oacute; para mulheres de Caxias</h3>
+        <p>A gente paga pro Instagram para aparecer s&oacute; para mulheres de Duque de Caxias — da faixa et&aacute;ria que voc&ecirc; atende. Cada centavo vai direto para o p&uacute;blico certo, sem desperdi&ccedil;ar.</p>
+      </div>
+    </div>
+    <div class="passo-item">
+      <div class="p-num">3</div>
+      <div>
+        <h3>Ela j&aacute; viu o pre&ccedil;o — entra em contato s&oacute; para agendar</h3>
+        <p>O an&uacute;ncio j&aacute; mostra o pre&ccedil;o (progressiva a partir de R$ 100). Quem entrar em contato no seu WhatsApp j&aacute; sabe o que quer e quanto custa — ela s&oacute; vai querer saber quando tem vaga.</p>
+      </div>
+    </div>
+    <div class="passo-item hl">
+      <div class="p-num">4</div>
+      <div>
+        <h3>Voc&ecirc; agenda, atende e fideliza</h3>
+        <p>Cliente nova entra, faz a progressiva, gosta do trabalho. Semana seguinte ela volta para o cronograma. Depois indica a amiga. &Eacute; assim que a clientela se reconstr&oacute;i — uma progressiva de cada vez.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-label">Por que focar na progressiva primeiro</div>
+  <h2 class="sec-title">Um tiro certeiro<br><em>vale mais do que<br>dez chutes.</em></h2>
+
+  <div class="orange-box">
+    <h3>Progressiva a partir de R$ 100 — pre&ccedil;o que chama</h3>
+    <p>Como conversamos, progressiva &eacute; o seu servi&ccedil;o mais forte e o pre&ccedil;o &eacute; acess&iacute;vel. <strong>Quando a mulher v&ecirc; "progressiva a partir de R$ 100 em Duque de Caxias", ela para de rolar o Instagram.</strong> Cabelo mais longo cobra mais — isso vai no pr&oacute;prio an&uacute;ncio, sem surpresa para ela na hora de pagar.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>Por que n&atilde;o misturar progressiva e cronograma agora</h3>
+    <p>Com R$ 500 de verba, dividir o dinheiro em dois servi&ccedil;os significa que cada um fica com R$ 250 — pouco para aparecer bastante. <strong>Concentrando tudo na progressiva, o an&uacute;ncio aparece mais vezes, para mais mulheres. Quando esse servi&ccedil;o estiver enchendo a agenda, a gente abre o cronograma.</strong></p>
+  </div>
+
+  <div class="green-box">
+    <h3>Progressiva &eacute; a porta — cronograma &eacute; a fideliza&ccedil;&atilde;o</h3>
+    <p>A cliente que vem pela progressiva vai precisar de cronograma nas semanas seguintes para manter o resultado. <strong>Ou seja: um an&uacute;ncio de progressiva pode gerar uma cliente que volta todo m&ecirc;s por meses — sem precisar de novo an&uacute;ncio para ela.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O QUE A EMPRESATIVA FAZ -->
+<section class="bg-dark">
+  <div class="sec-label">O que a EmpresAtiva entrega</div>
+  <h2 class="sec-title">Voc&ecirc; s&oacute; precisa<br><em>atender.<br>O resto &eacute; com<br>a gente.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Cria&ccedil;&atilde;o do an&uacute;ncio</h3>
+        <p>Minha equipe de design monta o v&iacute;deo ou a imagem com o seu material. Voc&ecirc; manda os takes simples, a gente edita e deixa pronto para anunciar.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o dos an&uacute;ncios no Instagram</h3>
+        <p>A gente configura o an&uacute;ncio para aparecer s&oacute; para mulheres de Duque de Caxias, acompanha todos os dias e ajusta o que for necess&aacute;rio para gerar mais resultado.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Relat&oacute;rio mensal claro</h3>
+        <p>Todo m&ecirc;s voc&ecirc; recebe um resumo simples: quanto foi investido, quantas pessoas viram o an&uacute;ncio, quantas entraram em contato. Tudo transparente.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📍</div>
+      <div>
+        <h3>Perfil no Google criado</h3>
+        <p>Hoje o Beleza Fashion n&atilde;o aparece quando algu&eacute;m pesquisa no Google. A EmpresAtiva cria e organiza esse perfil gratuitamente — mais uma forma de novas clientes te encontrarem.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Aviso de cada cliente interessada</h3>
+        <p>Cada vez que uma pessoa entrar em contato pelo an&uacute;ncio, voc&ecirc; recebe um aviso — para n&atilde;o perder nenhuma oportunidade enquanto est&aacute; trabalhando.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>Qualquer d&uacute;vida durante o m&ecirc;s, &eacute; s&oacute; chamar no WhatsApp. Sem ficar esperando dias por uma resposta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO — claro e separado -->
+<section class="bg-black">
+  <div class="sec-label">Investimento — dois pagamentos separados</div>
+  <h2 class="sec-title">Claro e<br><em>sem surpresa.</em></h2>
+  <p class="sec-intro">L&uacute;cia, como eu expliquei hoje: o pagamento &eacute; separado em dois. Um vai para a EmpresAtiva pelo servi&ccedil;o. O outro vai direto para o Instagram pelos an&uacute;ncios.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">Meta Ads &mdash; Beleza Fashion &middot; Duque de Caxias RJ</div>
+
+      <div class="inv-split">
+        <div class="inv-linha agencia">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva — servi&ccedil;o de gest&atilde;o</h4>
+            <p>Cria&ccedil;&atilde;o dos an&uacute;ncios, gest&atilde;o, relat&oacute;rio, perfil no Google, suporte</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha meta">
+          <div class="inv-linha-info">
+            <h4>Instagram — verba de an&uacute;ncios</h4>
+            <p>Pago direto para o Instagram via cart&atilde;o — n&atilde;o passa pela EmpresAtiva</p>
+          </div>
+          <div class="inv-linha-valor">R$ 500<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total investido no primeiro m&ecirc;s</h4>
+            <p>Sem fidelidade &middot; se n&atilde;o gostar, avisa e para</p>
+          </div>
+          <div class="inv-total-val">R$ 1.497<span style="font-size:13px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Cria&ccedil;&atilde;o do v&iacute;deo ou imagem do an&uacute;ncio pela equipe de design</li>
+        <li>Gest&atilde;o dos an&uacute;ncios no Instagram para mulheres de Caxias</li>
+        <li>Perfil no Google criado e organizado</li>
+        <li>Aviso de cada cliente interessada no WhatsApp</li>
+        <li>Relat&oacute;rio mensal claro e simples</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roi-box">
+    <h4>O que R$ 500 de an&uacute;ncio pode gerar em Duque de Caxias</h4>
+    <div class="roi-itens">
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc">Com R$ 500, o an&uacute;ncio aparece para <strong>milhares de mulheres de Caxias</strong></div>
+          <div class="roi-desc">Estimativa: 15 a 30 mulheres entram em contato</div>
+        </div>
+        <div class="roi-val" style="color:var(--gold);">contatos</div>
+      </div>
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc">Dessas, <strong>20 a 30%</strong> agendam e aparecem no sal&atilde;o</div>
+          <div class="roi-desc">3 a 9 clientes novas no primeiro m&ecirc;s</div>
+        </div>
+        <div class="roi-val" style="color:var(--gold);">clientes</div>
+      </div>
+      <div class="roi-item destaque">
+        <div>
+          <div class="roi-desc"><strong>5 progressivas novas × R$ 120 m&eacute;dia</strong></div>
+          <div class="roi-desc">J&aacute; cobre a verba de an&uacute;ncios do m&ecirc;s e ainda sobra</div>
+        </div>
+        <div class="roi-val">R$ 600+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Combinamos<br><em>o dia 10.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje — proposta recebida</span>
+      <h3>L&uacute;cia analisa com calma</h3>
+      <p>Esta proposta foi montada com tudo que conversamos hoje. Qualquer d&uacute;vida antes do dia 10, &eacute; s&oacute; chamar Jo&atilde;o Marot no WhatsApp — responde r&aacute;pido.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 10 de agosto</span>
+      <h3>Jo&atilde;o entra em contato — decis&atilde;o</h3>
+      <p>Como combinamos, Jo&atilde;o retoma o contato no dia 10 para saber se L&uacute;cia vai conseguir viabilizar o investimento e dar in&iacute;cio &agrave; parceria.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1 ap&oacute;s confirmação</span>
+      <h3>Script + primeiros takes gravados</h3>
+      <p>Jo&atilde;o manda o roteiro por escrito. L&uacute;cia grava os takes de 10 segundos do jeito que ficar — antes, durante e depois da progressiva. Manda para a EmpresAtiva.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>An&uacute;ncio no ar — mulheres de Caxias come&ccedil;am a ver</h3>
+      <p>Equipe de design edita o v&iacute;deo. An&uacute;ncio publicado no Instagram para mulheres de Duque de Caxias. Primeiras mensagens chegando no WhatsApp do sal&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Final do m&ecirc;s 1</span>
+      <h3>Relat&oacute;rio + decis&atilde;o de continuar</h3>
+      <p>Voc&ecirc; v&ecirc; os n&uacute;meros reais: quantas pessoas viram, quantas entraram em contato, quantas agendaram. A partir disso, a gente decide juntos o pr&oacute;ximo passo.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>L&uacute;cia, voc&ecirc;<br>j&aacute; tem o<br><em>sal&atilde;o, o talento<br>e o pre&ccedil;o certo.<br>Falta a cliente<br>te encontrar.</em></h2>
+  <p>As mulheres de Duque de Caxias que querem fazer progressiva est&atilde;o l&aacute; no Instagram agora. A EmpresAtiva faz o an&uacute;ncio aparecer para elas — com o seu pre&ccedil;o, o seu trabalho, o seu sal&atilde;o. Voc&ecirc; atende, elas voltam, indicam. &Eacute; assim que a clientela se reconstr&oacute;i.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
