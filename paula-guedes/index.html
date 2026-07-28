@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Paula Guedes</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(46,204,113,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+/* ISCA */
+.oferta-card{background:linear-gradient(135deg,rgba(232,103,26,0.07) 0%,rgba(201,168,76,0.03) 100%);border:1px solid rgba(232,103,26,0.22);border-radius:4px;padding:28px 24px;margin-bottom:20px;}
+.oferta-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.oferta-titulo{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);margin-bottom:6px;line-height:1.15;}
+.oferta-titulo em{color:var(--orange);}
+.oferta-price{font-family:var(--font-display);font-size:48px;font-weight:800;color:var(--orange);line-height:1;margin-bottom:4px;}
+.oferta-price sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.oferta-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-top:14px;}
+.oferta-desc strong{color:var(--white);}
+.cidades{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.cidade-pill{background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:7px 14px;border-radius:2px;font-size:11px;font-family:var(--font-mono);color:var(--white);letter-spacing:0.1em;}
+/* JORNADA */
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:36px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+/* ENTREGÁVEIS */
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--orange);}
+.inv-linha.meta{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;}
+.inv-linha-valor{font-family:var(--font-display);font-size:20px;font-weight:800;flex-shrink:0;}
+.inv-linha.ag .inv-linha-valor{color:var(--orange);}
+.inv-linha.meta .inv-linha-valor{color:#1877F2;}
+.inv-total-box{background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);}
+.inv-total-val{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+/* ROI */
+.roi-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:22px 24px;border-radius:2px;margin-top:3px;}
+.roi-box h4{font-size:13px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.roi-itens{display:flex;flex-direction:column;gap:2px;}
+.roi-item{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.roi-item.d{background:rgba(46,204,113,0.04);border-left:2px solid var(--green);}
+.roi-desc{font-size:12px;color:var(--muted);}
+.roi-desc strong{color:var(--white);}
+.roi-val{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);flex-shrink:0;}
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}.como-grid{display:grid;grid-template-columns:1fr 1fr;}.footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="badge">Proposta &middot; Meta Ads &middot; Paula Guedes Cabelos e Mega Hair &middot; Vargem Grande do Sul SP</p>
+  <h1>Vargem Grande<br>do Sul quer<br><em>mega hair.<br>Ningu&eacute;m est&aacute;<br>anunciando.</em></h1>
+  <p class="hero-sub">Paula, como conversamos hoje: Helen Oliveira e Carol File dependem s&oacute; do org&acirc;nico — nenhuma delas est&aacute; no tráfego pago. Isso significa que a mulher que procura mega hair na regi&atilde;o vai encontrar voc&ecirc; primeiro. A EmpresAtiva faz isso acontecer.</p>
+  <div class="pills">
+    <div class="pill"><span>Servi&ccedil;o</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Valor ag&ecirc;ncia</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Verba m&iacute;nima</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>Regi&atilde;o</span><span>VGS + Casa Branca + S. S. da Grama</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OCEANO AZUL -->
+<section class="bg-dark">
+  <div class="sec-label">O mercado — a oportunidade &eacute; sua agora</div>
+  <h2 class="sec-title">Suas concorrentes<br>est&atilde;o no<br><em>boca a boca.<br>Voc&ecirc; vai estar<br>no Instagram.</em></h2>
+  <p class="sec-intro">Paula, analisei as suas principais concorrentes durante nossa conversa. O cen&aacute;rio &eacute; melhor do que voc&ecirc; imagina.</p>
+
+  <div class="green-box">
+    <h3>&#9733; Oceano azul — voc&ecirc; aparece, elas n&atilde;o</h3>
+    <p>Est&uacute;dio Helen Oliveira: sem tráfego pago. Carol File: sem tráfego pago. No mapa do Google, quando algu&eacute;m pesquisa mega hair em Vargem Grande do Sul, <strong>aparece voc&ecirc;.</strong> O an&uacute;ncio pago vai colocar a Paula Guedes na frente de mulheres de Vargem Grande do Sul, Casa Branca e S&atilde;o Sebasti&atilde;o da Grama que nunca souberam que voc&ecirc; existia. Quando as concorrentes perceberem, voc&ecirc; j&aacute; vai estar muito &agrave; frente.</p>
+  </div>
+
+  <div class="orange-box">
+    <h3>A cliente que veio com cabelo orgânico — sua prova social mais poderosa</h3>
+    <p>A cliente que chegou desesperada depois de colocar cabelo orgânico (vendido como humano) e saiu transformada &eacute; o criativo mais poderoso que voc&ecirc; tem. <strong>Antes e depois real, com hist&oacute;ria — esse tipo de conte&uacute;do gera confiança imediata em quem j&aacute; teve experi&ecirc;ncia ruim com outra profissional.</strong> E em Vargem, provavelmente n&atilde;o &eacute; a &uacute;nica cliente nessa situa&ccedil;&atilde;o.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>A isca certa — manutenção que traz quem j&aacute; tem mega</h3>
+    <p>Manutenção Ponto Americano a R$ 380 ou Microlink a R$ 450. Quem j&aacute; usa mega hair precisa de manutenção regularmente — <strong>ela j&aacute; conhece o servi&ccedil;o, j&aacute; sabe o valor, s&oacute; precisa de uma raz&atilde;o para escolher a Paula Guedes.</strong> A manutenção traz a cliente para a cadeira. Na cadeira, ela conhece o seu trabalho e vira cliente de mega novo.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OFERTA ISCA -->
+<section class="bg-black">
+  <div class="sec-label">A oferta — o que vai aparecer na regi&atilde;o</div>
+  <h2 class="sec-title">A isca no rio.<br><em>O peixe certo<br>fisga.</em></h2>
+  <p class="sec-intro">Como eu te disse hoje: n&atilde;o &eacute; sobre colocar o mundo desde o primeiro dia. &Eacute; sobre colocar a oferta certa, na frente das mulheres certas. Com R$ 500 de verba, a gente d&aacute; o tiro certeiro.</p>
+
+  <div class="oferta-card">
+    <div class="oferta-lbl">&#9733; Oferta principal — manutenção de mega hair</div>
+    <div class="oferta-titulo">Manuten&ccedil;&atilde;o de <em>Mega Hair</em><br>Ponto Americano ou Microlink</div>
+    <div class="oferta-price"><sub>a partir de R$</sub> 380</div>
+    <div class="oferta-desc">
+      <strong>Para as mulheres da regi&atilde;o que j&aacute; usam mega e est&atilde;o precisando de manutenção</strong> — elas j&aacute; sabem o que &eacute;, j&aacute; querem fazer. S&oacute; precisam de uma raz&atilde;o para escolher a Paula Guedes.<br><br>
+      Na cadeira: conheç sua qualidade → volta para manutenção todo m&ecirc;s → indica para amigas → algumas v&atilde;o querer mega novo (R$ 450+ s&oacute; de instala&ccedil;&atilde;o).
+    </div>
+    <div class="cidades">
+      <div class="cidade-pill">&#128205; Vargem Grande do Sul</div>
+      <div class="cidade-pill">&#128205; Casa Branca</div>
+      <div class="cidade-pill">&#128205; S&atilde;o Sebasti&atilde;o da Grama</div>
+    </div>
+  </div>
+
+  <!-- JORNADA -->
+  <div class="sec-label" style="margin-top:40px;">Do an&uacute;ncio &agrave; cliente na cadeira</div>
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>An&uacute;ncio aparece para a mulher certa</h3>
+        <p>S&oacute; para mulheres das tr&ecirc;s cidades, na faixa et&aacute;ria do p&uacute;blico da Paula Guedes, com interesse em mega hair e cuidados capilares. Quem v&ecirc; j&aacute; &eacute; uma potencial cliente.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Ela v&ecirc; o resultado — e o pre&ccedil;o</h3>
+        <p>An&uacute;ncio mostra o antes e depois real, o pre&ccedil;o da manutenção e onde fica o sal&atilde;o. Ela j&aacute; chega sabendo o que quer — sem surpresa na hora de pagar.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Ela entra no WhatsApp para agendar</h3>
+        <p>Direto — sem formul&aacute;rio complicado. A EmpresAtiva monitora os contatos que chegam e avisa Paula para responder r&aacute;pido. Nos primeiros 5 minutos, a taxa de agendamento &eacute; muito maior.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Manutenção vira mega novo — e recorr&ecirc;ncia</h3>
+        <p>A cliente que veio para manutenção v&ecirc; o seu trabalho de perto. <strong>Parte delas vai querer saber sobre mega novo (R$ 450+ s&oacute; de instala&ccedil;&atilde;o) — e as que n&atilde;o quiserem ainda v&atilde;o voltar todo m&ecirc;s para manuten&ccedil;&atilde;o.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- COMO FUNCIONA O CRIATIVO -->
+<section class="bg-dark">
+  <div class="sec-label">Os criativos — simples, sem aparecer no come&ccedil;o</div>
+  <h2 class="sec-title">Voc&ecirc; n&atilde;o precisa<br><em>aparecer<br>na frente da<br>c&acirc;mera agora.</em></h2>
+  <p class="sec-intro">Paula, como combinamos: a gente come&ccedil;a com imagens e a sua voz gravada no celular. Quando o dinheiro come&ccedil;ar a entrar, voc&ecirc; mesma vai querer aparecer — porque vai saber que dobra o resultado.</p>
+
+  <div class="orange-box">
+    <h3>Fase 1 — imagem + voz gravada (sem aparecer)</h3>
+    <p>A equipe de design da EmpresAtiva cria as imagens com o seus resultados de antes e depois. Voc&ecirc; grava no celular um &aacute;udio simples lendo o texto que Jo&atilde;o manda — sua voz no an&uacute;ncio, sem aparecer. <strong>J&aacute; performa muito acima do que a concorr&ecirc;ncia est&aacute; fazendo (que &eacute; s&oacute; o orgânico).</strong></p>
+  </div>
+
+  <div class="gold-box">
+    <h3>Fase 2 — v&iacute;deo de 10 segundos (3 takes simples)</h3>
+    <p>Quando a pr&oacute;xima cliente vier fazer manutenção: grava 10 segundos do <em>antes</em>, 10 durante o processo, 10 do resultado final. Manda os tr&ecirc;s para a EmpresAtiva. <strong>A equipe edita, coloca legenda e &aacute;udio — voc&ecirc; n&atilde;o precisa editar nada.</strong> Esse tipo de v&iacute;deo &eacute; o que mais converte em todo o mercado de mega hair.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>Fase 3 — voc&ecirc; aparecendo (quando quiser)</h3>
+    <p>Quando os n&uacute;meros provarem que vídeo com voc&ecirc; falando duplica o resultado, a timidez passa naturalmente. <strong>Nenhum empresário resiste a faturar mais.</strong> E aí a Paula Guedes passa a ser refer&ecirc;ncia de mega hair na regi&atilde;o inteira.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sec-label">O que a EmpresAtiva entrega</div>
+  <h2 class="sec-title">Tudo para ir de<br><em>R$ 10k para<br>R$ 15-20k/m&ecirc;s.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas</h3>
+        <p>Campanhas segmentadas para Vargem Grande do Sul, Casa Branca e S&atilde;o Sebasti&atilde;o da Grama. S&oacute; mulheres com perfil de p&uacute;blico da Paula Guedes v&ecirc;em o an&uacute;ncio.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎬</div>
+      <div>
+        <h3>Cria&ccedil;&atilde;o dos criativos</h3>
+        <p>Equipe de design interna — treinada pela EmpresAtiva — edita os antes e depois, monta os v&iacute;deos com os takes que voc&ecirc; manda e cria imagens profissionais sem você precisar aparecer no in&iacute;cio.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Dashboard e relat&oacute;rio em tempo real</h3>
+        <p>Painel mostrando quanto foi investido, quantas pessoas viram, quantas entraram em contato e qual an&uacute;ncio gerou mais resultado. Transparência total — sem precisar confiar s&oacute; na palavra da ag&ecirc;ncia.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada vez que uma mulher entra em contato pelo an&uacute;ncio, Paula recebe um aviso — para responder r&aacute;pido e n&atilde;o perder a oportunidade de agendamento.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📍</div>
+      <div>
+        <h3>Google Meu Neg&oacute;cio otimizado</h3>
+        <p>Voc&ecirc; j&aacute; aparece no Google, mas sem concorr&ecirc;ncia. A EmpresAtiva otimiza o perfil para refor&ccedil;ar a autoridade — mais fotos, mais avalia&ccedil;&otilde;es e descrição atualizada.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s. Quando voc&ecirc; tiver o cliente de megahair que veio pelo an&uacute;ncio — grava os 10 segundos do antes, durante e depois e manda pra mim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sec-label">Investimento</div>
+  <h2 class="sec-title">R$ 997 ag&ecirc;ncia<br><em>+ R$ 500 Instagram.<br>Total: R$ 1.497/m&ecirc;s.</em></h2>
+  <p class="sec-intro">Dois pagamentos separados — como eu expliquei hoje. Um vai para a EmpresAtiva pelo servi&ccedil;o. O outro vai direto para o Instagram pelos an&uacute;ncios. Sem fidelidade m&iacute;nima — s&oacute; aviso pr&eacute;vio de 30 dias.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">Meta Ads &mdash; Paula Guedes Cabelos e Mega Hair &middot; Vargem Grande do Sul SP</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva — gest&atilde;o, criativos, dashboard e suporte</h4>
+            <p>Estrat&eacute;gia, an&uacute;ncios, otimiza&ccedil;&atilde;o, Google Meu Neg&oacute;cio e relat&oacute;rio mensal</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha meta">
+          <div class="inv-linha-info">
+            <h4>Instagram — verba de an&uacute;ncios</h4>
+            <p>Pago direto para o Instagram via cart&atilde;o &mdash; n&atilde;o passa pela EmpresAtiva</p>
+          </div>
+          <div class="inv-linha-valor">R$ 500<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total no primeiro m&ecirc;s</h4>
+            <p>Sem fidelidade &middot; contrato de 6 meses para segurar o valor &middot; aviso pr&eacute;vio de 30 dias</p>
+          </div>
+          <div class="inv-total-val">R$ 1.497<span style="font-size:13px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa das campanhas no Instagram para a regi&atilde;o</li>
+        <li>Segmenta&ccedil;&atilde;o para VGS + Casa Branca + S&atilde;o Sebasti&atilde;o da Grama</li>
+        <li>Cria&ccedil;&atilde;o dos criativos (imagem + v&iacute;deo com takes que voc&ecirc; manda)</li>
+        <li>Google Meu Neg&oacute;cio otimizado</li>
+        <li>Dashboard em tempo real + relat&oacute;rio mensal</li>
+        <li>Alerta de leads no WhatsApp da Paula</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roi-box">
+    <h4>O que R$ 500 de verba pode gerar na regi&atilde;o</h4>
+    <div class="roi-itens">
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc">Oceano azul &mdash; CPL estimado <strong>R$ 15–30</strong> (zero concorr&ecirc;ncia no tráfego)</div>
+          <div class="roi-desc">17 a 33 mulheres interessadas por m&ecirc;s</div>
+        </div>
+        <div class="roi-val" style="color:var(--gold);">leads</div>
+      </div>
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc">Taxa de agendamento estimada: <strong>20–30%</strong></div>
+          <div class="roi-desc">3 a 10 clientes novas por m&ecirc;s</div>
+        </div>
+        <div class="roi-val" style="color:var(--gold);">clientes</div>
+      </div>
+      <div class="roi-item d">
+        <div>
+          <div class="roi-desc"><strong>5 manuten&ccedil;&otilde;es × R$ 380</strong> &mdash; s&oacute; de manutenção</div>
+          <div class="roi-desc">Faturamento extra que j&aacute; cobre verba + parte da ag&ecirc;ncia</div>
+        </div>
+        <div class="roi-val">R$ 1.900</div>
+      </div>
+      <div class="roi-item d">
+        <div>
+          <div class="roi-desc"><strong>1 mega hair novo × R$ 450+</strong> de instala&ccedil;&atilde;o (sem o cabelo)</div>
+          <div class="roi-desc">1 cliente de mega novo no m&ecirc;s j&aacute; empata o investimento total</div>
+        </div>
+        <div class="roi-val">empata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Combinamos<br><em>entre o dia 5<br>e o dia 10.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora — proposta recebida</span>
+      <h3>Paula analisa as finan&ccedil;as com calma</h3>
+      <p>Como voc&ecirc; mesma disse: "pé no chão". A EmpresAtiva respeita isso. Qualquer d&uacute;vida antes do dia 5, &eacute; s&oacute; chamar Jo&atilde;o Marot no WhatsApp.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 5–10 de agosto</span>
+      <h3>Jo&atilde;o entra em contato — decis&atilde;o</h3>
+      <p>Conforme combinamos hoje. Jo&atilde;o retoma para saber se Paula vai conseguir viabilizar o investimento e dar in&iacute;cio &agrave; parceria.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1 ap&oacute;s confirmação</span>
+      <h3>Logomarca + fotos profissionais + paleta de cores</h3>
+      <p>Paula manda a logomarca atual, as fotos profissionais que j&aacute; tem e define a paleta de cores com a equipe. A EmpresAtiva j&aacute; inicia a produ&ccedil;&atilde;o dos primeiros criativos.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>An&uacute;ncios no ar — tr&ecirc;s cidades v&ecirc;em a Paula Guedes</h3>
+      <p>Primeiras campanhas publicadas. An&uacute;ncios aparecendo para mulheres de VGS, Casa Branca e S&atilde;o Sebasti&atilde;o da Grama. Primeiros contatos chegando no WhatsApp.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Pr&oacute;xima cliente de mega</span>
+      <h3>3 takes de 10 segundos — o criativo que mais converte</h3>
+      <p>Quando vier a pr&oacute;xima cliente: 10s do antes, 10s durante, 10s do depois. Manda pra Jo&atilde;o. A equipe edita e o v&iacute;deo entra no ar — sem voc&ecirc; precisar aparecer.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 2+</span>
+      <h3>Dados reais — escala com seguran&ccedil;a</h3>
+      <p>Com os primeiros n&uacute;meros em m&atilde;os, a decis&atilde;o de aumentar a verba de R$ 500 para R$ 1.000 &eacute; baseada no que j&aacute; funcionou — n&atilde;o em aposta.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Paula, suas<br>concorrentes<br><em>ainda n&atilde;o<br>descobriram.<br>Voc&ecirc; vai ser<br>a primeira.</em></h2>
+  <p>Voc&ecirc; j&aacute; aparece no Google quando algu&eacute;m pesquisa mega hair em Vargem Grande do Sul. Com o an&uacute;ncio no Instagram, voc&ecirc; passa a aparecer para as mulheres da regi&atilde;o que nem estavam procurando ainda — mas v&atilde;o querer quando virem o seu trabalho.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
