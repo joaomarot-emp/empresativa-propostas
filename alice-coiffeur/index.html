@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Alice Coifer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#060608;--white:#F5F3EE;--orange:#E8671A;--gold:#C9A84C;
+  --dark:#0C0C10;--card:#141418;--border:rgba(255,255,255,0.07);
+  --muted:rgba(245,243,238,0.42);--green:#2ECC71;
+  --font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(6,6,8,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:17px 24px;text-decoration:none;border-radius:4px;width:100%;}
+.sticky svg{width:20px;height:20px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:64px 24px 96px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-80px;right:-80px;width:440px;height:440px;background:radial-gradient(circle,rgba(232,103,26,0.11) 0%,transparent 65%);pointer-events:none;}
+.hero::after{content:"";position:absolute;bottom:-60px;left:-60px;width:320px;height:320px;background:radial-gradient(circle,rgba(46,204,113,0.06) 0%,transparent 65%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:28px;opacity:0;animation:up .7s ease forwards .1s;}
+.badge::before{content:"";display:block;width:22px;height:1px;background:var(--orange);}
+.hero h1{font-family:var(--font-display);font-size:clamp(28px,8vw,62px);font-weight:800;line-height:1.0;margin-bottom:20px;opacity:0;animation:up .8s ease forwards .25s;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:40px;max-width:480px;opacity:0;animation:up .8s ease forwards .4s;}
+.pills{display:flex;flex-wrap:wrap;gap:10px;opacity:0;animation:up .8s ease forwards .55s;}
+.pill{background:var(--card);border:1px solid var(--border);padding:10px 16px;border-radius:2px;}
+.pill span:first-child{display:block;font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;margin-bottom:3px;}
+.pill span:last-child{font-size:13px;font-weight:600;color:var(--white);}
+section{padding:64px 24px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 24px;}
+.sec-label{font-family:var(--font-mono);font-size:9px;letter-spacing:0.26em;color:var(--orange);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec-label::before{content:"";display:block;width:20px;height:1px;background:var(--orange);flex-shrink:0;}
+.sec-title{font-family:var(--font-display);font-size:clamp(26px,7vw,46px);font-weight:800;line-height:1.1;margin-bottom:14px;}
+.sec-title em{color:var(--orange);font-style:normal;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:40px;}
+.orange-box{background:rgba(232,103,26,0.05);border:1px solid rgba(232,103,26,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.orange-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--orange);margin-bottom:10px;}
+.orange-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.orange-box strong{color:var(--white);}
+.green-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.green-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--green);margin-bottom:10px;}
+.green-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.green-box strong{color:var(--white);}
+.gold-box{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);padding:26px 24px;border-radius:2px;margin-bottom:16px;}
+.gold-box h3{font-family:var(--font-display);font-size:17px;font-weight:800;color:var(--gold);margin-bottom:10px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.8;}
+.gold-box strong{color:var(--white);}
+/* CONCORRENTES */
+.conc-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.conc-item{background:var(--card);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.conc-item.alice{background:rgba(46,204,113,0.05);border-left:2px solid var(--green);}
+.conc-nome{font-size:13px;font-weight:600;color:var(--white);}
+.conc-status{font-family:var(--font-mono);font-size:9px;letter-spacing:0.14em;padding:4px 10px;border-radius:2px;text-transform:uppercase;flex-shrink:0;}
+.status-faz{background:rgba(232,64,64,0.1);color:#E84040;border:1px solid rgba(232,64,64,0.2);}
+.status-nao{background:rgba(46,204,113,0.1);color:var(--green);border:1px solid rgba(46,204,113,0.2);}
+/* OFERTA */
+.oferta-card{background:linear-gradient(135deg,rgba(232,103,26,0.07) 0%,rgba(201,168,76,0.03) 100%);border:1px solid rgba(232,103,26,0.22);border-radius:4px;padding:28px 24px;margin-bottom:20px;}
+.oferta-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.oferta-titulo{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);margin-bottom:6px;line-height:1.15;}
+.oferta-titulo em{color:var(--orange);}
+.oferta-price{font-family:var(--font-display);font-size:52px;font-weight:800;color:var(--orange);line-height:1;margin-bottom:4px;}
+.oferta-price sub{font-size:14px;font-weight:400;font-family:var(--font-body);color:var(--muted);vertical-align:middle;}
+.oferta-steps{display:flex;flex-direction:column;gap:2px;margin-top:16px;}
+.oferta-step{background:rgba(255,255,255,0.03);border:1px solid var(--border);padding:10px 14px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;}
+.oferta-step strong{color:var(--white);}
+.step-n{font-family:var(--font-mono);font-size:10px;color:var(--orange);flex-shrink:0;width:18px;}
+/* JORNADA */
+.jornada{display:flex;flex-direction:column;gap:2px;}
+.jornada-item{background:var(--card);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;}
+.jornada-item.hl{background:rgba(232,103,26,0.04);border-left:2px solid var(--orange);}
+.j-num{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;min-width:36px;line-height:1;margin-top:2px;}
+.jornada-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.jornada-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+/* ENTREGÁVEIS */
+.como-grid{display:flex;flex-direction:column;gap:2px;}
+.como-item{background:var(--card);padding:22px;display:flex;gap:14px;align-items:flex-start;}
+.como-icon{width:38px;height:38px;background:rgba(232,103,26,0.07);border:1px solid rgba(232,103,26,0.14);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.como-item h3{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.como-item p{font-size:12px;color:var(--muted);line-height:1.7;}
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(232,103,26,0.28);border-radius:4px;overflow:hidden;margin-bottom:3px;}
+.inv-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--orange),var(--gold));}
+.inv-body{padding:28px 24px;}
+.inv-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:0.22em;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--orange);}
+.inv-linha.meta{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;}
+.inv-linha-valor{font-family:var(--font-display);font-size:20px;font-weight:800;flex-shrink:0;}
+.inv-linha.ag .inv-linha-valor{color:var(--orange);}
+.inv-linha.meta .inv-linha-valor{color:#1877F2;}
+.inv-total-box{background:rgba(232,103,26,0.06);border:1px solid rgba(232,103,26,0.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);}
+.inv-total-val{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--orange);flex-shrink:0;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--white);padding-left:20px;position:relative;line-height:1.5;}
+.inv-ul li::before{content:"\2713";position:absolute;left:0;color:var(--orange);font-size:11px;font-weight:700;}
+.roi-box{background:rgba(46,204,113,0.04);border:1px solid rgba(46,204,113,0.15);padding:22px 24px;border-radius:2px;margin-top:3px;}
+.roi-box h4{font-size:13px;font-weight:600;color:var(--green);margin-bottom:12px;}
+.roi-itens{display:flex;flex-direction:column;gap:2px;}
+.roi-item{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.roi-item.d{background:rgba(46,204,113,0.04);border-left:2px solid var(--green);}
+.roi-desc{font-size:12px;color:var(--muted);}
+.roi-desc strong{color:var(--white);}
+.roi-val{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--green);flex-shrink:0;}
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;position:relative;padding-left:40px;}
+.timeline::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--orange),rgba(232,103,26,0.05));}
+.tl-item{position:relative;padding:0 0 36px 24px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid var(--black);box-shadow:0 0 0 3px rgba(232,103,26,0.18);}
+.tl-day{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.7;}
+.footer-cta{background:var(--dark);padding:64px 24px 120px;text-align:center;}
+.footer-cta h2{font-family:var(--font-display);font-size:clamp(26px,8vw,44px);font-weight:800;line-height:1.15;margin-bottom:16px;}
+.footer-cta h2 em{color:var(--orange);font-style:normal;}
+.footer-cta p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--orange);color:var(--black);font-size:15px;font-weight:700;padding:18px 32px;text-decoration:none;border-radius:4px;width:100%;max-width:400px;}
+.cta-btn svg{width:20px;height:20px;}
+.footer-sig{margin-top:40px;padding-top:28px;border-top:1px solid var(--border);}
+.footer-sig .name{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px;}
+.footer-sig .role{font-family:var(--font-mono);font-size:9px;letter-spacing:0.2em;color:var(--orange);text-transform:uppercase;}
+@keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){section{padding:88px 48px;}hr.div{margin:0 48px;}.hero{padding:80px 48px 100px;}.como-grid{display:grid;grid-template-columns:1fr 1fr;}.footer-cta{padding:88px 48px 100px;}.cta-btn{width:auto;}}
+@media(min-width:1100px){section{padding:100px 80px;}.hero{padding:80px 80px 100px;}hr.div{margin:0 80px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<section class="hero">
+  <p class="badge">Proposta &middot; Meta Ads &middot; Alice Coifer &middot; Campos dos Goytacazes RJ</p>
+  <h1>Campos est&aacute;<br>parada.<br><em>Sua concorr&ecirc;ncia<br>j&aacute; est&aacute;<br>anunciando.</em></h1>
+  <p class="hero-sub">Alice, como mostramos hoje na nossa reuni&atilde;o: Sal&atilde;o Bet Hair e M&aacute;rcia Ara&uacute;jo j&aacute; est&atilde;o no tráfego pago. A mulher de Campos que pesquisa mega hair encontra elas — e ainda n&atilde;o te encontra. A EmpresAtiva muda isso.</p>
+  <div class="pills">
+    <div class="pill"><span>Servi&ccedil;o</span><span>Meta Ads</span></div>
+    <div class="pill"><span>Ag&ecirc;ncia</span><span>R$ 997/m&ecirc;s</span></div>
+    <div class="pill"><span>Verba inicial</span><span>R$ 500/m&ecirc;s</span></div>
+    <div class="pill"><span>Retorno</span><span>Dia 2 de agosto</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="bg-dark">
+  <div class="sec-label">A situa&ccedil;&atilde;o real — o que vimos juntos hoje</div>
+  <h2 class="sec-title">Enquanto a cidade<br>parou, sua<br><em>concorr&ecirc;ncia<br>foi para o digital.</em></h2>
+  <p class="sec-intro">Alice, pesquisamos ao vivo durante nossa conversa. O cen&aacute;rio &eacute; claro — e urgente.</p>
+
+  <div class="conc-grid">
+    <div class="conc-item">
+      <div>
+        <div class="conc-nome">Sal&atilde;o Bet Hair</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Concorrente direta em Campos</div>
+      </div>
+      <div class="conc-status status-faz">Faz tráfego ✓</div>
+    </div>
+    <div class="conc-item">
+      <div>
+        <div class="conc-nome">M&aacute;rcia Ara&uacute;jo Concept Beauty</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">~50.000 seguidores &middot; perto do seu sal&atilde;o</div>
+      </div>
+      <div class="conc-status status-faz">Faz tráfego ✓</div>
+    </div>
+    <div class="conc-item alice">
+      <div>
+        <div class="conc-nome">Alice Coifer</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:3px;">Mega hair personalizado &middot; centro de Campos</div>
+      </div>
+      <div class="conc-status status-nao">Ainda n&atilde;o</div>
+    </div>
+  </div>
+
+  <div class="orange-box">
+    <h3>Por que impulsionar n&atilde;o funcionou antes</h3>
+    <p>Impulsionar &eacute; diferente de gerir tráfego pago. Quando voc&ecirc; clica em "impulsionar", o Instagram n&atilde;o sabe quem &eacute; a cliente certa — e gasta o dinheiro com quem n&atilde;o vai comprar. <strong>A EmpresAtiva configura no Gerenciador de An&uacute;ncios com segmenta&ccedil;&atilde;o cirúrgica: mulheres de Campos dos Goytacazes, faixa et&aacute;ria certa, com interesse em cabelo e mega hair.</strong> S&oacute; quem pode se tornar cliente v&ecirc; o an&uacute;ncio.</p>
+  </div>
+
+  <div class="green-box">
+    <h3>O mercado de Campos n&atilde;o acabou — ele est&aacute; online</h3>
+    <p>A cidade pode estar com menos movimento nas ruas. Mas as mulheres de Campos est&atilde;o no Instagram todos os dias. <strong>A que quer fazer mega hair est&aacute; l&aacute; — s&oacute; ainda n&atilde;o viu o seu an&uacute;ncio.</strong> Quem aparece primeiro na frente dela fica com o cliente.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="bg-black">
+  <div class="sec-label">A oferta — o que vai aparecer para as mulheres de Campos</div>
+  <h2 class="sec-title">Manutenção<br>completa a<br><em>R$ 290.</em></h2>
+  <p class="sec-intro">Como definimos hoje: a oferta irresist&iacute;vel &eacute; a manutenção. Quem j&aacute; tem mega hair sabe exatamente o que &eacute;, sabe o valor e j&aacute; quer — s&oacute; precisa encontrar voc&ecirc;.</p>
+
+  <div class="oferta-card">
+    <div class="oferta-lbl">&#9733; Oferta principal — manutenção de mega hair</div>
+    <div class="oferta-titulo">Manutenção Completa de <em>Mega Hair</em></div>
+    <div class="oferta-price"><sub>R$</sub> 290</div>
+    <div class="oferta-steps">
+      <div class="oferta-step"><span class="step-n">01</span><span>Retira o mega hair</span></div>
+      <div class="oferta-step"><span class="step-n">02</span><span>Limpa os fios e o couro cabeludo</span></div>
+      <div class="oferta-step"><span class="step-n">03</span><span>Hidrata e reconstr&oacute;i</span></div>
+      <div class="oferta-step"><span class="step-n">04</span><span>Coloca o mega de volta</span></div>
+      <div class="oferta-step"><span class="step-n">05</span><span>Escova, prancha, <strong>cabelo pronto e lindo</strong></span></div>
+    </div>
+  </div>
+
+  <div class="gold-box">
+    <h3>Por que manutenção e n&atilde;o o pacote completo de R$ 600</h3>
+    <p>Como expliquei hoje, Alice: quem nunca fez mega hash acha R$ 600 caro porque n&atilde;o tem noção do valor. Quem j&aacute; usa mega sabe exatamente o que &eacute; uma manutenção de R$ 290 — <strong>para ela, &eacute; barato e justo.</strong> Ela chega qualificada, fecha r&aacute;pido. Na cadeira, v&ecirc; a qualidade do seu trabalho e naturalmente quer saber sobre o pacote completo.</p>
+  </div>
+
+  <div class="sec-label" style="margin-top:40px;">Do an&uacute;ncio &agrave; cliente na cadeira</div>
+  <div class="jornada">
+    <div class="jornada-item hl">
+      <div class="j-num">1</div>
+      <div>
+        <h3>Mulher de Campos v&ecirc; o an&uacute;ncio</h3>
+        <p>An&uacute;ncio aparece no Instagram s&oacute; para mulheres de Campos — com o resultado de uma manutenção e o pre&ccedil;o de R$ 290. Ela j&aacute; tem mega e j&aacute; precisava marcar.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">2</div>
+      <div>
+        <h3>Ela vai direto para o WhatsApp</h3>
+        <p>Um toque — sem formul&aacute;rio, sem site. Chega no seu WhatsApp j&aacute; sabendo o que quer. A EmpresAtiva avisa em tempo real para voc&ecirc; responder r&aacute;pido.</p>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="j-num">3</div>
+      <div>
+        <h3>Agendamento confirmado</h3>
+        <p>Ela j&aacute; viu o pre&ccedil;o, j&aacute; viu o resultado — s&oacute; quer saber quando tem vaga. Conversa r&aacute;pida, data confirmada.</p>
+      </div>
+    </div>
+    <div class="jornada-item hl">
+      <div class="j-num">4</div>
+      <div>
+        <h3>Manutenção vira fideliza&ccedil;&atilde;o</h3>
+        <p>Ela fica encantada com o resultado. Volta todo m&ecirc;s. Pergunta sobre o pacote completo. <strong>Uma cliente de manutenção pode virar cliente de mega novo — e indicar mais tr&ecirc;s amigas.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="bg-dark">
+  <div class="sec-label">O que a EmpresAtiva entrega</div>
+  <h2 class="sec-title">Estrat&eacute;gia.<br><em>An&uacute;ncio.<br>Resultado.</em></h2>
+
+  <div class="como-grid">
+    <div class="como-item">
+      <div class="como-icon">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas</h3>
+        <p>Configuro no Gerenciador de An&uacute;ncios — n&atilde;o no bot&atilde;o impulsionar. Segmenta&ccedil;&atilde;o cirúrgica para mulheres de Campos dos Goytacazes. Monitoramento di&aacute;rio e otimiza&ccedil;&atilde;o contínua.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🎨</div>
+      <div>
+        <h3>Equipe de design para os criativos</h3>
+        <p>Equipe interna treinada pela EmpresAtiva cria as imagens e edita os v&iacute;deos — voc&ecirc; manda os antes e depois das suas clientes e a gente transforma em an&uacute;ncio que converte.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📊</div>
+      <div>
+        <h3>Relat&oacute;rio em tempo real</h3>
+        <p>Painel completo: quanto gastou, quantas pessoas viram, quantas entraram em contato, quais an&uacute;ncios performaram melhor. Como mostramos hoje — transpar&ecirc;ncia total.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada contato que chegar pelo an&uacute;ncio gera um aviso imediato. Voc&ecirc; responde r&aacute;pido — nos primeiros minutos a chance de fechar &eacute; muito maior.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">📍</div>
+      <div>
+        <h3>Otimiza&ccedil;&atilde;o do perfil no Google</h3>
+        <p>Perfil do Google otimizado para "mega hair Campos dos Goytacazes" — mais uma fonte de clientes que j&aacute; pesquisam ativamente pelo servi&ccedil;o.</p>
+      </div>
+    </div>
+    <div class="como-item">
+      <div class="como-icon">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>8 anos de mercado, 150+ clientes, R$10 milh&otilde;es gerenciados em tráfego. WhatsApp direto durante o m&ecirc;s — sem ficar esperando dias por uma resposta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="bg-black">
+  <div class="sec-label">Investimento — tudo no cart&atilde;o</div>
+  <h2 class="sec-title">R$ 997 ag&ecirc;ncia<br><em>+ R$ 500 Instagram.<br>Tudo no cart&atilde;o.</em></h2>
+  <p class="sec-intro">Alice, como voc&ecirc; pediu: o fee da ag&ecirc;ncia pode ser pago no cart&atilde;o de cr&eacute;dito — com um pequeno acr&eacute;scimo de parcelamento. A verba do Instagram tamb&eacute;m vai no cart&atilde;o, paga em at&eacute; 30 dias diretamente para o Meta.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">Meta Ads &mdash; Alice Coifer &middot; Campos dos Goytacazes RJ</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva — gest&atilde;o, criativos, relat&oacute;rio e suporte</h4>
+            <p>Pago no cart&atilde;o de cr&eacute;dito com pequeno acr&eacute;scimo (~R$ 1.013–1.040 no cart&atilde;o)</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha meta">
+          <div class="inv-linha-info">
+            <h4>Instagram — verba de an&uacute;ncios</h4>
+            <p>Pago direto para o Instagram via cart&atilde;o — at&eacute; 30 dias para pagar na fatura</p>
+          </div>
+          <div class="inv-linha-valor">R$ 500<span style="font-size:11px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total no primeiro m&ecirc;s</h4>
+            <p>Contrato inicial de 1 m&ecirc;s &middot; sem fidelidade longa &middot; aviso de 30 dias para sair</p>
+          </div>
+          <div class="inv-total-val">R$ 1.497<span style="font-size:13px;font-weight:400;font-family:var(--font-body);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa das campanhas no Instagram para Campos dos Goytacazes</li>
+        <li>Equipe de design interna para cria&ccedil;&atilde;o dos criativos</li>
+        <li>Relat&oacute;rio em tempo real — transpar&ecirc;ncia total</li>
+        <li>Alerta de leads no WhatsApp em tempo real</li>
+        <li>Otimiza&ccedil;&atilde;o do perfil no Google</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roi-box">
+    <h4>O que R$ 500 de verba pode gerar em Campos</h4>
+    <div class="roi-itens">
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc">CPL estimado <strong>R$ 15–30</strong> &middot; 17 a 33 mulheres interessadas</div>
+          <div class="roi-desc">Por m&ecirc;s, s&oacute; para mulheres de Campos que j&aacute; usam mega</div>
+        </div>
+        <div class="roi-val" style="color:var(--gold);">leads</div>
+      </div>
+      <div class="roi-item">
+        <div>
+          <div class="roi-desc">Taxa de agendamento <strong>20–30%</strong></div>
+          <div class="roi-desc">3 a 10 clientes novas na cadeira no primeiro m&ecirc;s</div>
+        </div>
+        <div class="roi-val" style="color:var(--gold);">clientes</div>
+      </div>
+      <div class="roi-item d">
+        <div>
+          <div class="roi-desc"><strong>5 manuten&ccedil;&otilde;es × R$ 290</strong></div>
+          <div class="roi-desc">J&aacute; cobre a verba de an&uacute;ncios do m&ecirc;s inteiro</div>
+        </div>
+        <div class="roi-val">R$ 1.450</div>
+      </div>
+      <div class="roi-item d">
+        <div>
+          <div class="roi-desc"><strong>1 pacote completo × R$ 600</strong> vindo de cliente de manutenção</div>
+          <div class="roi-desc">1 upsell j&aacute; cobre mais de 40% do investimento total</div>
+        </div>
+        <div class="roi-val">R$ 600</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section class="bg-dark">
+  <div class="sec-label">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Combinamos<br><em>o dia 2<br>de agosto.</em></h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje — proposta recebida</span>
+      <h3>Alice organiza o financeiro</h3>
+      <p>Como voc&ecirc; disse: "deixa eu organizar minha vida." A EmpresAtiva respeita isso. Qualquer d&uacute;vida antes do dia 2, &eacute; s&oacute; chamar Jo&atilde;o Marot no WhatsApp.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 2 de agosto</span>
+      <h3>Jo&atilde;o retoma — decis&atilde;o e start</h3>
+      <p>Conforme combinamos. Alice confirma, fee pago no cart&atilde;o e a EmpresAtiva j&aacute; inicia no mesmo dia. Contrato inicial de 1 m&ecirc;s — para voc&ecirc; ver o resultado antes de qualquer compromisso longo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3 ap&oacute;s confirmação</span>
+      <h3>Acesso + primeiros criativos</h3>
+      <p>Acesso ao Instagram e ao Gerenciador de An&uacute;ncios. Alice manda os melhores antes e depois que tem. Equipe de design j&aacute; inicia a produ&ccedil;&atilde;o dos primeiros criativos.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1</span>
+      <h3>An&uacute;ncios no ar — Campos v&ecirc;</h3>
+      <p>Primeiras campanhas publicadas com a oferta de manutenção a R$ 290. As primeiras mulheres de Campos que j&aacute; usam mega come&ccedil;am a ver o an&uacute;ncio e entram em contato.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 1</span>
+      <h3>Dados reais — decis&atilde;o de continuar</h3>
+      <p>Com os n&uacute;meros do primeiro m&ecirc;s na m&atilde;o — custo por lead, clientes agendadas, receita gerada — a decis&atilde;o de continuar &eacute; baseada em resultado concreto, n&atilde;o em promessa.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Alice, a mulher<br>de Campos que<br><em>quer mega hair<br>est&aacute; no Instagram<br>agora.</em></h2>
+  <p>Ela j&aacute; encontra Bet Hair e M&aacute;rcia Ara&uacute;jo. Ainda n&atilde;o encontra voc&ecirc;. A EmpresAtiva muda isso no primeiro m&ecirc;s — com a oferta de manutenção a R$ 290 aparecendo na frente das mulheres certas, na cidade certa.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital</div>
+  </div>
+</div>
+
+</body>
+</html>
