@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vantia — A plataforma de leilão dos leiloeiros oficiais</title>
+  <meta name="description" content="A tecnologia por trás de +200 mil veículos leiloados, agora na sua marca. Blockchain, KYC, assinatura digital e integração bancária — pelo preço de um site estático. Diagnóstico gratuito." />
+
+  <!--
+    ================= LANDING PAGE — CL148 Vantia =================
+    EmpresAtiva Digital · v1.0 · 2026-07-29
+    - Público: LEILOEIRO OFICIAL (não arrematante)
+    - Destino de: Google Search (alto intent) + Meta remarketing/conversão
+    - CONFIRMAR ANTES DE PUBLICAR:
+        [ ] Número WhatsApp comercial (usado: (21) 96774-1160 do site institucional — confirmar se é o de vendas)
+        [ ] Meta Pixel ID + CAPI (placeholder abaixo)
+        [ ] GA4 / Google Ads conversion (placeholder abaixo)
+        [ ] Revisão JURÍDICA do bloco comparativo (afirmações verdadeiras, sem nomear concorrente)
+        [ ] Política de Privacidade (LGPD) — link no rodapé
+    ==============================================================
+  -->
+
+  <!-- ===== TRACKING (preencher IDs no onboarding) =====
+  <!-- Meta Pixel -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s){...}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'CL148_META_PIXEL_ID'); fbq('track', 'PageView');
+  </script>
+  -->
+  <!-- Google Ads / GA4 gtag -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-2615660226"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-2615660226');</script>
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0A0E1A;
+      --bg-2:      #0F1628;
+      --panel:     #131C33;
+      --panel-2:   #1A2543;
+      --line:      #26314F;
+      --ink:       #EAF0FF;
+      --muted:     #9AA7C7;
+      --brand:     #2DD4BF;   /* teal — tecnologia */
+      --brand-2:   #3B82F6;   /* azul */
+      --gold:      #E6B45A;   /* prova / autoridade */
+      --danger:    #64708F;   /* "antes" apagado */
+      --white:     #FFFFFF;
+
+      --head: 'Sora', system-ui, sans-serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --max: 1140px;
+      --pad: clamp(20px, 5vw, 72px);
+      --radius: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .section { padding: clamp(56px, 9vw, 104px) 0; }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--brand);
+    }
+    h1, h2, h3 { font-family: var(--head); line-height: 1.12; color: var(--white); }
+    h1 { font-size: clamp(2.1rem, 5.2vw, 3.9rem); font-weight: 800; letter-spacing: -.02em; }
+    h2 { font-size: clamp(1.7rem, 3.6vw, 2.7rem); font-weight: 700; letter-spacing: -.015em; }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
+    .lead { font-size: clamp(1rem, 1.7vw, 1.18rem); color: var(--muted); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--head); font-weight: 600; font-size: 15px;
+      padding: 15px 26px; border-radius: 999px; cursor: pointer;
+      border: 1px solid transparent; transition: transform .18s, box-shadow .18s, background .2s;
+    }
+    .btn-primary {
+      background: linear-gradient(120deg, var(--brand), var(--brand-2));
+      color: #04121A; box-shadow: 0 10px 30px -10px rgba(45,212,191,.55);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -12px rgba(45,212,191,.7); }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--brand); color: var(--white); }
+
+    /* ===== NAV ===== */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10,14,26,.82); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-family: var(--head); font-weight: 800; font-size: 1.35rem; letter-spacing: -.02em; color: var(--white); }
+    .logo span { color: var(--brand); }
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .nav-links { display: none; gap: 26px; font-size: 14px; color: var(--muted); font-weight: 500; }
+    .nav-links a:hover { color: var(--ink); }
+    @media (min-width: 900px){ .nav-links { display: flex; } }
+
+    /* ===== HERO ===== */
+    .hero { position: relative; padding: clamp(56px, 9vw, 108px) 0 clamp(40px,7vw,80px); }
+    .hero::before {
+      content:""; position:absolute; inset:0; z-index:-1;
+      background:
+        radial-gradient(60% 55% at 80% 0%, rgba(59,130,246,.20), transparent 60%),
+        radial-gradient(50% 50% at 10% 20%, rgba(45,212,191,.14), transparent 60%);
+    }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background: var(--panel); border:1px solid var(--line);
+      padding:7px 14px; border-radius:999px; font-size:13px; color:var(--muted); font-weight:500;
+      margin-bottom: 22px;
+    }
+    .hero-badge b { color: var(--gold); font-weight:700; }
+    .hero h1 { max-width: 15ch; }
+    .hero .lead { margin: 22px 0 12px; max-width: 52ch; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top: 26px; }
+    .hero-proof { display:flex; flex-wrap:wrap; gap: 10px 22px; margin-top: 34px; }
+    .chip { display:flex; align-items:center; gap:9px; font-size:14px; color:var(--muted); font-weight:500; }
+    .chip svg { width:18px; height:18px; color: var(--brand); flex:none; }
+
+    /* ===== RECONHECIMENTO ===== */
+    .recognize { background: var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .recognize h2 { max-width: 20ch; }
+    .recognize .lead { margin-top: 16px; max-width: 60ch; }
+
+    /* ===== GRID helpers ===== */
+    .grid { display:grid; gap: 18px; }
+    @media(min-width:760px){ .grid-3 { grid-template-columns: repeat(3,1fr); } .grid-2 { grid-template-columns: repeat(2,1fr); } }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel), var(--bg-2));
+      border:1px solid var(--line); border-radius: var(--radius); padding: 26px;
+    }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: .96rem; }
+    .ico {
+      width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+      background: rgba(45,212,191,.10); border:1px solid rgba(45,212,191,.25); margin-bottom:16px;
+    }
+    .ico svg { width:22px; height:22px; color: var(--brand); }
+
+    /* ===== COMPARATIVO ===== */
+    .compare-wrap { overflow-x:auto; -webkit-overflow-scrolling: touch; border:1px solid var(--line); border-radius: var(--radius); }
+    table.compare { width:100%; border-collapse: collapse; min-width: 560px; }
+    table.compare th, table.compare td { padding: 16px 18px; text-align:left; border-bottom:1px solid var(--line); font-size:.96rem; }
+    table.compare thead th { font-family:var(--head); font-size:.9rem; letter-spacing:.02em; }
+    table.compare thead th:nth-child(2){ color: var(--danger); }
+    table.compare thead th:nth-child(3){ color: var(--brand); }
+    table.compare td:first-child { color: var(--muted); font-weight:500; }
+    table.compare td.no { color: var(--danger); }
+    table.compare td.yes { color: var(--ink); font-weight:600; }
+    table.compare td.yes::before { content:"✓ "; color: var(--brand); font-weight:700; }
+    table.compare td.no::before { content:"— "; }
+    .compare-note { font-size: 13px; color: var(--danger); margin-top: 12px; }
+
+    /* ===== PROVA / EBL ===== */
+    .proof { background: linear-gradient(120deg, var(--panel-2), var(--bg-2)); border:1px solid var(--line); border-radius: 22px; padding: clamp(28px,5vw,52px); }
+    .stats { display:grid; gap: 20px; grid-template-columns: repeat(2,1fr); margin-top: 8px; }
+    @media(min-width:760px){ .stats { grid-template-columns: repeat(4,1fr); } }
+    .stat .n { font-family:var(--head); font-weight:800; font-size: clamp(1.6rem,3.2vw,2.4rem); color:var(--white); }
+    .stat .n span { color: var(--gold); }
+    .stat .l { font-size:13px; color:var(--muted); margin-top:4px; }
+    .segbar { display:flex; flex-wrap:wrap; gap:10px; margin-top: 26px; }
+    .seg { font-size:13px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:7px 14px; background:var(--panel); }
+
+    /* ===== OBJEÇÕES ===== */
+    .obj { display:flex; gap:14px; align-items:flex-start; }
+    .obj .k { width:26px; height:26px; border-radius:8px; background:rgba(230,180,90,.12); border:1px solid rgba(230,180,90,.3); color:var(--gold); display:grid; place-items:center; flex:none; font-weight:700; font-size:14px; }
+    .obj h3 { font-size:1.02rem; }
+    .obj p { color: var(--muted); font-size:.94rem; margin-top:4px; }
+
+    /* ===== PLANOS ===== */
+    .plan { position:relative; text-align:left; }
+    .plan .price { font-family:var(--head); font-weight:800; font-size: clamp(1.7rem,3vw,2.1rem); color:var(--white); margin: 6px 0 2px; }
+    .plan .price small { font-size:.8rem; color:var(--muted); font-weight:500; }
+    .plan ul { list-style:none; margin:16px 0 0; display:grid; gap:9px; }
+    .plan li { font-size:.92rem; color:var(--muted); display:flex; gap:9px; }
+    .plan li::before { content:"✓"; color:var(--brand); font-weight:700; }
+    .plan.featured { border-color: rgba(45,212,191,.5); box-shadow: 0 20px 60px -30px rgba(45,212,191,.6); }
+    .tag-featured { position:absolute; top:-11px; right:18px; background:linear-gradient(120deg,var(--brand),var(--brand-2)); color:#04121A; font-family:var(--head); font-weight:700; font-size:11px; padding:4px 12px; border-radius:999px; }
+    .plans-note { text-align:center; color:var(--muted); font-size:14px; margin-top: 22px; }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final { text-align:center; background:
+        radial-gradient(70% 120% at 50% 0%, rgba(45,212,191,.16), transparent 60%), var(--bg-2);
+      border-top:1px solid var(--line); }
+    .cta-final h2 { max-width: 18ch; margin: 0 auto 16px; }
+    .cta-final .lead { max-width: 52ch; margin: 0 auto 30px; }
+
+    /* ===== FOOTER ===== */
+    footer { border-top:1px solid var(--line); background: var(--bg); }
+    .foot { display:flex; flex-wrap:wrap; gap: 16px 40px; justify-content:space-between; align-items:center; padding: 34px 0; }
+    .foot small { color: var(--danger); font-size: 13px; }
+    .foot a { color: var(--muted); font-size:13px; }
+    .foot a:hover { color: var(--ink); }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position: fixed; right: 18px; bottom: 18px; z-index: 60;
+      display:flex; align-items:center; gap:10px;
+      background:#25D366; color:#04211A; font-family:var(--head); font-weight:700; font-size:14px;
+      padding:13px 18px; border-radius:999px; box-shadow: 0 12px 34px -8px rgba(37,211,102,.6);
+      transition: transform .18s;
+    }
+    .wa-float:hover { transform: translateY(-2px) scale(1.02); }
+    .wa-float svg { width:20px; height:20px; }
+    @media(max-width:520px){ .wa-float span { display:none; } .wa-float { padding:14px; } }
+
+    .center { text-align:center; }
+    .mt-head { max-width: 30ch; }
+    .section-head { margin-bottom: 34px; }
+    .section-head.center { margin-left:auto; margin-right:auto; }
+  </style>
+</head>
+<body>
+
+  <!-- WhatsApp: número institucional do site (CONFIRMAR se é o comercial) -->
+  <a class="wa-float" href="https://wa.me/5521967741160?text=Ol%C3%A1!%20Sou%20leiloeiro%20e%20quero%20conhecer%20a%20Vantia."
+     target="_blank" rel="noopener" onclick="/* fbq('track','Contact'); gtag('event','conversion'); */">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.2.2 2 3.1 5 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4z"/><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.9 5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+    <span>Diagnóstico grátis</span>
+  </a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="container nav-in">
+      <div class="logo">Vant<span>ia</span></div>
+      <nav class="nav-links">
+        <a href="#comparativo">Comparativo</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#prova">A EBL usa</a>
+        <a href="#planos">Planos</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="https://wa.me/5521967741160?text=Quero%20um%20diagn%C3%B3stico%20gratuito%20da%20Vantia." target="_blank" rel="noopener">Diagnóstico gratuito</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">A tecnologia por trás de <b>+200 mil veículos leiloados</b></div>
+      <h1>A plataforma de leilão que a maior operação do país usa — agora sua.</h1>
+      <p class="lead">Você que é leiloeiro oficial: troque o site antigo por uma plataforma própria, moderna e conectada — blockchain, assinatura digital e integração bancária de série. <b style="color:var(--ink)">Pelo mesmo preço que você já paga por um site parado.</b></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/5521967741160?text=Quero%20um%20diagn%C3%B3stico%20gratuito%20da%20Vantia." target="_blank" rel="noopener">Solicitar diagnóstico gratuito</a>
+        <a class="btn btn-ghost" href="#comparativo">Ver o comparativo</a>
+      </div>
+      <div class="hero-proof">
+        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg> Segurança jurídica (blockchain + auditoria)</div>
+        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg> Do edital ao pós-venda</div>
+        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg> White-label — sua marca, não marketplace</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECONHECIMENTO ===== -->
+  <section class="section recognize">
+    <div class="container">
+      <span class="eyebrow">A nova realidade do leilão</span>
+      <h2>Seu site ainda é só um site de divulgação?</h2>
+      <p class="lead">Comitentes maiores, exigências jurídicas, arrematantes que dão lance pelo celular. Um site estático não dá mais conta — e passa a imagem errada. Quem profissionaliza a operação captura mais comitentes e é levado a sério. A Vantia foi construída para essa realidade.</p>
+    </div>
+  </section>
+
+  <!-- ===== COMPARATIVO ===== -->
+  <section class="section" id="comparativo">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Mesmo preço, outro patamar</span>
+        <h2 class="mt-head">O que você tem hoje × o que você teria com a Vantia</h2>
+      </div>
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr><th>Recurso</th><th>Site/plataforma comum</th><th>Vantia</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Plataforma com a sua marca (white-label)</td><td class="no">Site de divulgação</td><td class="yes">Sua marca, sua plataforma</td></tr>
+            <tr><td>Registro em blockchain (auditoria imutável)</td><td class="no">Não possui</td><td class="yes">Hash SHA-256 de eventos críticos</td></tr>
+            <tr><td>KYC com biometria facial + CPF/CNPJ</td><td class="no">Manual / inexistente</td><td class="yes">Automatizado</td></tr>
+            <tr><td>Assinatura digital ICP-Brasil</td><td class="no">Não possui</td><td class="yes">Nativa</td></tr>
+            <tr><td>Integração bancária (PIX, boleto, cartão)</td><td class="no">Limitada</td><td class="yes">Completa</td></tr>
+            <tr><td>Painel do arrematante + do comitente</td><td class="no">Básico</td><td class="yes">Gestão completa</td></tr>
+            <tr><td>E-mail marketing / disparos integrados</td><td class="no">Ferramenta à parte</td><td class="yes">Dentro da plataforma</td></tr>
+            <tr><td>Integração PNCP (edital público)</td><td class="no">Manual</td><td class="yes">Integrada</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note">Comparativo ilustrativo com soluções comuns do mercado. Recursos sujeitos ao plano contratado.</p>
+    </div>
+  </section>
+
+  <!-- ===== RECURSOS ===== -->
+  <section class="section" id="recursos" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Tecnologia nativa, não remendada</span>
+        <h2 class="mt-head">Tudo o que um leilão profissional precisa, em um só lugar</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg></div>
+          <h3>Segurança jurídica</h3>
+          <p>Blockchain com trilha de auditoria imutável e assinatura digital ICP-Brasil — sua defesa em qualquer disputa.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+          <h3>KYC automatizado</h3>
+          <p>Biometria facial e validação de CPF/CNPJ em tempo real. Habilite arrematantes com conformidade e sem trabalho manual.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
+          <h3>Financeiro integrado</h3>
+          <p>PIX, boleto e cartão, conciliação e pós-venda automatizado. Do lance ao pagamento, dentro da plataforma.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></div>
+          <h3>Lances em tempo real</h3>
+          <p>Infraestrutura de alta performance para leilões ao vivo, com estabilidade mesmo em picos de disputa.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H7l-3 3V4z"/></svg></div>
+          <h3>Comunicação e disparos</h3>
+          <p>E-mail marketing, WhatsApp e SMS integrados para avisar arrematantes e comitentes — sem ferramenta à parte.</p>
+        </div>
+        <div class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m5 14V9m5 10V4m5 15v-7"/></svg></div>
+          <h3>Painéis e relatórios</h3>
+          <p>Painel do arrematante e do comitente, relatórios e conciliação. Gestão completa da sua operação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROVA / EBL ===== -->
+  <section class="section" id="prova">
+    <div class="container">
+      <div class="proof">
+        <span class="eyebrow">Prova de escala</span>
+        <h2 style="margin-top:8px; max-width:24ch;">A tecnologia que sustenta uma operação nacional — a EBL é cliente Vantia</h2>
+        <p class="lead" style="margin-top:14px; max-width:60ch;">A Empresa Brasileira de Leilões (EBL) roda 100% na Vantia. A mesma infraestrutura de segurança, integração e automação de uma das maiores operações do país agora está ao seu alcance, dentro da sua marca.</p>
+        <div class="stats">
+          <div class="stat"><div class="n">+200<span> mil</span></div><div class="l">veículos leiloados na plataforma</div></div>
+          <div class="stat"><div class="n">20<span> anos</span></div><div class="l">de experiência em leilões</div></div>
+          <div class="stat"><div class="n">5<span> segmentos</span></div><div class="l">com fluxos dedicados</div></div>
+          <div class="stat"><div class="n">100<span>%</span></div><div class="l">do ciclo em um só lugar</div></div>
+        </div>
+        <div class="segbar">
+          <span class="seg">Veículos</span>
+          <span class="seg">Imóveis</span>
+          <span class="seg">Equipamentos e máquinas</span>
+          <span class="seg">Arte e colecionáveis</span>
+          <span class="seg">Agro / patrimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBJEÇÕES ===== -->
+  <section class="section" style="background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Sem medo de trocar</span>
+        <h2 class="mt-head">Migrar para a Vantia não precisa dar trabalho</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card obj"><div class="k">1</div><div><h3>Migração assistida</h3><p>Nossa equipe, com 20 anos de operação de leilão, conduz a troca sem parar o seu trabalho. Você sobe de patamar sem risco.</p></div></div>
+        <div class="card obj"><div class="k">2</div><div><h3>A plataforma é sua</h3><p>White-label de verdade: sua marca, seus clientes, seu negócio. A Vantia é a tecnologia por trás — não é marketplace.</p></div></div>
+        <div class="card obj"><div class="k">3</div><div><h3>Empresa sólida</h3><p>Vantia é a tecnologia da Vendas Ativas, 20 anos no setor, e a EBL — uma das maiores operações do país — é cliente.</p></div></div>
+        <div class="card obj"><div class="k">4</div><div><h3>Suporte de quem opera</h3><p>Falamos a língua do leiloeiro porque também operamos leilão. Suporte próximo, no WhatsApp.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANOS ===== -->
+  <section class="section" id="planos">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Planos</span>
+        <h2 class="mt-head" style="margin:0 auto;">Comece com o essencial — já mais avançado que o mercado</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card plan">
+          <h3>Entrada</h3>
+          <div class="price">a partir de R$ 350<small>/mês</small></div>
+          <p style="color:var(--muted); font-size:.9rem;">Para quem está começando ou saindo de um site estático.</p>
+          <ul>
+            <li>Plataforma com a sua marca</li>
+            <li>Gestão de leilões e arrematantes</li>
+            <li>Segurança e conformidade de série</li>
+          </ul>
+        </div>
+        <div class="card plan featured">
+          <span class="tag-featured">Mais escolhido</span>
+          <h3>Intermediário</h3>
+          <div class="price">sob diagnóstico<small></small></div>
+          <p style="color:var(--muted); font-size:.9rem;">Para quem quer escalar volume e integrações.</p>
+          <ul>
+            <li>Tudo do Entrada +</li>
+            <li>Mais integrações (bancária, assinatura, PNCP)</li>
+            <li>E-mail marketing e disparos integrados</li>
+          </ul>
+        </div>
+        <div class="card plan">
+          <h3>Avançado</h3>
+          <div class="price">até R$ 2.000<small>/mês</small></div>
+          <p style="color:var(--muted); font-size:.9rem;">Para operações de alto volume e imóveis de justiça.</p>
+          <ul>
+            <li>Tudo do Intermediário +</li>
+            <li>Recursos e painéis avançados</li>
+            <li>Suporte prioritário</li>
+          </ul>
+        </div>
+      </div>
+      <p class="plans-note">O plano ideal depende da sua operação. Faça um <b style="color:var(--ink)">diagnóstico gratuito</b> e veja exatamente o que você ganha.</p>
+      <div class="center" style="margin-top:22px;">
+        <a class="btn btn-primary" href="https://wa.me/5521967741160?text=Quero%20um%20diagn%C3%B3stico%20gratuito%20e%20saber%20qual%20plano%20da%20Vantia%20faz%20sentido." target="_blank" rel="noopener">Agendar diagnóstico gratuito</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="section cta-final">
+    <div class="container">
+      <span class="eyebrow">Vamos para dentro</span>
+      <h2 style="margin-top:10px;">Veja sua operação rodando na Vantia</h2>
+      <p class="lead">Diagnóstico gratuito e sem compromisso: mostramos exatamente o que você ganha em tecnologia, segurança e custo — e como é a migração.</p>
+      <a class="btn btn-primary" href="https://wa.me/5521967741160?text=Quero%20agendar%20um%20diagn%C3%B3stico%20gratuito%20da%20Vantia." target="_blank" rel="noopener">Falar no WhatsApp agora</a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo" style="font-size:1.15rem;">Vant<span>ia</span></div>
+        <small>A plataforma de leilão dos leiloeiros oficiais · Rio de Janeiro/RJ</small>
+      </div>
+      <div style="display:flex; gap:22px; flex-wrap:wrap;">
+        <a href="https://usevantia.com.br" target="_blank" rel="noopener">usevantia.com.br</a>
+        <a href="mailto:comercial@usevantia.com.br">comercial@usevantia.com.br</a>
+        <a href="tel:+5521967741160">(21) 96774-1160</a>
+        <a href="#" onclick="return false;">Política de Privacidade (LGPD)</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
