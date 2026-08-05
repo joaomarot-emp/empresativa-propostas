@@ -3,223 +3,524 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central de Gestão — EmpresAtiva</title>
+<title>Manual de Gestão v2.0 — EmpresAtiva Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0e100c;
-    --panel:#15180f;
-    --panel-2:#191d12;
-    --green:#17351f;
-    --green-line:#244a2f;
-    --terra:#b5653a;
-    --terra-light:#d0885a;
-    --ink:#f4f4f2;
-    --ink-mid:#c7c5ba;
-    --ink-dim:#8c8a7d;
-    --line:#2a2c22;
-    --line-soft:#22241b;
-    --done:#7ba05b;
-    --radius:12px;
+    --bg:#0e100c;--panel:#15180f;--panel-2:#191d12;--green:#17351f;--green-line:#244a2f;
+    --terra:#b5653a;--terra-light:#d0885a;--ink:#f4f4f2;--ink-mid:#c7c5ba;--ink-dim:#8c8a7d;
+    --line:#2a2c22;--line-soft:#22241b;--olive:#7ba05b;--stop:#c24a38;--warn:#c9a44a;--steel:#6f93b5;--radius:12px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:
-      radial-gradient(1200px 600px at 85% -10%, rgba(181,101,58,.10), transparent 60%),
-      linear-gradient(180deg,#0e100c,#0c0d0a);
-    color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;padding:0 20px 90px}
-  .wrap{max-width:960px;margin:0 auto}
+  body{background:radial-gradient(1200px 600px at 85% -10%,rgba(181,101,58,.10),transparent 60%),linear-gradient(180deg,#0e100c,#0c0d0a);
+    color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 100px}
 
-  /* header */
-  header{padding:56px 0 30px;border-bottom:1px solid var(--line);position:relative}
-  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;
-    color:var(--terra);display:flex;align-items:center;gap:12px}
+  nav{position:sticky;top:0;z-index:20;background:rgba(14,16,12,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:11px 20px}
+  .nav-brand{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--terra);text-transform:uppercase;flex-shrink:0}
+  .nav-pills{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}.nav-pills::-webkit-scrollbar{display:none}
+  .nav-pills a{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;color:var(--ink-dim);text-decoration:none;padding:6px 11px;border-radius:999px;white-space:nowrap;transition:all .15s}
+  .nav-pills a:hover{color:var(--ink);background:var(--panel)}.nav-pills a.active{color:#0e100c;background:var(--terra);font-weight:600}
+
+  header.cover{padding:60px 0 34px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);display:flex;align-items:center;gap:12px}
   .eyebrow::before{content:"";width:28px;height:2px;background:var(--terra)}
-  h1{font-family:"Poppins";font-weight:800;font-size:clamp(32px,6vw,54px);line-height:1;letter-spacing:-.02em;margin:20px 0 14px}
-  h1 .em{color:var(--terra-light)}
-  .sub{font-size:16px;color:var(--ink-mid);max-width:64ch}
-  .stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 18px}
-  .stat .n{font-family:"Poppins";font-weight:800;font-size:24px;line-height:1}
-  .stat .n.a{color:var(--done)}.stat .n.b{color:var(--terra-light)}.stat .n.c{color:var(--ink-dim)}
-  .stat .l{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);margin-top:4px}
+  h1.title{font-family:"Poppins";font-weight:800;font-size:clamp(34px,7vw,60px);line-height:1;letter-spacing:-.02em;margin:20px 0 16px}
+  h1.title em{font-style:italic;color:var(--terra-light);font-weight:700}
+  .cover .lead{font-size:16px;color:var(--ink-mid);max-width:66ch}
+  .cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
+  .cm{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+  .cm .l{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim)}
+  .cm .v{font-size:14px;color:var(--ink);font-weight:500;margin-top:3px}
 
-  /* layer */
-  .layer{margin-top:44px}
-  .layer-h{display:flex;align-items:center;gap:14px;margin-bottom:6px}
-  .layer-num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--terra);
-    border:1px solid var(--green-line);background:var(--green);border-radius:6px;padding:4px 9px;letter-spacing:.05em}
-  .layer-h h2{font-family:"Poppins";font-weight:700;font-size:clamp(19px,3.4vw,25px);letter-spacing:-.01em}
-  .layer-sub{color:var(--ink-dim);font-size:14px;margin:2px 0 16px 0;max-width:64ch}
+  section{padding:50px 0;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--terra);border:1px solid var(--green-line);background:var(--green);border-radius:6px;padding:4px 9px}
+  h2{font-family:"Poppins";font-weight:700;font-size:clamp(23px,4vw,32px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin:8px 0 22px;max-width:70ch}
+  h3{font-family:"Poppins";font-weight:700;font-size:18px;margin:24px 0 10px}
+  h4{font-family:"Poppins";font-weight:600;font-size:15px;margin:6px 0}
+  p{color:var(--ink-mid);font-size:15px;margin-bottom:12px}
+  b,strong{color:var(--ink);font-weight:600}
+  em{color:var(--terra-light);font-style:italic}
+  .accent{color:var(--terra-light)}
 
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px 22px;
-    display:flex;flex-direction:column;position:relative;transition:border-color .15s}
-  .card:hover{border-color:var(--green-line)}
-  .card.wide{grid-column:1 / -1}
-  .card .ctop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-  .card h3{font-family:"Poppins";font-weight:700;font-size:17px;letter-spacing:-.01em;line-height:1.2}
-  .card p{font-size:13.5px;color:var(--ink-mid);line-height:1.45;margin:0}
-  .card .link{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--terra-light);text-decoration:none;letter-spacing:.02em}
-  .card .link:hover{text-decoration:underline}
-  .card .file{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.02em}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px 22px}
+  .card .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-light);margin-bottom:6px}
+  .card h4{margin:0 0 6px}
+  .card p{font-size:13.5px;margin:0;color:var(--ink-mid)}
+  .card.stop{border-left:2px solid var(--stop)}.card.stop .k{color:var(--stop)}
+  .card.warn{border-left:2px solid var(--warn)}.card.warn .k{color:var(--warn)}
+  .card.olive{border-left:2px solid var(--olive)}.card.olive .k{color:var(--olive)}
 
-  .chip{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-    padding:4px 9px;border-radius:5px;white-space:nowrap;flex-shrink:0}
-  .chip.oficial{color:#0e100c;background:var(--done)}
-  .chip.master{color:#0e100c;background:var(--terra)}
-  .chip.build{color:var(--terra-light);background:transparent;border:1px dashed var(--terra)}
-  .chip.arq{color:var(--ink-dim);background:var(--panel-2);border:1px solid var(--line)}
+  .formula{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--green-line);border-radius:var(--radius);padding:26px 28px;text-align:center;margin:6px 0}
+  .formula .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
+  .formula .eq{font-family:"Poppins";font-weight:800;font-size:clamp(18px,3.6vw,26px);color:var(--ink);letter-spacing:-.01em}
+  .formula .eq b{color:var(--terra-light)}
 
-  /* build layer */
-  .build-layer .card{border-style:dashed;border-color:var(--line)}
-  .prio{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:var(--terra);margin-right:2px}
+  .states{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+  .state{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:18px}
+  .state .t{font-family:"IBM Plex Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-dim)}
+  .state .big{font-family:"Poppins";font-weight:800;font-size:22px;margin:4px 0 6px}
+  .state.now .big{color:var(--stop)}.state.mid .big{color:var(--warn)}.state.goal .big{color:var(--olive)}
+  .state p{font-size:13px;margin:0}
 
-  /* archived */
-  .arq-wrap{margin-top:44px;padding:22px 24px;background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius)}
-  .arq-wrap .h{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px}
-  .arq-item{display:flex;align-items:center;gap:12px;padding:7px 0;font-size:13.5px;color:var(--ink-dim);border-top:1px solid var(--line-soft)}
-  .arq-item:first-of-type{border-top:none}
-  .arq-item b{color:var(--ink-mid);font-weight:500}
-  .arq-item .arrow{color:var(--terra);font-family:"IBM Plex Mono",monospace}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);font-weight:600}
+  td{color:var(--ink-mid)}td b{color:var(--ink)}
+  tr:last-child td{border-bottom:none}
+  table.tot tr:last-child td{border-top:1px solid var(--green-line);color:var(--ink);font-weight:600}
+  .tnum{font-family:"IBM Plex Mono",monospace;color:var(--terra-light);white-space:nowrap}
 
-  footer{padding-top:30px;margin-top:44px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.05em}
+  ol,ul{margin:6px 0 12px}
+  ol{padding-left:20px}ol li{font-size:14.5px;color:var(--ink-mid);padding:3px 0}
+  ul.clean{list-style:none;padding:0}
+  ul.clean li{font-size:14px;color:var(--ink-mid);padding:4px 0 4px 18px;position:relative}
+  ul.clean li::before{content:"–";position:absolute;left:0;color:var(--terra)}
 
-  @media(max-width:680px){.cards{grid-template-columns:1fr}}
+  .callout{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--terra);border-radius:var(--radius);padding:18px 22px;margin:14px 0}
+  .callout .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-light);margin-bottom:6px}
+  .callout p{margin:0;font-size:15px}
+  .callout.olive{border-left-color:var(--olive)}.callout.olive .k{color:var(--olive)}
+  .callout.stop{border-left-color:var(--stop);background:rgba(194,74,56,.06)}.callout.stop .k{color:var(--stop)}
+
+  .roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .role{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px}
+  .role .nm{font-family:"Poppins";font-weight:800;font-size:18px}
+  .role .rl{font-family:"IBM Plex Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-dim);margin:2px 0 12px}
+  .role .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .role h5{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  .role .does h5{color:var(--olive)}.role .not h5{color:var(--stop)}
+  .role ul{list-style:none;padding:0;margin:0}
+  .role li{font-size:12.5px;color:var(--ink-mid);padding:3px 0 3px 14px;position:relative;line-height:1.4}
+  .role .does li::before{content:"+";position:absolute;left:0;color:var(--olive)}
+  .role .not li::before{content:"−";position:absolute;left:0;color:var(--stop)}
+
+  .funnel{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+  .fstep{display:grid;grid-template-columns:120px 1fr 110px;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line-soft);border-radius:9px;padding:11px 16px}
+  .fstep .fn{font-family:"Poppins";font-weight:700;font-size:14px}
+  .fstep .fd{font-size:13px;color:var(--ink-mid)}
+  .fstep .ff{font-family:"IBM Plex Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.04em;text-align:right}
+  .fstep.ctrl{border-left:2px solid var(--olive)}.fstep.ctrl .ff{color:var(--olive)}
+  .fstep.infl{border-left:2px solid var(--warn)}.fstep.infl .ff{color:var(--warn)}
+  .fstep.cli{border-left:2px solid var(--stop)}.fstep.cli .ff{color:var(--stop)}
+
+  .phase{display:flex;gap:18px;margin-bottom:12px}
+  .prail{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+  .pdot{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:13px;color:#0e100c;background:var(--terra);width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+  .pline{width:2px;flex:1;background:var(--line);margin-top:6px}
+  .phase:last-child .pline{display:none}
+  .pbody{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:18px 22px;flex:1;margin-bottom:4px}
+  .pbody .pt{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim)}
+  .pbody h3{margin:2px 0 10px}
+  .gate{margin-top:10px;padding:10px 14px;background:var(--green);border:1px solid var(--green-line);border-radius:8px;font-size:13px;color:var(--ink-mid)}
+  .gate b{color:var(--olive)}
+
+  .rit{display:grid;grid-template-columns:160px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line-soft)}
+  .rit:first-of-type{border-top:none}
+  .rit .when{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:var(--terra-light);letter-spacing:.02em}
+  .rit .what b{color:var(--ink)}.rit .what{font-size:14px;color:var(--ink-mid)}
+
+  footer{padding-top:30px;margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.04em}
+
+  @media(max-width:720px){
+    .grid2,.grid3,.states,.roles,.role .cols,.cover-meta{grid-template-columns:1fr}
+    .fstep{grid-template-columns:1fr;gap:4px}.fstep .ff{text-align:left}
+    .rit{grid-template-columns:1fr;gap:4px}.nav-brand{display:none}
+    table{font-size:13px}th,td{padding:8px 10px}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <div class="eyebrow">EmpresAtiva · Central de Comando</div>
-    <h1>Gestão da <span class="em">operação</span></h1>
-    <p class="sub">O índice de tudo que estruturamos — da estratégia à remuneração — e o que ainda falta construir. Cada peça na sua camada, com o status na frente.</p>
-    <div class="stats">
-      <div class="stat"><div class="n a">6</div><div class="l">Entregáveis prontos</div></div>
-      <div class="stat"><div class="n b">8</div><div class="l">A construir</div></div>
-      <div class="stat"><div class="n c">3</div><div class="l">Arquivados / substituídos</div></div>
+<nav><div class="nav-in">
+  <span class="nav-brand">Manual v2.0</span>
+  <div class="nav-pills">
+    <a href="#conta">A conta</a><a href="#diagnostico">Diagnóstico</a><a href="#estrutura">Estrutura</a>
+    <a href="#retencao">Retenção</a><a href="#produto">Produto</a><a href="#comercial">Comercial</a>
+    <a href="#indicadores">Indicadores</a><a href="#time">Contratações</a><a href="#reunioes">Reuniões</a>
+    <a href="#tempo">Tempo</a><a href="#roadmap">Roadmap</a><a href="#semana">Semana</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <header class="cover">
+    <div class="eyebrow">Manual de Gestão · Versão 2.0 · Julho 2026</div>
+    <h1 class="title">De R$40k a R$100k <em>sem quebrar a carteira.</em></h1>
+    <p class="lead">Documento único de referência da EmpresAtiva: a aritmética do crescimento, a estrutura, os papéis, o sistema de retenção, o produto, o comercial, os rituais e o plano de 90 dias. Substitui o Manual v1.0 e as Seções 10 e 11.</p>
+    <div class="cover-meta">
+      <div class="cm"><div class="l">Vigência</div><div class="v">Jul 2026 · revisar dia 90</div></div>
+      <div class="cm"><div class="l">Meta 12 meses</div><div class="v">R$40k → R$100k/mês</div></div>
+      <div class="cm"><div class="l">Time hoje</div><div class="v">João · Karol · Miguel · Nathalia</div></div>
+      <div class="cm"><div class="l">Restrição principal</div><div class="v">Vida média do cliente</div></div>
     </div>
   </header>
 
-  <!-- CAMADA 01 -->
-  <div class="layer">
-    <div class="layer-h"><span class="layer-num">01</span><h2>Estratégia</h2></div>
-    <p class="layer-sub">A base que governa tudo: a aritmética do crescimento, o norte e o roadmap. Já existia — é o seu documento-mestre.</p>
-    <div class="cards">
-      <div class="card wide">
-        <div class="ctop"><h3>Manual de Gestão v2.0</h3><span class="chip master">Mestre</span></div>
-        <p>A conta do R$40k → R$100k, os 5 gargalos, o norte estratégico, o sistema de retenção, o produto de crescimento, o comercial, os indicadores, a ordem de contratação, o tempo do fundador e o roadmap de 90 dias. Absorve as antigas seções 10 e 11.</p>
-        <a class="link" href="https://proposta.empresativa.com.br/gestao/" target="_blank">proposta.empresativa.com.br/gestao ▸</a>
+  <!-- 00 -->
+  <section id="mudou">
+    <div class="sec-head"><span class="sec-num">00</span><h2>O que mudou nesta versão</h2></div>
+    <p class="sec-sub">A v1.0 estava certa no diagnóstico qualitativo. Faltava a aritmética — e a aritmética muda a ordem das coisas. Cinco alterações.</p>
+    <div class="grid2">
+      <div class="card"><div class="k">Alteração 01</div><h4>Churn virou número</h4><p>Antes era um KPI sem valor e sem meta. Com vida média de 6 meses, ele é a restrição que governa todo o resto — e vira o portão entre as fases.</p></div>
+      <div class="card"><div class="k">Alteração 02</div><h4>Entrou o Gargalo 00</h4><p>O vazamento da carteira precede os quatro gargalos originais. Nenhum se resolve sobre uma base que encolhe.</p></div>
+      <div class="card"><div class="k">Alteração 03</div><h4>O portal deixou de ser o CS</h4><p>O portal escala o relatório e dispara a oferta. Não substitui a conversa mensal — e é a conversa que retém. O CS continua sendo uma pessoa.</p></div>
+      <div class="card"><div class="k">Alteração 04</div><h4>A ordem de contratação inverteu</h4><p>Primeiro CS + Assistente Comercial. Depois o júnior de automação, com gatilho numérico.</p></div>
+      <div class="card"><div class="k">Alteração 05</div><h4>As fases ganharam portões</h4><p>Cada fase só abre a seguinte quando um número é atingido. Sem isso, prazo vira calendário — e calendário não é plano.</p></div>
+    </div>
+  </section>
+
+  <!-- 01 -->
+  <section id="conta">
+    <div class="sec-head"><span class="sec-num">01</span><h2>A conta que governa tudo</h2></div>
+    <p class="sec-sub">Antes de estrutura, papel ou produto: a matemática da base. Ela decide o que é possível e o que é fantasia.</p>
+    <div class="formula">
+      <div class="k">A única equação deste manual</div>
+      <div class="eq">Base estável = <b>vendas por mês</b> × <b>meses de vida</b> do cliente</div>
+    </div>
+    <p>Não é opinião. É a matemática de qualquer receita recorrente. Se você vende 3 clientes por mês e cada um fica 6 meses, a base converge para 18 — não importa o quanto o comercial melhore. A base vai para onde a equação empurra.</p>
+    <div class="states">
+      <div class="state now"><div class="t">Hoje</div><div class="big">6 meses</div><p>Vida média. Churn ~16,7%/mês, ~6,7 clientes saindo por mês.</p></div>
+      <div class="state now"><div class="t">O que significa</div><div class="big">~R$6,7k/mês</div><p>evaporando. Manter 40 clientes exige fechar 7/mês. A capacidade hoje é 2 a 3.</p></div>
+      <div class="state goal"><div class="t">Meta 12 meses</div><div class="big">12 meses</div><p>Churn ~8,3%. Saídas caem para ~3,3/mês e a base cresce com 5 vendas mensais.</p></div>
+    </div>
+    <div class="callout"><div class="k">Por que o cliente sai</div><p><b>Ele teve resultado e mesmo assim não percebeu valor.</b> Não é falha de entrega, é falha de narrativa: os leads chegam, o mês foi bom, a campanha virou paisagem, e no 5º mês ele olha o boleto e acha que aquilo roda sozinho. Não está insatisfeito — está acostumado. A Seção 04 existe inteira para resolver isso.</p></div>
+
+    <h3>A conta dos R$60k</h3>
+    <p>Meta sem decomposição é desejo. As quatro fontes que sustentam o R$100k:</p>
+    <table class="tot">
+      <tr><th>Fonte</th><th>Mecanismo</th><th>Receita/mês</th></tr>
+      <tr><td><b>Base atual</b><br>40 × ~R$1.000</td><td>O que já existe. Só sobrevive se o vazamento parar.</td><td class="tnum">R$ 40.000</td></tr>
+      <tr><td><b>Ticket na base</b><br>40 × +R$500</td><td>Mix pró-Arquitetura de Receita, reajuste na renovação do mês 4, upgrade de plano.</td><td class="tnum">+ R$ 20.000</td></tr>
+      <tr><td><b>REvD</b><br>40 × ~R$400</td><td>Expansão via diagnóstico: aulas, treinamentos, DFY, Esquadrão da Venda.</td><td class="tnum">+ R$ 16.000</td></tr>
+      <tr><td><b>Clientes novos</b><br>12 líquidos × R$2.000</td><td>Ticket mais alto. Líquido, não bruto — exige ~5 vendas/mês contra o churn.</td><td class="tnum">+ R$ 24.000</td></tr>
+      <tr><td><b>Total · 52 clientes</b></td><td>Ao fim de 12 meses</td><td class="tnum">R$ 100.000</td></tr>
+    </table>
+    <div class="callout olive"><div class="k">O que a tabela revela</div><p>Três das quatro fontes dependem de o cliente <b>ficar</b>. Ticket sobe na renovação; REvD se acumula com o tempo de casa; clientes novos só somam se os antigos não saírem pela outra porta. Retenção não é uma frente do plano — é a condição de possibilidade dele.</p></div>
+
+    <h3>Três números a confirmar nesta semana</h3>
+    <ol>
+      <li><b>MRR real.</b> A v1.0 usa R$40k; a estimativa de ticket sugere ~R$52k. Ticket médio não é MRR. Puxe o número exato do financeiro — todo o manual se recalibra nele. Até lá, roda o cenário conservador.</li>
+      <li><b>Capacidade operacional.</b> Quantos clientes novos por mês o time absorve sem cair a qualidade? Esse número é o teto da meta comercial — a meta deriva dele, nunca o contrário.</li>
+      <li><b>Vida média por coorte.</b> Dos que entraram há 6, 9 e 12 meses, quantos continuam? É assim que se mede retenção — não pela sensação do mês.</li>
+    </ol>
+  </section>
+
+  <!-- 02 -->
+  <section id="diagnostico">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Diagnóstico: cinco gargalos</h2></div>
+    <p class="sec-sub">A empresa passou da sobrevivência. O desafio deixou de ser estruturar uma agência e passou a ser estruturar uma empresa. Cinco gargalos conectados — todos passam por concentração, menos o primeiro.</p>
+    <div class="grid2">
+      <div class="card stop"><div class="k">Gargalo 00 · precede os outros</div><h4>A carteira vaza</h4><p>Vida média de 6 meses. O cliente sai tendo tido resultado, porque nunca o viu traduzido em dinheiro contra o "antes". Enquanto isso não muda, aquisição só repõe perda.</p></div>
+      <div class="card"><div class="k">Gargalo 01</div><h4>João é o centro</h4><p>CEO, comercial, head de tráfego, especialista em IA e automação, estrategista. Enquanto quase toda decisão passa por uma agenda só, o crescimento é limitado por ela.</p></div>
+      <div class="card"><div class="k">Gargalo 02</div><h4>Valor percebido</h4><p>A agência entrega análises, dashboard, alertas, CAPI, CRM, IA. O cliente vê "campanhas". A distância entre as duas coisas é o que torna o cancelamento fácil.</p></div>
+      <div class="card"><div class="k">Gargalo 03</div><h4>Comercial sem motor</h4><p>Crescimento depende quase só do João. Sem aquisição previsível. Três canais precisam ligar: indicação (maior ROI, parado), prospecção e conteúdo.</p></div>
+      <div class="card stop"><div class="k">Gargalo 04 · risco existencial</div><h4>Conhecimento concentrado</h4><p>IA, n8n, automações e integrações vivem numa cabeça só. Duas semanas fora e o stack fica sem dono.</p></div>
+    </div>
+    <div class="callout"><div class="k">O norte estratégico · a decisão que reorganiza as outras</div>
+      <p style="margin-bottom:10px">A EmpresAtiva deixa de ser uma agência de tráfego e passa a ser uma <b>empresa de crescimento baseada em tecnologia</b>.</p>
+      <ul class="clean">
+        <li>Deixa de vender <b>gestão de anúncios</b> e passa a vender <b>um sistema de aquisição e crescimento</b>.</li>
+        <li>IA e automação deixam de ser tarefa do fundador e viram o <b>diferencial competitivo</b>.</li>
+        <li>A gestão deixa de ser orientada por entregas e passa a ser orientada por <b>resultado de negócio</b>: aquisição, retenção, rentabilidade, escala.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section id="estrutura">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Estrutura, papéis e áreas</h2></div>
+    <p class="sec-sub">IA e automação saem da operação e viram o Build Lab — inovação, não tarefa diária. Cada papel é definido pelo que faz e, igualmente, pelo que deixa de fazer.</p>
+    <div class="roles">
+      <div class="role"><div class="nm">João</div><div class="rl">CEO · Estratégia · Comercial · Build Lab</div>
+        <div class="cols"><div class="does"><h5>Faz</h5><ul><li>Estratégia e crescimento</li><li>Comercial e grandes clientes</li><li>Inovação: IA e automações</li><li>Ritual dos clientes de maior receita</li><li>Leitura dos indicadores</li><li>Documentar o que só está na cabeça dele</li></ul></div>
+        <div class="not"><h5>Deixa de fazer</h5><ul><li>Revisar campanha diariamente</li><li>Responder dúvida operacional</li><li>Organizar fila de tarefas</li><li>Cobrar prazo de designer</li><li>Ritual de toda a carteira</li></ul></div></div>
+      </div>
+      <div class="role"><div class="nm">Karol</div><div class="rl">Coordenadora / Head de Operações</div>
+        <div class="cols"><div class="does"><h5>Faz</h5><ul><li>Qualidade e liderança da operação</li><li>Distribuição das contas</li><li>Treino e 1:1 com os gestores</li><li>Relacionamento e retenção</li><li>Manutenção do stack (destravar)</li><li>Define a capacidade de absorção</li></ul></div>
+        <div class="not"><h5>Deixa de fazer</h5><ul><li>Esperar o João para otimizar</li><li>Segurar a carteira inteira sozinha</li><li>Mexer em contrato/verba sem alinhar</li><li>Construir automação nova</li></ul></div></div>
+      </div>
+      <div class="role"><div class="nm">Miguel + Gestor 2</div><div class="rl">Gestor de Tráfego · até 20 contas</div>
+        <div class="cols"><div class="does"><h5>Faz</h5><ul><li>Entrega recorrente das contas</li><li>Otimização e criativo &amp; oferta</li><li>Registro dos resultados</li><li>Sob a Karol</li></ul></div>
+        <div class="not"><h5>Deixa de fazer</h5><ul><li>Kickoff (é da Karol)</li><li>Levar dúvida técnica ao João</li><li>Decidir sozinho fora da rotina</li></ul></div></div>
+      </div>
+      <div class="role"><div class="nm">Nathalia</div><div class="rl">Design · Landing Pages · Criativo</div>
+        <div class="cols"><div class="does"><h5>Faz</h5><ul><li>Criativos via framework OPV</li><li>Landing pages</li><li>Identidade e materiais comerciais</li></ul></div>
+        <div class="not"><h5>Ponto em aberto</h5><ul><li>Definir CLT ou PJ. Sendo PJ, é ponto único de falha no criativo — insumo de toda a operação.</li></ul></div></div>
       </div>
     </div>
-  </div>
+    <h3>As cinco áreas</h3>
+    <p>Organize por área, não por pessoa. Cada área tem objetivo e indicadores próprios, mesmo que hoje uma pessoa cubra várias.</p>
+    <div class="grid3">
+      <div class="card"><div class="k">Área</div><h4>Comercial</h4><p>Trazer novos clientes. Leads · reuniões · conversão · ticket · receita nova.</p></div>
+      <div class="card"><div class="k">Área</div><h4>Operação</h4><p>Entregar resultado. Contas auditadas · SLA · performance · retrabalho.</p></div>
+      <div class="card olive"><div class="k">Área · 1ª contratação</div><h4>Customer Success</h4><p>Reter e gerar indicação. Vida média · churn · renovação · upsell · indicações.</p></div>
+      <div class="card"><div class="k">Área</div><h4>Financeiro</h4><p>Sustentar a saúde do negócio. Receita · margem · caixa · MRR.</p></div>
+      <div class="card"><div class="k">Área · João</div><h4>Inovação · Build Lab</h4><p>Vantagem competitiva. IA · automações · novos produtos · REvD.</p></div>
+    </div>
+  </section>
 
-  <!-- CAMADA 02 -->
-  <div class="layer">
-    <div class="layer-h"><span class="layer-num">02</span><h2>Estrutura &amp; papéis</h2></div>
-    <p class="layer-sub">Quem cuida de quantas contas, quem faz o quê, e a fronteira de decisão de cada um. Calibrado na sua carteira real.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="ctop"><h3>Estrutura &amp; Capacidade do Squad</h3><span class="chip oficial">Oficial</span></div>
-        <p>O retrato real da carteira (a distribuição invertida), o teto de contas por gestor, e a decisão de contratação — o achado que reordenou tudo.</p>
-        <div class="file">estrutura-capacidade-squad</div>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3>Mapa de Papéis do Squad</h3><span class="chip oficial">Oficial</span></div>
-        <p>A distribuição travada: Karol como porta de entrada e dona do relacionamento, gestores na entrega recorrente, João fora da operação. Cada atividade com um dono só.</p>
-        <div class="file">mapa-papeis-squad-oficial</div>
-      </div>
-      <div class="card wide">
-        <div class="ctop"><h3>Manual de Autonomia da Coordenação</h3><span class="chip oficial">Oficial</span></div>
-        <p>A fronteira de decisão da Karol: o que ela decide sozinha, o que decide e avisa, e o que sobe pro João. O documento que, na prática, tira você da operação.</p>
-        <div class="file">manual-autonomia-coordenacao-trafego</div>
+  <!-- 04 -->
+  <section id="retencao">
+    <div class="sec-head"><span class="sec-num">04</span><h2>O sistema de retenção</h2></div>
+    <p class="sec-sub">A seção mais importante do manual — é a que destrava a conta da Seção 01. Quatro rotinas e um princípio. A regra que atravessa todas: o cliente não compra gestão de anúncios, compra crescimento; então toda comunicação começa em dinheiro e só depois desce para métrica de plataforma.</p>
+
+    <h3>4.1 Linha de base no onboarding</h3>
+    <p>Antes de subir campanha, registre por escrito e com o cliente presente: faturamento atual, vendas/mês, volume de leads, origem dos clientes, taxa de conversão, ticket médio, investimento em mídia e objetivo para 6 meses. É a fotografia do "antes" — a única defesa contra o "mas eu já vendia bem antes". Para quem já é cliente, faça retroativo.</p>
+
+    <h3>4.2 O relatório em linguagem de dono</h3>
+    <p>Uma página. Cinco blocos, nesta ordem — e a ordem é o argumento.</p>
+    <table>
+      <tr><th colspan="2">Bloco 1 · o mês em dinheiro</th></tr>
+      <tr><td>Investimento em mídia</td><td class="tnum">R$ 3.000</td></tr>
+      <tr><td>Oportunidades geradas</td><td class="tnum">120</td></tr>
+      <tr><td>Custo por oportunidade</td><td class="tnum">R$ 25</td></tr>
+      <tr><td>Vendas informadas pelo cliente</td><td class="tnum">18</td></tr>
+      <tr><td>Receita gerada · retorno sobre a mídia</td><td class="tnum">R$ 10.800 · 3,6x</td></tr>
+    </table>
+    <p>Se o cliente não informa as vendas, o campo fica <b>visivelmente em branco</b>, com "aguardando seu número de vendas". O vazio incomoda e treina o cliente a mandar o dado — que é justo o dado que prova o seu valor.</p>
+    <div class="grid2">
+      <div class="card olive"><div class="k">Bloco 2 · o acumulado</div><p>O bloco que segura cliente. "52 leads este mês" não impressiona no 5º mês. "Em 6 meses: 640 oportunidades, 96 vendas, R$57,6k de receita, retorno de 2,1x" muda a conversa. O acumulado nunca cai — cada relatório aumenta o custo de sair.</p></div>
+      <div class="card"><div class="k">Bloco 3 · comparativo com o antes</div><p>A linha de base ao lado do hoje: clientes novos/mês, origem, previsibilidade. Só existe se a 4.1 foi feita.</p></div>
+      <div class="card"><div class="k">Bloco 4 · o que fizemos e o que vem</div><p>Executado, aprendido, próximo passo. O objetivo não é provar esforço — é mostrar que algo está sempre em movimento. Cliente cancela quando sente que a operação parou.</p></div>
+      <div class="card"><div class="k">Bloco 5 · métricas técnicas</div><p>CTR, CPM, alcance, frequência. No fim, em corpo menor. É o trabalho documentado, não o argumento de valor.</p></div>
+    </div>
+
+    <h3>4.3 O ritual mensal de resultado</h3>
+    <p>Trinta minutos, câmera aberta, agendado com um mês de antecedência. <b>Não é para ler o relatório</b> — o relatório vai antes. É para o cliente ouvir de uma pessoa o que está acontecendo com o dinheiro dele.</p>
+    <div class="grid2">
+      <div class="card"><div class="k">0–5 min · quem fala é o cliente</div><h4>Contexto</h4><p>Como foi o mês? Quantos leads viraram cliente? Mudou algo na operação dele? Qual a maior dificuldade? Comece perguntando — é aqui que aparece o risco.</p></div>
+      <div class="card"><div class="k">5–15 min</div><h4>Resultado</h4><p>Investimento, oportunidades, custo por oportunidade, receita estimada. O acumulado desde o início — sempre feche aqui.</p></div>
+      <div class="card"><div class="k">15–25 min</div><h4>Diagnóstico</h4><p>Onde está o vazamento: mídia, oferta, atendimento ou conversão? Se 120 pediram orçamento e 18 fecharam, o gargalo mudou de lugar. É o bloco que transforma fornecedor em consultor.</p></div>
+      <div class="card"><div class="k">25–30 min</div><h4>Próximo movimento</h4><p>Qual teste entra, qual criativo novo, o que fica com a EmpresAtiva e o que fica com o cliente — sempre deixe uma tarefa. Termina com a próxima data marcada.</p></div>
+    </div>
+
+    <h3>4.4 A conversa de renovação — mês 4, não mês 6</h3>
+    <p>Reunião separada, mais longa, com nome próprio: <em>planejamento do próximo ciclo</em>. Nunca no mês 6 — no mês 6 ele já decidiu. É onde o ticket sobe (a fonte de +R$20k).</p>
+    <ol>
+      <li>O acumulado dos 4 meses, em dinheiro, contra a linha de base.</li>
+      <li>O que ainda não foi resolvido — sempre existe algo, é o motivo de continuar.</li>
+      <li>O plano dos próximos 6 meses, com meta nova. Não "seguir fazendo o mesmo".</li>
+      <li>O que muda no escopo: CRM, automação, dashboard, novo canal.</li>
+      <li>A proposta do novo ciclo, com o novo investimento.</li>
+    </ol>
+    <p>A renovação não pode parecer continuação. Precisa parecer o começo de uma fase nova.</p>
+
+    <h3>4.5 Sinais de risco</h3>
+    <p>Qualquer um destes vira risco <b>Alto</b> na planilha no mesmo dia, com ação em até 48h:</p>
+    <ul class="clean">
+      <li>Remarcou ou faltou a duas reuniões seguidas</li>
+      <li>Falou em "revisar custos", "apertar", "segurar investimento"</li>
+      <li>Perguntou como funciona a plataforma ou se ele mesmo conseguiria mexer</li>
+      <li>Mencionou alguém interno que "mexe com isso"</li>
+      <li>Parou de informar as vendas do mês</li>
+      <li>Reduziu a verba de mídia por conta própria</li>
+    </ul>
+
+    <h3>4.6 O princípio da honestidade</h3>
+    <div class="callout stop"><div class="k">Inegociável</div><p>O diagnóstico precisa, às vezes, apontar a culpa como <b>nossa</b> — e não vender nada. É o que separa "minha agência vigia meu funil e me entrega o conserto" de "toda vez que dá problema eles me culpam e me vendem curso".</p></div>
+    <div class="grid2">
+      <div class="card"><div class="k">Culpa nossa · não vende nada</div><p>"Seu criativo cansou esta semana. Nós já estamos trocando — você não precisa fazer nada."</p></div>
+      <div class="card"><div class="k">Culpa do cliente · o dado acusa sozinho</div><p>"Geramos 43 leads qualificados. 9 foram respondidos em até 1 hora." Sem acusação, sem adjetivo. O número fala.</p></div>
+    </div>
+    <p>São as mensagens auto-incriminatórias que compram o direito de, mais tarde, o diagnóstico apontar para o cliente. Se ele sempre aponta para o outro lado, fede a máquina de venda — e o cliente sente na hora.</p>
+  </section>
+
+  <!-- 05 -->
+  <section id="produto">
+    <div class="sec-head"><span class="sec-num">05</span><h2>O produto de crescimento</h2></div>
+    <p class="sec-sub">Um motor de diagnóstico que torna o valor visível e dispara a oferta certa no ponto exato da dor — sem assumir risco que a EmpresAtiva não controla.</p>
+    <div class="grid2">
+      <div class="card stop"><div class="k">O que NÃO fazemos</div><h4>Assumir o risco alheio</h4><p>Pay-per-sale atrai os piores processos comerciais: quem vende mal é quem mais quer empurrar o risco para a agência. A venda acontece na cadeira do salão, fora do nosso sistema.</p></div>
+      <div class="card olive"><div class="k">O que fazemos</div><h4>Monetizar o gargalo</h4><p>Quando a venda do cliente falha, vendemos o remédio. Monetizamos as etapas do funil que não controlamos, em vez de apostar nelas. O risco vira receita.</p></div>
+    </div>
+    <h3>5.2 O motor: um gargalo por vez</h3>
+    <p>O erro que mata 90% dessas ferramentas: o cliente abre, vê seis métricas amarelas e congela. O motor caminha o funil de cima para baixo e crava <b>a primeira etapa que quebra</b> contra o benchmark.</p>
+    <div class="funnel">
+      <div class="fstep ctrl"><span class="fn">CTR</span><span class="fd">O criativo engancha? Primeiro filtro de atenção.</span><span class="ff">Controlamos</span></div>
+      <div class="fstep ctrl"><span class="fn">CPL</span><span class="fd">Oferta e página estão de pé?</span><span class="ff">Controlamos</span></div>
+      <div class="fstep ctrl"><span class="fn">% qualificado</span><span class="fd">A segmentação atrai o cliente certo, não o curioso?</span><span class="ff">Controlamos</span></div>
+      <div class="fstep infl"><span class="fn">% agendado</span><span class="fd">Lead qualificado vira horário? Aqui entra o comercial do cliente.</span><span class="ff">Influenciamos</span></div>
+      <div class="fstep infl"><span class="fn">% compareceu</span><span class="fd">Confirmação e lembrete. Operação de agenda.</span><span class="ff">Influenciamos</span></div>
+      <div class="fstep cli"><span class="fn">Venda</span><span class="fd">Fechamento na cadeira: preço, vendedor, atendimento.</span><span class="ff">Cliente controla</span></div>
+    </div>
+    <div class="callout"><div class="k">Regra de ouro</div><p>Nunca diagnostique num degrau abaixo do ponto onde nosso controle chega. Se CTR, CPL e qualificado estão bem, o remédio não é criativo — é o comercial. Vender aula de criativo aqui seria errar o diagnóstico e queimar confiança.</p></div>
+    <div class="grid3">
+      <div class="card"><div class="k">Regra 01</div><h4>Um gargalo por vez</h4><p>Problema lá embaixo quase sempre nasce lá em cima. Resolve-se de cima para baixo.</p></div>
+      <div class="card"><div class="k">Regra 02</div><h4>Benchmark por vertical</h4><p>Salão converte diferente de doceria. Sem benchmark por etapa e nicho, "alto" e "baixo" não significam nada.</p></div>
+      <div class="card"><div class="k">Regra 03</div><h4>Piso de volume</h4><p>Abaixo do volume mínimo, mostra "coletando dados". Nunca dispare oferta sobre ruído estatístico.</p></div>
+    </div>
+    <h3>5.3 O mapa de remédios</h3>
+    <p>Cada vazamento tem remédio em dois degraus: <b>DIY</b> (aula) e <b>DFY</b> (serviço). O mesmo diagnóstico roteia para o degrau que faz sentido — é a origem da receita de expansão.</p>
+    <table>
+      <tr><th>Vazamento</th><th>DIY · aula</th><th>DFY · serviço</th></tr>
+      <tr><td><b>CTR baixo</b><br>criativo não engancha</td><td>Criativo que converte: hook, ângulo, molde de Reels.</td><td>Produção pela Nathalia via OPV.</td></tr>
+      <tr><td><b>CTR ok, CPL alto</b><br>oferta/página fracas</td><td>Aula de oferta e ângulo.</td><td>Reestruturação + nova landing page.</td></tr>
+      <tr><td><b>Muito lead, pouco qualificado</b><br>culpa quase sempre nossa</td><td colspan="2">Ajuste interno de público e segmentação — entra na rotina da Operação.</td></tr>
+      <tr><td><b>Qualificado, pouco agendamento</b><br>o gargalo mais lucrativo</td><td>Treino de atendimento e resposta no WhatsApp.</td><td>Esquadrão da Venda: script, cadência, SDR, CRM.</td></tr>
+      <tr><td><b>Agenda cheia, ninguém aparece</b></td><td>—</td><td>Confirmação e lembrete no WhatsApp (n8n + Evolution).</td></tr>
+    </table>
+    <div class="callout stop"><div class="k">5.5 A armadilha do build · risco existencial disfarçado</div><p>Construir o motor sozinho e escondido transforma a vantagem competitiva no maior ponto único de falha. <b>Regra:</b> cada peça nasce documentada no mesmo dia. A documentação é entregável, não intenção. A passagem para o júnior de automação é o portão da Fase 3.</p></div>
+  </section>
+
+  <!-- 06 -->
+  <section id="comercial">
+    <div class="sec-head"><span class="sec-num">06</span><h2>O motor comercial</h2></div>
+    <p class="sec-sub">Meta comercial não se define por ambição — deriva da capacidade operacional e da vida média, que decide quanto de cada venda é crescimento e quanto é reposição.</p>
+    <div class="grid3">
+      <div class="card stop"><div class="k">Vendas/mês hoje</div><h4>~3</h4><p>Com vida de 6 meses, a base converge para 18. É o alarme.</p></div>
+      <div class="card warn"><div class="k">Restrição real</div><h4>Capacidade de onboarding</h4><p>Confirmar com a Karol quantos clientes/mês a operação absorve. A meta nunca ultrapassa esse número.</p></div>
+      <div class="card olive"><div class="k">Meta na Fase 3</div><h4>5/mês</h4><p>Com vida de 12 meses, sustenta 52 clientes e entrega os R$24k de novos.</p></div>
+    </div>
+    <h3>6.2 Critérios de entrada — nem todo lead vira reunião</h3>
+    <ol>
+      <li><b>Faturamento mínimo</b> compatível com o ticket e com verba de mídia.</li>
+      <li><b>Problema real</b> — gerar leads ou converter, declarado por ele.</li>
+      <li><b>Negócio estruturado</b> — existe quem atenda o lead que vamos gerar.</li>
+      <li><b>Autoridade</b> — quem decide participa da reunião.</li>
+      <li><b>Urgência</b> — existe prazo, não só curiosidade.</li>
+    </ol>
+    <p>Objeção de preço quase sempre é sintoma de prospect fora do perfil, não de proposta cara.</p>
+    <h3>6.3 As oito perguntas de qualificação</h3>
+    <ol>
+      <li>Qual é o segmento da empresa?</li><li>Quanto fatura por mês?</li><li>Hoje os clientes chegam por onde?</li>
+      <li>Já investiu em tráfego? Com quem?</li><li>O maior problema é gerar leads ou converter?</li>
+      <li>Quem decide a contratação?</li><li>Quando pretende começar?</li><li>Qual faixa consegue investir em marketing e mídia?</li>
+    </ol>
+    <h3>6.4 CRM e proposta</h3>
+    <p><b>Etapas:</b> novo lead → contatado → qualificado → reunião agendada → realizada → proposta → negociação → ganho/perdido. Toda etapa tem definição de saída; todo perdido tem motivo. SLA de primeira resposta: <b>até 15 min em horário comercial</b>.</p>
+    <p><b>A proposta</b> nunca é só tabela de planos. Tem diagnóstico, gargalos, plano de ação, escopo, indicadores, responsabilidades de cada lado, cronograma e investimento. Quando o serviço parece igual, o prospect compara preço; quando a proposta mostra o problema e a lógica econômica, ele compara confiança.</p>
+    <h3>6.7 Os três canais</h3>
+    <div class="grid3">
+      <div class="card olive"><div class="k">Maior ROI · hoje parado</div><h4>Indicação</h4><p>Pedido com método aos satisfeitos, no momento certo: logo após uma reunião de resultado boa. Fluxo, não pedido esporádico.</p></div>
+      <div class="card"><div class="k">Canal ativo</div><h4>Prospecção e BNI</h4><p>A terça inteira conta como comercial, desde que a indicação seja trabalhada com método — não presença passiva.</p></div>
+      <div class="card"><div class="k">Médio prazo</div><h4>Conteúdo</h4><p>Campanha segmentada por nicho, com a promessa específica do segmento.</p></div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section id="indicadores">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Indicadores</h2></div>
+    <p class="sec-sub">Seis indicadores. Os quatro primeiros medem a máquina; o quinto mede a expansão; o sexto mede se o fundador está de fato saindo da operação — e é o mais fácil de ignorar.</p>
+    <div class="grid2">
+      <div class="card"><div class="k">Indicador-portão</div><h4>Vida média do cliente · 6 → 12 meses</h4><p>Medido por coorte de entrada, não por sensação. Governa a Seção 01 inteira.</p></div>
+      <div class="card"><div class="k">O número que não mente</div><h4>Net New MRR</h4><p>Novo + expansão − churn − downgrade. Você pode fechar 5 contratos e crescer quase nada, porque parte só repõe quem saiu.</p></div>
+      <div class="card"><div class="k">Meta ≥ 70%</div><h4>Taxa de renovação no ciclo</h4><p>Dos contratos que chegam ao fim, quantos renovam. Mede a rotina 4.4 diretamente.</p></div>
+      <div class="card"><div class="k">vendas ≤ capacidade</div><h4>Capacidade × vendas</h4><p>Vender acima da capacidade não é crescimento: é churn adiantado. A meta comercial deriva daqui.</p></div>
+      <div class="card"><div class="k">Meta R$16k/mês</div><h4>REvD · expansão via diagnóstico</h4><p>Aulas, treinamentos, DFY e Esquadrão disparados pelo diagnóstico. Rentabilidade e escala sem volume.</p></div>
+      <div class="card olive"><div class="k">operação 65% → 20%</div><h4>Alocação do tempo do CEO</h4><p>Estratégia+Build 35% · Comercial 45% · Operação 20%. O termômetro real de que a empresa saiu do colo do fundador.</p></div>
+    </div>
+    <div class="callout"><div class="k">O painel da carteira · revisado toda segunda</div><p>Uma linha por cliente: plano · mensalidade · entrada · tempo de casa · última reunião · resultado acumulado · risco · data de renovação · próxima ação · linha de base registrada? Comece pelos clientes entre o 4º e o 6º mês — é o dinheiro mais rápido e barato de proteger.</p></div>
+  </section>
+
+  <!-- 08 -->
+  <section id="time">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Contratações: ordem, gatilho e custo</h2></div>
+    <p class="sec-sub">A v1.0 deixou em aberto — CS ou júnior de automação primeiro? A aritmética da Seção 01 responde, e a resposta mudou.</p>
+    <div class="card olive" style="margin-bottom:12px">
+      <div class="k">1ª · abrir a vaga na semana 1 · R$2.500–3.500 PJ</div>
+      <h4>Customer Success + Assistente Comercial</h4>
+      <p style="margin-bottom:10px">O vazamento custa ~R$6,7k/mês recorrentes. A contratação se paga com dois ou três clientes retidos a mais. Nenhum outro investimento tem esse retorno hoje.</p>
+      <div class="grid2">
+        <div><h5 style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);margin-bottom:6px">70% · Customer Success</h5><ul class="clean"><li>Onboarding e linha de base</li><li>Agendar e conduzir o ritual mensal</li><li>Cobrar o número de vendas · montar o relatório</li><li>Identificar risco e agir em 48h</li><li>Conduzir a renovação do mês 4</li><li>Pedir indicação e depoimento</li></ul></div>
+        <div><h5 style="font-family:'IBM Plex Mono';font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-light);margin-bottom:6px">30% · Comercial</h5><ul class="clean"><li>Responder lead em até 15 min</li><li>Qualificar pelas oito perguntas</li><li>Agendar e confirmar reunião</li><li>CRM atualizado diariamente</li><li>Follow-up e reativação</li></ul></div>
       </div>
     </div>
-  </div>
+    <div class="grid2">
+      <div class="card"><div class="k">2ª · gatilho: Net New MRR positivo por 2 meses</div><h4>Júnior de automação</h4><p>Blinda o Gargalo 04 e assume o motor de diagnóstico. Até ele entrar, nada é construído sem documentação no mesmo dia. A passagem do motor é o portão da Fase 3.</p></div>
+      <div class="card"><div class="k">3ª · gatilho: vendas encostam no teto por 2 meses</div><h4>Operação (novo gestor)</h4><p>Contrate antes de estourar. A qualidade cai primeiro nos clientes antigos — que são justamente os que iam renovar.</p></div>
+    </div>
+    <div class="callout stop"><div class="k">Não contratar agora</div><p>Closer dedicado só com 30–40 reuniões qualificadas/mês consistentes. Gerência só depois de existir processo, CRM, metas e playbook — um gerente sem sistema vira cobrador de planilha.</p></div>
+  </section>
 
-  <!-- CAMADA 03 -->
-  <div class="layer">
-    <div class="layer-h"><span class="layer-num">03</span><h2>Operação</h2></div>
-    <p class="layer-sub">Como a estrutura vira rotina: retenção, LTV, atribuições detalhadas, rituais e a rotina de cliente ancorada nos seus templates do ClickUp.</p>
-    <div class="cards">
-      <div class="card wide">
-        <div class="ctop"><h3>Manual Operacional do Squad</h3><span class="chip oficial">Oficial</span></div>
-        <p>Retenção &amp; LTV (os 5 pilares com dono), atribuições da Karol e dos gestores, as rotinas (diária/semanal/quinzenal), a pauta da daily, o 1:1 em dois níveis (você ↔ Karol, Karol ↔ gestores) e a rotina de cliente completa: onboarding, kickoff, otimização e criativo &amp; oferta.</p>
-        <div class="file">manual-operacional-squad</div>
+  <!-- 09 -->
+  <section id="reunioes">
+    <div class="sec-head"><span class="sec-num">09</span><h2>Sistema de reuniões</h2></div>
+    <p class="sec-sub">Cinco rituais, nem um a mais. Reunião estruturada substitui interrupção constante.</p>
+    <div class="rit"><span class="when">Segunda · 30 min<br>time</span><span class="what"><b>Prioridades da semana.</b> Prioridades, gargalos, clientes críticos e a revisão do painel de carteira: quem entrou na renovação, quem está sem reunião há tempo demais.</span></div>
+    <div class="rit"><span class="when">Sexta · 45 min<br>operação</span><span class="what"><b>Indicadores da semana.</b> Clientes, campanhas, SLA, pendências.</span></div>
+    <div class="rit"><span class="when">Mensal · 30 min<br>com o cliente</span><span class="what"><b>Ritual de resultado.</b> Conduzido pelo CS; João nos de maior receita. Roteiro na Seção 4.3.</span></div>
+    <div class="rit"><span class="when">Mensal<br>só equipe</span><span class="what"><b>Estratégia.</b> Processos, melhorias, IA e inovação. Melhorar a máquina, não rodá-la.</span></div>
+    <div class="rit"><span class="when">Mensal · 1h<br>João sozinho</span><span class="what"><b>Leitura dos seis indicadores.</b> Vida média, Net New MRR, renovação, capacidade, REvD e alocação do próprio tempo. Sem esta hora, o manual vira decoração.</span></div>
+  </section>
+
+  <!-- 10 -->
+  <section id="tempo">
+    <div class="sec-head"><span class="sec-num">10</span><h2>O tempo do fundador</h2></div>
+    <p class="sec-sub">O problema nunca foi quantidade de horas — é a alocação. Não é preciso 70h. É preciso blindar as horas certas, por um sprint com data para acabar.</p>
+    <div class="callout"><div class="k">A frase que organiza tudo</div><p>Seu tempo é <b>suficiente para o destino</b> e <b>insuficiente para a travessia</b>. No regime permanente cabe em ~30h focadas. Tirar você da operação, montar a retenção e ligar o comercial é trabalho <em>aditivo</em>: ~40h por 90 dias. É aqui que acordar cedo faz sentido.</p></div>
+    <table>
+      <tr><th>Dia</th><th>6h–8h</th><th>Manhã / tarde</th><th>17h</th></tr>
+      <tr><td>Segunda</td><td><b>Build</b></td><td>8h30–16h30 · operação → comercial</td><td>Crianças</td></tr>
+      <tr><td>Terça</td><td>— BNI</td><td>6h30–10h BNI · 10h30–16h30 dia</td><td>Crianças</td></tr>
+      <tr><td>Quarta</td><td><b>Build</b></td><td>até 11h apoio à Yasmin · 11h–16h30</td><td>Crianças</td></tr>
+      <tr><td>Quinta</td><td><b>Build</b></td><td>8h30–16h30 · dia</td><td>Crianças</td></tr>
+      <tr><td>Sexta</td><td><b>Build</b></td><td>até 11h apoio à Yasmin · 11h–16h30 revisão</td><td>Crianças</td></tr>
+    </table>
+    <p>Terça não tem bloco de build. Acordar 5h30 para espremer 50 min antes do BNI é ansiedade cronometrada. Quatro manhãs reais de 2h valem mais que cinco em que uma é de mentira.</p>
+    <div class="grid3">
+      <div class="card"><div class="k">Regra mãe</div><h4>O bloco é build only</h4><p>Nunca operação. Nunca "só um ajuste". Nunca WhatsApp. O mundo espera até as 8h.</p></div>
+      <div class="card"><div class="k">Filtro do dia</div><h4>Só eu como CEO?</h4><p>"Isso só eu posso fazer — ou é operação que a Karol, o CS ou o júnior assumem?" Se é operação, não entra.</p></div>
+      <div class="card olive"><div class="k">Condição de saída · Dia D</div><h4>O sprint termina por design</h4><p>Se a operação caiu a ~20%, o bloco 6h–8h vira opcional. Acorde cedo para construir a saída, não para alimentar a jaula.</p></div>
+    </div>
+    <div class="callout stop"><div class="k">Inegociável</div><p>A noite é família. Nada de trabalho depois de buscar as crianças. Comprimir a família para tracionar o negócio é troca ruim — a conta chega em poucos meses.</p></div>
+  </section>
+
+  <!-- 11 -->
+  <section id="roadmap">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Roadmap de 90 dias</h2></div>
+    <p class="sec-sub">Três fases encadeadas. Cada uma tem um portão numérico: a seguinte não abre antes de o número ser atingido. Data não é portão — número é.</p>
+    <div class="phase"><div class="prail"><div class="pdot">30</div><div class="pline"></div></div>
+      <div class="pbody"><div class="pt">Fase 1 · dias 1–30</div><h3>Parar de sangrar e tirar o João da operação</h3>
+        <ul class="clean"><li>Confirmar o MRR real e a capacidade de onboarding com a Karol</li><li>Preencher o painel da carteira: 40 clientes, com tempo de casa</li><li>Formalizar a Karol como Coordenadora · Matriz de Autonomia ativa</li><li>Redirecionar toda dúvida operacional para a Karol</li><li>Abrir a vaga de CS + Assistente Comercial</li><li>João conduz a reunião de resultado dos 10 clientes mais antigos</li></ul>
+        <div class="gate"><b>Portão →</b> MRR confirmado · painel completo · 10 reuniões feitas · nenhuma dúvida operacional chegando ao João por uma semana.</div>
       </div>
     </div>
-  </div>
-
-  <!-- CAMADA 04 -->
-  <div class="layer">
-    <div class="layer-h"><span class="layer-num">04</span><h2>Cargos &amp; remuneração</h2></div>
-    <p class="layer-sub">O modelo por conta — o seu — com o incentivo de retenção embutido, sem precisar de fórmula de bônus.</p>
-    <div class="cards">
-      <div class="card wide">
-        <div class="ctop"><h3>Remuneração por Conta</h3><span class="chip oficial">Oficial</span></div>
-        <p>Gestor R$100/conta + extra na renovação; Karol R$100 de override sobre a carteira inteira + R$50/plataforma. O Gestor 2 se autofinancia, a Karol ganha atada à retenção, e o ponto de atenção com o Miguel (escopo maior por conta) documentado.</p>
-        <div class="file">remuneracao-por-conta-oficial</div>
+    <div class="phase"><div class="prail"><div class="pdot">60</div><div class="pline"></div></div>
+      <div class="pbody"><div class="pt">Fase 2 · dias 31–60</div><h3>Instalar a retenção e validar o motor de diagnóstico</h3>
+        <ul class="clean"><li>CS contratado, assumindo a carteira gradualmente</li><li>Linha de base em 100% dos clientes (retroativa quando necessário)</li><li>Relatório em dinheiro padronizado e rodando</li><li>Ritual mensal agendado com 100% da carteira</li><li>Renovação feita com todos no 4º e 5º mês</li><li>Build 6h–8h: motor de diagnóstico no n8n, validado em 5 clientes pelo WhatsApp</li></ul>
+        <div class="gate"><b>Portão →</b> churn ≤ 10% por 2 meses · renovação ≥ 60% · diagnóstico validado em 5 clientes.</div>
       </div>
     </div>
-  </div>
-
-  <!-- A CONSTRUIR -->
-  <div class="layer build-layer">
-    <div class="layer-h"><span class="layer-num">05</span><h2>A construir</h2></div>
-    <p class="layer-sub">O que transforma decisão em execução — em ordem sugerida. Comece pelo que precisa acontecer antes de qualquer mudança tocar o time.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">1 ·</span> Roteiro de reposicionamento do Miguel</h3><span class="chip build">A construir</span></div>
-        <p>Como apresentar o escopo novo + o extra de renovação como um ganho, não uma perda. Precisa vir antes de qualquer mudança de carteira ou pagamento.</p>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">2 ·</span> Rebalanceamento concreto</h3><span class="chip build">A construir</span></div>
-        <p>A lista exata de quais contas saem do Miguel, quais viram do Gestor 2, e o encerramento dos 7 inativos.</p>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">3 ·</span> Ajustes no ClickUp</h3><span class="chip build">A construir</span></div>
-        <p>Mover o Criativo &amp; Oferta pro gestor da conta, reorganizar as listas e refletir os novos donos das tarefas.</p>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">4 ·</span> Anúncio da vaga do Gestor 2</h3><span class="chip build">A construir</span></div>
-        <p>Perfil júnior com ramp, começando pelos GBP. Descrição, requisitos e o modelo por conta.</p>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">5 ·</span> PDI do Miguel (JR → PL)</h3><span class="chip build">A construir</span></div>
-        <p>O mapa concreto de promoção, já que o reajuste dele está atado a critério, não a data.</p>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">6 ·</span> Captura de vendas na carteira</h3><span class="chip build">A construir</span></div>
-        <p>Ligar o preenchimento da planilha de vendas em todos os clientes — o dado que prova valor e revela o churn.</p>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">7 ·</span> Camada de valor A/B/C</h3><span class="chip build">A construir</span></div>
-        <p>Puxar o MRR real por cliente do financeiro e sobrepor a classificação de valor por cima da camada de capacidade.</p>
-      </div>
-      <div class="card">
-        <div class="ctop"><h3><span class="prio">8 ·</span> Escopo do CS</h3><span class="chip build">Gatilho futuro</span></div>
-        <p>A versão enxuta pra quando a carteira passar de ~40 e a Karol não der mais conta do relacionamento sozinha.</p>
+    <div class="phase"><div class="prail"><div class="pdot">90</div><div class="pline"></div></div>
+      <div class="pbody"><div class="pt">Fase 3 · dias 61–90</div><h3>Ligar a máquina comercial e blindar o stack</h3>
+        <ul class="clean"><li>Funil comercial com metas semanais derivadas da capacidade</li><li>Fluxo de indicação ativo + BNI com método</li><li>Júnior de automação contratado, com o motor documentado</li><li>Scorecard vira dashboard com acesso por cliente</li><li>Empacotar o portal como tier de performance (REvD)</li></ul>
+        <div class="gate"><b>Portão do dia 90 →</b> Net New MRR positivo · operação ≤ 20% do tempo do CEO · motor documentado e operado por outra pessoa.</div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ARQUIVADOS -->
-  <div class="arq-wrap">
-    <div class="h">Arquivados · substituídos ao longo do processo</div>
-    <div class="arq-item"><span class="chip arq">Arq.</span><span><b>Manual de Gestão v1</b> <span class="arrow">→</span> substituído pelo v2.0 (seu, em /gestao/)</span></div>
-    <div class="arq-item"><span class="chip arq">Arq.</span><span><b>Mapa de Papéis v1</b> <span class="arrow">→</span> substituído pela versão oficial</span></div>
-    <div class="arq-item"><span class="chip arq">Arq.</span><span><b>Régua de Cargos (salário fixo)</b> <span class="arrow">→</span> substituída pela Remuneração por Conta</span></div>
-  </div>
-
-  <footer>
-    <span>EMPRESATIVA DIGITAL · CENTRAL DE GESTÃO · AGO 2026</span>
-    <span>RIO DE JANEIRO — RJ</span>
-  </footer>
-
+  <!-- 12 -->
+  <section id="semana" style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Esta semana</h2></div>
+    <p class="sec-sub">Cinco tarefas. Nenhuma exige contratar, comprar ferramenta ou esperar aprovação.</p>
+    <ol>
+      <li><b>Puxar o MRR real</b> do financeiro. Ticket médio não é MRR.</li>
+      <li><b>Perguntar à Karol</b> quantos clientes novos por mês a operação absorve. Esse número vira a meta comercial.</li>
+      <li><b>Preencher o painel da carteira</b> com os 40 clientes e marcar quem está entre o 4º e o 6º mês.</li>
+      <li><b>Agendar as 10 reuniões</b> de resultado dos clientes mais antigos, com o acumulado na mão.</li>
+      <li><b>Abrir a vaga</b> de CS + Assistente Comercial.</li>
+    </ol>
+    <div class="callout olive"><div class="k">A ideia que sustenta o manual inteiro</div><p>Você não contrata alguém para inventar esse processo. Você contrata alguém para <b>executar um processo que já funcionou nas suas mãos</b> — por isso as 10 primeiras reuniões são suas.</p></div>
+    <footer>
+      <span>EMPRESATIVA DIGITAL · MANUAL DE GESTÃO V2.0 · JULHO 2026</span>
+      <span>SUBSTITUI V1.0, §10 E §11 · REVISAR NO DIA 90</span>
+    </footer>
+  </section>
 </div>
+
+<script>
+  const pills=document.querySelectorAll('.nav-pills a');
+  const secs=[...document.querySelectorAll('section[id]')];
+  const map={};pills.forEach(p=>map[p.getAttribute('href').slice(1)]=p);
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){pills.forEach(p=>p.classList.remove('active'));map[e.target.id]?.classList.add('active')}}),{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>obs.observe(s));
+</script>
 </body>
 </html>
