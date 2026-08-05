@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestor de Tráfego · Como funciona a vaga — EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e100c;--panel:#15180f;--panel-2:#191d12;--green:#17351f;--green-line:#244a2f;
+    --terra:#b5653a;--terra-light:#d0885a;--ink:#f4f4f2;--ink-mid:#c7c5ba;--ink-dim:#8c8a7d;
+    --line:#2a2c22;--line-soft:#22241b;--olive:#7ba05b;--stop:#c24a38;--radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(1200px 600px at 85% -10%,rgba(181,101,58,.10),transparent 60%),linear-gradient(180deg,#0e100c,#0c0d0a);
+    color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;padding:0 20px 90px}
+  .wrap{max-width:860px;margin:0 auto}
+
+  header{padding:58px 0 32px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra);display:flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--terra)}
+  h1{font-family:"Poppins";font-weight:800;font-size:clamp(32px,6vw,52px);line-height:1.02;letter-spacing:-.02em;margin:18px 0 16px}
+  h1 .em{color:var(--terra-light)}
+  .sub{font-size:16.5px;color:var(--ink-mid);max-width:62ch}
+
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--terra);border:1px solid var(--green-line);background:var(--green);border-radius:6px;padding:4px 9px}
+  h2{font-family:"Poppins";font-weight:700;font-size:clamp(22px,4vw,28px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin:8px 0 22px;max-width:66ch}
+  p{color:var(--ink-mid);font-size:15px;margin-bottom:12px}
+  b,strong{color:var(--ink);font-weight:600}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cols h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+  .cols .a h4{color:var(--olive)}.cols .b h4{color:var(--ink-dim)}
+  .cols ul{list-style:none;padding:0}
+  .cols li{font-size:14.5px;color:var(--ink-mid);padding:5px 0 5px 20px;position:relative;line-height:1.45}
+  .cols .a li::before{content:"→";position:absolute;left:0;color:var(--olive);font-weight:600}
+  .cols .b li::before{content:"–";position:absolute;left:0;color:var(--ink-dim)}
+
+  /* pay model */
+  .pay{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--green-line);border-radius:var(--radius);padding:26px 28px}
+  .stage{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+  .stage:first-of-type{border-top:none;padding-top:0}
+  .stage .when{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--terra-light);letter-spacing:.02em}
+  .stage .val{font-family:"Poppins";font-weight:800;font-size:22px;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px}
+  .stage .val small{font-size:13px;color:var(--ink-dim);font-weight:600}
+  .stage .d{font-size:14px;color:var(--ink-mid)}
+  .paynote{margin-top:18px;padding:14px 16px;background:var(--green);border:1px solid var(--green-line);border-radius:10px;font-size:14px;color:var(--ink-mid)}
+  .paynote b{color:var(--olive)}
+
+  /* trilha */
+  .trilha{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .tr{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:18px;border-top:2px solid var(--line)}
+  .tr.here{border-top-color:var(--terra)}
+  .tr .lvl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:6px}
+  .tr .val{font-family:"Poppins";font-weight:800;font-size:18px;color:var(--terra-light)}
+  .tr p{font-size:13px;margin:8px 0 0}
+  .heretag{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;color:#0e100c;background:var(--terra);border-radius:5px;padding:2px 8px;float:right}
+
+  .card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px 22px;margin-top:8px}
+  .card ul{list-style:none;padding:0}
+  .card li{font-size:14.5px;color:var(--ink-mid);padding:5px 0 5px 20px;position:relative}
+  .card li::before{content:"▸";position:absolute;left:0;color:var(--terra)}
+
+  .perk{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pk{background:var(--panel);border:1px solid var(--line-soft);border-radius:10px;padding:16px 18px}
+  .pk h4{font-family:"Poppins";font-weight:700;font-size:15px;margin-bottom:5px}
+  .pk p{font-size:13.5px;margin:0;color:var(--ink-mid)}
+
+  footer{padding-top:26px;margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.04em}
+
+  @media(max-width:680px){.cols,.trilha,.perk{grid-template-columns:1fr}.stage{grid-template-columns:1fr;gap:6px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">EmpresAtiva Digital · Vaga</div>
+    <h1>Gestor de <span class="em">Tráfego</span></h1>
+    <p class="sub">Como funciona a vaga, o que você vai fazer e como funciona a remuneração — tudo transparente, pra você decidir com clareza se faz sentido pra você.</p>
+  </header>
+
+  <!-- 01 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>O papel</h2></div>
+    <p>Você é dono da entrega de uma carteira de <b>até 20 contas</b> de tráfego pago. Da campanha ao criativo ao resultado — você cuida da conta de ponta a ponta, com o apoio de uma coordenadora (a Head de Tráfego) que te acompanha, treina e destrava o que precisar.</p>
+    <p>Você não entra sozinho num mar de contas. Você começa com poucas, aprende o nosso jeito de operar, e vai assumindo mais conforme ganha ritmo — com uma automação que já faz o monitoramento pesado por você.</p>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>O que é seu — e o que não é</h2></div>
+    <p class="sec-sub">Clareza de escopo desde o começo evita frustração. Isto é o que está nas suas mãos:</p>
+    <div class="cols">
+      <div class="a"><h4>Você faz</h4><ul>
+        <li>Sobe e otimiza as campanhas (Meta e Google)</li>
+        <li>Cuida do criativo e da oferta: acha o campeão, monta o ângulo, briefa a designer</li>
+        <li>Faz o contato técnico com o cliente: o que mudou, o que vem</li>
+        <li>Registra o resultado de cada conta</li>
+        <li>Traz suas dúvidas pra Head — você nunca fica travado sozinho</li>
+      </ul></div>
+      <div class="b"><h4>Não é seu</h4><ul>
+        <li>Kickoff e entrada do cliente — é da Head</li>
+        <li>As reuniões de relacionamento e renovação — são da Head</li>
+        <li>A arte em si — quem produz é a designer (você briefa)</li>
+        <li>Verba, contrato e cobrança — é da diretoria</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Como funciona a remuneração</h2></div>
+    <p class="sec-sub">O modelo é por conta — quanto mais você entrega bem, mais você ganha. Mas você não fica desprotegido enquanto constrói sua carteira.</p>
+    <div class="pay">
+      <div class="stage">
+        <div class="when">Início · ~90 dias</div>
+        <div><div class="val">R$ 1.500 <small>piso garantido</small></div><div class="d">Enquanto você constrói a carteira e aprende o nosso jeito, você recebe um piso fixo — independente de quantas contas já assumiu. Segurança pra focar em aprender bem.</div></div>
+      </div>
+      <div class="stage">
+        <div class="when">Regime</div>
+        <div><div class="val">R$ 100 <small>por conta · até 20</small></div><div class="d">Conforme você assume contas, passa a ganhar R$100 por conta que gerencia — o que superar o piso. No teto de 20 contas, são R$2.000/mês. Vale para conta de Meta ou Google.</div></div>
+      </div>
+      <div class="stage">
+        <div class="when">Extra</div>
+        <div><div class="val">Bônus <small>por renovação</small></div><div class="d">Toda vez que um cliente da sua carteira renova o contrato, você ganha um extra. Cuidar bem do cliente vira dinheiro no seu bolso.</div></div>
+      </div>
+      <div class="paynote"><b>Na prática:</b> você começa com o piso, ele te protege na fase de aprendizado, e o valor por conta assume naturalmente conforme você cresce — sem nunca cair abaixo do piso durante a rampa.</div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>A trilha de crescimento</h2></div>
+    <p class="sec-sub">A vaga tem para onde ir. O que te promove não é tempo de casa — é carteira que você sustenta com qualidade.</p>
+    <div class="trilha">
+      <div class="tr here"><span class="heretag">Você entra aqui</span><div class="lvl">Júnior</div><div class="val">contas simples</div><p>Aprende o método, assume os primeiros clientes sob a Head, constrói ritmo.</p></div>
+      <div class="tr"><div class="lvl">Pleno</div><div class="val">carteira cheia</div><p>Roda as 20 contas com autonomia, assume clientes de maior verba e as contas de dupla plataforma — com valor por conta revisto pra cima.</p></div>
+      <div class="tr"><div class="lvl">Sênior</div><div class="val">referência</div><p>Domina as contas complexas, apoia a formação de novos gestores e influencia o processo da agência.</p></div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>O que buscamos em você</h2></div>
+    <div class="card">
+      <ul>
+        <li>Vontade real de aprender e virar referência — não só executar tarefa</li>
+        <li>Cuidado com o cliente: você entende que resultado só vale se o cliente percebe</li>
+        <li>Organização pra tocar várias contas sem deixar bola cair</li>
+        <li>Dedicação exclusiva — aqui não trabalhamos com freela pulando entre agências</li>
+        <li>Base de tráfego (Meta e/ou Google); o resto do nosso método a gente te ensina</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Como é trabalhar aqui</h2></div>
+    <div class="perk">
+      <div class="pk"><h4>Você não fica sozinho</h4><p>Uma Head de Tráfego te treina, te acompanha em 1:1 e destrava o que travar. Dúvida técnica tem pra quem levar.</p></div>
+      <div class="pk"><h4>Automação faz o peso</h4><p>Nosso monitoramento é automatizado — alertas diários e análise semanal caem prontos. Você foca na decisão, não na planilha.</p></div>
+      <div class="pk"><h4>Processo, não caos</h4><p>Onboarding, otimização e criativo têm playbook. Você entra num sistema que funciona, não numa bagunça.</p></div>
+      <div class="pk"><h4>Carteira que cabe</h4><p>Teto de 20 contas de propósito: pra você fazer bem-feito, não correr atrás do prejuízo.</p></div>
+    </div>
+    <footer>
+      <span>EMPRESATIVA DIGITAL · GESTOR DE TRÁFEGO · AGO 2026</span>
+      <span>RIO DE JANEIRO — RJ</span>
+    </footer>
+  </section>
+
+</div>
+</body>
+</html>
