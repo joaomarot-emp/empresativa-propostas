@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modelo de Remuneração por Conta · Oficial — EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e100c;--panel:#15180f;--panel-2:#191d12;--line:#2a2c22;--line-soft:#22241b;
+    --ink:#f4f4f2;--ink-mid:#c7c5ba;--ink-dim:#8c8a7d;
+    --brand:#b5653a;--brand-soft:#d0885a;--karol:#7ba05b;--gestor:#6f93b5;--stop:#c24a38;--radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(1200px 600px at 88% -8%,rgba(181,101,58,.09),transparent 60%),var(--bg);
+    color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;padding:0 20px 90px}
+  .wrap{max-width:900px;margin:0 auto}
+
+  header{padding:54px 0 28px;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--brand)}
+  .official{display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--karol);background:rgba(123,160,91,.1);border:1px solid rgba(123,160,91,.3);border-radius:999px;padding:6px 13px;margin:14px 0}
+  .official::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--karol)}
+  h1{font-family:"Poppins";font-weight:900;font-size:clamp(30px,6vw,50px);line-height:1.02;letter-spacing:-.025em;margin:6px 0 12px}
+  h1 .em{color:var(--brand)}
+  .sub{font-size:16px;color:var(--ink-mid);max-width:64ch}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-dim)}
+  .meta b{color:var(--ink-mid);font-weight:500}
+
+  section{padding:46px 0;border-bottom:1px solid var(--line-soft)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--brand)}
+  h2{font-family:"Poppins";font-weight:800;font-size:clamp(22px,4vw,29px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin:6px 0 22px;max-width:66ch}
+  p{color:var(--ink-mid);font-size:15px;margin-bottom:12px}
+  b,strong{color:var(--ink);font-weight:600}
+
+  /* R$997 breakdown */
+  .econ{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px}
+  .econ .cap{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:4px}
+  .econ .tot{font-family:"Poppins";font-weight:900;font-size:30px;letter-spacing:-.02em;margin-bottom:18px}
+  .econ .tot small{font-size:14px;color:var(--ink-dim);font-weight:600}
+  .bar{display:flex;height:44px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+  .seg{display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600}
+  .seg.g{background:var(--gestor);color:#0e100c;width:10%}
+  .seg.k{background:var(--karol);color:#0e100c;width:10%}
+  .seg.rest{background:#2b2d22;color:var(--ink-mid);width:80%}
+  .barleg{display:flex;gap:18px;margin-top:16px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim)}
+  .barleg span{display:flex;align-items:center;gap:7px}.barleg i{width:11px;height:11px;border-radius:3px}
+  .di.g{background:var(--gestor)}.di.k{background:var(--karol)}.di.r{background:#2b2d22}
+
+  /* role calc */
+  .calc{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:24px;margin-top:8px;border-top:2px solid}
+  .calc.g{border-top-color:var(--gestor)}.calc.k{border-top-color:var(--karol)}
+  .calc .top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .calc h3{font-family:"Poppins";font-weight:800;font-size:22px;margin:0}
+  .calc .rate{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--brand-soft)}
+  .eq{font-family:"IBM Plex Mono",monospace;font-size:15px;color:var(--ink);background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;line-height:1.7}
+  .eq .res{color:var(--brand-soft);font-weight:600}
+  .eq .g{color:var(--gestor)}.eq .k{color:var(--karol)}
+  .calc p{font-size:14px;margin:12px 0 0}
+
+  .incentive{background:rgba(123,160,91,.07);border:1px solid rgba(123,160,91,.28);border-radius:12px;padding:14px 16px;margin-top:14px;font-size:14px;color:var(--ink-mid)}
+  .incentive b{color:var(--karol)}
+
+  /* elegance cards */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+  .card{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:22px}
+  .card .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:8px}
+  .card h3{font-family:"Poppins";font-weight:800;font-size:18px;margin-bottom:8px}
+  .card p{font-size:14px;margin:0}
+
+  /* flag */
+  .flag{background:rgba(194,74,56,.07);border:1px solid rgba(194,74,56,.28);border-radius:var(--radius);padding:22px 24px;margin-top:8px}
+  .flag .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop);margin-bottom:8px}
+  .flag h3{font-family:"Poppins";font-weight:800;font-size:19px;margin-bottom:10px}
+  .flag p{font-size:14.5px;margin-bottom:8px}.flag p:last-child{margin-bottom:0}
+  .flag b{color:var(--ink)}
+
+  .note{margin-top:16px;padding:15px 18px;border:1px dashed var(--line);border-radius:12px;font-size:14px;color:var(--ink-mid)}
+  .note b{color:var(--brand-soft)}
+
+  footer{padding-top:26px;margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.03em}
+
+  @media(max-width:700px){.two{grid-template-columns:1fr}}
+  @media print{body{background:#fff;color:#111}.calc,.card,.econ{background:#fff;border-color:#ddd}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">EmpresAtiva · Cargos</div>
+    <div class="official">Versão oficial · substitui a régua de salário fixo</div>
+    <h1>Remuneração <span class="em">por conta</span></h1>
+    <p class="sub">O seu modelo, travado: paga-se por conta, não por salário. E ele já carrega o incentivo de retenção embutido — sem precisar de fórmula de bônus.</p>
+    <div class="meta">
+      <span><b>Gestor</b> R$100/conta</span>
+      <span><b>Head</b> R$100/conta + R$50/plataforma extra</span>
+      <span><b>Ticket</b> R$997/mês</span>
+    </div>
+  </header>
+
+  <!-- 01 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>A economia de uma conta</h2></div>
+    <p class="sec-sub">Numa conta de plataforma única, a mão de obra de entrega é R$200 de um ticket de R$997. Margem de entrega de ~80% antes de design, ferramentas e impostos. É saudável — e é o que torna cada conta autossustentável.</p>
+    <div class="econ">
+      <div class="cap">Um cliente · plataforma única</div>
+      <div class="tot">R$ 997<small> / mês</small></div>
+      <div class="bar">
+        <div class="seg g">R$100</div>
+        <div class="seg k">R$100</div>
+        <div class="seg rest">~R$797 · margem antes dos demais custos</div>
+      </div>
+      <div class="barleg">
+        <span><i class="di g"></i> Gestor (entrega)</span>
+        <span><i class="di k"></i> Head / Karol (override)</span>
+        <span><i class="di r"></i> Sobra pra design, ferramentas, impostos e lucro</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 gestor -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Gestor de Tráfego</h2></div>
+    <p class="sec-sub">R$100 por conta que ele roda, mais um extra na renovação. O nível (JR/PL/SR) deixa de definir salário e passa a definir quantas contas ele sustenta com qualidade — o que, no seu modelo, já é o salário.</p>
+    <div class="calc g">
+      <div class="top"><h3>Miguel</h3><span class="rate">R$100 / conta + extra por renovação</span></div>
+      <div class="eq"><span class="g">20 contas</span> × R$100 = <span class="res">R$2.000/mês</span> &nbsp;+&nbsp; extra por cliente que renova</div>
+      <p>O extra de renovação é a peça que você levantou — e ela é certeira: paga o gestor por <b>manter o cliente satisfeito a ponto de renovar</b>. Sugestão de faixa: R$100–150 por renovação na carteira dele. Com ~20 clientes renovando ao longo do ano de forma escalonada, isso soma um mês extra de renda diluído no ano.</p>
+    </div>
+  </section>
+
+  <!-- 03 head -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Head de Tráfego — Karol</h2></div>
+    <p class="sec-sub">Override de R$100 sobre a carteira inteira que ela coordena, mais R$50 por plataforma extra. Ela não roda contas — ela responde pela entrega e retenção de todas.</p>
+    <div class="calc k">
+      <div class="top"><h3>Karol</h3><span class="rate">R$100 / conta da carteira + R$50 / plataforma extra</span></div>
+      <div class="eq"><span class="k">~40 contas</span> × R$100 &nbsp;+&nbsp; ~12 plataformas × R$50 ≈ <span class="res">~R$4.600/mês</span></div>
+      <div class="incentive"><b>O incentivo de retenção está embutido — sem fórmula.</b> Se um cliente cancela, a Karol perde R$100. Se a carteira cresce, ela ganha. O bolso dela sobe e desce junto com a retenção, que é exatamente o mandato dela. Era isso que eu tentava construir com "bônus por churn" — o seu modelo já faz sozinho, e mais limpo.</div>
+      <p>Por coincidência, ~R$4.600 cai no meio da faixa de "Head Pleno" que a régua de mercado estimava. Seu modelo por conta e o benchmark convergem no mesmo número, por caminhos diferentes — bom sinal de que o valor está calibrado.</p>
+    </div>
+  </section>
+
+  <!-- 04 elegance -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Por que esse modelo resolve duas decisões de graça</h2></div>
+    <div class="two">
+      <div class="card">
+        <div class="k">Contratação</div>
+        <h3>O Gestor 2 se autofinancia</h3>
+        <p>Cada conta custa R$100 de gestor e gera R$500–997. O gestor novo se paga por conta — então contratar deixa de ser decisão de caixa e vira só "atribuir contas". A trava de caixa que eu havia levantado <b>não existe no seu modelo</b>. É só puxar o gatilho.</p>
+      </div>
+      <div class="card">
+        <div class="k">Retenção</div>
+        <h3>O per-conta é o incentivo</h3>
+        <p>Não precisa de bônus por churn pra Karol — perder um cliente já custa R$100 a ela. O modelo alinha o bolso dela com o LTV automaticamente. Descarte o bônus de churn que eu havia proposto: <b>ele é redundante aqui</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 flag -->
+  <section style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">05</span><h2>O ponto de atenção com o Miguel</h2></div>
+    <div class="flag">
+      <div class="k">Não deixe acontecer no silêncio</div>
+      <h3>O escopo por conta subiu — a matemática precisa continuar positiva pra ele</h3>
+      <p>O R$100/conta antes pagava só otimização. Agora paga otimização <b>+ briefing + criativo &amp; oferta</b>. O kickoff saiu (alivia), mas criativo &amp; oferta é trabalho real a mais. E, se você reduz a carteira dele de 30 pra 20, o total nominal cai de ~R$3.000 pra R$2.000.</p>
+      <p><b>O risco:</b> mais trabalho por conta + menos contas = o Miguel lê como "mais esforço, menos dinheiro". Isso derruba qualidade, e qualidade que cai vira churn — que custa mais que a diferença.</p>
+      <p><b>Como fazer virar história positiva:</b> deixe explícito que ele sai de <b>afogado em 30</b> para <b>fazendo 20 bem-feitas</b>, com o kickoff fora das costas dele; e use o <b>extra de renovação</b> pra recompor parte do valor. Se ainda assim ficar apertado, considere subir o per-conta dele pra R$120–130 no escopo cheio. O que não pode é ele descobrir sozinho que ganhou trabalho e perdeu renda.</p>
+    </div>
+    <div class="note"><b>Nota:</b> os valores de extra de renovação e de per-conta ampliado são sugestões de faixa — a decisão é sua, olhando a sua margem. O que é estrutural, e eu recomendo travar, é o desenho: <b>gestor por conta + extra na renovação</b>, <b>Karol override na carteira inteira</b>.</p></div>
+    <footer>
+      <span>EMPRESATIVA · REMUNERAÇÃO POR CONTA · VERSÃO OFICIAL · AGO 2026</span>
+      <span>SUBSTITUI A RÉGUA DE SALÁRIO FIXO</span>
+    </footer>
+  </section>
+
+</div>
+</body>
+</html>
