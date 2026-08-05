@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrutura &amp; Capacidade do Squad — EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e100c;--panel:#15180f;--panel-2:#191d12;--line:#2a2c22;--line-soft:#22241b;
+    --ink:#f4f4f2;--ink-mid:#c7c5ba;--ink-dim:#8c8a7d;
+    --brand:#b5653a;--brand-soft:#d0885a;
+    --go:#7ba05b;--warn:#c9a44a;--stop:#c24a38;--info:#6f93b5;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:radial-gradient(1200px 600px at 88% -8%,rgba(181,101,58,.09),transparent 60%),var(--bg);
+    color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;padding:0 20px 90px}
+  .wrap{max-width:900px;margin:0 auto}
+
+  header{padding:56px 0 30px;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--brand);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--brand)}
+  h1{font-family:"Poppins";font-weight:900;font-size:clamp(30px,6vw,52px);line-height:1.02;letter-spacing:-.025em;margin:18px 0 14px}
+  h1 .em{color:var(--brand)}
+  .sub{font-size:16px;color:var(--ink-mid);max-width:62ch}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-dim)}
+  .meta b{color:var(--ink-mid);font-weight:500}
+
+  section{padding:46px 0;border-bottom:1px solid var(--line-soft)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:10px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--brand)}
+  h2{font-family:"Poppins";font-weight:800;font-size:clamp(22px,4vw,30px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin:6px 0 22px;max-width:64ch}
+  p{color:var(--ink-mid);font-size:15.5px;margin-bottom:12px}
+  b,strong{color:var(--ink);font-weight:600}
+  .accent{color:var(--brand-soft)}
+
+  /* distribution viz */
+  .dist{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px}
+  .drow{margin-bottom:22px}
+  .drow:last-child{margin-bottom:0}
+  .dlabel{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .dlabel .who{font-family:"Poppins";font-weight:700;font-size:16px}
+  .dlabel .who small{font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:11px;color:var(--ink-dim);letter-spacing:.04em;margin-left:8px;text-transform:uppercase}
+  .dlabel .n{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:14px}
+  .dbar{height:34px;border-radius:8px;display:flex;align-items:center;padding-left:12px;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;color:#0e100c;min-width:44px}
+  .dbar.mig{background:var(--stop);width:100%}
+  .dbar.kar{background:var(--go);width:33%}
+  .dbar.joa{background:#33352a;width:7%;color:var(--ink-mid)}
+  .dnote{font-size:13px;color:var(--ink-dim);margin-top:6px}
+  .ceiling{position:relative;margin:4px 0 22px;border-top:2px dashed var(--brand-soft);padding-top:6px}
+  .ceiling span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--brand-soft);letter-spacing:.04em}
+
+  .callout{background:rgba(194,74,56,.07);border:1px solid rgba(194,74,56,.28);border-radius:var(--radius);padding:18px 20px;margin-top:18px}
+  .callout .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop);margin-bottom:6px}
+  .callout p{margin:0;font-size:15px}
+
+  /* ceiling cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  .ceil{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:20px}
+  .ceil .role{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px}
+  .ceil .big{font-family:"Poppins";font-weight:900;font-size:34px;letter-spacing:-.02em;color:var(--brand-soft)}
+  .ceil .big small{font-size:15px;color:var(--ink-dim);font-weight:600}
+  .ceil p{font-size:13px;color:var(--ink-mid);margin:8px 0 0}
+
+  .weight{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:18px 22px;margin-top:14px}
+  .weight h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:10px}
+  .weight ul{list-style:none}
+  .weight li{font-size:14px;color:var(--ink-mid);padding:3px 0 3px 18px;position:relative}
+  .weight li::before{content:"▸";position:absolute;left:0;color:var(--brand)}
+
+  /* faz / não faz */
+  .fnf{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:24px}
+  .fnf .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .fnf .top h3{font-family:"Poppins";font-size:22px;font-weight:800}
+  .fnf .goal{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--brand-soft);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cols h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+  .does h4{color:var(--go)}.not h4{color:var(--stop)}
+  .cols ul{list-style:none}
+  .cols li{font-size:14px;color:var(--ink-mid);padding:4px 0 4px 20px;position:relative;line-height:1.45}
+  .does li::before{content:"→";position:absolute;left:0;color:var(--go);font-weight:600}
+  .not li::before{content:"×";position:absolute;left:0;color:var(--stop);font-weight:600}
+  .fix{margin-top:16px;padding:14px 16px;background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.28);border-radius:10px;font-size:14px;color:var(--ink-mid)}
+  .fix b{color:var(--brand-soft)}
+
+  /* decision steps */
+  .step{display:flex;gap:18px;margin-bottom:12px}
+  .step-n{flex-shrink:0;width:38px;height:38px;border-radius:10px;background:var(--brand);color:#0e100c;font-family:"IBM Plex Mono",monospace;font-weight:700;display:grid;place-items:center;font-size:14px}
+  .step-b{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:16px 20px;flex:1}
+  .step-b h4{font-family:"Poppins";font-size:17px;font-weight:700;margin-bottom:4px}
+  .step-b h4 .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;margin-left:8px;vertical-align:middle}
+  .tag.free{color:var(--go);background:rgba(123,160,91,.1);border:1px solid rgba(123,160,91,.3)}
+  .tag.hire{color:var(--warn);background:rgba(201,164,74,.1);border:1px solid rgba(201,164,74,.3)}
+  .tag.later{color:var(--info);background:rgba(111,147,181,.1);border:1px solid rgba(111,147,181,.3)}
+  .step-b p{font-size:14px;margin:0}
+
+  .verdict{background:linear-gradient(160deg,rgba(181,101,58,.13),var(--panel));border:1px solid var(--brand);border-radius:16px;padding:26px 28px;margin-top:20px}
+  .verdict .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin-bottom:10px}
+  .verdict p{font-size:16px;color:var(--ink);margin:0}
+  .verdict p b{color:var(--brand-soft)}
+
+  /* rebalance table */
+  .rb{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;margin-top:6px}
+  .rb-row{display:flex;gap:14px;padding:14px 20px;border-top:1px solid var(--line-soft);align-items:flex-start}
+  .rb-row:first-child{border-top:none}
+  .rb-row .icon{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:12px;flex-shrink:0;width:80px}
+  .rb-row .icon.a{color:var(--stop)}.rb-row .icon.b{color:var(--brand-soft)}.rb-row .icon.c{color:var(--go)}
+  .rb-row .txt{flex:1;font-size:14.5px;color:var(--ink-mid)}
+  .rb-row .txt b{color:var(--ink)}
+
+  .flag{margin-top:18px;padding:16px 18px;border:1px dashed var(--line);border-radius:12px;font-size:14px;color:var(--ink-mid)}
+  .flag b{color:var(--brand-soft)}
+
+  footer{padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.03em}
+
+  @media(max-width:640px){.cards,.cols{grid-template-columns:1fr}.dbar.kar{width:45%}.dbar.joa{width:14%}}
+  @media print{body{background:#fff;color:#111}.dist,.fnf,.ceil,.step-b,.rb,.weight{background:#fff;border-color:#ddd}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">EmpresAtiva · Decisão operacional</div>
+    <h1>Estrutura &amp; <span class="em">capacidade</span><br>do squad</h1>
+    <p class="sub">A calibração que faltava no Manual v2.0: o teto de contas, o que Miguel e Karol fazem e deixam de fazer, e a decisão de contratar — tudo tirado da <b style="color:var(--ink)">carteira real</b>, não do modelo ideal.</p>
+    <div class="meta">
+      <span><b>Base</b> planilha de otimização · ago/2026</span>
+      <span><b>Ativos</b> ~40 clientes</span>
+      <span><b>Companheiro do</b> Manual v2.0</span>
+    </div>
+  </header>
+
+  <!-- 01 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>O retrato real da carteira</h2></div>
+    <p class="sec-sub">A distribuição está invertida: o júnior carrega o triplo da sênior — e ainda ficou com as contas grandes e de dupla plataforma.</p>
+
+    <div class="dist">
+      <div class="drow">
+        <div class="dlabel"><span class="who">Miguel <small>júnior</small></span><span class="n" style="color:var(--stop)">30 clientes · ~40 frentes</span></div>
+        <div class="dbar mig">30</div>
+        <div class="dnote">~10 rodam Meta <b>e</b> Google · STUDIO DELAS tem 2 contas · pega as maiores verbas (ANE ARAUJO, STUDIO DELAS, FEELMOV, EURICO…)</div>
+      </div>
+      <div class="ceiling"><span>▲ teto saudável de um gestor com a automação de vocês: ~15–18</span></div>
+      <div class="drow">
+        <div class="dlabel"><span class="who">Karol <small>coordenadora</small></span><span class="n" style="color:var(--go)">10 clientes</span></div>
+        <div class="dbar kar">10</div>
+        <div class="dnote">Todos "GBP" / Google local, verba baixa-média (só a Luciana Pepino investe ~R$10k). Um silo, não uma coordenação.</div>
+      </div>
+      <div class="drow">
+        <div class="dlabel"><span class="who">João <small>+ agência</small></span><span class="n" style="color:var(--ink-dim)">2</span></div>
+        <div class="dbar joa">2</div>
+        <div class="dnote">AUTOHAUS + a própria EmpresAtiva.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="k">A prova do churn está na própria planilha</div>
+      <p>Em quase todos os clientes, o campo de vendas está zerado — "sem ID Planilha Comercial". Só a EmpresAtiva tem vendas preenchidas. <b>Vocês não capturam o resultado de negócio do cliente</b> — então não há como mostrar ROI, o cliente não percebe valor e cancela. A carteira confirma o Gargalo 02.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>O teto de contas por gestor</h2></div>
+    <p class="sec-sub">A mentoria usa 12/gestor num modelo manual. Vocês têm automação (alerta diário + análise RAG semanal), então o teto sobe — mas não sem limite, porque relacionamento e otimização continuam humanos.</p>
+
+    <div class="cards">
+      <div class="ceil">
+        <div class="role">Gestor · com relacionamento</div>
+        <div class="big">12–15<small></small></div>
+        <p>Faz a própria cadência de WhatsApp e check-in. A automação empurra o teto acima dos 12 manuais, mas o relacionamento trava aqui.</p>
+      </div>
+      <div class="ceil">
+        <div class="role">Gestor · relacionamento no CS</div>
+        <div class="big">18–20<small></small></div>
+        <p>Quando o CS (1ª contratação) assume o relacionamento, o gestor vira otimização pura e o teto sobe.</p>
+      </div>
+      <div class="ceil">
+        <div class="role">Coordenadora (Karol)</div>
+        <div class="big">≤ 8–10<small></small></div>
+        <p>Carteira <b>pessoal</b> menor de propósito: coordenar o time consome o tempo que sobraria pra volume.</p>
+      </div>
+    </div>
+
+    <div class="weight">
+      <h4>Peso por complexidade — nem toda conta vale "1"</h4>
+      <ul>
+        <li>Conta dupla-plataforma (Meta + Google) ou verba R$3k+ conta como <b>~1,5</b>.</li>
+        <li>GBP local de verba baixa conta como <b>~0,6</b>.</li>
+        <li>Por esse peso, o Miguel não está em "30" — está em <b>~35–40 frentes</b>. Contra um teto de ~15–18, é o <b>dobro</b>. Não é opinião: é impossível seguir a cadência dos playbooks com essa carga.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Miguel — o que faz e o que não faz</h2></div>
+    <p class="sec-sub">A mentoria já define o papel do gestor. O ajuste é de calibragem: ele é júnior, e júnior não carrega as contas mais complexas sozinho — e muito menos 30.</p>
+    <div class="fnf">
+      <div class="top"><h3>Miguel</h3><span class="goal">Objetivo: assumir carteira própria com qualidade</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li>Executar e otimizar campanhas de uma carteira <b>com teto</b></li>
+          <li>Subir campanhas, criar segmentação e público</li>
+          <li>Registrar o resultado de cada conta pro relatório</li>
+          <li>Feedback no grupo e rotina de otimização</li>
+          <li>Levar dúvida técnica à <b>Karol</b> — nunca ao João</li>
+        </ul></div>
+        <div class="not"><h4>Deixa de fazer</h4><ul>
+          <li>Carregar 30 contas — teto imediato ~15–18</li>
+          <li>Ser dono sozinho das contas grandes/duplas sem a Karol</li>
+          <li>Fazer criativo — é da Nathalia</li>
+          <li>Tratar verba, contrato ou cobrança — é do João / CS</li>
+          <li>Sustentar sozinho a cadência de relacionamento em toda a carteira</li>
+        </ul></div>
+      </div>
+      <div class="fix"><b>Correção central:</b> o júnior pegou as contas erradas. As grandes e de dupla plataforma precisam de olho sênior — vão para a Karol. O Miguel fica com o volume das mais simples, sob supervisão dela.</div>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Karol — o que faz e o que não faz</h2></div>
+    <p class="sec-sub">Hoje a Karol não está coordenando — está rodando 10 GBP num silo enquanto o Miguel afoga. Essa é a maior correção estrutural do documento.</p>
+    <div class="fnf">
+      <div class="top"><h3>Karol</h3><span class="goal">Objetivo: coordenar de verdade, não só entregar GBP</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li><b>Auditar as contas do time</b> — qualidade sobre toda a carteira, não só a dela</li>
+          <li>Conduzir a daily e a análise semanal de contas</li>
+          <li>Análise de renovações e check-in nos clientes <b>em risco</b></li>
+          <li>Treinar e fazer 1:1 com o Miguel</li>
+          <li>Carregar um book <b>menor e mais estratégico</b> (as contas grandes que saem do Miguel)</li>
+          <li>Manter o stack de automação (destravar, não construir)</li>
+        </ul></div>
+        <div class="not"><h4>Deixa de fazer</h4><ul>
+          <li>Ficar isolada num book de 10 GBP enquanto o time sobrecarrega</li>
+          <li>Carregar volume — coordenar consome o tempo do volume</li>
+          <li>Mexer em contrato ou verba sem alinhar com o João</li>
+          <li>Construir automação nova</li>
+        </ul></div>
+      </div>
+      <div class="fix"><b>Correção central:</b> a Karol precisa sair do papel de "especialista de GBP com book pequeno" e entrar no papel de <b>Coordenadora</b> — dona da qualidade e da retenção de <b>toda</b> a carteira. Sem isso, ela tem o cargo, mas não exerce a função.</div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Contratar mais um gestor?</h2></div>
+    <p class="sec-sub">A resposta honesta tem duas partes — e reconcilia com a ordem de contratação do v2.0 (CS primeiro), sem cair na complacência de "gestor é a 3ª contratação, relaxa".</p>
+
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-b"><h4>Limpar os 7 inativos<span class="tag free">grátis</span></h4>
+        <p>Rodar o playbook de saída nos 7 parados (KIN SUSHI, VG SOM, OFFICE B, FERNANDA ABDALA, MEGA HAIR TAUBATE, BRAPORTS, SARA SOUSA) e tirá-los da planilha. Clareia a carga real.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-b"><h4>Rebalancear Miguel ↔ Karol<span class="tag free">grátis</span></h4>
+        <p>Mover as contas grandes/duplas do Miguel para a Karol. Miguel cai para ~18–22; Karol ganha as estratégicas. Alívio imediato, custo zero.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-b"><h4>CS assume o relacionamento<span class="tag hire">1ª contratação</span></h4>
+        <p>O CS do v2.0 tira a cadência de relacionamento dos dois gestores → o teto deles sobe para ~18–20 (otimização pura). É o que estabiliza os ~40 atuais sem um gestor novo.</p></div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-b"><h4>Gestor júnior quando o comercial ligar<span class="tag later">gatilho, não agora</span></h4>
+        <p>Depois do rebalance + CS, remedir. Se o book efetivo do Miguel ainda passar de ~18, <b>ou</b> no momento em que você ligar a aquisição (Fase 3, rumo a 52 clientes), entra o gestor. Não espere "2 meses de pressão de vendas" — a pressão de entrega já chegou.</p></div>
+    </div>
+
+    <div class="verdict">
+      <div class="k">Veredito</div>
+      <p><b>Não</b>, você não precisa de um gestor <b>esta semana</b> — porque o primeiro remédio é grátis (limpar + rebalancear) e a primeira contratação por ROI é o CS. <b>Mas</b> a operação já está acima da capacidade agora, e a meta de R$100k adiciona ~12 clientes. Então o gestor é <b>adiado por semanas, não por trimestres</b> — inevitável dentro deste ciclo de 90 dias.</p>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Plano de rebalanceamento</h2></div>
+    <p class="sec-sub">Ordem concreta pra sair do quadro invertido e chegar em cargas saudáveis — antes de contratar qualquer pessoa.</p>
+    <div class="rb">
+      <div class="rb-row"><span class="icon a">SAIR</span><span class="txt"><b>Encerrar os 7 inativos</b> com o playbook de saída e remover da planilha de otimização. Carga real vira ~40 ativos limpos.</span></div>
+      <div class="rb-row"><span class="icon b">MOVER</span><span class="txt"><b>Passar do Miguel para a Karol</b> as contas grandes / dupla-plataforma que exigem olho sênior — começando por ANE ARAUJO, STUDIO DELAS, FEELMOV, EURICO, IMPERADOR. Miguel cai para ~18–22; Karol assume o estratégico.</span></div>
+      <div class="rb-row"><span class="icon c">ALVO</span><span class="txt"><b>Cargas-meta:</b> Miguel ~15–18 (sob supervisão) · Karol ~8–10 pessoais + coordenação de toda a carteira · João sai da operação de conta (fica só com a EmpresAtiva).</span></div>
+      <div class="rb-row"><span class="icon c">DEPOIS</span><span class="txt"><b>Ligar a captura de vendas</b> (o "sem ID Planilha Comercial") em toda a carteira — é o que transforma a planilha em prova de valor e ataca o churn na raiz.</span></div>
+    </div>
+
+    <div class="flag"><b>O que ainda falta pra fechar 100%:</b> esta planilha mostra a <b>verba de mídia do cliente</b> (complexidade / carga), não o <b>fee que a EmpresAtiva cobra</b>. Pra cruzar carga com receita — e priorizar por ticket, como o v2.0 pede — puxe o MRR real por cliente do financeiro. Aí dá pra sobrepor a camada A/B/C de valor por cima desta camada de capacidade.</div>
+
+    <footer>
+      <span>EMPRESATIVA · ESTRUTURA &amp; CAPACIDADE DO SQUAD · AGO 2026</span>
+      <span>COMPANHEIRO DO MANUAL V2.0</span>
+    </footer>
+  </section>
+
+</div>
+</body>
+</html>
