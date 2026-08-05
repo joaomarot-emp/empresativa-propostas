@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual Operacional do Squad — EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e100c;--panel:#15180f;--panel-2:#191d12;--line:#2a2c22;--line-soft:#22241b;
+    --ink:#f4f4f2;--ink-mid:#c7c5ba;--ink-dim:#8c8a7d;
+    --brand:#b5653a;--brand-soft:#d0885a;
+    --karol:#7ba05b;--gestor:#6f93b5;--joao:#b5653a;--nat:#ab8fbf;
+    --hot:#c24a38;--warm:#c9a44a;--cool:#7ba05b;--radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:radial-gradient(1300px 700px at 88% -8%,rgba(181,101,58,.09),transparent 60%),var(--bg);
+    color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 100px}
+
+  nav{position:sticky;top:0;z-index:20;background:rgba(12,12,14,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+  .nav-in{max-width:940px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:11px 20px}
+  .nav-brand{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--brand);text-transform:uppercase;flex-shrink:0}
+  .nav-pills{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}.nav-pills::-webkit-scrollbar{display:none}
+  .nav-pills a{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;color:var(--ink-dim);text-decoration:none;padding:6px 11px;border-radius:999px;white-space:nowrap;transition:all .15s}
+  .nav-pills a:hover{color:var(--ink);background:var(--panel)}.nav-pills a.active{color:#111;background:var(--brand);font-weight:600}
+
+  header.cover{padding:60px 0 36px;border-bottom:1px solid var(--line-soft)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--brand);display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--brand)}
+  h1.title{font-family:"Poppins";font-weight:900;font-size:clamp(32px,7vw,58px);line-height:1;letter-spacing:-.025em;margin:18px 0 14px}
+  h1.title .em{color:var(--brand)}
+  .cover .lead{font-size:16px;color:var(--ink-mid);max-width:64ch}
+  .cover-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-dim)}
+  .cover-meta b{color:var(--ink-mid);font-weight:500}
+
+  section{padding:50px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:60px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--brand)}
+  h2{font-family:"Poppins";font-weight:800;font-size:clamp(23px,4vw,31px);letter-spacing:-.02em}
+  .sec-sub{color:var(--ink-dim);font-size:15px;margin:6px 0 22px;max-width:66ch}
+  p{color:var(--ink-mid);font-size:15px;margin-bottom:12px}
+  b,strong{color:var(--ink);font-weight:600}
+  .accent{color:var(--brand-soft)}
+  h3{font-family:"Poppins";font-weight:700;font-size:18px;margin:22px 0 10px}
+
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;white-space:nowrap;display:inline-block}
+  .chip.k{color:var(--karol);background:rgba(123,160,91,.1);border:1px solid rgba(123,160,91,.3)}
+  .chip.g{color:var(--gestor);background:rgba(111,147,181,.1);border:1px solid rgba(111,147,181,.3)}
+  .chip.j{color:var(--joao);background:rgba(181,101,58,.1);border:1px solid rgba(181,101,58,.3)}
+  .chip.a{color:var(--ink-dim);background:var(--panel-2);border:1px solid var(--line)}
+
+  /* LTV */
+  .ltv{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 8px}
+  .lev{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px}
+  .lev .k{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:8px}
+  .lev h4{font-family:"Poppins";font-weight:800;font-size:19px;margin-bottom:8px}
+  .lev p{font-size:14px;margin:0}
+  .formula{text-align:center;font-family:"Poppins";font-weight:800;font-size:clamp(18px,3.4vw,24px);color:var(--ink);margin:4px 0 22px;letter-spacing:-.01em}
+  .formula .x{color:var(--brand)}
+
+  .pillars{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;margin-top:8px}
+  .pr{display:grid;grid-template-columns:1.4fr 1fr 130px;gap:14px;padding:13px 18px;border-top:1px solid var(--line-soft);align-items:center}
+  .pr:first-child{border-top:none}
+  .pr .pi{font-size:14.5px;color:var(--ink);font-weight:500}
+  .pr .pd{font-size:13px;color:var(--ink-dim)}
+  .colh{display:grid;grid-template-columns:1.4fr 1fr 130px;gap:14px;padding:0 18px 8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim)}
+
+  /* faz/nao faz */
+  .fnf{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:24px}
+  .fnf .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  .fnf .top h3{margin:0;font-size:22px;font-weight:800}
+  .fnf .goal{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--brand-soft);text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .cols h4{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+  .does h4{color:var(--karol)}.not h4{color:var(--hot)}
+  .cols ul{list-style:none}.cols li{font-size:14px;color:var(--ink-mid);padding:4px 0 4px 20px;position:relative;line-height:1.45}
+  .does li::before{content:"→";position:absolute;left:0;color:var(--karol);font-weight:600}
+  .not li::before{content:"×";position:absolute;left:0;color:var(--hot);font-weight:600}
+  .fnf.gestor .does h4{color:var(--gestor)}.fnf.gestor .does li::before{color:var(--gestor)}
+
+  /* rotina grid */
+  .rot{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;margin-top:6px}
+  .rr{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 18px;border-top:1px solid var(--line-soft)}
+  .rr:first-child{border-top:none}
+  .rr .when{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--brand-soft);letter-spacing:.03em}
+  .rr .what{font-size:14px;color:var(--ink-mid);line-height:1.5}
+  .rr .what b{color:var(--ink)}
+
+  /* daily / 1x1 cards */
+  .box{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--radius);padding:22px 24px;margin-top:6px}
+  .box .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);margin-bottom:14px;letter-spacing:.03em}
+  .box .meta b{color:var(--brand-soft);font-weight:600}
+  .box ul{list-style:none}.box li{font-size:14.5px;color:var(--ink-mid);padding:4px 0 4px 20px;position:relative}
+  .box li::before{content:"▸";position:absolute;left:0;color:var(--brand)}
+  .twobox{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .twobox .box{margin-top:0}
+  .lvl{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
+  .lvl.j{color:var(--joao)}.lvl.k{color:var(--karol)}
+
+  /* client flow steps */
+  .steps{counter-reset:s;margin-top:6px}
+  .stp{display:flex;gap:16px;margin-bottom:10px}
+  .stp .n{counter-increment:s;flex-shrink:0;width:34px;height:34px;border-radius:9px;background:var(--panel-2);border:1px solid var(--line);color:var(--brand-soft);font-family:"IBM Plex Mono",monospace;font-weight:700;display:grid;place-items:center;font-size:13px}
+  .stp .n::before{content:counter(s)}
+  .stp .body{background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;padding:13px 18px;flex:1}
+  .stp .body .h{font-family:"Poppins";font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .stp .body p{font-size:13.5px;margin:5px 0 0;color:var(--ink-dim)}
+
+  .grounded{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--gestor);background:rgba(111,147,181,.08);border:1px solid rgba(111,147,181,.25);border-radius:5px;padding:2px 7px}
+
+  .checklist{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:10px}
+  .checklist .h{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-soft);margin-bottom:8px}
+  .checklist ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px 20px}
+  .checklist li{font-size:13px;color:var(--ink-mid);padding:3px 0 3px 18px;position:relative}
+  .checklist li::before{content:"☐";position:absolute;left:0;color:var(--ink-dim)}
+
+  .note{margin-top:14px;padding:14px 16px;background:rgba(181,101,58,.07);border:1px solid rgba(181,101,58,.26);border-radius:10px;font-size:14px;color:var(--ink-mid)}
+  .note b{color:var(--brand-soft)}
+
+  footer{padding-top:28px;margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);letter-spacing:.03em}
+
+  @media(max-width:700px){
+    .ltv,.cols,.twobox,.pr,.colh,.checklist ul{grid-template-columns:1fr}
+    .colh{display:none}.pr{gap:6px}.rr{grid-template-columns:1fr;gap:4px}.nav-brand{display:none}
+  }
+  @media print{nav{display:none}body{background:#fff;color:#111}}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-in">
+  <span class="nav-brand">EmpresAtiva</span>
+  <div class="nav-pills">
+    <a href="#ltv">Retenção &amp; LTV</a>
+    <a href="#head">Head</a>
+    <a href="#gestor">Gestor</a>
+    <a href="#rotinas">Rotinas</a>
+    <a href="#daily">Daily</a>
+    <a href="#1a1">1:1</a>
+    <a href="#cliente">Rotina de clientes</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <header class="cover">
+    <div class="eyebrow">EmpresAtiva · Manual operacional</div>
+    <h1 class="title">Manual <span class="em">operacional</span><br>do squad</h1>
+    <p class="lead">A camada que transforma o Mapa de Papéis em rotina: retenção e LTV, atribuições da Karol e dos gestores, os rituais (daily e 1:1) e a rotina de cliente — escrita em cima dos seus templates reais do ClickUp.</p>
+    <div class="cover-meta">
+      <span><b>Estrutura</b> João (CEO) · Karol (Head) · Gestores · Nathalia</span>
+      <span><b>Base</b> templates ClickUp + mentoria</span>
+    </div>
+  </header>
+
+  <!-- 01 -->
+  <section id="ltv">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Retenção &amp; aumento do LTV</h2></div>
+    <p class="sec-sub">LTV não é uma métrica que se persegue direto — é uma consequência de duas alavancas. Todo o resto do manual existe pra mover essas duas.</p>
+    <div class="formula">LTV = ticket médio <span class="x">×</span> vida média do cliente</div>
+    <div class="ltv">
+      <div class="lev"><div class="k">Alavanca 1 · vida média ↑</div><h4>Reduzir o churn</h4><p>É onde está o maior ganho hoje: com vida de 6 meses, ~R$6,7k/mês evaporam. Cada mês a mais de vida multiplica o LTV inteiro. Vem dos 4 primeiros pilares abaixo.</p></div>
+      <div class="lev"><div class="k">Alavanca 2 · ticket ↑</div><h4>Renovar subindo o valor</h4><p>A retenção só vira receita quando o contrato renova com upgrade — mix pró-Arquitetura de Receita e expansão via diagnóstico (aulas, DFY). É o 5º pilar.</p></div>
+    </div>
+
+    <h3>Os 5 pilares da retenção — cada um com dono</h3>
+    <div class="colh"><span>Pilar</span><span>O que é</span><span>Dono</span></div>
+    <div class="pillars">
+      <div class="pr"><span class="pi">1. Onboarding estratégico</span><span class="pd">A maioria do churn nasce da falta de direcionamento inicial. Registrar o "antes".</span><span><span class="chip k">Karol</span></span></div>
+      <div class="pr"><span class="pi">2. Relacionamento proativo</span><span class="pd">Estar presente antes do problema. Cliente engajado raramente cancela.</span><span><span class="chip k">Karol</span></span></div>
+      <div class="pr"><span class="pi">3. Entrega de valor contínuo</span><span class="pd">Relatório + "antes e depois" + áudio de 1 min. Sem prova de valor, não há retenção.</span><span><span class="chip a">Autom.</span><span class="chip k">Karol</span></span></div>
+      <div class="pr"><span class="pi">4. Gestão de risco</span><span class="pd">Mapa de temperatura, grupo de risco, reaproximação em 3 tentativas.</span><span><span class="chip k">Karol</span></span></div>
+      <div class="pr"><span class="pi">5. Renovação e expansão</span><span class="pd">Começa no mês 4, não no 6. É onde o ticket sobe.</span><span><span class="chip k">Karol</span><span class="chip j">João</span></span></div>
+    </div>
+    <div class="note"><b>O elo que trava tudo:</b> nenhum pilar funciona sem a <b>planilha de vendas preenchida</b> — é o dado que prova o valor (pilar 3) e revela o churn (pilar 4). Por isso a cobrança dela é da Karol, e é a coisa mais crítica da operação de retenção.</div>
+  </section>
+
+  <!-- 02 -->
+  <section id="head">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Head de Tráfego — Karol</h2></div>
+    <p class="sec-sub">A Karol é a porta de entrada do cliente, a dona da retenção e a coordenadora do time. Não carrega book de rotina próprio.</p>
+    <div class="fnf">
+      <div class="top"><h3>Atribuições</h3><span class="goal">Dona da retenção &amp; da coordenação</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li>Kickoff e onboarding de <b>todo</b> cliente novo + registro da linha de base</li>
+          <li>Monta a estratégia de cada cliente e apresenta no grupo</li>
+          <li>Relacionamento: reunião mensal e quinzenal (escalonado por temperatura)</li>
+          <li>Cobra o preenchimento da planilha de vendas</li>
+          <li>Dona do mapa de temperatura, do grupo de risco e da reaproximação</li>
+          <li>Conduz a renovação (mês 4) — João entra na decisão de valor</li>
+          <li>Audita a qualidade das contas dos dois gestores</li>
+          <li>Conduz a daily e o 1:1 com os gestores; forma o Gestor 2</li>
+          <li>Mantém o stack (destravar) e é dona dos indicadores do squad</li>
+        </ul></div>
+        <div class="not"><h4>Não faz</h4><ul>
+          <li>Rodar book de contas de rotina (sai do GBP)</li>
+          <li>Otimização diária de campanha — é dos gestores</li>
+          <li>Criativo/arte — é da Nathalia</li>
+          <li>Construir automação nova — é do João</li>
+          <li>Mexer em contrato/valor sozinha — alinha com o João</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section id="gestor">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Gestor de Tráfego — Miguel &amp; Gestor 2</h2></div>
+    <p class="sec-sub">O gestor é dono da entrega recorrente de até 20 contas: da campanha ao criativo ao número. Sem kickoff — recebe a conta pronta da Karol.</p>
+    <div class="fnf gestor">
+      <div class="top"><h3>Atribuições</h3><span class="goal">Dono da entrega · até 20 contas</span></div>
+      <div class="cols">
+        <div class="does"><h4>Faz</h4><ul>
+          <li>Recebe a conta da Karol e <b>sobe as primeiras campanhas</b></li>
+          <li>Otimização semanal (RAG, verba, públicos, testes)</li>
+          <li>Criativo &amp; oferta: acha o campeão, monta oferta (OPV), <b>briefa a Nathalia e o cliente</b></li>
+          <li>Contato <b>técnico</b> da conta: o que mudou, o que vem</li>
+          <li>Colhe o feedback do comercial e traduz em ajuste de oferta</li>
+          <li>Registra o resultado de cada conta pro relatório</li>
+          <li>Leva dúvida técnica à <b>Karol</b> — nunca ao João</li>
+        </ul></div>
+        <div class="not"><h4>Não faz</h4><ul>
+          <li>Kickoff/onboarding de cliente novo — é da Karol</li>
+          <li>Reunião mensal/quinzenal de relacionamento — é da Karol</li>
+          <li>Cobrança relacional da planilha de vendas — é da Karol</li>
+          <li>Arte/criativo — briefa, mas quem produz é a Nathalia</li>
+          <li>Verba, contrato, cobrança financeira — é do João</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="note"><b>Reconciliação com seus templates:</b> hoje o "[Criativo &amp; Oferta Semanal]" está na lista da Karol e o "solicitar retorno de vendas" está na task do gestor. No modelo novo, o <b>Criativo &amp; Oferta vai pro gestor</b> (entrega ponta a ponta) e a <b>cobrança relacional da planilha vai pra Karol</b>. O gestor pede o número técnico no grupo; a Karol garante que ele seja preenchido em toda a carteira.</div>
+  </section>
+
+  <!-- 04 -->
+  <section id="rotinas">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Rotinas</h2></div>
+    <p class="sec-sub">Cada papel tem um ritmo. O do gestor é a entrega da conta; o da Karol é coordenar e reter.</p>
+
+    <h3>Rotina do Gestor de Tráfego</h3>
+    <div class="rot">
+      <div class="rr"><span class="when">Diária</span><span class="what">Conferir os <b>alertas da automação</b> (contas que dispararam no monitoramento), responder o grupo técnico dos clientes, tocar as tasks do dia no ClickUp.</span></div>
+      <div class="rr"><span class="when">Semanal · conta</span><span class="what">Rodar a <b>Otimização Semanal</b> de cada conta (Diagnóstico → RAG → Meta → Google → Novos testes → Feedback → Relatório).</span></div>
+      <div class="rr"><span class="when">Seg / Qua / Sex</span><span class="what">Cadência de <b>Criativo &amp; Oferta</b>: segunda promove os aprovados, quarta monitora cansaço do campeão, sexta briefa os novos.</span></div>
+    </div>
+
+    <h3>Rotina do Head de Tráfego</h3>
+    <div class="rot">
+      <div class="rr"><span class="when">Diária</span><span class="what">Conduzir a <b>daily</b>, atualizar a temperatura das contas, olhar os grupos de WhatsApp, conferir as tasks do time.</span></div>
+      <div class="rr"><span class="when">Semanal</span><span class="what">Auditoria geral das contas (qualidade), análise de renovações, reunião com a Nathalia (design), preparar conteúdo de learning do time.</span></div>
+      <div class="rr"><span class="when">Quinzenal</span><span class="what">Check-in com os clientes <b>em risco/atenção</b>, 1:1 com os gestores.</span></div>
+      <div class="rr"><span class="when">Mensal</span><span class="what">Reunião mensal de resultado com o cliente, leitura dos indicadores do squad com o João.</span></div>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section id="daily">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Daily — o que abordar</h2></div>
+    <p class="sec-sub">Rápida, em pé, foco em desbloqueio — não em relatório longo. Quem conduz é a Karol; os gestores participam.</p>
+    <div class="box">
+      <div class="meta"><span><b>Frequência</b> diária (exceto o dia da auditoria)</span><span><b>Duração</b> 15–20 min</span><span><b>Conduz</b> Karol</span></div>
+      <ul>
+        <li><b>Pendências:</b> o que ficou pra trás de ontem e por quê</li>
+        <li><b>Grupos de WhatsApp:</b> algum cliente pegando fogo? algo pra responder com urgência?</li>
+        <li><b>Temperatura:</b> algum cliente mudou de cor? entrou em risco/atenção?</li>
+        <li><b>Ação de temperatura:</b> o que precisa acontecer hoje pra tirar um cliente de uma temperatura ruim</li>
+        <li><b>Prioridades do dia:</b> as contas e tasks que cada gestor toca hoje</li>
+        <li><b>Bloqueios:</b> o que trava a entrega e precisa da Karol pra destravar</li>
+      </ul>
+    </div>
+    <div class="note"><b>Regra da daily:</b> se a conversa virar "como faço X tecnicamente", sai da daily e vira 1:1 ou dúvida direta. A daily é pra alinhar e desbloquear o time todo, não pra resolver conta.</div>
+  </section>
+
+  <!-- 06 -->
+  <section id="1a1">
+    <div class="sec-head"><span class="sec-num">06</span><h2>One-a-one — quem, quando e o quê</h2></div>
+    <p class="sec-sub">Você estava certo em parte: você faz 1:1 — mas com a Karol, não com o time. São dois níveis, e é isso que te mantém CEO sem sair de perto da operação.</p>
+    <div class="twobox">
+      <div class="box">
+        <div class="lvl j">Nível 1 · liderança</div>
+        <h3 style="margin-top:0">João ↔ Karol</h3>
+        <div class="meta"><span><b>Quem</b> João conduz</span><span><b>Quando</b> quinzenal · 30–45 min</span></div>
+        <ul>
+          <li>Como ela está — pessoal e profissional</li>
+          <li>Indicadores do squad: churn, renovação, temperatura</li>
+          <li>Onde ela precisa de você pra decidir (verba, contrato, contratação)</li>
+          <li>Desenvolvimento dela como Head</li>
+          <li>Fecha com CPC: começar / parar / continuar</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="lvl k">Nível 2 · operação</div>
+        <h3 style="margin-top:0">Karol ↔ gestores</h3>
+        <div class="meta"><span><b>Quem</b> Karol conduz</span><span><b>Quando</b> quinzenal · 30 min</span></div>
+        <ul>
+          <li>Como está a carga (nº de contas, saturação)</li>
+          <li>Dificuldades técnicas e desenvolvimento (trilha PDI)</li>
+          <li>Feedback sobre entrega e qualidade</li>
+          <li>Bem-estar e motivação</li>
+          <li>Fecha com CPC: começar / parar / continuar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note"><b>Por que você não faz 1:1 com o Miguel:</b> se você fizer, o Miguel volta a te ter como referência e você volta pra operação. Você cuida da Karol; a Karol cuida do time. É essa cadeia que te tira do meio.</div>
+  </section>
+
+  <!-- 07 -->
+  <section id="cliente" style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Rotina de clientes</h2></div>
+    <p class="sec-sub">Ancorada nos seus templates do ClickUp. A entrada é da Karol; a entrega recorrente é do gestor.</p>
+
+    <h3>Onboarding &amp; kickoff <span class="grounded">template: [EA] Entrada de Cliente</span></h3>
+    <p>As suas 7 etapas, agora com dono definido no handoff Karol → gestor:</p>
+    <div class="steps">
+      <div class="stp"><div class="n"></div><div class="body"><div class="h">Briefing <span class="chip k">Karol</span></div><p>Captura o cliente e a linha de base — o "antes" (faturamento, vendas/mês, leads, ticket, objetivo 6 meses).</p></div></div>
+      <div class="stp"><div class="n"></div><div class="body"><div class="h">Call de onboarding &amp; acessos <span class="chip k">Karol</span></div><p>Primeira reunião com o cliente, alinhamento de expectativa, coleta de acessos.</p></div></div>
+      <div class="stp"><div class="n"></div><div class="body"><div class="h">Setup de contas <span class="chip g">Gestor</span></div><p>A conta é passada pro gestor, que faz a configuração técnica (BM, pixel, tracking).</p></div></div>
+      <div class="stp"><div class="n"></div><div class="body"><div class="h">Planejamento estratégico <span class="chip k">Karol</span></div><p>Karol monta e apresenta a estratégia ao cliente; o gestor alimenta com o técnico.</p></div></div>
+      <div class="stp"><div class="n"></div><div class="body"><div class="h">Campanhas &amp; go live <span class="chip g">Gestor</span></div><p>O gestor sobe as primeiras campanhas e coloca no ar.</p></div></div>
+      <div class="stp"><div class="n"></div><div class="body"><div class="h">Controles internos <span class="chip g">Gestor</span><span class="chip k">Karol</span></div><p>Cliente entra na planilha de otimização, no mapa de temperatura e na rotina.</p></div></div>
+      <div class="stp"><div class="n"></div><div class="body"><div class="h">Relatórios <span class="chip a">Autom.</span></div><p>A análise semanal automática passa a cair no grupo do cliente.</p></div></div>
+    </div>
+
+    <h3>Otimização semanal <span class="grounded">template: [Otimização Semanal]</span></h3>
+    <p>Rotina do <span class="chip g" style="vertical-align:middle">Gestor</span>, por conta, toda semana:</p>
+    <div class="checklist">
+      <div class="h">Fluxo da semana</div>
+      <ul>
+        <li>Diagnóstico: CPL semana vs. anterior, volume vs. meta, qualidade do lead</li>
+        <li>Sinais de alerta: ↑CPL &gt;20% por 3 dias; tracking/automação ok</li>
+        <li>Classificar criativos no RAG: 🔴 pausar · 🟡 monitorar · 🟢 escalar</li>
+        <li>Meta Ads: 2 criativos ativos (teste AB), pausar grupos acima da média</li>
+        <li>Google Ads: recomendações &gt;80%, negativas, palavras vencedoras</li>
+        <li>Novos testes: 1 criativo, 1 público, 1 variação de campanha</li>
+        <li>Feedback: atualizar a jornada do cliente</li>
+        <li>Relatório semanal enviado (automação)</li>
+      </ul>
+    </div>
+
+    <h3>Criativo &amp; oferta <span class="grounded">template: [Criativo &amp; Oferta Semanal]</span></h3>
+    <p>Também do <span class="chip g" style="vertical-align:middle">Gestor</span> — a máquina de alimentar a conta com criativo novo:</p>
+    <div class="checklist">
+      <div class="h">Campeão → oferta → briefing → validação</div>
+      <ul>
+        <li>Campeão: identificar o melhor CTR/CPL e replicar via Post ID</li>
+        <li>Campeão em cansaço (CTR ↓≥30% / CPL ↑≥30%) → priorizar substituto</li>
+        <li>Garantir que a conta nunca fica sem campeão ativo</li>
+        <li>Descoberta de oferta: molde OPV (Oferta → Prova → Visita)</li>
+        <li>Briefing: vídeo narrado (designer), imagem, vídeo 1ª pessoa (cliente)</li>
+        <li>Nomear criativo {FORMATO}_{Ângulo}_v{N}; não repetir reprovado 2×</li>
+        <li>Validação: aprovar (CTR ≥1,5% · CPL ≤ média · Hook ≥25%)</li>
+        <li>Feedback do comercial → ajuste de oferta pro próximo briefing</li>
+      </ul>
+    </div>
+
+    <div class="note"><b>O que muda de dono na sua estrutura nova:</b> a task de <b>Criativo &amp; Oferta sai da lista da Karol e vai pro gestor da conta</b> (hoje ela está na "A. GESTORA KAROL [OTMZ]"). E o passo "preencher planilha de vendas" continua existindo, mas a <b>cobrança relacional</b> quando o cliente não preenche vira da Karol, dentro da quinzenal.</div>
+
+    <footer>
+      <span>EMPRESATIVA · MANUAL OPERACIONAL DO SQUAD · AGO 2026</span>
+      <span>ANCORADO NOS TEMPLATES DO CLICKUP</span>
+    </footer>
+  </section>
+</div>
+
+<script>
+  const pills=document.querySelectorAll('.nav-pills a');
+  const secs=[...document.querySelectorAll('section[id]')];
+  const map={};pills.forEach(p=>map[p.getAttribute('href').slice(1)]=p);
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){pills.forEach(p=>p.classList.remove('active'));map[e.target.id]?.classList.add('active')}}),{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
