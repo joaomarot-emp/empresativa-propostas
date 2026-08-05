@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Autonomia — Coordenação de Tráfego · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e100c;
+    --panel:#15180f;
+    --panel-2:#191d12;
+    --line:#2a2c22;
+    --line-soft:#22241b;
+    --ink:#f4f4f2;
+    --ink-mid:#c7c5ba;
+    --ink-dim:#8c8a7d;
+    --brand:#b5653a;
+    --brand-soft:#d0885a;
+    --go:#7ba05b;        /* decide */
+    --go-bg:rgba(123,160,91,.10);
+    --warn:#c9a44a;      /* decide e avisa */
+    --warn-bg:rgba(201,164,74,.10);
+    --stop:#c24a38;      /* consulta */
+    --stop-bg:rgba(194,74,56,.10);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(181,101,58,.10), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding:0 20px 90px;
+  }
+  .wrap{max-width:920px;margin:0 auto}
+
+  /* ---------- Header ---------- */
+  header{padding:56px 0 30px;border-bottom:1px solid var(--line-soft)}
+  .brand-mark{
+    font-family:"IBM Plex Mono",monospace;
+    font-weight:600;font-size:13px;letter-spacing:.28em;
+    color:var(--brand);text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+  }
+  .brand-mark::before{content:"";width:26px;height:2px;background:var(--brand);display:inline-block}
+  h1{
+    font-family:"Poppins",sans-serif;font-weight:800;
+    font-size:clamp(30px,6vw,52px);line-height:1.02;
+    letter-spacing:-.02em;margin:20px 0 14px;
+  }
+  h1 .em{color:var(--brand)}
+  .sub{font-size:16px;color:var(--ink-mid);max-width:60ch}
+  .meta-line{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;
+    color:var(--ink-dim);letter-spacing:.02em;
+  }
+  .meta-line b{color:var(--ink-mid);font-weight:500}
+
+  /* ---------- Principle banner ---------- */
+  .principle{
+    margin:30px 0 8px;padding:22px 24px;
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-left:3px solid var(--brand);
+    border-radius:var(--radius);
+  }
+  .principle .kicker{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--brand-soft);margin-bottom:8px;
+  }
+  .principle p{font-size:17px;color:var(--ink);font-weight:500}
+  .principle p b{color:var(--brand-soft);font-weight:600}
+
+  /* ---------- Legend ---------- */
+  .legend{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0 10px}
+  .leg{
+    background:var(--panel);border:1px solid var(--line-soft);
+    border-radius:var(--radius);padding:16px 16px 15px;
+  }
+  .leg .tag{margin-bottom:10px}
+  .leg h3{font-family:"Poppins";font-size:15px;font-weight:700;margin-bottom:4px}
+  .leg p{font-size:13px;color:var(--ink-dim);line-height:1.45}
+
+  /* ---------- Filter ---------- */
+  .filter{
+    display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 6px;
+    position:sticky;top:0;z-index:5;
+    padding:14px 0;background:linear-gradient(180deg,var(--bg) 70%,transparent);
+  }
+  .filter .lbl{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-dim);align-self:center;margin-right:4px;
+  }
+  .fbtn{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+    background:var(--panel);color:var(--ink-mid);
+    border:1px solid var(--line);border-radius:999px;
+    padding:7px 14px;cursor:pointer;transition:all .15s ease;letter-spacing:.02em;
+  }
+  .fbtn:hover{border-color:var(--ink-dim);color:var(--ink)}
+  .fbtn.active{background:var(--ink);color:#111;border-color:var(--ink)}
+  .fbtn[data-f="go"].active{background:var(--go);border-color:var(--go)}
+  .fbtn[data-f="warn"].active{background:var(--warn);border-color:var(--warn)}
+  .fbtn[data-f="stop"].active{background:var(--stop);border-color:var(--stop);color:#fff}
+  .fbtn:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+
+  /* ---------- Domain sections ---------- */
+  section.domain{margin-top:26px}
+  .dom-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px}
+  .dom-num{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    color:var(--brand);letter-spacing:.05em;
+  }
+  .dom-head h2{font-family:"Poppins";font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .card{
+    background:var(--panel);border:1px solid var(--line-soft);
+    border-radius:var(--radius);overflow:hidden;
+  }
+  .row{
+    display:flex;align-items:center;gap:16px;
+    padding:15px 20px;border-top:1px solid var(--line-soft);
+  }
+  .row:first-child{border-top:none}
+  .row .txt{flex:1;font-size:15px;color:var(--ink-mid)}
+  .row .txt b{color:var(--ink);font-weight:600}
+  .row.hide{display:none}
+
+  /* ---------- Tier chip ---------- */
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 11px;border-radius:7px;white-space:nowrap;
+    display:inline-flex;align-items:center;gap:7px;flex-shrink:0;
+  }
+  .tag::before{content:"";width:7px;height:7px;border-radius:50%}
+  .tag.go{color:var(--go);background:var(--go-bg);border:1px solid rgba(123,160,91,.3)}
+  .tag.go::before{background:var(--go)}
+  .tag.warn{color:var(--warn);background:var(--warn-bg);border:1px solid rgba(201,164,74,.3)}
+  .tag.warn::before{background:var(--warn)}
+  .tag.stop{color:var(--stop);background:var(--stop-bg);border:1px solid rgba(194,74,56,.3)}
+  .tag.stop::before{background:var(--stop)}
+
+  /* ---------- Golden rule ---------- */
+  .goldrule{
+    margin-top:40px;padding:28px;border-radius:var(--radius);
+    background:var(--panel-2);border:1px solid var(--line);
+  }
+  .goldrule h2{font-family:"Poppins";font-size:20px;font-weight:700;margin-bottom:6px}
+  .goldrule .lead{color:var(--ink-dim);font-size:14px;margin-bottom:20px}
+  .tests{display:grid;gap:12px}
+  .test{display:flex;gap:14px;align-items:flex-start}
+  .test .n{
+    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;
+    color:var(--brand);border:1px solid var(--line);border-radius:8px;
+    min-width:30px;height:30px;display:grid;place-items:center;flex-shrink:0;
+  }
+  .test p{font-size:15px;color:var(--ink-mid)}
+  .test p b{color:var(--ink)}
+  .test .out{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600}
+  .out.go{color:var(--go)} .out.warn{color:var(--warn)} .out.stop{color:var(--stop)}
+
+  /* ---------- Progressive note ---------- */
+  .progressive{
+    margin-top:20px;padding:22px 24px;border-radius:var(--radius);
+    border:1px dashed var(--line);background:transparent;
+  }
+  .progressive .kicker{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px;
+  }
+  .progressive p{font-size:15px;color:var(--ink-mid);margin-bottom:8px}
+  .progressive p:last-child{margin-bottom:0}
+  .arrow-flow{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    margin:14px 0 4px;
+  }
+  .arrow-flow .stop{color:var(--stop)} .arrow-flow .warn{color:var(--warn)} .arrow-flow .go{color:var(--go)}
+  .arrow-flow span.a{color:var(--ink-dim)}
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:44px;padding-top:22px;border-top:1px solid var(--line-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-dim);
+    letter-spacing:.03em;
+  }
+
+  @media(max-width:640px){
+    .legend{grid-template-columns:1fr}
+    .row{flex-direction:column;align-items:flex-start;gap:10px}
+    .row .tag{align-self:flex-start}
+    header{padding-top:42px}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media print{
+    body{background:#fff;color:#111;padding:0}
+    .filter{display:none}
+    .card,.leg,.principle,.goldrule,.progressive{border-color:#ccc;background:#fff}
+    .row{border-color:#eee}
+    h1,.dom-head h2,.goldrule h2{color:#111}
+    .brand-mark,.dom-num{color:#c65200}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand-mark">EmpresAtiva Digital</div>
+    <h1>Manual de <span class="em">Autonomia</span><br>da Coordenação de Tráfego</h1>
+    <p class="sub">O mapa de decisão entre <b style="color:var(--ink)">Karol (Coordenadora)</b> e <b style="color:var(--ink)">João (Estratégia + Comercial)</b>. Serve pra uma coisa só: deixar claro o que a Karol resolve sozinha, o que ela resolve te avisando, e o que sobe pra você antes de acontecer.</p>
+    <div class="meta-line">
+      <span><b>Versão</b> 1.0</span>
+      <span><b>Vigência</b> Julho / 2026</span>
+      <span><b>Próxima revisão</b> +30 dias</span>
+      <span><b>Time</b> João · Karol · Miguel</span>
+    </div>
+  </header>
+
+  <div class="principle">
+    <div class="kicker">O princípio que sustenta tudo</div>
+    <p>Autonomia não é ausência de comunicação. A Karol <b>decide sozinha</b> — mas o João <b>nunca é pego de surpresa</b>. Quando a dúvida for entre avisar e não avisar, sempre avisa. Visibilidade nunca é erro.</p>
+  </div>
+
+  <div class="legend">
+    <div class="leg">
+      <span class="tag go">Decide</span>
+      <h3>Resolve e executa</h3>
+      <p>Autonomia total. Nem precisa avisar. É rotina, é reversível e está dentro do contrato.</p>
+    </div>
+    <div class="leg">
+      <span class="tag warn">Decide e avisa</span>
+      <h3>Executa, dá visibilidade</h3>
+      <p>Ela age na hora, mas te deixa a par. Tem impacto, mas dá pra gerenciar depois.</p>
+    </div>
+    <div class="leg">
+      <span class="tag stop">Consulta</span>
+      <h3>Fala com você antes</h3>
+      <p>Mexe em dinheiro, contrato ou relação com cliente — ou é exceção. Alinha antes de agir.</p>
+    </div>
+  </div>
+
+  <div class="filter" role="group" aria-label="Filtrar por nível de decisão">
+    <span class="lbl">Filtrar</span>
+    <button class="fbtn active" data-f="all">Tudo</button>
+    <button class="fbtn" data-f="go">Decide</button>
+    <button class="fbtn" data-f="warn">Decide e avisa</button>
+    <button class="fbtn" data-f="stop">Consulta</button>
+  </div>
+
+  <!-- 1 -->
+  <section class="domain">
+    <div class="dom-head"><span class="dom-num">01</span><h2>Campanhas &amp; Otimização</h2></div>
+    <div class="card">
+      <div class="row" data-tier="go"><span class="txt">Pausar/ativar anúncio, trocar criativo, ajustar público e segmentação</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="go"><span class="txt">Rodar a <b>otimização semanal e mensal</b> padrão (método FOCO / BEAUTY)</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="go"><span class="txt">Realocar verba <b>entre campanhas do mesmo cliente</b>, dentro do total contratado</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="warn"><span class="txt">Reestruturar a conta ou mudar o objetivo de campanha de um cliente</span><span class="tag warn">Decide e avisa</span></div>
+      <div class="row" data-tier="warn"><span class="txt">Pausar <b>toda</b> a operação de um cliente por problema grave (conta suspensa, bug de rastreio)</span><span class="tag warn">Decide e avisa</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Testar canal ou plataforma <b>não contratada</b> pelo cliente</span><span class="tag stop">Consulta</span></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="domain">
+    <div class="dom-head"><span class="dom-num">02</span><h2>Verba &amp; Orçamento</h2></div>
+    <div class="card">
+      <div class="row" data-tier="go"><span class="txt">Ajuste diário de verba <b>dentro do orçamento contratado</b></span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="go"><span class="txt">Reduzir gasto de uma campanha que não está performando (dentro do contratado)</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Cliente <b>pede</b> pra mudar a verba (pra cima ou pra baixo)</span><span class="tag stop">Consulta</span></div>
+      <div class="row" data-tier="stop"><span class="txt"><b>Propor</b> ao cliente que ele aumente a verba — isso é comercial, é seu</span><span class="tag stop">Consulta</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Gastar acima do orçamento combinado — <b>nunca</b> sozinha</span><span class="tag stop">Consulta</span></div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="domain">
+    <div class="dom-head"><span class="dom-num">03</span><h2>Clientes &amp; Relacionamento</h2></div>
+    <div class="card">
+      <div class="row" data-tier="go"><span class="txt">Responder dúvida operacional e dar retorno de rotina ao cliente</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="go"><span class="txt">Resolver reclamação simples e pontual</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="warn"><span class="txt">Prometer uma entrega nova ao cliente, desde que dentro do escopo e da capacidade do time</span><span class="tag warn">Decide e avisa</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Cliente demonstra insatisfação séria ou fala em <b>cancelar</b> — te chama na hora</span><span class="tag stop">Consulta</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Cliente pede algo <b>fora do escopo</b> contratado</span><span class="tag stop">Consulta</span></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="domain">
+    <div class="dom-head"><span class="dom-num">04</span><h2>Time (Miguel)</h2></div>
+    <div class="card">
+      <div class="row" data-tier="go"><span class="txt">Distribuir e priorizar a fila de trabalho do Miguel</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="go"><span class="txt">Revisar o trabalho dele e conduzir o <b>1:1 semanal</b></span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="warn"><span class="txt">Aprovar folga ou ausência pontual do Miguel</span><span class="tag warn">Decide e avisa</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Decidir que o Miguel está pronto pra assumir <b>carteira própria</b></span><span class="tag stop">Consulta</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Contratar, desligar ou aplicar advertência formal — <b>nunca</b> sozinha</span><span class="tag stop">Consulta</span></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="domain">
+    <div class="dom-head"><span class="dom-num">05</span><h2>Automação &amp; Stack (n8n)</h2></div>
+    <div class="card">
+      <div class="row" data-tier="go"><span class="txt">Rodar e monitorar os fluxos existentes (análise 4.2.1, alertas diários, pipeline de CRM)</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="go"><span class="txt"><b>Destravar pendência conhecida:</b> renovar token, reconectar instância do WhatsApp (QR), rodar o batch</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="warn"><span class="txt">Ajuste pequeno num fluxo existente que ela domina</span><span class="tag warn">Decide e avisa</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Criar fluxo novo ou mudar a arquitetura de automação — <b>o build continua seu</b></span><span class="tag stop">Consulta</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Fluxo quebrou e ela não sabe destravar — te chama</span><span class="tag stop">Consulta</span></div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="domain">
+    <div class="dom-head"><span class="dom-num">06</span><h2>GBP &amp; SEO Local</h2></div>
+    <div class="card">
+      <div class="row" data-tier="go"><span class="txt">Gestão de rotina do perfil: posts, otimização, respostas comuns</span><span class="tag go">Decide</span></div>
+      <div class="row" data-tier="warn"><span class="txt">Responder <b>avaliação negativa</b> de um cliente (é a reputação dele em jogo)</span><span class="tag warn">Decide e avisa</span></div>
+      <div class="row" data-tier="warn"><span class="txt">Mudança estrutural na estratégia de GBP de um cliente</span><span class="tag warn">Decide e avisa</span></div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="domain">
+    <div class="dom-head"><span class="dom-num">07</span><h2>Financeiro &amp; Contrato</h2></div>
+    <div class="card">
+      <div class="row" data-tier="stop"><span class="txt">Qualquer coisa que toque <b>valor de contrato</b>, desconto ou cobrança</span><span class="tag stop">Consulta</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Cliente reclama de cobrança ou quer renegociar</span><span class="tag stop">Consulta</span></div>
+      <div class="row" data-tier="stop"><span class="txt">Contratar ferramenta nova ou gerar qualquer custo recorrente pra agência</span><span class="tag stop">Consulta</span></div>
+    </div>
+  </section>
+
+  <!-- Golden rule -->
+  <div class="goldrule">
+    <h2>Zona cinza: a regra de ouro</h2>
+    <p class="lead">Nenhuma lista cobre tudo. Quando aparecer algo que não está aqui, a Karol resolve com três perguntas — nesta ordem:</p>
+    <div class="tests">
+      <div class="test">
+        <span class="n">1</span>
+        <p><b>É reversível e está dentro do contrato?</b> Se sim, ela decide. <span class="out go">→ Decide</span></p>
+      </div>
+      <div class="test">
+        <span class="n">2</span>
+        <p><b>Mexe em dinheiro, contrato ou na relação com o cliente?</b> Se sim, sobe pro João antes. <span class="out stop">→ Consulta</span></p>
+      </div>
+      <div class="test">
+        <span class="n">3</span>
+        <p><b>Ficou na dúvida entre avisar ou não?</b> Avisa. Sempre. <span class="out warn">→ Decide e avisa</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progressive -->
+  <div class="progressive">
+    <div class="kicker">Este documento é vivo</div>
+    <p>A meta não é congelar essa lista — é <b style="color:var(--ink)">esvaziar o vermelho com o tempo</b>. A cada revisão, um ou dois itens sobem de nível conforme a confiança e a autonomia da Karol crescem.</p>
+    <div class="arrow-flow">
+      <span class="stop">Consulta</span><span class="a">──▸</span><span class="warn">Decide e avisa</span><span class="a">──▸</span><span class="go">Decide</span>
+    </div>
+    <p>Na revisão dos 30 dias, olhem juntos: <b style="color:var(--ink)">o que funcionou tão bem que já pode virar autonomia?</b> Isso é o termômetro real de que o João está saindo da operação.</p>
+  </div>
+
+  <footer>
+    <span>EMPRESATIVA DIGITAL · MANUAL DE AUTONOMIA V1.0</span>
+    <span>REVISAR EM AGOSTO / 2026</span>
+  </footer>
+
+</div>
+
+<script>
+  const btns = document.querySelectorAll('.fbtn');
+  const rows = document.querySelectorAll('.row[data-tier]');
+  const sections = document.querySelectorAll('section.domain');
+  btns.forEach(b=>{
+    b.addEventListener('click',()=>{
+      btns.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const f = b.dataset.f;
+      rows.forEach(r=>{
+        r.classList.toggle('hide', !(f==='all' || r.dataset.tier===f));
+      });
+      // esconde seção que ficou sem linhas visíveis
+      sections.forEach(s=>{
+        const visible = s.querySelectorAll('.row:not(.hide)').length;
+        s.style.display = visible ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
