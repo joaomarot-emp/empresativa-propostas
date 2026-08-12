@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Grupo MV3</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--green-light:#2A5C35;--green-mid:#1F4529;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+/* STICKY */
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"GRUPO MV3";position:absolute;top:50%;right:-20px;transform:translateY(-50%) rotate(90deg);font-size:clamp(60px,14vw,140px);font-weight:900;color:rgba(23,53,31,0.15);letter-spacing:0.1em;white-space:nowrap;pointer-events:none;line-height:1;}
+.hero-kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:18px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.hero-kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(32px,9vw,72px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 span.t{color:var(--terra);}
+.hero h1 span.g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+/* SEÇÕES */
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+.bg-green{background:var(--green);}
+.bg-green-mid{background:var(--green-mid);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+
+.sec-kicker{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sec-kicker::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+.sec-title{font-size:clamp(28px,7vw,52px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+.sec-title .t{color:var(--terra);}
+.sec-title .g{color:#4CAF72;}
+.sec-intro{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;font-weight:400;}
+
+/* BOXES */
+.t-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:26px;border-radius:2px;margin-bottom:14px;}
+.t-box h3{font-size:15px;font-weight:800;color:var(--terra);margin-bottom:9px;letter-spacing:-.01em;}
+.t-box p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.t-box p strong{color:var(--offwhite);font-weight:600;}
+
+.g-box{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:26px;border-radius:2px;margin-bottom:14px;}
+.g-box h3{font-size:15px;font-weight:800;color:#4CAF72;margin-bottom:9px;letter-spacing:-.01em;}
+.g-box p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.g-box p strong{color:var(--offwhite);font-weight:600;}
+
+.d-box{background:rgba(244,244,240,.03);border:1px solid var(--border);padding:26px;border-radius:2px;margin-bottom:14px;}
+.d-box h3{font-size:15px;font-weight:800;color:var(--offwhite);margin-bottom:9px;letter-spacing:-.01em;}
+.d-box p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.d-box p strong{color:var(--offwhite);font-weight:600;}
+
+/* ROI TABLE */
+.roi-row{display:flex;gap:2px;margin-bottom:2px;}
+.roi-cell{background:var(--card);padding:14px 18px;flex:1;min-width:0;}
+.roi-cell.h{background:var(--green-mid);flex:1.4;}
+.roi-cell.t{background:rgba(181,101,58,.07);border-left:2px solid var(--terra);}
+.roi-cell.g{background:rgba(23,53,31,.5);border-left:2px solid var(--green-light);}
+.roi-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+.roi-val{font-size:17px;font-weight:800;color:var(--offwhite);letter-spacing:-.01em;}
+.roi-desc{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5;font-weight:400;}
+.roi-val.t-c{color:var(--terra);}
+.roi-val.g-c{color:#4CAF72;}
+
+/* ESTRATEGIA GRID */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.est-item{background:var(--card);padding:20px 22px;display:flex;gap:16px;align-items:flex-start;}
+.est-item.t-hl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.est-item.g-hl{background:rgba(23,53,31,.4);border-left:2px solid var(--green-light);}
+.est-icon{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.t-ic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.g-ic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.d-ic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.est-item h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.est-item p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+.tag{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.14em;padding:2px 7px;border-radius:2px;margin-left:7px;text-transform:uppercase;}
+.tag-t{background:rgba(181,101,58,.1);color:var(--terra);border:1px solid rgba(181,101,58,.2);}
+.tag-g{background:rgba(59,130,246,.1);color:#5B9CF6;border:1px solid rgba(59,130,246,.2);}
+.tag-b{background:rgba(23,53,31,.4);color:#4CAF72;border:1px solid rgba(42,92,53,.3);}
+
+/* PLANOS — DOIS CARDS LADO A LADO NO DESKTOP */
+.planos-wrap{display:flex;flex-direction:column;gap:16px;}
+.plano-card{border-radius:4px;overflow:hidden;position:relative;}
+.plano-card::before{content:"";display:block;height:4px;}
+.pc-base::before{background:linear-gradient(90deg,var(--terra),#A05030);}
+.pc-arq::before{background:linear-gradient(90deg,var(--green-light),var(--terra),var(--green-light));}
+.pc-base{background:var(--black);border:1px solid rgba(181,101,58,.28);}
+.pc-arq{background:var(--green);border:1px solid rgba(42,92,53,.45);}
+.pc-body{padding:30px 26px;}
+.pc-kicker{font-size:8px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin-bottom:12px;}
+.pc-base .pc-kicker{color:var(--terra);}
+.pc-arq .pc-kicker{color:#4CAF72;}
+.pc-badge{position:absolute;top:18px;right:18px;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:2px;}
+.pc-arq .pc-badge{background:rgba(181,101,58,.15);color:var(--terra);border:1px solid rgba(181,101,58,.25);}
+.pc-price{font-size:56px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:4px;}
+.pc-base .pc-price{color:var(--offwhite);}
+.pc-arq .pc-price{color:var(--offwhite);}
+.pc-period{font-size:12px;color:var(--muted);margin-bottom:22px;font-weight:400;}
+.pc-sep{height:1px;background:rgba(244,244,240,.08);margin:20px 0;}
+.pc-includes h4{font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin-bottom:14px;}
+.pc-base .pc-includes h4{color:var(--muted);}
+.pc-arq .pc-includes h4{color:rgba(244,244,240,.5);}
+.pc-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+.pc-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.pc-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;}
+.pc-base .pc-ul li::before{color:var(--terra);}
+.pc-arq .pc-ul li::before{color:#4CAF72;}
+.pc-addons h4{font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin-bottom:12px;}
+.pc-base .pc-addons h4{color:var(--terra);}
+.pc-arq .pc-addons h4{color:#4CAF72;}
+.pc-addon-list{display:flex;flex-direction:column;gap:2px;}
+.pc-addon{background:rgba(244,244,240,.03);padding:10px 14px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;font-weight:400;}
+.pc-addon span{font-weight:600;color:var(--offwhite);}
+.pc-note{font-size:11px;color:var(--muted);line-height:1.7;padding:14px;background:rgba(244,244,240,.03);border:1px solid var(--border);border-radius:2px;font-weight:400;}
+.pc-not-inc{background:rgba(244,244,240,.02);border:1px solid rgba(244,244,240,.06);padding:12px 14px;margin-top:10px;border-radius:2px;}
+.pc-not-inc p{font-size:11px;color:var(--muted);font-weight:400;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 38px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:7px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+/* FOOTER */
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(28px,7vw,48px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .planos-wrap{flex-direction:row;align-items:flex-start;}
+  .plano-card{flex:1;min-width:0;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+  .roi-row{gap:3px;}.roi-cell{padding:16px 20px;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20Grupo%20MV3%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">EmpresAtiva Digital &middot; Tráfego B2B &middot; Grupo MV3</div>
+  <h1>100 leads.<br>3 vendas.<br><span class="t">Isso acaba</span><br><span class="g">agora.</span></h1>
+  <p class="hero-sub">Felipe, analisamos ao vivo a situa&ccedil;&atilde;o do Grupo MV3: CAC atual de R$ 533 por venda, intelig&ecirc;ncia do Meta "suja" com leads desqualificados e nenhuma presen&ccedil;a no Google Ads — o canal que captura quem j&aacute; quer comprar. A EmpresAtiva reestrutura tudo isso com uma estrat&eacute;gia B2B cirúrgica.</p>
+  <div class="hero-pills">
+    <div class="hp"><s1>Empresa</s1><s2>Grupo MV3</s2></div>
+    <div class="hp"><s1>Segmento</s1><s2>B2B &middot; Material de Limpeza</s2></div>
+    <div class="hp"><s1>CAC atual</s1><s2>R$ 533/venda</s2></div>
+    <div class="hp"><s1>Meta CAC</s1><s2>R$ 100/venda (Google)</s2></div>
+    <div class="hp"><s1>Atuação</s1><s2>Estado do RJ</s2></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sec-kicker">Diagn&oacute;stico &mdash; o que estava quebrando o resultado</div>
+  <h2 class="sec-title">O problema<br>n&atilde;o era<br><span class="t">o mercado.</span></h2>
+  <p class="sec-intro">Fizemos uma auditoria ao vivo durante a nossa reuni&atilde;o. O diagn&oacute;stico &eacute; claro — e revers&iacute;vel.</p>
+
+  <div class="t-box">
+    <h3>Leads desqualificados contaminando o algoritmo</h3>
+    <p>Quando 100 leads chegam mas s&oacute; 3 compram, o Meta aprende que esse &eacute; o "perfil de cliente" e vai buscar mais pessoas iguais. <strong>A intelig&ecirc;ncia da plataforma fica suja — e continua entregando os mesmos leads que n&atilde;o convertem, num loop sem fim.</strong> A EmpresAtiva devolve ao Meta e ao Google apenas dados de quem realmente comprou, ensinando o algoritmo a buscar mais gente como elas.</p>
+  </div>
+
+  <div class="t-box">
+    <h3>Formulário sem filtro — todo mundo virava lead</h3>
+    <p>Pessoa f&iacute;sica, pessoas pedindo emprego, concorrentes pesquisando pre&ccedil;o — todos viravam lead e chegavam para o time comercial gastar energia. <strong>A EmpresAtiva implementa formulário condicional: quem responde "pessoa f&iacute;sica" &eacute; descartado antes de virar lead.</strong> S&oacute; empresa com potencial real chega para o comercial.</p>
+  </div>
+
+  <div class="g-box">
+    <h3>Google Ads ausente — o canal de inten&ccedil;&atilde;o de compra B2B inexplorado</h3>
+    <p>Quem pesquisa "saco de lixo 200L" ou "desincrustante gordura carbonizada" no Google j&aacute; &eacute; empresa, j&aacute; precisa do produto e j&aacute; quer comprar. <strong>Com CAC estimado de R$ 100 vs R$ 533 atual — 5x mais eficiente. E o Grupo MV3 ainda n&atilde;o est&aacute; l&aacute;.</strong></p>
+  </div>
+
+  <div class="t-box">
+    <h3>GBP de Duque de Caxias inexistente</h3>
+    <p>O perfil do Google Meu Neg&oacute;cio existe s&oacute; em IItaboraí. <strong>Quem pesquisa "fornecedor saco de lixo Duque de Caxias" n&atilde;o encontra o Grupo MV3 no mapa — e vai para o concorrente que est&aacute; l&aacute;.</strong> Corre&ccedil;&atilde;o imediata j&aacute; est&aacute; no escopo.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-black">
+  <div class="sec-kicker">A estrat&eacute;gia &mdash; Google + Meta + Conteúdo</div>
+  <h2 class="sec-title">Dois canais.<br>Uma l&oacute;gica:<br><span class="g">inten&ccedil;&atilde;o</span> + <span class="t">aten&ccedil;&atilde;o.</span></h2>
+  <p class="sec-intro">Google captura quem j&aacute; quer comprar. Meta ativa quem ainda n&atilde;o percebeu que precisa. Os dois juntos multiplicam o volume de leads qualificados sem aumentar o desperd&iacute;cio.</p>
+
+  <div class="est-grid">
+    <div class="est-item t-hl">
+      <div class="est-icon t-ic">🔍</div>
+      <div>
+        <h3>Google Ads — keywords B2B espec&iacute;ficas<span class="tag tag-g">Google</span></h3>
+        <p>"Saco de lixo 200L", "papel interfolha atacado", "desincrustante gordura carbonizada" — quem pesquisa isso &eacute; empresa. CPL estimado R$ 30, CAC ~R$ 100.</p>
+      </div>
+    </div>
+    <div class="est-item">
+      <div class="est-icon t-ic">📣</div>
+      <div>
+        <h3>Meta Ads — dor do comprador B2B<span class="tag tag-t">Meta</span></h3>
+        <p>"Dono de restaurante, voc&ecirc; sabe quanto gasta com limpeza por m&ecirc;s?" Ativa quem ainda n&atilde;o est&aacute; pesquisando, mas vai querer comprar quando ver a oferta certa.</p>
+      </div>
+    </div>
+    <div class="est-item">
+      <div class="est-icon d-ic">📋</div>
+      <div>
+        <h3>Formul&aacute;rio condicional — filtro antes do lead<span class="tag tag-t">Meta</span></h3>
+        <p>Pessoa f&iacute;sica &eacute; descartada automaticamente antes de virar lead. S&oacute; empresa com CNPJ passa. Time comercial s&oacute; recebe quem tem potencial real.</p>
+      </div>
+    </div>
+    <div class="est-item">
+      <div class="est-icon g-ic">🖥️</div>
+      <div>
+        <h3>Landing pages por produto<span class="tag tag-g">Google</span></h3>
+        <p>Cada keyword tem uma LP dedicada: "saco de lixo 200L" leva para p&aacute;gina s&oacute; sobre saco de lixo 200L. Coer&ecirc;ncia total — taxa de convers&atilde;o muito maior do que um site gen&eacute;rico.</p>
+      </div>
+    </div>
+    <div class="est-item">
+      <div class="est-icon g-ic">🗺️</div>
+      <div>
+        <h3>GBP Duque de Caxias criado e otimizado<span class="tag tag-b">GBP</span></h3>
+        <p>Perfil criado para Duque de Caxias e otimizado para as principais keywords do Grupo MV3. 93% das convers&otilde;es acontecem nos 3 primeiros resultados do mapa.</p>
+      </div>
+    </div>
+    <div class="est-item">
+      <div class="est-icon d-ic">📊</div>
+      <div>
+        <h3>Rastreamento completo &mdash; CAC por canal</h3>
+        <p>Todo lead rastreado por canal de origem (Meta, Google, org&acirc;nico). Dashboard em tempo real. Devolu&ccedil;&atilde;o dos dados de venda para o algoritmo. Fim da intelig&ecirc;ncia suja.</p>
+      </div>
+    </div>
+    <div class="est-item">
+      <div class="est-icon d-ic">🔔</div>
+      <div>
+        <h3>Sistema de alertas via WhatsApp</h3>
+        <p>Cada lead qualificado chega no WhatsApp comercial com nome, empresa e respostas do formul&aacute;rio. Time comercial j&aacute; sabe com quem est&aacute; falando antes de abrir a conversa.</p>
+      </div>
+    </div>
+    <div class="est-item">
+      <div class="est-icon t-ic">📱</div>
+      <div>
+        <h3>Social Media — 4 posts/m&ecirc;s<span class="tag tag-t">Add-on</span></h3>
+        <p>4 postagens mensais no Instagram: autoridade da f&aacute;brica, diferenciais dos produtos, cases de clientes. Cont&uacute;edo que refor&ccedil;a a credibilidade quando o lead pesquisa o perfil antes de comprar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ROI -->
+<section class="bg-dark">
+  <div class="sec-kicker">Potencial de ROI &mdash; comparativo real</div>
+  <h2 class="sec-title">O Google<br>pode reduzir<br>seu CAC<br>em <span class="g">5x.</span></h2>
+  <p class="sec-intro">Calculamos ao vivo durante a nossa reuni&atilde;o com base nas palavras-chave reais do Grupo MV3 no RJ.</p>
+
+  <!-- Tabela de ROI -->
+  <div style="margin-bottom:3px;">
+    <div class="roi-row">
+      <div class="roi-cell h"><div class="roi-label">M&eacute;trica</div></div>
+      <div class="roi-cell h"><div class="roi-label">Situa&ccedil;&atilde;o atual (Meta sem filtro)</div></div>
+      <div class="roi-cell h"><div class="roi-label">Com Google Ads (EmpresAtiva)</div></div>
+    </div>
+    <div class="roi-row">
+      <div class="roi-cell"><div class="roi-label">Leads por m&ecirc;s</div><div class="roi-val">100</div></div>
+      <div class="roi-cell t"><div class="roi-label">Desqualificados</div><div class="roi-val t-c">~97%</div></div>
+      <div class="roi-cell g"><div class="roi-label">Qualificados (B2B)</div><div class="roi-val g-c">~80%</div></div>
+    </div>
+    <div class="roi-row">
+      <div class="roi-cell"><div class="roi-label">CPL m&eacute;dio</div><div class="roi-val">R$ 13</div></div>
+      <div class="roi-cell t"><div class="roi-label">Custo por lead (Meta)</div><div class="roi-val t-c">R$ 13</div></div>
+      <div class="roi-cell g"><div class="roi-label">Custo por lead (Google)</div><div class="roi-val g-c">~R$ 30</div></div>
+    </div>
+    <div class="roi-row">
+      <div class="roi-cell"><div class="roi-label">Vendas/m&ecirc;s</div><div class="roi-val">3</div></div>
+      <div class="roi-cell t"><div class="roi-label">Taxa de convers&atilde;o real</div><div class="roi-val t-c">3%</div></div>
+      <div class="roi-cell g"><div class="roi-label">Taxa de convers&atilde;o estimada</div><div class="roi-val g-c">~30%</div></div>
+    </div>
+    <div class="roi-row">
+      <div class="roi-cell"><div class="roi-label">CAC</div></div>
+      <div class="roi-cell t"><div class="roi-label">Custo por cliente fechado</div><div class="roi-val t-c">R$ 533</div><div class="roi-desc">R$ 1.600 ÷ 3 vendas</div></div>
+      <div class="roi-cell g"><div class="roi-label">Custo por cliente fechado</div><div class="roi-val g-c">~R$ 100</div><div class="roi-desc">R$ 720 ÷ 7 vendas estimadas</div></div>
+    </div>
+  </div>
+
+  <div class="g-box" style="margin-top:16px;">
+    <h3>Ticket m&iacute;nimo R$ 500 — 1 venda extra j&aacute; paga a ag&ecirc;ncia</h3>
+    <p>Com ticket m&iacute;nimo de R$ 500 por pedido, <strong>2 vendas extras por m&ecirc;s j&aacute; cobrem o investimento total no Plano Base (R$1.697 ag&ecirc;ncia + R$500 em anúncios = R$2.197).</strong> O objetivo &eacute; gerar 7+ vendas qualificadas mensais — ROI de 3x ou mais no primeiro trim&ecirc;stre.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OS DOIS PLANOS -->
+<section class="bg-black">
+  <div class="sec-kicker">Dois planos &mdash; escolha o que faz sentido agora</div>
+  <h2 class="sec-title">Base ou<br>Arquitetura.<br><span class="t">Ambos entregam</span><br><span class="g">resultado.</span></h2>
+  <p class="sec-intro">Apresentamos os dois planos para voc&ecirc; compartilhar com o sócio. A diferen&ccedil;a est&aacute; na profundidade da estrutura comercial — n&atilde;o na qualidade do tráfego.</p>
+
+  <div class="planos-wrap">
+    <!-- PLANO BASE -->
+    <div class="plano-card pc-base">
+      <div class="pc-body">
+        <div class="pc-kicker">Plano Base &mdash; Tráfego + Conteúdo</div>
+        <div class="pc-price">R$ 1.697</div>
+        <div class="pc-period">por m&ecirc;s &middot; sem fidelidade m&iacute;nima</div>
+        <div class="pc-sep"></div>
+        <div class="pc-includes">
+          <h4>Incluso</h4>
+          <ul class="pc-ul">
+            <li>Gest&atilde;o completa Meta Ads (Instagram/Facebook)</li>
+            <li>Gest&atilde;o completa Google Ads (busca)</li>
+            <li>Formul&aacute;rio condicional B2B (filtro de lead)</li>
+            <li>Landing pages por produto (inclu&iacute;das)</li>
+            <li>Design dos criativos para an&uacute;ncios</li>
+            <li>Social Media — 4 posts/m&ecirc;s no Instagram</li>
+            <li>Dashboard em tempo real + relat&oacute;rio mensal</li>
+            <li>Sistema de alerta de leads via WhatsApp</li>
+            <li>Rastreamento de CAC por canal</li>
+            <li>Suporte direto com Jo&atilde;o Marot</li>
+          </ul>
+        </div>
+        <div class="pc-sep"></div>
+        <div class="pc-not-inc">
+          <p>&#9888; N&atilde;o incluso: GBP, Playbook Comercial, CRM, Agente de IA</p>
+        </div>
+        <div class="pc-sep"></div>
+        <p class="pc-note">&#9888; Verba de an&uacute;ncios n&atilde;o inclusa — investida diretamente pelo Grupo MV3. M&iacute;nimo recomendado: R$ 1.000/m&ecirc;s (Google R$ 500 + Meta R$ 500).</p>
+      </div>
+    </div>
+
+    <!-- PLANO ARQUITETURA -->
+    <div class="plano-card pc-arq">
+      <div class="pc-badge">&#9733; Recomendado</div>
+      <div class="pc-body">
+        <div class="pc-kicker">Arquitetura Completa &mdash; Tráfego + Estrutura Comercial</div>
+        <div class="pc-price">R$ 2.000</div>
+        <div class="pc-period">por m&ecirc;s &middot; tudo do Plano Base +</div>
+        <div class="pc-sep"></div>
+        <div class="pc-includes">
+          <h4>Tudo do Plano Base, mais</h4>
+          <ul class="pc-ul">
+            <li>GBP Duque de Caxias &mdash; cria&ccedil;&atilde;o + otimiza&ccedil;&atilde;o</li>
+            <li>Playbook Comercial para o time de vendas</li>
+            <li>Gest&atilde;o e implementa&ccedil;&atilde;o do CRM (Kommo)</li>
+            <li>Kanban de leads com automa&ccedil;&otilde;es por etapa</li>
+            <li>Treinamento do time comercial (6 pessoas)</li>
+            <li>Reuni&otilde;es quinzenais de performance</li>
+          </ul>
+        </div>
+        <div class="pc-sep"></div>
+        <div class="pc-not-inc">
+          <p>&#9888; N&atilde;o incluso: Agente de IA (disponível como add-on no futuro) &middot; Assinatura do CRM Kommo paga separada (~R$ 446/m&ecirc;s com desconto parceiro EmpresAtiva)</p>
+        </div>
+        <div class="pc-sep"></div>
+        <p class="pc-note">Este &eacute; o plano que elimina definitivamente o problema de leads desqualificados chegando para o time &mdash; com estrutura de kanban, automa&ccedil;&otilde;es e playbook. Ideal para apresentar ao sócio majorit&aacute;rio como a migra&ccedil;&atilde;o completa da iOS para a EmpresAtiva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sec-kicker">Pr&oacute;ximos Passos</div>
+  <h2 class="sec-title">Da proposta<br><span class="t">ao Google<br>no ar.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Felipe compartilha a proposta com o sócio</h3>
+      <p>Como combinamos: esta proposta visual vai direto para o sócio majorit&aacute;rio analisar. Felipe indicou que a resposta pode vir ainda hoje ou amanh&atilde;.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Confirma&ccedil;&atilde;o</span>
+      <h3>Plano escolhido + aviso pr&eacute;vio para a iOS</h3>
+      <p>Felipe encerra o contrato com a iOS (aviso pr&eacute;vio) e confirma o plano com a EmpresAtiva. Transition plan j&aacute; est&aacute; alinhado para n&atilde;o ter nenhum dia sem an&uacute;ncio.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 1</span>
+      <h3>Acesso + briefing de produtos</h3>
+      <p>Felipe envia a rela&ccedil;&atilde;o detalhada dos produtos (saco de lixo por litragem, papel interfolha, material de limpeza). A EmpresAtiva j&aacute; come&ccedil;a o planejamento de keywords e LPs.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 2–5</span>
+      <h3>Landing pages + GBP Duque de Caxias + formul&aacute;rio condicional</h3>
+      <p>LPs por produto publicadas. GBP de Duque de Caxias criado e otimizado. Formul&aacute;rio condicional B2B configurado no Meta. Sistema de alertas de leads ativado no WhatsApp comercial.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Google Ads e Meta Ads no ar simultaneamente</h3>
+      <p>Primeiras campanhas no Google com keywords B2B espec&iacute;ficas. Meta Ads rodando com formul&aacute;rio condicional. Primeiros leads qualificados chegando — j&aacute; filtrados antes de chegar para o time comercial.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 1</span>
+      <h3>Primeiro relat&oacute;rio de CAC real por canal</h3>
+      <p>Com dados reais: custo por lead Google vs Meta, taxa de convers&atilde;o por canal, CAC real vs R$ 533 atual. Base para a decis&atilde;o de escala de verba junto com o sócio majorit&aacute;rio.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Grupo MV3,<br>a f&aacute;brica est&aacute;<br>pronta.<br><span class="t">O digital<br>tamb&eacute;m vai estar.</span></h2>
+  <p>100 leads com 3 vendas &eacute; o passado. Com Google Ads B2B cirúrgico, formul&aacute;rio condicional e intelig&ecirc;ncia devolvida para o algoritmo, o Grupo MV3 passa a ter leads que realmente compram — e um CAC que faz sentido para a opera&ccedil;&atilde;o.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20Grupo%20MV3%20e%20vamos%20fechar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Militar de Tráfego Pago</div>
+  </div>
+</div>
+
+</body>
+</html>
