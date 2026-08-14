@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Vanessa Calazan</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;--gmid:#1F4529;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 30%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 75%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(32px,9vw,72px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(28px,7vw,52px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:26px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:15px;font-weight:800;color:var(--terra);margin-bottom:9px;letter-spacing:-.01em;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:26px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:15px;font-weight:800;color:#4CAF72;margin-bottom:9px;letter-spacing:-.01em;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* FUNIL ESCADA */
+.escada{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.esc-item{background:var(--card);padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.esc-item.low{border-left:3px solid #4CAF72;}
+.esc-item.mid{border-left:3px solid var(--terra);}
+.esc-item.hi{border-left:3px solid var(--offwhite);}
+.esc-nome{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.esc-desc{font-size:11px;color:var(--muted);font-weight:400;}
+.esc-price{font-size:22px;font-weight:900;letter-spacing:-.02em;flex-shrink:0;}
+.esc-item.low .esc-price{color:#4CAF72;}
+.esc-item.mid .esc-price{color:var(--terra);}
+.esc-item.hi .esc-price{color:var(--offwhite);}
+
+/* ESTRATEGIA */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:20px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+.tg{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.14em;padding:2px 7px;border-radius:2px;margin-left:7px;text-transform:uppercase;}
+.tg-t{background:rgba(181,101,58,.1);color:var(--terra);border:1px solid rgba(181,101,58,.2);}
+.tg-g{background:rgba(59,130,246,.1);color:#5B9CF6;border:1px solid rgba(59,130,246,.2);}
+.tg-b{background:rgba(23,53,31,.4);color:#4CAF72;border:1px solid rgba(42,92,53,.3);}
+
+/* PLANOS */
+.planos-wrap{display:flex;flex-direction:column;gap:16px;}
+.pc{border-radius:4px;overflow:hidden;position:relative;}
+.pc::before{content:"";display:block;height:4px;}
+.pc-meta::before{background:linear-gradient(90deg,var(--terra),#A05030);}
+.pc-arq::before{background:linear-gradient(90deg,var(--glight),var(--terra),var(--glight));}
+.pc-meta{background:var(--black);border:1px solid rgba(181,101,58,.28);}
+.pc-arq{background:var(--green);border:1px solid rgba(42,92,53,.45);}
+.pc-body{padding:30px 26px;}
+.pc-kicker{font-size:8px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin-bottom:12px;}
+.pc-meta .pc-kicker{color:var(--terra);}
+.pc-arq .pc-kicker{color:#4CAF72;}
+.rec-badge{position:absolute;top:18px;right:18px;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:rgba(181,101,58,.15);color:var(--terra);border:1px solid rgba(181,101,58,.25);}
+.pc-price{font-size:56px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:4px;color:var(--offwhite);}
+.pc-period{font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:400;}
+.pc-var{font-size:12px;color:var(--terra);font-weight:600;margin-bottom:22px;}
+.pc-sep{height:1px;background:rgba(244,244,240,.08);margin:20px 0;}
+.pc-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.pc-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.pc-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;}
+.pc-meta .pc-ul li::before{color:var(--terra);}
+.pc-arq .pc-ul li::before{color:#4CAF72;}
+.pc-extra-lbl{font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin-bottom:12px;}
+.pc-meta .pc-extra-lbl{color:var(--terra);}
+.pc-arq .pc-extra-lbl{color:#4CAF72;}
+.pc-note{font-size:11px;color:var(--muted);line-height:1.7;padding:14px;background:rgba(244,244,240,.03);border:1px solid var(--border);border-radius:2px;font-weight:400;margin-top:10px;}
+.pc-not{background:rgba(244,244,240,.02);border:1px solid rgba(244,244,244,.06);padding:12px 14px;margin-top:10px;border-radius:2px;}
+.pc-not p{font-size:11px;color:var(--muted);font-weight:400;}
+
+/* EXEMPLO VARIÁVEL */
+.var-box{background:rgba(181,101,58,.04);border:1px solid rgba(181,101,58,.15);padding:22px 26px;border-radius:2px;margin-top:4px;}
+.var-box h4{font-size:13px;font-weight:700;color:var(--terra);margin-bottom:14px;}
+.var-rows{display:flex;flex-direction:column;gap:2px;}
+.var-row{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.var-row.d{background:rgba(23,53,31,.35);border-left:2px solid var(--glight);}
+.vr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.vr-desc strong{color:var(--offwhite);font-weight:600;}
+.vr-val{font-size:16px;font-weight:800;color:#4CAF72;flex-shrink:0;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 38px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:7px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+/* FOOTER */
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(28px,7vw,48px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .planos-wrap{flex-direction:row;align-items:flex-start;}
+  .pc{flex:1;min-width:0;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; Proposta Personalizada &middot; Vanessa Calazan</div>
+  <h1>O org&acirc;nico<br>abriu a onda.<br><span class="t">O tráfego</span><br><span class="g">vai surfar.</span></h1>
+  <p class="hero-sub">Vanessa, como conversamos: 40% do seu faturamento j&aacute; vem de clientes que nunca estiveram na Barra da Tijuca — e chegaram pelo orgânico. Quando o tráfego pago entrar junto com esse posicionamento, o resultado multiplica. Uma cliente com R$ 4.000 de verba gerou R$ 325.000 de faturamento extra exatamente com essa equação.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Rio de Janeiro</span><span class="s2">Meta fatur. mín. R$ 200k</span></div>
+    <div class="hp"><span class="s1">S&atilde;o Paulo</span><span class="s2">Meta fatur. mín. R$ 100k</span></div>
+    <div class="hp"><span class="s1">Foco inicial</span><span class="s2">Curso + Loja</span></div>
+    <div class="hp"><span class="s1">Pagamento</span><span class="s2">Quinzenal flex&iacute;vel</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sk">Diagn&oacute;stico — o que aconteceu antes e o que muda agora</div>
+  <h2 class="st">Leads ruins<br>n&atilde;o &eacute; falta de<br><span class="t">p&uacute;blico.<br>&Eacute; falta de filtro.</span></h2>
+  <p class="si">Vanessa, voc&ecirc; j&aacute; passou por dois gestores e nenhum resolveu o problema central: o algoritmo buscava qualquer um, n&atilde;o o p&uacute;blico certo. A EmpresAtiva resolve isso na base — antes do lead chegar.</p>
+
+  <div class="tb">
+    <h3>Por que gestores anteriores trouxeram leads errados</h3>
+    <p>O Advantage Plus do Meta n&atilde;o respeita mais segmenta&ccedil;&atilde;o demogr&aacute;fica como regra — &eacute; sugest&atilde;o. Sem um filtro na estrutura do an&uacute;ncio, ele vai atrair quem n&atilde;o pode pagar, quem est&aacute; longe, quem nunca vai converter. <strong>A solu&ccedil;&atilde;o n&atilde;o &eacute; melhorar a segmenta&ccedil;&atilde;o — &eacute; instalar um formul&aacute;rio condicional que descarta automaticamente quem n&atilde;o qualifica, antes de virar lead.</strong></p>
+  </div>
+
+  <div class="tb">
+    <h3>Formul&aacute;rio condicional — o filtro que voc&ecirc; nunca teve</h3>
+    <p>Pessoa clica no an&uacute;ncio → responde uma pergunta → se n&atilde;o qualifica (ex: "n&atilde;o consigo me deslocar"), <strong>j&aacute; &eacute; descartada com mensagem automática</strong> e essa informa&ccedil;&atilde;o &eacute; devolvida ao Meta: "esse perfil n&atilde;o &eacute; meu p&uacute;blico, n&atilde;o busque pessoas assim". O algoritmo aprende. Os leads que chegam ao WhatsApp j&aacute; passaram pelo filtro.</p>
+  </div>
+
+  <div class="gb">
+    <h3>Evolution API — devolvendo intelig&ecirc;ncia real ao algoritmo</h3>
+    <p>A EmpresAtiva instala no seu n&uacute;mero comercial um sistema que rastreia todas as conversas do WhatsApp. A IA analisa quem qualificou, agendou e comprou — e devolve esses dados ao Meta. <strong>O algoritmo aprende com quem comprou de verdade, n&atilde;o com quem clicou. A médio prazo, cada real de verba fica mais inteligente.</strong> Menos de 1% das ag&ecirc;ncias do mercado fazem isso.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA DE PRODUTO -->
+<section class="bg-black">
+  <div class="sk">A estrat&eacute;gia — come&ccedil;ando pelo que escala sem depender de mão de obra</div>
+  <h2 class="st">Curso e loja<br>primeiro.<br><span class="g">Salão depois.</span></h2>
+  <p class="si">Vanessa, voc&ecirc; mesma chegou nessa conclus&atilde;o na nossa conversa: curso e loja n&atilde;o dependem de ter algu&eacute;m na cadeira. S&atilde;o os produtos que a EmpresAtiva vai escalar primeiro.</p>
+
+  <!-- ESCADA DE PRODUTOS -->
+  <div class="sk" style="margin-bottom:12px;">Escada de produtos — funil do curso</div>
+  <div class="escada">
+    <div class="esc-item low">
+      <div>
+        <div class="esc-nome">Shot gravado — t&eacute;cnica microponto slim</div>
+        <div class="esc-desc">J&aacute; gravado, j&aacute; pronto &middot; porta de entrada &middot; baixo atrito para a primeira compra</div>
+      </div>
+      <div class="esc-price">R$ 40–97</div>
+    </div>
+    <div class="esc-item mid">
+      <div>
+        <div class="esc-nome">Curso online — microponto slim completo</div>
+        <div class="esc-desc">J&aacute; no Hotmart &middot; vendido sob demanda &middot; para quem comprou o shot</div>
+      </div>
+      <div class="esc-price">R$ 897</div>
+    </div>
+    <div class="esc-item hi">
+      <div>
+        <div class="esc-nome">Curso presencial Vanessa Calazan</div>
+        <div class="esc-desc">2 dias &middot; turma fechada &middot; para quem j&aacute; est&aacute; dentro do ecossistema</div>
+      </div>
+      <div class="esc-price">R$ 3.000</div>
+    </div>
+  </div>
+
+  <div class="gb" style="margin-top:16px;">
+    <h3>Por que a escada funciona com o tráfego pago</h3>
+    <p>O an&uacute;ncio leva para o shot (R$40-97). Quem compra j&aacute; experimentou a qualidade de voc&ecirc;. <strong>Para esse p&uacute;blico, vender o curso online de R$897 &eacute; muito mais f&aacute;cil do que vender para quem nunca te conheceu.</strong> E para quem fez o online, vender o presencial de R$3.000 &eacute; o passo natural. Essa l&oacute;gica &eacute; a mesma que o mercado de infoprodutos usa — com o diferencial de que a sua aut&ecirc;ntica especialidade j&aacute; est&aacute; provada.</p>
+  </div>
+
+  <div class="tb" style="margin-top:4px;">
+    <h3>Produto validado pela pr&oacute;pria base — "como finalizar o mega em casa"</h3>
+    <p>Voc&ecirc; j&aacute; pesquisou com clientes do Rio e de S&atilde;o Paulo: todas pedem esse produto. Foi at&eacute; ideia de uma delas. <strong>Um produto de R$40 para o p&uacute;blico final entra como isca de baixo custo e ainda alimenta o algoritmo com dados de compradores reais</strong> — que ser&atilde;o usados para escalar o curso de profissionais.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O QUE A EMPRESATIVA ENTREGA -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega — nos dois planos</div>
+  <h2 class="st">Mesmo escopo<br>de tráfego.<br><span class="t">Profundidade<br>diferente.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads — funil completo<span class="tg tg-t">Meta</span></h3>
+        <p>Formul&aacute;rio condicional, segmenta&ccedil;&atilde;o por produto (curso, loja, sal&atilde;o RJ, sal&atilde;o SP), criativos por equipe de design, otimiza&ccedil;&atilde;o semanal.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🎬</div>
+      <div>
+        <h3>Script + edi&ccedil;&atilde;o dos criativos</h3>
+        <p>Jo&atilde;o manda um roteiro por semana. Vanessa grava. A equipe de design edita — imagem e v&iacute;deo. Nunca um calhamaco: 1-2 pedidos pontuais por semana.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic gic">🔄</div>
+      <div>
+        <h3>Evolution API — intelig&ecirc;ncia ao algoritmo</h3>
+        <p>Rastreamento do WhatsApp comercial. IA analisa conversas e devolve ao Meta dados de quem comprou. Algoritmo fica mais inteligente m&ecirc;s a m&ecirc;s.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📊</div>
+      <div>
+        <h3>Dashboard + alertas em tempo real</h3>
+        <p>Painel com gasto, leads por canal, custo por lead e criativos campe&otilde;es. Alerta no WhatsApp a cada novo lead qualificado — para responder nos primeiros 5 minutos.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic gic">🗺️</div>
+      <div>
+        <h3>Google Meu Neg&oacute;cio — RJ + SP<span class="tg tg-b">GBP</span></h3>
+        <p>Perfis otimizados para aparecer nas 3 primeiras posi&ccedil;&otilde;es quando algu&eacute;m pesquisar mega hair / curso de mega hair na regi&atilde;o. 93% das convers&otilde;es acontecem a&iacute;.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">💬</div>
+      <div>
+        <h3>Suporte direto com Jo&atilde;o Marot</h3>
+        <p>WhatsApp direto durante o m&ecirc;s. Flexibilidade de pagamento quinzenal conforme o fluxo do setor de beleza. Alertas de saldo para nunca ter campanha parada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OS DOIS PLANOS -->
+<section class="bg-black">
+  <div class="sk">Dois planos — a d&uacute;vida que ficou na nossa reuni&atilde;o</div>
+  <h2 class="st">Meta Ads<br>ou<br><span class="t">Arquitetura.</span></h2>
+  <p class="si">Vanessa, voc&ecirc; disse ao final: "eu t&ocirc; em d&uacute;vida entre esses dois". Aqui est&atilde;o os dois lado a lado para facilitar a decis&atilde;o com Felipe.</p>
+
+  <div class="planos-wrap">
+    <!-- META ADS -->
+    <div class="pc pc-meta">
+      <div class="pc-body">
+        <div class="pc-kicker">Plano Meta Ads &mdash; Tráfego Foco</div>
+        <div class="pc-price">R$ 997</div>
+        <div class="pc-period">por m&ecirc;s &middot; pagamento quinzenal aceito</div>
+        <div class="pc-var">+ 20% sobre verba acima de R$ 1.000/m&ecirc;s</div>
+        <div class="pc-sep"></div>
+        <ul class="pc-ul">
+          <li>Meta Ads com formul&aacute;rio condicional</li>
+          <li>Segmenta&ccedil;&atilde;o por produto (curso, loja, sal&atilde;o RJ, sal&atilde;o SP)</li>
+          <li>Equipe de design — criativos por semana</li>
+          <li>Evolution API — intelig&ecirc;ncia ao algoritmo</li>
+          <li>Dashboard em tempo real + alerta de leads</li>
+          <li>Google Meu Neg&oacute;cio RJ + SP otimizados</li>
+          <li>Suporte direto com Jo&atilde;o Marot</li>
+        </ul>
+        <div class="pc-sep"></div>
+        <div class="pc-not">
+          <p>&#9888; N&atilde;o incluso: CRM, Playbook Comercial, Reuni&otilde;es quinzenais de vendas, Agente de IA</p>
+        </div>
+        <p class="pc-note">&#9888; Verba n&atilde;o inclusa. At&eacute; R$ 1.000/m&ecirc;s de verba: fee fixo R$ 997. Verba de R$ 2.000 → +R$ 200 → fee total R$ 1.197. Verba de R$ 3.000 → +R$ 400 → fee R$ 1.397.</p>
+      </div>
+    </div>
+
+    <!-- ARQUITETURA -->
+    <div class="pc pc-arq">
+      <div class="rec-badge">&#9733; Recomendado</div>
+      <div class="pc-body">
+        <div class="pc-kicker">Arquitetura de Receita &mdash; Tráfego + Vendas</div>
+        <div class="pc-price">R$ 2.497</div>
+        <div class="pc-period">por m&ecirc;s &middot; pagamento quinzenal aceito</div>
+        <div class="pc-var">+ 20% sobre verba acima de R$ 5.000/m&ecirc;s</div>
+        <div class="pc-sep"></div>
+        <div class="pc-extra-lbl">Tudo do Plano Meta Ads, mais</div>
+        <ul class="pc-ul">
+          <li>CRM Kommo — implementa&ccedil;&atilde;o completa</li>
+          <li>Kanban de leads com fases: qualifica&ccedil;&atilde;o → or&ccedil;amento → negoci&ccedil;&atilde;o → venda</li>
+          <li>Playbook Comercial para o time de atendimento</li>
+          <li>Reuni&otilde;es quinzenais com time de vendas</li>
+          <li>Agente de IA qualificando leads 24h</li>
+          <li>Disparo em massa via API oficial</li>
+        </ul>
+        <div class="pc-sep"></div>
+        <div class="pc-not">
+          <p>&#9888; N&atilde;o incluso: assinatura do Kommo CRM (~R$ 80-90/m&ecirc;s paga separado com desconto parceiro EmpresAtiva)</p>
+        </div>
+        <p class="pc-note">Segura verba at&eacute; R$ 5.000/m&ecirc;s no mesmo fee. Acima de R$ 5.000: +20% sobre o excedente. Pagamento quinzenal flex&iacute;vel.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABELA VARIÁVEL -->
+  <div class="var-box" style="margin-top:16px;">
+    <h4>Como funciona o modelo vari&aacute;vel — exemplos pr&aacute;ticos</h4>
+    <div class="var-rows">
+      <div class="var-row">
+        <div class="vr-desc"><strong>Verba R$ 1.000/m&ecirc;s</strong> &middot; Plano Meta Ads</div>
+        <div class="vr-val">R$ 997</div>
+      </div>
+      <div class="var-row">
+        <div class="vr-desc"><strong>Verba R$ 2.000/m&ecirc;s</strong> &middot; Plano Meta Ads (+20% de R$1.000)</div>
+        <div class="vr-val">R$ 1.197</div>
+      </div>
+      <div class="var-row">
+        <div class="vr-desc"><strong>Verba R$ 3.000/m&ecirc;s</strong> &middot; Plano Meta Ads (+20% de R$2.000)</div>
+        <div class="vr-val">R$ 1.397</div>
+      </div>
+      <div class="var-row d">
+        <div class="vr-desc"><strong>Verba R$ 5.000/m&ecirc;s</strong> &middot; Arquitetura (sem excedente)</div>
+        <div class="vr-val">R$ 2.497</div>
+      </div>
+      <div class="var-row d">
+        <div class="vr-desc"><strong>Verba R$ 7.000/m&ecirc;s</strong> &middot; Arquitetura (+20% de R$2.000)</div>
+        <div class="vr-val">R$ 2.897</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos</div>
+  <h2 class="st">Do sim ao<br><span class="t">primeiro anúncio<br>no ar.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje / Amanh&atilde;</span>
+      <h3>Vanessa e Felipe d&atilde;o a resposta</h3>
+      <p>Como combinamos ao final da reuni&atilde;o. Jo&atilde;o enviou este material visual e aguarda o feedback sobre qual dos dois planos faz mais sentido para o momento atual.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Confirma&ccedil;&atilde;o</span>
+      <h3>Briefing de produtos + acesso</h3>
+      <p>Vanessa informa o valor atualizado do curso online (estava verificando durante a reuni&atilde;o). Jo&atilde;o recebe acesso &agrave;s contas do Meta. Defini&ccedil;&atilde;o do primeiro produto a anunciar: shot, loja ou sal&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 2–5</span>
+      <h3>Formul&aacute;rio condicional + criativos</h3>
+      <p>Formul&aacute;rio condicional configurado no Meta para o primeiro produto. Jo&atilde;o manda o script do primeiro criativo. Vanessa grava — equipe de design edita e deixa pronto para an&uacute;ncio.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>An&uacute;ncios no ar — Evolution API ativa</h3>
+      <p>Campanhas publicadas. Evolution API instalada no WhatsApp comercial. Primeiros leads qualificados chegando — j&aacute; filtrados pelo formul&aacute;rio, j&aacute; rastreados para devolver intelig&ecirc;ncia ao Meta.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">A partir da semana 3</span>
+      <h3>Rota&ccedil;&atilde;o de produto conforme demanda</h3>
+      <p>Como Vanessa sugeriu: come&ccedil;a num produto, se der demanda que n&atilde;o consegue absorver, a gente migra para o outro. Curso, loja e sal&atilde;o podem ser alternados conforme a capacidade operacional de cada m&ecirc;s.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">M&ecirc;s 1</span>
+      <h3>Primeiro relat&oacute;rio — dados reais de custo por venda</h3>
+      <p>Com os dados do m&ecirc;s inteiro: custo por lead, taxa de convers&atilde;o por produto, receita gerada por canal. Base para a decis&atilde;o de escalar a verba e quais produtos priorizar no m&ecirc;s seguinte.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Vanessa, o<br>tráfego org&acirc;nico<br>j&aacute; provou<br><span class="t">que o seu<br>p&uacute;blico existe.</span></h2>
+  <p>Uma cliente do Paran&aacute; faz manutenção no Rio porque viu seu Instagram. Clientes de fora s&atilde;o 40% do faturamento — sem nenhum real de verba pago. Quando a EmpresAtiva colocar tráfego pago surfando essa onda, a escala vai para outro n&iacute;vel. Curso, loja e sal&atilde;o — na ordem certa, com a estrat&eacute;gia certa.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Militar de Tráfego Pago</div>
+  </div>
+</div>
+
+</body>
+</html>
