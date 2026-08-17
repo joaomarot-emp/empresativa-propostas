@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Mari Vieira Espaço VIP</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;--gmid:#1F4529;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 30%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 75%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(32px,9vw,72px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(28px,7vw,52px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;font-weight:400;}
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:26px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:15px;font-weight:800;color:var(--terra);margin-bottom:9px;letter-spacing:-.01em;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:26px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:15px;font-weight:800;color:#4CAF72;margin-bottom:9px;letter-spacing:-.01em;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+/* COUNTDOWN 4 MESES */
+.countdown{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.cd-item{background:var(--card);padding:20px 24px;display:flex;gap:20px;align-items:flex-start;}
+.cd-item.atual{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.cd-item.lanc{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.cd-mes{font-size:26px;font-weight:900;color:var(--terra);flex-shrink:0;min-width:48px;line-height:1;margin-top:2px;}
+.cd-item.lanc .cd-mes{color:#4CAF72;}
+.cd-label{font-size:8px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;}
+.cd-item.atual .cd-label{color:var(--terra);}
+.cd-item.lanc .cd-label{color:#4CAF72;}
+.cd-item h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.cd-item p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+/* OFERTA ISCA */
+.oferta-card{background:linear-gradient(135deg,var(--green) 0%,#0D2415 100%);border:1px solid rgba(42,92,53,.4);border-radius:4px;padding:32px 26px;margin-bottom:14px;}
+.oferta-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.oferta-titulo{font-size:22px;font-weight:800;color:var(--offwhite);margin-bottom:8px;line-height:1.2;letter-spacing:-.01em;}
+.oferta-titulo em{color:var(--terra);font-style:normal;}
+.oferta-price{font-size:52px;font-weight:900;color:var(--terra);line-height:1;margin-bottom:4px;letter-spacing:-.03em;}
+.oferta-price sub{font-size:14px;font-weight:400;font-family:var(--font);color:var(--muted);vertical-align:middle;}
+.oferta-desc{font-size:13px;color:rgba(244,244,240,.65);line-height:1.85;margin-top:16px;font-weight:400;}
+.oferta-desc strong{color:var(--offwhite);}
+/* ESTRATEGIA */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:20px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(181,101,58,.28);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+.inv-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--terra),var(--glight),var(--terra));}
+.inv-body{padding:30px 26px;}
+.inv-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.p1{border-left:3px solid var(--terra);}
+.inv-linha.p2{border-left:3px solid var(--glight);}
+.inv-linha-info h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;font-weight:400;}
+.inv-linha-valor{font-size:20px;font-weight:900;flex-shrink:0;letter-spacing:-.01em;}
+.inv-linha.p1 .inv-linha-valor{color:var(--terra);}
+.inv-linha.p2 .inv-linha-valor{color:#4CAF72;}
+.inv-total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);font-weight:400;}
+.inv-total-val{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;letter-spacing:-.02em;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.inv-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:var(--terra);}
+/* BÔNUS 2º SALÃO */
+.bonus-card{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.4);border-radius:4px;padding:28px 26px;margin-top:4px;}
+.bonus-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#4CAF72;margin-bottom:12px;}
+.bonus-titulo{font-size:22px;font-weight:900;color:var(--offwhite);margin-bottom:6px;letter-spacing:-.01em;}
+.bonus-titulo em{color:var(--terra);font-style:normal;}
+.bonus-preco{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;}
+.bonus-de{font-size:18px;font-weight:600;color:var(--muted);text-decoration:line-through;}
+.bonus-por{font-size:38px;font-weight:900;color:#4CAF72;letter-spacing:-.02em;}
+.bonus-desc{font-size:13px;color:rgba(244,244,240,.65);line-height:1.85;font-weight:400;}
+.bonus-desc strong{color:var(--offwhite);}
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 38px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:7px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(28px,7vw,48px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; Lançamento &amp; Meta Ads &middot; Mari Vieira Espa&ccedil;o VIP &middot; Pouso Alegre MG</div>
+  <h1>4 meses para<br>inaugurar.<br><span class="t">A EmpresAtiva</span><br><span class="g">usa cada dia.</span></h1>
+  <p class="hero-sub">Mariana, como conversamos: voc&ecirc; n&atilde;o quer inaugurar um novo sal&atilde;o e torcer. Voc&ecirc; quer inaugurar com agenda j&aacute; preenchida, p&uacute;blico aquecido e faturamento positivo desde o primeiro m&ecirc;s. A EmpresAtiva estrutura o pr&eacute;-lan&ccedil;amento enquanto voc&ecirc; organiza a equipe.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Sal&atilde;o atual</span><span class="s2">Mari Vieira Espa&ccedil;o VIP</span></div>
+    <div class="hp"><span class="s1">Novo sal&atilde;o</span><span class="s2">Bairro residencial &middot; 2km</span></div>
+    <div class="hp"><span class="s1">Prazo</span><span class="s2">4 meses &middot; Jan 2027</span></div>
+    <div class="hp"><span class="s1">Meta Ads</span><span class="s2">R$ 997/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÉ-LANÇAMENTO -->
+<section class="bg-dark">
+  <div class="sk">A estrat&eacute;gia &mdash; 4 meses de aquecimento antes da inauguração</div>
+  <h2 class="st">O sal&atilde;o abre<br>em janeiro.<br><span class="t">O p&uacute;blico<br>aquece agora.</span></h2>
+  <p class="si">Mariana, voc&ecirc; disse algo muito importante: "n&atilde;o consigo fazer nada mais ou menos". A EmpresAtiva respeita isso — e usa os 4 meses para construir a demanda certa, no ritmo que o novo sal&atilde;o vai conseguir absorver.</p>
+
+  <div class="countdown">
+    <div class="cd-item atual">
+      <div class="cd-mes">M1</div>
+      <div>
+        <div class="cd-label">Mês 1 &mdash; Agora</div>
+        <h3>Estrutura&ccedil;&atilde;o + primeiros an&uacute;ncios para o sal&atilde;o atual</h3>
+        <p>Pixel instalado, GBP otimizado (de zona amarela para verde), criativos de manutenção no ar para o espa&ccedil;o atual. O primeiro m&ecirc;s gera dados reais sobre o p&uacute;blico de Pouso Alegre — e j&aacute; aquece quem ser&aacute; o p&uacute;blico do novo espa&ccedil;o.</p>
+      </div>
+    </div>
+    <div class="cd-item atual">
+      <div class="cd-mes">M2</div>
+      <div>
+        <div class="cd-label">Mês 2</div>
+        <h3>Constru&ccedil;&atilde;o de autoridade &mdash; o novo espa&ccedil;o come&ccedil;a a aparecer</h3>
+        <p>Criativos mostrando os bastidores da constru&ccedil;&atilde;o do novo sal&atilde;o — o p&uacute;blico residencial j&aacute; fica curioso sobre o que est&aacute; chegando no bairro. Acompanhamento de desempenho e ajuste da segmenta&ccedil;&atilde;o para o perfil do bairro residencial.</p>
+      </div>
+    </div>
+    <div class="cd-item atual">
+      <div class="cd-mes">M3</div>
+      <div>
+        <div class="cd-label">Mês 3</div>
+        <h3>Pr&eacute;-cadastro &amp; lista de espera</h3>
+        <p>An&uacute;ncios diretos: "Novo espa&ccedil;o abrindo em Pouso Alegre. Seja das primeiras a garantir seu hor&aacute;rio." A lista de espera &eacute; a pr&oacute;pria prova social de que o lan&ccedil;amento vai lotar.</p>
+      </div>
+    </div>
+    <div class="cd-item lanc">
+      <div class="cd-mes" style="color:#4CAF72;">M4</div>
+      <div>
+        <div class="cd-label" style="color:#4CAF72;">Mês 4 &mdash; Inauguração Janeiro 2027</div>
+        <h3>Lan&ccedil;amento oficial &mdash; agenda j&aacute; preenchida</h3>
+        <p>Semana de inauguração com campanha intensiva: oferta irresist&iacute;vel de manutenção como isca para os primeiros clientes do bairro residencial. As pessoas da lista de espera s&atilde;o as primeiras a ser contatadas. Faturamento positivo desde o dia 1.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA DE ISCA -->
+<section class="bg-black">
+  <div class="sk">A oferta &mdash; a isca que traz o p&uacute;blico certo</div>
+  <h2 class="st">Ela j&aacute; vai<br>sabendo o pre&ccedil;o.<br><span class="t">E j&aacute; vai<br>querendo ir.</span></h2>
+  <p class="si">Como conversamos: a maior dificuldade do seu p&uacute;blico &eacute; pedir avalia&ccedil;&atilde;o sem saber o pre&ccedil;o. O an&uacute;ncio resolve isso — ela chega decidida, n&atilde;o curiosa.</p>
+
+  <div class="oferta-card">
+    <div class="oferta-lbl">&#9733; Isca principal &mdash; manutenção de mega hair</div>
+    <div class="oferta-titulo">Manuten&ccedil;&atilde;o Completa<br><em>Mega Hair</em></div>
+    <div class="oferta-price"><sub>a partir de R$</sub> 300</div>
+    <div class="oferta-desc">
+      Ponto invis&iacute;vel (2 telas) a partir de R$ 300 &middot; Fita adesiva a partir de R$ 320<br>
+      <strong>Retira &rarr; limpa &rarr; hidrata &rarr; coloca &rarr; escova &rarr; prancha &rarr; cabelo perfeito.</strong><br><br>
+      A cliente chega pela manutenção. Na sua bancada, ela v&ecirc; os cabelos brasileiros, v&ecirc; o ambiente, v&ecirc; o padr&atilde;o &mdash; e naturalmente pergunta sobre um mega novo. O ticket sobe sem precisar vender.
+    </div>
+  </div>
+
+  <div class="tb">
+    <h3>Por que o pre&ccedil;o no an&uacute;ncio quebra a maior obje&ccedil;&atilde;o</h3>
+    <p>Voc&ecirc; mesma disse: "clientes t&ecirc;m vergonha de perguntar o pre&ccedil;o, acham que &eacute; muito caro." O an&uacute;ncio com pre&ccedil;o j&aacute; elimina esse filtro. <strong>Quem entra em contato j&aacute; sabe que consegue pagar &mdash; a conversa come&ccedil;a no "quando tem vaga", n&atilde;o no "quanto custa".</strong></p>
+  </div>
+
+  <div class="gb">
+    <h3>P&uacute;blico residencial &mdash; perfil diferente do sal&atilde;o atual</h3>
+    <p>O bairro novo tem clientes que estacionam com facilidade, que j&aacute; fazem mega em outros sal&otilde;es por n&atilde;o conhecerem o Mari Vieira, e que provavelmente acham que o espa&ccedil;o VIP &eacute; "muito caro". <strong>O an&uacute;ncio com manutenção acess&iacute;vel muda essa percep&ccedil;&atilde;o &mdash; e traz esse p&uacute;blico para a sua bancada pela primeira vez.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega</div>
+  <h2 class="st">Marketing do<br><span class="t">lançamento ao<br>dia a dia.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Gest&atilde;o completa das campanhas Meta Ads</h3>
+        <p>Segmenta&ccedil;&atilde;o para Pouso Alegre (e bairro residencial espec&iacute;fico no M3-M4), criativos por equipe de design, otimiza&ccedil;&atilde;o semanal e rotação de an&uacute;ncios a cada 15-20 dias.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🎬</div>
+      <div>
+        <h3>Script + edi&ccedil;&atilde;o dos criativos</h3>
+        <p>Jo&atilde;o manda o roteiro. Voc&ecirc; e sua colaboradora gravam no sal&atilde;o. A equipe de design edita &mdash; imagem e v&iacute;deo. 1-2 pedidos por semana, nunca um volume que sobrecarrega.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🗺️</div>
+      <div>
+        <h3>GBP otimizado &mdash; de zona amarela para verde</h3>
+        <p>76 avalia&ccedil;&otilde;es, nota 4.9 &mdash; mas ainda em zona amarela. A EmpresAtiva otimiza o perfil para aparecer nos 3 primeiros resultados quando algu&eacute;m pesquisar mega hair ou sal&atilde;o de beleza em Pouso Alegre.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada novo contato via an&uacute;ncio chega com aviso imediato &mdash; nome e interesse. Sua colaboradora responde r&aacute;pido. Nos primeiros 5 minutos, a chance de fechar &eacute; muito maior.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📊</div>
+      <div>
+        <h3>Dashboard + relat&oacute;rio em tempo real</h3>
+        <p>Painel com gasto, leads, custo por lead e criativos campe&otilde;es. Transpar&ecirc;ncia total &mdash; voc&ecirc; v&ecirc; exatamente o que est&aacute; gerando resultado sem precisar perguntar.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🚀</div>
+      <div>
+        <h3>Campanha de lan&ccedil;amento &mdash; inauguração</h3>
+        <p>Estrutura completa de pr&eacute;-lan&ccedil;amento: bastidores da constru&ccedil;&atilde;o, lista de espera, campanha de abertura e ofensiva de fechamento na semana da inauguração.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sk">Investimento</div>
+  <h2 class="st">R$ 997/m&ecirc;s.<br><span class="t">Dois sal&otilde;es<br>pelo pre&ccedil;o de um.</span></h2>
+  <p class="si">Fee fixo para at&eacute; R$ 1.000 de verba mensal no Meta. Estrutura completa de tráfego desde o primeiro m&ecirc;s at&eacute; a inauguração e al&eacute;m.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">Meta Ads &mdash; Mari Vieira Espa&ccedil;o VIP &middot; Pouso Alegre MG &middot; Lançamento + Continuidade</div>
+      <div class="inv-split">
+        <div class="inv-linha p1">
+          <div class="inv-linha-info">
+            <h4>Meta Ads &mdash; Sal&atilde;o atual (Espa&ccedil;o VIP)</h4>
+            <p>Gest&atilde;o completa, criativos, GBP, alertas de leads e dashboard</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa do Meta Ads para Pouso Alegre</li>
+        <li>Segmenta&ccedil;&atilde;o evolutiva: sal&atilde;o atual nos M1-M2, bairro residencial nos M3-M4</li>
+        <li>Equipe de design &mdash; criativos semanais (imagem + v&iacute;deo)</li>
+        <li>Otimiza&ccedil;&atilde;o do GBP &mdash; zona amarela para verde</li>
+        <li>Alerta de leads em tempo real no WhatsApp</li>
+        <li>Dashboard + relat&oacute;rio completo de desempenho</li>
+        <li>Campanha de pr&eacute;-lan&ccedil;amento + lista de espera do novo sal&atilde;o</li>
+        <li>Campanha intensiva de inauguração (semana do dia 1)</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;">&#9888;&#65039; <strong style="color:var(--offwhite);">Verba de an&uacute;ncios n&atilde;o inclusa.</strong> At&eacute; R$ 1.000/m&ecirc;s de verba: fee fixo R$ 997. Acima de R$ 1.000: +20% sobre o excedente. Voc&ecirc; j&aacute; investe R$ 1.200 de verba &mdash; fee total com sua verba atual: <strong style="color:var(--offwhite);">R$ 1.037</strong> (R$ 997 + 20% de R$ 200).</p>
+    </div>
+  </div>
+
+  <!-- BÔNUS 2º SALÃO -->
+  <div class="bonus-card">
+    <div class="bonus-kicker">&#9733; Condi&ccedil;&atilde;o especial &mdash; segundo sal&atilde;o</div>
+    <div class="bonus-titulo">Quando o novo espa&ccedil;o inaugurar,<br>o tráfego pago para ele sai com <em>50% de desconto.</em></div>
+    <div class="bonus-preco">
+      <div class="bonus-de">R$ 997/m&ecirc;s</div>
+      <div class="bonus-por">R$ 498,50/m&ecirc;s</div>
+    </div>
+    <div class="bonus-desc">
+      Voc&ecirc; j&aacute; &eacute; cliente da EmpresAtiva. Quando o novo sal&atilde;o do bairro residencial abrir, <strong>a gest&atilde;o de tráfego para ele entra com 50% de desconto sobre o valor cheio</strong> &mdash; os dois sal&otilde;es cobertos por R$ 1.495,50/m&ecirc;s no total.<br><br>
+      Dois p&uacute;blicos diferentes, duas campanhas segmentadas, uma &uacute;nica equipe cuidando dos dois.
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- TIMELINE 4 MESES -->
+<section class="bg-dark">
+  <div class="sk">Cronograma &mdash; os 4 meses at&eacute; a inauguração</div>
+  <h2 class="st">Do sim de<br>Mariana ao<br><span class="g">dia da abertura.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora &mdash; Confirma&ccedil;&atilde;o</span>
+      <h3>Acesso + GBP + primeiros criativos</h3>
+      <p>Acesso ao Meta Ads. Otimiza&ccedil;&atilde;o imediata do GBP (de zona amarela para verde). Jo&atilde;o manda o primeiro script de manutenção &mdash; isca para o p&uacute;blico atual. Sua colaboradora grava, equipe edita.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Primeiro an&uacute;ncio no ar &mdash; Pouso Alegre v&ecirc;</h3>
+      <p>Campanha de manutenção publicada para mulheres de Pouso Alegre que usam mega hair. Os primeiros leads qualificados chegam no WhatsApp. Dados iniciais do p&uacute;blico da cidade come&ccedil;am a ser coletados.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Mês 2</span>
+      <h3>Bastidores do novo sal&atilde;o &mdash; aquecimento org&acirc;nico + pago</h3>
+      <p>Criativos mostrando a constru&ccedil;&atilde;o do novo espa&ccedil;o. Script de v&iacute;deo: "algo novo est&aacute; chegando ao bairro X". O p&uacute;blico do bairro residencial come&ccedil;a a ser impactado antes de a porta abrir.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Mês 3</span>
+      <h3>Lista de espera aberta</h3>
+      <p>An&uacute;ncio direto: "Novo espa&ccedil;o VIP abrindo em [bairro] &mdash; seja das primeiras a garantir seu hor&aacute;rio." Cadastro no WhatsApp. Essa lista &eacute; o p&uacute;blico mais aquecido do dia da inauguração.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Mês 4 &mdash; Jan 2027</span>
+      <h3>Semana de inauguração &mdash; campanha intensiva</h3>
+      <p>Ofensiva completa: lista de espera contatada com prioridade, an&uacute;ncio de abertura com oferta irresist&iacute;vel de manutenção, stories de bastidores da abertura. Faturamento positivo no primeiro m&ecirc;s.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">Ap&oacute;s inaugura&ccedil;&atilde;o</span>
+      <h3>Tráfego para os dois sal&otilde;es &mdash; 50% de desconto para o novo</h3>
+      <p>Espa&ccedil;o VIP continua em R$ 997/m&ecirc;s. O novo sal&atilde;o entra em R$ 498,50/m&ecirc;s. Dois p&uacute;blicos, duas campanhas, uma equipe. Total: R$ 1.495,50/m&ecirc;s para os dois.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Mariana, voc&ecirc;<br>disse que quer<br><span class="t">explodir quando<br>estiver pronta.</span></h2>
+  <p>A EmpresAtiva usa os 4 meses de preparo para construir o p&uacute;blico, aquecer o bairro residencial e garantir que no dia da abertura j&aacute; tenha fila &mdash; n&atilde;o cadeiras vazias esperando que algu&eacute;m apareça. Voc&ecirc; organiza a equipe. A gente organiza a demanda.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Militar de Tráfego Pago</div>
+  </div>
+</div>
+
+</body>
+</html>
