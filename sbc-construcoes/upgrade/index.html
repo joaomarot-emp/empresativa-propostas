@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x SBC Construções — Upgrade Google</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* COMPARATIVO META vs GOOGLE */
+.comp{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.comp-row{display:flex;gap:2px;}
+.comp-cell{background:var(--card);padding:14px 18px;flex:1;min-width:0;}
+.comp-cell.h{background:var(--green);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,244,240,.6);}
+.comp-cell.meta{border-left:3px solid var(--terra);}
+.comp-cell.goog{border-left:3px solid #4C8BF5;}
+.comp-cell .cv{font-size:15px;font-weight:800;color:var(--offwhite);margin-bottom:2px;line-height:1.2;}
+.comp-cell .cd{font-size:11px;color:var(--muted);font-weight:400;line-height:1.5;}
+.comp-cell.meta .cv{color:var(--terra);}
+.comp-cell.goog .cv{color:#5B9CF6;}
+
+/* KEYWORDS */
+.kw-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.kw{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.2);padding:9px 14px;border-radius:2px;font-size:12px;font-weight:700;color:#5B9CF6;}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.ei.bhl{background:rgba(59,130,246,.04);border-left:2px solid #4C8BF5;}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.bic{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.2);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* UPGRADE CARD */
+.upgrade-card{border-radius:4px;overflow:hidden;border:1px solid rgba(42,92,53,.45);background:var(--green);}
+.upgrade-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,#4C8BF5,var(--terra),var(--glight));}
+.uc-body{padding:32px 26px;}
+.uc-kicker{font-size:8px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#4CAF72;margin-bottom:12px;}
+.uc-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:rgba(181,101,58,.15);color:var(--terra);border:1px solid rgba(181,101,58,.3);margin-bottom:18px;}
+.uc-preco-row{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.uc-de{font-size:22px;font-weight:600;color:var(--muted);text-decoration:line-through;}
+.uc-por{font-size:56px;font-weight:900;color:var(--offwhite);line-height:1;letter-spacing:-.03em;}
+.uc-period{font-size:12px;color:rgba(244,244,240,.55);margin-bottom:22px;font-weight:400;}
+.uc-sep{height:1px;background:rgba(244,244,240,.08);margin:20px 0;}
+.uc-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.uc-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.uc-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:#4CAF72;}
+.uc-note{font-size:11px;color:rgba(244,244,240,.55);line-height:1.7;padding:14px;background:rgba(244,244,240,.03);border:1px solid var(--border);border-radius:2px;font-weight:400;}
+
+/* TOTAL CONSOLIDADO */
+.total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.22);padding:22px 26px;border-radius:2px;margin-top:4px;}
+.total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:12px;letter-spacing:.01em;}
+.total-linha{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.total-linha:last-of-type{border-bottom:none;}
+.total-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.total-val{font-size:14px;font-weight:700;color:var(--offwhite);}
+.total-soma{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid rgba(181,101,58,.25);}
+.total-soma-lbl{font-size:13px;font-weight:700;color:var(--offwhite);}
+.total-soma-val{font-size:28px;font-weight:900;color:var(--terra);letter-spacing:-.02em;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .comp-row{gap:3px;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20quero%20ativar%20o%20upgrade%20Google%20para%20a%20SBC!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; Upgrade Google &middot; SBC Constru&ccedil;&otilde;es &middot; Rio de Janeiro</div>
+  <h1>Meta j&aacute; atrai.<br><span class="t">Google converte</span><br><span class="g">quem j&aacute; decide.</span></h1>
+  <p class="hero-sub">Matheus, como conversamos: a SBC j&aacute; existe, j&aacute; faz obras de qualidade, j&aacute; tem o Meta rodando &mdash; mas quem pesquisa "construtora no Rio" ou "empreiteira em Niterói" no Google ainda não te encontra. O upgrade ativa esse canal com 50% de desconto por voc&ecirc; j&aacute; ser cliente.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Empresa</span><span class="s2">SBC Constru&ccedil;&otilde;es</span></div>
+    <div class="hp"><span class="s1">Regi&atilde;o</span><span class="s2">Rio &middot; Niter&oacute;i &middot; S&atilde;o Gon&ccedil;alo</span></div>
+    <div class="hp"><span class="s1">J&aacute; ativo</span><span class="s2">Meta Ads</span></div>
+    <div class="hp"><span class="s1">Upgrade</span><span class="s2">Google Ads + GBP &middot; R$ 498,50/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- META VS GOOGLE -->
+<section class="bg-dark">
+  <div class="sk">Por que adicionar Google ao Meta &mdash; a l&oacute;gica dos dois canais</div>
+  <h2 class="st">Meta interrompe.<br>Google <span class="g">captura</span><br><span class="t">inten&ccedil;&atilde;o.</span></h2>
+  <p class="si">Os dois canais s&atilde;o complementares &mdash; n&atilde;o concorrentes. Meta alcança quem n&atilde;o estava procurando. Google captura quem j&aacute; decidiu que quer construir ou reformar e est&aacute; comparando empresas agora.</p>
+
+  <div class="comp">
+    <div class="comp-row">
+      <div class="comp-cell h">M&eacute;trica</div>
+      <div class="comp-cell h">Meta Ads &mdash; j&aacute; ativo</div>
+      <div class="comp-cell h">Google Ads &mdash; upgrade</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);">Momento do lead</div></div>
+      <div class="comp-cell meta"><div class="cv">Descoberta</div><div class="cd">Viu o an&uacute;ncio enquanto rolava o feed</div></div>
+      <div class="comp-cell goog"><div class="cv">Inten&ccedil;&atilde;o ativa</div><div class="cd">Est&aacute; pesquisando "construtora RJ" agora</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);">Perfil do lead</div></div>
+      <div class="comp-cell meta"><div class="cv">Amplo</div><div class="cd">Alcança quem talvez precise no futuro</div></div>
+      <div class="comp-cell goog"><div class="cv">Cirúrgico</div><div class="cd">S&oacute; chega quem j&aacute; tem projeto em mente</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);">Ciclo de decis&atilde;o</div></div>
+      <div class="comp-cell meta"><div class="cv">Longo</div><div class="cd">Aquece e gera desejo ao longo do tempo</div></div>
+      <div class="comp-cell goog"><div class="cv">Curto</div><div class="cd">Pessoa j&aacute; est&aacute; pronta para pedir or&ccedil;amento</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);">Credibilidade</div></div>
+      <div class="comp-cell meta"><div class="cv">Visual</div><div class="cd">Fotos de obra constroem autoridade</div></div>
+      <div class="comp-cell goog"><div class="cv">Busca + GBP</div><div class="cd">Aparece no Google = empresa s&eacute;ria e estabelecida</div></div>
+    </div>
+  </div>
+
+  <div class="gb">
+    <h3>O que falta hoje: a SBC n&atilde;o aparece quando algu&eacute;m pesquisa</h3>
+    <p>Voc&ecirc; mesmo relatou: um cliente teve dificuldade para encontrar a SBC online. O Meta est&aacute; construindo presença &mdash; mas quem pesquisa "construtora em Niter&oacute;i" ou "empreiteira no Rio" no Google est&aacute; comparando empresas em tempo real. <strong>Se a SBC n&atilde;o aparecer ali, o lead vai para o concorrente que aparece.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PALAVRAS-CHAVE -->
+<section class="bg-black">
+  <div class="sk">Keywords &mdash; termos que seu cliente j&aacute; pesquisa no Google</div>
+  <h2 class="st">Quem pesquisa<br>isso <span class="t">quer fechar</span><br>or&ccedil;amento.</h2>
+  <p class="si">Cada pesquisa abaixo &eacute; um lead com obra em mente &mdash; e a SBC precisa aparecer nos primeiros resultados quando qualquer pessoa no Rio, em Niter&oacute;i ou em S&atilde;o Gon&ccedil;alo digitar isso.</p>
+
+  <div class="kw-grid">
+    <div class="kw">construtora no Rio de Janeiro</div>
+    <div class="kw">empreiteira no Rio</div>
+    <div class="kw">construtora em Niter&oacute;i</div>
+    <div class="kw">empreiteira em S&atilde;o Gon&ccedil;alo</div>
+    <div class="kw">servi&ccedil;os de engenharia RJ</div>
+    <div class="kw">servi&ccedil;os de arquitetura Rio</div>
+    <div class="kw">constru&ccedil;&atilde;o residencial Rio</div>
+    <div class="kw">obra residencial Niter&oacute;i</div>
+    <div class="kw">concretagem de laje Rio</div>
+    <div class="kw">reforma e constru&ccedil;&atilde;o RJ</div>
+  </div>
+
+  <div class="tb">
+    <h3>Por que o Google Ads acelera antes do SEO chegar l&aacute;</h3>
+    <p>SEO org&acirc;nico leva meses para ranquear. Google Ads coloca a SBC nos primeiros resultados do Google <strong>desde o primeiro dia de campanha</strong> &mdash; enquanto o SEO do site novo vai amadurecendo. Os dois trabalham juntos: an&uacute;ncio gera leads agora, SEO garante presen&ccedil;a gratuita a médio prazo.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega no upgrade Google</div>
+  <h2 class="st">Do site ao<br><span class="g">primeiro or&ccedil;amento</span><br><span class="t">pelo Google.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei bhl">
+      <div class="eic bic">🔍</div>
+      <div>
+        <h3>Google Ads &mdash; campanhas de busca</h3>
+        <p>Campanhas segmentadas por regi&atilde;o (Rio, Niter&oacute;i, S&atilde;o Gon&ccedil;alo) com as principais keywords de constru&ccedil;&atilde;o civil. Quem pesquisa, v&ecirc; a SBC no topo antes de ver o concorrente.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🗺️</div>
+      <div>
+        <h3>Google Business Profile &mdash; configura&ccedil;&atilde;o e otimiza&ccedil;&atilde;o</h3>
+        <p>GBP da SBC Constru&ccedil;&otilde;es configurado com categorias corretas, fotos de obras, descrição com keywords, e posto para aparecer nos 3 primeiros resultados do mapa no Google.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🖥️</div>
+      <div>
+        <h3>Landing pages por servi&ccedil;o e regi&atilde;o</h3>
+        <p>P&aacute;ginas espec&iacute;ficas para cada keyword principal: "construtora em Niter&oacute;i" leva para p&aacute;gina s&oacute; sobre obras em Niter&oacute;i. Coer&ecirc;ncia = taxa de convers&atilde;o muito maior que um site gen&eacute;rico.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📊</div>
+      <div>
+        <h3>Dashboard + relat&oacute;rio unificado Meta + Google</h3>
+        <p>Um painel &uacute;nico com gasto, leads, custo por lead e cr&iacute;ativos/an&uacute;ncios dos dois canais. Transparência total &mdash; voc&ecirc; v&ecirc; o retorno de cada real investido.</p>
+      </div>
+    </div>
+    <div class="ei thl">
+      <div class="eic tic">🤝</div>
+      <div>
+        <h3>Estratégia de parceria com imobili&aacute;rias</h3>
+        <p>Como alinhamos: imobili&aacute;rias que vendem imóveis e terrenos s&atilde;o o gatilho perfeito de demanda. A EmpresAtiva prepara o material de apresenta&ccedil;&atilde;o e o roteiro de abordagem para Matheus prospectar as parceiras certas no Rio, Niter&oacute;i e S&atilde;o Gon&ccedil;alo.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Todo or&ccedil;amento solicitado via Google chega com aviso imediato no WhatsApp comercial &mdash; regi&atilde;o, tipo de obra e origem do contato. Resposta r&aacute;pida fecha mais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO UPGRADE -->
+<section class="bg-black">
+  <div class="sk">Investimento &mdash; upgrade com 50% de desconto por j&aacute; ser cliente</div>
+  <h2 class="st">Google completo<br><span class="t">pela metade<br>do pre&ccedil;o.</span></h2>
+  <p class="si">Voc&ecirc; j&aacute; &eacute; cliente EmpresAtiva no Meta Ads. O upgrade Google entra com 50% de desconto — sem fidelidade adicional, sem contrato novo.</p>
+
+  <div class="upgrade-card">
+    <div class="uc-body">
+      <div class="uc-kicker">Upgrade &mdash; Google Ads + GBP + Landing Pages</div>
+      <div class="uc-badge">&#9733; 50% de desconto &mdash; cliente EmpresAtiva</div>
+      <div class="uc-preco-row">
+        <div class="uc-de">R$ 997</div>
+        <div class="uc-por">R$ 498<span style="font-size:28px;">,50</span></div>
+      </div>
+      <div class="uc-period">por m&ecirc;s &middot; enquanto mantiver o contrato Meta Ads ativo</div>
+      <div class="uc-sep"></div>
+      <ul class="uc-ul">
+        <li>Google Ads &mdash; campanhas de busca para Rio, Niter&oacute;i e S&atilde;o Gon&ccedil;alo</li>
+        <li>Google Business Profile &mdash; configura&ccedil;&atilde;o completa e otimiza&ccedil;&atilde;o cont&iacute;nua</li>
+        <li>Landing pages por servi&ccedil;o e regi&atilde;o</li>
+        <li>SEO on-page integrado com o site novo</li>
+        <li>Dashboard unificado Meta + Google</li>
+        <li>Estratégia de parceria com imobili&aacute;rias (material + roteiro)</li>
+        <li>Alerta de leads em tempo real via WhatsApp</li>
+        <li>Relat&oacute;rio mensal completo de desempenho</li>
+      </ul>
+      <div class="uc-sep"></div>
+      <p class="uc-note">&#9888; Verba de Google Ads n&atilde;o inclusa &mdash; paga diretamente ao Google via cart&atilde;o. M&iacute;nimo recomendado: R$ 500/m&ecirc;s para o in&iacute;cio. Verba do Meta Ads segue inalterada.</p>
+    </div>
+  </div>
+
+  <!-- TOTAL CONSOLIDADO -->
+  <div class="total-box" style="margin-top:16px;">
+    <h4>Resumo consolidado &mdash; os dois canais juntos</h4>
+    <div class="total-linha">
+      <span class="total-desc">Meta Ads &mdash; j&aacute; ativo</span>
+      <span class="total-val">R$ 997/m&ecirc;s</span>
+    </div>
+    <div class="total-linha">
+      <span class="total-desc">Google Ads + GBP &mdash; upgrade 50%</span>
+      <span class="total-val">R$ 498,50/m&ecirc;s</span>
+    </div>
+    <div class="total-linha">
+      <span class="total-desc">Verba Meta (j&aacute; investida)</span>
+      <span class="total-val">a definir</span>
+    </div>
+    <div class="total-linha">
+      <span class="total-desc">Verba Google (recomendado in&iacute;cio)</span>
+      <span class="total-val">R$ 500/m&ecirc;s</span>
+    </div>
+    <div class="total-soma">
+      <span class="total-soma-lbl">Fee total EmpresAtiva (Meta + Google)</span>
+      <span class="total-soma-val">R$ 1.495,50/m&ecirc;s</span>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos &mdash; do upgrade ao Google no ar</div>
+  <h2 class="st">Em 7 dias<br>o site. Em 14<br><span class="g">o Google ads.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje &mdash; 17/ago</span>
+      <h3>Matheus revisa esta proposta com o pai/s&oacute;cio</h3>
+      <p>Como combinamos: Jo&atilde;o envia por WhatsApp ainda hoje. Matheus e o s&oacute;cio analisam e aprovam ou solicitam ajustes at&eacute; 20/ago.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">At&eacute; 21/ago</span>
+      <h3>Materiais do site &mdash; logo, fotos, cases, depoimentos</h3>
+      <p>Matheus envia logo, paleta, fotos das obras, casos de sucesso e depoimentos de clientes. A EmpresAtiva define a estrutura: p&aacute;gina principal + servi&ccedil;os + regi&otilde;es atendidas + portf&oacute;lio + contato.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">At&eacute; 24/ago</span>
+      <h3>Site no ar + GBP configurado</h3>
+      <p>Site novo publicado em 7 dias com SEO on-page b&aacute;sico. GBP da SBC Constru&ccedil;&otilde;es configurado com categorias corretas e otimizado para aparecer nas buscas de Rio, Niter&oacute;i e S&atilde;o Gon&ccedil;alo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">At&eacute; 31/ago</span>
+      <h3>Google Ads no ar &mdash; SBC aparece no topo</h3>
+      <p>Campanhas de busca ativas para as principais keywords. Landing pages por regi&atilde;o publicadas. Os primeiros leads via Google come&ccedil;am a chegar no WhatsApp comercial com alerta em tempo real.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">At&eacute; 28/ago</span>
+      <h3>Mapeamento de imobili&aacute;rias + material de parceria</h3>
+      <p>Jo&atilde;o prepara lista de imobili&aacute;rias por regi&atilde;o e roteiro de abordagem. Matheus inicia as primeiras convers&atilde;o at&eacute; final de agosto &mdash; o pipeline de parceria j&aacute; funciona junto com os an&uacute;ncios.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">At&eacute; 05/set</span>
+      <h3>Endere&ccedil;o comercial atualizado em todos os perfis</h3>
+      <p>Ap&oacute;s fechar a sala comercial, endere&ccedil;o fixo entra no site, no GBP e nos perfis p&uacute;blicos. Sinal f&iacute;sico de credibilidade que refor&ccedil;a o fechamento de obras de maior valor.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>SBC Constru&ccedil;&otilde;es,<br>as obras vieram<br>por indica&ccedil;&atilde;o.<br><span class="t">As pr&oacute;ximas<br>v&ecirc;m do Google.</span></h2>
+  <p>O Meta j&aacute; est&aacute; construindo a presen&ccedil;a da SBC nas redes. Com o Google Ads e o GBP ativados, cada proprietário que pesquisar "construtora no Rio" vai encontrar voc&ecirc;s antes de encontrar o concorrente &mdash; com 50% de desconto por j&aacute; ser cliente EmpresAtiva.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20quero%20ativar%20o%20upgrade%20Google%20para%20a%20SBC!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Ativar Upgrade Google
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Militar de Tráfego Pago</div>
+  </div>
+</div>
+
+</body>
+</html>
