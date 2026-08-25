@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Vantia Leilões — Lançamento Live Joalheria</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --gold:#C9A84C;--gold-dim:rgba(201,168,76,.12);--gold-border:rgba(201,168,76,.25);
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 20%,rgba(201,168,76,.08) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:var(--gold);}
+h2.st .v{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+.gold-box{background:var(--gold-dim);border:1px solid var(--gold-border);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gold-box h3{font-size:14px;font-weight:800;color:var(--gold);margin-bottom:8px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gold-box p strong{color:var(--offwhite);font-weight:600;}
+
+/* FASES */
+.fases{display:flex;flex-direction:column;gap:2px;}
+.fase{background:var(--card);padding:0;}
+.fase-header{padding:18px 22px;display:flex;align-items:center;gap:16px;}
+.fase-num{font-size:36px;font-weight:900;flex-shrink:0;line-height:1;min-width:44px;}
+.fase.f1 .fase-num{color:var(--terra);}
+.fase.f2 .fase-num{color:var(--gold);}
+.fase.f3 .fase-num{color:#4CAF72;}
+.fase.f1{border-left:3px solid var(--terra);}
+.fase.f2{border-left:3px solid var(--gold);}
+.fase.f3{border-left:3px solid #4CAF72;}
+.fase-titulo{font-size:14px;font-weight:800;color:var(--offwhite);margin-bottom:3px;}
+.fase-sub{font-size:11px;color:var(--muted);font-weight:400;}
+.fase-body{padding:0 22px 20px 22px;border-top:1px solid var(--border);}
+.fase-ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:16px;}
+.fase-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.55;font-weight:500;}
+.fase-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;}
+.fase.f1 .fase-ul li::before{color:var(--terra);}
+.fase.f2 .fase-ul li::before{color:var(--gold);}
+.fase.f3 .fase-ul li::before{color:#4CAF72;}
+.fase-ul li span{font-size:11px;color:var(--muted);font-weight:400;display:block;margin-top:2px;}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.ei.gldhl{background:var(--gold-dim);border-left:2px solid var(--gold);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.gdic{background:var(--gold-dim);border:1px solid var(--gold-border);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* PLANOS */
+.planos-wrap{display:flex;flex-direction:column;gap:16px;}
+.pc{border-radius:4px;overflow:hidden;}
+.pc::before{content:"";display:block;height:4px;}
+.pc-pilot::before{background:linear-gradient(90deg,var(--terra),var(--gold));}
+.pc-rec::before{background:linear-gradient(90deg,var(--gold),var(--glight),var(--gold));}
+.pc-pilot{background:var(--black);border:1px solid rgba(181,101,58,.28);}
+.pc-rec{background:var(--green);border:1px solid rgba(201,168,76,.3);}
+.pc-body{padding:28px 26px;}
+.pc-kicker{font-size:8px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin-bottom:10px;}
+.pc-pilot .pc-kicker{color:var(--terra);}
+.pc-rec .pc-kicker{color:var(--gold);}
+.rec-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:14px;background:var(--gold-dim);color:var(--gold);border:1px solid var(--gold-border);}
+.pc-price{font-size:52px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:4px;color:var(--offwhite);}
+.pc-period{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:400;}
+.pc-obs{font-size:11px;color:var(--terra);font-weight:600;margin-bottom:20px;}
+.pc-sep{height:1px;background:rgba(244,244,240,.08);margin:18px 0;}
+.pc-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.pc-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.pc-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;}
+.pc-pilot .pc-ul li::before{color:var(--terra);}
+.pc-rec .pc-ul li::before{color:var(--gold);}
+.pc-note{font-size:11px;color:var(--muted);line-height:1.7;padding:12px 14px;background:rgba(244,244,240,.03);border:1px solid var(--border);border-radius:2px;font-weight:400;}
+
+/* VERBA */
+.verba-row{display:flex;gap:2px;margin-bottom:2px;}
+.verba-cell{background:var(--card);padding:14px 18px;flex:1;}
+.verba-cell.hl{background:var(--gold-dim);border-left:2px solid var(--gold);}
+.verba-lbl{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.verba-val{font-size:16px;font-weight:800;color:var(--offwhite);}
+.verba-cell.hl .verba-val{color:var(--gold);}
+.verba-desc{font-size:11px;color:var(--muted);margin-top:2px;font-weight:400;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:var(--gold);box-shadow:0 0 0 3px var(--gold-dim);}
+.tl-dot.v{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:var(--gold);}
+.tl-day.v{color:#4CAF72;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.12) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta h2 .g{color:var(--gold);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .planos-wrap{flex-direction:row;align-items:flex-start;}
+  .pc{flex:1;min-width:0;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Vantia%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; Lançamento de Live &middot; Vantia Leilões &middot; Joalheria Niter&oacute;i</div>
+  <h1>Qualquer um<br>assiste uma live.<br><span class="t">S&oacute; o certo</span><br><span class="g">compra joia.</span></h1>
+  <p class="hero-sub">Leonardo, como você mesmo disse: "n&atilde;o d&aacute; pra dar qualquer um nessa live." A EmpresAtiva estrutura todo o funil de pré-qualificação, aquecimento e ativação — para que cada pessoa que entrar na live da joalheria j&aacute; chegue pronta para leiloar.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Cliente</span><span class="s2">Vantia Leil&otilde;es + Joalheria Niter&oacute;i</span></div>
+    <div class="hp"><span class="s1">Formato</span><span class="s2">Live Leilão &mdash; Ferramenta Vantia</span></div>
+    <div class="hp"><span class="s1">P&uacute;blico</span><span class="s2">High ticket &middot; seleto &middot; qualificado</span></div>
+    <div class="hp"><span class="s1">Modelo</span><span class="s2">Projeto por live ou mensal recorrente</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- POR QUE É DIFERENTE -->
+<section class="bg-dark">
+  <div class="sk">O diagn&oacute;stico &mdash; por que esse trabalho &eacute; diferente de tráfego comum</div>
+  <h2 class="st">Isso n&atilde;o &eacute;<br>gestão de conta.<br><span class="t">&Eacute; um<br>lançamento.</span></h2>
+  <p class="si">Uma live de leilão de joias de alto valor tem a mesma l&oacute;gica de um lançamento digital — com três fases indispensáveis: construção de público qualificado, aquecimento dos leads e ativação no dia do evento. Pular qualquer fase compromete o resultado.</p>
+
+  <div class="tb">
+    <h3>O risco de levar p&uacute;blico errado &eacute; maior do que não ter público</h3>
+    <p>Uma live com 300 pessoas n&atilde;o qualificadas gera zero venda e queima a credibilidade da joalheria. <strong>Uma live com 80 pessoas selecionadas — que já viram o preço, já sabem o que é leilão de joia, já chegam com crédito disponível — pode gerar R$30.000+ em lances.</strong> A EmpresAtiva constrói esse público antes da live abrir.</p>
+  </div>
+
+  <div class="gold-box">
+    <h3>O modelo da TV — e por que funciona aqui</h3>
+    <p>Nas décadas de 90-2000, canais de joias parceladas na TV faturavam alto porque chegavam em pessoas que <strong>já estavam assistindo TV às 23h, com cartão na mão, com predisposição para comprar parcelado.</strong> A live da Vantia replica essa janela de atenção — mas a TV não precisava qualificar o público. A live precisa. A EmpresAtiva faz essa qualificação.</p>
+  </div>
+
+  <div class="gb">
+    <h3>O formato vertical + botões interativos muda a lógica do criativo</h3>
+    <p>A ferramenta da Vantia funciona em vertical (formato Reels/Stories). Isso significa que <strong>os criativos de captação precisam ser nativos desse formato</strong> — vídeos verticais mostrando a experiência da live, as peças sendo manuseadas, a emoção do lance. Não servem imagens estáticas. A EmpresAtiva estrutura os criativos para esse formato.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- AS 3 FASES -->
+<section class="bg-black">
+  <div class="sk">A estrat&eacute;gia &mdash; as 3 fases do lançamento live</div>
+  <h2 class="st">Tr&ecirc;s fases.<br><span class="t">Sem pular</span><br><span class="g">nenhuma.</span></h2>
+  <p class="si">Cada fase tem um objetivo espec&iacute;fico. A EmpresAtiva executa as três com o mesmo rigor de um lançamento digital — adaptado para o formato de leilão em live.</p>
+
+  <div class="fases">
+    <div class="fase f1">
+      <div class="fase-header">
+        <div class="fase-num">01</div>
+        <div>
+          <div class="fase-titulo">Constru&ccedil;&atilde;o de P&uacute;blico Qualificado</div>
+          <div class="fase-sub">7–14 dias antes da live &middot; Meta Ads + LP de cadastro</div>
+        </div>
+      </div>
+      <div class="fase-body">
+        <ul class="fase-ul">
+          <li>Segmenta&ccedil;&atilde;o por comportamento de compra: categorias de luxo, viagem internacional, joias, artigos de alto valor
+            <span>O Meta tem dados de quem compra online acima de certo valor — a gente usa isso antes de segmentar por interesse.</span>
+          </li>
+          <li>Lookalike a partir da base da joalheria (clientes que j&aacute; compraram joias)
+            <span>Se a joalheria tiver lista de clientes, isso &eacute; o p&uacute;blico mais qualificado dispon&iacute;vel. LAL 1-3% desse público.</span>
+          </li>
+          <li>LP de cadastro com filtro impl&iacute;cito: linguagem, visual e pre&ccedil;o de refer&ecirc;ncia j&aacute; filtram antes do clique
+            <span>"Participe do leilão exclusivo de joias a partir de R$X." Quem não tem esse budget não se cadastra.</span>
+          </li>
+          <li>Formul&aacute;rio com 2–3 perguntas de qualifica&ccedil;&atilde;o: frequ&ecirc;ncia de compra de joia, valor m&eacute;dio investido, forma de pagamento prefer&iacute;vel
+            <span>Respostas fora do perfil s&atilde;o descartadas antes de chegar para a Vantia.</span>
+          </li>
+          <li>Rastreamento Tintim: cada lead identificado por canal, criativo e qualifica&ccedil;&atilde;o
+            <span>No segundo leilão, j&aacute; sabemos qual canal trouxe quem comprou de verdade.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fase f2">
+      <div class="fase-header">
+        <div class="fase-num">02</div>
+        <div>
+          <div class="fase-titulo">Nutri&ccedil;&atilde;o e Aquecimento da Lista VIP</div>
+          <div class="fase-sub">Entre o cadastro e a live &middot; WhatsApp + conteúdo exclusivo</div>
+        </div>
+      </div>
+      <div class="fase-body">
+        <ul class="fase-ul">
+          <li>Sequ&ecirc;ncia de mensagens no WhatsApp via API oficial
+            <span>Mensagem de boas-vindas → bastidores da joalheria → pr&eacute;via de 1-2 pe&ccedil;as → curiosidade sobre o formato de leilão → confirma&ccedil;&atilde;o de presença 24h antes.</span>
+          </li>
+          <li>Conteúdo de autoridade: hist&oacute;ria da joalheria, certifica&ccedil;&otilde;es, processo de avalia&ccedil;&atilde;o das pe&ccedil;as
+            <span>Quem chega sabendo que a joia &eacute; certificada compra com mais confian&ccedil;a e lança valores maiores.</span>
+          </li>
+          <li>Senso de exclusividade real: "voc&ecirc; est&aacute; na lista VIP &mdash; vagas limitadas para a live"
+            <span>Escassez genuine — a live da Vantia tem limite de acessos simultâneos. Isso funciona como argumento verdadeiro.</span>
+          </li>
+          <li>Lembrete com link espec&iacute;fico 1h antes da live
+            <span>Taxa de presen&ccedil;a cai dram&aacute;ticamente sem esse toque final. Um push no timing certo dobra a audi&ecirc;ncia.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="fase f3">
+      <div class="fase-header">
+        <div class="fase-num">03</div>
+        <div>
+          <div class="fase-titulo">Ativa&ccedil;&atilde;o no Dia da Live</div>
+          <div class="fase-sub">Dia do evento &middot; campanha de lembrete + remarketing</div>
+        </div>
+      </div>
+      <div class="fase-body">
+        <ul class="fase-ul">
+          <li>Campanha de "lembrete" no Meta no dia da live — manhã e 1h antes
+            <span>An&uacute;ncio direto para quem j&aacute; se cadastrou: "A live come&ccedil;a hoje às [hora]. Acesse pelo link."</span>
+          </li>
+          <li>Remarketing para quem visitou a LP mas n&atilde;o se cadastrou
+            <span>Segunda chance de captar. No dia do evento, a FOMO é máxima — converte mais do que no período de aquecimento.</span>
+          </li>
+          <li>Push final via WhatsApp para toda a lista 30 minutos antes
+            <span>Esse toque &eacute; o que transforma inten&ccedil;&atilde;o em presen&ccedil;a real. Quem n&atilde;o recebe esse push muitas vezes esquece.</span>
+          </li>
+          <li>Monitoramento em tempo real durante a live
+            <span>Se o acesso estiver abaixo do esperado, campanha de lembrete rodando em paralelo ainda consegue trazer.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega</div>
+  <h2 class="st">Da campanha<br><span class="t">ao lead que<br>lan&ccedil;a.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads &mdash; campanha de captação qualificada</h3>
+        <p>Segmenta&ccedil;&atilde;o por comportamento de compra de luxo. Criativos verticais nativos para o formato da ferramenta Vantia. M&iacute;nimo 2 ângulos de teste (A/B).</p>
+      </div>
+    </div>
+    <div class="ei gldhl">
+      <div class="eic gdic">🖥️</div>
+      <div>
+        <h3>Landing page de cadastro VIP</h3>
+        <p>P&aacute;gina exclusiva para a live: visual de luxo, filtro impl&iacute;cito de p&uacute;blico, formulário de qualificação integrado com a ferramenta de cadastro da Vantia.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🎬</div>
+      <div>
+        <h3>Criativos verticais &mdash; formato nativo da live</h3>
+        <p>V&iacute;deos curtos mostrando a experiência da live, pe&ccedil;as sendo manuseadas, emoção do leilão. A equipe de design da EmpresAtiva roteiriza e edita para o formato vertical.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">💬</div>
+      <div>
+        <h3>Nutri&ccedil;&atilde;o via WhatsApp &mdash; lista VIP</h3>
+        <p>Sequ&ecirc;ncia de mensagens via API oficial: boas-vindas, bastidores, prévia de peças, confirma&ccedil;&atilde;o de presen&ccedil;a e lembrete final. Automação completa, zero manual.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔍</div>
+      <div>
+        <h3>Formul&aacute;rio de qualifica&ccedil;&atilde;o</h3>
+        <p>2-3 perguntas que filtram automaticamente. Quem n&atilde;o qualifica recebe mensagem automática e sai do fluxo. A Vantia e a joalheria s&oacute; veem os leads que passaram pelo filtro.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📊</div>
+      <div>
+        <h3>Relat&oacute;rio p&oacute;s-live &mdash; dados para o pr&oacute;ximo leilão</h3>
+        <p>Custo por lead, taxa de presen&ccedil;a, taxa de compra, canal de origem dos compradores reais. O primeiro leilão gera o dado que torna o segundo muito mais eficiente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sk">Investimento &mdash; dois modelos de parceria</div>
+  <h2 class="st">Piloto ou<br>parceria<br><span class="g">recorrente.</span></h2>
+  <p class="si">O modelo de projeto por live &eacute; o caminho para o primeiro leilão &mdash; com dados reais e resultado provado. O modelo mensal &eacute; o que faz sentido quando a Vantia escalar para múltiplos clientes.</p>
+
+  <div class="planos-wrap">
+    <!-- PROJETO PILOTO -->
+    <div class="pc pc-pilot">
+      <div class="pc-body">
+        <div class="pc-kicker">Projeto Piloto &mdash; Por Live</div>
+        <div class="pc-price">R$ 2.500</div>
+        <div class="pc-period">por live &middot; joalheria de Niter&oacute;i</div>
+        <div class="pc-obs">+ verba de an&uacute;ncios &middot; m&iacute;n. R$ 1.500/live</div>
+        <div class="pc-sep"></div>
+        <ul class="pc-ul">
+          <li>Estrat&eacute;gia completa das 3 fases (setup, nutrição, ativação)</li>
+          <li>Campanha Meta Ads com segmenta&ccedil;&atilde;o high ticket</li>
+          <li>Landing page de cadastro VIP</li>
+          <li>Criativos verticais (at&eacute; 4 pe&ccedil;as)</li>
+          <li>Formul&aacute;rio de qualifica&ccedil;&atilde;o + filtro automático</li>
+          <li>Sequ&ecirc;ncia de nutri&ccedil;&atilde;o via WhatsApp (5 mensagens)</li>
+          <li>Push de lembrete no dia da live</li>
+          <li>Relat&oacute;rio p&oacute;s-live com dados de compradores</li>
+        </ul>
+        <div class="pc-sep"></div>
+        <p class="pc-note">Ideal para o primeiro leilão: a gente prova o modelo, coleta os dados e entende qual segmentação funciona melhor para joias em live. Base para o modelo recorrente.</p>
+      </div>
+    </div>
+
+    <!-- MENSAL RECORRENTE -->
+    <div class="pc pc-rec">
+      <div class="pc-body">
+        <div class="pc-kicker">Parceria Recorrente &mdash; Mensal</div>
+        <div class="rec-badge">&#9733; Recomendado para escala</div>
+        <div class="pc-price">R$ 1.997</div>
+        <div class="pc-period">por m&ecirc;s &middot; at&eacute; 4 lives/m&ecirc;s</div>
+        <div class="pc-obs">+ verba de an&uacute;ncios &middot; m&iacute;n. R$ 1.000/live</div>
+        <div class="pc-sep"></div>
+        <ul class="pc-ul">
+          <li>Tudo do projeto piloto &mdash; por live recorrente</li>
+          <li>Base de p&uacute;blico acumulada m&ecirc;s a m&ecirc;s (fica mais barata)</li>
+          <li>Algorítmo do Meta aprende com cada comprador real</li>
+          <li>Sequ&ecirc;ncias de nutri&ccedil;&atilde;o por joalheria e por tipo de pe&ccedil;a</li>
+          <li>Escalonamento de verba baseado em dados reais de ROI</li>
+          <li>Relat&oacute;rio mensal com custo por comprador e ROI por live</li>
+          <li>Estrat&eacute;gia para m&uacute;ltiplos clientes da Vantia (replica&ccedil;&atilde;o do modelo)</li>
+        </ul>
+        <div class="pc-sep"></div>
+        <p class="pc-note">Quando a Vantia tiver 2-3 joalherias rodando lives recorrentes, o custo de captação cai porque o algoritmo j&aacute; tem dados de compradores reais acumulados. A eficiência cresce com o tempo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERBA RECOMENDADA -->
+  <div style="margin-top:16px;">
+    <div class="sk" style="margin-bottom:10px;">Verba de an&uacute;ncios &mdash; por que o m&iacute;nimo &eacute; maior aqui</div>
+    <div class="verba-row">
+      <div class="verba-cell"><div class="verba-lbl">Cl&iacute;nica / Sal&atilde;o comum</div><div class="verba-val">R$ 500/m&ecirc;s</div><div class="verba-desc">P&uacute;blico amplo &middot; CPL R$ 10–30</div></div>
+      <div class="verba-cell hl"><div class="verba-lbl">Live de joias &mdash; high ticket</div><div class="verba-val">R$ 1.500/live</div><div class="verba-desc">P&uacute;blico restrito &middot; CPL estimado R$ 40–80</div></div>
+    </div>
+    <div class="gold-box" style="margin-top:4px;">
+      <h3>Por que p&uacute;blico high ticket exige mais verba por lead</h3>
+      <p>O Meta tem menos pessoas com comportamento de compra de luxo do que com interesse em beleza ou saúde. Para atingir o volume m&iacute;nimo de leads qualificados para uma live com resultado (50-80 presentes), <strong>a verba precisa ser proporcionalmente maior — o CPL &eacute; mais alto, mas o ticket do produto tamb&eacute;m &eacute;.</strong> Uma pe&ccedil;a vendida em leilão de joia paga toda a campanha.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos &mdash; da proposta ao primeiro leilão</div>
+  <h2 class="st">Do sim ao<br><span class="t">primeiro lance</span><br><span class="v">na live.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora</span>
+      <h3>Leonardo envia print + detalhes da ferramenta Vantia</h3>
+      <p>Como combinamos na call: Jo&atilde;o precisa ver como funciona o cadastro via site, o formato dos botões na live e a tela do leiloeiro. Isso define como estruturar a LP e a integra&ccedil;&atilde;o do formul&aacute;rio.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Reuni&atilde;o com Cristinei</span>
+      <h3>Jo&atilde;o apresenta esta proposta para o decisor</h3>
+      <p>Ap&oacute;s Leonardo alinhar internamente com Cristinei: reunião curta (30min) para Jo&atilde;o apresentar a estratégia das 3 fases e tirar d&uacute;vidas sobre o modelo de investimento escolhido.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">Confirma&ccedil;&atilde;o</span>
+      <h3>Briefing da joalheria de Niter&oacute;i</h3>
+      <p>Data da primeira live, pe&ccedil;as que ser&atilde;o leiloadas (fotos/v&iacute;deos), ticket m&iacute;nimo por lote, perfil do p&uacute;blico atual da joalheria e lista de clientes (se houver) para gerar o Lookalike.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–5</span>
+      <h3>LP de cadastro VIP + segmenta&ccedil;&atilde;o configurada</h3>
+      <p>Landing page no ar com visual de luxo e formul&aacute;rio de qualifica&ccedil;&atilde;o. Campanhas Meta configuradas com segmenta&ccedil;&atilde;o high ticket. Pixel instalado e rastreamento Tintim ativo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 6–14</span>
+      <h3>An&uacute;ncios no ar &mdash; captação da lista VIP</h3>
+      <p>Criativos verticais rodando no Meta. Leads qualificados entram na sequência de WhatsApp automaticamente. Monitoramento di&aacute;rio do CPL e ajuste de segmenta&ccedil;&atilde;o conforme dados chegam.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">Dia da Live</span>
+      <h3>Push final + live com p&uacute;blico qualificado</h3>
+      <p>Lembrete WhatsApp 1h antes. An&uacute;ncio de lembrete no Meta. Monitoramento de acesso em tempo real. P&uacute;blico selecionado, aquecido, com cart&atilde;o na m&atilde;o — pronto para o primeiro lance.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot v"></div>
+      <span class="tl-day v">P&oacute;s-live</span>
+      <h3>Relat&oacute;rio + dados para o pr&oacute;ximo leilão</h3>
+      <p>Custo por lead, custo por comprador, peças mais disputadas, perfil dos compradores reais. Esse dado &eacute; o maior ativo do projeto — o segundo leilão ser&aacute; mais barato e mais eficiente.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Vantia Leilões,<br>a ferramenta<br>&eacute; nova.<br><span class="t">A l&oacute;gica de</span><br><span class="g">vender joia, n&atilde;o.</span></h2>
+  <p>A televis&atilde;o provou durante décadas que pessoa certa + produto certo + momento certo = venda de joia de alto valor. A live da Vantia replica essa janela de atenção &mdash; e a EmpresAtiva garante que as pessoas certas estejam l&aacute; dentro quando o leiloeiro levantar a primeira pe&ccedil;a.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Vantia%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Militar de Tráfego Pago</div>
+  </div>
+</div>
+
+</body>
+</html>
