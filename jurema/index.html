@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Expo Jurema 2026 — Captação de Patrocinadores</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --gold:#C9A84C;--gold-dim:rgba(201,168,76,.10);--gold-border:rgba(201,168,76,.22);
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 20%,rgba(201,168,76,.09) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:var(--gold);}
+h2.st .v{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+.gold-box{background:var(--gold-dim);border:1px solid var(--gold-border);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gold-box h3{font-size:14px;font-weight:800;color:var(--gold);margin-bottom:8px;}
+.gold-box p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gold-box p strong{color:var(--offwhite);font-weight:600;}
+
+/* ESTRATEGIA */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.ei.gdhl{background:var(--gold-dim);border-left:2px solid var(--gold);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.gdic{background:var(--gold-dim);border:1px solid var(--gold-border);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* PLANOS */
+.planos-wrap{display:flex;flex-direction:column;gap:16px;}
+.pc{border-radius:4px;overflow:hidden;position:relative;}
+.pc::before{content:"";display:block;height:4px;}
+.pc-var::before{background:linear-gradient(90deg,var(--terra),var(--gold));}
+.pc-ben::before{background:linear-gradient(90deg,var(--gold),var(--glight));}
+.pc-com::before{background:linear-gradient(90deg,var(--terra),#A05030);}
+.pc-var{background:var(--black);border:1px solid rgba(201,168,76,.28);}
+.pc-ben{background:var(--green);border:1px solid rgba(201,168,76,.32);}
+.pc-com{background:var(--black);border:1px solid rgba(181,101,58,.28);}
+.pc-body{padding:28px 26px;}
+.pc-kicker{font-size:8px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin-bottom:10px;}
+.pc-var .pc-kicker{color:var(--gold);}
+.pc-ben .pc-kicker{color:var(--gold);}
+.pc-com .pc-kicker{color:var(--terra);}
+.pc-plan{font-size:22px;font-weight:900;color:var(--offwhite);margin-bottom:6px;line-height:1.1;letter-spacing:-.01em;}
+.pc-price{font-size:48px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:4px;color:var(--offwhite);}
+.pc-var .pc-price{color:var(--gold);}
+.pc-ben .pc-price{color:var(--gold);}
+.pc-com .pc-price{color:var(--terra);}
+.pc-period{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:400;}
+.pc-mais{font-size:12px;font-weight:700;margin-bottom:20px;}
+.pc-var .pc-mais{color:var(--gold);}
+.pc-ben .pc-mais{color:#4CAF72;}
+.pc-com .pc-mais{color:var(--muted);}
+.pc-sep{height:1px;background:rgba(244,244,240,.08);margin:18px 0;}
+.pc-lbl{font-size:9px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin-bottom:12px;}
+.pc-var .pc-lbl{color:var(--gold);}
+.pc-ben .pc-lbl{color:#4CAF72;}
+.pc-com .pc-lbl{color:var(--terra);}
+.pc-ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.pc-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.pc-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;}
+.pc-var .pc-ul li::before{color:var(--gold);}
+.pc-ben .pc-ul li::before{color:#4CAF72;}
+.pc-com .pc-ul li::before{color:var(--terra);}
+.pc-ben-box{background:rgba(201,168,76,.08);border:1px solid var(--gold-border);padding:16px 18px;border-radius:2px;margin-top:4px;}
+.pc-ben-box h4{font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;letter-spacing:.01em;}
+.pc-ben-box ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.pc-ben-box ul li{font-size:11px;color:var(--offwhite);padding-left:16px;position:relative;line-height:1.5;font-weight:500;}
+.pc-ben-box ul li::before{content:"★";position:absolute;left:0;font-size:8px;color:var(--gold);}
+.pc-note{font-size:11px;color:var(--muted);line-height:1.7;padding:12px 14px;background:rgba(244,244,240,.03);border:1px solid var(--border);border-radius:2px;font-weight:400;margin-top:10px;}
+
+/* ROI */
+.roi-rows{display:flex;flex-direction:column;gap:2px;margin-top:16px;}
+.roi-row{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.roi-row.d{background:rgba(23,53,31,.35);border-left:2px solid var(--glight);}
+.roi-row.g{background:var(--gold-dim);border-left:2px solid var(--gold);}
+.rr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.rr-desc strong{color:var(--offwhite);font-weight:600;}
+.rr-val{font-size:16px;font-weight:800;flex-shrink:0;}
+.roi-row .rr-val{color:var(--offwhite);}
+.roi-row.d .rr-val{color:#4CAF72;}
+.roi-row.g .rr-val{color:var(--gold);}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:var(--gold);box-shadow:0 0 0 3px var(--gold-dim);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:var(--gold);}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.15) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta h2 .g{color:var(--gold);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .planos-wrap{flex-direction:row;align-items:flex-start;}
+  .pc{flex:1;min-width:0;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Expo%20Jurema%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; Captação de Patrocinadores &middot; Expo Jurema 2026</div>
+  <h1>A Expo Jurema<br>j&aacute; tem<br><span class="g">Natura e Pit&uacute;.</span><br><span class="t">A EmpresAtiva</span><br>traz os pr&oacute;ximos.</h1>
+  <p class="hero-sub">F&aacute;tima, como conversamos: a EmpresAtiva ativa o tráfego pago para alcançar empresas que ainda n&atilde;o conhecem a Expo Jurema — especialmente a base que j&aacute; acompanha a revista, donos de empresa no BNI e profissionais liberais que podem ser patrocinadores ou apoiadores. Tr&ecirc;s modelos de parceria para escolher.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Evento</span><span class="s2">Expo Jurema 2026</span></div>
+    <div class="hp"><span class="s1">Data</span><span class="s2">06, 07 e 08 de Novembro</span></div>
+    <div class="hp"><span class="s1">Local</span><span class="s2">Jockey Club &middot; Rio de Janeiro</span></div>
+    <div class="hp"><span class="s1">Projeto maior</span><span class="s2">Lei Rouanet R$ 6M &middot; 5 estados</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-dark">
+  <div class="sk">A estrat&eacute;gia &mdash; como a EmpresAtiva capta patrocinadores</div>
+  <h2 class="st">Remarketing<br>na base da<br><span class="g">Jurema.</span><br><span class="t">BNI para<br>empresas.</span></h2>
+  <p class="si">F&aacute;tima, como eu expliquei na nossa conversa: quem j&aacute; acompanha a Revista Jurema h&aacute; 15 anos tem alguma conex&atilde;o com a marca. Esse &eacute; o p&uacute;blico mais quente para ser abordado como patrocinador — eles j&aacute; confiam. A EmpresAtiva chega neles antes de qualquer concorrente.</p>
+
+  <div class="est-grid">
+    <div class="ei gdhl">
+      <div class="eic gdic">📣</div>
+      <div>
+        <h3>Remarketing na base da Revista Jurema</h3>
+        <p>Quem segue @revistajurema e @grupojurema j&aacute; &eacute; f&atilde; da marca. An&uacute;ncio direcionado exatamente para esse público mostrando as cotas de patrocínio, os shows (Ney Matogrosso, Faf&aacute; de Bel&eacute;m) e a oportunidade da Lei Rouanet com desconto de IR.</p>
+      </div>
+    </div>
+    <div class="ei thl">
+      <div class="eic tic">🤝</div>
+      <div>
+        <h3>BNI RJ &mdash; empresários locais como patrocinadores</h3>
+        <p>Jo&atilde;o &eacute; presidente do BNI Soluções (Recreio) e tem acesso a empresários que pagam at&eacute; R$10-20k por visibilidade. A cota Bronze (R$10k) &eacute; exatamente o perfil BNI: marca no painel, site, catálogo e 2 convites VIP.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">⚖️</div>
+      <div>
+        <h3>Lei Rouanet como argumento de venda</h3>
+        <p>Empresa que patrocina via Lei Rouanet tem desconto no IR. <strong>Para empresas no lucro presumido, esse &eacute; um argumento que fecha sozinho.</strong> A EmpresAtiva coloca esse benefício no centro do an&uacute;ncio — não &eacute; só patrocinar, &eacute; investir com retorno fiscal garantido.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">👨‍⚕️</div>
+      <div>
+        <h3>Profissionais liberais &mdash; advogados, m&eacute;dicos, arquitetos</h3>
+        <p>Como voc&ecirc; mencionou: podcast, espa&ccedil;o de fala, visibilidade para o trabalho. A cota Totem (R$2.500) ou Arena Gastron&ocirc;mica (R$4.500) &eacute; ideal para profissional liberal que quer audiência qualificada de mulheres empreendedoras.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📊</div>
+      <div>
+        <h3>Segmenta&ccedil;&atilde;o por interesse e cargo</h3>
+        <p>Meta Ads permite segmentar por: cargo de diretor/dono de empresa, interesse em empreendedorismo feminino, cultura e gastronomia. Chegamos em decisores que a venda direta por telefone nunca chegaria.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔔</div>
+      <div>
+        <h3>Leads chegam direto para voc&ecirc; fechar</h3>
+        <p>Cada empresa interessada entra em contato via WhatsApp. Voc&ecirc;, F&aacute;tima, e Jo&atilde;o recebem alerta em tempo real. A EmpresAtiva traz o lead — voc&ecirc; fecha a venda. &Eacute; exatamente a divisão que conversamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- OS TRÊS PLANOS -->
+<section class="bg-black">
+  <div class="sk">Tr&ecirc;s modelos de parceria &mdash; escolha o que faz mais sentido</div>
+  <h2 class="st">Vari&aacute;vel.<br>Ou com<br><span class="g">benef&iacute;cio.<br></span>Ou <span class="t">comercial.</span></h2>
+  <p class="si">F&aacute;tima, apresento os tr&ecirc;s formatos para voc&ecirc; e a Luciana decidirem junto com Jo&atilde;o. Cada um tem uma l&oacute;gica diferente — nenhum &eacute; melhor que o outro, dependendo do que faz sentido para o caixa do projeto agora.</p>
+
+  <div class="planos-wrap">
+
+    <!-- PLANO 1 — CUSTO + VARIÁVEL -->
+    <div class="pc pc-var">
+      <div class="pc-body">
+        <div class="pc-kicker">Modelo 1 &mdash; Custo + Vari&aacute;vel</div>
+        <div class="pc-plan">Fee Fixo + Comiss&atilde;o</div>
+        <div class="pc-price">R$ 997</div>
+        <div class="pc-period">por m&ecirc;s &middot; fee de gest&atilde;o de tráfego</div>
+        <div class="pc-mais">+ 15% sobre cada patrocínio captado via tráfego</div>
+        <div class="pc-sep"></div>
+        <div class="pc-lbl">O que inclui</div>
+        <ul class="pc-ul">
+          <li>Gest&atilde;o completa das campanhas Meta Ads</li>
+          <li>Remarketing na base da Revista Jurema</li>
+          <li>Segmenta&ccedil;&atilde;o para donos de empresa e profissionais liberais</li>
+          <li>Landing page de captação de interesse em patrocínio</li>
+          <li>Criativo das cotas (Stand Start, Master, Premium, Totem, Arena, Beleza)</li>
+          <li>Alerta de leads em tempo real para F&aacute;tima fechar</li>
+          <li>Dashboard de performance + relat&oacute;rio mensal</li>
+        </ul>
+        <div class="pc-sep"></div>
+        <p class="pc-note">&#9888; Verba de an&uacute;ncios n&atilde;o inclusa — m&iacute;nimo recomendado R$ 800/m&ecirc;s. A comiss&atilde;o de 15% &eacute; s&oacute; sobre patrocinadores que vieram pelo tráfego pago (rastreado via UTM/Tintim). Referências e vendas diretas de voc&ecirc;s n&atilde;o geram comiss&atilde;o.</p>
+      </div>
+    </div>
+
+    <!-- PLANO 2 — CUSTO + BENEFÍCIO -->
+    <div class="pc pc-ben">
+      <div class="pc-body">
+        <div class="pc-kicker">Modelo 2 &mdash; Custo + Benef&iacute;cio no Evento</div>
+        <div class="pc-plan">Fee Fixo + Cota de Visibilidade</div>
+        <div class="pc-price">R$ 997</div>
+        <div class="pc-period">por m&ecirc;s &middot; fee de gest&atilde;o de tráfego</div>
+        <div class="pc-mais">+ cota de visibilidade na Expo no lugar da comiss&atilde;o</div>
+        <div class="pc-sep"></div>
+        <div class="pc-lbl">O que inclui &mdash; tudo do Modelo 1, mais</div>
+        <ul class="pc-ul">
+          <li>Gest&atilde;o completa das campanhas Meta Ads</li>
+          <li>Remarketing na base + segmenta&ccedil;&atilde;o para empresários</li>
+          <li>Landing page + criativos das cotas</li>
+          <li>Alerta de leads em tempo real</li>
+          <li>Dashboard + relat&oacute;rio</li>
+        </ul>
+        <div class="pc-ben-box">
+          <h4>&#9733; Em vez de comiss&atilde;o &mdash; benef&iacute;cios na Expo Jurema</h4>
+          <ul>
+            <li>Totem Publicit&aacute;rio EmpresAtiva nos 3 dias (R$ 2.500 de valor)</li>
+            <li>P&aacute;gina na Revista Jurema — divulgação da ag&ecirc;ncia</li>
+            <li>Mencionar EmpresAtiva em toda comunica&ccedil;&atilde;o do evento</li>
+            <li>Participa&ccedil;&atilde;o na Rodada de Neg&oacute;cios da Expo</li>
+            <li>2 convites VIP para Jo&atilde;o + convidado no evento</li>
+          </ul>
+        </div>
+        <p class="pc-note">Ideal se o projeto preferir n&atilde;o pagar comiss&atilde;o variável. Jo&atilde;o ganha visibilidade real para a EmpresAtiva dentro do evento — que vai ter Ney Matogrosso, Faf&aacute; de Bel&eacute;m e cobertura da TV Jurema na Globo.</p>
+      </div>
+    </div>
+
+    <!-- PLANO 3 — COMERCIAL -->
+    <div class="pc pc-com">
+      <div class="pc-body">
+        <div class="pc-kicker">Modelo 3 &mdash; Preço Comercial</div>
+        <div class="pc-plan">Fee &Uacute;nico Sem Vari&aacute;vel</div>
+        <div class="pc-price">R$ 2.497</div>
+        <div class="pc-period">por m&ecirc;s &middot; gest&atilde;o completa at&eacute; o evento</div>
+        <div class="pc-mais">sem comiss&atilde;o &middot; sem benef&iacute;cios &middot; preço cheio de mercado</div>
+        <div class="pc-sep"></div>
+        <div class="pc-lbl">O que inclui</div>
+        <ul class="pc-ul">
+          <li>Gest&atilde;o completa do Meta Ads at&eacute; 06/novembro</li>
+          <li>Remarketing na base da Revista Jurema</li>
+          <li>Segmenta&ccedil;&atilde;o para donos de empresa, profissionais liberais e empresas com interesse em cultura</li>
+          <li>Landing pages das cotas de patrocínio</li>
+          <li>Criativos de cada cota (Stand, Totem, Arena, Plataforma da Beleza)</li>
+          <li>Alerta de leads em tempo real para o time comercial</li>
+          <li>Dashboard completo + relat&oacute;rios quinzenais</li>
+          <li>Suporte direto com Jo&atilde;o at&eacute; o encerramento do evento</li>
+        </ul>
+        <p class="pc-note">&#9888; Verba n&atilde;o inclusa &mdash; m&iacute;nimo recomendado R$ 1.000/m&ecirc;s (3 meses at&eacute; o evento = R$ 3.000 de verba total). Sem comiss&atilde;o sobre patrocinadores, sem benef&iacute;cios extras. Relação cliente-agência padr&atilde;o.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIMULAÇÃO DE ROI -->
+  <div class="sk" style="margin-top:44px;">Simulação &mdash; o que o tráfego pode gerar</div>
+  <div class="roi-rows">
+    <div class="roi-row">
+      <div class="rr-desc"><strong>Verba R$ 800/m&ecirc;s &times; 3 meses</strong> &middot; custo total de m&iacute;dia</div>
+      <div class="rr-val">R$ 2.400</div>
+    </div>
+    <div class="roi-row">
+      <div class="rr-desc"><strong>CPL estimado</strong> &middot; empresário interessado em patrocínio &middot; nicho menor, CPL maior</div>
+      <div class="rr-val">R$ 50–100</div>
+    </div>
+    <div class="roi-row">
+      <div class="rr-desc"><strong>Leads qualificados estimados</strong> &middot; 24–48 empresas interessadas</div>
+      <div class="rr-val">24–48</div>
+    </div>
+    <div class="roi-row">
+      <div class="rr-desc"><strong>Taxa de fechamento realista</strong> &middot; 15–25% &middot; voc&ecirc; tem a venda consultiva</div>
+      <div class="rr-val">4–12 cotas</div>
+    </div>
+    <div class="roi-row d">
+      <div class="rr-desc"><strong>4 cotas Bronze fechadas</strong> &middot; R$ 10.000 cada &middot; cota mais acess&iacute;vel</div>
+      <div class="rr-val">R$ 40.000</div>
+    </div>
+    <div class="roi-row g">
+      <div class="rr-desc"><strong>2 cotas Ouro fechadas</strong> &middot; R$ 50.000 cada &middot; perfil BNI/empresa m&eacute;dia</div>
+      <div class="rr-val">R$ 100.000</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos</div>
+  <h2 class="st">Da reuni&atilde;o<br>com Luciana<br><span class="t">ao primeiro<br>an&uacute;ncio no ar.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora</span>
+      <h3>F&aacute;tima compartilha esta proposta com Luciana</h3>
+      <p>A CEO da Expo Jurema está em Bras&iacute;lia e volta na quinta. F&aacute;tima envia esta proposta para Luciana avaliar os 3 modelos antes da reuni&atilde;o com Jo&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Ap&oacute;s quinta-feira</span>
+      <h3>Reuni&atilde;o de alinhamento &mdash; Jo&atilde;o + F&aacute;tima + Luciana</h3>
+      <p>Como combinamos: a reuni&atilde;o acontece ap&oacute;s a chegada de Luciana. Jo&atilde;o apresenta a estrat&eacute;gia completa de tráfego, o modelo de rastreamento e o modelo escolhido. Decis&atilde;o tomada nessa reuni&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">Confirma&ccedil;&atilde;o</span>
+      <h3>Acesso ao Instagram + criação dos criativos das cotas</h3>
+      <p>Jo&atilde;o recebe acesso ao @revistajurema e @grupojurema. Equipe de design cria as pe&ccedil;as para cada cota: Stand Start (R$5.900), Master (R$7.500), Premium (R$10.900), Totem (R$2.500) e Arena Gastron&ocirc;mica (R$4.500).</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Campanhas no ar &mdash; empresas começam a ver</h3>
+      <p>Remarketing na base da revista ativado. Segmenta&ccedil;&atilde;o para donos de empresa publicada. Argumento da Lei Rouanet no centro dos criativos. Primeiros leads chegando no WhatsApp para F&aacute;tima fechar.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Paralelo</span>
+      <h3>BNI &mdash; Jo&atilde;o aciona a rede de empresários</h3>
+      <p>Jo&atilde;o apresenta a Expo Jurema no BNI Soluções (Recreio) e conecta F&aacute;tima com empresários do grupo que possam ter interesse nas cotas menores (Bronze R$10k) ou estandes (a partir de R$5.900).</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">06/novembro</span>
+      <h3>Expo Jurema 2026 &mdash; Jockey Club &middot; Ney Matogrosso &middot; Faf&aacute; de Bel&eacute;m</h3>
+      <p>Todas as cotas captadas via tráfego j&aacute; est&atilde;o ativadas no evento. O tráfego pago cumpriu seu papel — a Expo tem o p&uacute;blico e os patrocinadores que garantem a sustentabilidade do projeto para a Lei Rouanet de R$6M.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Expo Jurema<br>j&aacute; tem 15 anos<br>de hist&oacute;ria.<br><span class="t">Novembro vai ser</span><br><span class="g">o cap&iacute;tulo maior.</span></h2>
+  <p>F&aacute;tima, a Natura e a Pit&uacute; j&aacute; est&atilde;o dentro porque o relacionamento da Luciana chegou nelas. A EmpresAtiva vai chegar nas empresas que o relacionamento ainda n&atilde;o alcançou — com an&uacute;ncio certo, para o decisor certo, com o argumento certo da Lei Rouanet.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20Expo%20Jurema%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Militar de Tráfego Pago</div>
+  </div>
+</div>
+
+</body>
+</html>
