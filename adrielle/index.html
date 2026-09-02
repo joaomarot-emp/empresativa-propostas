@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Clínica Adrielle Fernandes — Método Demanda Previsível</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* DIAGNÓSTICO COMPARATIVO */
+.comp{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.comp-row{display:flex;gap:2px;}
+.comp-cell{background:var(--card);padding:14px 18px;flex:1;min-width:0;}
+.comp-cell.h{background:var(--green);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,244,240,.6);}
+.comp-cell.t{border-left:3px solid var(--terra);}
+.comp-cell.g{border-left:3px solid #4CAF72;}
+.comp-cell .cv{font-size:15px;font-weight:800;color:var(--offwhite);margin-bottom:2px;line-height:1.2;}
+.comp-cell .cd{font-size:11px;color:var(--muted);font-weight:400;line-height:1.5;}
+.comp-cell.t .cv{color:var(--terra);}
+.comp-cell.g .cv{color:#4CAF72;}
+
+/* ESTRATÉGIA 2 UNIDADES */
+.unidades{display:flex;flex-direction:column;gap:16px;margin-bottom:20px;}
+.un-card{border-radius:2px;overflow:hidden;}
+.un-card::before{content:"";display:block;height:3px;}
+.un-cg::before{background:linear-gradient(90deg,#4CAF72,var(--glight));}
+.un-ba::before{background:linear-gradient(90deg,var(--terra),#A05030);}
+.un-cg{background:rgba(23,53,31,.35);border:1px solid rgba(42,92,53,.3);}
+.un-ba{background:rgba(181,101,58,.05);border:1px solid rgba(181,101,58,.2);}
+.un-body{padding:22px 24px;}
+.un-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;margin-bottom:8px;}
+.un-cg .un-kicker{color:#4CAF72;}
+.un-ba .un-kicker{color:var(--terra);}
+.un-nome{font-size:17px;font-weight:800;color:var(--offwhite);margin-bottom:12px;letter-spacing:-.01em;}
+.un-ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.un-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.un-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;}
+.un-cg .un-ul li::before{color:#4CAF72;}
+.un-ba .un-ul li::before{color:var(--terra);}
+.un-ul li span{color:var(--muted);font-weight:400;}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+.tag{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.14em;padding:2px 7px;border-radius:2px;margin-left:7px;text-transform:uppercase;}
+.tag-t{background:rgba(181,101,58,.1);color:var(--terra);border:1px solid rgba(181,101,58,.2);}
+.tag-b{background:rgba(23,53,31,.4);color:#4CAF72;border:1px solid rgba(42,92,53,.3);}
+.tag-g{background:rgba(59,130,246,.1);color:#5B9CF6;border:1px solid rgba(59,130,246,.2);}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(181,101,58,.28);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.inv-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--terra),var(--glight),var(--terra));}
+.inv-body{padding:30px 26px;}
+.inv-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--terra);}
+.inv-linha.vb{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;font-weight:400;}
+.inv-linha-valor{font-size:20px;font-weight:900;flex-shrink:0;letter-spacing:-.01em;}
+.inv-linha.ag .inv-linha-valor{color:var(--terra);}
+.inv-linha.vb .inv-linha-valor{color:#4C8BF5;}
+.inv-total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);font-weight:400;}
+.inv-total-val{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;letter-spacing:-.02em;}
+.inv-sep{height:1px;background:var(--border);margin:18px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.inv-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:var(--terra);}
+
+/* VAR BOX */
+.var-box{background:rgba(23,53,31,.35);border:1px solid rgba(42,92,53,.3);padding:22px 26px;border-radius:2px;margin-top:4px;}
+.var-box h4{font-size:13px;font-weight:700;color:#4CAF72;margin-bottom:14px;}
+.var-rows{display:flex;flex-direction:column;gap:2px;}
+.var-row{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.var-row.d{background:rgba(23,53,31,.35);border-left:2px solid var(--glight);}
+.vr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.vr-desc strong{color:var(--offwhite);font-weight:600;}
+.vr-val{font-size:16px;font-weight:800;color:#4CAF72;flex-shrink:0;}
+
+/* BONUS CURSO */
+.bonus-card{background:var(--green);border:1px solid rgba(42,92,53,.45);border-radius:4px;overflow:hidden;margin-top:14px;}
+.bonus-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--glight),var(--terra));}
+.bonus-body{padding:28px 26px;}
+.bonus-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#4CAF72;margin-bottom:12px;}
+.bonus-titulo{font-size:18px;font-weight:800;color:var(--offwhite);margin-bottom:14px;line-height:1.2;letter-spacing:-.01em;}
+.bonus-titulo em{color:var(--terra);font-style:normal;}
+.bonus-preco-row{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;}
+.bonus-de{font-size:20px;font-weight:600;color:var(--muted);text-decoration:line-through;}
+.bonus-por{font-size:42px;font-weight:900;color:var(--offwhite);line-height:1;letter-spacing:-.03em;}
+.bonus-period{font-size:12px;color:rgba(244,244,244,.55);margin-bottom:16px;font-weight:400;}
+.bonus-desc{font-size:13px;color:rgba(244,244,244,.65);line-height:1.85;font-weight:400;}
+.bonus-desc strong{color:var(--offwhite);}
+
+/* ROI */
+.roi-rows{display:flex;flex-direction:column;gap:2px;margin-top:14px;}
+.roi-row{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.roi-row.d{background:rgba(23,53,31,.35);border-left:2px solid var(--glight);}
+.roi-row.t{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.rr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.rr-desc strong{color:var(--offwhite);font-weight:600;}
+.rr-val{font-size:16px;font-weight:800;flex-shrink:0;}
+.roi-row .rr-val{color:var(--offwhite);}
+.roi-row.d .rr-val{color:#4CAF72;}
+.roi-row.t .rr-val{color:var(--terra);}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .unidades{flex-direction:row;}
+  .un-card{flex:1;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+  .comp-row{gap:3px;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; N&iacute;vel 2 &middot; M&eacute;todo Demanda Previs&iacute;vel &middot; Cl&iacute;nica Adrielle Fernandes</div>
+  <h1>De R$ 100k<br>para<br><span class="g">R$ 320k</span><br><span class="t">em 6 meses.</span></h1>
+  <p class="hero-sub">Adrielle, como calculamos ao vivo: voc&ecirc;s investem R$ 5k em verba, t&ecirc;m um lead a R$ 13–20 no Meta e a R$ 10–15 no Google — mas n&atilde;o sabem qual anúncio gerou qual venda. A EmpresAtiva resolve o rastreamento do in&iacute;cio ao fim, para que cada real investido seja uma decis&atilde;o baseada em dado real, n&atilde;o em achismo.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Unidades</span><span class="s2">Campo Grande + Barra da Tijuca</span></div>
+    <div class="hp"><span class="s1">Faturamento atual</span><span class="s2">R$ 80–100k/m&ecirc;s (as duas)</span></div>
+    <div class="hp"><span class="s1">Meta 6 meses</span><span class="s2">R$ 320k (R$ 160k cada)</span></div>
+    <div class="hp"><span class="s1">Nível</span><span class="s2">2 &middot; Meta + Google + CRM + IA</span></div>
+    <div class="hp"><span class="s1">Fee</span><span class="s2">R$ 1.897/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sk">Diagn&oacute;stico &mdash; o que est&aacute; travando o crescimento</div>
+  <h2 class="st">Voc&ecirc;s investem<br>R$ 5k por m&ecirc;s.<br><span class="t">Mas n&atilde;o sabem<br>o que &eacute; lucro<br>e o que &eacute; desperd&iacute;cio.</span></h2>
+  <p class="si">Durante a nossa reuni&atilde;o, analisamos os dados reais das suas campanhas. O diagn&oacute;stico &eacute; claro — e revers&iacute;vel.</p>
+
+  <div class="tb">
+    <h3>Sem rastreamento, toda decis&atilde;o &eacute; baseada em achismo</h3>
+    <p>Voc&ecirc; mexeu na campanha da Barra porque Campo Grande tava bom. Mas e se o anúncio da Barra era o que trazia clientes para Campo Grande? Sem rastrear do primeiro clique at&eacute; a venda fechada, qualquer decis&atilde;o de verba &eacute; um risco. <strong>A EmpresAtiva sabe de qual anúncio veio cada venda — e nunca pausa o que est&aacute; gerando resultado.</strong></p>
+  </div>
+
+  <div class="tb">
+    <h3>Pixel compartilhado — Barra e Campo Grande brigando pelo mesmo aprendizado</h3>
+    <p>Duas unidades com públicos completamente diferentes compartilhando o mesmo conjunto de dados. O algoritmo do Meta n&atilde;o consegue aprender o p&uacute;blico ideal de cada regi&atilde;o separadamente. <strong>A EmpresAtiva cria conjuntos de dados independentes para Barra e Campo Grande — o Meta aprende o perfil certo de cada cliente, em cada localidade.</strong></p>
+  </div>
+
+  <div class="gb">
+    <h3>Google traz lead mais barato que o Meta — e voc&ecirc;s n&atilde;o sabiam</h3>
+    <p>Analisando os dados ao vivo: Google R$10–15 por lead, Meta Barra R$20. <strong>Com rastreamento de CAC (custo de aquisi&ccedil;&atilde;o de cliente), n&atilde;o apenas CPL, voc&ecirc;s teriam certeza de onde escalar a verba e onde cortar.</strong> Esse dado est&aacute; disponível — s&oacute; falta conectar os pontos.</p>
+  </div>
+
+  <div class="tb">
+    <h3>N&uacute;meros de WhatsApp caindo sem fazer disparo em massa</h3>
+    <p>O WhatsApp de 2026 bane n&uacute;meros que enviam a mesma mensagem para muitos contatos — mesmo que manualmente. A solu&ccedil;&atilde;o definitiva &eacute; a API Oficial. <strong>A EmpresAtiva migra os dois n&uacute;meros para API Oficial em at&eacute; 2 dias corridos. Nunca mais perda de n&uacute;mero, nunca mais 24h sem vender.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA POR UNIDADE -->
+<section class="bg-black">
+  <div class="sk">A estrat&eacute;gia &mdash; uma l&oacute;gica diferente para cada unidade</div>
+  <h2 class="st">Campo Grande<br>sustenta.<br><span class="g">Barra cresce<br>gradualmente.</span></h2>
+  <p class="si">Adrielle, como voc&ecirc; mesma disse: n&atilde;o se tira verba do que est&aacute; funcionando para colocar onde est&aacute; fraco. Mantém-se o que funciona e aporta-se gradualmente onde ainda n&atilde;o h&aacute; autoridade. A EmpresAtiva opera com essa l&oacute;gica.</p>
+
+  <div class="unidades">
+    <div class="un-card un-cg">
+      <div class="un-body">
+        <div class="un-kicker">Unidade 1 &mdash; Prioridade Alta</div>
+        <div class="un-nome">Campo Grande</div>
+        <ul class="un-ul">
+          <li>Refer&ecirc;ncia consolidada na regi&atilde;o <span>&mdash; sem concorr&ecirc;ncia relevante</span></li>
+          <li>Nova unidade 10× maior inaugurando este m&ecirc;s <span>&mdash; foco m&aacute;ximo agora</span></li>
+          <li>Verba mantida e escalonada conforme performance <span>&mdash; a galinha dos ovos de ouro</span></li>
+          <li>Lead Google mais barato <span>&mdash; prioridade de investimento no Google Ads local</span></li>
+          <li>Conjunto de dados dedicado <span>&mdash; algoritmo aprende s&oacute; o público de CG</span></li>
+          <li>GBP otimizado <span>&mdash; aparecer no mapa quando buscam "tricologista Campo Grande"</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="un-card un-ba">
+      <div class="un-body">
+        <div class="un-kicker">Unidade 2 &mdash; Crescimento Gradual</div>
+        <div class="un-nome">Barra da Tijuca</div>
+        <ul class="un-ul">
+          <li>Mercado competitivo <span>&mdash; Mais Cabelo, dermatologistas, tricologistas</span></li>
+          <li>Lead Meta a R$ 20 <span>&mdash; criativo mais cir&uacute;rgico reduz esse custo</span></li>
+          <li>Verba aportada gradualmente <span>&mdash; sem arriscar o que j&aacute; funciona em CG</span></li>
+          <li>Formul&aacute;rio condicional <span>&mdash; filtra quem pode pagar R$ 120 antes de virar lead</span></li>
+          <li>Criativos: dor + solu&ccedil;&atilde;o + antes/depois din&acirc;mico <span>&mdash; mais cir&uacute;rgico que os atuais</span></li>
+          <li>Conjunto de dados dedicado <span>&mdash; algoritmo aprende o público da Barra separado</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARATIVO CPL -->
+  <div class="sk" style="margin-bottom:10px;">Dados reais das suas campanhas — analisados ao vivo</div>
+  <div class="comp">
+    <div class="comp-row">
+      <div class="comp-cell h">Canal / Regi&atilde;o</div>
+      <div class="comp-cell h">Verba investida</div>
+      <div class="comp-cell h">Leads gerados</div>
+      <div class="comp-cell h">CPL real</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--terra);">Meta &mdash; Barra</div></div>
+      <div class="comp-cell t"><div class="cv">R$ 2.500</div></div>
+      <div class="comp-cell t"><div class="cv">118 leads</div></div>
+      <div class="comp-cell t"><div class="cv">R$ 21</div><div class="cd">n&atilde;o os R$ 6 que foi informado</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:#4CAF72;">Meta &mdash; Campo Grande</div></div>
+      <div class="comp-cell g"><div class="cv">R$ 2.200</div></div>
+      <div class="comp-cell g"><div class="cv">162 leads</div></div>
+      <div class="comp-cell g"><div class="cv">R$ 13</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:#5B9CF6;">Google Ads</div></div>
+      <div class="comp-cell" style="border-left:3px solid #4C8BF5;"><div class="cv" style="color:#5B9CF6;">R$ 1.500</div></div>
+      <div class="comp-cell" style="border-left:3px solid #4C8BF5;"><div class="cv" style="color:#5B9CF6;">94–150 leads</div></div>
+      <div class="comp-cell" style="border-left:3px solid #4C8BF5;"><div class="cv" style="color:#5B9CF6;">R$ 10–15</div><div class="cd">mais barato que o Meta Barra</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O QUE ENTREGAMOS -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega &mdash; N&iacute;vel 2 completo</div>
+  <h2 class="st">N&atilde;o s&oacute;<br>tráfego.<br><span class="t">Operação<br>completa.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads &mdash; Barra + Campo Grande<span class="tag tag-t">Meta</span></h3>
+        <p>Conjuntos de dados separados por unidade. Formul&aacute;rio condicional qualificando lead antes do WhatsApp. Criativos com dor + solu&ccedil;&atilde;o + antes/depois din&acirc;mico. Rotação c&iacute;clica a cada ~17 dias.</p>
+      </div>
+    </div>
+    <div class="ei thl">
+      <div class="eic tic">🔍</div>
+      <div>
+        <h3>Google Ads &mdash; busca local por regi&atilde;o<span class="tag tag-g">Google</span></h3>
+        <p>Keywords: "tricologista Campo Grande", "tratamento queda cabelo Barra". Lead mais barato que o Meta — potencializado com GBP otimizado para aparecer nas 3 primeiras posi&ccedil;&otilde;es do mapa.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📲</div>
+      <div>
+        <h3>API Oficial WhatsApp &mdash; 2 dias<span class="tag tag-t">Urgente</span></h3>
+        <p>Jo&atilde;o migra os dois n&uacute;meros (Barra + Campo Grande) para API Oficial com coexist&ecirc;ncia — vocês continuam usando pelo celular e pelo CRM. Fim dos banimentos. Nunca mais 24h sem vender.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🤖</div>
+      <div>
+        <h3>IA de qualifica&ccedil;&atilde;o &mdash; atendimento fora do hor&aacute;rio<span class="tag tag-b">IA</span></h3>
+        <p>IA atende leads que chegam &agrave; noite e nos fins de semana. Quando o lead quer agendar, alerta chega para o comercial com hist&oacute;rico completo. Fim das conversas esquecidas fora do expediente.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">📊</div>
+      <div>
+        <h3>Rastreamento completo &mdash; CAC por unidade e canal<span class="tag tag-b">Incluso</span></h3>
+        <p>Evolution API conectada nos dois n&uacute;meros. IA classifica cada conversa: qualificado, agendou, fechou. Dado devolvido ao Meta e Google — algoritmo aprende com quem comprou de verdade.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">💬</div>
+      <div>
+        <h3>CRM + alerta de lead<span class="tag tag-b">Incluso</span></h3>
+        <p>Um n&uacute;mero central filtra e direciona leads para Barra ou Campo Grande. Kanban de leads com fases: novo → qualificado → agendou → fechou. Alerta no grupo WhatsApp a cada lead novo.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📋</div>
+      <div>
+        <h3>Playbook Comercial<span class="tag tag-t">Incluso</span></h3>
+        <p>Script de primeira abordagem, follow-up (quantas tentativas, quando ligar, quando desistir), como quebrar objeção de pre&ccedil;o. Padroniza o atendimento da pessoa que voc&ecirc;s centralizaram no comercial.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🎬</div>
+      <div>
+        <h3>Criativos &mdash; equipe de design<span class="tag tag-t">Incluso</span></h3>
+        <p>Imagens, carrossel e edi&ccedil;&atilde;o de v&iacute;deo para an&uacute;ncios. Briefs enviados para voc&ecirc; e equipe gravarem — a edi&ccedil;&atilde;o &eacute; nossa. Antes/depois din&acirc;mico sem infringir diretrizes do Meta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sk">Investimento &mdash; o que foi acordado</div>
+  <h2 class="st">R$ 1.897/m&ecirc;s.<br><span class="t">At&eacute; R$ 5k<br>de verba<br>incluso no fee.</span></h2>
+  <p class="si">Adrielle e Luciano, documentando exatamente o que foi acordado: fee fixo que cobre at&eacute; R$ 5.000 de verba mensal gerida — o que j&aacute; &eacute; o n&iacute;vel atual de investimento de voc&ecirc;s. O modelo vari&aacute;vel s&oacute; entra quando voc&ecirc;s decidirem escalar.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">N&iacute;vel 2 &middot; Demanda Previs&iacute;vel &middot; Cl&iacute;nica Adrielle Fernandes &middot; Meta + Google + CRM + IA</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva &mdash; gest&atilde;o N&iacute;vel 2 completa</h4>
+            <p>Meta + Google, CRM, IA, API Oficial, criativos, playbook, rastreamento e relat&oacute;rio</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.897<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha vb">
+          <div class="inv-linha-info">
+            <h4>Meta Ads + Google Ads &mdash; verba de an&uacute;ncios</h4>
+            <p>Pago diretamente &agrave;s plataformas pelo cliente &middot; j&aacute; investido atualmente</p>
+          </div>
+          <div class="inv-linha-valor">R$ 5.000<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total mensal no in&iacute;cio</h4>
+            <p>Contrato 6 meses &middot; renovação semestral &middot; sem fidelidade adicional</p>
+          </div>
+          <div class="inv-total-val">R$ 6.897<span style="font-size:12px;font-weight:400;font-family:var(--font);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Meta Ads &mdash; Barra da Tijuca e Campo Grande (conjuntos separados)</li>
+        <li>Google Ads &mdash; busca local por regi&atilde;o</li>
+        <li>API Oficial WhatsApp &mdash; dois números migrados em até 2 dias</li>
+        <li>IA de atendimento fora do horário comercial</li>
+        <li>CRM com kanban de leads + alerta em tempo real</li>
+        <li>Rastreamento de CAC por unidade e canal</li>
+        <li>Equipe de design — criativos (imagem + carrossel + edição de vídeo)</li>
+        <li>Playbook Comercial para o time centralizado</li>
+        <li>Dashboard em tempo real + relatório mensal de vendas</li>
+        <li>GBP otimizado Barra + Campo Grande</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="var-box">
+    <h4>Modelo vari&aacute;vel &mdash; s&oacute; quando voc&ecirc;s decidirem escalar</h4>
+    <div class="var-rows">
+      <div class="var-row">
+        <div class="vr-desc">Verba at&eacute; <strong>R$ 5.000/m&ecirc;s</strong> &middot; fee fixo, sem acr&eacute;scimo</div>
+        <div class="vr-val">R$ 1.897</div>
+      </div>
+      <div class="var-row">
+        <div class="vr-desc">Verba <strong>R$ 6.000/m&ecirc;s</strong> &middot; +20% de R$ 1.000 = +R$ 200</div>
+        <div class="vr-val">R$ 2.097</div>
+      </div>
+      <div class="var-row">
+        <div class="vr-desc">Verba <strong>R$ 7.000/m&ecirc;s</strong> &middot; +20% de R$ 2.000 = +R$ 400</div>
+        <div class="vr-val">R$ 2.297</div>
+      </div>
+      <div class="var-row d">
+        <div class="vr-desc"><strong>Quem decide quando escalar s&atilde;o Adrielle e Luciano</strong>, com base nos dados reais do dashboard. A EmpresAtiva cresce junto conforme o resultado aparecer.</div>
+        <div class="vr-val" style="color:var(--terra);">+20%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BÔNUS ECO ACADEMIC -->
+  <div class="bonus-card">
+    <div class="bonus-body">
+      <div class="bonus-kicker">&#9733; Condi&ccedil;&atilde;o especial &mdash; Eco Academic (cursos)</div>
+      <div class="bonus-titulo">O curso &eacute; outro p&uacute;blico.<br>Outro cliente. <em>50% de desconto.</em></div>
+      <div class="bonus-preco-row">
+        <div class="bonus-de">R$ 1.897</div>
+        <div class="bonus-por">R$ 948,50</div>
+      </div>
+      <div class="bonus-period">por m&ecirc;s &middot; enquanto mantiver ativo o contrato das cl&iacute;nicas</div>
+      <div class="bonus-desc">
+        O curso da Eco Academic (para cabelereiros e esteticistas) tem p&uacute;blico, lógica de lançamento e estrutura de campanha completamente diferentes das cl&iacute;nicas. <strong>Como j&aacute; trabalha com a EmpresAtiva nas cl&iacute;nicas, o curso entra com 50% de desconto — R$ 948,50/m&ecirc;s de fee separado.</strong><br><br>
+        Total dos dois contratos: R$ 2.845,50/m&ecirc;s de fee &middot; mais verba de cada opera&ccedil;&atilde;o.
+      </div>
+    </div>
+  </div>
+
+  <!-- ROI -->
+  <div class="sk" style="margin-top:28px;">Proje&ccedil;&atilde;o de resultado &mdash; benchmark sa&uacute;de &amp; est&eacute;tica (RD Station)</div>
+  <div class="roi-rows">
+    <div class="roi-row">
+      <div class="rr-desc">Taxa de convers&atilde;o do mercado <strong>sa&uacute;de &amp; est&eacute;tica</strong> &middot; benchmark RD Station</div>
+      <div class="rr-val">8% dos leads</div>
+    </div>
+    <div class="roi-row">
+      <div class="rr-desc">Leads qualificados necess&aacute;rios para 27 vendas extras &middot; gap at&eacute; R$ 320k</div>
+      <div class="rr-val">~333 leads</div>
+    </div>
+    <div class="roi-row">
+      <div class="rr-desc">Verba adicional estimada para gerar 333 leads extras <span>&middot; com CPL m&eacute;dio R$ 15</span></div>
+      <div class="rr-val">+R$ 2.000/m&ecirc;s</div>
+    </div>
+    <div class="roi-row d">
+      <div class="rr-desc"><strong>Ticket m&eacute;dio</strong> &middot; R$ 6.000 por cliente (pacote 3 meses R$ 3.200–R$ 4.700)</div>
+      <div class="rr-val">R$ 6.000</div>
+    </div>
+    <div class="roi-row d">
+      <div class="rr-desc"><strong>27 vendas extras × R$ 6.000</strong> &middot; receita adicional projetada em 6 meses</div>
+      <div class="rr-val">R$ 162.000/m&ecirc;s</div>
+    </div>
+    <div class="roi-row t">
+      <div class="rr-desc"><strong>ROAS projetado</strong> &middot; R$ 160k faturamento ÷ R$ 5k verba por unidade</div>
+      <div class="rr-val">32× por unidade</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos</div>
+  <h2 class="st">Do sim de<br>Adrielle e<br>Luciano ao<br><span class="g">primeiro lead<br>rastreado.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Hoje</span>
+      <h3>Adrielle conversa com Luciano e d&aacute; o retorno</h3>
+      <p>Como combinado ao final da reuni&atilde;o: Adrielle liga para Luciano, apresenta esta proposta e d&aacute; o retorno para Jo&atilde;o. Este documento foi enviado exatamente para facilitar essa conversa interna.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Confirma&ccedil;&atilde;o</span>
+      <h3>Assinatura + pagamento &rarr; onboarding agendado</h3>
+      <p>Jo&atilde;o envia documento de coleta de dados e formul&aacute;rio de cadastro. Contrato de 6 meses enviado para assinatura. Grupo de comunicação criado após a assinatura. Pagamento no ato do início.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–2</span>
+      <h3>API Oficial &mdash; dois n&uacute;meros migrados</h3>
+      <p>Jo&atilde;o migra os números da Barra e de Campo Grande para API Oficial com coexist&ecirc;ncia. A equipe continua atendendo pelo celular normalmente — e ganha o CRM como canal adicional. Fim dos banimentos.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 2–5</span>
+      <h3>Conjuntos de dados separados + an&aacute;lise das campanhas</h3>
+      <p>Conjuntos de dados dedicados criados para Barra e Campo Grande no Meta e Google. Jo&atilde;o analisa o hist&oacute;rico das campanhas para identificar o que funcionou antes — sem pausar nada do que est&aacute; ativo.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 5–10</span>
+      <h3>Criativos + formul&aacute;rios + playbook</h3>
+      <p>Briefs enviados para Adrielle gravar os v&iacute;deos. Equipe de design cria as pe&ccedil;as. Formul&aacute;rios condicionais configurados (filtro de R$ 120 antes de virar lead). Playbook Comercial entregue para o comercial centralizado.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">Semana 2 &mdash; 100% no ar</span>
+      <h3>Meta + Google + IA + rastreamento completo ativos</h3>
+      <p>Campanhas no formato EmpresAtiva rodando. IA atendendo fora do expediente. Evolution API rastreando cada conversa. Dashboard em tempo real para Adrielle e Luciano acompanharem. Primeiros leads rastreados do clique &agrave; venda.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">M&ecirc;s 6</span>
+      <h3>R$ 320k &mdash; com dado real, n&atilde;o com achismo</h3>
+      <p>Com rastreamento de CAC por unidade e canal, cada decis&atilde;o de verba ao longo dos 6 meses ser&aacute; baseada em dado real. Campo Grande sólida na nova unidade. Barra crescendo gradualmente com autoridade construída mês a mês.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Adrielle, voc&ecirc;<br>saiu de Campo<br>Grande e chegou<br><span class="t">na Barra.</span><br><span style="color:#4CAF72;">Agora<br>voc&ecirc;s dobram.</span></h2>
+  <p>Uma nova unidade 10× maior abrindo em Campo Grande este m&ecirc;s. Uma clínica na Barra competindo com os melhores da cidade. E um curso para profissionais de todo o Brasil. A EmpresAtiva estrutura o marketing das três operações — com rastreamento real, dados verdadeiros e crescimento previs&iacute;vel.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel</div>
+  </div>
+</div>
+
+</body>
+</html>
