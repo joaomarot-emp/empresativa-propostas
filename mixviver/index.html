@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Espaço Mix Viver — Método Demanda Previsível</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* MATH BOX */
+.math-rows{display:flex;flex-direction:column;gap:2px;margin-bottom:14px;}
+.mr{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.mr.hl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.mr.tl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.mr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.mr-desc strong{color:var(--offwhite);font-weight:600;}
+.mr-val{font-size:16px;font-weight:800;color:var(--offwhite);flex-shrink:0;}
+.mr.hl .mr-val{color:#4CAF72;}
+.mr.tl .mr-val{color:var(--terra);}
+
+/* AVALIAÇÕES BADGE */
+.aval-box{background:linear-gradient(135deg,var(--green) 0%,#0D2415 100%);border:1px solid rgba(42,92,53,.4);border-radius:4px;padding:28px 26px;margin-bottom:14px;display:flex;gap:20px;align-items:center;}
+.aval-num{font-size:64px;font-weight:900;color:#4CAF72;line-height:1;flex-shrink:0;letter-spacing:-.03em;}
+.aval-num span{font-size:24px;}
+.aval-titulo{font-size:17px;font-weight:800;color:var(--offwhite);margin-bottom:6px;letter-spacing:-.01em;}
+.aval-desc{font-size:13px;color:rgba(244,244,244,.65);line-height:1.75;font-weight:400;}
+.aval-desc strong{color:var(--offwhite);}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(181,101,58,.28);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.inv-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--terra),var(--glight),var(--terra));}
+.inv-body{padding:28px 26px;}
+.inv-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:18px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--terra);}
+.inv-linha.vb{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;font-weight:400;}
+.inv-linha-valor{font-size:20px;font-weight:900;flex-shrink:0;letter-spacing:-.01em;}
+.inv-linha.ag .inv-linha-valor{color:var(--terra);}
+.inv-linha.vb .inv-linha-valor{color:#4C8BF5;}
+.inv-total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);font-weight:400;}
+.inv-total-val{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;letter-spacing:-.02em;}
+.inv-sep{height:1px;background:var(--border);margin:16px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.inv-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:var(--terra);}
+
+/* UPGRADE CARD */
+.upgrade-card{background:var(--green);border:1px solid rgba(42,92,53,.4);border-radius:4px;overflow:hidden;margin-top:14px;}
+.upgrade-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--glight),var(--terra),var(--glight));}
+.uc-body{padding:26px;}
+.uc-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#4CAF72;margin-bottom:12px;}
+.uc-titulo{font-size:17px;font-weight:800;color:var(--offwhite);margin-bottom:14px;line-height:1.2;letter-spacing:-.01em;}
+.uc-titulo em{color:var(--terra);font-style:normal;}
+.uc-preco-row{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+.uc-de{font-size:20px;font-weight:600;color:var(--muted);text-decoration:line-through;}
+.uc-por{font-size:42px;font-weight:900;color:var(--offwhite);line-height:1;letter-spacing:-.03em;}
+.uc-period{font-size:12px;color:rgba(244,244,244,.55);margin-bottom:14px;font-weight:400;}
+.uc-ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.uc-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.uc-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:#4CAF72;}
+
+/* BRINDE */
+.brinde-card{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);border-radius:2px;padding:22px 24px;margin-top:14px;}
+.brinde-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;}
+.brinde-titulo{font-size:15px;font-weight:800;color:var(--offwhite);margin-bottom:8px;letter-spacing:-.01em;}
+.brinde-desc{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.brinde-desc strong{color:var(--offwhite);}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta h2 .g{color:#4CAF72;}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,240,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+  .aval-box{padding:36px 32px;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel &middot; Espa&ccedil;o Mix Viver &middot; Campo Grande RJ</div>
+  <h1>De 7 festas<br>para<br><span class="g">12 festas</span><br><span class="t">por m&ecirc;s.</span></h1>
+  <p class="hero-sub">Bárbara, como calculamos ao vivo: com R$ 1.700 de verba e CPL de R$ 8, chegam 212 leads — e com a taxa de convers&atilde;o de 5,83% do Espa&ccedil;o Mix Viver, s&atilde;o 12 fechamentos. A EmpresAtiva estrutura a m&aacute;quina que leva voc&ecirc;s de volta a esse ritmo — com dados, sem achismo.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Empresa</span><span class="s2">Espa&ccedil;o Mix Viver</span></div>
+    <div class="hp"><span class="s1">Festas atuais</span><span class="s2">~7/m&ecirc;s &middot; R$ 60k</span></div>
+    <div class="hp"><span class="s1">Meta</span><span class="s2">12/m&ecirc;s &middot; R$ 120k</span></div>
+    <div class="hp"><span class="s1">Fee</span><span class="s2">R$ 997/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Verba recomendada</span><span class="s2">R$ 1.600–1.700/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sk">Diagn&oacute;stico &mdash; o que a auditoria encontrou</div>
+  <h2 class="st">3.400 avalia&ccedil;&otilde;es.<br>16 anos.<br><span class="t">Mas 7 festas<br>quando dava 30.</span></h2>
+  <p class="si">Bárbara, antes da pandemia o Mix Viver fazia 30 festas por m&ecirc;s. Hoje faz 7. O espa&ccedil;o n&atilde;o mudou — o que mudou foi o fluxo previs&iacute;vel de demanda. A EmpresAtiva reconstr&oacute;i essa previsibilidade.</p>
+
+  <!-- AVALIAÇÕES BADGE -->
+  <div class="aval-box">
+    <div class="aval-num">3.4<span>k+</span></div>
+    <div>
+      <div class="aval-titulo">Espa&ccedil;o Mix Viver — a mais bem avaliada do Rio de Janeiro</div>
+      <div class="aval-desc">Nota 4,9 no Google. <strong>Nenhum concorrente em Campo Grande chega perto disso.</strong> A House Kids faz sorteio de kit de panela para comprar avalia&ccedil;&atilde;o. Voc&ecirc;s t&ecirc;m 3.400 avalia&ccedil;&otilde;es genuínas de quem viveu uma festa de verdade. Isso vira an&uacute;ncio.</div>
+    </div>
+  </div>
+
+  <div class="tb">
+    <h3>Gargalo real: comercial sem follow-up sistem&aacute;tico</h3>
+    <p>Jo&atilde;o fez cliente oculto em 31 de agosto &agrave;s 16h47. Dois dias depois — dia 2 de setembro — nenhum follow-up. <strong>Um lead que demonstrou interesse, disse que conhece o espa&ccedil;o e tem uma obje&ccedil;&atilde;o a contornar ficou 48h sem contato.</strong> Isso se resolve com CRM e meta di&aacute;ria de contatos.</p>
+  </div>
+
+  <div class="gb">
+    <h3>Os n&uacute;meros s&atilde;o bons — falta volume</h3>
+    <p>Taxa de convers&atilde;o de 5,83% &eacute; excelente para casa de festas. CPL de R$ 7-9 &eacute; muito bom. <strong>O problema n&atilde;o &eacute; a qualidade do tráfego — &eacute; o volume.</strong> Com R$ 1.500 de verba chegam ~10 leads/dia. Para bater 12 festas, precisa de ~R$ 1.700 gerando 12 leads/dia. A m&aacute;quina funciona — s&oacute; precisa de mais combust&iacute;vel.</p>
+  </div>
+
+  <div class="tb">
+    <h3>House Kids n&atilde;o &eacute; uma amea&ccedil;a real — &eacute; uma oportunidade de contraste</h3>
+    <p>House Kids investe R$ 500-1.000/m&ecirc;s, usa um &uacute;nico an&uacute;ncio e compra avalia&ccedil;&otilde;es falsas com sorteio de panela. <strong>O an&uacute;ncio certo para o Mix Viver basta dizer: "3.400 avalia&ccedil;&otilde;es autênticas" — qualquer pessoa que compara para de pesquisar.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O CÁLCULO -->
+<section class="bg-black">
+  <div class="sk">O c&aacute;lculo &mdash; feito ao vivo na nossa reuni&atilde;o</div>
+  <h2 class="st">R$ 1.700<br>de verba.<br><span class="g">12 festas.<br>R$ 120k.</span></h2>
+  <p class="si">N&uacute;meros da sua opera&ccedil;&atilde;o, n&atilde;o estimativas gen&eacute;ricas. CPL: R$ 8. Convers&atilde;o: 5,83%. Ticket m&eacute;dio: R$ 10.000.</p>
+
+  <div class="math-rows">
+    <div class="mr">
+      <div class="mr-desc">Verba atual &middot; resultado com CPL R$ 8</div>
+      <div class="mr-val">~10–11 festas</div>
+    </div>
+    <div class="mr">
+      <div class="mr-desc"><strong>R$ 1.700/m&ecirc;s</strong> &middot; 212 leads &middot; 5,83% de convers&atilde;o</div>
+      <div class="mr-val">12 festas</div>
+    </div>
+    <div class="mr hl">
+      <div class="mr-desc"><strong>12 festas × R$ 10.000 ticket m&eacute;dio</strong> &middot; meta mensal</div>
+      <div class="mr-val">R$ 120.000</div>
+    </div>
+    <div class="mr">
+      <div class="mr-desc">Custo total (R$ 997 fee + R$ 1.700 verba)</div>
+      <div class="mr-val">R$ 2.697</div>
+    </div>
+    <div class="mr tl">
+      <div class="mr-desc"><strong>ROAS</strong> &middot; R$ 120.000 &divide; R$ 1.700 de verba</div>
+      <div class="mr-val">70× verba</div>
+    </div>
+  </div>
+
+  <div class="gb">
+    <h3>Voc&ecirc;s j&aacute; gastam R$ 2.000/m&ecirc;s — a diferen&ccedil;a &eacute; de R$ 697</h3>
+    <p>R$ 500 do gestor atual + R$ 1.500 de verba = R$ 2.000. Com a EmpresAtiva: R$ 997 de fee + R$ 1.700 de verba = R$ 2.697. <strong>Uma diferen&ccedil;a de R$ 697 para um sistema que rastreia do clique &agrave; festa fechada, rotaciona criativos, tem dashboard em tempo real e meta de 12 festas em vez de 7.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTRATÉGIA -->
+<section class="bg-dark">
+  <div class="sk">A estrat&eacute;gia &mdash; o que a EmpresAtiva faz diferente</div>
+  <h2 class="st">A autoridade<br>de voc&ecirc;s<br><span class="t">vira an&uacute;ncio.</span></h2>
+  <p class="si">Voc&ecirc;s t&ecirc;m o melhor ativo do mercado de festas de Campo Grande. A EmpresAtiva coloca isso no centro da campanha — com segmenta&ccedil;&atilde;o cir&uacute;rgica para quem realmente vai contratar.</p>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads &mdash; foco no Instagram</h3>
+        <p>Segmenta&ccedil;&atilde;o: pais de crian&ccedil;as at&eacute; 10 anos + aniversariantes do pr&oacute;ximo m&ecirc;s + amigos de aniversariantes. Rota&ccedil;&atilde;o c&iacute;clica a cada ~17 dias para n&atilde;o saturar. Criativo de autoridade: "3.400 avalia&ccedil;&otilde;es 5 estrelas — a casa de festas mais bem avaliada do Rio."</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🎬</div>
+      <div>
+        <h3>Criativos &mdash; equipe de design</h3>
+        <p>A equipe de design cria imagens e edita v&iacute;deos para an&uacute;ncio. Bárbara manda os melhores takes das festas — a gente monta o an&uacute;ncio com trilha, texto e CTA. Nada de gen&eacute;rico: dor (sem espa&ccedil;o pra festa da turma toda) + solu&ccedil;&atilde;o (1.000m², tudo incluso) + prova (3.400 avalia&ccedil;&otilde;es).</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🌐</div>
+      <div>
+        <h3>Landing page + rastreamento de origem</h3>
+        <p>Site de convers&atilde;o otimizado para quem chega tanto do Instagram quanto do Google orgânico (j&aacute; chega 1-2 leads/dia pelo site atual sem Google Ads). Cada lead rastreado por canal — a gente sabe que vieram do an&uacute;ncio X e n&atilde;o pausa ele.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔔</div>
+      <div>
+        <h3>Alerta de lead em tempo real</h3>
+        <p>Todo lead que entra vai para o grupo de WhatsApp do comercial com nome, telefone e origem do an&uacute;ncio. Meta de atendimento: 5 primeiros minutos. Quem atende em at&eacute; 5 minutos tem taxa de convers&atilde;o 90% maior.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🤖</div>
+      <div>
+        <h3>Classifica&ccedil;&atilde;o inteligente &mdash; IA nas conversas</h3>
+        <p>IA conectada no WhatsApp do comercial analisa todas as conversas: qualificado, agendou visita, fechou. Essa informa&ccedil;&atilde;o volta ao Meta — o algoritmo aprende quem &eacute; o cliente real e para de mostrar an&uacute;ncio para quem n&atilde;o tem grana.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📊</div>
+      <div>
+        <h3>Dashboard em tempo real + relat&oacute;rio mensal de vendas</h3>
+        <p>Painel acompanha verba, leads e CPL por dia. Relat&oacute;rio mensal fala de vendas — n&atilde;o de leads. "Voc&ecirc;s investiram X, geraram Y festas, ROAS de Z." Isso &eacute; o que importa para uma empresária.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sk">Investimento &mdash; o que foi acordado na nossa reuni&atilde;o</div>
+  <h2 class="st">R$ 997/m&ecirc;s<br><span class="t">+ R$ 1.700<br>de verba.</span></h2>
+  <p class="si">Bárbara, como combinamos: fee fixo de R$ 997 — e a verba que voc&ecirc;s j&aacute; investem aumenta gradualmente at&eacute; atingir o patamar que gera as 12 festas.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">N&iacute;vel 1 &middot; Meta Ads &middot; Espa&ccedil;o Mix Viver &middot; Campo Grande RJ</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva &mdash; gest&atilde;o, criativos, dashboard e rastreamento</h4>
+            <p>Meta Ads, site, criativos, classifica&ccedil;&atilde;o inteligente, alertas e relat&oacute;rio mensal de vendas</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha vb">
+          <div class="inv-linha-info">
+            <h4>Meta Ads &mdash; verba de an&uacute;ncios (recomendado para meta de 12 festas)</h4>
+            <p>Pago diretamente ao Instagram &middot; pode comecar em R$ 1.500 e escalar at&eacute; R$ 1.700</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.700<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Investimento total recomendado</h4>
+            <p>Versus o atual: R$ 500 gestor + R$ 1.500 verba = R$ 2.000</p>
+          </div>
+          <div class="inv-total-val">R$ 2.697<span style="font-size:12px;font-weight:400;font-family:var(--font);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Meta Ads — gest&atilde;o completa foco no Instagram</li>
+        <li>Segmenta&ccedil;&atilde;o: pais de crian&ccedil;as at&eacute; 10 anos + aniversariantes do pr&oacute;ximo m&ecirc;s</li>
+        <li>Criativos de autoridade usando as 3.400 avalia&ccedil;&otilde;es como argumento</li>
+        <li>Landing page de convers&atilde;o + rastreamento de origem de cada lead</li>
+        <li>IA classificando conversas — qualificado, agendou, fechou</li>
+        <li>Alerta de lead em tempo real para o comercial</li>
+        <li>Dashboard em tempo real &middot; relat&oacute;rio mensal de festas fechadas</li>
+        <li>Rota&ccedil;&atilde;o c&iacute;clica de criativos a cada ~17 dias — CPL sempre controlado</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;">&#9888;&#65039; Modelo vari&aacute;vel: fee fixo R$ 997 at&eacute; R$ 1.500 de verba. Acima de R$ 1.500 de verba: +20% sobre o excedente. Exemplo: verba R$ 1.700 &rarr; +20% de R$ 200 = +R$ 40 &rarr; fee total R$ 1.037/m&ecirc;s.</p>
+    </div>
+  </div>
+
+  <!-- UPGRADE GARANTIDO -->
+  <div class="upgrade-card">
+    <div class="uc-body">
+      <div class="uc-kicker">&#9733; Garantia travada &mdash; upgrade para N&iacute;vel 2</div>
+      <div class="uc-titulo">Se quiser CRM + IA + Playbook Comercial<br>o valor fica travado em <em>R$ 1.500/m&ecirc;s.</em></div>
+      <div class="uc-preco-row">
+        <div class="uc-de">R$ 1.897</div>
+        <div class="uc-por">R$ 1.500</div>
+      </div>
+      <div class="uc-period">travado durante toda a parceria &middot; n&atilde;o sobe se Bárbara decidir escalar</div>
+      <ul class="uc-ul">
+        <li>Tudo do N&iacute;vel 1, mais:</li>
+        <li>CRM pr&oacute;prio da EmpresAtiva &mdash; kanban de leads, follow-up agendado, hist&oacute;rico</li>
+        <li>IA de atendimento 24/7 ou s&oacute; fora do hor&aacute;rio comercial (conforme preferi&ecirc;ncia)</li>
+        <li>Playbook Comercial — script de abordagem, follow-up, quantas tentativas</li>
+        <li>Google Ads incluso neste n&iacute;vel</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BRINDE DE TREINAMENTO -->
+  <div class="brinde-card">
+    <div class="brinde-kicker">&#9734; Bônus de fechamento &mdash; em an&aacute;lise</div>
+    <div class="brinde-titulo">2 sess&otilde;es de orienta&ccedil;&atilde;o comercial como cortesia</div>
+    <div class="brinde-desc">Bárbara, como voc&ecirc; sugeriu ao final da nossa conversa: se fecharmos a parceria, Jo&atilde;o analisa a possibilidade de incluir <strong>2 sess&otilde;es de orienta&ccedil;&atilde;o comercial para o seu time</strong> — script de abordagem, din&acirc;mica de follow-up e como abordar a obje&ccedil;&atilde;o de pre&ccedil;o — sem o compromisso de acompanhamento cont&iacute;nuo. Uma base s&oacute;lida para o comercial decolar junto com o tráfego.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos</div>
+  <h2 class="st">Bárbara conversa<br>com a m&atilde;e.<br><span class="g">Jo&atilde;o aguarda<br>o retorno.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora</span>
+      <h3>Bárbara compartilha este documento com a m&atilde;e</h3>
+      <p>Como combinado: Jo&atilde;o envia este resumo detalhado para que Bárbara tenha algo concreto para apresentar &agrave; m&atilde;e — os valores, o escopo e as garantias j&aacute; fechadas (upgrade travado em R$ 1.500).</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Retorno de Bárbara</span>
+      <h3>Decis&atilde;o &mdash; N&iacute;vel 1 ou upgrade para N&iacute;vel 2</h3>
+      <p>Jo&atilde;o respeita o ritmo de decis&atilde;o. A proposta &eacute; clara, o valor &eacute; fixo e a garantia de upgrade est&aacute; travada. Qualquer d&uacute;vida antes da decis&atilde;o, s&oacute; chamar no WhatsApp.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Confirma&ccedil;&atilde;o</span>
+      <h3>Pagamento &rarr; acesso &rarr; onboarding</h3>
+      <p>Pagamento no ato d&aacute; in&iacute;cio &agrave; opera&ccedil;&atilde;o. Jo&atilde;o recebe acesso &agrave; conta de an&uacute;ncios e ao WhatsApp do comercial. Formul&aacute;rio de onboarding enviado para briefing do espa&ccedil;o, p&uacute;blico e melhores momentos de festa para os criativos.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–5</span>
+      <h3>Criativos + landing page + segmenta&ccedil;&atilde;o</h3>
+      <p>Jo&atilde;o manda o brief de criativo para Bárbara selecionar os melhores takes de festas. A equipe de design monta os an&uacute;ncios com o argumento das 3.400 avalia&ccedil;&otilde;es. Landing page no ar com rastreamento de origem.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Campanhas no ar &mdash; pais de crian&ccedil;as de Campo Grande come&ccedil;am a ver</h3>
+      <p>Meta Ads rodando com segmenta&ccedil;&atilde;o cir&uacute;rgica. IA ativa rastreando conversas. Alerta de lead chegando para o comercial em tempo real. Meta di&aacute;ria de 50 contatos entre novos e base de aniversariantes.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">30 dias</span>
+      <h3>Primeiro relat&oacute;rio mensal de vendas — n&atilde;o de leads</h3>
+      <p>Quanto foi investido, quantas festas fecharam, qual o ROAS real, quais criativos trouxeram os leads que viraram venda. Esse dado define se escala a verba de R$ 1.500 para R$ 1.700 no m&ecirc;s seguinte.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Antes da pandemia<br>eram 30 festas<br>por m&ecirc;s.<br><span class="t">A meta agora</span><br><span class="g">&eacute; 12.</span></h2>
+  <p>3.400 avalia&ccedil;&otilde;es autênticas. 1.000m² de espa&ccedil;o. 16 anos de mercado. Decoração de luxo inclusa, buffet completo para adultos e crian&ccedil;as, gerador de energia. A House Kids n&atilde;o tem nenhum disso. A EmpresAtiva coloca tudo isso no centro de cada an&uacute;ncio — para que quem est&aacute; procurando casa de festa em Campo Grande encontre o Mix Viver antes de encontrar qualquer outro.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel</div>
+  </div>
+</div>
+
+</body>
+</html>
