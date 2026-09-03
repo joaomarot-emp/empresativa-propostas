@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Ateliê Flávio Ferreira Hair</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* ESTEIRA */
+.esteira{display:flex;flex-direction:column;gap:2px;margin-bottom:16px;}
+.es-item{background:var(--card);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.es-item.isca{border-left:3px solid #4CAF72;}
+.es-item.prem{border-left:3px solid var(--terra);}
+.es-nome h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.es-nome p{font-size:11px;color:var(--muted);font-weight:400;}
+.es-val{font-size:20px;font-weight:900;flex-shrink:0;}
+.es-item.isca .es-val{color:#4CAF72;}
+.es-item.prem .es-val{color:var(--terra);}
+
+/* CRIATIVOS */
+.cria-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:16px;}
+.cria{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.cria.camp{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.cria.test{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.cria-tag{font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-bottom:8px;display:inline-block;}
+.camp .cria-tag{background:rgba(23,53,31,.6);color:#4CAF72;border:1px solid rgba(42,92,53,.3);}
+.test .cria-tag{background:rgba(181,101,58,.08);color:var(--terra);border:1px solid rgba(181,101,58,.2);}
+.cria h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.cria p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(181,101,58,.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--terra),var(--glight),var(--terra));}
+.inv-body{padding:28px 26px;}
+.inv-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:18px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--terra);}
+.inv-linha.vb{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;font-weight:400;}
+.inv-linha-valor{font-size:20px;font-weight:900;flex-shrink:0;letter-spacing:-.01em;}
+.inv-linha.ag .inv-linha-valor{color:var(--terra);}
+.inv-linha.vb .inv-linha-valor{color:#4C8BF5;}
+.inv-total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);font-weight:400;}
+.inv-total-val{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;letter-spacing:-.02em;}
+.inv-sep{height:1px;background:var(--border);margin:16px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.inv-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:var(--terra);}
+
+/* CONTRATO 3 MESES */
+.contrato-box{background:var(--green);border:1px solid rgba(42,92,53,.4);border-radius:4px;overflow:hidden;margin-top:14px;}
+.contrato-box::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--glight),var(--terra));}
+.cb-body{padding:24px 26px;}
+.cb-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#4CAF72;margin-bottom:10px;}
+.cb-titulo{font-size:16px;font-weight:800;color:var(--offwhite);margin-bottom:14px;letter-spacing:-.01em;}
+.cb-rows{display:flex;flex-direction:column;gap:2px;}
+.cbr{background:rgba(244,244,244,.05);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.cbr.hl{background:rgba(76,175,114,.08);border-left:2px solid #4CAF72;}
+.cbr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.cbr-desc strong{color:var(--offwhite);font-weight:600;}
+.cbr-val{font-size:16px;font-weight:800;color:var(--offwhite);flex-shrink:0;}
+.cbr.hl .cbr-val{color:#4CAF72;}
+
+/* INDICAÇÃO */
+.ind-card{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);border-radius:2px;padding:22px 24px;margin-top:14px;}
+.ind-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;}
+.ind-titulo{font-size:15px;font-weight:800;color:var(--offwhite);margin-bottom:8px;letter-spacing:-.01em;}
+.ind-desc{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.ind-desc strong{color:var(--offwhite);}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,244,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20Atel%C3%AA%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; N&iacute;vel 1 &middot; 3 Meses &middot; Atel&ecirc; Fl&aacute;vio Ferreira Hair &middot; Botafogo RJ</div>
+  <h1>De fazer<br>dinheiro<br><span class="t">pros outros</span><br><span class="g">para o seu.</span></h1>
+  <p class="hero-sub">Fl&aacute;vio, como voc&ecirc; mesmo disse: j&aacute; foi pedra bruta e deu certo. Agora lapidado pela Kérastase, com clientela formada e o atel&ecirc; pronto. A EmpresAtiva coloca sua habilidade na frente das mulheres certas — aquelas que querem o trabalho que s&oacute; voc&ecirc; faz.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Negócio</span><span class="s2">Atel&ecirc; Fl&aacute;vio Ferreira Hair</span></div>
+    <div class="hp"><span class="s1">Plataforma</span><span class="s2">Meta Ads &middot; Instagram</span></div>
+    <div class="hp"><span class="s1">Fee</span><span class="s2">R$ 997/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Verba</span><span class="s2">R$ 1.500/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Contrato</span><span class="s2">3 meses</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sk">O que ficou definido na nossa reuni&atilde;o</div>
+  <h2 class="st">Instagram<br>primeiro.<br><span class="t">Google depois.</span></h2>
+  <p class="si">Fl&aacute;vio, analisamos ao vivo o volume de buscas no Google para salão e cabeleireiro em Botafogo — as principais palavras t&ecirc;m entre 10 e 320 pesquisas mensais. Insuficiente para justificar o investimento agora. O seu p&uacute;blico est&aacute; no Instagram — visual, impulsivo, e pronto para se encantar com um butterfly cut na timeline.</p>
+
+  <div class="gb">
+    <h3>O vídeo da loira converte. O antes/depois curiosa — e foi você que descobriu isso</h3>
+    <p>Antes da nossa conversa, você j&aacute; tinha feito o teste: vídeo de antes/depois (cabelo curto) → muito engajamento, nenhuma venda. Vídeo da loura com butterfly cut → menos pessoas, <strong>mas quem falou queria agendar e tinha poder aquisitivo para pagar R$350+.</strong> Isso &eacute; dado real de um experimento que voc&ecirc; j&aacute; fez. A EmpresAtiva estrutura isso como campanha.</p>
+  </div>
+
+  <div class="tb">
+    <h3>A loja Kérastase n&atilde;o entra no tráfego — e essa foi a decis&atilde;o certa</h3>
+    <p>Como combinamos: e-commerce de produto premium precisa de muito investimento e inteligência de dados para funcionar via tráfego pago. <strong>A melhor venda do produto Kérastase acontece na sua cadeira — a cliente acabou de fazer um Fuji Transforma&ccedil;&atilde;o de R$750 e pergunta o que você usou. Coloca o link nos stories. Pronto.</strong></p>
+  </div>
+
+  <div class="tb">
+    <h3>Sem IA no início — foco no serviço, não na tecnologia</h3>
+    <p>Incluir agente de IA no plano subiria para R$1.897/mês. <strong>Como voc&ecirc; mesmo priorizou: come&ccedil;a no 997, gera caixa, o comercial cuida do WhatsApp manualmente na fase inicial.</strong> Se o volume de leads crescer e precisar de automação, a gente adiciona depois.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ESTEIRA DE SERVIÇOS -->
+<section class="bg-black">
+  <div class="sk">A estrat&eacute;gia &mdash; isca + premium em paralelo</div>
+  <h2 class="st">Corte como<br>entrada.<br><span class="g">Tratamento<br>como ticket.</span></h2>
+  <p class="si">Fl&aacute;vio, como analisamos juntos: o corte &eacute; o servi&ccedil;o de entrada que traz a mulher certa para a sua cadeira. Uma vez ali, ela descobre o tratamento, a expertise Kérastase e o Fl&aacute;vio Ferreira por completo.</p>
+
+  <div class="esteira">
+    <div class="es-item isca">
+      <div class="es-nome">
+        <h4>Corte de cabelo &mdash; servi&ccedil;o de entrada</h4>
+        <p>Isca que traz a mulher certa para a cadeira &middot; butterfly cut, camadas, louras</p>
+      </div>
+      <div class="es-val">R$ 350</div>
+    </div>
+    <div class="es-item prem">
+      <div class="es-nome">
+        <h4>Fuji Transforma&ccedil;&atilde;o &mdash; tratamento premium</h4>
+        <p>Produto estrela Kérastase &middot; upsell natural durante o atendimento</p>
+      </div>
+      <div class="es-val">R$ 750</div>
+    </div>
+  </div>
+
+  <div class="gb">
+    <h3>A dor que converte mais do que a est&eacute;tica</h3>
+    <p>Como João sugeriu durante a reunião: a mulher com cabelo danificado tem vergonha de sair de casa — ela tem uma dor latente. <strong>Um anúncio que mostra a transforma&ccedil;&atilde;o de um cabelo destruído em cabelo saudável toca nessa dor e converte mais do que um anúncio bonito de corte.</strong> Os dois rodam em paralelo — o corte como isca, o tratamento como argumento emocional.</p>
+  </div>
+
+  <!-- ESTRUTURA DE CRIATIVOS -->
+  <div class="sk" style="margin-top:28px;margin-bottom:10px;">Estrutura de campanhas &mdash; o que ficou definido</div>
+  <div class="cria-grid">
+    <div class="cria camp">
+      <div style="flex:1;">
+        <div class="cria-tag">Campanha Principal &mdash; verba maior</div>
+        <h3>Criativo campe&atilde;o &mdash; butterfly cut loura</h3>
+        <p>O vídeo que você j&aacute; sabe que converte: loura, cabelo longo, butterfly cut. Menos leads, mais qualidade — e as mulheres que chegam t&ecirc;m poder aquisitivo para pagar o seu valor. Esse criativo recebe a maior parte da verba enquanto estiver performando.</p>
+      </div>
+    </div>
+    <div class="cria test">
+      <div style="flex:1;">
+        <div class="cria-tag">Campanha de Teste &mdash; verba menor</div>
+        <h3>Criativos paralelos &mdash; crespo/enrolado, antes/depois tratamento</h3>
+        <p>Verba menor testando crespo, enrolado e cabelo danificado (dor). Se algum superar o campeão, sobe para campanha principal. Essa l&oacute;gica garante que a gente nunca sature o p&uacute;blico — e sempre tem um criativo novo entrando no funil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O QUE ENTREGAMOS -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega</div>
+  <h2 class="st">Tudo para<br>encher sua<br><span class="t">agenda no<br>atel&ecirc;.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads &mdash; Instagram &middot; gest&atilde;o completa</h3>
+        <p>Campanha principal com criativo campe&atilde;o + campanha de teste paralela. Segmenta&ccedil;&atilde;o para mulheres em Botafogo e adjacências que t&ecirc;m interesse em cabelo premium, estética e corte especializado.</p>
+      </div>
+    </div>
+    <div class="ei thl">
+      <div class="eic tic">🎬</div>
+      <div>
+        <h3>Edi&ccedil;&atilde;o de v&iacute;deos &mdash; equipe de design</h3>
+        <p>Voc&ecirc; envia os takes — a equipe de design edita para an&uacute;ncio. Narração, textos, CTA e formato vertical para Reels. Sem limite de v&iacute;deos: o foco &eacute; ter sempre criativos bons rodando, n&atilde;o impor quantidade.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🌐</div>
+      <div>
+        <h3>Landing page &mdash; inclusa no pacote</h3>
+        <p>P&aacute;gina de convers&atilde;o do Atel&ecirc; Fl&aacute;vio Ferreira Hair: resultados, servi&ccedil;os, n&uacute;meros e bot&atilde;o direto para WhatsApp. Mobile-first — como você mesmo falou, é pelo celular que as clientes chegam.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔔</div>
+      <div>
+        <h3>Alerta de leads em tempo real</h3>
+        <p>Cada novo contato chega com nome e interesse para voc&ecirc; (ou seu assistente) responder nos primeiros 5 minutos. Quem responde r&aacute;pido converte mais — e como voc&ecirc; j&aacute; sabe conversar com clientes, isso vira venda.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🤖</div>
+      <div>
+        <h3>Classifica&ccedil;&atilde;o inteligente de leads</h3>
+        <p>IA lê as conversas do WhatsApp e identifica quem qualificou, agendou ou fechou. Esse dado volta pro Meta — o algoritmo aprende o perfil exato da cliente que marca hora com voc&ecirc; e para de entregar curiosas.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">📊</div>
+      <div>
+        <h3>Dashboard + relat&oacute;rio mensal de resultados</h3>
+        <p>Painel acompanha verba, leads e CPL em tempo real. Relat&oacute;rio mensal foca em vendas: "voc&ecirc; investiu R$1.500, gerou X agendamentos, receita de R$Y." N&uacute;meros que provam — ou ajustam — a estrat&eacute;gia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sk">Investimento &mdash; o que foi acordado</div>
+  <h2 class="st">R$ 997 de<br>servi&ccedil;o.<br><span class="t">R$ 1.500 de<br>verba.<br>3 meses.</span></h2>
+  <p class="si">Fl&aacute;vio, documentando exatamente o que foi acertado na nossa conversa — para voc&ecirc; j&aacute; sair sabendo o total e poder planejar os 3 meses com tranquilidade.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">N&iacute;vel 1 &middot; Meta Ads &middot; Atel&ecirc; Fl&aacute;vio Ferreira Hair &middot; Instagram &middot; 3 meses</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva &mdash; gest&atilde;o, criativos, LP, classifica&ccedil;&atilde;o e relat&oacute;rio</h4>
+            <p>Meta Ads, landing page, edi&ccedil;&atilde;o de v&iacute;deos, alerta de leads e dashboard</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha vb">
+          <div class="inv-linha-info">
+            <h4>Meta Ads &mdash; verba de an&uacute;ncios</h4>
+            <p>Pago direto ao Instagram via cart&atilde;o &middot; gerido na sua conta &middot; pode iniciar com R$ 1.000</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.500<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total mensal</h4>
+            <p>Fee + verba &middot; dois pagamentos separados</p>
+          </div>
+          <div class="inv-total-val">R$ 2.497<span style="font-size:12px;font-weight:400;font-family:var(--font);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Meta Ads Instagram &mdash; campanha principal + campanha de testes</li>
+        <li>Segmenta&ccedil;&atilde;o premium feminina em Botafogo e adjacências</li>
+        <li>Equipe de design &mdash; edi&ccedil;&atilde;o de v&iacute;deos para an&uacute;ncio (sem limite de pe&ccedil;as)</li>
+        <li>Landing page do Atel&ecirc; Fl&aacute;vio Ferreira Hair inclusa</li>
+        <li>Classifica&ccedil;&atilde;o inteligente de leads &mdash; IA nas conversas do WhatsApp</li>
+        <li>Alerta de lead em tempo real para voc&ecirc; e seu assistente</li>
+        <li>Dashboard em tempo real + relat&oacute;rio mensal de vendas</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;">&#9888;&#65039; Social media (postagens org&acirc;nicas) e branding/logomarca <strong style="color:var(--offwhite);">n&atilde;o est&atilde;o inclu&iacute;dos</strong> — voc&ecirc; j&aacute; tem profissional para isso. A EmpresAtiva cuida exclusivamente do tráfego pago para gerar agenda cheia no Atel&ecirc;.</p>
+    </div>
+  </div>
+
+  <!-- CONTRATO 3 MESES -->
+  <div class="contrato-box">
+    <div class="cb-body">
+      <div class="cb-kicker">&#9733; Contrato acordado &mdash; 3 meses de parceria</div>
+      <div class="cb-titulo">Compromisso m&iacute;nimo: 3 meses &middot; tempo necess&aacute;rio para maturar a campanha e entregar resultado</div>
+      <div class="cb-rows">
+        <div class="cbr">
+          <div class="cbr-desc"><strong>M&ecirc;s 1</strong> &middot; estrutura&ccedil;&atilde;o + primeiros criativos + aprendizado do algoritmo</div>
+          <div class="cbr-val">R$ 2.497</div>
+        </div>
+        <div class="cbr">
+          <div class="cbr-desc"><strong>M&ecirc;s 2</strong> &middot; escala do criativo campe&atilde;o + testes paralelos + otimiza&ccedil;&atilde;o</div>
+          <div class="cbr-val">R$ 2.497</div>
+        </div>
+        <div class="cbr">
+          <div class="cbr-desc"><strong>M&ecirc;s 3</strong> &middot; algoritmo inteligente + leads qualificados chegando de forma previs&iacute;vel</div>
+          <div class="cbr-val">R$ 2.497</div>
+        </div>
+        <div class="cbr hl">
+          <div class="cbr-desc"><strong>Total 3 meses</strong> &middot; R$ 997 × 3 fee + R$ 1.500 × 3 verba = R$ 7.491</div>
+          <div class="cbr-val">R$ 7.491</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDICAÇÃO -->
+  <div class="ind-card">
+    <div class="ind-kicker">&#9733; Programa de indica&ccedil;&atilde;o &mdash; o que foi acordado</div>
+    <div class="ind-titulo">Voc&ecirc; indica. Fecha. Voc&ecirc; ganha 20%.</div>
+    <div class="ind-desc">Fl&aacute;vio, como combinamos: voc&ecirc; vai indicar a EmpresAtiva para o Werner Botafogo e para outros profissionais que conhece. <strong>A cada contrato fechado por sua indica&ccedil;&atilde;o, voc&ecirc; recebe 20% do valor do primeiro m&ecirc;s de servi&ccedil;o.</strong> Exemplo: Werner fecha um pacote de R$1.897/mês → voc&ecirc; recebe R$379,40. Se fecharem o pacote maior → voc&ecirc; recebe proporcionalmente mais. Jo&atilde;o j&aacute; vai te enviar o contato comercial para facilitar a indica&ccedil;&atilde;o.</div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos &mdash; da assinatura ao primeiro lead</div>
+  <h2 class="st">Fl&aacute;vio disse<br><span class="g">"eu vou fechar".</span><br><span class="t">A gente d&aacute;<br>start agora.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora</span>
+      <h3>Jo&atilde;o envia formul&aacute;rio de contrata&ccedil;&atilde;o</h3>
+      <p>Como combinamos ao final da reuni&atilde;o: João manda o formul&aacute;rio de in&iacute;cio e o contrato de 3 meses via WhatsApp. Fl&aacute;vio preenche e confirma. Start imediato.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Junto</span>
+      <h3>Jo&atilde;o envia contato comercial para indica&ccedil;&atilde;o Werner</h3>
+      <p>Como pedido: Jo&atilde;o envia o contato comercial pelo WhatsApp pessoal para Fl&aacute;vio repassar para a gerência do Werner Botafogo. Cada indicação fechada = 20% de comiss&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Confirma&ccedil;&atilde;o + pagamento</span>
+      <h3>Acesso ao Instagram + brief dos melhores v&iacute;deos</h3>
+      <p>Jo&atilde;o recebe acesso &agrave; conta de an&uacute;ncios do Fl&aacute;vio Ferreira Hair. Fl&aacute;vio envia os melhores v&iacute;deos: loura butterfly cut, antes/depois e crespo/enrolado que voc&ecirc; gostou. Equipe de design já inicia a edi&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–5</span>
+      <h3>Landing page + criativos prontos para revisar</h3>
+      <p>LP do Atel&ecirc; Fl&aacute;vio Ferreira Hair publicada com servi&ccedil;os, resultados e WhatsApp. Criativos editados enviados para Fl&aacute;vio revisar antes de subir para an&uacute;ncio. Sem surpresa — cada pe&ccedil;a passa pela sua aprova&ccedil;&atilde;o.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>Campanhas no ar &mdash; mulheres de Botafogo come&ccedil;am a ver o Atel&ecirc;</h3>
+      <p>Campanha principal com butterfly cut loura ativa. Campanha de teste com antes/depois paralela. Alerta de lead configurado no WhatsApp do Fl&aacute;vio e do assistente. Primeiros contatos chegando.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">M&ecirc;s 1 &mdash; relat&oacute;rio</span>
+      <h3>Primeiro relat&oacute;rio &mdash; dados reais de custo por agendamento</h3>
+      <p>Verba gasta, leads chegados, CPL real, criativos campe&otilde;es e leads que viraram agendamento. Com esses dados, a decis&atilde;o do M&ecirc;s 2 — manter, escalar ou ajustar — &eacute; baseada em n&uacute;mero, n&atilde;o em feeling.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Fl&aacute;vio,<br>voc&ecirc; lapidou<br>a pedra bruta.<br><span class="t">Agora &eacute; hora<br>de brilhar<br><span style="color:#4CAF72;">no seu.</span></span></h2>
+  <p>Master Coach Kérastase, embaixador do Werner, 3 cadeiras no seu pr&oacute;prio atel&ecirc;. A habilidade est&aacute; provada. A clientela est&aacute; se formando. O que falta &eacute; a m&aacute;quina que coloca o seu trabalho na frente das mulheres que v&atilde;o pagar R$350 por um corte e R$750 por um tratamento — porque sabem que vale.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20Atel%C3%AA%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel</div>
+  </div>
+</div>
+
+</body>
+</html>
