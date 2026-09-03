@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x SA Projeto e Construção — Método Demanda Previsível</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* CASE SBC */
+.case-card{background:var(--green);border:1px solid rgba(42,92,53,.4);border-radius:4px;overflow:hidden;margin-bottom:16px;}
+.case-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--glight),var(--terra));}
+.case-body{padding:26px;}
+.case-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#4CAF72;margin-bottom:10px;}
+.case-titulo{font-size:16px;font-weight:800;color:var(--offwhite);margin-bottom:16px;letter-spacing:-.01em;}
+.case-nums{display:flex;flex-direction:column;gap:2px;}
+.cn{background:rgba(244,244,244,.05);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.cn.hl{background:rgba(76,175,114,.08);border-left:2px solid #4CAF72;}
+.cn-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.cn-desc strong{color:var(--offwhite);font-weight:600;}
+.cn-val{font-size:16px;font-weight:800;color:var(--offwhite);flex-shrink:0;}
+.cn.hl .cn-val{color:#4CAF72;}
+
+/* FUNIL */
+.funil{display:flex;flex-direction:column;gap:2px;margin-bottom:16px;}
+.fi{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.fi.hl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.fi.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.fi-n{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;min-width:36px;line-height:1;margin-top:2px;}
+.fi.ghl .fi-n{color:#4CAF72;}
+.fi h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.fi p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(181,101,58,.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--terra),var(--glight),var(--terra));}
+.inv-body{padding:28px 26px;}
+.inv-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:18px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--terra);}
+.inv-linha.vb{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;font-weight:400;}
+.inv-linha-valor{font-size:20px;font-weight:900;flex-shrink:0;letter-spacing:-.01em;}
+.inv-linha.ag .inv-linha-valor{color:var(--terra);}
+.inv-linha.vb .inv-linha-valor{color:#4C8BF5;}
+.inv-total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);font-weight:400;}
+.inv-total-val{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;letter-spacing:-.02em;}
+.inv-sep{height:1px;background:var(--border);margin:16px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.inv-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:var(--terra);}
+.inv-note{font-size:11px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* COMPARATIVO */
+.comp{display:flex;flex-direction:column;gap:2px;margin-bottom:16px;}
+.comp-row{display:flex;gap:2px;}
+.comp-cell{background:var(--card);padding:13px 16px;flex:1;min-width:0;}
+.comp-cell.h{background:var(--green);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,244,240,.65);}
+.comp-cell.t{border-left:3px solid var(--terra);}
+.comp-cell.g{border-left:3px solid #4CAF72;}
+.comp-cell .cv{font-size:14px;font-weight:800;line-height:1.2;margin-bottom:2px;}
+.comp-cell .cd{font-size:11px;color:var(--muted);font-weight:400;line-height:1.4;}
+.comp-cell.t .cv{color:var(--terra);}
+.comp-cell.g .cv{color:#4CAF72;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,244,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+  .comp-row{gap:3px;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; N&iacute;vel 1 &middot; M&eacute;todo Demanda Previs&iacute;vel &middot; SA Projeto e Constru&ccedil;&atilde;o</div>
+  <h1>3 meses<br>pagando<br><span class="t">sem resultado.</span><br><span class="g">Isso muda agora.</span></h1>
+  <p class="hero-sub">Alex, como analisamos ao vivo: a ag&ecirc;ncia atual posta conte&uacute;do est&aacute;tico e chama isso de tráfego pago. Zero impacto qualificado, zero leads, R$ 600 por m&ecirc;s jogados fora. A EmpresAtiva faz diferente — coloca o v&iacute;deo da SA na frente de quem realmente fecha obra grande.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Empresa</span><span class="s2">SA Projeto e Constru&ccedil;&atilde;o</span></div>
+    <div class="hp"><span class="s1">Nicho</span><span class="s2">Estruturas met&aacute;licas &middot; Obras grande porte</span></div>
+    <div class="hp"><span class="s1">P&uacute;blico-alvo</span><span class="s2">Donos de im&oacute;vel &middot; Gestores prediais &middot; Empreiteiros</span></div>
+    <div class="hp"><span class="s1">Fee</span><span class="s2">R$ 997/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Verba m&iacute;n.</span><span class="s2">R$ 500/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sk">Diagn&oacute;stico &mdash; o que a auditoria encontrou ao vivo</div>
+  <h2 class="st">Postar no<br>Instagram n&atilde;o<br><span class="t">&eacute; tráfego pago.</span></h2>
+  <p class="si">Alex, analisamos o site e o Instagram da SA durante a nossa reuni&atilde;o. O diagn&oacute;stico &eacute; claro — e o problema &eacute; simples de resolver.</p>
+
+  <div class="tb">
+    <h3>A ag&ecirc;ncia atual copia e cola conte&uacute;do. N&atilde;o faz tráfego.</h3>
+    <p>Os posts do Instagram da SA t&ecirc;m zero curtidas, zero comentários. Isso significa que nenhum real foi investido para aparecer para quem n&atilde;o j&aacute; segue o perfil. <strong>Tráfego pago &eacute; pagar para aparecer na frente de quem ainda n&atilde;o te conhece, mas tem obra pra fechar. A ag&ecirc;ncia atual n&atilde;o faz isso.</strong></p>
+  </div>
+
+  <div class="tb">
+    <h3>Site sem vers&atilde;o mobile &mdash; 80% do p&uacute;blico acessa pelo celular</h3>
+    <p>Como vimos ao vivo: o site da SA na vers&atilde;o mobile &eacute; visualmente desestruturado. <strong>Quem acessa pelo celular (a maioria dos decisores de obra enquanto est&atilde;o no canteiro) tem uma primeira impress&atilde;o ruim — e fecha antes de entrar em contato.</strong> A EmpresAtiva constrói uma landing page que funciona no celular.</p>
+  </div>
+
+  <div class="gb">
+    <h3>O problema n&atilde;o &eacute; o mercado — &eacute; que ningu&eacute;m est&aacute; mostrando a SA para o mercado</h3>
+    <p>Voc&ecirc;s j&aacute; fecharam obra grande em Niter&oacute;i. Trabalham com estrutura met&aacute;lica certificada, documentada, com equipe s&eacute;ria. <strong>Esse perfil fecha qualquer empreiteiro ou gestor predial que esteja buscando seriedade — o problema &eacute; que esses decisores simplesmente n&atilde;o sabem que a SA existe.</strong> O tráfego pago correto resolve isso.</p>
+  </div>
+
+  <!-- COMPARATIVO -->
+  <div class="sk" style="margin-bottom:10px;">O que voc&ecirc;s t&ecirc;m vs o que a EmpresAtiva entrega</div>
+  <div class="comp">
+    <div class="comp-row">
+      <div class="comp-cell h">Item</div>
+      <div class="comp-cell h">Ag&ecirc;ncia atual (R$ 600/m&ecirc;s)</div>
+      <div class="comp-cell h">EmpresAtiva (R$ 997/m&ecirc;s)</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);font-size:12px;">Tráfego pago real</div></div>
+      <div class="comp-cell t"><div class="cv">N&atilde;o</div><div class="cd">S&oacute; posta cont&uacute;do org&acirc;nico</div></div>
+      <div class="comp-cell g"><div class="cv">Sim</div><div class="cd">Meta Ads segmentado para o seu p&uacute;blico</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);font-size:12px;">Landing page mobile</div></div>
+      <div class="comp-cell t"><div class="cv">N&atilde;o</div><div class="cd">Site legado, broken no celular</div></div>
+      <div class="comp-cell g"><div class="cv">Sim</div><div class="cd">LP nova, otimizada para convers&atilde;o mobile</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);font-size:12px;">Qualifica&ccedil;&atilde;o de leads</div></div>
+      <div class="comp-cell t"><div class="cv">N&atilde;o</div><div class="cd">Nenhum formul&aacute;rio ou filtro</div></div>
+      <div class="comp-cell g"><div class="cv">Sim</div><div class="cd">Formul&aacute;rio filtra "menor pre&ccedil;o" de "empresa s&eacute;ria"</div></div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-cell"><div class="cv" style="color:var(--offwhite);font-size:12px;">Relat&oacute;rio de leads</div></div>
+      <div class="comp-cell t"><div class="cv">N&atilde;o</div><div class="cd">Nenhuma m&eacute;trica compartilhada com voc&ecirc;</div></div>
+      <div class="comp-cell g"><div class="cv">Sim</div><div class="cd">Dashboard em tempo real + relat&oacute;rio mensal</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CASE SBC -->
+<section class="bg-black">
+  <div class="sk">Case de refer&ecirc;ncia &mdash; mesmo nicho, resultado real</div>
+  <h2 class="st">A SBC<br>Constru&ccedil;&otilde;es<br><span class="g">j&aacute; provou<br>que funciona.</span></h2>
+  <p class="si">Alex, mostramos ao vivo os n&uacute;meros da SBC Constru&ccedil;&otilde;es — empresa do mesmo setor, com a mesma estrat&eacute;gia que a EmpresAtiva vai usar para a SA. Esses s&atilde;o dados reais, n&atilde;o estimativas.</p>
+
+  <div class="case-card">
+    <div class="case-body">
+      <div class="case-kicker">&#9733; SBC Constru&ccedil;&otilde;es &middot; Reformas e Obras &middot; Rio de Janeiro</div>
+      <div class="case-titulo">Mês passado — n&uacute;meros reais do dashboard da EmpresAtiva</div>
+      <div class="case-nums">
+        <div class="cn">
+          <div class="cn-desc"><strong>Verba investida no m&ecirc;s</strong> &middot; Meta Ads</div>
+          <div class="cn-val">R$ 629</div>
+        </div>
+        <div class="cn">
+          <div class="cn-desc"><strong>Leads gerados</strong> &middot; donos de im&oacute;vel e gestores prediais</div>
+          <div class="cn-val">54 leads</div>
+        </div>
+        <div class="cn">
+          <div class="cn-desc"><strong>Custo por lead</strong> &middot; pesso interessada em obra</div>
+          <div class="cn-val">R$ 11,65</div>
+        </div>
+        <div class="cn hl">
+          <div class="cn-desc"><strong>Perfil dos leads que chegam</strong> via formul&aacute;rio qualificador</div>
+          <div class="cn-val">Prontos para orçar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gb">
+    <h3>O formul&aacute;rio que filtra quem n&atilde;o &eacute; p&uacute;blico da SA</h3>
+    <p>Como mostramos ao vivo: um lead da SBC chegou querendo "menor pre&ccedil;o poss&iacute;vel." Esse lead &eacute; descartado antes de chegar para a equipe comercial. <strong>Outro lead chegou dizendo "quero empresa que resolve de vez, com seguran&ccedil;a e documenta&ccedil;&atilde;o" — esse &eacute; o perfil da SA, e &eacute; esse que entra em contato com voc&ecirc;s.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- A ESTRATÉGIA -->
+<section class="bg-dark">
+  <div class="sk">A estrat&eacute;gia &mdash; do an&uacute;ncio ao or&ccedil;amento fechado</div>
+  <h2 class="st">O gestor predial<br>v&ecirc; o an&uacute;ncio.<br><span class="t">J&aacute; chega<br>querendo fechar.</span></h2>
+
+  <div class="funil">
+    <div class="fi hl">
+      <div class="fi-n">01</div>
+      <div>
+        <h3>An&uacute;ncio no Meta &mdash; aparece para quem tem obra</h3>
+        <p>Segmenta&ccedil;&atilde;o por interesse e cargo: empreiteiros, gestores prediais, donos de imóvel no Rio de Janeiro e regi&atilde;o. O v&iacute;deo da SA mostrando estrutura met&aacute;lica com mensagem de seguran&ccedil;a e certifica&ccedil;&atilde;o. Quem n&atilde;o tem obra ignora. Quem tem obra para.</p>
+      </div>
+    </div>
+    <div class="fi">
+      <div class="fi-n">02</div>
+      <div>
+        <h3>Formul&aacute;rio qualificador &mdash; filtra antes de virar lead</h3>
+        <p>Pergunta o tipo de obra, o papel (propriet&aacute;rio/empreiteiro/gestor), e o que procura ("menor pre&ccedil;o" ou "empresa com documenta&ccedil;&atilde;o"). Quem n&atilde;o qualifica n&atilde;o vira lead. A SA s&oacute; recebe quem tem projeto real.</p>
+      </div>
+    </div>
+    <div class="fi">
+      <div class="fi-n">03</div>
+      <div>
+        <h3>Alerta em tempo real &mdash; lead no WhatsApp com contexto</h3>
+        <p>Assim que o formul&aacute;rio &eacute; preenchido, chega um alerta com nome, telefone, tipo de obra e respostas. A equipe da SA j&aacute; sabe com quem est&aacute; falando antes de abrir a conversa. Resposta nos primeiros 5 minutos multiplica a convers&atilde;o.</p>
+      </div>
+    </div>
+    <div class="fi ghl">
+      <div class="fi-n" style="color:#4CAF72;">04</div>
+      <div>
+        <h3>Classifica&ccedil;&atilde;o inteligente &mdash; dados devolvidos ao Meta</h3>
+        <p>Leads que viraram or&ccedil;amento ou fecharam voltam para o Meta. O algoritmo aprende o perfil exato de quem fecha obra com a SA — e para de entregar quem s&oacute; pesquisa pre&ccedil;o. Com o tempo, o lead fica mais barato e mais qualificado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-black">
+  <div class="sk">O que a EmpresAtiva entrega &mdash; N&iacute;vel 1</div>
+  <h2 class="st">Tudo que faltava<br><span class="t">nos &uacute;ltimos<br>3 meses.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads &mdash; gest&atilde;o completa</h3>
+        <p>Campanha no Instagram segmentada para empreiteiros, gestores prediais e donos de im&oacute;vel. Otimiza&ccedil;&atilde;o semanal. Rota&ccedil;&atilde;o de criativos para n&atilde;o saturar o p&uacute;blico.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🌐</div>
+      <div>
+        <h3>Landing page &mdash; nova, mobile-first</h3>
+        <p>P&aacute;gina de convers&atilde;o que funciona no celular: apresenta a SA, exibe cases de obra, tem formul&aacute;rio qualificador e bot&atilde;o direto para WhatsApp. Substitui o site atual que quebra no mobile.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📋</div>
+      <div>
+        <h3>Formul&aacute;rio qualificador</h3>
+        <p>Filtra tipo de obra, perfil do lead e inten&ccedil;&atilde;o de compra antes de virar contato. A SA s&oacute; recebe quem tem projeto real e busca empresa com documenta&ccedil;&atilde;o e seguran&ccedil;a.</p>
+      </div>
+    </div>
+    <div class="ei thl">
+      <div class="eic tic">🎬</div>
+      <div>
+        <h3>Criativos &mdash; equipe de design</h3>
+        <p>A equipe de design da EmpresAtiva cria imagens e edita v&iacute;deos. Alex manda os melhores takes de obra — a gente monta os an&uacute;ncios com texto e CTA. Sem depender de quem "copia e cola do ChatGPT".</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🤖</div>
+      <div>
+        <h3>Classifica&ccedil;&atilde;o inteligente &mdash; IA nas conversas</h3>
+        <p>IA conectada ao WhatsApp comercial identifica quem qualificou, orçou e fechou. Devolve esses dados ao Meta para otimizar o algoritmo. Com o tempo, o CPL cai e o perfil do lead melhora.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">📊</div>
+      <div>
+        <h3>Dashboard em tempo real + relat&oacute;rio mensal</h3>
+        <p>Painel que voc&ecirc;s — e os s&oacute;cios — podem acompanhar a qualquer hora: verba gasta, leads chegando, CPL e criativos campe&otilde;es. Relat&oacute;rio mensal com n&uacute;meros reais para apresentar na reuni&atilde;o dos s&oacute;cios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-dark">
+  <div class="sk">Investimento &mdash; o que foi acordado</div>
+  <h2 class="st">R$ 997 de<br>gest&atilde;o.<br><span class="t">R$ 500 de<br>verba m&iacute;nima.</span></h2>
+  <p class="si">Alex, documentando exatamente o que ficou alinhado na nossa reuni&atilde;o — para voc&ecirc;, os s&oacute;cios e toda a equipe da SA avaliarem juntos.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">N&iacute;vel 1 &middot; Demanda Previs&iacute;vel &middot; SA Projeto e Constru&ccedil;&atilde;o &middot; Meta Ads + LP + IA</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva &mdash; gest&atilde;o completa N&iacute;vel 1</h4>
+            <p>Meta Ads, landing page, criativos, IA, dashboard e relat&oacute;rio mensal</p>
+          </div>
+          <div class="inv-linha-valor">R$ 997<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha vb">
+          <div class="inv-linha-info">
+            <h4>Meta Ads &mdash; verba de an&uacute;ncios (m&iacute;nimo recomendado)</h4>
+            <p>Pago diretamente ao Instagram &middot; pode come&ccedil;ar com R$ 500 e escalar conforme resultado</p>
+          </div>
+          <div class="inv-linha-valor">R$ 500<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total m&iacute;nimo no in&iacute;cio da parceria</h4>
+            <p>Versus o atual: R$ 600 (ag&ecirc;ncia) + verba n&atilde;o informada = resultado zero</p>
+          </div>
+          <div class="inv-total-val">R$ 1.497<span style="font-size:12px;font-weight:400;font-family:var(--font);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Gest&atilde;o completa do Meta Ads &mdash; segmenta&ccedil;&atilde;o para o p&uacute;blico B2B da SA</li>
+        <li>Landing page nova &mdash; mobile-first, com formul&aacute;rio qualificador</li>
+        <li>Equipe de design &mdash; criativos de imagem e edi&ccedil;&atilde;o de v&iacute;deo</li>
+        <li>Classifica&ccedil;&atilde;o inteligente &mdash; IA identificando leads qualificados</li>
+        <li>Alerta de lead em tempo real no WhatsApp dos s&oacute;cios</li>
+        <li>Dashboard em tempo real acess&iacute;vel por todos da equipe</li>
+        <li>Relat&oacute;rio mensal de resultados &mdash; n&uacute;meros para a reuni&atilde;o de s&oacute;cios</li>
+        <li>Suporte direto com Jo&atilde;o Marot</li>
+      </ul>
+      <div class="inv-sep"></div>
+      <p class="inv-note">&#9888;&#65039; Modelo vari&aacute;vel: fee fixo R$ 997 at&eacute; R$ 1.000 de verba/m&ecirc;s. Acima de R$ 1.000: +20% sobre o excedente. Exemplo: verba R$ 1.500 &rarr; +20% de R$ 500 = +R$ 100 &rarr; fee R$ 1.097/m&ecirc;s. Quem decide quando escalar &eacute; a SA, com base nos dados reais do dashboard.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sk">Pr&oacute;ximos Passos</div>
+  <h2 class="st">Alex leva<br>aos s&oacute;cios.<br><span class="g">A SA decide<br>unida.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora</span>
+      <h3>Alex compartilha esta proposta com os s&oacute;cios</h3>
+      <p>Como combinamos ao final da reuni&atilde;o: Alex envia este documento para os s&oacute;cios avaliarem. Os n&uacute;meros da SBC Constru&ccedil;&otilde;es j&aacute; est&atilde;o aqui — &eacute; o caso mais pr&oacute;ximo do nicho da SA que a EmpresAtiva tem.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">2ª Reuni&atilde;o</span>
+      <h3>Todos os s&oacute;cios da SA + Jo&atilde;o &mdash; d&uacute;vidas e decis&atilde;o final</h3>
+      <p>A melhor decis&atilde;o &eacute; tomada com todos juntos. Jo&atilde;o apresenta novamente a estrat&eacute;gia, responde as d&uacute;vidas dos s&oacute;cios e a SA decide com informa&ccedil;&atilde;o completa.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Confirma&ccedil;&atilde;o</span>
+      <h3>Pagamento &rarr; onboarding &rarr; briefing de obras</h3>
+      <p>Jo&atilde;o recebe acesso &agrave; conta do Meta Ads. Alex envia os melhores v&iacute;deos e fotos de obras j&aacute; entregues (estruturas met&aacute;licas em obra, equipe trabalhando, resultado final). Formul&aacute;rio de onboarding completo enviado.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–7</span>
+      <h3>Landing page + criativos + formul&aacute;rio qualificador</h3>
+      <p>LP nova publicada com vers&atilde;o mobile. Equipe de design monta os criativos de an&uacute;ncio com os materiais da SA. Formul&aacute;rio qualificador configurado: tipo de obra, perfil do decisor, o que procura.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 2</span>
+      <h3>An&uacute;ncios no ar &mdash; empreiteiros e gestores prediais come&ccedil;am a ver a SA</h3>
+      <p>Campanhas publicadas com segmenta&ccedil;&atilde;o B2B. IA ativada no WhatsApp comercial. Primeiros leads qualificados chegando com alerta em tempo real. Fim dos 3 meses sem resultado.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">M&ecirc;s 1</span>
+      <h3>Primeiro relat&oacute;rio mensal &mdash; dados reais para os s&oacute;cios</h3>
+      <p>Verba investida, leads gerados, CPL real, perfil dos leads que chegaram, criativos campe&otilde;es. Esse dado define a decis&atilde;o de escalar de R$ 500 para R$ 1.000 de verba no m&ecirc;s seguinte.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>SA Projeto e<br>Constru&ccedil;&atilde;o,<br><span class="t">a obra n&atilde;o<br>chega por postar<br>no Instagram.</span></h2>
+  <p>Chega quando o gestor predial ou empreiteiro v&ecirc; um an&uacute;ncio certo, no momento em que est&aacute; procurando uma empresa seria de estrutura met&aacute;lica — e entra em contato j&aacute; sabendo que a SA trabalha com documenta&ccedil;&atilde;o, seguran&ccedil;a e entrega de qualidade. &Eacute; isso que a EmpresAtiva faz.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20da%20SA%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel</div>
+  </div>
+</div>
+
+</body>
+</html>
