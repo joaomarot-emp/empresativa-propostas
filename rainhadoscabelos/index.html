@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Rainha dos Cabelos — Método Demanda Previsível</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* CASE ROI */
+.case-roi{background:var(--green);border:1px solid rgba(42,92,53,.4);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.case-roi::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--glight),var(--terra));}
+.cr-body{padding:26px;}
+.cr-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#4CAF72;margin-bottom:12px;}
+.cr-rows{display:flex;flex-direction:column;gap:2px;}
+.crr{background:rgba(244,244,244,.05);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.crr.hl{background:rgba(76,175,114,.08);border-left:2px solid #4CAF72;}
+.crr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.crr-desc strong{color:var(--offwhite);font-weight:600;}
+.crr-val{font-size:16px;font-weight:800;color:var(--offwhite);flex-shrink:0;}
+.crr.hl .crr-val{color:#4CAF72;}
+
+/* RAMPA */
+.rampa{display:flex;flex-direction:column;gap:2px;margin-bottom:16px;}
+.ramp-item{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.ramp-item.hl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.ramp-item.now{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ramp-mes{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.ramp-item.hl .ramp-mes{color:var(--glight);}
+.ramp-item.now .ramp-mes{color:var(--terra);}
+.ramp-vals{display:flex;flex-direction:column;gap:2px;}
+.ramp-v{font-size:12px;color:var(--muted);font-weight:400;}
+.ramp-v strong{color:var(--offwhite);font-weight:600;}
+.ramp-fat{font-size:18px;font-weight:800;color:var(--offwhite);flex-shrink:0;text-align:right;}
+.ramp-item.hl .ramp-fat{color:#4CAF72;}
+.ramp-item.now .ramp-fat{color:var(--terra);}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+.tag{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.14em;padding:2px 7px;border-radius:2px;margin-left:7px;text-transform:uppercase;}
+.tag-t{background:rgba(181,101,58,.1);color:var(--terra);border:1px solid rgba(181,101,58,.2);}
+.tag-b{background:rgba(23,53,31,.4);color:#4CAF72;border:1px solid rgba(42,92,53,.3);}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(181,101,58,.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--terra),var(--glight),var(--terra));}
+.inv-body{padding:28px 26px;}
+.inv-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:18px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--terra);}
+.inv-linha.vb{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;font-weight:400;}
+.inv-linha-valor{font-size:20px;font-weight:900;flex-shrink:0;letter-spacing:-.01em;}
+.inv-linha.ag .inv-linha-valor{color:var(--terra);}
+.inv-linha.vb .inv-linha-valor{color:#4C8BF5;}
+.inv-total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);font-weight:400;}
+.inv-total-val{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;letter-spacing:-.02em;}
+.inv-sep{height:1px;background:var(--border);margin:16px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.inv-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:var(--terra);}
+
+/* PAGAMENTO */
+.pgto-box{background:rgba(23,53,31,.35);border:1px solid rgba(42,92,53,.3);padding:22px 24px;border-radius:2px;margin-top:14px;}
+.pgto-box h4{font-size:13px;font-weight:700;color:#4CAF72;margin-bottom:14px;}
+.pgto-rows{display:flex;flex-direction:column;gap:2px;}
+.pgr{background:var(--card);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.pgr.hl{background:rgba(76,175,114,.08);border-left:2px solid #4CAF72;}
+.pgr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.pgr-desc strong{color:var(--offwhite);font-weight:600;}
+.pgr-val{font-size:15px;font-weight:800;color:var(--offwhite);flex-shrink:0;}
+.pgr.hl .pgr-val{color:#4CAF72;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-dot.u{background:#F59E0B;box-shadow:0 0 0 3px rgba(245,158,11,.2);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-day.u{color:#F59E0B;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,244,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; N&iacute;vel 1 + IA &middot; Rainha dos Cabelos &middot; Patos de Minas MG</div>
+  <h1>De R$ 30k<br>para<br><span class="g">R$ 100k</span><br><span class="t">em 6 meses.</span></h1>
+  <p class="hero-sub">Eva, como calculamos ao vivo: com taxa de convers&atilde;o de 8% e um plano de escala de verba m&ecirc;s a m&ecirc;s, a Rainha dos Cabelos chega nos R$ 100k. Os concorrentes de Patos de Minas mal chegaram no tráfego pago — quem estruturar primeiro domina o mercado.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Sal&atilde;o</span><span class="s2">Rainha dos Cabelos &middot; 15 anos</span></div>
+    <div class="hp"><span class="s1">Nicho</span><span class="s2">Mega hair &middot; pr&oacute;tese capilar &middot; peruca feminina</span></div>
+    <div class="hp"><span class="s1">Faturamento atual</span><span class="s2">R$ 30k/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Meta</span><span class="s2">R$ 100k/m&ecirc;s em 6 meses</span></div>
+    <div class="hp"><span class="s1">Fee</span><span class="s2">R$ 1.297/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- DIAGNÓSTICO -->
+<section class="bg-dark">
+  <div class="sk">Diagn&oacute;stico &mdash; o que travou at&eacute; agora</div>
+  <h2 class="st">Tráfego sem<br>edi&ccedil;&atilde;o.<br><span class="t">WhatsApp<br>sem resposta.</span></h2>
+  <p class="si">Eva, duas dores ficaram claras na nossa conversa. A EmpresAtiva resolve as duas desde o primeiro dia.</p>
+
+  <div class="tb">
+    <h3>A ag&ecirc;ncia anterior n&atilde;o editava o seu material &mdash; e &eacute; justamente o que converte</h3>
+    <p>Eles editavam apenas os 4 v&iacute;deos que gravavam presencialmente. Os seus antes/depois — que s&atilde;o o ativo mais valioso de um salão de mega hair — ficavam sem editar. <strong>Na EmpresAtiva, tudo que voc&ecirc; mandar para tráfego pago a equipe de design edita. Sem limite de pe&ccedil;as, sem depend&ecirc;ncia de presença f&iacute;sica.</strong></p>
+  </div>
+
+  <div class="tb">
+    <h3>Voc&ecirc; cuida do WhatsApp sozinha — e perde lead enquanto atende cliente</h3>
+    <p>Enquanto voc&ecirc; t&aacute; com as m&atilde;os no cabelo, chegam mensagens que ningu&eacute;m responde. <strong>O agente de IA da EmpresAtiva qualifica e responde 24h por dia, 7 dias por semana. Quando a pessoa &eacute; qualificada, voc&ecirc; recebe um alerta no celular para retomar a conversa — j&aacute; sabendo que ela est&aacute; pronta para fechar.</strong></p>
+  </div>
+
+  <div class="gb">
+    <h3>O mercado de Patos de Minas ainda est&aacute; aberto</h3>
+    <p>Analisamos ao vivo: Lara Marins, Lívia Mega e Casa GR quase sem an&uacute;ncios ativos. <strong>Quem estruturar tráfego pago bem em Patos de Minas agora leva o mercado — porque quando a concorrência acordar, vai ter que lutar contra uma base de dados de clientes que a Rainha dos Cabelos j&aacute; vai ter acumulado.</strong></p>
+  </div>
+
+  <div class="tb">
+    <h3>Conta hackeada &mdash; a EmpresAtiva resolve</h3>
+    <p>O acesso ao gerenciador de an&uacute;ncios foi perdido. João j&aacute; passou por casos similares: <strong>com login e senha do Instagram, acessamos o portfólio empresarial do Meta. Se n&atilde;o der, desvinculamos o perfil e criamos novo portf&oacute;lio. Isso n&atilde;o para a opera&ccedil;&atilde;o.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CASE + RAMPA -->
+<section class="bg-black">
+  <div class="sk">Case de refer&ecirc;ncia &mdash; mesmo nicho, resultado real</div>
+  <h2 class="st">81× o que<br>investiu<br><span class="g">em anúncios.</span></h2>
+  <p class="si">Esse &eacute; o case que a EmpresAtiva apresentou na nossa reuni&atilde;o: mega hair, estrutura semelhante &agrave; Rainha dos Cabelos, tráfego pago estruturado.</p>
+
+  <div class="case-roi">
+    <div class="cr-body">
+      <div class="cr-kicker">&#9733; Case de sucesso &mdash; nicho mega hair</div>
+      <div class="cr-rows">
+        <div class="crr"><div class="crr-desc"><strong>Verba investida em an&uacute;ncios</strong></div><div class="crr-val">R$ 4.000</div></div>
+        <div class="crr"><div class="crr-desc"><strong>Aumento de faturamento gerado</strong></div><div class="crr-val">R$ 300k+</div></div>
+        <div class="crr hl"><div class="crr-desc"><strong>ROAS &mdash; retorno sobre verba investida</strong></div><div class="crr-val">81×</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAMPA -->
+  <div class="sk" style="margin-top:28px;margin-bottom:10px;">A rampa at&eacute; R$ 100k &mdash; calculada ao vivo na nossa reuni&atilde;o</div>
+  <p class="si" style="margin-bottom:20px;">Taxa de convers&atilde;o de 8% &middot; ticket m&eacute;dio R$ 3.000 &middot; cada aporte de verba muda o patamar de faturamento.</p>
+  <div class="rampa">
+    <div class="ramp-item now">
+      <div>
+        <div class="ramp-mes">Hoje &mdash; sem tráfego estruturado</div>
+        <div class="ramp-vals"><div class="ramp-v">R$ 500/m&ecirc;s de verba &middot; resultado oscilante</div></div>
+      </div>
+      <div class="ramp-fat">R$ 30k</div>
+    </div>
+    <div class="ramp-item">
+      <div>
+        <div class="ramp-mes">M&ecirc;s 1–2 &mdash; estrutura&ccedil;&atilde;o</div>
+        <div class="ramp-vals"><div class="ramp-v">Verba: <strong>R$ 1.000/m&ecirc;s</strong> &middot; leads qualificados chegando</div></div>
+      </div>
+      <div class="ramp-fat">~R$ 40k</div>
+    </div>
+    <div class="ramp-item">
+      <div>
+        <div class="ramp-mes">M&ecirc;s 3 &mdash; 1ª escala</div>
+        <div class="ramp-vals"><div class="ramp-v">Verba: <strong>R$ 3.500/m&ecirc;s</strong> &middot; algoritmo inteligente</div></div>
+      </div>
+      <div class="ramp-fat">~R$ 50k</div>
+    </div>
+    <div class="ramp-item">
+      <div>
+        <div class="ramp-mes">M&ecirc;s 4 &mdash; 2ª escala</div>
+        <div class="ramp-vals"><div class="ramp-v">Verba: <strong>R$ 5.200/m&ecirc;s</strong> &middot; criativos campe&otilde;es escalando</div></div>
+      </div>
+      <div class="ramp-fat">~R$ 65k</div>
+    </div>
+    <div class="ramp-item hl">
+      <div>
+        <div class="ramp-mes">M&ecirc;s 5–6 &mdash; Meta batida</div>
+        <div class="ramp-vals"><div class="ramp-v">Verba: <strong>R$ 8.600/m&ecirc;s</strong> &middot; m&aacute;quina otimizada</div></div>
+      </div>
+      <div class="ramp-fat">R$ 100k</div>
+    </div>
+  </div>
+
+  <div class="gb">
+    <h3>A verba escala junto com o faturamento &mdash; sem risco</h3>
+    <p>A l&oacute;gica &eacute; simples: com R$ 1.000 de verba inicial, o aumento de faturamento j&aacute; cobre o custo da EmpresAtiva e da verba. <strong>S&oacute; escala para o pr&oacute;ximo n&iacute;vel quando o resultado atual provar que faz sentido. Eva decide quando subir a verba &mdash; com base nos dados reais do dashboard.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega</div>
+  <h2 class="st">Tudo que<br>faltou nas<br><span class="t">ag&ecirc;ncias<br>anteriores.</span></h2>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads &mdash; gest&atilde;o completa<span class="tag tag-t">Incluso</span></h3>
+        <p>Campanhas no Instagram para mega hair, pr&oacute;tese capilar e peruca feminina em Patos de Minas. Segmenta&ccedil;&atilde;o por interesse e comportamento. Anúncio de oportunidade (entrada) + antes/depois (convers&atilde;o).</p>
+      </div>
+    </div>
+    <div class="ei thl">
+      <div class="eic tic">🎬</div>
+      <div>
+        <h3>Edi&ccedil;&atilde;o de v&iacute;deos e artes<span class="tag tag-t">Sem limite</span></h3>
+        <p>Tudo que Eva mandar para tráfego pago a equipe de design edita. Antes/depois, v&iacute;deos do dia a dia, resultados de cabelo brasileiro do sul, indiano e vietnamita. Sem quantidade m&aacute;xima, sem depend&ecirc;ncia de presença f&iacute;sica da ag&ecirc;ncia.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🤖</div>
+      <div>
+        <h3>Agente de IA &mdash; 24h/7 dias<span class="tag tag-b">Incluso</span></h3>
+        <p>IA qualifica cada lead que chega no WhatsApp — mesmo &agrave;s 3h da manh&atilde;. Quando a pessoa est&aacute; pronta para fechar, Eva recebe alerta no celular com o perfil completo. Fim dos leads perdidos durante atendimento.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">📊</div>
+      <div>
+        <h3>Classifica&ccedil;&atilde;o inteligente + CRM<span class="tag tag-b">Incluso</span></h3>
+        <p>Cada lead classificado: qualificado, agendou, fechou. CRM da EmpresAtiva organiza todos os contatos por fase. Eva sabe exatamente em quem focar para fechar a semana.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🌐</div>
+      <div>
+        <h3>Site de convers&atilde;o &mdash; Rainha dos Cabelos<span class="tag tag-t">Incluso</span></h3>
+        <p>Landing page com os servi&ccedil;os (mega hair, pr&oacute;tese, peruca), tipos de cabelo trabalhados, resultados e WhatsApp. Mobile-first — quem pesquisa salão em Patos de Minas acessa pelo celular.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📋</div>
+      <div>
+        <h3>Dashboard em tempo real + relat&oacute;rio mensal</h3>
+        <p>Eva acompanha verba, leads e CPL a qualquer momento. Relat&oacute;rio mensal foca em vendas: investido X, gerado Y, pr&oacute;xima etapa Z. Reuni&atilde;o mensal de fechamento para alinhar a pr&oacute;xima etapa da rampa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sk">Investimento &mdash; o que foi acordado</div>
+  <h2 class="st">R$ 1.297<br>de servi&ccedil;o.<br><span class="t">+ verba.<br>Pagamento<br>quinzenal.</span></h2>
+  <p class="si">Eva, documentando exatamente o que foi alinhado — fee, verba, forma de pagamento e 1ª parcela para dar start imediato na campanha de aniversário de 15 anos.</p>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">N&iacute;vel 1 + IA &middot; Rainha dos Cabelos &middot; Meta Ads + IA + Design + CRM &middot; Patos de Minas</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva &mdash; gest&atilde;o completa N&iacute;vel 1 com IA</h4>
+            <p>Meta Ads, agente de IA 24h, site, design, CRM, classifica&ccedil;&atilde;o, dashboard e relat&oacute;rio</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.297<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha vb">
+          <div class="inv-linha-info">
+            <h4>Meta Ads &mdash; verba de an&uacute;ncios (m&iacute;nimo recomendado)</h4>
+            <p>Pago direto ao Instagram &middot; pode ser semanal &middot; come&ccedil;a com R$ 1.000/m&ecirc;s</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.000<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total m&iacute;nimo inicial</h4>
+            <p>Fee + verba &middot; pagamentos separados &middot; ver condi&ccedil;&otilde;es abaixo</p>
+          </div>
+          <div class="inv-total-val">R$ 2.297<span style="font-size:12px;font-weight:400;font-family:var(--font);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Meta Ads &mdash; gest&atilde;o completa no Instagram para Patos de Minas</li>
+        <li>Agente de IA 24h &mdash; qualifica e alerta Eva sobre leads prontos para fechar</li>
+        <li>Edi&ccedil;&atilde;o de v&iacute;deos e artes sem limite &mdash; tudo que Eva mandar &eacute; editado</li>
+        <li>Site de convers&atilde;o &mdash; Rainha dos Cabelos com todos os servi&ccedil;os</li>
+        <li>CRM da EmpresAtiva &mdash; classifica&ccedil;&atilde;o de leads por fase</li>
+        <li>Resolu&ccedil;&atilde;o da conta hackeada via portf&oacute;lio empresarial do Meta</li>
+        <li>Dashboard em tempo real + relat&oacute;rio mensal de vendas</li>
+        <li>Reuni&atilde;o mensal de fechamento &mdash; ajuste da rampa de verba</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PAGAMENTO -->
+  <div class="pgto-box">
+    <h4>Condi&ccedil;&otilde;es de pagamento &mdash; como foi acordado</h4>
+    <div class="pgto-rows">
+      <div class="pgr">
+        <div class="pgr-desc"><strong>Fee da EmpresAtiva (R$ 1.297)</strong> &middot; pagamento <strong>quinzenal</strong> &middot; R$ 648,50 em 2× por m&ecirc;s</div>
+        <div class="pgr-val">Quinzenal</div>
+      </div>
+      <div class="pgr">
+        <div class="pgr-desc"><strong>Verba de an&uacute;ncios</strong> &middot; pagamento <strong>semanal</strong> direto ao Instagram &middot; ~R$ 250/semana</div>
+        <div class="pgr-val">Semanal</div>
+      </div>
+      <div class="pgr hl">
+        <div class="pgr-desc"><strong>1ª parcela para dar start &mdash; hoje</strong> &middot; ~R$ 650 &middot; op era&ccedil;&atilde;o come&ccedil;a imediatamente ap&oacute;s o pagamento</div>
+        <div class="pgr-val">~R$ 650</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos &mdash; da decis&atilde;o ao an&uacute;ncio no ar</div>
+  <h2 class="st">15 anos de<br>Rainha dos<br>Cabelos.<br><span class="g">A campanha<br>de anivers&aacute;rio<br>come&ccedil;a agora.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot u"></div>
+      <span class="tl-day u">Urgente &mdash; Hoje</span>
+      <h3>Eva confirma o fechamento e paga a 1ª parcela (~R$ 650)</h3>
+      <p>Como combinamos na reuni&atilde;o: Eva avalia os valores e confirma o fechamento no mesmo dia. O pagamento da 1ª parcela &eacute; o sinal verde para Jo&atilde;o iniciar a opera&ccedil;&atilde;o. Com a campanha de aniversário de 15 anos em curso, cada dia conta.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dia 1</span>
+      <h3>Acesso ao Instagram + resolução da conta hackeada</h3>
+      <p>João acessa com login e senha. Se o portfólio empresarial estiver acessível, an&uacute;ncio pode subir em até 48h. Se precisar criar novo portfólio, João gerencia o processo — Eva não precisa fazer nada.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Eva envia os melhores antes/depois + IA configurada</h3>
+      <p>Eva manda os melhores v&iacute;deos de resultado: cabelo brasileiro do sul, indiano, vietnamita. A equipe de design edita tudo. Agente de IA configurado e ativo no WhatsApp da Rainha dos Cabelos.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Semana 1</span>
+      <h3>Campanhas no ar &mdash; campanha de aniversário de 15 anos</h3>
+      <p>An&uacute;ncios publicados com criativo de anivers&aacute;rio (15 anos de Rainha dos Cabelos — oferta especial de manutenção como isca de entrada). IA ativa respondendo e qualificando leads 24h. Primeiros alertas chegando para Eva.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">30 dias</span>
+      <h3>1º relat&oacute;rio + decis&atilde;o de escala</h3>
+      <p>Verba investida, leads chegados, CPL real, quantas agendaram e quantas fecharam. Com esse dado, Eva e João decidem juntos se &eacute; hora de escalar a verba para o pr&oacute;ximo n&iacute;vel da rampa.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Eva, 15 anos<br>construindo a<br>Rainha dos<br>Cabelos.<br><span class="t">Agora &eacute; hora<br>de Patos de Minas<br><span style="color:#4CAF72;">inteira saber.</span></span></h2>
+  <p>Os concorrentes ainda est&atilde;o sem an&uacute;ncios ativos. O mercado est&aacute; aberto. A IA j&aacute; foi testada — foi ela que agendou a nossa reuni&atilde;o. A equipe de design edita tudo que voc&ecirc; mandar. &Eacute; s&oacute; dar o sinal verde.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20vamos%20come%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel</div>
+  </div>
+</div>
+
+</body>
+</html>
