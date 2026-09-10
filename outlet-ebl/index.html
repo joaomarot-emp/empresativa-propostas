@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva × EBL · Outlet B2B de Estoque Parado</title>
+<meta name="description" content="Estratégia de tráfego pago no Meta Ads para captar empresas com estoque encalhado — proposta EmpresAtiva Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --base:#0A0B0A;
+  --surface:#121412;
+  --surface-2:#181B18;
+  --moss:#17351F;
+  --moss-line:#254A2E;
+  --accent:#FC8337;
+  --accent-deep:#B5653A;
+  --ink:#F2EFE9;
+  --ink-mid:#B9BDB6;
+  --ink-low:#7E847C;
+  --line:rgba(242,239,233,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--base);color:var(--ink);font-family:'Roboto',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+@media(max-width:680px){.wrap{padding:0 20px}body{font-size:16px}}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+section{padding:88px 0;border-top:1px solid var(--line)}
+@media(max-width:680px){section{padding:60px 0}}
+.eyebrow{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:18px}
+h2{font-size:clamp(28px,3.6vw,42px);max-width:23ch;margin-bottom:14px}
+.lede{color:var(--ink-mid);max-width:66ch;font-size:18px;margin-bottom:44px}
+.lede.tight{margin-bottom:26px}
+
+/* HERO */
+.hero{border-top:none;padding:0;min-height:94vh;display:flex;align-items:center;position:relative;
+  background:radial-gradient(120% 90% at 84% 6%, rgba(23,53,31,.75) 0%, transparent 62%),
+             radial-gradient(80% 60% at 0% 100%, rgba(252,131,55,.10) 0%, transparent 60%), var(--base)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:88px 88px;opacity:.35;
+  mask-image:radial-gradient(70% 70% at 50% 40%,#000 20%,transparent 100%);-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000 20%,transparent 100%)}
+.hero .wrap{position:relative;width:100%;padding-top:80px;padding-bottom:80px}
+.brandline{display:flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:60px}
+.brandline .dash{width:44px;height:2px;background:var(--accent)}
+.hero h1{font-size:clamp(36px,6vw,70px);font-weight:700;letter-spacing:-.035em;max-width:17ch;margin-bottom:26px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:clamp(18px,2.2vw,22px);color:var(--ink-mid);max-width:56ch;font-weight:300}
+.hero-meta{margin-top:52px;padding-top:26px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:40px}
+.hero-meta div{min-width:150px}
+.hero-meta .n{font-family:'Poppins',sans-serif;font-size:26px;font-weight:700;letter-spacing:-.03em}
+.hero-meta .l{font-size:13px;color:var(--ink-low);letter-spacing:.04em}
+
+/* TESE */
+.pull{background:var(--surface);border-left:3px solid var(--accent);padding:38px 40px;margin-bottom:44px}
+.pull .big{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(34px,6vw,64px);letter-spacing:-.04em;line-height:1.05;color:var(--accent);max-width:20ch}
+.pull .cap{font-size:17px;color:var(--ink-mid);margin-top:14px;max-width:58ch}
+@media(max-width:680px){.pull{padding:26px 22px}}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.two p{color:var(--ink-mid)}
+.two h3{font-size:20px;margin-bottom:10px}
+@media(max-width:760px){.two{grid-template-columns:1fr;gap:28px}}
+
+/* FLUXO */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.node{background:var(--base);padding:28px 24px}
+.node .st{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent);display:block;margin-bottom:12px}
+.node h3{font-size:18px;margin-bottom:8px}
+.node p{font-size:15.5px;color:var(--ink-mid)}
+@media(max-width:900px){.flow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.flow{grid-template-columns:1fr}}
+
+.callout{margin-top:40px;padding:26px 30px;background:rgba(23,53,31,.35);border:1px solid var(--moss-line);color:var(--ink-mid)}
+.callout strong{color:var(--ink);font-weight:500}
+@media(max-width:680px){.callout{padding:22px}}
+
+/* PÚBLICO */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.side{background:var(--base);padding:34px 30px}
+.side.on{background:var(--surface-2);border-top:2px solid var(--accent)}
+.side .tag{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;display:block;color:var(--ink-low)}
+.side.on .tag{color:var(--accent)}
+.side h3{font-size:21px;margin-bottom:12px}
+.side p{color:var(--ink-mid);font-size:16px}
+.side ul{list-style:none;display:grid;gap:10px;margin-top:16px}
+.side li{padding-left:24px;position:relative;color:var(--ink-mid);font-size:16px}
+.side li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:2px;background:var(--accent-deep)}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+
+/* ÂNGULOS */
+.angles{display:grid;gap:0}
+.angle{display:grid;grid-template-columns:64px 1fr;gap:26px;padding:30px 0;border-bottom:1px solid var(--line)}
+.angle:first-child{border-top:1px solid var(--line)}
+.angle .idx{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;color:var(--accent);padding-top:4px}
+.angle h3{font-size:20px;margin-bottom:8px}
+.angle p{color:var(--ink-mid);max-width:72ch}
+.angle .hook{margin-top:12px;padding:14px 18px;background:var(--surface);border-left:2px solid var(--accent-deep);color:var(--ink);font-size:16px}
+@media(max-width:560px){.angle{grid-template-columns:1fr;gap:8px}}
+
+/* CAMPANHAS */
+.camps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.camp{background:var(--base);padding:30px 26px;display:flex;flex-direction:column}
+.camp .tag{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--accent);margin-bottom:12px}
+.camp h3{font-size:19px;margin-bottom:10px}
+.camp p{font-size:15.5px;color:var(--ink-mid);flex:1}
+.camp .money{margin-top:18px;font-family:'Poppins',sans-serif;font-size:19px;font-weight:600}
+.camp .money span{font-size:14px;font-weight:400;color:var(--ink-low)}
+@media(max-width:820px){.camps{grid-template-columns:1fr}}
+
+/* ENTREGÁVEIS */
+.deliv{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.item{background:var(--base);padding:28px}
+.item h3{font-size:17px;margin-bottom:8px}
+.item p{font-size:15.5px;color:var(--ink-mid)}
+@media(max-width:700px){.deliv{grid-template-columns:1fr}}
+
+/* MÉTRICAS */
+.chain{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.link{flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-top:2px solid var(--accent);padding:22px 20px}
+.link .st{font-size:13px;color:var(--ink-low);margin-bottom:6px}
+.link .v{font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;line-height:1.3}
+
+/* FASES */
+.phase-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:8px}
+.ph{background:var(--base);padding:32px 30px}
+.ph.now{background:var(--surface-2);border-top:2px solid var(--accent)}
+.ph .lbl{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-low);display:block;margin-bottom:12px}
+.ph.now .lbl{color:var(--accent)}
+.ph h3{font-size:20px;margin-bottom:10px}
+.ph p{color:var(--ink-mid);font-size:16px}
+@media(max-width:760px){.phase-row{grid-template-columns:1fr}}
+
+/* INVESTIMENTO */
+.price{display:grid;grid-template-columns:1fr 1.15fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.price-left{background:var(--surface-2);padding:44px 40px}
+.price-right{background:var(--base);padding:44px 40px}
+.strike{font-family:'Poppins',sans-serif;font-size:20px;color:var(--ink-low);text-decoration:line-through;margin-bottom:6px}
+.price-left .fee{font-family:'Poppins',sans-serif;font-size:clamp(42px,6vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--accent)}
+.price-left .per{color:var(--ink-mid);margin-bottom:8px}
+.price-left .why{margin-top:26px;padding-top:24px;border-top:1px solid var(--line);font-size:15.5px;color:var(--ink-mid)}
+.price-right h3{font-size:18px;margin-bottom:18px}
+table{width:100%;border-collapse:collapse;font-size:16px}
+table td{padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink-mid)}
+table td:last-child{text-align:right;color:var(--ink);white-space:nowrap}
+table tr.total td{border-bottom:none;padding-top:20px;font-family:'Poppins',sans-serif;font-weight:600;font-size:19px;color:var(--ink)}
+table tr.total td:last-child{color:var(--accent)}
+.price-note{margin-top:22px;font-size:14.5px;color:var(--ink-low);line-height:1.6}
+@media(max-width:800px){.price{grid-template-columns:1fr}.price-left,.price-right{padding:30px 24px}}
+
+/* CONDIÇÕES */
+.terms{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.term{background:var(--base);padding:28px}
+.term h3{font-size:17px;margin-bottom:8px}
+.term p{font-size:15.5px;color:var(--ink-mid)}
+@media(max-width:700px){.terms{grid-template-columns:1fr}}
+
+/* FECHAMENTO */
+.close{border-top:1px solid var(--line);background:radial-gradient(90% 120% at 20% 0%, rgba(23,53,31,.7) 0%, transparent 60%), var(--base);padding:96px 0 72px}
+.steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-bottom:52px}
+.st4 .n{font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.12em;display:block;margin-bottom:10px}
+.st4 h3{font-size:18px;margin-bottom:8px}
+.st4 p{font-size:15.5px;color:var(--ink-mid)}
+@media(max-width:820px){.steps4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.steps4{grid-template-columns:1fr}}
+.cta{display:flex;flex-wrap:wrap;gap:18px;align-items:center;padding-top:40px;border-top:1px solid var(--line)}
+.btn{display:inline-block;background:var(--accent);color:#0A0B0A;font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;padding:16px 30px;text-decoration:none;transition:background .18s ease}
+.btn:hover,.btn:focus-visible{background:#ffa163}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover,.btn.ghost:focus-visible{border-color:var(--accent)}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+footer{padding:34px 0 60px;color:var(--ink-low);font-size:14.5px;line-height:1.8}
+footer strong{color:var(--ink-mid);font-weight:400}
+
+@media print{
+  body{background:#fff;color:#111;font-size:11pt}
+  .hero{min-height:auto}.hero-grid{display:none}
+  .hero,.close,.pull,.callout,.side,.side.on,.camp,.item,.link,.ph,.ph.now,.price-left,.price-right,.term,.node,.angle .hook{background:#fff!important;color:#111!important}
+  h1,h2,h3,h4,.pull .big,.price-left .fee{color:#111!important}
+  .eyebrow,.angle .idx,.node .st,.camp .tag,.st4 .n,.side.on .tag,.ph.now .lbl{color:#B5653A!important}
+  p,li,td,.lede,.hero-sub{color:#333!important}
+  section{page-break-inside:avoid;padding:26px 0;border-top:1px solid #ddd}
+  .btn{display:none}
+  table td{border-color:#ddd}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="brandline"><span class="dash"></span> EmpresAtiva Digital × EBL · Setembro de 2026</div>
+    <h1>Tem empresa com <em>caixa parado em prateleira</em>. Falta alguém contar isso pra elas.</h1>
+    <p class="hero-sub">Cristiney, esta é a estratégia de Meta Ads para o outlet B2B da EBL — a operação que transforma estoque encalhado de terceiros em venda comissionada.</p>
+    <div class="hero-meta">
+      <div><div class="n">Meta Ads</div><div class="l">canal único, verba concentrada</div></div>
+      <div><div class="n">B2B</div><div class="l">o alvo é a empresa fornecedora</div></div>
+      <div><div class="n">R$ 1.297</div><div class="l">fee mensal, condição de carteira</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- A TESE -->
+<section id="tese">
+  <div class="wrap">
+    <span class="eyebrow">A oportunidade</span>
+    <h2>Estoque parado não é mercadoria. É dinheiro preso.</h2>
+    <p class="lede">Toda empresa de varejo e distribuição carrega um percentual de estoque que saiu de linha, perdeu giro ou ficou fora de coleção. Enquanto está lá, ocupa espaço, consome capital de giro e não gera nada.</p>
+
+    <div class="pull">
+      <div class="big">O dono desse estoque já desistiu de vender pelo canal dele.</div>
+      <p class="cap">É exatamente por isso que ele aceita um outlet: qualquer valor recuperado é melhor do que zero, e ele não precisa queimar a própria marca fazendo liquidação.</p>
+    </div>
+
+    <div class="two">
+      <div>
+        <h3>Por que o outlet resolve</h3>
+        <p>A empresa não quer anunciar liquidação de 40% no próprio site — isso ensina o cliente dela a esperar promoção e desvaloriza a linha atual. Um outlet de terceiro resolve o problema sem contaminar a marca. Ela escoa o encalhado em um canal separado, com o nome dela em segundo plano.</p>
+      </div>
+      <div>
+        <h3>O caso de referência</h3>
+        <p>A conversa com a Amoedo é o retrato do modelo: uma operação grande, com itens de linhas antigas parados no centro de distribuição, que já não têm mais lugar na vitrine principal. O que para eles é um problema de armazenagem, para o outlet é catálogo pronto — sem compra de estoque, sem risco de capital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELO -->
+<section id="modelo">
+  <div class="wrap">
+    <span class="eyebrow">Como o modelo funciona</span>
+    <h2>A EBL vende. O fornecedor entrega. A comissão fica.</h2>
+    <p class="lede">O outlet não compra mercadoria, não estoca e não faz logística. Ele é vitrine, tráfego e intermediação — e ganha um percentual sobre cada venda que acontece.</p>
+
+    <div class="flow">
+      <div class="node">
+        <span class="st">Passo 01</span>
+        <h3>A empresa cadastra</h3>
+        <p>O fornecedor lista o que está parado, com o desconto mínimo acordado sobre o preço original.</p>
+      </div>
+      <div class="node">
+        <span class="st">Passo 02</span>
+        <h3>O outlet divulga</h3>
+        <p>Os produtos entram no catálogo da plataforma e ganham vitrine para um público comprador.</p>
+      </div>
+      <div class="node">
+        <span class="st">Passo 03</span>
+        <h3>O comprador fecha</h3>
+        <p>A venda acontece dentro da plataforma, sem que o fornecedor precise operar canal novo.</p>
+      </div>
+      <div class="node">
+        <span class="st">Passo 04</span>
+        <h3>O fornecedor entrega</h3>
+        <p>A mercadoria sai direto do estoque dele. A EBL retém a comissão sobre o valor da venda.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>O desconto mínimo de 40% é a regra que faz o modelo existir.</strong> Sem ele o outlet vira uma loja comum, competindo com o canal do próprio fornecedor. Com ele, a proposta ao comprador é clara e a proposta ao fornecedor também: recuperar 60% de um valor parado é melhor do que carregar 100% de algo que não sai. Esse número precisa aparecer no anúncio, no cadastro e no contrato com o fornecedor — é o que separa o outlet de um marketplace qualquer.
+    </div>
+  </div>
+</section>
+
+<!-- PÚBLICO -->
+<section id="publico">
+  <div class="wrap">
+    <span class="eyebrow">Definição de alvo</span>
+    <h2>Esta verba compra fornecedor, não comprador</h2>
+    <p class="lede">Um outlet tem dois lados, e eles não se resolvem ao mesmo tempo. Sem catálogo não existe motivo para o comprador entrar. Por isso o Meta Ads desta fase mira exclusivamente quem tem estoque parado.</p>
+
+    <div class="split">
+      <div class="side on">
+        <span class="tag">Alvo desta operação</span>
+        <h3>Quem tem o estoque</h3>
+        <p>Decisor de empresa de varejo, distribuição, indústria ou atacado com mercadoria fora de giro.</p>
+        <ul>
+          <li>Sócio, diretor comercial ou gestor de estoque e suprimentos</li>
+          <li>Empresas com centro de distribuição ou depósito próprio</li>
+          <li>Setores com troca de coleção, linha ou modelo: material de construção, mobiliário, eletro, moda, autopeças</li>
+          <li>Segmentação por cargo, setor e interesse profissional no Meta, com camada de lookalike a partir dos primeiros cadastrados</li>
+        </ul>
+      </div>
+      <div class="side">
+        <span class="tag">Fase seguinte</span>
+        <h3>Quem compra</h3>
+        <p>O comprador final — pessoa física ou revendedor caçando preço abaixo de mercado.</p>
+        <ul>
+          <li>Público muito mais barato de alcançar: a oferta se vende sozinha quando o catálogo existe</li>
+          <li>Entra depois que houver volume mínimo de produtos cadastrados</li>
+          <li>Verba e escopo próprios, propostos quando a primeira fase entregar catálogo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÂNGULOS -->
+<section id="angulos">
+  <div class="wrap">
+    <span class="eyebrow">Estratégia de comunicação</span>
+    <h2>Três ângulos para falar com quem tem estoque morto</h2>
+    <p class="lede">A dor não é "quero vender mais". É "tenho dinheiro preso e ninguém quer isso pelo preço cheio". O criativo precisa nomear essa situação com as palavras que o decisor usa.</p>
+
+    <div class="angles">
+      <article class="angle">
+        <div class="idx">01</div>
+        <div>
+          <h3>Capital de giro preso</h3>
+          <p>Fala com o financeiro do negócio. Estoque parado é caixa imobilizado, custo de armazenagem e risco de obsolescência crescendo todo mês. O ângulo transforma um problema de operação em problema de balanço.</p>
+          <div class="hook">"Quanto do seu capital de giro está dormindo no depósito há mais de doze meses?"</div>
+        </div>
+      </article>
+      <article class="angle">
+        <div class="idx">02</div>
+        <div>
+          <h3>Sem queimar a marca</h3>
+          <p>Fala com a objeção principal do decisor. Ele não faz liquidação porque tem medo de ensinar o cliente a esperar desconto. O outlet resolve isso ao tirar a venda do canal principal dele.</p>
+          <div class="hook">"Escoe o que está encalhado sem colocar 'liquidação' na sua própria vitrine."</div>
+        </div>
+      </article>
+      <article class="angle">
+        <div class="idx">03</div>
+        <div>
+          <h3>Risco zero para o fornecedor</h3>
+          <p>Fala com a desconfiança. Não há custo de entrada, não há exclusividade, não há mercadoria saindo do lugar antes da venda. A comissão só existe se o produto for vendido — o que remove qualquer barreira para o primeiro teste.</p>
+          <div class="hook">"Você só paga quando vender. Se não vender, não custou nada."</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPANHAS -->
+<section id="campanhas">
+  <div class="wrap">
+    <span class="eyebrow">Estrutura de conta</span>
+    <h2>Três campanhas, uma plataforma</h2>
+    <p class="lede">Arquitetura desenhada para verba concentrada. Toda a estrutura roda no Meta, sem dispersar aprendizado entre canais.</p>
+
+    <div class="camps">
+      <article class="camp">
+        <div class="tag">Campanha 01</div>
+        <h3>Captação de fornecedor</h3>
+        <p>Objetivo de conversa iniciada, com destino ao WhatsApp comercial da EBL. É a campanha que carrega a verba e traz a empresa com estoque parado para dentro. Métrica: custo por conversa com decisor.</p>
+        <div class="money">60% <span>da verba</span></div>
+      </article>
+      <article class="camp">
+        <div class="tag">Campanha 02</div>
+        <h3>Autoridade do modelo</h3>
+        <p>Vídeo curto explicando como o outlet funciona, para público frio de gestores e donos. Reduz a desconfiança antes do clique — em B2B, ninguém entrega estoque para uma marca que viu pela primeira vez naquele instante.</p>
+        <div class="money">25% <span>da verba</span></div>
+      </article>
+      <article class="camp">
+        <div class="tag">Campanha 03</div>
+        <h3>Remarketing de decisão</h3>
+        <p>Quem assistiu ao vídeo, visitou a página ou iniciou conversa e não avançou. Em venda B2B a decisão passa por mais de uma pessoa e leva semanas — esta campanha é o que sustenta a marca nesse intervalo.</p>
+        <div class="money">15% <span>da verba</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGÁVEIS -->
+<section id="entregaveis">
+  <div class="wrap">
+    <span class="eyebrow">Escopo</span>
+    <h2>O que a EmpresAtiva entrega</h2>
+    <p class="lede">Mesmo padrão de operação que já roda na Vantia, aplicado a uma frente só.</p>
+
+    <div class="deliv">
+      <div class="item"><h3>Gestão completa do Meta Ads</h3><p>Estrutura de conta, públicos, verba, otimização semanal e escala do que performa.</p></div>
+      <div class="item"><h3>Landing page de conversão</h3><p>Página dedicada ao cadastro do fornecedor, com proposta de valor clara e rastreamento de origem. Produzida e publicada pela EmpresAtiva.</p></div>
+      <div class="item"><h3>Criativos por designer</h3><p>Peças estáticas, carrossel e roteiro de vídeo para os três ângulos, com renovação mensal.</p></div>
+      <div class="item"><h3>WhatsApp integrado</h3><p>Alerta imediato de contato novo e resposta automática de recebimento, para o comercial da EBL não perder janela.</p></div>
+      <div class="item"><h3>CRM EmpresAtiva</h3><p>Funil visual com histórico de cada empresa que entrou em contato, com acesso para o time da EBL.</p></div>
+      <div class="item"><h3>Atendente de IA</h3><p>Responde, qualifica e registra fora do horário comercial — inclui triagem do tipo de estoque e do porte da empresa.</p></div>
+      <div class="item"><h3>Classificação inteligente</h3><p>A IA lê as conversas e separa fornecedor real de curioso, antes de consumir tempo do time comercial.</p></div>
+      <div class="item"><h3>Painel e fechamento mensal</h3><p>Acompanhamento ao vivo do gasto e dos contatos, com relatório mensal de custo por fornecedor ativado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTRICAS -->
+<section id="metricas">
+  <div class="wrap">
+    <span class="eyebrow">O que será medido</span>
+    <h2>A régua vai até o catálogo, não até o lead</h2>
+    <p class="lede tight">Como a receita da plataforma é comissão sobre venda, medir clique não diz nada. A cadeia rastreada é esta:</p>
+
+    <div class="chain">
+      <div class="link"><div class="st">Primeira etapa</div><div class="v">Custo por conversa com decisor</div></div>
+      <div class="link"><div class="st">Segunda etapa</div><div class="v">Custo por empresa qualificada</div></div>
+      <div class="link"><div class="st">Terceira etapa</div><div class="v">Custo por fornecedor cadastrado</div></div>
+      <div class="link"><div class="st">Quarta etapa</div><div class="v">Itens em catálogo por fornecedor</div></div>
+    </div>
+
+    <div class="callout">
+      <strong>Uma observação honesta sobre a comissão.</strong> O faturamento da plataforma depende da venda acontecer, e a venda depende do lado comprador — que esta verba ainda não financia. O que esta operação entrega é oferta: empresas cadastradas e catálogo formado. É a matéria-prima sem a qual o lado da demanda não tem o que anunciar. Por isso a meta desta fase é fornecedor ativado, e não comissão faturada.
+    </div>
+  </div>
+</section>
+
+<!-- FASES -->
+<section id="fases">
+  <div class="wrap">
+    <span class="eyebrow">Sequência</span>
+    <h2>Duas fases, nesta ordem</h2>
+    <p class="lede">Rodar as duas pontas ao mesmo tempo com verba pequena é o erro clássico do marketplace: fica meia oferta e meia demanda, e nenhuma das duas convence.</p>
+
+    <div class="phase-row">
+      <div class="ph now">
+        <span class="lbl">Fase 01 · Esta proposta</span>
+        <h3>Formar a oferta</h3>
+        <p>Meta Ads captando empresas com estoque parado até haver catálogo com volume e variedade suficientes para sustentar uma vitrine. É aqui que a plataforma deixa de ser uma ideia e passa a ter o que vender.</p>
+      </div>
+      <div class="ph">
+        <span class="lbl">Fase 02 · Escopo futuro</span>
+        <h3>Abrir a demanda</h3>
+        <p>Com catálogo formado, entra a campanha de comprador — muito mais barata, porque preço abaixo de mercado se vende sozinho. Escopo e verba propostos separadamente, quando a Fase 01 entregar o volume.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section id="investimento">
+  <div class="wrap">
+    <span class="eyebrow">Investimento</span>
+    <h2>Metade do escopo, metade do valor</h2>
+    <p class="lede">O contrato da Vantia é R$ 2.500 por mês e cobre duas plataformas — Google e Meta. Esta operação roda em uma só, e o valor acompanha.</p>
+
+    <div class="price">
+      <div class="price-left">
+        <div class="strike">R$ 2.500 / mês</div>
+        <div class="fee">R$ 1.297</div>
+        <div class="per">por mês · condição de carteira</div>
+        <div class="why">Valor aplicado por Cristiney já operar duas frentes ativas com a EmpresAtiva. Válido enquanto os contratos em vigor se mantiverem.</div>
+      </div>
+      <div class="price-right">
+        <h3>Composição mensal</h3>
+        <table>
+          <tbody>
+            <tr><td>Fee EmpresAtiva — gestão Meta Ads</td><td>R$ 1.297,00</td></tr>
+            <tr><td>Verba de mídia coberta no fee</td><td>até R$ 1.500,00</td></tr>
+            <tr><td>Gestão do excedente de verba</td><td>20% do que exceder</td></tr>
+            <tr><td>Taxa de implantação</td><td>isenta</td></tr>
+            <tr class="total"><td>Total mensal à EmpresAtiva</td><td>R$ 1.297,00</td></tr>
+          </tbody>
+        </table>
+        <p class="price-note">A verba de mídia é investida diretamente pela EBL na conta de anúncios, e não passa pela EmpresAtiva. Se a verba ultrapassar R$ 1.500 no mês, aplica-se 20% apenas sobre o valor excedente — sem renegociação de contrato. Recomendação de partida: R$ 1.500/mês, o suficiente para as três campanhas saírem da fase de aprendizado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDIÇÕES -->
+<section id="condicoes">
+  <div class="wrap">
+    <span class="eyebrow">Condições</span>
+    <h2>Sem ambiguidade</h2>
+
+    <div class="terms">
+      <div class="term"><h3>Início da operação</h3><p>Primeira mensalidade paga no ato do aceite. Operação em campo em até 2 dias úteis.</p></div>
+      <div class="term"><h3>Implantação</h3><p>Estrutura completa no ar em até 10 dias úteis: conta, públicos, landing page, criativos e rastreamento.</p></div>
+      <div class="term"><h3>Condição de carteira</h3><p>O valor de R$ 1.297 é exclusivo para Cristiney enquanto as demais frentes contratadas estiverem ativas.</p></div>
+      <div class="term"><h3>Verba de mídia</h3><p>Paga diretamente pela EBL à plataforma. Coberta no fee até R$ 1.500/mês, com 20% sobre o excedente.</p></div>
+      <div class="term"><h3>Renovação e saída</h3><p>Renovação mensal automática. Para encerrar, notificação com 30 dias de antecedência.</p></div>
+      <div class="term"><h3>Propriedade dos ativos</h3><p>Conta de anúncios, dados, criativos e base de contatos pertencem à EBL, exportáveis a qualquer momento.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="close" id="proximos-passos">
+  <div class="wrap">
+    <span class="eyebrow">Próximos passos</span>
+    <h2>Do aceite ao primeiro fornecedor cadastrado</h2>
+
+    <div class="steps4">
+      <div class="st4"><span class="n">Dia 1</span><h3>Aceite e briefing</h3><p>Acesso ao Business Manager, definição do desconto mínimo e das regras de cadastro do fornecedor.</p></div>
+      <div class="st4"><span class="n">Dias 2 a 7</span><h3>Página e criativos</h3><p>Landing page de cadastro publicada, três ângulos produzidos, rastreamento e WhatsApp configurados.</p></div>
+      <div class="st4"><span class="n">Semana 2</span><h3>Campanhas no ar</h3><p>As três campanhas ativas, com a verba concentrada na captação de fornecedor.</p></div>
+      <div class="st4"><span class="n">Mês 1</span><h3>Primeira leitura</h3><p>Custo por conversa e por empresa qualificada apurados. Verba realocada para o ângulo que traz decisor.</p></div>
+    </div>
+
+    <div class="cta">
+      <a class="btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20outlet%20e%20vamos%20come%C3%A7ar!" target="_blank" rel="noopener">Falar com João Marot</a>
+      <a class="btn ghost" href="tel:+5521983424319">(21) 98342-4319</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>EmpresAtiva Estratégias Digitais</strong><br>
+    Av. das Américas 12.900 · Sala 403B · Recreio dos Bandeirantes · Rio de Janeiro/RJ<br>
+    empresativa.com.br · @empresativadigital · joaomarot@empresativa.com.br<br><br>
+    Proposta emitida em 10 de setembro de 2026, válida por 15 dias. Documento de uso exclusivo do destinatário.
+  </div>
+</footer>
+
+</body>
+</html>
