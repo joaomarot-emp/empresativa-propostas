@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial · Dr. Gustavo Tilmann · EmpresAtiva Digital</title>
+<meta name="description" content="Operação Demanda Previsível — proposta de gestão de tráfego pago, IA e CRM para a clínica do Dr. Gustavo Tilmann.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --base:#0A0B0A;
+  --surface:#121412;
+  --surface-2:#181B18;
+  --moss:#17351F;
+  --moss-line:#254A2E;
+  --accent:#FC8337;
+  --accent-deep:#B5653A;
+  --ink:#F2EFE9;
+  --ink-mid:#B9BDB6;
+  --ink-low:#7E847C;
+  --line:rgba(242,239,233,.12);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+body{
+  background:var(--base);
+  color:var(--ink);
+  font-family:'Roboto',system-ui,sans-serif;
+  font-weight:300;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+@media(max-width:680px){.wrap{padding:0 20px}body{font-size:16px}}
+
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:600;line-height:1.15;letter-spacing:-.02em}
+
+section{padding:88px 0;border-top:1px solid var(--line)}
+@media(max-width:680px){section{padding:60px 0}}
+
+.eyebrow{
+  font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+  display:block;margin-bottom:18px;
+}
+.eyebrow.muted{color:var(--ink-low)}
+
+h2{font-size:clamp(28px,3.6vw,42px);max-width:22ch;margin-bottom:14px}
+.lede{color:var(--ink-mid);max-width:64ch;font-size:18px;margin-bottom:44px}
+
+/* ---------- HERO ---------- */
+.hero{
+  border-top:none;
+  padding:0;
+  min-height:96vh;
+  display:flex;align-items:center;
+  position:relative;
+  background:
+    radial-gradient(120% 90% at 82% 8%, rgba(23,53,31,.75) 0%, transparent 62%),
+    radial-gradient(80% 60% at 0% 100%, rgba(252,131,55,.10) 0%, transparent 60%),
+    var(--base);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:88px 88px;
+  opacity:.35;
+  mask-image:radial-gradient(70% 70% at 50% 40%,#000 20%,transparent 100%);
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000 20%,transparent 100%);
+}
+.hero .wrap{position:relative;width:100%;padding-top:80px;padding-bottom:80px}
+.brandline{
+  display:flex;align-items:center;gap:14px;
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mid);
+  margin-bottom:64px;
+}
+.brandline .dash{width:44px;height:2px;background:var(--accent)}
+.hero h1{
+  font-size:clamp(38px,6.4vw,74px);
+  font-weight:700;
+  letter-spacing:-.035em;
+  max-width:16ch;
+  margin-bottom:26px;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:clamp(18px,2.2vw,22px);color:var(--ink-mid);max-width:52ch;font-weight:300}
+.hero-meta{
+  margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:40px;
+}
+.hero-meta div{min-width:130px}
+.hero-meta .n{font-family:'Poppins',sans-serif;font-size:30px;font-weight:700;color:var(--ink);letter-spacing:-.03em}
+.hero-meta .l{font-size:13px;color:var(--ink-low);letter-spacing:.04em}
+
+/* ---------- DIAGNÓSTICO ---------- */
+.verdict{
+  background:var(--surface);
+  border-left:3px solid var(--accent);
+  padding:38px 40px;
+  margin:0 0 44px;
+}
+.verdict .big{
+  font-family:'Poppins',sans-serif;font-weight:700;
+  font-size:clamp(40px,7vw,84px);letter-spacing:-.04em;line-height:1;
+  color:var(--accent);
+}
+.verdict .cap{font-size:17px;color:var(--ink-mid);margin-top:10px;max-width:50ch}
+@media(max-width:680px){.verdict{padding:26px 22px}}
+
+table{width:100%;border-collapse:collapse;font-size:16px}
+table th{
+  text-align:left;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-low);
+  padding:0 0 12px;border-bottom:1px solid var(--line);
+}
+table td{padding:15px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-mid)}
+table td:last-child{text-align:right;color:var(--ink);white-space:nowrap;font-weight:400}
+table td.flag{color:var(--accent);font-weight:500}
+@media(max-width:560px){table,table td:last-child{font-size:15px}}
+
+blockquote{
+  margin:40px 0 0;padding:24px 28px;
+  background:rgba(23,53,31,.35);border:1px solid var(--moss-line);
+  color:var(--ink-mid);font-size:17px;
+}
+blockquote strong{color:var(--ink);font-weight:500}
+
+/* ---------- FINDINGS ---------- */
+.findings{display:grid;gap:0;margin-top:8px}
+.finding{
+  display:grid;grid-template-columns:64px 1fr;gap:26px;
+  padding:32px 0;border-bottom:1px solid var(--line);
+}
+.finding:first-child{border-top:1px solid var(--line)}
+.finding .idx{
+  font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;
+  color:var(--accent);padding-top:4px;letter-spacing:.02em;
+}
+.finding h3{font-size:21px;margin-bottom:8px}
+.finding p{color:var(--ink-mid);max-width:70ch}
+@media(max-width:560px){.finding{grid-template-columns:1fr;gap:8px}}
+
+.good{
+  margin-top:56px;padding:34px 36px;
+  background:var(--surface);border:1px solid var(--line);
+}
+.good h3{font-size:19px;margin-bottom:18px}
+.good ul{list-style:none;display:grid;gap:12px}
+.good li{padding-left:26px;position:relative;color:var(--ink-mid)}
+.good li::before{content:"";position:absolute;left:0;top:11px;width:12px;height:2px;background:var(--moss-line)}
+.good li strong{color:var(--ink);font-weight:500}
+@media(max-width:680px){.good{padding:24px 22px}}
+
+/* ---------- MÉTODO ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.step{background:var(--base);padding:30px 26px}
+.step .num{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.1em;display:block;margin-bottom:12px}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{font-size:15.5px;color:var(--ink-mid)}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.steps{grid-template-columns:1fr}}
+
+/* ---------- NÍVEL 03 ---------- */
+.tier{background:var(--surface);border:1px solid var(--line);padding:0;overflow:hidden}
+.tier-head{
+  padding:38px 40px;
+  background:linear-gradient(100deg,rgba(23,53,31,.9),rgba(10,11,10,0));
+  border-bottom:1px solid var(--line);
+}
+.tier-head h3{font-size:clamp(26px,3.4vw,34px);margin-bottom:10px}
+.tier-head p{color:var(--ink-mid);max-width:56ch}
+.badge{
+  display:inline-block;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  background:var(--accent);color:#0A0B0A;padding:6px 13px;margin-bottom:20px;
+}
+.tier-body{padding:8px 40px 40px}
+.group{padding:30px 0;border-bottom:1px solid var(--line)}
+.group:last-child{border-bottom:none;padding-bottom:6px}
+.group h4{font-size:16px;color:var(--ink);margin-bottom:4px}
+.group .from{font-size:13px;color:var(--ink-low);margin-bottom:18px;letter-spacing:.03em}
+.group ul{list-style:none;display:grid;gap:11px}
+.group li{padding-left:24px;position:relative;color:var(--ink-mid);font-size:16px}
+.group li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:2px;background:var(--accent-deep)}
+.group.command li::before{background:var(--accent)}
+.group.command li{color:var(--ink)}
+.group.command li strong{font-weight:500}
+@media(max-width:680px){.tier-head,.tier-body{padding-left:22px;padding-right:22px}}
+
+/* ---------- CAMPANHAS ---------- */
+.camps{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.camp{background:var(--base);padding:30px 28px;display:flex;flex-direction:column}
+.camp .tag{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--accent);margin-bottom:12px}
+.camp h3{font-size:20px;margin-bottom:10px}
+.camp p{font-size:15.5px;color:var(--ink-mid);flex:1}
+.camp .money{margin-top:18px;font-family:'Poppins',sans-serif;font-size:20px;font-weight:600;color:var(--ink)}
+.camp .money span{font-size:14px;font-weight:400;color:var(--ink-low)}
+@media(max-width:700px){.camps{grid-template-columns:1fr}}
+
+/* ---------- FUNIL DE MEDIÇÃO ---------- */
+.chain{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin-bottom:34px}
+.link{
+  flex:1 1 190px;background:var(--surface);border:1px solid var(--line);
+  border-top:2px solid var(--accent);padding:22px 20px;
+}
+.link .st{font-size:13px;color:var(--ink-low);margin-bottom:6px;letter-spacing:.04em}
+.link .v{font-family:'Poppins',sans-serif;font-size:17px;font-weight:600;line-height:1.3}
+
+/* ---------- CASES ---------- */
+.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.case{background:var(--base);padding:28px 22px}
+.case .mult{font-family:'Poppins',sans-serif;font-size:38px;font-weight:700;color:var(--accent);letter-spacing:-.03em;line-height:1}
+.case h3{font-size:16px;margin:10px 0 8px}
+.case p{font-size:14.5px;color:var(--ink-low);line-height:1.55}
+.case p strong{color:var(--ink-mid);font-weight:400;display:block;margin-top:4px}
+.case.lead{background:var(--surface-2)}
+@media(max-width:900px){.cases{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cases{grid-template-columns:1fr}}
+
+/* ---------- TIME ---------- */
+.team{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start}
+.team h3{font-size:20px;margin-bottom:12px}
+.team p{color:var(--ink-mid)}
+.team ul{list-style:none;display:grid;gap:12px;margin-top:6px}
+.team li{color:var(--ink-mid);padding-left:24px;position:relative}
+.team li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:2px;background:var(--moss-line)}
+.team .note{margin-top:28px;padding:20px 22px;background:rgba(23,53,31,.35);border:1px solid var(--moss-line);color:var(--ink)}
+@media(max-width:800px){.team{grid-template-columns:1fr;gap:36px}}
+
+/* ---------- INVESTIMENTO ---------- */
+.price{display:grid;grid-template-columns:1fr 1.15fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.price-left{background:var(--surface-2);padding:44px 40px}
+.price-right{background:var(--base);padding:44px 40px}
+.price-left .fee{font-family:'Poppins',sans-serif;font-size:clamp(42px,6vw,60px);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.price-left .per{color:var(--ink-low);margin-bottom:30px}
+.price-left dl{display:grid;gap:20px;margin-top:26px;border-top:1px solid var(--line);padding-top:26px}
+.price-left dt{font-size:13px;color:var(--ink-low);letter-spacing:.06em;text-transform:uppercase;font-family:'Poppins',sans-serif;font-weight:500}
+.price-left dd{font-family:'Poppins',sans-serif;font-size:22px;font-weight:600;margin-top:2px}
+.price-right h3{font-size:18px;margin-bottom:6px}
+.price-right .sub{font-size:14.5px;color:var(--ink-low);margin-bottom:22px}
+.price-right table td:first-child{color:var(--ink-mid)}
+.price-right tr.total td{border-bottom:none;padding-top:20px;font-size:19px;color:var(--ink);font-family:'Poppins',sans-serif;font-weight:600}
+.price-right tr.total td:last-child{color:var(--accent)}
+.price-note{margin-top:22px;font-size:14.5px;color:var(--ink-low);line-height:1.6}
+@media(max-width:800px){.price{grid-template-columns:1fr}.price-left,.price-right{padding:30px 24px}}
+
+/* ---------- CONDIÇÕES ---------- */
+.terms{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.term{background:var(--base);padding:28px}
+.term h3{font-size:17px;margin-bottom:8px}
+.term p{font-size:15.5px;color:var(--ink-mid)}
+@media(max-width:700px){.terms{grid-template-columns:1fr}}
+
+.guarantee{
+  margin-bottom:44px;padding:36px 38px;
+  background:var(--surface);border:1px solid var(--moss-line);border-left:3px solid var(--accent);
+}
+.guarantee h3{font-size:21px;margin-bottom:12px}
+.guarantee p{color:var(--ink-mid);max-width:70ch}
+.guarantee .fine{margin-top:16px;font-size:14.5px;color:var(--ink-low)}
+@media(max-width:680px){.guarantee{padding:26px 22px}}
+
+/* ---------- FECHAMENTO ---------- */
+.close{
+  border-top:1px solid var(--line);
+  background:
+    radial-gradient(90% 120% at 20% 0%, rgba(23,53,31,.7) 0%, transparent 60%),
+    var(--base);
+  padding:96px 0 72px;
+}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:56px}
+.phase .n{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.12em;display:block;margin-bottom:10px}
+.phase h3{font-size:19px;margin-bottom:8px}
+.phase p{font-size:15.5px;color:var(--ink-mid)}
+@media(max-width:760px){.phases{grid-template-columns:1fr;gap:24px}}
+
+.cta{
+  display:flex;flex-wrap:wrap;gap:18px;align-items:center;
+  padding-top:40px;border-top:1px solid var(--line);
+}
+.btn{
+  display:inline-block;background:var(--accent);color:#0A0B0A;
+  font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;
+  padding:16px 30px;text-decoration:none;
+  transition:background .18s ease;
+}
+.btn:hover,.btn:focus-visible{background:#ffa163}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover,.btn.ghost:focus-visible{border-color:var(--accent);background:transparent}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+footer{padding:34px 0 60px;color:var(--ink-low);font-size:14.5px;line-height:1.8}
+footer strong{color:var(--ink-mid);font-weight:400}
+
+/* ---------- IMPRESSÃO / PDF ---------- */
+@media print{
+  body{background:#fff;color:#111;font-size:11pt}
+  .hero{min-height:auto;padding:0}
+  .hero-grid{display:none}
+  .hero,.close,.tier,.tier-head,.verdict,.good,.guarantee,.price-left,.price-right,.step,.camp,.case,.term,.link,blockquote,.team .note{background:#fff!important;color:#111!important}
+  h1,h2,h3,h4,.verdict .big,.price-left .fee{color:#111!important}
+  .eyebrow,.finding .idx,.step .num,.camp .tag,.case .mult,.phase .n,.badge{color:#B5653A!important}
+  .badge{background:none;padding:0;border:1px solid #B5653A}
+  p,li,td,.lede,.hero-sub{color:#333!important}
+  section{page-break-inside:avoid;padding:26px 0;border-top:1px solid #ddd}
+  .btn{display:none}
+  table td,table th{border-color:#ddd}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="brandline"><span class="dash"></span> EmpresAtiva Digital · Setembro de 2026</div>
+    <h1>Você tem alcance. O que falta é <em>consulta agendada</em>.</h1>
+    <p class="hero-sub">Proposta de operação para a clínica do Dr. Gustavo Tilmann — cirurgia plástica, Itaim Bibi, São Paulo. Tráfego pago, inteligência artificial e CRM em uma estrutura única.</p>
+    <div class="hero-meta">
+      <div><div class="n">R$ 10M+</div><div class="l">em tráfego pago gerido</div></div>
+      <div><div class="n">200+</div><div class="l">negócios atendidos</div></div>
+      <div><div class="n">8 anos</div><div class="l">de operação</div></div>
+      <div><div class="n">5,0</div><div class="l">de avaliação no Google</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico">
+  <div class="wrap">
+    <span class="eyebrow">Diagnóstico</span>
+    <h2>O que os últimos 30 dias da sua conta mostram</h2>
+    <p class="lede">Leitura da conta 01 — Dr. GustavoTilmann, extraída do seu próprio painel de performance. Nenhum número aqui é estimativa nossa.</p>
+
+    <div class="verdict">
+      <div class="big">R$ 0,00</div>
+      <p class="cap">É quanto da sua verba está em campanha de conversão. As duas campanhas ativas têm objetivo de engajamento e de visualização de vídeo.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Indicador</th><th style="text-align:right">Período de 30 dias</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Investimento total</td><td>R$ 5.472,08 · R$ 182,40/dia</td></tr>
+        <tr><td>Alcance · impressões · cliques</td><td>177.891 · 212.822 · 5.625</td></tr>
+        <tr><td>CPC médio</td><td>R$ 0,97</td></tr>
+        <tr><td>CTR médio</td><td>2,64%</td></tr>
+        <tr><td>CPM médio</td><td>R$ 26,19</td></tr>
+        <tr><td>Campanhas de conversão ativas</td><td class="flag">Nenhuma</td></tr>
+        <tr><td>Verba em fundo de funil</td><td class="flag">R$ 0,00</td></tr>
+        <tr><td>Conversas, leads ou agendamentos rastreados</td><td class="flag">Não existem na conta</td></tr>
+      </tbody>
+    </table>
+
+    <blockquote>O próprio painel da operação atual encerra o quadro assim: <strong>“Fundo de Funil — 0 campanhas. Taxa de Conversão Global: dados insuficientes.”</strong></blockquote>
+  </div>
+</section>
+
+<!-- ACHADOS -->
+<section id="achados">
+  <div class="wrap">
+    <span class="eyebrow">Onde o dinheiro escapa</span>
+    <h2>Quatro pontos, em ordem de custo</h2>
+    <p class="lede">A conta compra atenção com competência. O que ela não faz é transformar atenção em paciente sentado na sua sala.</p>
+
+    <div class="findings">
+      <article class="finding">
+        <div class="idx">01</div>
+        <div>
+          <h3>Não existe fundo de funil</h3>
+          <p>R$ 5.472 por mês comprando alcance que não tem destino. Sem clique-para-WhatsApp, sem formulário, sem conversão de site, sem evento de agendamento medido. A pergunta “quantas cirurgias vieram disso?” hoje não tem resposta — e isso não é falha sua, é ausência de estrutura.</p>
+        </div>
+      </article>
+      <article class="finding">
+        <div class="idx">02</div>
+        <div>
+          <h3>O rastro morre no perfil</h3>
+          <p>5.197 cliques no link levaram a 9.239 visitas ao perfil e 1.112 seguidores novos. A mídia está comprando seguidor. Dos 202.272 de alcance do seu perfil no mês, 177.891 vieram de anúncio: 88% do que parece orgânico é pago. Se a verba parar amanhã, o perfil murcha junto.</p>
+        </div>
+      </article>
+      <article class="finding">
+        <div class="idx">03</div>
+        <div>
+          <h3>A frequência está invertida</h3>
+          <p>1,18x no público frio — quase ninguém vê o anúncio duas vezes. E 4,4x no remarketing, sobre apenas 12.902 pessoas, com CTR de 0,75% e CPC de R$ 2,20. Cirurgia plástica é decisão de meses: a repetição está sendo gasta em quem já decidiu, e falta em quem ainda vai decidir.</p>
+        </div>
+      </article>
+      <article class="finding">
+        <div class="idx">04</div>
+        <div>
+          <h3>A segmentação não conversa com o criativo</h3>
+          <p>100% mulheres, 100% acima de 45 anos, 96,8% da verba em iPhone e 99,9% em Instagram. Há anúncio de rinoplastia rodando para um público que não é de rinoplastia, e o leilão está estreito por escolha — o que aparece direto no CPM de R$ 26,19.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="good">
+      <h3>O que está bem executado — e permanece</h3>
+      <ul>
+        <li><strong>CPC de R$ 0,97 e CTR de 2,64%.</strong> O criativo comunica. A peça funciona.</li>
+        <li><strong>Linha editorial correta.</strong> Conteúdo educativo, sem antes e depois, sem promessa de resultado. Dentro do que o CFM permite.</li>
+        <li><strong>Público certo alcançado.</strong> São Paulo concentra 85,6% do alcance, no perfil demográfico da sua paciente.</li>
+        <li><strong>Nomenclatura organizada</strong>, com etapa de funil identificada em cada campanha.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section id="metodo">
+  <div class="wrap">
+    <span class="eyebrow">Método Demanda Previsível</span>
+    <h2>Seis etapas, na ordem, sem desvio</h2>
+    <p class="lede">Um sistema que gera, rastreia e classifica o contato — e devolve ao anúncio a informação de quem realmente vira paciente.</p>
+
+    <div class="steps">
+      <div class="step"><span class="num">Etapa 01</span><h3>Atrair</h3><p>Campanhas em Meta e Google por procedimento, no público e no momento certos.</p></div>
+      <div class="step"><span class="num">Etapa 02</span><h3>Capturar</h3><p>Landing page e clique-para-WhatsApp com rastreamento de origem em cada contato.</p></div>
+      <div class="step"><span class="num">Etapa 03</span><h3>Alertar</h3><p>Contato novo dispara notificação imediata. Tempo de resposta é conversão.</p></div>
+      <div class="step"><span class="num">Etapa 04</span><h3>Classificar</h3><p>A IA lê a conversa e separa oportunidade real de curioso, antes do contato humano.</p></div>
+      <div class="step"><span class="num">Etapa 05</span><h3>Medir</h3><p>Painel ao vivo e fechamento mensal, do custo por conversa ao custo por consulta comparecida.</p></div>
+      <div class="step"><span class="num">Etapa 06</span><h3>Escalar</h3><p>Os qualificados voltam ao Meta e ao Google. O algoritmo passa a procurar quem fecha.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NÍVEL 03 -->
+<section id="nivel">
+  <div class="wrap">
+    <span class="eyebrow">Nível recomendado</span>
+    <h2>Nível 03 · Comando</h2>
+    <p class="lede">Contém os Níveis 01 e 02 por inteiro, mais a camada em que a agência entra no seu processo comercial.</p>
+
+    <div class="tier">
+      <div class="tier-head">
+        <span class="badge">Receita · vagas limitadas</span>
+        <h3>Aqui não gerenciamos o seu marketing. Gerenciamos a sua receita.</h3>
+        <p>Duas plataformas em operação simultânea, meta de receita definida e acompanhamento direto de quem atende o paciente do outro lado.</p>
+      </div>
+      <div class="tier-body">
+
+        <div class="group">
+          <h4>Base de rastreamento</h4>
+          <p class="from">Herdado do Nível 01 · Reconhecimento</p>
+          <ul>
+            <li>Landing page com rastreamento de origem em cada contato</li>
+            <li>Criativos por designer especializada: card, story, carrossel e vídeo</li>
+            <li>WhatsApp integrado, com alerta de contato novo e resposta automática</li>
+            <li>Classificação inteligente: IA lendo e classificando cada conversa</li>
+            <li>Painel ao vivo com oportunidades, qualificação e ritmo contra a meta</li>
+            <li>Relatório mensal comparado ao benchmark do nicho de saúde e estética</li>
+          </ul>
+        </div>
+
+        <div class="group">
+          <h4>Operação sobre o lead</h4>
+          <p class="from">Herdado do Nível 02 · Operação</p>
+          <ul>
+            <li>CRM EmpresAtiva: funil visual, histórico e WhatsApp, com acesso para a sua secretária e o seu time</li>
+            <li>Atendente de IA que responde, qualifica e agenda fora do horário da clínica</li>
+            <li>Devolução dos qualificados ao Meta e ao Google como sinal de otimização</li>
+            <li>Painel criativo por etapa de funil: qual peça gera consulta, não só clique</li>
+            <li>Playbook comercial, treinamento do time e fila de contatos parados</li>
+          </ul>
+        </div>
+
+        <div class="group command">
+          <h4>Camada de comando</h4>
+          <p class="from">Exclusivo do Nível 03</p>
+          <ul>
+            <li><strong>Meta Ads e Google Ads em operação simultânea</strong> — a segunda plataforma custaria R$ 597 a mais nos níveis anteriores</li>
+            <li><strong>Acompanhamento direto e contínuo do time comercial da clínica</strong> — quem atende, o que fala, onde a conversa trava</li>
+            <li><strong>Meta de receita definida, monitorada e revisada todo mês</strong></li>
+            <li><strong>Reunião mensal com João Marot</strong>, mais quinzenal com o gestor sênior nomeado para a conta</li>
+            <li><strong>Google Business Profile sob gestão</strong> — SEO local e presença nos mapas do Itaim Bibi</li>
+            <li><strong>Social media incluso</strong> — quatro publicações mensais executadas pela designer</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTRUTURA -->
+<section id="estrutura">
+  <div class="wrap">
+    <span class="eyebrow">Plano de implantação</span>
+    <h2>A estrutura que entra no lugar da atual</h2>
+    <p class="lede">Mesma verba de mídia praticada hoje. Arquitetura diferente, com destino para o clique.</p>
+
+    <div class="camps">
+      <article class="camp">
+        <div class="tag">Campanha 01</div>
+        <h3>Captação por conversa</h3>
+        <p>Objetivo de conversa iniciada, não de engajamento. Destino WhatsApp com CAPI configurado, para o Meta aprender com quem realmente responde. A métrica passa a ser custo por conversa, não custo por curtida.</p>
+        <div class="money">R$ 2.800 <span>/ mês</span></div>
+      </article>
+      <article class="camp">
+        <div class="tag">Campanha 02</div>
+        <h3>Autoridade e nutrição</h3>
+        <p>O conteúdo educativo que já funciona hoje, agora com público frio segmentado por procedimento e frequência mínima de 2,5x. Cada procedimento com a sua faixa etária — rinoplastia não fala com o mesmo público de lifting.</p>
+        <div class="money">R$ 1.200 <span>/ mês</span></div>
+      </article>
+      <article class="camp">
+        <div class="tag">Campanha 03</div>
+        <h3>Remarketing de intenção</h3>
+        <p>Quem assistiu 75% do vídeo, visitou o perfil ou engajou nos últimos 90 dias recebe convite para avaliação. Deixa de ser vídeo em cima de vídeo e passa a ser oferta de consulta para quem já demonstrou interesse.</p>
+        <div class="money">R$ 900 <span>/ mês</span></div>
+      </article>
+      <article class="camp">
+        <div class="tag">Campanha 04</div>
+        <h3>Frente de teste</h3>
+        <p>Facebook e Android liberados, faixa de 30 a 44 anos para rinoplastia e teste de público masculino. É a frente que abre inventário mais barato e de onde sai o próximo criativo campeão.</p>
+        <div class="money">R$ 600 <span>/ mês</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIÇÃO -->
+<section id="medicao">
+  <div class="wrap">
+    <span class="eyebrow">Nova régua</span>
+    <h2>O que passa a ser medido</h2>
+    <p class="lede">Hoje a conta mede engajamento. A partir da implantação, a cadeia é rastreada até o fim.</p>
+
+    <div class="chain">
+      <div class="link"><div class="st">Primeira etapa</div><div class="v">Custo por conversa iniciada</div></div>
+      <div class="link"><div class="st">Segunda etapa</div><div class="v">Custo por consulta agendada</div></div>
+      <div class="link"><div class="st">Terceira etapa</div><div class="v">Custo por consulta comparecida</div></div>
+      <div class="link"><div class="st">Quarta etapa</div><div class="v">Custo por cirurgia fechada</div></div>
+    </div>
+
+    <p class="lede" style="margin-bottom:0">Cada etapa fica registrada no CRM, cruzada com a origem do anúncio e apresentada no fechamento mensal. Você deixa de avaliar a campanha por alcance e passa a avaliar por sala cheia.</p>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="wrap">
+    <span class="eyebrow">Dados de campo</span>
+    <h2>Operações concluídas</h2>
+    <p class="lede">Retorno sobre o investimento em mídia, apurado no fechamento de cada conta.</p>
+
+    <div class="cases">
+      <article class="case lead">
+        <div class="mult">101x</div>
+        <h3>Cirurgia plástica</h3>
+        <p>167 contatos · R$ 12 por contato <strong>R$ 203 mil faturados</strong></p>
+      </article>
+      <article class="case">
+        <div class="mult">105x</div>
+        <h3>Odontologia estética</h3>
+        <p>250 contatos · R$ 10 por contato <strong>R$ 264 mil faturados</strong></p>
+      </article>
+      <article class="case">
+        <div class="mult">81x</div>
+        <h3>Mega hair</h3>
+        <p>1.333 contatos · R$ 3 por contato <strong>R$ 325 mil faturados</strong></p>
+      </article>
+      <article class="case">
+        <div class="mult">31x</div>
+        <h3>Clínica de estética</h3>
+        <p>714 contatos · R$ 7 por contato <strong>R$ 156 mil faturados</strong></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TIME -->
+<section id="time">
+  <div class="wrap">
+    <span class="eyebrow">Quem executa</span>
+    <h2>Composição do efetivo</h2>
+
+    <div class="team">
+      <div>
+        <h3>João Marot — fundador e head de estratégia</h3>
+        <p>Ex-capitão do Exército, formado pela AMAN. Certificado Google Ads e Meta Ads. Mentor certificado Subido PRO, com Pedro Sobral. Sete dígitos em verba gerida ao longo de oito anos de operação.</p>
+        <div class="note">Você não contrata um freelancer. Você ativa uma equipe completa, em operação, com gestor sênior nomeado para a sua conta.</div>
+      </div>
+      <div>
+        <h3>Equipe alocada</h3>
+        <ul>
+          <li>Gestor de tráfego sênior — Meta e Google Ads</li>
+          <li>Designer gráfico — criativos para conversão</li>
+          <li>Web designer — landing pages</li>
+          <li>Especialista em CRM — follow-up comercial</li>
+          <li>Especialista em IA — classificação e automações</li>
+          <li>Especialista em Google Business Profile</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section id="investimento">
+  <div class="wrap">
+    <span class="eyebrow">Investimento</span>
+    <h2>Nível 03 · Comando</h2>
+    <p class="lede">Fee de gestão e verba de mídia são valores separados. A verba você paga direto à plataforma, na sua conta de anúncios.</p>
+
+    <div class="price">
+      <div class="price-left">
+        <div class="fee">R$ 3.497</div>
+        <div class="per">de fee mensal EmpresAtiva</div>
+        <dl>
+          <div>
+            <dt>Verba de mídia gerida no fee</dt>
+            <dd>até R$ 5.000 / mês</dd>
+          </div>
+          <div>
+            <dt>Excedente de verba</dt>
+            <dd>20% sobre o que passar</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="price-right">
+        <h3>Aplicado à sua verba atual</h3>
+        <p class="sub">Considerando os R$ 5.472,08 praticados nos últimos 30 dias.</p>
+        <table>
+          <tbody>
+            <tr><td>Fee do Nível 03</td><td>R$ 3.497,00</td></tr>
+            <tr><td>Verba de mídia no mês</td><td>R$ 5.472,08</td></tr>
+            <tr><td>Excedente sobre R$ 5.000</td><td>R$ 472,08</td></tr>
+            <tr><td>Gestão do excedente — 20%</td><td>R$ 94,42</td></tr>
+            <tr class="total"><td>Total mensal à EmpresAtiva</td><td>R$ 3.591,42</td></tr>
+          </tbody>
+        </table>
+        <p class="price-note">A verba de mídia de R$ 5.472,08 permanece paga por você diretamente ao Meta e ao Google. Se a verba subir, a regra é a mesma: 20% apenas sobre o que exceder os R$ 5.000, sem renegociação de contrato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDIÇÕES -->
+<section id="condicoes">
+  <div class="wrap">
+    <span class="eyebrow">Condições</span>
+    <h2>Sem ambiguidade</h2>
+
+    <div class="guarantee">
+      <h3>Garantia de implantação</h3>
+      <p>Sistema completo no ar em até 10 dias úteis após a confirmação do pagamento, com a operação em campo em até 2 dias úteis. Se atrasarmos por responsabilidade nossa, o mês em curso é creditado integralmente na mensalidade seguinte.</p>
+      <p class="fine">Não garantimos resultado. Garantimos execução, rastreio e correção — cada real investido gera dado auditável.</p>
+    </div>
+
+    <div class="terms">
+      <div class="term"><h3>Início da operação</h3><p>Primeira mensalidade paga no ato da assinatura. Ativação em até 2 dias úteis.</p></div>
+      <div class="term"><h3>Compromisso mínimo</h3><p>Contrato de 6 meses. É o tempo que o sistema leva para maturar e entregar resultado sustentável.</p></div>
+      <div class="term"><h3>Taxa de implantação</h3><p>R$ 997, isenta no contrato de 6 meses. Cobrada apenas em caso de saída antecipada ou na modalidade mensal.</p></div>
+      <div class="term"><h3>Modalidade mensal</h3><p>Sem prazo de compromisso, com acréscimo de 35% sobre o fee. A escolha é sua.</p></div>
+      <div class="term"><h3>Renovação e saída</h3><p>Depois dos 6 meses, renovação trimestral automática. Para encerrar, notificação com 30 dias de antecedência.</p></div>
+      <div class="term"><h3>Propriedade dos ativos</h3><p>Suas contas de anúncio, seus dados e seu histórico pertencem a você, exportáveis a qualquer momento, sem retenção.</p></div>
+      <div class="term"><h3>Conformidade com o CFM</h3><p>Toda peça respeita a Resolução CFM 1.974/11 e suas atualizações: sem antes e depois, sem promessa de resultado, sem preço em anúncio.</p></div>
+      <div class="term"><h3>Segunda unidade</h3><p>Rede ou nova unidade da clínica: da segunda em diante, 50% do valor do nível contratado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FECHAMENTO -->
+<section class="close" id="proximos-passos">
+  <div class="wrap">
+    <span class="eyebrow">Próximos passos</span>
+    <h2>Ordem de marcha</h2>
+
+    <div class="phases">
+      <div class="phase">
+        <span class="n">Fase 01</span>
+        <h3>Inteligência</h3>
+        <p>Diagnóstico da conta já entregue neste documento. Sem custo e sem compromisso.</p>
+      </div>
+      <div class="phase">
+        <span class="n">Fase 02</span>
+        <h3>Implantação</h3>
+        <p>Contrato assinado e primeira mensalidade confirmada. Operação em campo em 2 dias úteis e sistema completo no ar em 10 dias.</p>
+      </div>
+      <div class="phase">
+        <span class="n">Fase 03</span>
+        <h3>Operação</h3>
+        <p>Campanhas de conversão ativas, contatos qualificados entregues no WhatsApp da clínica, prontos para agendar.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a class="btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20do%20N%C3%ADvel%2003%20e%20quero%20conversar." target="_blank" rel="noopener">Falar com João Marot</a>
+      <a class="btn ghost" href="tel:+5521983424319">(21) 98342-4319</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>EmpresAtiva Estratégias Digitais</strong><br>
+    Av. das Américas 12.900 · Sala 403B · Recreio dos Bandeirantes · Rio de Janeiro/RJ<br>
+    empresativa.com.br · @empresativadigital · joaomarot@empresativa.com.br<br><br>
+    Proposta emitida em 10 de setembro de 2026, válida por 15 dias. Documento de uso exclusivo do destinatário.
+  </div>
+</footer>
+
+</body>
+</html>
