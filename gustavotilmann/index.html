@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Dr. Gustavo Tilmann</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --gold:#C9A84C;--gold-dim:rgba(201,168,76,.10);--gold-border:rgba(201,168,76,.22);
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 20%,rgba(201,168,76,.08) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,66px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:var(--gold);}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:var(--gold);}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+/* PLANOS COMPARATIVOS */
+.planos{display:flex;flex-direction:column;gap:16px;}
+.pl{border-radius:4px;overflow:hidden;}
+.pl::before{content:"";display:block;height:4px;}
+.pl-trafego::before{background:linear-gradient(90deg,var(--terra),var(--gold));}
+.pl-comando::before{background:linear-gradient(90deg,var(--gold),var(--glight),var(--gold));}
+.pl-trafego{background:var(--black);border:1px solid rgba(201,168,76,.2);}
+.pl-comando{background:var(--green);border:1px solid rgba(201,168,76,.32);}
+.pl-body{padding:28px 26px;}
+.pl-kicker{font-size:8px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;margin-bottom:8px;}
+.pl-trafego .pl-kicker{color:var(--terra);}
+.pl-comando .pl-kicker{color:var(--gold);}
+.rec-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:14px;background:var(--gold-dim);color:var(--gold);border:1px solid var(--gold-border);}
+.pl-name{font-size:22px;font-weight:900;color:var(--offwhite);margin-bottom:6px;letter-spacing:-.01em;line-height:1.1;}
+.pl-price{font-size:52px;font-weight:900;line-height:1;letter-spacing:-.03em;margin-bottom:4px;}
+.pl-trafego .pl-price{color:var(--terra);}
+.pl-comando .pl-price{color:var(--gold);}
+.pl-period{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:400;}
+.pl-verba{font-size:12px;font-weight:700;margin-bottom:20px;}
+.pl-trafego .pl-verba{color:var(--terra);}
+.pl-comando .pl-verba{color:var(--gold);}
+.pl-sep{height:1px;background:rgba(244,244,240,.08);margin:18px 0;}
+.pl-section-label{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.pl-ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:16px;}
+.pl-ul li{font-size:12px;color:var(--offwhite);padding-left:20px;position:relative;line-height:1.5;font-weight:500;}
+.pl-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;}
+.pl-trafego .pl-ul li::before{color:var(--terra);}
+.pl-comando .pl-ul li::before{color:var(--gold);}
+.pl-ul li.add{color:var(--gold);}
+.pl-ul li.add::before{content:"★";color:var(--gold);font-size:8px;}
+.pl-ul li.out{color:var(--muted);font-style:italic;}
+.pl-ul li.out::before{content:"—";color:rgba(244,244,240,.25);}
+.pl-note{font-size:11px;color:var(--muted);line-height:1.7;padding:12px 14px;background:rgba(244,244,240,.03);border:1px solid var(--border);border-radius:2px;font-weight:400;}
+
+/* DIFF TABLE */
+.diff-wrap{overflow-x:auto;margin-bottom:16px;}
+.diff-table{width:100%;border-collapse:collapse;min-width:520px;}
+.diff-table th{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);}
+.diff-table th:nth-child(2){color:var(--terra);}
+.diff-table th:nth-child(3){color:var(--gold);}
+.diff-table td{font-size:12px;padding:11px 16px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.45;}
+.diff-table tr:last-child td{border-bottom:none;}
+.diff-table td:first-child{color:var(--offwhite);font-weight:500;}
+.diff-table td:not(:first-child){text-align:center;}
+.yes{color:#4CAF72;font-size:16px;}
+.no{color:rgba(244,244,240,.2);font-size:16px;}
+.gold-yes{color:var(--gold);font-size:16px;}
+.diff-table tr.price-row td{font-weight:800;font-size:18px;padding:16px 16px;}
+.diff-table tr.price-row td:nth-child(2){color:var(--terra);}
+.diff-table tr.price-row td:nth-child(3){color:var(--gold);}
+.diff-table tr.price-row{background:rgba(244,244,240,.02);}
+
+/* VAR BOX */
+.var-box{background:rgba(23,53,31,.35);border:1px solid rgba(42,92,53,.3);padding:22px 26px;border-radius:2px;margin-top:14px;}
+.var-box h4{font-size:13px;font-weight:700;color:#4CAF72;margin-bottom:14px;}
+.var-rows{display:flex;flex-direction:column;gap:2px;}
+.var-row{background:var(--card);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+.var-row.d{background:rgba(23,53,31,.35);border-left:2px solid var(--glight);}
+.vr-label{font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.vr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.vr-desc strong{color:var(--offwhite);font-weight:600;}
+.vr-pair{display:flex;gap:24px;flex-shrink:0;}
+.vr-val-wrap{text-align:right;}
+.vr-val-wrap .vr-label{display:block;margin-bottom:2px;}
+.vr-val{font-size:15px;font-weight:800;}
+.vr-val.t{color:var(--terra);}
+.vr-val.g{color:var(--gold);}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-dot.gd{background:var(--gold);box-shadow:0 0 0 3px var(--gold-dim);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-day.gd{color:var(--gold);}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.12) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta h2 .g{color:var(--gold);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,244,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .planos{flex-direction:row;align-items:flex-start;}
+  .pl{flex:1;min-width:0;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; Dr. Gustavo Tilmann &middot; Cirurgia Pl&aacute;stica &middot; Itaim Bibi SP</div>
+  <h1>Dois planos.<br><span class="t">Uma decis&atilde;o.</span><br><span class="g">Gustavo escolhe.</span></h1>
+  <p class="hero-sub">Dr. Gustavo, preparei duas op&ccedil;&otilde;es para facilitar sua decis&atilde;o: o Plano Tráfego — tráfego pago full service sem a parte comercial — e o Plano Comando, que inclui tamb&eacute;m o acompanhamento e treinamento da equipe de vendas. Valores, escopo e diferen&ccedil;as lado a lado.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Especialidade</span><span class="s2">Cirurgia Pl&aacute;stica</span></div>
+    <div class="hp"><span class="s1">Local</span><span class="s2">Itaim Bibi &middot; S&atilde;o Paulo SP</span></div>
+    <div class="hp"><span class="s1">Plano Tráfego</span><span class="s2">R$ 2.497/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Plano Comando</span><span class="s2">R$ 3.497/m&ecirc;s</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PLANOS LADO A LADO -->
+<section class="bg-dark">
+  <div class="sk">Os dois planos &mdash; compare e decida</div>
+  <h2 class="st">Tráfego<br>pago.<br><span class="t">Ou tráfego<br>pago</span> <span class="g">+ comercial.</span></h2>
+  <p class="si">A diferen&ccedil;a entre os dois planos &eacute; um &uacute;nico m&oacute;dulo: o acompanhamento e treinamento da equipe de vendas da cl&iacute;nica. Tudo o mais &eacute; id&ecirc;ntico.</p>
+
+  <div class="planos">
+
+    <!-- PLANO TRÁFEGO -->
+    <div class="pl pl-trafego">
+      <div class="pl-body">
+        <div class="pl-kicker">Plano Tráfego</div>
+        <div class="pl-name">Full Service<br>sem Comercial</div>
+        <div class="pl-price">R$ 2.497</div>
+        <div class="pl-period">por m&ecirc;s &middot; fee de gest&atilde;o</div>
+        <div class="pl-verba">+ verba gerida at&eacute; R$ 5.000/m&ecirc;s inclusa no fee</div>
+        <div class="pl-sep"></div>
+        <div class="pl-section-label">Incluso neste plano</div>
+        <ul class="pl-ul">
+          <li>Meta Ads &mdash; Instagram e Facebook</li>
+          <li>Google Ads &mdash; busca + remarketing display</li>
+          <li>Criativos de alta performance &mdash; sem limite de pe&ccedil;as</li>
+          <li>Landing pages por procedimento</li>
+          <li>IA de qualifica&ccedil;&atilde;o de leads 24h/7</li>
+          <li>Alerta de lead qualificado em tempo real</li>
+          <li>CRM &mdash; kanban de leads por fase</li>
+          <li>Dashboard em tempo real + relat&oacute;rio mensal</li>
+          <li>Reuni&atilde;o mensal de performance</li>
+          <li>Playbook comercial para a equipe de agendamento</li>
+          <li>Acompanhamento de abordagem e follow-up</li>
+          <li class="out">Treinamento da equipe de agendamento</li>
+          <li class="out">Sess&otilde;es quinzenais com o comercial</li>
+        </ul>
+        <div class="pl-sep"></div>
+        <p class="pl-note">Ideal se a equipe de agendamento j&aacute; tem processo comercial estabelecido e o Dr. Gustavo quer focar o investimento em tráfego e qualifica&ccedil;&atilde;o de leads.</p>
+      </div>
+    </div>
+
+    <!-- PLANO COMANDO -->
+    <div class="pl pl-comando">
+      <div class="pl-body">
+        <div class="pl-kicker">Plano Comando</div>
+        <div class="rec-badge">&#9733; Recomendado para m&aacute;ximo resultado</div>
+        <div class="pl-name">Full Service<br>+ Comercial</div>
+        <div class="pl-price">R$ 3.497</div>
+        <div class="pl-period">por m&ecirc;s &middot; fee de gest&atilde;o</div>
+        <div class="pl-verba">+ verba gerida at&eacute; R$ 5.000/m&ecirc;s inclusa no fee</div>
+        <div class="pl-sep"></div>
+        <div class="pl-section-label">Tudo do Plano Tráfego, mais</div>
+        <ul class="pl-ul">
+          <li>Meta Ads &mdash; Instagram e Facebook</li>
+          <li>Google Ads &mdash; busca + remarketing display</li>
+          <li>Criativos de alta performance &mdash; sem limite de pe&ccedil;as</li>
+          <li>Landing pages por procedimento</li>
+          <li>IA de qualifica&ccedil;&atilde;o de leads 24h/7</li>
+          <li>Alerta de lead qualificado em tempo real</li>
+          <li>CRM &mdash; kanban de leads por fase</li>
+          <li>Dashboard em tempo real + relat&oacute;rio mensal</li>
+          <li>Reuni&atilde;o mensal de performance</li>
+          <li class="add">Playbook comercial para a equipe de agendamento</li>
+          <li class="add">Treinamento da equipe &mdash; abordagem, obje&ccedil;&otilde;es e fechamento</li>
+          <li class="add">Acompanhamento das conversas &mdash; an&aacute;lise de qualidade de atendimento</li>
+          <li class="add">Sess&otilde;es quinzenais de alinhamento com o comercial</li>
+        </ul>
+        <div class="pl-sep"></div>
+        <p class="pl-note">Ideal quando o tráfego pago j&aacute; est&aacute; gerando leads qualificados mas a taxa de convers&atilde;o de lead para consulta ainda pode melhorar. O comercial treinado multiplica o retorno do tráfego.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- TABELA COMPARATIVA -->
+<section class="bg-black">
+  <div class="sk">Diferen&ccedil;a item a item &mdash; o que cada plano entrega</div>
+  <h2 class="st">O que muda<br>entre<br><span class="t">um e</span> <span class="g">outro.</span></h2>
+
+  <div class="diff-wrap">
+    <table class="diff-table">
+      <thead>
+        <tr>
+          <th style="width:50%;">Entregável</th>
+          <th>Tráfego<br>R$ 2.497</th>
+          <th>Comando<br>R$ 3.497</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Meta Ads (Instagram + Facebook)</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Google Ads (busca + display + remarketing)</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Criativos — imagens e vídeos sem limite de peças</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Landing pages por procedimento</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>IA de qualificação de leads 24h/7 dias</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Alerta de lead qualificado em tempo real</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>CRM — kanban de leads por fase</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Rastreamento completo — clique ao agendamento</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Dashboard em tempo real + relatório mensal de ROI</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Reunião mensal de performance com João Marot</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Playbook comercial para equipe de agendamento</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr><td>Acompanhamento de abordagem e follow-up</td><td><span class="yes">✓</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr style="background:rgba(201,168,76,.04);"><td style="color:var(--gold);font-weight:700;">Treinamento da equipe &mdash; abordagem, obje&ccedil;&otilde;es, fechamento</td><td><span class="no">—</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr style="background:rgba(201,168,76,.04);"><td style="color:var(--gold);font-weight:700;">An&aacute;lise de qualidade de atendimento nas conversas</td><td><span class="no">—</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr style="background:rgba(201,168,76,.04);"><td style="color:var(--gold);font-weight:700;">Sessões quinzenais de alinhamento com o comercial</td><td><span class="no">—</span></td><td><span class="gold-yes">✓</span></td></tr>
+        <tr class="price-row">
+          <td>Fee mensal (verba até R$ 5k gerida inclusa)</td>
+          <td>R$ 2.497</td>
+          <td>R$ 3.497</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VAR BOX DUPLO -->
+  <div class="var-box">
+    <h4>Modelo vari&aacute;vel &mdash; acima de R$ 5.000 de verba (igual nos dois planos)</h4>
+    <div class="var-rows">
+      <div class="var-row">
+        <div class="vr-desc">Verba at&eacute; <strong>R$ 5.000/m&ecirc;s</strong> &middot; fee fixo sem acr&eacute;scimo</div>
+        <div class="vr-pair">
+          <div class="vr-val-wrap"><span class="vr-label">Tráfego</span><span class="vr-val t">R$ 2.497</span></div>
+          <div class="vr-val-wrap"><span class="vr-label">Comando</span><span class="vr-val g">R$ 3.497</span></div>
+        </div>
+      </div>
+      <div class="var-row">
+        <div class="vr-desc">Verba <strong>R$ 7.000/m&ecirc;s</strong> &middot; +20% de R$ 2.000 = +R$ 400</div>
+        <div class="vr-pair">
+          <div class="vr-val-wrap"><span class="vr-label">Tráfego</span><span class="vr-val t">R$ 2.897</span></div>
+          <div class="vr-val-wrap"><span class="vr-label">Comando</span><span class="vr-val g">R$ 3.897</span></div>
+        </div>
+      </div>
+      <div class="var-row">
+        <div class="vr-desc">Verba <strong>R$ 10.000/m&ecirc;s</strong> &middot; +20% de R$ 5.000 = +R$ 1.000</div>
+        <div class="vr-pair">
+          <div class="vr-val-wrap"><span class="vr-label">Tráfego</span><span class="vr-val t">R$ 3.497</span></div>
+          <div class="vr-val-wrap"><span class="vr-label">Comando</span><span class="vr-val g">R$ 4.497</span></div>
+        </div>
+      </div>
+      <div class="var-row d">
+        <div class="vr-desc"><strong>Quem decide quando escalar &eacute; o Dr. Gustavo</strong>, com base nos dados reais do dashboard. A EmpresAtiva cresce junto conforme o resultado aparecer.</div>
+        <div class="vr-pair">
+          <div class="vr-val-wrap"><span class="vr-label">&nbsp;</span><span class="vr-val t">+20%</span></div>
+          <div class="vr-val-wrap"><span class="vr-label">&nbsp;</span><span class="vr-val g">+20%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- POR QUE O COMERCIAL FAZ DIFERENÇA -->
+<section class="bg-dark">
+  <div class="sk">Por que o m&oacute;dulo comercial importa &mdash; para quem est&aacute; avaliando os dois</div>
+  <h2 class="st">O tráfego<br>traz o lead.<br><span class="g">O comercial<br>fecha.</span></h2>
+  <p class="si">Dr. Gustavo, essa &eacute; a l&oacute;gica que diferencia os dois planos na prática.</p>
+
+  <div class="gb" style="background:rgba(201,168,76,.06);border-color:var(--gold-border);">
+    <h3 style="color:var(--gold);">O lead certo chega. Mas algu&eacute;m precisa fechar.</h3>
+    <p>A IA qualifica e alerta. Mas da&iacute; em diante, &eacute; o humano que converte. <strong>Se a equipe de agendamento n&atilde;o tem script de abordagem, n&atilde;o sabe contornar a objeção de pre&ccedil;o de cirurgia pl&aacute;stica e n&atilde;o faz follow-up sistem&aacute;tico, a taxa de convers&atilde;o de lead para consulta fica abaixo do potencial.</strong> O Plano Comando resolve exatamente isso.</p>
+  </div>
+
+  <div class="gb" style="background:rgba(181,101,58,.06);border-color:rgba(181,101,58,.2);">
+    <h3 style="color:var(--terra);">Quando o Plano Tráfego &eacute; suficiente</h3>
+    <p>Se a cl&iacute;nica j&aacute; tem processo comercial rodando bem — equipe treinada, script definido, follow-up acontecendo — o Plano Tráfego entrega leads qualificados e o comercial existente fecha. <strong>Nesse caso, o investimento adicional de R$ 1.000/m&ecirc;s no Comando n&atilde;o gera retorno proporcional.</strong></p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-black">
+  <div class="sk">Pr&oacute;ximos Passos</div>
+  <h2 class="st">Gustavo<br>escolhe o plano.<br><span class="g">A gente<br>come&ccedil;a.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Decis&atilde;o</span>
+      <h3>Dr. Gustavo confirma qual plano prefere</h3>
+      <p>Uma mensagem para Jo&atilde;o &eacute; suficiente: "Plano Tráfego" ou "Plano Comando." A partir da&iacute; Jo&atilde;o envia contrato e formul&aacute;rio de onboarding.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 1–3</span>
+      <h3>Acesso aos ativos + briefing da cl&iacute;nica</h3>
+      <p>Acesso ao Gerenciador de An&uacute;ncios (Meta + Google), site e WhatsApp de agendamento. Briefing: procedimentos prioritários, perfil do paciente ideal, diferenciais do Dr. Gustavo e tom de comunicação.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Dias 3–7</span>
+      <h3>Criativos + LPs + rastreamento configurado</h3>
+      <p>Primeiras pe&ccedil;as produzidas. LPs por procedimento publicadas. Pixel, CAPI e convers&otilde;es do Google configurados. IA de qualifica&ccedil;&atilde;o ativa no WhatsApp.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot gd"></div>
+      <span class="tl-day gd">Semana 2</span>
+      <h3>Campanhas no ar</h3>
+      <p>Meta Ads e Google Ads ativos. Alerta de lead chegando para a equipe. Dashboard acess&iacute;vel. Se Plano Comando: sess&atilde;o de kick-off comercial agendada com a equipe de agendamento.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">30 dias</span>
+      <h3>Reuni&atilde;o mensal de performance &mdash; dados reais</h3>
+      <p>Verba investida, CPL por procedimento, consultas agendadas, qual criativo converteu mais. Com esses dados, decis&atilde;o sobre pr&oacute;xima etapa e eventual escala de verba.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Dr. Gustavo,<br>tráfego pago<br>traz o lead.<br><span class="t">Voc&ecirc; decide<br>at&eacute; onde<br>a EmpresAtiva</span><br><span class="g">vai junto.</span></h2>
+  <p>Dois planos, uma diferen&ccedil;a objetiva: R$ 1.000/m&ecirc;s pelo m&oacute;dulo comercial. Se a equipe j&aacute; fecha bem, o Plano Tráfego resolve. Se o gargalo est&aacute; na convers&atilde;o do lead para consulta, o Plano Comando fecha esse buraco.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel</div>
+  </div>
+</div>
+
+</body>
+</html>
