@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leilão ao vivo de joias exclusivas | EBL Leilões Online</title>
+<meta name="description" content="Cinco joias feitas à mão vão a leilão ao vivo em 15 de outubro. No Grupo VIP você recebe as peças, os laudos e os lances mínimos 48 horas antes.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://SEU-DOMINIO.com.br/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Leilão ao vivo de joias exclusivas | EBL Leilões Online">
+<meta property="og:description" content="Cinco peças únicas, direto da oficina que as fabricou. Quem está no Grupo VIP vê tudo 48 horas antes.">
+<meta property="og:image" content="https://SEU-DOMINIO.com.br/assets/og-ebl.jpg">
+
+<!-- ================= GTM (colar ID) ================= -->
+<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+<!-- ============ META PIXEL (colar ID) ============= -->
+<!-- <script>!function(f,b,e,v,n,t,s){...}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','PIXEL_ID');fbq('track','PageView');</script> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* Paleta extraída do print da Vantia (app.usevantia.com.br) */
+  --base:#051D10;        /* verde quase preto — fundo principal */
+  --surface:#0C2417;     /* verde escuro — seções elevadas */
+  --surface-hi:#102C1D;  /* verde escuro claro — cartões e header */
+  --edge:#2F5C3B;        /* verde de borda */
+  --glow:#5AA167;        /* verde do brilho radial */
+  --gold-d:#BB8E31;      /* extremo escuro do gradiente dourado */
+  --gold:#D4AF5F;        /* dourado sólido */
+  --gold-l:#EECB77;      /* extremo claro do gradiente dourado */
+  --light:#F8F9F8;       /* texto claro */
+  --muted:rgba(248,249,248,.64);
+  --line:rgba(90,161,103,.26);
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Jost', 'Helvetica Neue', Arial, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--base);
+  color:var(--light);
+  font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.narrow{max-width:660px}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.08;letter-spacing:-.01em;color:var(--light)}
+h1{font-size:clamp(2.5rem,6.4vw,4.6rem)}
+h2{font-size:clamp(2rem,4.6vw,3.2rem)}
+h3{font-size:1.45rem;line-height:1.25}
+p{max-width:62ch}
+a{color:inherit}
+
+.btn{
+  display:inline-block;border:none;cursor:pointer;
+  font-family:var(--sans);font-size:1rem;font-weight:400;letter-spacing:.02em;
+  padding:19px 38px;border-radius:999px;
+  background:linear-gradient(95deg,var(--gold-d),var(--gold-l));
+  color:#08170E;text-decoration:none;width:100%;text-align:center;
+  transition:filter .18s ease;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px}
+.btn-gold{background:linear-gradient(95deg,var(--gold-d),var(--gold-l));color:#08170E}
+.btn-ghost{
+  background:transparent;color:var(--gold-l);border:1px solid var(--edge);
+  width:auto;padding:16px 34px;border-radius:999px;
+}
+.btn-ghost:hover{background:rgba(90,161,103,.12);filter:none}
+.cta-line{margin-top:14px;font-size:.84rem;color:var(--muted);letter-spacing:.01em}
+
+/* ---------- dobra 1 ---------- */
+.hero{padding:34px 0 82px;position:relative;overflow:hidden;background:var(--base)}
+.hero::before{
+  content:"";position:absolute;inset:-30% -10% auto -10%;height:120%;
+  background:radial-gradient(60% 55% at 50% 0%, rgba(90,161,103,.20), transparent 70%);
+  pointer-events:none;
+}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.55}
+.brandbar{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:40px;border-bottom:1px solid var(--line)}
+.brandmark{font-family:var(--serif);font-size:1.5rem;letter-spacing:.14em}
+.brandnote{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center;padding-top:56px}
+.hero h1{margin-bottom:26px}
+.hero h1 .rule{display:block;width:74px;height:1px;background:var(--gold);margin-bottom:28px}
+.hero p.lede{font-size:1.1rem;color:rgba(248,249,248,.82);margin-bottom:34px}
+.datestamp{font-family:var(--serif);font-size:1.25rem;color:var(--gold-l);letter-spacing:.06em;margin-bottom:8px}
+
+/* ---------- formulário ---------- */
+.form-card{background:var(--surface-hi);border:1px solid var(--edge);padding:38px 34px;border-radius:14px}
+.form-card h3{margin-bottom:6px}
+.form-card .sub{font-size:.95rem;color:var(--muted);margin-bottom:26px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:7px;letter-spacing:.02em}
+.field input,.field select{
+  width:100%;padding:15px 14px;font-family:var(--sans);font-size:1rem;font-weight:300;
+  background:var(--base);border:1px solid var(--edge);border-radius:8px;color:var(--light);
+}
+.field input::placeholder{color:rgba(248,249,248,.38)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(212,175,95,.22)}
+.err{display:none;color:var(--gold-l);font-size:.8rem;margin-top:6px}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid select{border-color:var(--gold-l)}
+
+/* ---------- dobra 2 : catálogo ---------- */
+section{padding:96px 0;position:relative}
+.sec-intro{margin-bottom:56px}
+.sec-intro h2{margin-bottom:18px}
+.sec-intro p{color:var(--muted)}
+.lots{display:grid;grid-template-columns:repeat(6,1fr);gap:34px 26px}
+.lot{grid-column:span 2;border-top:1px solid var(--line);padding-top:18px}
+.lot:nth-child(1),.lot:nth-child(2){grid-column:span 3}
+.lot .frame{
+  aspect-ratio:4/5;background:var(--surface-hi);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  margin-bottom:16px;display:flex;align-items:center;justify-content:center;text-align:center;
+  color:var(--muted);font-size:.8rem;padding:18px;line-height:1.4;
+}
+.lot:nth-child(1) .frame,.lot:nth-child(2) .frame{aspect-ratio:3/2}
+.lot .frame img{width:100%;height:100%;object-fit:cover;display:block}
+.lot .num{font-family:var(--serif);font-size:1.05rem;color:var(--gold);letter-spacing:.08em;margin-bottom:4px}
+.lot h3{font-size:1.3rem;margin-bottom:8px}
+.lot p{font-size:.92rem;color:var(--muted)}
+.lot .sealed{margin-top:12px;font-size:.82rem;color:var(--light);border-left:2px solid var(--gold);padding-left:10px}
+.after-lots{margin-top:52px;display:flex;flex-wrap:wrap;align-items:center;gap:22px}
+
+/* ---------- dobra 3 : como funciona ---------- */
+.steps-sec{background:var(--surface)}
+.steps{margin-top:10px;border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:78px 1fr;gap:26px;padding:30px 0;border-bottom:1px solid var(--line);align-items:start}
+.step .n{font-family:var(--serif);font-size:2.4rem;color:var(--gold);line-height:1}
+.step h3{margin-bottom:8px}
+.step p{color:var(--muted);font-size:1rem}
+.warnline{margin-top:34px;padding:22px 26px;background:var(--base);border:1px solid var(--edge);border-radius:12px;font-size:1rem}
+.warnline strong{font-weight:400;color:var(--gold-l)}
+
+/* ---------- dobra 4 : procedência ---------- */
+.proof{background:var(--surface)}
+.proof .sec-intro p{color:var(--muted)}
+.proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 54px}
+.pitem{padding:26px 0;border-top:1px solid var(--line)}
+.pitem h3{font-size:1.2rem;margin-bottom:7px}
+.pitem p{font-size:.95rem;color:var(--muted)}
+.fred{
+  margin-top:56px;padding:40px;background:var(--surface-hi);border:1px solid var(--edge);border-radius:14px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
+}
+.fred h3{font-size:1.75rem;margin-bottom:12px}
+.fred p{color:var(--muted)}
+
+/* ---------- dobra 5 : objeções + fecho ---------- */
+.qa{display:grid;grid-template-columns:repeat(2,1fr);gap:0 54px;margin-bottom:64px}
+.q{padding:26px 0;border-top:1px solid var(--line)}
+.q h3{font-size:1.12rem;margin-bottom:7px}
+.q p{font-size:.95rem;color:var(--muted)}
+.close{
+  background:var(--surface);border:1px solid var(--edge);border-radius:18px;
+  padding:64px 54px;display:grid;grid-template-columns:1fr 420px;gap:54px;align-items:center;position:relative;overflow:hidden;
+}
+.close::before{content:"";position:absolute;inset:auto -20% -60% -20%;height:100%;background:radial-gradient(50% 60% at 50% 100%, rgba(90,161,103,.22), transparent 70%)}
+.close h2{margin-bottom:18px}
+.close p{color:var(--muted)}
+.close .form-card{background:var(--base)}
+.close .field input,.close .field select{background:var(--surface-hi)}
+
+/* ---------- footer ---------- */
+footer{background:var(--surface);border-top:1px solid var(--line);color:var(--muted);padding:52px 0;font-size:.86rem}
+footer .fgrid{display:flex;flex-wrap:wrap;gap:34px;justify-content:space-between;align-items:flex-start}
+footer strong{color:var(--light);font-weight:400}
+footer a{text-decoration:none;border-bottom:1px solid var(--line)}
+
+.sticky{display:none}
+
+.reveal{opacity:0;transform:translateY(14px);animation:up .8s cubic-bezier(.2,.7,.3,1) forwards}
+.reveal:nth-child(2){animation-delay:.12s}
+@keyframes up{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:42px;padding-top:40px}
+  .lots{grid-template-columns:repeat(2,1fr)}
+  .lot,.lot:nth-child(1),.lot:nth-child(2){grid-column:span 1}
+  .lot:nth-child(1) .frame,.lot:nth-child(2) .frame{aspect-ratio:4/5}
+  .proof-grid,.qa{grid-template-columns:1fr;gap:0}
+  .fred,.close{grid-template-columns:1fr;gap:30px;padding:38px 30px}
+}
+@media (max-width:560px){
+  body{font-size:16px;padding-bottom:78px}
+  .wrap{padding:0 20px}
+  section{padding:68px 0}
+  .lots{grid-template-columns:1fr}
+  .lot,.lot:nth-child(1),.lot:nth-child(2){grid-column:span 1}
+  .hero{padding-bottom:58px}
+  .brandbar{padding-bottom:26px}
+  .form-card{padding:30px 22px}
+  .step{grid-template-columns:52px 1fr;gap:16px}
+  .step .n{font-size:1.9rem}
+  .close{padding:40px 24px}
+  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);padding:12px 16px;border-top:1px solid var(--edge)}
+  .sticky .btn{padding:16px}
+}
+</style>
+</head>
+<body>
+<!-- GTM noscript aqui -->
+
+<!-- ===================== DOBRA 1 — SUPERPROMESSA ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="brandmark">EBL Leilões</span>
+      <span class="brandnote">Leilão oficial ao vivo de joias</span>
+    </div>
+
+    <div class="hero-grid">
+      <div class="reveal">
+        <p class="datestamp">15 de outubro, 20h</p>
+        <h1><span class="rule"></span>Cinco joias. Uma noite. Nenhuma delas se repete.</h1>
+        <p class="lede">Peças feitas à mão vão a leilão ao vivo, direto da oficina que as fabricou. Quem está no Grupo VIP recebe as fotos, os laudos e os lances mínimos de cada peça 48 horas antes de todo mundo.</p>
+      </div>
+
+      <div class="form-card reveal" id="entrar">
+        <h3>Grupo VIP do leilão</h3>
+        <p class="sub">Entrada gratuita. Você sai quando quiser.</p>
+        <form id="lead-form" novalidate>
+          <div class="field" id="f-nome">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Nome e sobrenome">
+            <span class="err">Escreva seu nome.</span>
+          </div>
+          <div class="field" id="f-fone">
+            <label for="fone">WhatsApp com DDD</label>
+            <input type="tel" id="fone" name="fone" inputmode="numeric" autocomplete="tel" placeholder="(00) 00000-0000" maxlength="16">
+            <span class="err">Confira o número com DDD.</span>
+          </div>
+          <!-- CAMPO 3 (opcional de manter): responde a pesquisa da §6.3 em 100% dos leads.
+               Se a conversão LP→grupo ficar abaixo de 40%, este é o primeiro campo a sair. -->
+          <div class="field" id="f-busca">
+            <label for="busca">O que você procura numa joia</label>
+            <select id="busca" name="busca">
+              <option value="">Selecione</option>
+              <option value="usar">Uma peça para usar</option>
+              <option value="presente">Um presente</option>
+              <option value="colecao">Completar uma coleção</option>
+              <option value="valorizacao">Algo que se valoriza com o tempo</option>
+            </select>
+            <span class="err">Escolha uma opção.</span>
+          </div>
+          <button type="submit" class="btn" data-cta="form-hero">Entrar no Grupo VIP</button>
+          <p class="cta-line">A habilitação para dar lance encerra em 14 de outubro, um dia antes do leilão.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== DOBRA 2 — AS PEÇAS ===================== -->
+<section>
+  <div class="wrap">
+    <div class="sec-intro narrow">
+      <h2>As peças desta edição</h2>
+      <p>Cada joia sai da bancada uma única vez e vai a leilão com o próprio dossiê: fotos em detalhe, laudo da gema, certificado e declaração de origem. Quando um lote é arrematado, não existe o segundo igual.</p>
+    </div>
+
+    <div class="lots">
+      <!-- NATHALIA: trocar cada .frame pela foto real do lote — <img src="assets/lote-01.jpg" alt="..."> .
+           Sem imagem gerada por IA (veto de copy §4.2). Nomes e descrições confirmados com o Fred (pendência #10). -->
+      <article class="lot">
+        <div class="frame"><img src="assets/lote-01.jpg" alt="Lote 1 do leilão" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Foto do lote 1'}))"></div>
+        <p class="num">Lote 1</p>
+        <h3>[Nome da peça]</h3>
+        <p>[Material, gema, peso e medida — texto do Fred]</p>
+        <p class="sealed">Lance mínimo revelado no Grupo VIP</p>
+      </article>
+      <article class="lot">
+        <div class="frame"><img src="assets/lote-02.jpg" alt="Lote 2 do leilão" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Foto do lote 2'}))"></div>
+        <p class="num">Lote 2</p>
+        <h3>[Nome da peça]</h3>
+        <p>[Material, gema, peso e medida — texto do Fred]</p>
+        <p class="sealed">Lance mínimo revelado no Grupo VIP</p>
+      </article>
+      <article class="lot">
+        <div class="frame"><img src="assets/lote-03.jpg" alt="Lote 3 do leilão" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Foto do lote 3'}))"></div>
+        <p class="num">Lote 3</p>
+        <h3>[Nome da peça]</h3>
+        <p>[Material, gema, peso e medida — texto do Fred]</p>
+        <p class="sealed">Lance mínimo revelado no Grupo VIP</p>
+      </article>
+      <article class="lot">
+        <div class="frame"><img src="assets/lote-04.jpg" alt="Lote 4 do leilão" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Foto do lote 4'}))"></div>
+        <p class="num">Lote 4</p>
+        <h3>[Nome da peça]</h3>
+        <p>[Material, gema, peso e medida — texto do Fred]</p>
+        <p class="sealed">Lance mínimo revelado no Grupo VIP</p>
+      </article>
+      <article class="lot">
+        <div class="frame"><img src="assets/lote-05.jpg" alt="Lote 5 do leilão" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'Foto do lote 5'}))"></div>
+        <p class="num">Lote 5</p>
+        <h3>[Nome da peça]</h3>
+        <p>[Material, gema, peso e medida — texto do Fred]</p>
+        <p class="sealed">Lance mínimo revelado no Grupo VIP</p>
+      </article>
+    </div>
+
+    <div class="after-lots">
+      <a class="btn btn-ghost" href="#entrar" data-cta="lotes">Ver as peças completas antes do leilão</a>
+      <p style="font-size:.92rem;color:var(--stone);max-width:36ch">O dossiê de cada lote é liberado no grupo 48 horas antes da transmissão.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOBRA 3 — COMO FUNCIONA ===================== -->
+<section class="steps-sec">
+  <div class="wrap">
+    <div class="sec-intro narrow">
+      <h2>Como funciona o leilão ao vivo</h2>
+      <p>É a primeira vez que joia de oficina é leiloada assim no Brasil. São cinco passos, e nenhum deles custa nada até o momento em que você decide dar um lance.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <div>
+          <h3>Você entra no Grupo VIP</h3>
+          <p>Um grupo de WhatsApp só com quem vai participar. É onde tudo acontece antes do leilão.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <div>
+          <h3>Recebe o dossiê 48 horas antes</h3>
+          <p>Fotos em detalhe, laudo da gema, certificado, declaração de origem e o lance mínimo de cada lote. Você decide o que quer disputar antes de a transmissão começar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <div>
+          <h3>Faz a habilitação para dar lance</h3>
+          <p>Um cadastro na plataforma confirmado por código no seu celular. Leva poucos minutos, não pede documento e alguém do grupo acompanha você se travar em alguma etapa.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">4</span>
+        <div>
+          <h3>No dia, a transmissão abre no seu celular</h3>
+          <p>O leiloeiro conduz ao vivo e o botão de lance fica na mesma tela. Você não sai da transmissão para dar lance, e vê cada lance dos outros participantes no mesmo instante.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">5</span>
+        <div>
+          <h3>Arrematou, a peça sai da oficina</h3>
+          <p>A EBL emite a fatura, a joia é embalada com o dossiê dentro e enviada em até 7 dias. O frete é por conta da EBL.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="warnline">
+      <strong>A habilitação encerra em 14 de outubro.</strong> Depois disso ainda dá para assistir à transmissão, mas não dá mais para dar lance. É por isso que o grupo existe: para você chegar no dia já habilitada.
+    </div>
+
+    <div class="after-lots">
+      <a class="btn btn-ghost" href="#entrar" data-cta="como-funciona">Quero participar do leilão</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOBRA 4 — PROCEDÊNCIA E PROVA ===================== -->
+<section class="proof">
+  <div class="wrap">
+    <div class="sec-intro narrow">
+      <h2>O que sustenta um lance de R$&nbsp;15.000 numa peça que você ainda não viu pessoalmente</h2>
+      <p>Essa é a pergunta honesta, e a resposta não é uma promessa nossa. É documento.</p>
+    </div>
+
+    <div class="proof-grid">
+      <div class="pitem">
+        <h3>Leilão oficial, com leiloeiro registrado</h3>
+        <p>[Nome do leiloeiro oficial], matrícula [nº] na Junta Comercial de [UF]. Nome, registro e responsabilidade legal aparecem na própria tela da transmissão.</p>
+      </div>
+      <div class="pitem">
+        <h3>Mais de 10 anos de plataforma</h3>
+        <p>A EBL opera leilões online há mais de uma década. O leilão de joias é um formato novo dentro de uma estrutura que já existe.</p>
+      </div>
+      <div class="pitem">
+        <h3>Dossiê por peça</h3>
+        <p>Certificado, laudo da gema e declaração de origem acompanham cada joia. Você recebe tudo antes de dar o primeiro lance e de novo dentro da caixa.</p>
+      </div>
+      <div class="pitem">
+        <h3>Garantia de materialidade</h3>
+        <p>A peça que chega é exatamente a do laudo: mesmo metal, mesma gema, mesmo peso. Se não for, a EBL responde por isso.</p>
+      </div>
+      <div class="pitem">
+        <h3>Direto da oficina</h3>
+        <p>As peças vêm da bancada de quem as fabrica, sem passar pela vitrine. É o motivo de a mesma joia custar o que custa aqui.</p>
+      </div>
+      <div class="pitem">
+        <h3>Envio em até 7 dias, por conta da EBL</h3>
+        <p>Depois da fatura paga, a peça é embalada, filmada e postada. O frete não é cobrado de você.</p>
+      </div>
+    </div>
+
+    <div class="fred">
+      <div>
+        <h3>Antes do leilão, mande a foto de uma joia que você já tem</h3>
+        <p>Fred, o joalheiro responsável pelas peças, avalia sem custo dentro do grupo: o que é, quanto vale hoje, se o cravejamento está bem feito e se o material corresponde ao que te venderam. É a forma mais direta de você julgar se ele entende do assunto antes de disputar qualquer lote.</p>
+      </div>
+      <a class="btn btn-gold" style="width:auto;white-space:nowrap" href="#entrar" data-cta="fred">Quero minha avaliação</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DOBRA 5 — OBJEÇÕES + CTA FINAL ===================== -->
+<section>
+  <div class="wrap">
+    <div class="sec-intro narrow">
+      <h2>Antes de entrar, o que costuma ficar na cabeça</h2>
+    </div>
+
+    <div class="qa">
+      <div class="q">
+        <h3>Preciso pagar alguma coisa para participar?</h3>
+        <p>Não. Entrar no grupo e se habilitar são gratuitos. Você só paga se arrematar um lote.</p>
+      </div>
+      <div class="q">
+        <h3>E se eu não gostar da peça quando chegar?</h3>
+        <p>Você tem 7 dias corridos a partir do recebimento para devolver, como manda o Código de Defesa do Consumidor para compra a distância.</p>
+      </div>
+      <div class="q">
+        <h3>Como funciona o pagamento?</h3>
+        <p>Arrematou, a EBL emite a fatura. O valor pode ser parcelado em até 18 vezes. [CONFIRMAR 12x ou 18x com o Cristiney — pendência nº 9]</p>
+      </div>
+      <div class="q">
+        <h3>Sou obrigada a dar lance se entrar no grupo?</h3>
+        <p>Não. Muita gente entra só para ver as peças e os laudos. Você participa do lote que quiser, ou de nenhum.</p>
+      </div>
+      <div class="q">
+        <h3>Quanto tempo leva a habilitação?</h3>
+        <p>Poucos minutos, com um código enviado para o seu celular. Não é preciso enviar documento nem comprovante.</p>
+      </div>
+      <div class="q">
+        <h3>E se a internet cair no meio do leilão?</h3>
+        <p>A transmissão é retomada de onde parou e os seus lances continuam registrados. A plataforma mostra o status da conexão na tela.</p>
+      </div>
+    </div>
+
+    <div class="close">
+      <div>
+        <h2>O grupo fecha quando a habilitação encerra</h2>
+        <p>Em 14 de outubro a habilitação para dar lance se encerra. Quem entrar depois disso assiste ao leilão, mas não disputa nenhuma das cinco peças. Entrar agora custa o tempo de preencher três campos.</p>
+      </div>
+
+      <div class="form-card">
+        <h3>Grupo VIP do leilão</h3>
+        <p class="sub">Peças, laudos e lances mínimos 48 horas antes.</p>
+        <form id="lead-form-2" novalidate>
+          <div class="field" id="f2-nome">
+            <label for="nome2">Seu nome</label>
+            <input type="text" id="nome2" name="nome" autocomplete="name" placeholder="Nome e sobrenome">
+            <span class="err">Escreva seu nome.</span>
+          </div>
+          <div class="field" id="f2-fone">
+            <label for="fone2">WhatsApp com DDD</label>
+            <input type="tel" id="fone2" name="fone" inputmode="numeric" autocomplete="tel" placeholder="(00) 00000-0000" maxlength="16">
+            <span class="err">Confira o número com DDD.</span>
+          </div>
+          <div class="field" id="f2-busca">
+            <label for="busca2">O que você procura numa joia</label>
+            <select id="busca2" name="busca">
+              <option value="">Selecione</option>
+              <option value="usar">Uma peça para usar</option>
+              <option value="presente">Um presente</option>
+              <option value="colecao">Completar uma coleção</option>
+              <option value="valorizacao">Algo que se valoriza com o tempo</option>
+            </select>
+            <span class="err">Escolha uma opção.</span>
+          </div>
+          <button type="submit" class="btn btn-gold" data-cta="form-fecho">Entrar no Grupo VIP</button>
+          <p class="cta-line">Entrada gratuita. Você sai do grupo quando quiser.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap fgrid">
+    <div>
+      <p><strong>EBL Leilões Online</strong></p>
+      <p>CNPJ [nº] · [endereço]</p>
+    </div>
+    <div>
+      <p><strong>Leiloeiro oficial</strong></p>
+      <p>[Nome], matrícula [nº] — Junta Comercial de [UF]</p>
+    </div>
+    <div>
+      <p><a href="/edital">Edital do leilão</a> &nbsp; <a href="/privacidade">Política de privacidade</a></p>
+      <p>Ao enviar seus dados você concorda em receber mensagens sobre este leilão no WhatsApp.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="btn btn-gold" href="#entrar" data-cta="sticky-mobile">Entrar no Grupo VIP</a>
+</div>
+
+<script>
+/* ---- destino do lead: link do Grupo VIP no WhatsApp ---- */
+var GRUPO_VIP = "https://chat.whatsapp.com/SUBSTITUIR-PELO-LINK-DO-GRUPO";
+
+function mascara(v){
+  v = v.replace(/\D/g,"").slice(0,11);
+  if(v.length > 6) return "("+v.slice(0,2)+") "+v.slice(2,7)+"-"+v.slice(7);
+  if(v.length > 2) return "("+v.slice(0,2)+") "+v.slice(2);
+  if(v.length > 0) return "("+v;
+  return "";
+}
+
+function ligar(formId, ids){
+  var form = document.getElementById(formId);
+  if(!form) return;
+  var fone = document.getElementById(ids.fone);
+  fone.addEventListener("input", function(){ this.value = mascara(this.value); });
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var nome = document.getElementById(ids.nome),
+        busca = document.getElementById(ids.busca),
+        ok = true;
+
+    function marca(campoId, valido){
+      var w = document.getElementById(campoId);
+      w.classList.toggle("invalid", !valido);
+      if(!valido) ok = false;
+    }
+    marca(ids.wNome, nome.value.trim().length >= 2);
+    marca(ids.wFone, fone.value.replace(/\D/g,"").length >= 10);
+    marca(ids.wBusca, busca.value !== "");
+    if(!ok) return;
+
+    var dados = {
+      nome: nome.value.trim(),
+      telefone: fone.value.replace(/\D/g,""),
+      busca: busca.value,
+      origem: form.id
+    };
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "lead_grupo_vip", form: form.id, busca: dados.busca });
+    if(typeof fbq === "function"){ fbq("track","Lead",{content_name:"grupo-vip-leilao-01"}); }
+
+    /* Integração (escolher uma e apagar o resto):
+       fetch("URL_DO_WEBHOOK_N8N", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(dados)});
+    */
+
+    window.location.href = GRUPO_VIP;
+  });
+}
+
+ligar("lead-form",  {nome:"nome",  fone:"fone",  busca:"busca",  wNome:"f-nome",  wFone:"f-fone",  wBusca:"f-busca"});
+ligar("lead-form-2",{nome:"nome2", fone:"fone2", busca:"busca2", wNome:"f2-nome", wFone:"f2-fone", wBusca:"f2-busca"});
+</script>
+</body>
+</html>
