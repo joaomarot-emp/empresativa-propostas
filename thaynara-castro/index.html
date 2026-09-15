@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta EmpresAtiva x Thaynara Castro — Corretora Hapvida Brasília</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#08090A;--offwhite:#F4F4F0;--terra:#B5653A;--green:#17351F;
+  --dark:#0E100C;--card:#181B16;--border:rgba(244,244,240,0.07);
+  --muted:rgba(244,244,240,0.48);--glight:#2A5C35;
+  --font:"Poppins",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--offwhite);font-family:var(--font);font-size:15px;line-height:1.65;overflow-x:hidden;}
+.sticky{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:12px 20px 20px;background:linear-gradient(to top,rgba(8,9,10,1) 60%,transparent);}
+.sticky a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:16px 24px;text-decoration:none;border-radius:2px;width:100%;letter-spacing:.02em;}
+.sticky svg{width:19px;height:19px;flex-shrink:0;}
+@media(min-width:768px){.sticky{display:none;}}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:72px 28px 100px;position:relative;overflow:hidden;background:var(--dark);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,rgba(181,101,58,.10) 0%,transparent 55%);pointer-events:none;}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 10% 80%,rgba(23,53,31,.18) 0%,transparent 55%);pointer-events:none;}
+.kicker{font-size:9px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:20px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .6s ease forwards .1s;}
+.kicker::before{content:"";display:block;width:28px;height:1px;background:var(--terra);}
+.hero h1{font-size:clamp(30px,9vw,68px);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:up .8s ease forwards .2s;}
+.hero h1 .t{color:var(--terra);}
+.hero h1 .g{color:#4CAF72;}
+.hero-sub{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:44px;max-width:500px;font-weight:400;opacity:0;animation:up .8s ease forwards .35s;}
+.hp-row{display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .8s ease forwards .5s;}
+.hp{background:rgba(244,244,240,0.04);border:1px solid var(--border);padding:9px 15px;border-radius:2px;}
+.hp .s1{display:block;font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px;}
+.hp .s2{font-size:13px;font-weight:700;color:var(--offwhite);}
+
+section{padding:72px 28px;}
+.bg-dark{background:var(--dark);}
+.bg-black{background:var(--black);}
+hr.div{border:none;border-top:1px solid var(--border);margin:0 28px;}
+.sk{font-size:8px;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+.sk::before{content:"";display:block;width:24px;height:1px;background:var(--terra);}
+h2.st{font-size:clamp(26px,7vw,50px);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:16px;}
+h2.st .t{color:var(--terra);}
+h2.st .g{color:#4CAF72;}
+.si{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:40px;font-weight:400;}
+
+.tb{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:24px;border-radius:2px;margin-bottom:14px;}
+.tb h3{font-size:14px;font-weight:800;color:var(--terra);margin-bottom:8px;}
+.tb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.tb p strong{color:var(--offwhite);font-weight:600;}
+
+.gb{background:rgba(23,53,31,.45);border:1px solid rgba(42,92,53,.35);padding:24px;border-radius:2px;margin-bottom:14px;}
+.gb h3{font-size:14px;font-weight:800;color:#4CAF72;margin-bottom:8px;}
+.gb p{font-size:13px;color:var(--muted);line-height:1.85;font-weight:400;}
+.gb p strong{color:var(--offwhite);font-weight:600;}
+
+/* FUNIL */
+.funil-card{background:var(--green);border:1px solid rgba(42,92,53,.4);border-radius:4px;overflow:hidden;margin-bottom:14px;}
+.funil-card::before{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--glight),var(--terra));}
+.fc-body{padding:24px 26px;}
+.fc-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#4CAF72;margin-bottom:12px;}
+.fc-rows{display:flex;flex-direction:column;gap:2px;}
+.fcr{background:rgba(244,244,244,.05);padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+.fcr.hl{background:rgba(76,175,114,.10);border-left:2px solid #4CAF72;}
+.fcr.tl{background:rgba(181,101,58,.08);border-left:2px solid var(--terra);}
+.fcr-desc{font-size:12px;color:var(--muted);font-weight:400;flex:1;}
+.fcr-desc strong{color:var(--offwhite);font-weight:600;}
+.fcr-val{font-size:16px;font-weight:800;color:var(--offwhite);flex-shrink:0;}
+.fcr.hl .fcr-val{color:#4CAF72;}
+.fcr.tl .fcr-val{color:var(--terra);}
+
+/* DEMANDA GOOGLE */
+.google-rows{display:flex;flex-direction:column;gap:2px;margin-bottom:14px;}
+.gr{background:var(--card);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.gr.hl{background:rgba(23,53,31,.35);border-left:2px solid var(--glight);}
+.gr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.gr-desc strong{color:var(--offwhite);font-weight:600;}
+.gr-val{font-size:15px;font-weight:800;color:var(--offwhite);flex-shrink:0;}
+.gr.hl .gr-val{color:#4CAF72;}
+
+/* ENTREGÁVEIS */
+.est-grid{display:flex;flex-direction:column;gap:2px;}
+.ei{background:var(--card);padding:18px 22px;display:flex;gap:16px;align-items:flex-start;}
+.ei.thl{background:rgba(181,101,58,.05);border-left:2px solid var(--terra);}
+.ei.ghl{background:rgba(23,53,31,.4);border-left:2px solid var(--glight);}
+.eic{width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;border-radius:2px;}
+.tic{background:rgba(181,101,58,.08);border:1px solid rgba(181,101,58,.18);}
+.gic{background:rgba(23,53,31,.6);border:1px solid rgba(42,92,53,.3);}
+.dic{background:rgba(244,244,240,.04);border:1px solid var(--border);}
+.ei h3{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:4px;}
+.ei p{font-size:12px;color:var(--muted);line-height:1.7;font-weight:400;}
+
+/* INVESTIMENTO */
+.inv-card{background:var(--black);border:1px solid rgba(181,101,58,.28);border-radius:4px;overflow:hidden;}
+.inv-card::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--terra),var(--glight),var(--terra));}
+.inv-body{padding:28px 26px;}
+.inv-lbl{font-size:8px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;}
+.inv-split{display:flex;flex-direction:column;gap:2px;margin-bottom:18px;}
+.inv-linha{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.inv-linha.ag{border-left:3px solid var(--terra);}
+.inv-linha.vb{border-left:3px solid #1877F2;}
+.inv-linha-info h4{font-size:13px;font-weight:700;color:var(--offwhite);margin-bottom:3px;}
+.inv-linha-info p{font-size:11px;color:var(--muted);line-height:1.5;font-weight:400;}
+.inv-linha-valor{font-size:20px;font-weight:900;flex-shrink:0;letter-spacing:-.01em;}
+.inv-linha.ag .inv-linha-valor{color:var(--terra);}
+.inv-linha.vb .inv-linha-valor{color:#4C8BF5;}
+.inv-total-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;}
+.inv-total-box h4{font-size:12px;font-weight:700;color:var(--offwhite);margin-bottom:2px;}
+.inv-total-box p{font-size:11px;color:var(--muted);font-weight:400;}
+.inv-total-val{font-size:28px;font-weight:900;color:var(--terra);flex-shrink:0;letter-spacing:-.02em;}
+.inv-sep{height:1px;background:var(--border);margin:16px 0;}
+.inv-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.inv-ul li{font-size:12px;color:var(--offwhite);padding-left:18px;position:relative;line-height:1.5;font-weight:500;}
+.inv-ul li::before{content:"▸";position:absolute;left:0;font-size:9px;color:var(--terra);}
+
+/* VAR BOX */
+.var-box{background:rgba(23,53,31,.35);border:1px solid rgba(42,92,53,.3);padding:22px 26px;border-radius:2px;margin-top:14px;}
+.var-box h4{font-size:13px;font-weight:700;color:#4CAF72;margin-bottom:14px;}
+.var-rows{display:flex;flex-direction:column;gap:2px;}
+.var-row{background:var(--card);padding:13px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.var-row.d{background:rgba(23,53,31,.35);border-left:2px solid var(--glight);}
+.vr-desc{font-size:12px;color:var(--muted);font-weight:400;}
+.vr-desc strong{color:var(--offwhite);font-weight:600;}
+.vr-val{font-size:15px;font-weight:800;color:#4CAF72;flex-shrink:0;}
+
+/* PENDÊNCIAS */
+.pend-box{background:rgba(181,101,58,.06);border:1px solid rgba(181,101,58,.2);border-radius:2px;padding:22px 24px;margin-top:14px;}
+.pend-kicker{font-size:8px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;}
+.pend-titulo{font-size:15px;font-weight:800;color:var(--offwhite);margin-bottom:14px;letter-spacing:-.01em;}
+.pend-ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.pend-ul li{font-size:12px;color:var(--offwhite);padding-left:20px;position:relative;line-height:1.5;font-weight:500;}
+.pend-ul li::before{content:"⚑";position:absolute;left:0;font-size:10px;color:var(--terra);}
+.pend-ul li span{font-size:11px;color:var(--muted);font-weight:400;display:block;margin-top:2px;}
+
+/* TIMELINE */
+.tl{display:flex;flex-direction:column;position:relative;padding-left:42px;}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--terra),rgba(181,101,58,.04));}
+.tl-item{position:relative;padding:0 0 36px 26px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-27px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--terra);border:2px solid var(--dark);box-shadow:0 0 0 3px rgba(181,101,58,.2);}
+.tl-dot.g{background:#4CAF72;box-shadow:0 0 0 3px rgba(42,92,53,.3);}
+.tl-day{font-size:8px;font-weight:700;letter-spacing:.24em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;display:block;}
+.tl-day.g{color:#4CAF72;}
+.tl-item h3{font-size:14px;font-weight:700;color:var(--offwhite);margin-bottom:6px;}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75;font-weight:400;}
+
+.footer-cta{background:var(--green);padding:72px 28px 120px;text-align:center;position:relative;overflow:hidden;}
+.footer-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(181,101,58,.18) 0%,transparent 60%);pointer-events:none;}
+.footer-cta h2{font-size:clamp(26px,7vw,46px);font-weight:900;line-height:1.05;letter-spacing:-.025em;margin-bottom:18px;}
+.footer-cta h2 .t{color:var(--terra);}
+.footer-cta p{font-size:14px;color:rgba(244,244,240,.65);line-height:1.85;margin-bottom:38px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:400;}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:var(--offwhite);font-size:14px;font-weight:700;padding:18px 34px;text-decoration:none;border-radius:2px;width:100%;max-width:420px;letter-spacing:.02em;}
+.cta-btn svg{width:19px;height:19px;}
+.footer-sig{margin-top:44px;padding-top:28px;border-top:1px solid rgba(244,244,244,.1);}
+.footer-sig .name{font-size:19px;font-weight:800;color:var(--offwhite);margin-bottom:4px;letter-spacing:-.01em;}
+.footer-sig .role{font-size:8px;font-weight:700;letter-spacing:.28em;color:var(--terra);text-transform:uppercase;}
+
+@keyframes up{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(min-width:768px){
+  section{padding:96px 56px;}hr.div{margin:0 56px;}.hero{padding:88px 56px 110px;}
+  .est-grid{display:grid;grid-template-columns:1fr 1fr;}
+  .footer-cta{padding:96px 56px 110px;}.cta-btn{width:auto;}
+}
+@media(min-width:1100px){section{padding:110px 88px;}.hero{padding:88px 88px 110px;}hr.div{margin:0 88px;}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <a href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kicker">EmpresAtiva Digital &middot; N&iacute;vel 1 &middot; M&eacute;todo Demanda Previs&iacute;vel &middot; Corretora Hapvida &middot; Bras&iacute;lia DF</div>
+  <h1>R$ 1.000<br>de verba.<br><span class="g">R$ 35.000<br>de retorno.</span><br><span class="t">Todo m&ecirc;s.</span></h1>
+  <p class="hero-sub">Thaynara, como calculamos ao vivo: com R$ 1.000 de verba e CPL de R$ 10, chegam 100 leads — 23 qualificados — 8 fechamentos — ~R$ 35.000 de faturamento. A EmpresAtiva estrutura o tráfego pago para que você, sozinha, consiga gerar essa previsibilidade como representante oficial Hapvida em Bras&iacute;lia.</p>
+  <div class="hp-row">
+    <div class="hp"><span class="s1">Negócio</span><span class="s2">Corretora Hapvida &middot; Bras&iacute;lia DF</span></div>
+    <div class="hp"><span class="s1">Produto</span><span class="s2">Planos Hapvida &middot; PF e PJ</span></div>
+    <div class="hp"><span class="s1">Fee</span><span class="s2">R$ 1.297/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Verba inicial</span><span class="s2">R$ 1.000–R$ 1.500/m&ecirc;s</span></div>
+    <div class="hp"><span class="s1">Decis&atilde;o</span><span class="s2">Final de outubro / novembro</span></div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- A OPORTUNIDADE -->
+<section class="bg-dark">
+  <div class="sk">A oportunidade &mdash; Bras&iacute;lia e o mercado Hapvida</div>
+  <h2 class="st">14.800 buscas<br>por m&ecirc;s.<br><span class="g">Zero<br>concorr&ecirc;ncia<br>qualificada.</span></h2>
+  <p class="si">Thaynara, analisamos ao vivo a demanda por Hapvida em Bras&iacute;lia no Google. Os dados mostram um mercado ativo — e uma janela para quem estruturar o tráfego pago primeiro.</p>
+
+  <div class="gb">
+    <h3>Ser representante exclusiva Hapvida &eacute; um diferencial que muda o jogo</h3>
+    <p>Corretoras multi-operadora precisam criar an&uacute;ncio gen&eacute;rico. Voc&ecirc; fala de uma s&oacute; operadora — e isso transmite especializa&ccedil;&atilde;o e confiança. <strong>Quem pesquisa por Hapvida em Bras&iacute;lia n&atilde;o quer saber de comparativos — quer falar com algu&eacute;m que domina a Hapvida. Esse algu&eacute;m &eacute; voc&ecirc;.</strong></p>
+  </div>
+
+  <div class="sk" style="margin-bottom:10px;">Demanda mensal por Hapvida em Bras&iacute;lia &mdash; dados Google Ads ao vivo</div>
+  <div class="google-rows">
+    <div class="gr"><div class="gr-desc"><strong>Total de buscas/m&ecirc;s</strong> &middot; todos os termos relacionados &agrave; Hapvida</div><div class="gr-val">14.800</div></div>
+    <div class="gr"><div class="gr-desc"><strong>"plano de saúde hapvida"</strong> &middot; busca com maior inten&ccedil;&atilde;o de compra</div><div class="gr-val">390/m&ecirc;s</div></div>
+    <div class="gr"><div class="gr-desc"><strong>Custo por clique</strong> &middot; lance superior em Bras&iacute;lia &middot; m&eacute;dia</div><div class="gr-val">R$ 1,70–R$ 15,75</div></div>
+    <div class="gr hl"><div class="gr-desc"><strong>Verba para explorar 10% da demanda Google</strong> &middot; teste inicial recomendado</div><div class="gr-val">~R$ 312</div></div>
+  </div>
+
+  <div class="tb">
+    <h3>Por que Meta Ads &eacute; o foco principal — n&atilde;o o Google</h3>
+    <p>No Google, voc&ecirc; compete no lance com grandes corretoras que injetam verba alta. O custo por lead fica caro e o volume baixo. <strong>No Instagram e Facebook, o empresário est&aacute; navegando — voc&ecirc; aparece para ele com um criativo de impacto, antes de ele ir pesquisar. CPL estimado: R$ 10. Volume muito maior pelo mesmo investimento.</strong> O Google entra como teste complementar, não como foco.</p>
+  </div>
+
+  <div class="gb">
+    <h3>A lista de clientes Hapvida &eacute; seu maior ativo de intelig&ecirc;ncia</h3>
+    <p>Como discutimos: se voc&ecirc; conseguir a lista de clientes ativos e cancelados da Hapvida, o algoritmo do Meta e do Google recebe esse direcionamento e encontra pessoas com o <strong>mesmo perfil de quem j&aacute; comprou Hapvida — sem entrar em contato direto com eles, s&oacute; para deixar o tráfego inteligente.</strong> Isso encurta a jornada de aprendizado do algoritmo de meses para semanas.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- O FUNIL -->
+<section class="bg-black">
+  <div class="sk">O funil &mdash; calculado ao vivo na nossa reuni&atilde;o</div>
+  <h2 class="st">R$ 1.000<br>de verba.<br><span class="g">Oito<br>contratos.</span></h2>
+  <p class="si">Thaynara, esses n&uacute;meros foram calculados durante a nossa conversa com base nas taxas reais do mercado de planos de saúde. N&atilde;o &eacute; proje&ccedil;&atilde;o otimista — &eacute; a m&eacute;dia do mercado quando a segmenta&ccedil;&atilde;o est&aacute; certa.</p>
+
+  <div class="funil-card">
+    <div class="fc-body">
+      <div class="fc-kicker">&#9733; Simula&ccedil;&atilde;o de funil &mdash; verba R$ 1.000/m&ecirc;s &middot; CPL R$ 10</div>
+      <div class="fc-rows">
+        <div class="fcr"><div class="fcr-desc"><strong>Verba mensal em an&uacute;ncios</strong></div><div class="fcr-val">R$ 1.000</div></div>
+        <div class="fcr"><div class="fcr-desc"><strong>Leads gerados</strong> &middot; CPL R$ 10 &middot; 100 pessoas interessadas</div><div class="fcr-val">100 leads</div></div>
+        <div class="fcr"><div class="fcr-desc"><strong>Leads qualificados</strong> &middot; 22,7% do total &middot; empresários com PJ e 3+ vidas</div><div class="fcr-val">23 qualificados</div></div>
+        <div class="fcr"><div class="fcr-desc"><strong>Que enviam dados para cotação</strong> &middot; ~70% dos qualificados</div><div class="fcr-val">16 prontos</div></div>
+        <div class="fcr"><div class="fcr-desc"><strong>Fechamentos estimados</strong> &middot; 50% dos que enviam dados</div><div class="fcr-val">8 contratos</div></div>
+        <div class="fcr hl"><div class="fcr-desc"><strong>Faturamento estimado</strong> &middot; 8 contratos × ~R$ 4.500 de comiss&atilde;o m&eacute;dia</div><div class="fcr-val">~R$ 35.000</div></div>
+        <div class="fcr tl"><div class="fcr-desc"><strong>ROAS</strong> &middot; R$ 35.000 ÷ R$ 1.000 de verba</div><div class="fcr-val">35× a verba</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tb">
+    <h3>A regra dos 5 minutos que multiplica seus fechamentos por 21</h3>
+    <p>Existe um dado de mercado comprovado: quem responde um lead nos primeiros 5 minutos tem <strong>21 vezes mais chance de qualificar e dar continuidade</strong> do que quem demora 30 minutos. Como voc&ecirc; &eacute; a pr&oacute;pria operação comercial — sem equipe — a EmpresAtiva configura alertas em tempo real para voc&ecirc; nunca perder um lead qualificado, mesmo que esteja ocupada.</p>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ENTREGÁVEIS -->
+<section class="bg-dark">
+  <div class="sk">O que a EmpresAtiva entrega</div>
+  <h2 class="st">Estrutura<br>completa.<br><span class="t">Voc&ecirc; foca<br>em fechar.</span></h2>
+  <p class="si">Thaynara, como voc&ecirc; mesma disse: &eacute; s&oacute; voc&ecirc; na opera&ccedil;&atilde;o. A EmpresAtiva resolve tudo que &eacute; estrutura — para que voc&ecirc; n&atilde;o precise se preocupar com nada al&eacute;m de atender o lead que chega qualificado.</p>
+
+  <div class="est-grid">
+    <div class="ei thl">
+      <div class="eic tic">📣</div>
+      <div>
+        <h3>Meta Ads &mdash; Instagram + Facebook</h3>
+        <p>Campanhas segmentadas para empresários PJ com 3+ vidas e pessoa física em Bras&iacute;lia. Criativos focados nos diferenciais da Hapvida: menor tabela de preços e menor valor de parto do mercado. Teste paralelo PF vs PJ para identificar qual converte mais.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔍</div>
+      <div>
+        <h3>Google Ads &mdash; teste complementar</h3>
+        <p>Campanha de busca para as 390 pessoas/m&ecirc;s que pesquisam "plano de saúde hapvida" em Bras&iacute;lia. Verba de teste: ~R$ 312 (10% do m&aacute;ximo) para validar se o Google gera convers&atilde;o complementar ao Meta. Decide-se escalar ou manter baseado no resultado real.</p>
+      </div>
+    </div>
+    <div class="ei thl">
+      <div class="eic tic">🌐</div>
+      <div>
+        <h3>Site / Landing page &mdash; representante oficial Hapvida</h3>
+        <p>P&aacute;gina alinhada com a identidade da Hapvida, apresentando Thaynara como representante oficial. Formul&aacute;rio de qualifica&ccedil;&atilde;o que filtra PF e PJ antes de virar lead no WhatsApp. Bloqueia robôs que respondem an&uacute;ncios sem inten&ccedil;&atilde;o real.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🎬</div>
+      <div>
+        <h3>Criativos &mdash; equipe de design</h3>
+        <p>Imagens, carrosséis e edi&ccedil;&atilde;o de v&iacute;deo para os an&uacute;ncios. A EmpresAtiva passa briefs de conte&uacute;do e id&eacute;ias de v&iacute;deo; Thaynara grava; a equipe edita. Criativos focados nas dores do empresário que paga caro no plano e na PF que precisa de cobertura completa.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">🤖</div>
+      <div>
+        <h3>Classifica&ccedil;&atilde;o inteligente &mdash; IA no WhatsApp</h3>
+        <p>IA conectada ao n&uacute;mero comercial de Bras&iacute;lia analisa cada conversa: qualificado, enviou dados para cotação, fechou. Quando um lead qualificado surge, Thaynara recebe alerta imediato no celular para dar continuidade antes de ele esfriar.</p>
+      </div>
+    </div>
+    <div class="ei ghl">
+      <div class="eic gic">📊</div>
+      <div>
+        <h3>CRM + dashboard em tempo real</h3>
+        <p>CRM pr&oacute;prio da EmpresAtiva com kanban de leads: novo → qualificado → cotação enviada → fechado. Dashboard ao vivo com verba gasta, leads chegando e CPL. Relat&oacute;rio mensal mostrando resultado real vs meta.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">🔔</div>
+      <div>
+        <h3>Alerta de lead em tempo real</h3>
+        <p>Cada lead qualificado que chega gera alerta no seu WhatsApp pessoal com nome e interesse. Nenhum lead perdido mesmo que voc&ecirc; esteja ocupada — o alerta fica registrado para retorno nos primeiros 5 minutos.</p>
+      </div>
+    </div>
+    <div class="ei">
+      <div class="eic dic">📋</div>
+      <div>
+        <h3>Reuni&atilde;o mensal de fechamento</h3>
+        <p>Jo&atilde;o apresenta os resultados: verba investida, leads gerados, quantos qualificaram, quantos fecharam e onde est&aacute; o gargalo — se na segmenta&ccedil;&atilde;o, no criativo ou na velocidade de resposta. Decis&atilde;o de escalar baseada em dado real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- INVESTIMENTO -->
+<section class="bg-black">
+  <div class="sk">Investimento &mdash; o que foi apresentado na reuni&atilde;o</div>
+  <h2 class="st">R$ 1.297<br>de servi&ccedil;o.<br><span class="t">R$ 1.000<br>de verba.<br>Total: R$ 2.297.</span></h2>
+
+  <div class="inv-card">
+    <div class="inv-body">
+      <div class="inv-lbl">N&iacute;vel 1 &middot; Demanda Previs&iacute;vel &middot; Corretora Hapvida &middot; Thaynara Castro &middot; Bras&iacute;lia DF</div>
+      <div class="inv-split">
+        <div class="inv-linha ag">
+          <div class="inv-linha-info">
+            <h4>EmpresAtiva &mdash; gest&atilde;o completa N&iacute;vel 1</h4>
+            <p>Meta Ads, Google Ads (teste), site, criativos, IA, CRM, dashboard e relat&oacute;rio</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.297<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-linha vb">
+          <div class="inv-linha-info">
+            <h4>Meta Ads + Google Ads &mdash; verba de an&uacute;ncios</h4>
+            <p>Pago direto &agrave;s plataformas &middot; gerido pela EmpresAtiva at&eacute; R$ 1.500/m&ecirc;s sem acr&eacute;scimo</p>
+          </div>
+          <div class="inv-linha-valor">R$ 1.000<span style="font-size:11px;font-weight:400;color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+        <div class="inv-total-box">
+          <div>
+            <h4>Total m&iacute;nimo inicial</h4>
+            <p>Fee + verba &middot; dois pagamentos separados</p>
+          </div>
+          <div class="inv-total-val">R$ 2.297<span style="font-size:12px;font-weight:400;font-family:var(--font);color:var(--muted);">/m&ecirc;s</span></div>
+        </div>
+      </div>
+      <div class="inv-sep"></div>
+      <ul class="inv-ul">
+        <li>Meta Ads &mdash; Instagram e Facebook &middot; foco em PJ e PF Hapvida em Bras&iacute;lia</li>
+        <li>Google Ads &mdash; campanha de teste para as 390 buscas mensais de inten&ccedil;&atilde;o alta</li>
+        <li>Site / landing page &mdash; representante oficial Hapvida com formul&aacute;rio qualificador</li>
+        <li>Equipe de design &mdash; criativos imagem, carrossel e edi&ccedil;&atilde;o de v&iacute;deo</li>
+        <li>IA de classifica&ccedil;&atilde;o de leads no WhatsApp comercial de Bras&iacute;lia</li>
+        <li>Alerta de lead qualificado em tempo real</li>
+        <li>CRM &mdash; kanban de leads por fase (novo → cotação → fechado)</li>
+        <li>Dashboard em tempo real + relat&oacute;rio mensal de fechamentos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="var-box">
+    <h4>Modelo vari&aacute;vel &mdash; quando a verba crescer com o resultado</h4>
+    <div class="var-rows">
+      <div class="var-row"><div class="vr-desc">Verba at&eacute; <strong>R$ 1.500/m&ecirc;s</strong> &middot; fee fixo sem acr&eacute;scimo</div><div class="vr-val">R$ 1.297</div></div>
+      <div class="var-row"><div class="vr-desc">Verba <strong>R$ 2.000/m&ecirc;s</strong> &middot; +20% de R$ 500 = +R$ 100</div><div class="vr-val">R$ 1.397</div></div>
+      <div class="var-row"><div class="vr-desc">Verba <strong>R$ 3.000/m&ecirc;s</strong> &middot; +20% de R$ 1.500 = +R$ 300</div><div class="vr-val">R$ 1.597</div></div>
+      <div class="var-row d"><div class="vr-desc"><strong>Quem decide quando escalar &eacute; Thaynara</strong>, com base nos dados reais do dashboard. A verba s&oacute; sobe quando o resultado j&aacute; provou que faz sentido.</div><div class="vr-val" style="color:var(--terra);">+20%</div></div>
+    </div>
+  </div>
+
+  <!-- PENDÊNCIAS THAYNARA -->
+  <div class="pend-box">
+    <div class="pend-kicker">&#9888; Pendências &mdash; o que Thaynara precisa resolver antes de começar</div>
+    <div class="pend-titulo">Dois pontos que a EmpresAtiva n&atilde;o pode resolver por voc&ecirc;</div>
+    <ul class="pend-ul">
+      <li>Adquirir n&uacute;mero comercial com DDD Bras&iacute;lia (61)
+        <span>Como vimos: ligar de n&uacute;mero com DDD Fortaleza para um empresário de Bras&iacute;lia gera desconfian&ccedil;a imediata. Um chip com 61 custa ~R$ 20 e eleva muito a credibilidade. A EmpresAtiva conecta esse n&uacute;mero ao sistema assim que estiver dispon&iacute;vel.</span>
+      </li>
+      <li>Obter lista de clientes Hapvida (ativos e/ou cancelados) com o marido
+        <span>N&atilde;o para contato direto — para usar como intelig&ecirc;ncia de público lookalike no Meta e Google. Com essa lista, saímos do zero e encurtamos meses de aprendizado do algoritmo. O compliance &eacute; respeitado: nenhum cliente &eacute; contactado.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="bg-dark">
+  <div class="sk">Pr&oacute;ximos Passos &mdash; da proposta &agrave; decis&atilde;o</div>
+  <h2 class="st">Jo&atilde;o envia.<br>Thaynara<br>analisa.<br><span class="g">Final de<br>outubro, a<br>decis&atilde;o.</span></h2>
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Agora</span>
+      <h3>Jo&atilde;o envia esta proposta para Thaynara avaliar</h3>
+      <p>Como combinamos ao final da reuni&atilde;o: Jo&atilde;o manda a proposta personalizada com tudo que foi discutido. Thaynara tem este documento para apresentar ao marido e tomar a decis&atilde;o com calma.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Enquanto isso</span>
+      <h3>Thaynara resolve as duas pend&ecirc;ncias</h3>
+      <p>Adquirir chip com DDD 61 (Bras&iacute;lia) e verificar com o marido a possibilidade de acessar a lista de clientes Hapvida para intelig&ecirc;ncia de público. Essas duas a&ccedil;&otilde;es aceleram muito o resultado do primeiro m&ecirc;s.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <span class="tl-day">Final de outubro</span>
+      <h3>Jo&atilde;o retoma o contato &mdash; decis&atilde;o final</h3>
+      <p>Como ficou combinado: Jo&atilde;o entra em contato no final de outubro para colher o feedback de Thaynara e do marido. Se precisar de segunda reuni&atilde;o com o marido presente, a gente agenda sem problema.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot g"></div>
+      <span class="tl-day g">Confirmação &rarr; Start</span>
+      <h3>Pagamento &rarr; onboarding &rarr; an&uacute;ncios no ar em 7 dias</h3>
+      <p>Confirma&ccedil;&atilde;o = start imediato. Jo&atilde;o recebe acesso ao n&uacute;mero de Bras&iacute;lia e conta de an&uacute;ncios. Equipe cria o site e os primeiros criativos. Em at&eacute; 7 dias &uacute;teis, os an&uacute;ncios est&atilde;o no ar para empresários e PF em Bras&iacute;lia.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<div class="footer-cta">
+  <h2>Thaynara,<br>Bras&iacute;lia tem<br>14.800 pessoas<br><span class="t">pesquisando<br>Hapvida</span><br><span class="g">todo m&ecirc;s.</span></h2>
+  <p>Menor tabela de preços do mercado. Menores valores de negociação de parto. E uma representante oficial que domina a opera&ccedil;&atilde;o. O que falta &eacute; a m&aacute;quina que coloca voc&ecirc; na frente dessas 14.800 pessoas — antes que outra corretora estruture isso primeiro.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319?text=Jo%C3%A3o%2C%20vi%20a%20proposta%20e%20quero%20avan%C3%A7ar!" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar com Jo&atilde;o Marot
+  </a>
+  <div class="footer-sig">
+    <div class="name">Jo&atilde;o Marot</div>
+    <div class="role">Founder &middot; EmpresAtiva Digital &middot; M&eacute;todo Demanda Previs&iacute;vel</div>
+  </div>
+</div>
+
+</body>
+</html>
