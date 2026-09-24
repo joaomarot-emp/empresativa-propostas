@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Google Ads — Marmoraria | EmpresAtiva Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#0c0d0a;--surface:#121410;--card:#1a1c18;--terra:#c4683a;--verde:#1a3320;--off:#e8e6e0;--muted:#9a9891;--border:#2a2c28}
+body{background:var(--dark);color:var(--off);font-family:'Poppins',sans-serif;font-size:16px;line-height:1.6}
+a{color:var(--terra);text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--dark);border-top:2px solid var(--terra);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--off)}
+.nav-cta{background:var(--terra);color:#fff;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border-radius:2px}
+
+/* SECTIONS */
+section{padding:80px 24px;max-width:900px;margin:0 auto}
+.hero{padding-top:140px;padding-bottom:80px;text-align:center}
+.label{font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--terra);margin-bottom:16px}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;text-transform:uppercase;line-height:1.1;letter-spacing:-1px}
+h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:8px}
+.sub{color:var(--muted);font-size:15px;margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto}
+.divider{width:40px;height:2px;background:var(--terra);margin:32px auto}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:700px){.grid-2{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.grid-4{grid-template-columns:1fr}}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:28px}
+.card-icon{font-size:28px;margin-bottom:12px}
+.card-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.card-text{font-size:14px;color:var(--muted)}
+
+/* PLANOS */
+.plan-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:36px 28px;position:relative}
+.plan-card.destaque{border-color:var(--terra)}
+.badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--terra);color:#fff;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 14px;border-radius:2px;white-space:nowrap}
+.plan-name{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.plan-price{font-size:2.2rem;font-weight:900;color:var(--off);line-height:1}
+.plan-price span{font-size:14px;font-weight:400;color:var(--muted)}
+.plan-verba{font-size:12px;color:var(--terra);font-weight:600;margin:8px 0 20px}
+.plan-items{list-style:none}
+.plan-items li{font-size:13px;padding:8px 0;border-bottom:1px solid var(--border);color:var(--off);display:flex;gap:8px;align-items:flex-start}
+.plan-items li:last-child{border-bottom:none}
+.plan-items li .ck{color:var(--terra);font-weight:700;flex-shrink:0}
+.plan-items li .ck2{color:#4caf50;font-weight:700;flex-shrink:0}
+
+/* COMPARE TABLE */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:12px 16px;border-bottom:1px solid var(--border);text-align:left}
+th{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+td:first-child{color:var(--off)}
+td:not(:first-child){text-align:center}
+.yes-terra{color:var(--terra);font-weight:700}
+.yes-verde{color:#4caf50;font-weight:700}
+.no{color:var(--muted)}
+tr:hover td{background:rgba(255,255,255,.02)}
+
+/* VAR TABLE */
+.var-table{width:100%;border-collapse:collapse;font-size:13px}
+.var-table th,.var-table td{padding:10px 16px;border-bottom:1px solid var(--border);text-align:left}
+.var-table th{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+.var-table .highlight{color:var(--terra);font-weight:700}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:20px;align-items:flex-start}
+.tl-dot{width:36px;height:36px;background:var(--terra);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;flex-shrink:0}
+.tl-line{display:flex;flex-direction:column;padding-bottom:28px;padding-top:6px}
+.tl-title{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--off)}
+.tl-desc{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* CTA */
+.cta-section{text-align:center;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 24px}
+.cta-btn{display:inline-block;background:var(--terra);color:#fff;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:18px 40px;border-radius:2px;margin-top:28px}
+.footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+
+/* STICKY WHATSAPP */
+.wa-sticky{position:fixed;bottom:24px;right:24px;z-index:200;background:#25d366;color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:14px 20px;border-radius:40px;box-shadow:0 4px 20px rgba(37,211,102,.4);display:flex;align-items:center;gap:8px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">EmpresAtiva Digital</div>
+  <a class="nav-cta" href="https://wa.me/5521983424319" target="_blank">Falar agora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="label">Proposta Comercial — Google Ads</div>
+  <h1>Marmoraria que aparece quando o cliente está procurando</h1>
+  <p class="sub">Campanha de tráfego pago no Google Ads para marmorarias, graniterias e revestimentos — capturando demanda ativa de construtores, arquitetos e consumidores finais.</p>
+  <div class="divider"></div>
+</section>
+
+<!-- POR QUE GOOGLE ADS -->
+<section>
+  <div class="label">Estratégia</div>
+  <h2>Por que Google Ads para marmoraria?</h2>
+  <p class="sub" style="margin-left:0;margin-bottom:32px">No Meta você interrompe. No Google, você aparece na hora certa — quando o cliente já está pesquisando.</p>
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <div class="card-title">Demanda ativa</div>
+      <div class="card-text">"Marmoraria perto de mim", "orçamento mármore bancada" — clientes com intenção real de compra</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏗️</div>
+      <div class="card-title">Mercado B2B</div>
+      <div class="card-text">Arquitetos, construtores e engenheiros buscam fornecedores no Google. Alta recorrência e ticket elevado</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📉</div>
+      <div class="card-title">Baixa concorrência</div>
+      <div class="card-text">Poucas marmorarias anunciam bem no Google. Quem entra primeiro domina o espaço com custo menor</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Rastreamento total</div>
+      <div class="card-text">Cada clique, ligação e formulário rastreado. Você sabe exatamente de onde vem cada cliente</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANOS -->
+<section>
+  <div class="label">Planos</div>
+  <h2>Escolha o nível certo para o seu momento</h2>
+  <p class="sub" style="margin-left:0;margin-bottom:40px">A verba de anúncios é paga diretamente ao Google, fora do fee mensal.</p>
+
+  <div class="grid-2">
+
+    <!-- NÍVEL 1 -->
+    <div class="plan-card">
+      <div class="plan-name">Nível 1 · Reconhecimento</div>
+      <div class="plan-price">R$&nbsp;1.297<span>/mês</span></div>
+      <div class="plan-verba">+ verba de anúncios: até R$&nbsp;1.500/mês · excedente +20%</div>
+      <ul class="plan-items">
+        <li><span class="ck">✓</span> Tráfego pago em 1 plataforma — Google Ads</li>
+        <li><span class="ck">✓</span> Landing page com rastreamento de origem + criativos por designer especializada</li>
+        <li><span class="ck">✓</span> WhatsApp integrado: alerta de lead e resposta automática</li>
+        <li><span class="ck">✓</span> Classificação Inteligente: IA lendo e classificando cada conversa</li>
+        <li><span class="ck">✓</span> Painel ao vivo: oportunidades, qualificação e ritmo vs. meta</li>
+        <li><span class="ck">✓</span> Relatório mensal comparado ao benchmark do nicho</li>
+      </ul>
+    </div>
+
+    <!-- NÍVEL 2 -->
+    <div class="plan-card destaque">
+      <div class="badge">Recomendado</div>
+      <div class="plan-name">Nível 2 · Operação</div>
+      <div class="plan-price">R$&nbsp;1.897<span>/mês</span></div>
+      <div class="plan-verba">+ verba de anúncios: até R$&nbsp;1.500/mês · excedente +20%</div>
+      <ul class="plan-items">
+        <li><span class="ck2">✓</span> Tudo do Nível 1, ativo e integrado</li>
+        <li><span class="ck2">✓</span> CRM EmpresAtiva: funil visual, histórico e WhatsApp com acesso para o time</li>
+        <li><span class="ck2">✓</span> Atendente IA: responde, qualifica e agenda fora do horário</li>
+        <li><span class="ck2">✓</span> Retorno dos qualificados ao Google (audiência de reforço)</li>
+        <li><span class="ck2">✓</span> Painel Criativo × Funil: o que gera venda, não só lead</li>
+        <li><span class="ck2">✓</span> Playbook comercial, treinamento do time e fila de leads parados</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section>
+  <div class="label">Comparativo</div>
+  <h2>O que cada plano inclui</h2>
+  <div style="overflow-x:auto;margin-top:24px">
+  <table>
+    <thead>
+      <tr>
+        <th>Entregável</th>
+        <th>Nível 1</th>
+        <th>Nível 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Tráfego pago Google Ads</td><td class="yes-terra">✓</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Landing page + criativos (designer)</td><td class="yes-terra">✓</td><td class="yes-verde">✓</td></tr>
+      <tr><td>WhatsApp: alerta de lead + resposta automática</td><td class="yes-terra">✓</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Classificação Inteligente de leads (IA)</td><td class="yes-terra">✓</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Painel ao vivo (oportunidades × meta)</td><td class="yes-terra">✓</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Relatório mensal com benchmark do nicho</td><td class="yes-terra">✓</td><td class="yes-verde">✓</td></tr>
+      <tr><td>CRM EmpresAtiva (funil + WhatsApp + time)</td><td class="no">—</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Atendente IA 24h/7 (responde, qualifica, agenda)</td><td class="no">—</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Retorno dos qualificados ao Google</td><td class="no">—</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Painel Criativo × Funil</td><td class="no">—</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Playbook comercial + treinamento do time</td><td class="no">—</td><td class="yes-verde">✓</td></tr>
+      <tr><td>Verba máxima inclusa</td><td>Até R$ 1.500</td><td>Até R$ 1.500</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- INVESTIMENTO VARIÁVEL -->
+<section>
+  <div class="label">Investimento</div>
+  <h2>Fee + variável sobre excedente</h2>
+  <p class="sub" style="margin-left:0;margin-bottom:24px">O fee mensal é fixo. Ambos os planos gerenciam até R$&nbsp;1.500/mês de verba. Acima disso, incide +20% sobre o excedente — sem limite de crescimento.</p>
+  <div style="overflow-x:auto">
+  <table class="var-table">
+    <thead>
+      <tr>
+        <th>Verba total investida</th>
+        <th>Fee Nível 1</th>
+        <th>Fee Nível 2</th>
+        <th>+20% excedente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Até R$ 1.500</td><td class="highlight">R$ 1.297</td><td>—</td><td>Não incide</td></tr>
+      <tr><td>Até R$ 5.000</td><td>—</td><td class="highlight">R$ 1.897</td><td>Não incide</td></tr>
+      <tr><td>R$ 3.000 (Nível 1)</td><td class="highlight">R$ 1.297</td><td>—</td><td>+R$ 300 (20% de R$ 1.500)</td></tr>
+      <tr><td>R$ 7.000 (Nível 2)</td><td>—</td><td class="highlight">R$ 1.897</td><td>+R$ 400 (20% de R$ 2.000)</td></tr>
+      <tr><td>R$ 10.000 (Nível 2)</td><td>—</td><td class="highlight">R$ 1.897</td><td>+R$ 1.000 (20% de R$ 5.000)</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="label">Execução</div>
+  <h2>Do contrato ao primeiro lead em 7 dias</h2>
+  <div style="margin-top:32px" class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot">1</div>
+      <div class="tl-line">
+        <div class="tl-title">Dias 1–3 — Onboarding</div>
+        <div class="tl-desc">Acesso ao Google Ads, briefing do negócio, levantamento de palavras-chave e concorrentes</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">2</div>
+      <div class="tl-line">
+        <div class="tl-title">Dias 3–7 — Estrutura</div>
+        <div class="tl-desc">Criação das campanhas, anúncios, extensões, landing page e rastreamento de conversões</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">3</div>
+      <div class="tl-line">
+        <div class="tl-title">Semana 2 — Live</div>
+        <div class="tl-desc">Campanha no ar, primeiros cliques e leads chegando. Ajustes finos nos primeiros 7 dias</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">4</div>
+      <div class="tl-line" style="padding-bottom:0">
+        <div class="tl-title">30 dias — Primeiro relatório</div>
+        <div class="tl-desc">Reunião de performance com dados reais: CPC, taxa de conversão, custo por lead e próximos passos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="label">Próximo passo</div>
+  <h2 style="max-width:500px;margin:0 auto">Vamos colocar sua marmoraria no topo do Google?</h2>
+  <p class="sub">Escolha o plano e entre em contato. Em 24h alinhamos os próximos passos.</p>
+  <a class="cta-btn" href="https://wa.me/5521983424319" target="_blank">💬 Falar pelo WhatsApp</a>
+</div>
+
+<div class="footer">
+  <strong>EmpresAtiva Digital</strong> · Marketing de Performance para Negócios Locais<br>
+  <a href="https://wa.me/5521983424319">+55 21 98342-4319</a>
+</div>
+
+<a class="wa-sticky" href="https://wa.me/5521983424319" target="_blank">
+  💬 WhatsApp
+</a>
+
+</body>
+</html>
