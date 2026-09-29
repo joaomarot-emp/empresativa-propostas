@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Paula Pires — Mega Fios | EmpresAtiva Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0c0d0a;--surface:#121410;--card:#1a1c18;
+  --terra:#c4683a;--green:#3a9e6f;--off:#e8e6e0;--muted:#9a9891;--border:#2a2c28;
+}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--off);line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--surface);border-top:2px solid var(--terra);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{font-weight:900;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--terra)}
+.nav-cta{background:var(--terra);color:#fff;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 18px;border-radius:4px;white-space:nowrap}
+
+/* HERO */
+.hero{padding:130px 5% 80px;text-align:center;background:linear-gradient(180deg,#0e0f0c 0%,var(--bg) 100%)}
+.hero-label{font-size:.7rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:var(--terra);font-style:normal}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:640px;margin:0 auto 40px}
+.hero-cta{display:inline-block;background:var(--terra);color:#fff;font-weight:800;font-size:1rem;padding:16px 36px;border-radius:6px;letter-spacing:.05em}
+
+/* SECTION */
+section{padding:80px 5%}
+.inner{max-width:1100px;margin:0 auto}
+.sec-label{font-size:.65rem;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:var(--terra);margin-bottom:10px}
+.sec-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:14px}
+.sec-sub{color:var(--muted);font-size:.95rem;max-width:700px;margin-bottom:48px}
+
+/* CONTEXT CARDS */
+.context-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:0}
+.ctx-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px 22px}
+.ctx-icon{font-size:1.6rem;margin-bottom:12px}
+.ctx-title{font-size:.7rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.ctx-text{font-size:.88rem;color:var(--muted);line-height:1.6}
+.ctx-highlight{color:var(--off);font-weight:700}
+
+/* OPTIONS */
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:720px){.options-grid{grid-template-columns:1fr}}
+.option-card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.option-card.recommended{border-color:var(--green)}
+.option-header{padding:28px 28px 20px;border-bottom:1px solid var(--border)}
+.option-badge{display:inline-block;font-size:.6rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:3px;margin-bottom:14px}
+.badge-a{background:rgba(196,104,58,.15);color:var(--terra);border:1px solid rgba(196,104,58,.3)}
+.badge-rec{background:rgba(58,158,111,.15);color:var(--green);border:1px solid rgba(58,158,111,.3)}
+.option-name{font-size:1.1rem;font-weight:900;margin-bottom:6px}
+.option-tagline{font-size:.85rem;color:var(--muted);margin-bottom:20px}
+.option-price-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.option-fee{font-size:2rem;font-weight:900;color:var(--off)}
+.option-fee span{font-size:.9rem;font-weight:500;color:var(--muted)}
+.option-verba{font-size:.82rem;color:var(--muted);margin-top:4px}
+.option-total{font-size:.88rem;color:var(--terra);font-weight:700;margin-top:6px}
+.option-body{padding:24px 28px}
+.feature-list{list-style:none}
+.feature-list li{font-size:.88rem;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{content:"→";color:var(--terra);flex-shrink:0;margin-top:1px}
+.option-card.recommended .feature-list li::before{color:var(--green)}
+.feat-strong{color:var(--off);font-weight:600}
+.option-cta{display:block;text-align:center;margin:24px 28px 28px;padding:14px;border-radius:6px;font-weight:800;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase}
+.cta-a{background:rgba(196,104,58,.12);color:var(--terra);border:2px solid var(--terra)}
+.cta-b{background:var(--green);color:#fff}
+
+/* ANCHOR */
+.anchor-box{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--terra);border-radius:10px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.anchor-text h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.anchor-text p{font-size:.88rem;color:var(--muted)}
+.anchor-tag{font-size:.6rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.anchor-price-big{font-size:2.4rem;font-weight:900;color:var(--terra)}
+.anchor-price-sub{font-size:.8rem;color:var(--muted);margin-top:4px}
+
+/* PROJECTION */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:640px){.proj-grid{grid-template-columns:1fr}}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:28px 24px;text-align:center}
+.proj-num{font-size:2.2rem;font-weight:900;color:var(--terra);margin-bottom:6px}
+.proj-label{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.proj-note{font-size:.8rem;color:var(--muted);margin-top:8px}
+
+/* COMPARE */
+.compare-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--border);font-size:.88rem}
+th{font-size:.65rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);background:var(--card)}
+th.col-feat{min-width:200px}
+td.col-feat{color:var(--muted)}
+td.col-a,td.col-b{text-align:center}
+.check-a{color:var(--terra);font-weight:700}
+.check-b{color:var(--green);font-weight:700}
+.dash{color:var(--border)}
+tr:last-child td{border-bottom:none}
+tr.row-price td{font-weight:700;color:var(--off);background:rgba(255,255,255,.03)}
+
+/* CTA FINAL */
+.cta-section{padding:80px 5%;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,#0e0f0c 100%)}
+.cta-section h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:16px}
+.cta-section p{color:var(--muted);font-size:.95rem;margin-bottom:36px;max-width:540px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:var(--terra);color:#fff;font-weight:800;font-size:1.05rem;padding:18px 42px;border-radius:6px;letter-spacing:.05em}
+
+footer{text-align:center;padding:32px 5%;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+footer strong{color:var(--terra)}
+
+/* MOBILE STICKY */
+.sticky-wa{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:200;background:#25d366;color:#fff;font-weight:800;font-size:.85rem;padding:14px 28px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+@media(max-width:640px){.sticky-wa{display:block}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">EmpresAtiva Digital</span>
+    <a href="https://wa.me/5521983424319" class="nav-cta">Falar com João</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="inner">
+    <div class="hero-label">Proposta Exclusiva — Paula Pires · Mega Fios</div>
+    <h1>Clientes chegando<br>enquanto você foca<br>no <em>seu salão</em></h1>
+    <p class="hero-sub">Duas opções pensadas para o momento atual do Mega Fios — você escolhe por onde começar.</p>
+    <a href="https://wa.me/5521983424319" class="hero-cta">Tirar dúvidas agora</a>
+  </div>
+</section>
+
+<!-- CONTEXTO -->
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">Cenário</div>
+    <h2 class="sec-title">O que enxerguei no Mega Fios</h2>
+    <p class="sec-sub">A conversa que tivemos me deixou claro o momento que você vive — e as duas opções abaixo foram montadas a partir disso.</p>
+    <div class="context-grid">
+      <div class="ctx-card">
+        <div class="ctx-icon">📍</div>
+        <div class="ctx-title">Visibilidade Local</div>
+        <div class="ctx-text">Você atende em <span class="ctx-highlight">Salvador/BA</span> e precisa aparecer para quem está buscando serviços de mega hair na região agora.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">🎯</div>
+        <div class="ctx-title">Oferta Irresistível</div>
+        <div class="ctx-text">Pacote <span class="ctx-highlight">100g cabelo indiano + serviço mega hair por R$ 550</span> — produto com valor percebido alto e ticket acessível para capturar novas clientes.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">📈</div>
+        <div class="ctx-title">Fase de Ampliação</div>
+        <div class="ctx-text">Você está <span class="ctx-highlight">expandindo o salão</span> — hora certa para montar uma máquina de captação antes de precisar dela com urgência.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">📱</div>
+        <div class="ctx-title">Instagram Estruturado</div>
+        <div class="ctx-text">Mais de <span class="ctx-highlight">6 mil seguidores</span>, parcerias com influencers e produção de conteúdo — base perfeita para amplificar com tráfego pago.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÂNCORA -->
+<section>
+  <div class="inner">
+    <div class="sec-label">Produto Âncora</div>
+    <h2 class="sec-title">A oferta que vamos promover</h2>
+    <p class="sec-sub">Para tráfego pago funcionar rápido, a oferta precisa ser irresistível. Você já tem uma.</p>
+    <div class="anchor-box">
+      <div class="anchor-text">
+        <div class="anchor-tag">Pacote em destaque</div>
+        <h3>100g Cabelo Indiano + Mega Hair</h3>
+        <p>Produto completo — cabelo premium + serviço — com entrega de resultado visível imediato. Alta percepção de valor, ticket acessível, fácil de anunciar.</p>
+      </div>
+      <div style="text-align:center">
+        <div class="anchor-price-big">R$ 550</div>
+        <div class="anchor-price-sub">por pacote completo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPÇÕES -->
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">Proposta</div>
+    <h2 class="sec-title">Duas opções. Você escolhe.</h2>
+    <p class="sec-sub">Opção A para começar com foco em busca ativa. Opção B para quem quer ir mais rápido no Instagram também.</p>
+    <div class="options-grid">
+
+      <!-- OPÇÃO A -->
+      <div class="option-card">
+        <div class="option-header">
+          <div class="option-badge badge-a">Opção A</div>
+          <div class="option-name">Google Ads + GBP</div>
+          <div class="option-tagline">Aparecer quando alguém busca mega hair em Salvador</div>
+          <div class="option-price-label">Fee mensal</div>
+          <div class="option-fee">R$ 500<span>/mês</span></div>
+          <div class="option-verba">+ R$ 300/mês de verba (pago direto ao Google)</div>
+          <div class="option-total">≈ R$ 800/mês no total</div>
+        </div>
+        <div class="option-body">
+          <ul class="feature-list">
+            <li><span><span class="feat-strong">Google Ads</span> — campanhas de busca para quem pesquisa mega hair em Salvador</span></li>
+            <li><span><span class="feat-strong">GBP — Google Business Profile</span> — otimização completa do seu Google Meu Negócio</span></li>
+            <li><span><span class="feat-strong">Landing Page</span> personalizada para capturar leads qualificados</span></li>
+            <li><span><span class="feat-strong">Rastreamento completo</span> — cada lead rastreado até a origem</span></li>
+            <li><span><span class="feat-strong">Relatório mensal</span> com resultados e próximas ações</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/5521983424319?text=Olá%20João%2C%20tenho%20interesse%20na%20Opção%20A%20para%20o%20Mega%20Fios!" class="option-cta cta-a">Quero a Opção A</a>
+      </div>
+
+      <!-- OPÇÃO B -->
+      <div class="option-card recommended">
+        <div class="option-header">
+          <div class="option-badge badge-rec">Opção B — Recomendado</div>
+          <div class="option-name">Meta Ads (Instagram + Facebook)</div>
+          <div class="option-tagline">Explorar o Instagram que você já construiu com tráfego pago</div>
+          <div class="option-price-label">Fee mensal</div>
+          <div class="option-fee">R$ 997<span>/mês</span></div>
+          <div class="option-verba">+ R$ 500/mês de verba (pago direto à Meta)</div>
+          <div class="option-total">≈ R$ 1.497/mês no total</div>
+        </div>
+        <div class="option-body">
+          <ul class="feature-list">
+            <li><span><span class="feat-strong">Meta Ads — Instagram + Facebook</span> — campanhas segmentadas para o seu ICP em Salvador</span></li>
+            <li><span><span class="feat-strong">Criativos com designer</span> — peças prontas para anunciar seu pacote âncora</span></li>
+            <li><span><span class="feat-strong">Landing Page</span> dedicada para converter o tráfego pago</span></li>
+            <li><span><span class="feat-strong">Alerta no WhatsApp</span> a cada lead que chega</span></li>
+            <li><span><span class="feat-strong">Classificação Inteligente por IA</span> — separa os qualificados dos curiosos</span></li>
+            <li><span><span class="feat-strong">Painel ao vivo</span> — acompanhe resultados em tempo real</span></li>
+            <li><span><span class="feat-strong">Relatório mensal</span> com benchmark de mercado</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/5521983424319?text=Olá%20João%2C%20tenho%20interesse%20na%20Opção%20B%20para%20o%20Mega%20Fios!" class="option-cta cta-b">Quero a Opção B</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section>
+  <div class="inner">
+    <div class="sec-label">Comparativo</div>
+    <h2 class="sec-title">O que cada opção inclui</h2>
+    <p class="sec-sub">Visão rápida lado a lado.</p>
+    <div class="compare-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-feat">Entregável</th>
+            <th class="col-a">Opção A<br><span style="color:var(--terra);font-size:.85em">Google</span></th>
+            <th class="col-b">Opção B<br><span style="color:var(--green);font-size:.85em">Meta</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="col-feat">Google Ads (busca)</td><td class="col-a"><span class="check-a">✓</span></td><td class="col-b"><span class="dash">—</span></td></tr>
+          <tr><td class="col-feat">GBP — Google Meu Negócio</td><td class="col-a"><span class="check-a">✓</span></td><td class="col-b"><span class="dash">—</span></td></tr>
+          <tr><td class="col-feat">Meta Ads (Instagram + Facebook)</td><td class="col-a"><span class="dash">—</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr><td class="col-feat">Landing Page dedicada</td><td class="col-a"><span class="check-a">✓</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr><td class="col-feat">Criativos com designer</td><td class="col-a"><span class="dash">—</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr><td class="col-feat">Rastreamento de leads</td><td class="col-a"><span class="check-a">✓</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr><td class="col-feat">Alerta no WhatsApp</td><td class="col-a"><span class="dash">—</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr><td class="col-feat">Classificação por IA</td><td class="col-a"><span class="dash">—</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr><td class="col-feat">Painel ao vivo</td><td class="col-a"><span class="dash">—</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr><td class="col-feat">Relatório mensal</td><td class="col-a"><span class="check-a">✓</span></td><td class="col-b"><span class="check-b">✓</span></td></tr>
+          <tr class="row-price"><td class="col-feat">Fee mensal</td><td class="col-a">R$ 500</td><td class="col-b">R$ 997</td></tr>
+          <tr class="row-price"><td class="col-feat">Verba mensal</td><td class="col-a">R$ 300 (Google)</td><td class="col-b">R$ 500 (Meta)</td></tr>
+          <tr class="row-price"><td class="col-feat">Total estimado/mês</td><td class="col-a" style="color:var(--terra)">≈ R$ 800</td><td class="col-b" style="color:var(--green)">≈ R$ 1.497</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PROJEÇÃO -->
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">Projeção</div>
+    <h2 class="sec-title">O que esperar nos primeiros 60 dias</h2>
+    <p class="sec-sub">Estimativas conservadoras para o perfil de negócio do Mega Fios. Resultados variam conforme período e verba.</p>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-num">30–50</div>
+        <div class="proj-label">Leads por mês</div>
+        <div class="proj-note">Pessoas que demonstraram interesse real no serviço</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">5–8</div>
+        <div class="proj-label">Agendamentos</div>
+        <div class="proj-note">Clientes que efetivamente marcaram horário</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">R$ 2.750–4.400</div>
+        <div class="proj-label">Receita estimada</div>
+        <div class="proj-note">Considerando o pacote âncora de R$ 550 por cliente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="inner">
+    <div class="sec-label">Próximo passo</div>
+    <h2>Qual opção faz sentido<br>para você, Paula?</h2>
+    <p>Me chama no WhatsApp e a gente alinha os detalhes — sem compromisso.</p>
+    <a href="https://wa.me/5521983424319?text=Olá%20João%2C%20quero%20conversar%20sobre%20a%20proposta%20do%20Mega%20Fios!" class="cta-btn">Falar com João agora →</a>
+  </div>
+</section>
+
+<footer>
+  <p><strong>EmpresAtiva Digital</strong> · Av. das Américas 12900, Sala 403B, Recreio dos Bandeirantes · Rio de Janeiro/RJ</p>
+  <p style="margin-top:6px">A verba é paga diretamente às plataformas (Google ou Meta) — não passa pela agência.</p>
+</footer>
+
+<a href="https://wa.me/5521983424319" class="sticky-wa">💬 Falar com João agora</a>
+
+</body>
+</html>
