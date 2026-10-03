@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Tufy Hadid — Nova Marca de Extensões | EmpresAtiva Digital</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0c0d0a;--surface:#121410;--card:#1a1c18;
+  --terra:#c4683a;--green:#3a9e6f;--gold:#d4a24c;--off:#e8e6e0;--muted:#9a9891;--border:#2a2c28;
+}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--off);line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--surface);border-top:2px solid var(--terra);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-brand{font-weight:900;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--terra)}
+.nav-cta{background:var(--terra);color:#fff;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:8px 18px;border-radius:4px;white-space:nowrap}
+
+.hero{padding:130px 5% 80px;text-align:center;background:linear-gradient(180deg,#0e0f0c 0%,var(--bg) 100%)}
+.hero-label{font-size:.7rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:20px;text-transform:uppercase}
+.hero h1 em{color:var(--terra);font-style:normal}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:680px;margin:0 auto 40px}
+.hero-cta{display:inline-block;background:var(--terra);color:#fff;font-weight:800;font-size:1rem;padding:16px 36px;border-radius:6px;letter-spacing:.05em}
+
+section{padding:80px 5%}
+.inner{max-width:1140px;margin:0 auto}
+.sec-label{font-size:.65rem;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:var(--terra);margin-bottom:10px}
+.sec-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:14px;text-transform:uppercase;line-height:1.2}
+.sec-sub{color:var(--muted);font-size:.95rem;max-width:720px;margin-bottom:48px}
+
+.ctx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.ctx-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:24px 22px}
+.ctx-icon{font-size:1.6rem;margin-bottom:12px}
+.ctx-title{font-size:.7rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.ctx-text{font-size:.88rem;color:var(--muted);line-height:1.6}
+.ctx-hi{color:var(--off);font-weight:700}
+
+.quote{border-left:3px solid var(--terra);padding:6px 0 6px 22px;margin:0 0 40px;font-size:1.05rem;font-style:italic;color:var(--off);max-width:820px}
+.quote span{display:block;font-style:normal;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:10px;font-weight:700}
+
+.alert-box{background:rgba(196,104,58,.08);border:1px solid rgba(196,104,58,.3);border-radius:10px;padding:28px 32px;margin-bottom:32px}
+.alert-box p{font-size:.92rem;color:var(--muted);line-height:1.7}
+.alert-box p+p{margin-top:12px}
+.alert-box strong{color:var(--off)}
+.alert-box.green{background:rgba(58,158,111,.07);border-color:rgba(58,158,111,.3)}
+
+.loop{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+@media(max-width:900px){.loop{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.loop{grid-template-columns:1fr 1fr}}
+.loop-step{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 16px;position:relative}
+.loop-n{font-size:.62rem;font-weight:900;letter-spacing:.18em;color:var(--terra);margin-bottom:6px}
+.loop-t{font-size:.9rem;font-weight:800;text-transform:uppercase;margin-bottom:6px}
+.loop-d{font-size:.8rem;color:var(--muted);line-height:1.55}
+
+.todo{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.todo-card{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--terra);border-radius:10px;padding:24px 22px}
+.todo-who{font-size:.6rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.todo-t{font-size:.95rem;font-weight:800;margin-bottom:8px}
+.todo-d{font-size:.84rem;color:var(--muted)}
+
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:24px}
+@media(max-width:820px){.bench-grid{grid-template-columns:1fr 1fr}}
+.bench-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:26px 20px;text-align:center}
+.bench-num{font-size:2.1rem;font-weight:900;color:var(--terra);margin-bottom:6px;line-height:1.1}
+.bench-label{font-size:.66rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+@media(max-width:980px){.plans-grid{grid-template-columns:1fr}}
+.plan-card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid var(--border);display:flex;flex-direction:column}
+.plan-card.recommended{border-color:var(--green)}
+.plan-card.n3{border-color:var(--gold)}
+.plan-header{padding:26px 24px 20px;border-bottom:1px solid var(--border)}
+.plan-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.plan-badge{display:inline-block;font-size:.58rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:3px}
+.badge-n1{background:rgba(196,104,58,.15);color:var(--terra);border:1px solid rgba(196,104,58,.3)}
+.badge-n2{background:rgba(58,158,111,.15);color:var(--green);border:1px solid rgba(58,158,111,.3)}
+.badge-n3{background:rgba(212,162,76,.15);color:var(--gold);border:1px solid rgba(212,162,76,.35)}
+.badge-new{background:var(--gold);color:#0c0d0a}
+.plan-name{font-size:1.05rem;font-weight:900;margin-bottom:6px;text-transform:uppercase}
+.plan-tagline{font-size:.83rem;color:var(--muted);margin-bottom:18px;min-height:2.6em}
+.plan-price-label{font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.plan-fee{font-size:2rem;font-weight:900;color:var(--off)}
+.plan-fee span{font-size:.9rem;font-weight:500;color:var(--muted)}
+.plan-total{font-size:.85rem;font-weight:700;margin-top:6px}
+.t1{color:var(--terra)}.t2{color:var(--green)}.t3{color:var(--gold)}
+.plan-body{padding:20px 24px;flex:1}
+.feature-list{list-style:none}
+.feature-list li{font-size:.85rem;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{content:"→";color:var(--terra);flex-shrink:0;margin-top:1px}
+.plan-card.recommended .feature-list li::before{color:var(--green)}
+.plan-card.n3 .feature-list li::before{color:var(--gold)}
+.feat-strong{color:var(--off);font-weight:600}
+.plan-cta{display:block;text-align:center;margin:8px 24px 26px;padding:14px;border-radius:6px;font-weight:800;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+.cta-n1{background:rgba(196,104,58,.12);color:var(--terra);border:2px solid var(--terra)}
+.cta-n2{background:var(--green);color:#fff}
+.cta-n3{background:var(--gold);color:#0c0d0a}
+
+.inv-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--border);border-radius:10px}
+table.inv{width:100%;border-collapse:collapse;min-width:560px}
+table.inv th,table.inv td{padding:14px 16px;font-size:.88rem;border-bottom:1px solid var(--border);text-align:right}
+table.inv th:first-child,table.inv td:first-child{text-align:left}
+table.inv th{font-size:.62rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+table.inv tr:last-child td{border-bottom:none}
+table.inv td.c1{color:var(--terra);font-weight:700}
+table.inv td.c2{color:var(--green);font-weight:700}
+table.inv td.c3{color:var(--gold);font-weight:700}
+table.inv tr.hl td{background:rgba(212,162,76,.06)}
+.inv-note{font-size:.8rem;color:var(--muted);margin-top:14px}
+
+.compare-wrap{overflow-x:auto}
+table.compare{width:100%;border-collapse:collapse;min-width:620px}
+table.compare th,table.compare td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--border);font-size:.86rem}
+table.compare th{font-size:.62rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);background:var(--card)}
+table.compare td.col-feat{color:var(--muted);min-width:220px}
+table.compare td.col-n,table.compare th.col-n{text-align:center}
+.ck1{color:var(--terra);font-weight:700}
+.ck2{color:var(--green);font-weight:700}
+.ck3{color:var(--gold);font-weight:700}
+.dash{color:#4a4c48}
+.addon{color:var(--muted);font-size:.8rem}
+table.compare tr.row-price td{font-weight:700;color:var(--off);background:rgba(255,255,255,.03)}
+
+.cond-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.cond-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px 20px}
+.cond-t{font-size:.68rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.cond-d{font-size:.85rem;color:var(--muted)}
+.cond-d strong{color:var(--off)}
+
+.team{display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+@media(max-width:820px){.team{grid-template-columns:1fr}}
+.team-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:28px}
+.team-box h3{font-size:.95rem;font-weight:800;text-transform:uppercase;margin-bottom:10px}
+.team-box p,.team-box li{font-size:.86rem;color:var(--muted)}
+.team-box ul{list-style:none}
+.team-box li{padding:6px 0;border-bottom:1px solid var(--border)}
+.team-box li:last-child{border-bottom:none}
+.team-box li::before{content:"→ ";color:var(--terra)}
+
+.cta-section{padding:80px 5%;text-align:center;background:linear-gradient(180deg,var(--bg) 0%,#0e0f0c 100%)}
+.cta-section h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:16px;text-transform:uppercase}
+.cta-section p{color:var(--muted);font-size:.95rem;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:var(--terra);color:#fff;font-weight:800;font-size:1.05rem;padding:18px 42px;border-radius:6px;letter-spacing:.05em}
+
+footer{text-align:center;padding:32px 5% 90px;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+footer strong{color:var(--terra)}
+
+.sticky-wa{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:200;background:#25d366;color:#fff;font-weight:800;font-size:.85rem;padding:14px 28px;border-radius:50px;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+@media(max-width:640px){.sticky-wa{display:block}.alert-box{padding:22px 20px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">EmpresAtiva Digital</span>
+    <a href="https://wa.me/5521983424319" class="nav-cta">Falar com João</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="inner">
+    <div class="hero-label">Proposta Exclusiva — Tufy Hadid · Nova marca de extensões de alto padrão</div>
+    <h1>Marca nova.<br><em>Rastreada desde<br>o primeiro real.</em></h1>
+    <p class="hero-sub">17 anos de mercado de cabelo e agora uma operação própria, independente. É o melhor momento para montar o tráfego do jeito certo: dado limpo, processo definido e cada venda devolvendo inteligência para o anúncio.</p>
+    <a href="#niveis" class="hero-cta">Ver os 3 níveis</a>
+  </div>
+</section>
+
+<!-- CENÁRIO -->
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">O que conversamos</div>
+    <h2 class="sec-title">Seu ponto de partida</h2>
+    <p class="sec-sub">Resumo do que você me trouxe na reunião — é a base de tudo o que está nesta proposta.</p>
+    <div class="ctx-grid">
+      <div class="ctx-card">
+        <div class="ctx-icon">🧭</div>
+        <div class="ctx-title">Operação própria</div>
+        <div class="ctx-text">Você está estruturando um <span class="ctx-hi">negócio à parte da Luxury Extensions</span>, no mesmo segmento de alto padrão — com marketing que não tenha nada a ver com a outra empresa.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">🎯</div>
+        <div class="ctx-title">Tráfego do zero</div>
+        <div class="ctx-text">Sem base inicial de clientes na marca nova, <span class="ctx-hi">o tráfego pago é quem vai mandar</span> no começo. Venda de cabelo e aplicação, as duas frentes com peso.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">📸</div>
+        <div class="ctx-title">Vitrine pronta para reativar</div>
+        <div class="ctx-text">Perfil antigo no Instagram com <span class="ctx-hi">20 mil+ seguidores</span>. Limpo e reposicionado, vira a vitrine que dá credibilidade ao anúncio desde o dia 1.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-icon">📈</div>
+        <div class="ctx-title">Referência de escala</div>
+        <div class="ctx-text">Na operação atual, o investimento em tráfego gira entre <span class="ctx-hi">R$ 10 e 20 mil/mês</span>. Você sabe que R$ 1.500 de verba é ponto de teste, não destino.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RASTREAMENTO -->
+<section>
+  <div class="inner">
+    <div class="sec-label">Prioridade nº 1</div>
+    <h2 class="sec-title">Rastreamento antes de escala</h2>
+    <blockquote class="quote">"O tráfego não é só retorno financeiro — é retorno de informação, de ver o que funciona e o que não funciona. É muito mais fácil começar do zero já traqueando tudo do que traquear lá na frente."<span>— Tufy Hadid, na nossa reunião</span></blockquote>
+    <div class="alert-box">
+      <p>Começar do zero é <strong>vantagem</strong>: nenhum pixel viciado, nenhuma campanha antiga confundindo o algoritmo. O pixel do Meta funciona como um cérebro — ele precisa de uma <strong>amostragem mínima de dados bons</strong> para aprender quem é o seu cliente. Como você mesmo disse, 25 leads não dizem nada; o sistema começa a ler o perfil com volume (na faixa de <strong>300 leads qualificados</strong>).</p>
+      <p>Por isso o método não para no lead: ele vai até a <strong>venda confirmada</strong>. Seu time registra data, nome, telefone e valor do fechamento (planilha ou acesso ao seu software de agendamento, como Avec ou Trinks), a IA estima a chance de fechamento — e a <strong>confirmação final é sempre dupla checagem sua</strong>. Só dado real volta para o anúncio.</p>
+    </div>
+    <div class="loop">
+      <div class="loop-step"><div class="loop-n">01</div><div class="loop-t">Atrair</div><div class="loop-d">Meta e/ou Google mirando quem pode comprar extensão de alto padrão.</div></div>
+      <div class="loop-step"><div class="loop-n">02</div><div class="loop-t">Capturar</div><div class="loop-d">Landing page e WhatsApp com origem registrada em cada contato.</div></div>
+      <div class="loop-step"><div class="loop-n">03</div><div class="loop-t">Alertar</div><div class="loop-d">Lead chegou, alerta imediato no WhatsApp comercial com nome e telefone.</div></div>
+      <div class="loop-step"><div class="loop-n">04</div><div class="loop-t">Classificar</div><div class="loop-d">IA lê a conversa: localização, poder aquisitivo, dor real, agendou avaliação?</div></div>
+      <div class="loop-step"><div class="loop-n">05</div><div class="loop-t">Medir</div><div class="loop-d">Painel ao vivo com gasto Google + Meta, leads, CPL e melhores anúncios.</div></div>
+      <div class="loop-step"><div class="loop-n">06</div><div class="loop-t">Escalar</div><div class="loop-d">Qualificados e vendas voltam ao Meta e Google. O algoritmo passa a caçar quem fecha.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVER DE CASA -->
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">Antes do dia 1</div>
+    <h2 class="sec-title">O que já dá para adiantar</h2>
+    <p class="sec-sub">Os próximos passos que combinamos. Quanto antes estiverem prontos, mais rápido o algoritmo sai da fase de aprendizado.</p>
+    <div class="todo">
+      <div class="todo-card"><div class="todo-who">Tufy</div><div class="todo-t">Exportar a lista de clientes</div><div class="todo-d">Base do software de agendamento para criarmos públicos semelhantes — o atalho para o algoritmo achar perfis parecidos com quem já compra de você.</div></div>
+      <div class="todo-card"><div class="todo-who">Tufy</div><div class="todo-t">Arquivar posts antigos</div><div class="todo-d">Limpar o Instagram de 20 mil seguidores para ele virar vitrine profissional da marca nova. Anúncio para perfil vazio passa sensação de golpe.</div></div>
+      <div class="todo-card"><div class="todo-who">Tufy</div><div class="todo-t">Definir a verba inicial</div><div class="todo-d">Quanto você quer investir no período de teste e onde enxerga o teto nos primeiros 6 meses. É isso que define o nível e o limite de verba ideal.</div></div>
+      <div class="todo-card"><div class="todo-who">Tufy → João</div><div class="todo-t">Contraproposta de limite de verba</div><div class="todo-d">Com os números na mão, me manda o desenho que faz sentido para você. Estou aberto a avaliar — detalhes mais abaixo.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section>
+  <div class="inner">
+    <div class="sec-label">Dados de campo</div>
+    <h2 class="sec-title">Mega hair — resultado auditado</h2>
+    <p class="sec-sub">Operação de mega hair no Rio de Janeiro rodando o Método Demanda Previsível. Números do painel, não estimativa.</p>
+    <div class="bench-grid">
+      <div class="bench-card"><div class="bench-num">81x</div><div class="bench-label">Retorno sobre a verba</div></div>
+      <div class="bench-card"><div class="bench-num">1.333</div><div class="bench-label">Leads gerados</div></div>
+      <div class="bench-card"><div class="bench-num">R$ 3</div><div class="bench-label">Custo por lead</div></div>
+      <div class="bench-card"><div class="bench-num">R$ 325 mil</div><div class="bench-label">Faturamento rastreado</div></div>
+    </div>
+    <div class="alert-box green">
+      <p><strong>Mesmo nicho, posicionamentos diferentes.</strong> Você perguntou o que impede o aprendizado de um cliente ir para outro. Cada marca tem a sua dor, o seu público e o seu diferencial — acabamento, técnica, perfil de cliente — e a campanha é construída em cima disso. E o principal: <strong>suas contas de anúncio, seus dados e seu histórico pertencem a você</strong>, exportáveis a qualquer momento, sem retenção.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NÍVEIS -->
+<section id="niveis" style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">Proposta</div>
+    <h2 class="sec-title">Três níveis. Um sistema.</h2>
+    <p class="sec-sub">A IA classifica cada conversa em todos os níveis. O que muda é o quanto a EmpresAtiva entra no seu processo — e cada nível contém o anterior por inteiro. O Nível 3 não foi apresentado na reunião e está aqui como você pediu.</p>
+    <div class="plans-grid">
+
+      <!-- N1 -->
+      <div class="plan-card">
+        <div class="plan-header">
+          <div class="plan-badges"><span class="plan-badge badge-n1">Nível 1 · Mídia</span></div>
+          <div class="plan-name">Reconhecimento</div>
+          <div class="plan-tagline">Fim do gasto sem rastreio. Cada real investido gera dado auditável.</div>
+          <div class="plan-price-label">Fee mensal fixo</div>
+          <div class="plan-fee">R$ 1.297<span>/mês</span></div>
+          <div class="plan-total t1">Verba gerida até R$ 1.500/mês</div>
+        </div>
+        <div class="plan-body">
+          <ul class="feature-list">
+            <li><span><span class="feat-strong">1 plataforma</span> — Meta Ads ou Google Ads</span></li>
+            <li><span><span class="feat-strong">Landing page</span> com rastreamento de origem em cada lead</span></li>
+            <li><span><span class="feat-strong">Criativos</span> por designer especializada: card, story, carrossel e vídeo</span></li>
+            <li><span><span class="feat-strong">WhatsApp integrado</span> — alerta imediato de lead e resposta automática</span></li>
+            <li><span><span class="feat-strong">Classificação Inteligente</span> — IA lendo e classificando cada conversa</span></li>
+            <li><span><span class="feat-strong">Painel ao vivo</span> — oportunidades, qualificação e ritmo vs. meta</span></li>
+            <li><span><span class="feat-strong">Relatório mensal</span> comparado ao benchmark do nicho</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/5521983424319?text=Fala%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20o%20Tufy.%20Quero%20conversar%20sobre%20o%20N%C3%ADvel%201." class="plan-cta cta-n1">Quero o Nível 1</a>
+      </div>
+
+      <!-- N2 -->
+      <div class="plan-card recommended">
+        <div class="plan-header">
+          <div class="plan-badges"><span class="plan-badge badge-n2">Nível 2 · Lead</span><span class="plan-badge badge-n2">Recomendado para o início</span></div>
+          <div class="plan-name">Operação</div>
+          <div class="plan-tagline">Equipe operando sobre dados classificados. O sistema fecha o ciclo.</div>
+          <div class="plan-price-label">Fee mensal fixo</div>
+          <div class="plan-fee">R$ 1.897<span>/mês</span></div>
+          <div class="plan-total t2">Verba gerida até R$ 1.500/mês</div>
+        </div>
+        <div class="plan-body">
+          <ul class="feature-list">
+            <li><span><span class="feat-strong">Todo o Nível 1</span>, ativo e integrado</span></li>
+            <li><span><span class="feat-strong">Meta Ads + Google Ads</span> operando juntos</span></li>
+            <li><span><span class="feat-strong">CRM EmpresAtiva</span> — WhatsApp, Instagram e e-mail num só lugar, funil Kanban e notas internas, com acesso para o seu time</span></li>
+            <li><span><span class="feat-strong">Atendente de IA 24/7</span> — responde, qualifica e agenda fora do horário</span></li>
+            <li><span><span class="feat-strong">Retorno dos qualificados</span> ao Meta e ao Google como sinal de otimização</span></li>
+            <li><span><span class="feat-strong">Painel Criativo × Funil</span> — o que gera venda, não só lead</span></li>
+            <li><span><span class="feat-strong">Playbook comercial</span> — o que abordar em cada tipo de mensagem e como quebrar objeção</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/5521983424319?text=Fala%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20o%20Tufy.%20Quero%20conversar%20sobre%20o%20N%C3%ADvel%202." class="plan-cta cta-n2">Quero o Nível 2</a>
+      </div>
+
+      <!-- N3 -->
+      <div class="plan-card n3">
+        <div class="plan-header">
+          <div class="plan-badges"><span class="plan-badge badge-n3">Nível 3 · Receita</span><span class="plan-badge badge-new">Verba até R$ 5 mil</span></div>
+          <div class="plan-name">Comando</div>
+          <div class="plan-tagline">Aqui não gerenciamos seu marketing. Gerenciamos sua receita.</div>
+          <div class="plan-price-label">Fee mensal fixo</div>
+          <div class="plan-fee">R$ 3.497<span>/mês</span></div>
+          <div class="plan-total t3">Verba gerida até R$ 5.000/mês · vagas limitadas</div>
+        </div>
+        <div class="plan-body">
+          <ul class="feature-list">
+            <li><span><span class="feat-strong">Todos os recursos dos Níveis 1 e 2</span> ativados</span></li>
+            <li><span><span class="feat-strong">Treinamento comercial semanal</span> com a sua equipe de vendas, para o comercial performar</span></li>
+            <li><span><span class="feat-strong">Acompanhamento direto e contínuo</span> do time comercial</span></li>
+            <li><span><span class="feat-strong">Meta de receita</span> definida, monitorada e revisada todo mês</span></li>
+            <li><span><span class="feat-strong">Reunião mensal com João</span> + quinzenal com o gestor sênior nomeado</span></li>
+            <li><span><span class="feat-strong">Google Business Profile e social media</span> (4 posts/mês) inclusos</span></li>
+            <li><span><span class="feat-strong">Limite de verba 3x maior</span> antes de qualquer excedente</span></li>
+          </ul>
+        </div>
+        <a href="https://wa.me/5521983424319?text=Fala%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20o%20Tufy.%20Quero%20conversar%20sobre%20o%20N%C3%ADvel%203." class="plan-cta cta-n3">Quero o Nível 3</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section>
+  <div class="inner">
+    <div class="sec-label">Investimento</div>
+    <h2 class="sec-title">Fee por faixa de verba</h2>
+    <p class="sec-sub">Você falou em escalar, então simulei o fee EmpresAtiva nas faixas de verba que você tem como referência. A verba é paga por você direto ao Meta e ao Google — não passa pela agência. Acima do limite de cada nível, incide 20% sobre o excedente.</p>
+    <div class="inv-wrap">
+      <table class="inv">
+        <thead>
+          <tr><th>Verba de mídia/mês</th><th>Fee Nível 1</th><th>Fee Nível 2</th><th>Fee Nível 3</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>R$ 1.500</td><td class="c1">R$ 1.297</td><td class="c2">R$ 1.897</td><td class="c3">R$ 3.497</td></tr>
+          <tr><td>R$ 3.000</td><td class="c1">R$ 1.597</td><td class="c2">R$ 2.197</td><td class="c3">R$ 3.497</td></tr>
+          <tr class="hl"><td>R$ 5.000</td><td class="c1">R$ 1.997</td><td class="c2">R$ 2.597</td><td class="c3">R$ 3.497</td></tr>
+          <tr><td>R$ 10.000</td><td class="c1">R$ 2.997</td><td class="c2">R$ 3.597</td><td class="c3">R$ 4.497</td></tr>
+          <tr><td>R$ 20.000</td><td class="c1">R$ 4.997</td><td class="c2">R$ 5.597</td><td class="c3">R$ 6.497</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="inv-note">Cálculo: fee fixo + 20% × (verba − limite do nível). Limite: R$ 1.500 nos Níveis 1 e 2; R$ 5.000 no Nível 3. Exemplo Nível 2 com R$ 10.000: R$ 1.897 + 20% × R$ 8.500 = R$ 3.597.</p>
+  </div>
+</section>
+
+<!-- LIMITE DE VERBA -->
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">Ponto em aberto</div>
+    <h2 class="sec-title">Sobre o limite de verba</h2>
+    <p class="sec-sub">Você levantou a questão e ela é legítima. Fica aqui por escrito como eu penso — e o que está aberto a ajuste.</p>
+    <div class="alert-box">
+      <p><strong>Por que existe um limite.</strong> Quanto mais verba entra, mais complexa fica a árvore do tráfego: mais campanhas, mais criativos para repor saturação, mais testes, mais análise. Um fee fixo sem teto quebraria a operação no dia em que a sua marca escalar — e é justamente esse dia que a gente está construindo. A lógica é crescer junto: se eu te entrego resultado e você investe mais, a gente cresce os dois.</p>
+      <p><strong>O que já existe.</strong> O Nível 3 gere até <strong>R$ 5.000 de verba</strong> antes de qualquer excedente — e traz junto o treinamento comercial semanal que transforma lead em venda.</p>
+      <p><strong>O que está aberto.</strong> Como combinamos: organize seus números de investimento inicial e me mande uma contraproposta — por exemplo, um limite de verba maior no fee fixo e excedente a partir dele. Eu avalio com carinho. Só preciso de uma trava que dê segurança para os dois lados.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARATIVO -->
+<section>
+  <div class="inner">
+    <div class="sec-label">Comparativo</div>
+    <h2 class="sec-title">O que cada nível inclui</h2>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th class="col-feat">Entregável</th>
+            <th class="col-n">Nível 1<br><span style="color:var(--terra)">R$ 1.297</span></th>
+            <th class="col-n">Nível 2<br><span style="color:var(--green)">R$ 1.897</span></th>
+            <th class="col-n">Nível 3<br><span style="color:var(--gold)">R$ 3.497</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="col-feat">Landing page, criativos e rastreamento de origem</td><td class="col-n ck1">✓</td><td class="col-n ck2">✓</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Alerta WhatsApp + Classificação por IA</td><td class="col-n ck1">✓</td><td class="col-n ck2">✓</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Painel ao vivo + relatório mensal</td><td class="col-n ck1">✓</td><td class="col-n ck2">✓</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Plataformas de anúncio</td><td class="col-n">1 <span class="addon">(+R$ 597 pela 2ª)</span></td><td class="col-n ck2">Meta + Google</td><td class="col-n ck3">Meta + Google</td></tr>
+          <tr><td class="col-feat">CRM EmpresAtiva com acesso próprio</td><td class="col-n dash">—</td><td class="col-n ck2">✓</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Atendente de IA 24/7</td><td class="col-n addon">+R$ 297</td><td class="col-n ck2">✓</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Retorno de qualificados ao algoritmo</td><td class="col-n dash">—</td><td class="col-n ck2">✓</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Playbook comercial</td><td class="col-n dash">—</td><td class="col-n ck2">✓</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Treinamento comercial semanal + acompanhamento do time</td><td class="col-n dash">—</td><td class="col-n dash">—</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Meta de receita + reuniões de estratégia</td><td class="col-n dash">—</td><td class="col-n dash">—</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Google Business Profile</td><td class="col-n addon">+R$ 297</td><td class="col-n addon">+R$ 297</td><td class="col-n ck3">✓</td></tr>
+          <tr><td class="col-feat">Social media (4 posts/mês)</td><td class="col-n addon">+R$ 297</td><td class="col-n addon">+R$ 297</td><td class="col-n ck3">✓</td></tr>
+          <tr class="row-price"><td class="col-feat">Verba gerida no fee</td><td class="col-n">até R$ 1.500</td><td class="col-n">até R$ 1.500</td><td class="col-n">até R$ 5.000</td></tr>
+          <tr class="row-price"><td class="col-feat">Excedente de verba</td><td class="col-n">20%</td><td class="col-n">20%</td><td class="col-n">20%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section style="background:var(--surface)">
+  <div class="inner">
+    <div class="sec-label">Quem executa</div>
+    <h2 class="sec-title">Uma equipe completa, não um freelancer</h2>
+    <div class="team" style="margin-top:32px">
+      <div class="team-box">
+        <h3>João Marot — Founder e Head de Estratégia</h3>
+        <p>Ex-Capitão do Exército, formado pela AMAN. Mentor certificado Subido PRO, com Pedro Sobral. EmpresAtiva certificada Google Partner e Meta Business Partner. Mais de R$ 10 milhões em tráfego gerido e 200+ negócios atendidos em 8 anos de mercado.</p>
+      </div>
+      <div class="team-box">
+        <h3>Efetivo de operações</h3>
+        <ul>
+          <li>Gestor de tráfego (Meta e Google Ads)</li>
+          <li>Designer gráfico (criativos para conversão)</li>
+          <li>Web designer (landing pages)</li>
+          <li>Especialista em CRM (follow-up comercial)</li>
+          <li>Especialista em IA (classificação e automações)</li>
+          <li>Especialista em Google Business Profile</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDIÇÕES -->
+<section>
+  <div class="inner">
+    <div class="sec-label">Condições</div>
+    <h2 class="sec-title">Sem ambiguidade</h2>
+    <p class="sec-sub">Como funciona a contratação, em qualquer um dos três níveis.</p>
+    <div class="cond-grid">
+      <div class="cond-card"><div class="cond-t">Início</div><div class="cond-d">Primeira mensalidade no ato da assinatura. Operação ativada em até <strong>2 dias úteis</strong>.</div></div>
+      <div class="cond-card"><div class="cond-t">Garantia de implantação</div><div class="cond-d">Sistema completo no ar em até <strong>10 dias úteis</strong>. Se atrasarmos por responsabilidade nossa, o mês em curso é creditado na mensalidade seguinte.</div></div>
+      <div class="cond-card"><div class="cond-t">Compromisso</div><div class="cond-d">Contrato de <strong>6 meses</strong> — o tempo de o sistema maturar e o algoritmo aprender. Depois, renovação trimestral; para sair, aviso de 30 dias.</div></div>
+      <div class="cond-card"><div class="cond-t">Taxa de implantação</div><div class="cond-d"><strong>R$ 997 — isenta</strong> no contrato de 6 meses. Cobrada só em saída antecipada ou no modelo mensal.</div></div>
+      <div class="cond-card"><div class="cond-t">Modalidade mensal</div><div class="cond-d">Sem prazo de compromisso: qualquer nível, com acréscimo de <strong>35%</strong>.</div></div>
+      <div class="cond-card"><div class="cond-t">Seus dados</div><div class="cond-d">Contas de anúncio, dados e histórico <strong>são seus</strong> — exportáveis a qualquer momento, sem retenção.</div></div>
+    </div>
+    <p class="inv-note" style="text-align:center;margin-top:24px">Não garantimos resultado — garantimos execução, rastreio e correção. Cada real investido gera dado auditável.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="inner">
+    <div class="sec-label">Próximo passo</div>
+    <h2>Monta seus números<br>e me chama, Tufy</h2>
+    <p>Define a verba inicial, me diz qual nível faz mais sentido para o começo da marca e, se quiser, já manda a contraproposta do limite de verba. Eu respondo no mesmo dia.</p>
+    <a href="https://wa.me/5521983424319?text=Fala%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20o%20Tufy.%20Vi%20a%20proposta%2C%20vamos%20conversar." class="cta-btn">Falar com João →</a>
+  </div>
+</section>
+
+<footer>
+  <p><strong>EmpresAtiva Digital</strong> · Av. das Américas 12.900, Sala 403B, Recreio dos Bandeirantes · Rio de Janeiro/RJ</p>
+  <p style="margin-top:6px">empresativa.com.br · @empresativadigital · (21) 98342-4319</p>
+  <p style="margin-top:6px">A verba é paga diretamente às plataformas (Google e Meta) — não passa pela agência.</p>
+</footer>
+
+<a href="https://wa.me/5521983424319?text=Fala%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20o%20Tufy." class="sticky-wa">💬 Falar com João agora</a>
+
+</body>
+</html>
