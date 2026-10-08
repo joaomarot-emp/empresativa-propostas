@@ -1,0 +1,545 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Proposta BF Closet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: briefing de operação — coluna única, hero alinhado à esquerda, linha do tempo vertical por fases, cards de munição em grade */
+:root{
+  --ink:#0B0C0B;        /* fundo base */
+  --panel:#121512;      /* superfícies */
+  --moss:#17351F;       /* verde-musgo, blocos de destaque */
+  --moss-hi:#5f9a6f;    /* musgo legível sobre escuro */
+  --terra:#B5653A;      /* terracota, ação e ênfase */
+  --terra-hi:#d0804f;
+  --bone:#ECE7DC;       /* texto principal */
+  --mute:#9C978C;       /* texto secundário */
+  --line:#272b26;       /* fios e bordas */
+  --f-display:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-body:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--f-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--terra-hi);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;line-height:1.12;letter-spacing:-.01em}
+h3{font-size:1.06rem;font-weight:700;line-height:1.3}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--terra-hi)}
+.lead{color:var(--mute);max-width:62ch;font-size:1.02rem}
+.num{font-variant-numeric:tabular-nums}
+strong{color:var(--bone);font-weight:600}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,12,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px}
+.brand{font-family:var(--f-mono);font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.brand b{color:var(--terra-hi);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-display);font-weight:700;font-size:.92rem;text-decoration:none;border-radius:6px;padding:13px 22px;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-terra{background:var(--terra);color:#fff}
+.btn-terra:hover{background:var(--terra-hi)}
+.btn-ghost{border:1px solid var(--line);color:var(--bone)}
+.btn-ghost:hover{border-color:var(--mute)}
+.btn-sm{padding:9px 16px;font-size:.8rem}
+
+section{padding-block:72px}
+.sec-head{display:grid;gap:14px;margin-bottom:40px}
+
+/* hero */
+.hero{padding-block:72px 56px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(2.2rem,6.4vw,4.3rem);font-weight:900;line-height:1.02;letter-spacing:-.02em;max-width:16ch;margin-block:18px 22px}
+.hero h1 em{font-style:normal;color:var(--terra-hi)}
+.hero .lead{font-size:1.1rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-note{font-family:var(--f-mono);font-size:.74rem;color:var(--mute);letter-spacing:.06em;margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:48px}
+.stat{background:var(--panel);padding:20px 18px}
+.stat b{display:block;font-family:var(--f-display);font-size:clamp(1.4rem,3.4vw,2rem);font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.8rem;color:var(--mute)}
+.stat.goal b{color:var(--terra-hi)}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* diagnóstico */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px 22px;display:grid;gap:10px;align-content:start}
+.card p{color:var(--mute);font-size:.93rem}
+.tag{font-family:var(--f-mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.bridge{margin-top:36px;padding:26px 28px;background:var(--moss);border-radius:10px;font-size:1.08rem;max-width:none}
+.bridge strong{color:#fff}
+
+/* alvo */
+.target{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start}
+@media (max-width:860px){.target{grid-template-columns:1fr}}
+.calc{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.calc-row{display:flex;justify-content:space-between;gap:16px;padding:15px 22px;border-bottom:1px solid var(--line);font-size:.95rem}
+.calc-row:last-child{border-bottom:0}
+.calc-row span{color:var(--mute)}
+.calc-row b{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.calc-row.total{background:var(--moss)}
+.calc-row.total span{color:var(--bone)}
+.calc-row.total b{color:#fff}
+.steps{display:grid;gap:12px}
+.step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.step .k{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.12em;color:var(--terra-hi);padding-top:3px;white-space:nowrap}
+.step p{color:var(--mute);font-size:.92rem;margin-top:4px}
+.warn{border-color:rgba(181,101,58,.45)}
+.fine{font-size:.82rem;color:var(--mute);margin-top:14px;max-width:70ch}
+
+/* diferenciais */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:.88rem;background:var(--panel)}
+.chip b{color:var(--moss-hi);font-weight:600;margin-right:6px}
+
+/* timeline */
+.timeline{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.phase{position:relative;display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:26px 0 26px 28px;border-bottom:1px solid var(--line)}
+.phase:last-child{border-bottom:0}
+.phase::before{content:"";position:absolute;left:-8px;top:32px;width:14px;height:14px;border-radius:50%;background:var(--ink);border:2px solid var(--terra)}
+.phase.done::before{background:var(--terra)}
+.phase-meta{display:grid;gap:6px;align-content:start}
+.phase-meta .ph{font-family:var(--f-mono);font-size:.76rem;font-weight:600;letter-spacing:.14em;color:var(--terra-hi)}
+.phase-meta .when{font-family:var(--f-mono);font-size:.72rem;color:var(--mute);letter-spacing:.06em}
+.phase-body{display:grid;gap:8px}
+.phase-body p{color:var(--mute);font-size:.94rem}
+.deliver{font-size:.9rem;color:var(--bone)!important}
+.deliver::before{content:"▸ ";color:var(--terra-hi)}
+@media (max-width:720px){.phase{grid-template-columns:1fr;gap:10px;padding-left:22px}}
+
+/* munição */
+.ammo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.ammo{grid-template-columns:1fr}}
+.ammo .card{grid-template-columns:auto minmax(0,1fr);column-gap:16px}
+.ammo .ic{grid-row:span 2;width:40px;height:40px;border-radius:8px;background:var(--moss);display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:.8rem;color:#cfe3d4}
+.ammo .bonus{border-style:dashed}
+.ammo .bonus .ic{background:transparent;border:1px solid var(--terra);color:var(--terra-hi)}
+
+/* garantia */
+.guarantee{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;background:var(--moss);border-radius:12px;padding:34px 32px}
+.seal{width:110px;height:110px;border-radius:50%;border:2px dashed rgba(236,231,220,.5);display:grid;place-items:center;text-align:center;font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.12em;line-height:1.4}
+.seal b{display:block;font-family:var(--f-display);font-size:1.7rem;letter-spacing:0;line-height:1}
+.guarantee p{color:#d9e4da;margin-top:10px;max-width:60ch}
+@media (max-width:640px){.guarantee{grid-template-columns:1fr;padding:26px 22px}}
+
+/* investimento */
+.invest{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+@media (max-width:860px){.invest{grid-template-columns:1fr}}
+.price{background:var(--panel);border:1px solid var(--terra);border-radius:12px;padding:30px 28px;display:grid;gap:18px}
+.price .lvl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:4px;background:rgba(181,101,58,.16);color:var(--terra-hi);border:1px solid rgba(181,101,58,.4)}
+.pill.moss{background:rgba(95,154,111,.14);color:var(--moss-hi);border-color:rgba(95,154,111,.4)}
+.amount{font-family:var(--f-display);font-size:clamp(2.6rem,7vw,3.4rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.amount small{font-size:1rem;font-weight:500;color:var(--mute);margin-left:4px}
+.lines{display:grid;border-top:1px solid var(--line)}
+.lines div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.lines span{color:var(--mute)}
+.lines b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.lines .sum b{color:var(--terra-hi);font-size:1.05rem}
+.side{display:grid;gap:16px}
+.formula{font-family:var(--f-mono);font-size:.84rem;background:var(--ink);border:1px dashed var(--line);border-radius:8px;padding:12px 14px;color:var(--bone)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:360px;font-variant-numeric:tabular-nums}
+th,td{padding:11px 16px;text-align:right;border-bottom:1px solid var(--line);font-size:.9rem}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);background:var(--panel)}
+tr:last-child td{border-bottom:0}
+td.hl{color:var(--terra-hi);font-weight:700}
+
+/* próximo degrau */
+.next{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin-top:20px}
+.next ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:6px;color:var(--mute);font-size:.92rem}
+.next li::before{content:"▸ ";color:var(--moss-hi)}
+.next .np{text-align:right}
+.next .np b{display:block;font-family:var(--f-display);font-size:1.8rem;font-weight:800;color:var(--moss-hi)}
+.next .np span{font-size:.8rem;color:var(--mute)}
+@media (max-width:640px){.next{grid-template-columns:1fr}.next .np{text-align:left}}
+
+/* quem comanda */
+.cmd{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start}
+@media (max-width:860px){.cmd{grid-template-columns:1fr}}
+.cmd .bio p+p{margin-top:12px}
+.cmd .bio p{color:var(--mute)}
+.mini-stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:22px}
+.mini-stats b{display:block;font-family:var(--f-display);font-size:1.6rem;font-weight:800;line-height:1.1}
+.mini-stats span{font-size:.78rem;color:var(--mute)}
+.case{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;gap:12px}
+.case .big{font-family:var(--f-display);font-size:1.5rem;font-weight:800;line-height:1.2}
+.case .big em{font-style:normal;color:var(--terra-hi)}
+.refs{display:flex;flex-wrap:wrap;gap:8px}
+.refs span{font-size:.8rem;border:1px solid var(--line);border-radius:4px;padding:5px 10px;color:var(--mute)}
+
+/* faq */
+.faq{display:grid;gap:10px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 0;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-mono);font-size:1.2rem;color:var(--terra-hi);flex-shrink:0}
+details[open] summary::after{content:"−"}
+details p{color:var(--mute);font-size:.94rem;padding-bottom:18px;max-width:72ch}
+
+/* final */
+.final{text-align:left;border-top:1px solid var(--line)}
+.final .box{background:var(--moss);border-radius:14px;padding:44px 36px;display:grid;gap:16px}
+.final .box p{color:#d9e4da;max-width:60ch}
+.final .box h2{max-width:20ch}
+@media (max-width:640px){.final .box{padding:32px 22px}}
+footer{border-top:1px solid var(--line);padding-block:28px 40px}
+footer p{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand"><b>EmpresAtiva</b> Digital</span>
+    <a class="btn btn-terra btn-sm" href="https://wa.me/5521983424319?text=Oi%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20a%20Beatriz%20(BF%20Closet)." target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Proposta · Beatriz · BF Closet · Rio de Janeiro</p>
+    <h1>Peças que quase ninguém tem. <em>O Rio inteiro vai saber onde&nbsp;achar.</em></h1>
+    <p class="lead">Você representa uma marca desejada, com no máximo três ou quatro peças por modelo, e já vende todo mês só com o orgânico. O que falta é o Rio saber que essa marca está com a BF Closet. É isso que o tráfego pago vai resolver.</p>
+    <div class="hero-cta">
+      <a class="btn btn-terra" href="#operacao">Ver a operação</a>
+      <a class="btn btn-ghost" href="#investimento">Ver investimento</a>
+    </div>
+    <p class="hero-note">Nível 1 · Tráfego pago no Instagram · Landing page de portfólio inclusa</p>
+    <div class="stats">
+      <div class="stat goal"><b>~30 mil</b><span>seguidores no Instagram</span></div>
+      <div class="stat"><b>3 a 4</b><span>peças por modelo, no máximo</span></div>
+      <div class="stat"><b>Todo mês</b><span>vendas recorrentes só no orgânico</span></div>
+      <div class="stat"><b>RJ</b><span>praça onde poucos sabem da representação</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Diagnóstico</p>
+      <h2>O que vimos na nossa conversa</h2>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag">A favor</span>
+        <h3>A demanda já existe</h3>
+        <p>A marca está em alta e tem gente procurando por ela. Com poucas peças por modelo, cada lançamento já nasce com sensação de exclusividade.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Gargalo</span>
+        <h3>Pouca gente sabe que é com você</h3>
+        <p>No Rio, a maioria de quem deseja essas peças não sabe que a BF Closet representa a marca. Essas vendas hoje vão para outro lugar ou não acontecem.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Ativo parado</span>
+        <h3>Um Instagram maduro e pouco usado</h3>
+        <p>Quase 30 mil seguidores reais e um público orgânico que compra. Você posta pouco, então boa parte dessa base nem fica sabendo das peças novas.</p>
+      </div>
+    </div>
+    <p class="bridge">O produto desejado e a base de seguidores já estão aí. Falta <strong>alcance direcionado: avisar a quem já te segue e apresentar a BF Closet a quem procura a marca no Rio.</strong></p>
+  </div>
+</section>
+
+<!-- ESTRATÉGIA -->
+<section style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">A estratégia</p>
+      <h2>Três públicos, uma mensagem</h2>
+      <p class="lead">Os anúncios são segmentados por quem a pessoa é em relação à BF Closet. Cada público recebe a mensagem certa, com um objetivo só: deixar claro que a marca está com você.</p>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag">Público · Quem já te segue</span>
+        <h3>Seguidores e engajados</h3>
+        <p>Quem segue, curte, salva e responde stories. Recebe aviso de peça nova, chegada de coleção e últimas unidades — a base que hoje não vê seus posts passa a ver.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Público · Quem já comprou</span>
+        <h3>Clientes e parecidas</h3>
+        <p>Com a sua lista de clientes, avisamos quem já compra e criamos públicos semelhantes: mulheres no Rio com o mesmo perfil de quem já fechou com você.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Público · Quem ainda não sabe</span>
+        <h3>Novas pessoas no Rio</h3>
+        <p>Quem tem interesse na marca e no estilo dela, mas ainda não conhece a BF Closet. A mensagem é direta: essa marca você encontra aqui.</p>
+      </div>
+    </div>
+    <div class="target" style="margin-top:24px">
+      <div class="step warn">
+        <span class="k">ESCASSEZ</span>
+        <div><h3>Poucas peças viram argumento de venda</h3><p>Com três ou quatro unidades por modelo, os criativos trabalham chegada, exclusividade e últimas peças. Quando um modelo esgota, trocamos o anúncio para não gastar verba com o que já não está à venda.</p></div>
+      </div>
+      <div class="step">
+        <span class="k">FASE 2</span>
+        <div><h3>E-commerce, no momento certo</h3><p>A loja online faz sentido depois que o tráfego mostrar quais peças e quais públicos vendem mais. Começar pelo Instagram e pelo WhatsApp mantém o atendimento próximo, que combina com peças exclusivas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VITRINE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">A vitrine</p>
+      <h2>Uma landing page que funciona como portfólio</h2>
+      <p class="lead">Antes de chamar no WhatsApp, a cliente precisa confiar. A página reúne em um só lugar o que hoje está espalhado no feed e cria autoridade para a BF Closet como representante oficial no Rio.</p>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>▸</b>Quem é a Beatriz e a BF Closet</span>
+      <span class="chip"><b>▸</b>A marca que você representa</span>
+      <span class="chip"><b>▸</b>Peças e coleções em destaque</span>
+      <span class="chip"><b>▸</b>Por que são exclusivas</span>
+      <span class="chip"><b>▸</b>Depoimentos de clientes</span>
+      <span class="chip"><b>▸</b>Como comprar · botão para o WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<!-- OPERAÇÃO -->
+<section id="operacao" style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">A operação · primeiros 90 dias</p>
+      <h2>Do primeiro acesso ao primeiro fechamento</h2>
+      <p class="lead">Como a operação acontece, fase por fase, e o que você recebe em cada uma.</p>
+    </div>
+    <div class="timeline">
+      <div class="phase done">
+        <div class="phase-meta"><span class="ph">FASE 01</span><span class="when">Semana 1</span></div>
+        <div class="phase-body">
+          <h3>Alistamento</h3>
+          <p>Acessos às contas, briefing da BF Closet e da marca, envio da sua lista de clientes e conexão do seu WhatsApp ao nosso software.</p>
+          <p class="deliver">Contas conectadas e públicos de clientes criados</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 02</span><span class="when">Semanas 1–2</span></div>
+        <div class="phase-body">
+          <h3>Vitrine no ar</h3>
+          <p>Landing page de portfólio com as peças, a marca e o caminho direto para o WhatsApp, com rastreamento de origem em cada contato.</p>
+          <p class="deliver">Página publicada e pronta para receber os anúncios</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 03</span><span class="when">Semana 2 em diante</span></div>
+        <div class="phase-body">
+          <h3>Criativos</h3>
+          <p>Nossa equipe de design cria imagens e carrosséis das peças. Você recebe roteiros curtos para gravar no celular — chegada de peças, provador, detalhes — e nós editamos.</p>
+          <p class="deliver">Primeiro lote de criativos para os três públicos</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 04</span><span class="when">Até o 10º dia útil</span></div>
+        <div class="phase-body">
+          <h3>Campanhas no ar</h3>
+          <p>Anúncios no Instagram para seguidores, clientes e novas pessoas no Rio. Cada nova conversa dispara um alerta no seu WhatsApp para você responder enquanto o interesse está quente.</p>
+          <p class="deliver">Três campanhas segmentadas rodando</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 05</span><span class="when">Semanas 3–8</span></div>
+        <div class="phase-body">
+          <h3>Leitura de campo e ajuste</h3>
+          <p>A IA lê as conversas e classifica quem está pronta para comprar. Com isso sabemos quais públicos e quais peças geram venda, e reforçamos esses anúncios.</p>
+          <p class="deliver">Públicos e criativos ajustados pelo que vende</p>
+        </div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 06</span><span class="when">Todo mês</span></div>
+        <div class="phase-body">
+          <h3>Fechamento mensal</h3>
+          <p>Relatório com alcance, conversas, custo por contato e vendas. Com os números na mesa, decidimos juntos a verba do próximo mês e quando faz sentido abrir o e-commerce.</p>
+          <p class="deliver">Relatório mensal e plano do mês seguinte</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MUNIÇÃO -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Munição</p>
+      <h2>O que você recebe no Nível 1</h2>
+    </div>
+    <div class="ammo">
+      <div class="card"><span class="ic">ADS</span><h3>Tráfego pago no Instagram</h3><p>Estrutura completa de campanhas no Meta Ads, segmentada para seguidores, clientes e novos públicos no Rio.</p></div>
+      <div class="card"><span class="ic">LP</span><h3>Landing page de portfólio</h3><p>A vitrine da BF Closet e da marca, com rastreamento de origem em cada contato.</p></div>
+      <div class="card"><span class="ic">DSG</span><h3>Equipe de design</h3><p>Imagens e carrosséis para anúncio, roteiros de vídeo e edição do que você gravar.</p></div>
+      <div class="card"><span class="ic">WPP</span><h3>WhatsApp integrado</h3><p>Alerta imediato de nova conversa e resposta automática de recebimento fora do horário.</p></div>
+      <div class="card"><span class="ic">IA</span><h3>Classificação Inteligente</h3><p>IA lendo cada conversa e identificando quem compra, para segmentar de novo os públicos que mais vendem.</p></div>
+      <div class="card"><span class="ic">LIVE</span><h3>Painel ao vivo</h3><p>Investimento, contatos, custo por contato e melhores anúncios em tempo real.</p></div>
+      <div class="card"><span class="ic">REL</span><h3>Relatório mensal</h3><p>Resultado do mês comparado ao mercado, para saber o que escalar e o que cortar.</p></div>
+      <div class="card bonus"><span class="ic">F2</span><h3>Fase 2: e-commerce</h3><p>Quando os dados mostrarem quais peças e públicos vendem mais, desenhamos juntos a loja online.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="seal"><span><b>10</b>DIAS ÚTEIS</span></div>
+      <div>
+        <p class="eyebrow" style="color:#e8b28f">Garantia de implantação</p>
+        <h2 style="font-size:clamp(1.5rem,3.4vw,2.1rem);margin-top:8px">Sistema completo no ar, ou o mês é por nossa conta</h2>
+        <p>Landing page, criativos, campanhas e WhatsApp integrado em até 10 dias úteis após a confirmação do pagamento. Se atrasarmos por responsabilidade nossa, o mês em curso é creditado na mensalidade seguinte. Não prometemos resultado mágico: prometemos execução, rastreio e correção.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section id="investimento" style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Investimento</p>
+      <h2>Quanto custa por mês</h2>
+      <p class="lead">Um valor fixo pela operação inteira. A verba dos anúncios é paga por você direto ao Meta e não passa pela agência.</p>
+    </div>
+    <div class="invest">
+      <div class="price">
+        <div class="lvl"><span class="pill">Nível 1 · Reconhecimento</span><span class="pill moss">Meta Ads · Instagram</span></div>
+        <div class="amount">R$ 1.297<small>/mês</small></div>
+        <div class="lines">
+          <div><span>Gestão EmpresAtiva (fee fixo)</span><b>R$ 1.297</b></div>
+          <div><span>Verba de anúncio gerida no fee</span><b>até R$ 1.500</b></div>
+          <div class="sum"><span>Total com verba de R$ 1.500</span><b>≈ R$ 2.800/mês</b></div>
+        </div>
+        <a class="btn btn-terra" href="https://wa.me/5521983424319?text=Oi%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20a%20Beatriz.%20Vamos%20dar%20start%20no%20N%C3%ADvel%201." target="_blank" rel="noopener">Quero dar o start</a>
+      </div>
+      <div class="side">
+        <div class="card">
+          <span class="tag">Se a verba crescer</span>
+          <h3>A gente cresce junto</h3>
+          <p>O fee cobre a gestão de até R$ 1.500/mês de verba. Acima disso, incide 20% apenas sobre o que exceder.</p>
+          <div class="formula">fee do mês = R$ 1.297 + 20% × (verba − R$ 1.500)</div>
+        </div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Verba/mês</th><th>Fee do mês</th><th>Total</th></tr></thead>
+            <tbody>
+              <tr><td>R$ 1.000</td><td>R$ 1.297</td><td>R$ 2.297</td></tr>
+              <tr><td>R$ 1.500</td><td>R$ 1.297</td><td class="hl">R$ 2.797</td></tr>
+              <tr><td>R$ 2.000</td><td>R$ 1.397</td><td>R$ 3.397</td></tr>
+              <tr><td>R$ 3.000</td><td>R$ 1.597</td><td>R$ 4.597</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="ammo" style="margin-top:20px">
+      <div class="card"><span class="ic">6M</span><h3>Contrato de 6 meses</h3><p>Tempo para o algoritmo aprender quem compra. Depois, renovação trimestral; para sair, aviso de 30 dias.</p></div>
+      <div class="card"><span class="ic">0</span><h3>Implantação isenta</h3><p>Taxa de implantação de R$ 997 isenta no contrato de 6 meses. Contas, dados e histórico são seus.</p></div>
+    </div>
+    <div class="next">
+      <div>
+        <span class="tag">Próximo degrau, quando fizer sentido</span>
+        <h3 style="margin-top:6px">Nível 2 · Operação</h3>
+        <ul>
+          <li>CRM EmpresAtiva para organizar clientes e interessadas</li>
+          <li>Agente de IA que responde e qualifica fora do horário</li>
+          <li>Meta + Google e retorno das compradoras ao algoritmo</li>
+          <li>Playbook comercial para o atendimento</li>
+        </ul>
+      </div>
+      <div class="np"><b>R$ 1.897</b><span>por mês</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM COMANDA -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Quem comanda</p>
+      <h2>João Marot · EmpresAtiva Digital</h2>
+    </div>
+    <div class="cmd">
+      <div class="bio">
+        <p>Ex-capitão do Exército, formado pela AMAN, mentor certificado no Subido PRO, com Pedro Sobral, e certificado em Google Ads e Meta Ads.</p>
+        <p>A equipe reúne gestores de tráfego, designers, web designer e especialistas em CRM e inteligência artificial. Você não contrata um freelancer: ativa uma operação inteira.</p>
+        <div class="mini-stats">
+          <div><b>+250</b><span>negócios atendidos</span></div>
+          <div><b>2018</b><span>em operação desde</span></div>
+          <div><b>Meta + Google</b><span>certificações oficiais</span></div>
+        </div>
+      </div>
+      <div class="case">
+        <span class="tag">Como medimos</span>
+        <p class="big">Cada real investido <em>vira dado</em>, não achismo</p>
+        <p style="color:var(--mute);font-size:.92rem">Você sabe quantas pessoas viram, quantas chamaram, quanto custou cada conversa e quais anúncios trouxeram compradoras. É com isso que decidimos onde colocar mais verba.</p>
+        <div class="refs"><span>Painel ao vivo</span><span>Relatório mensal</span><span>Rastreamento de origem</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Antes de decidir</p>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Funciona com tão poucas peças por modelo?</summary>
+        <p>Funciona a favor. Poucas unidades criam urgência, e os anúncios trabalham chegada e últimas peças. Quando um modelo esgota, trocamos o criativo para não gastar verba com o que já foi vendido.</p>
+      </details>
+      <details>
+        <summary>Vou precisar postar muito mais?</summary>
+        <p>Não muito mais. Nossa equipe cria as peças de anúncio e te manda roteiros curtos para gravar no celular. Os anúncios entregam para quem você precisa, sem depender de você postar todo dia.</p>
+      </details>
+      <details>
+        <summary>Por que não começar pelo e-commerce?</summary>
+        <p>Porque primeiro precisamos saber quais peças e quais públicos vendem mais. Com esse dado, a loja online nasce com produto e tráfego certos. Até lá, o WhatsApp mantém o atendimento próximo que peças exclusivas pedem.</p>
+      </details>
+      <details>
+        <summary>Os anúncios aparecem para quem já me segue?</summary>
+        <p>Sim. Uma das campanhas é só para seguidores e quem interage com o seu perfil, para avisar de novidades que hoje eles não veem no feed.</p>
+      </details>
+      <details>
+        <summary>A verba passa pela agência?</summary>
+        <p>Não. A verba é paga por você direto ao Meta. Contas de anúncio, dados e histórico são seus.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <div class="box">
+      <p class="eyebrow" style="color:#e8b28f">Próximo passo</p>
+      <h2>Vamos colocar a BF Closet no radar do Rio?</h2>
+      <p>Me chama no WhatsApp com as suas dúvidas. Com o ok, a operação começa em até 2 dias úteis e o sistema completo fica no ar em até 10.</p>
+      <div class="hero-cta" style="margin-top:8px">
+        <a class="btn btn-terra" href="https://wa.me/5521983424319?text=Oi%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20a%20Beatriz.%20Vi%20a%20proposta%20da%20BF%20Closet." target="_blank" rel="noopener">Falar com João</a>
+      </div>
+      <p class="hero-note" style="color:#c8d6ca">WhatsApp (21) 98342-4319</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>EmpresAtiva Digital · Av. das Américas 12.900, Sala 403B · Rio de Janeiro — RJ</p>
+  </div>
+</footer>
+
+</body></html>
