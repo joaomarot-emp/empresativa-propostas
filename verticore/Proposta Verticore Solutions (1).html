@@ -1,0 +1,552 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Proposta Verticore Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: briefing de operação — coluna única, hero alinhado à esquerda, linha do tempo vertical por fases, cards de munição em grade */
+:root{
+  --ink:#0B0C0B;        /* fundo base */
+  --panel:#121512;      /* superfícies */
+  --moss:#17351F;       /* verde-musgo, blocos de destaque */
+  --moss-hi:#5f9a6f;    /* musgo legível sobre escuro */
+  --terra:#B5653A;      /* terracota, ação e ênfase */
+  --terra-hi:#d0804f;
+  --bone:#ECE7DC;       /* texto principal */
+  --mute:#9C978C;       /* texto secundário */
+  --line:#272b26;       /* fios e bordas */
+  --f-display:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-body:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--f-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--terra-hi);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:800;line-height:1.12;letter-spacing:-.01em}
+h3{font-size:1.06rem;font-weight:700;line-height:1.3}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--terra-hi)}
+.lead{color:var(--mute);max-width:62ch;font-size:1.02rem}
+.num{font-variant-numeric:tabular-nums}
+strong{color:var(--bone);font-weight:600}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,12,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px}
+.brand{font-family:var(--f-mono);font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.brand b{color:var(--terra-hi);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-display);font-weight:700;font-size:.92rem;text-decoration:none;border-radius:6px;padding:13px 22px;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-terra{background:var(--terra);color:#fff}
+.btn-terra:hover{background:var(--terra-hi)}
+.btn-ghost{border:1px solid var(--line);color:var(--bone)}
+.btn-ghost:hover{border-color:var(--mute)}
+.btn-sm{padding:9px 16px;font-size:.8rem}
+
+section{padding-block:72px}
+.sec-head{display:grid;gap:14px;margin-bottom:40px}
+
+/* hero */
+.hero{padding-block:72px 56px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(2.2rem,6.4vw,4.3rem);font-weight:900;line-height:1.02;letter-spacing:-.02em;max-width:16ch;margin-block:18px 22px}
+.hero h1 em{font-style:normal;color:var(--terra-hi)}
+.hero .lead{font-size:1.1rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-note{font-family:var(--f-mono);font-size:.74rem;color:var(--mute);letter-spacing:.06em;margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:48px}
+.stat{background:var(--panel);padding:20px 18px}
+.stat b{display:block;font-family:var(--f-display);font-size:clamp(1.4rem,3.4vw,2rem);font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.8rem;color:var(--mute)}
+.stat.goal b{color:var(--terra-hi)}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* diagnóstico */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.grid3{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px 22px;display:grid;gap:10px;align-content:start}
+.card p{color:var(--mute);font-size:.93rem}
+.tag{font-family:var(--f-mono);font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.bridge{margin-top:36px;padding:26px 28px;background:var(--moss);border-radius:10px;font-size:1.08rem;max-width:none}
+.bridge strong{color:#fff}
+
+/* alvo */
+.target{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;align-items:start}
+@media (max-width:860px){.target{grid-template-columns:1fr}}
+.calc{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.calc-row{display:flex;justify-content:space-between;gap:16px;padding:15px 22px;border-bottom:1px solid var(--line);font-size:.95rem}
+.calc-row:last-child{border-bottom:0}
+.calc-row span{color:var(--mute)}
+.calc-row b{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.calc-row.total{background:var(--moss)}
+.calc-row.total span{color:var(--bone)}
+.calc-row.total b{color:#fff}
+.steps{display:grid;gap:12px}
+.step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.step .k{font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.12em;color:var(--terra-hi);padding-top:3px;white-space:nowrap}
+.step p{color:var(--mute);font-size:.92rem;margin-top:4px}
+.warn{border-color:rgba(181,101,58,.45)}
+.fine{font-size:.82rem;color:var(--mute);margin-top:14px;max-width:70ch}
+
+/* diferenciais */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:.88rem;background:var(--panel)}
+.chip b{color:var(--moss-hi);font-weight:600;margin-right:6px}
+
+/* timeline */
+.timeline{display:grid;gap:0;border-left:2px solid var(--line);margin-left:6px}
+.phase{position:relative;display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:26px 0 26px 28px;border-bottom:1px solid var(--line)}
+.phase:last-child{border-bottom:0}
+.phase::before{content:"";position:absolute;left:-8px;top:32px;width:14px;height:14px;border-radius:50%;background:var(--ink);border:2px solid var(--terra)}
+.phase.done::before{background:var(--terra)}
+.phase-meta{display:grid;gap:6px;align-content:start}
+.phase-meta .ph{font-family:var(--f-mono);font-size:.76rem;font-weight:600;letter-spacing:.14em;color:var(--terra-hi)}
+.phase-meta .when{font-family:var(--f-mono);font-size:.72rem;color:var(--mute);letter-spacing:.06em}
+.phase-body{display:grid;gap:8px}
+.phase-body p{color:var(--mute);font-size:.94rem}
+.deliver{font-size:.9rem;color:var(--bone)!important}
+.deliver::before{content:"▸ ";color:var(--terra-hi)}
+@media (max-width:720px){.phase{grid-template-columns:1fr;gap:10px;padding-left:22px}}
+
+/* munição */
+.ammo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.ammo{grid-template-columns:1fr}}
+.ammo .card{grid-template-columns:auto minmax(0,1fr);column-gap:16px}
+.ammo .ic{grid-row:span 2;width:40px;height:40px;border-radius:8px;background:var(--moss);display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:.8rem;color:#cfe3d4}
+.ammo .bonus{border-style:dashed}
+.ammo .bonus .ic{background:transparent;border:1px solid var(--terra);color:var(--terra-hi)}
+
+/* garantia */
+.guarantee{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;background:var(--moss);border-radius:12px;padding:34px 32px}
+.seal{width:110px;height:110px;border-radius:50%;border:2px dashed rgba(236,231,220,.5);display:grid;place-items:center;text-align:center;font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.12em;line-height:1.4}
+.seal b{display:block;font-family:var(--f-display);font-size:1.7rem;letter-spacing:0;line-height:1}
+.guarantee p{color:#d9e4da;margin-top:10px;max-width:60ch}
+@media (max-width:640px){.guarantee{grid-template-columns:1fr;padding:26px 22px}}
+
+/* investimento */
+.invest{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+@media (max-width:860px){.invest{grid-template-columns:1fr}}
+.price{background:var(--panel);border:1px solid var(--terra);border-radius:12px;padding:30px 28px;display:grid;gap:18px}
+.price .lvl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:4px;background:rgba(181,101,58,.16);color:var(--terra-hi);border:1px solid rgba(181,101,58,.4)}
+.pill.moss{background:rgba(95,154,111,.14);color:var(--moss-hi);border-color:rgba(95,154,111,.4)}
+.amount{font-family:var(--f-display);font-size:clamp(2.6rem,7vw,3.4rem);font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.amount small{font-size:1rem;font-weight:500;color:var(--mute);margin-left:4px}
+.lines{display:grid;border-top:1px solid var(--line)}
+.lines div{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.lines span{color:var(--mute)}
+.lines b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.lines .sum b{color:var(--terra-hi);font-size:1.05rem}
+.side{display:grid;gap:16px}
+.formula{font-family:var(--f-mono);font-size:.84rem;background:var(--ink);border:1px dashed var(--line);border-radius:8px;padding:12px 14px;color:var(--bone)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;min-width:360px;font-variant-numeric:tabular-nums}
+th,td{padding:11px 16px;text-align:right;border-bottom:1px solid var(--line);font-size:.9rem}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);background:var(--panel)}
+tr:last-child td{border-bottom:0}
+td.hl{color:var(--terra-hi);font-weight:700}
+
+/* próximo degrau */
+.next{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:26px 28px;margin-top:20px}
+.next ul{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:6px;color:var(--mute);font-size:.92rem}
+.next li::before{content:"▸ ";color:var(--moss-hi)}
+.next .np{text-align:right}
+.next .np b{display:block;font-family:var(--f-display);font-size:1.8rem;font-weight:800;color:var(--moss-hi)}
+.next .np span{font-size:.8rem;color:var(--mute)}
+@media (max-width:640px){.next{grid-template-columns:1fr}.next .np{text-align:left}}
+
+/* quem comanda */
+.cmd{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start}
+@media (max-width:860px){.cmd{grid-template-columns:1fr}}
+.cmd .bio p+p{margin-top:12px}
+.cmd .bio p{color:var(--mute)}
+.mini-stats{display:flex;flex-wrap:wrap;gap:26px;margin-top:22px}
+.mini-stats b{display:block;font-family:var(--f-display);font-size:1.6rem;font-weight:800;line-height:1.1}
+.mini-stats span{font-size:.78rem;color:var(--mute)}
+.case{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;gap:12px}
+.case .big{font-family:var(--f-display);font-size:1.5rem;font-weight:800;line-height:1.2}
+.case .big em{font-style:normal;color:var(--terra-hi)}
+.refs{display:flex;flex-wrap:wrap;gap:8px}
+.refs span{font-size:.8rem;border:1px solid var(--line);border-radius:4px;padding:5px 10px;color:var(--mute)}
+
+/* faq */
+.faq{display:grid;gap:10px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:0 22px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 0;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-mono);font-size:1.2rem;color:var(--terra-hi);flex-shrink:0}
+details[open] summary::after{content:"−"}
+details p{color:var(--mute);font-size:.94rem;padding-bottom:18px;max-width:72ch}
+
+/* final */
+.final{text-align:left;border-top:1px solid var(--line)}
+.final .box{background:var(--moss);border-radius:14px;padding:44px 36px;display:grid;gap:16px}
+.final .box p{color:#d9e4da;max-width:60ch}
+.final .box h2{max-width:20ch}
+@media (max-width:640px){.final .box{padding:32px 22px}}
+footer{border-top:1px solid var(--line);padding-block:28px 40px}
+footer p{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;color:var(--mute);text-transform:uppercase}
+</style>
+<style>
+.fixes{display:grid;gap:10px}
+.fix{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+.fix .sev{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:4px;text-align:center}
+.sev.high{background:rgba(181,101,58,.18);color:var(--terra-hi);border:1px solid rgba(181,101,58,.45)}
+.sev.mid{background:rgba(236,231,220,.06);color:var(--bone);border:1px solid var(--line)}
+.fix h3{font-size:.98rem}
+.fix p{color:var(--mute);font-size:.9rem;margin-top:4px}
+@media (max-width:560px){.fix{grid-template-columns:1fr;gap:8px}.fix .sev{justify-self:start}}
+.channels{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.channels{grid-template-columns:1fr}}
+.channels .card ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:6px;color:var(--mute);font-size:.9rem}
+.channels .card li::before{content:"▸ ";color:var(--terra-hi)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+@media (max-width:860px){.opts{grid-template-columns:1fr}}
+.opt{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:28px 26px;display:grid;gap:16px}
+.opt.rec{border-color:var(--terra)}
+.opt ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:.92rem;color:var(--mute)}
+.opt li{padding-bottom:8px;border-bottom:1px solid var(--line)}
+.opt li:last-child{border-bottom:0;padding-bottom:0}
+.opt li b{color:var(--bone);font-weight:600}
+.opt .when{font-size:.88rem;color:var(--bone);background:var(--ink);border:1px dashed var(--line);border-radius:8px;padding:12px 14px}
+.opt .when span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;color:var(--terra-hi);display:block;margin-bottom:4px}
+.fronts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.fronts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.fronts{grid-template-columns:1fr}}
+.cmp td:nth-child(2),.cmp td:nth-child(3),.cmp th:nth-child(2),.cmp th:nth-child(3){text-align:center}
+.cmp td.ok{color:var(--moss-hi);font-weight:600}
+.cmp td.no{color:#5b5e57}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="brand"><b>EmpresAtiva</b> Digital</span>
+    <a class="btn btn-terra btn-sm" href="https://wa.me/5521983424319?text=Oi%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20o%20Marcelo%20(Verticore)." target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Análise e proposta · Marcelo · Verticore Solutions · Rio de Janeiro</p>
+    <h1>Quem precisa de trabalho em altura vai achar a <em>Verticore primeiro</em></h1>
+    <p class="lead">Analisei o site e o posicionamento da Verticore para montar o tráfego pago. Aqui está o que encontrei, o que precisa ser ajustado antes de investir em anúncio e as duas opções mais completas da EmpresAtiva: tráfego, CRM, agente de IA e, no Nível 3, treinamento semanal da sua equipe comercial.</p>
+    <div class="hero-cta">
+      <a class="btn btn-terra" href="#caminhos">Ver as opções</a>
+      <a class="btn btn-ghost" href="#analise">Ver a análise</a>
+    </div>
+    <p class="hero-note">Nível 2 · Operação &nbsp;|&nbsp; Nível 3 · Comando — o mais completo</p>
+    <div class="stats">
+      <div class="stat"><b>6</b><span>linhas de serviço, de drone a capacitação</span></div>
+      <div class="stat"><b>6</b><span>setores: óleo e gás, mineração, energia e mais</span></div>
+      <div class="stat goal"><b>B2B</b><span>onshore e offshore, sede em Campo Grande</span></div>
+      <div class="stat"><b>IRATA</b><span>NR-35, NR-33, ABENDI, ANEAC, ANAC</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ANÁLISE: PONTOS FORTES -->
+<section id="analise">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Análise · O que já joga a favor</p>
+      <h2>A Verticore tem munição de sobra</h2>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <span class="tag">Posicionamento</span>
+        <h3>Um fornecedor, a operação inteira</h3>
+        <p>"Um problema. Uma operação. Uma responsabilidade." Inspeção, acesso por cordas, manutenção, drones e tecnologia juntos é um argumento forte para quem hoje contrata três empresas diferentes.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Credibilidade</span>
+        <h3>Nomes que abrem porta</h3>
+        <p>Petrobras, Banco do Brasil, Arauco, Maracanã, Parque Olímpico, Mercedes-Benz e SESC. Poucas empresas do setor no Rio conseguem mostrar uma lista dessas.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Visual</span>
+        <h3>Um serviço que impressiona na tela</h3>
+        <p>Acesso por cordas, voo de drone e termografia rendem vídeos que param o scroll. É o tipo de conteúdo que faz o B2B performar no Instagram.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANÁLISE: CORREÇÕES -->
+<section style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Análise · Antes de ligar o anúncio</p>
+      <h2>O que corrigir no site</h2>
+      <p class="lead">Tráfego pago leva gente para o site. Se o site perde o contato no caminho, a verba vai junto. Esses ajustes entram na implantação, em qualquer um dos dois níveis.</p>
+    </div>
+    <div class="fixes">
+      <div class="fix"><span class="sev high">Crítico</span><div><h3>O botão de WhatsApp aponta para um número de exemplo</h3><p>O link de "Falar com um especialista agora" leva para 55 00 0000-0000. Hoje, quem clica não fala com ninguém.</p></div></div>
+      <div class="fix"><span class="sev high">Crítico</span><div><h3>Formulário mostra variáveis sem preencher</h3><p>Aparecem textos como {{ stepLabel }} e {{ stepName }} no passo a passo. Passa impressão de site inacabado e pode quebrar o envio.</p></div></div>
+      <div class="fix"><span class="sev mid">Importante</span><div><h3>Uma página para tudo</h3><p>Serviços, capacitação, materiais e contato disputam a mesma tela. Para anúncio, cada serviço precisa de uma página com uma mensagem e um botão só.</p></div></div>
+      <div class="fix"><span class="sev mid">Importante</span><div><h3>Prova social sem números</h3><p>Os clientes aparecem só em texto, sem logo, sem resultado e sem depoimento. Um case com "o que era, o que fizemos, o que entregamos" vale mais que a lista inteira.</p></div></div>
+      <div class="fix"><span class="sev mid">Ajuste</span><div><h3>E-mail em outro domínio e sem telefone</h3><p>O site é verticore.solutions e o e-mail é @verticoresa.com.br, sem telefone visível. Para o decisor B2B, um contato direto e consistente gera confiança.</p></div></div>
+      <div class="fix"><span class="sev mid">Ajuste</span><div><h3>Área de atendimento não aparece</h3><p>O site não diz onde a Verticore atua. Para anúncio regional, precisamos saber: Rio inteiro, Macaé, polos industriais, outros estados?</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ONDE ESTÁ A DEMANDA -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Onde está a demanda</p>
+      <h2>Google e Instagram resolvem problemas diferentes</h2>
+      <p class="lead">Quem contrata alpinismo industrial, inspeção ou manutenção em altura chega por dois caminhos. Nos dois níveis desta proposta, rodamos os dois juntos.</p>
+    </div>
+    <div class="channels">
+      <div class="card">
+        <span class="tag">Google · demanda ativa</span>
+        <h3>Quem já está procurando</h3>
+        <p>O gestor de manutenção ou o síndico com um problema pesquisa "alpinismo industrial RJ" e liga para quem aparece primeiro.</p>
+        <ul>
+          <li>Concorrentes como Alpifire, Tecnorope, Oliveira Alpinismo e Brito&amp;Kerche já disputam essa busca no Rio</li>
+          <li>Lead de alta intenção, volume menor</li>
+          <li>Perfil no Google bem posicionado em Campo Grande reforça a confiança</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="tag">Instagram · demanda latente</span>
+        <h3>Quem ainda não sabe que precisa</h3>
+        <p>Engenheiros, compradores e gestores de facilities também rolam o feed. Um vídeo de inspeção com drone ou de acesso por cordas apresenta a Verticore antes da necessidade aparecer.</p>
+        <ul>
+          <li>Segmentação por região de polos industriais e por perfil profissional</li>
+          <li>Remarketing de quem visitou o site ou assistiu aos vídeos</li>
+          <li>Públicos semelhantes a partir da sua lista de clientes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="target" style="margin-top:24px">
+      <div class="step">
+        <span class="k">DECISÃO</span>
+        <div><h3>Qual frente abre a operação</h3><p>Anúncio funciona melhor com uma oferta clara por vez. Precisamos escolher juntos a primeira frente — e as outras entram depois, já com dados.</p></div>
+      </div>
+      <div class="step warn">
+        <span class="k">ATENÇÃO</span>
+        <div><h3>Grandes contas compram por cadastro</h3><p>Petrobras e outras grandes contratam por homologação e licitação. O anúncio serve melhor para indústrias de médio porte, condomínios, construtoras, administradoras e para a capacitação.</p></div>
+      </div>
+    </div>
+    <div class="fronts" style="margin-top:20px">
+      <div class="card"><span class="tag">Frente</span><h3>Acesso por cordas e manutenção</h3><p>Serviço com mais busca no Google e mais impacto visual. Candidata natural para abrir.</p></div>
+      <div class="card"><span class="tag">Frente</span><h3>Inspeção com drones</h3><p>Diferencial moderno, ótimo para vídeo. Bom para atrair indústria e infraestrutura.</p></div>
+      <div class="card"><span class="tag">Frente</span><h3>Inspeção e END</h3><p>Técnica e específica. Mais Google que Instagram, com termos como termografia e ultrassom.</p></div>
+      <div class="card"><span class="tag">Frente</span><h3>Capacitação</h3><p>Cursos de drone, END e NR-35 vendem para pessoas físicas também. É a frente mais rápida no Instagram.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMINHOS -->
+<section id="caminhos" style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">As duas opções completas</p>
+      <h2>Nível 2 ou Nível 3</h2>
+      <p class="lead">Os dois rodam Instagram e Google juntos, com CRM e agente de IA atendendo os contatos. A diferença está em quanto a EmpresAtiva entra no seu comercial.</p>
+    </div>
+    <div class="opts">
+      <div class="opt">
+        <div class="lvl" style="display:flex;flex-wrap:wrap;gap:8px"><span class="pill moss">Nível 2 · Operação</span><span class="pill moss">Lead</span></div>
+        <h3 style="font-size:1.3rem">O sistema atende, qualifica e organiza</h3>
+        <div class="amount">R$ 1.897<small>/mês</small></div>
+        <ul>
+          <li><b>Instagram + Google Ads</b> — demanda latente e demanda ativa ao mesmo tempo</li>
+          <li><b>Landing page por frente</b> — uma mensagem, um botão, rastreamento de origem</li>
+          <li><b>Equipe de design</b> — criativos, carrosséis e edição dos vídeos de operação</li>
+          <li><b>CRM EmpresAtiva</b> — WhatsApp, Instagram e e-mail num só lugar, funil de contato → visita técnica → orçamento → contrato, com acesso para a sua equipe</li>
+          <li><b>Agente de IA 24/7</b> — responde, pergunta empresa, setor e tipo de serviço, qualifica e agenda a conversa com o especialista</li>
+          <li><b>Classificação Inteligente</b> e retorno dos contatos qualificados ao Meta e ao Google</li>
+          <li><b>Painel Criativo × Funil</b> — qual anúncio gera orçamento, não só contato</li>
+          <li><b>Playbook comercial</b> — roteiro de abordagem, objeções e follow-up para B2B</li>
+          <li><b>Verba gerida até R$ 1.500/mês</b>, paga direto às plataformas</li>
+        </ul>
+        <div class="when"><span>FAZ SENTIDO SE</span>Sua equipe comercial já tem ritmo e o que falta é volume de contatos qualificados, atendidos na hora e organizados num funil.</div>
+      </div>
+      <div class="opt rec">
+        <div class="lvl" style="display:flex;flex-wrap:wrap;gap:8px"><span class="pill">Nível 3 · Comando</span><span class="pill">Mais completo · vagas limitadas</span></div>
+        <h3 style="font-size:1.3rem">Aqui não gerenciamos só o marketing. Entramos no seu comercial.</h3>
+        <div class="amount">R$ 3.497<small>/mês</small></div>
+        <ul>
+          <li><b>Tudo do Nível 2</b>, ativo e integrado</li>
+          <li><b>Treinamento comercial semanal</b> com a sua equipe: abordagem B2B, follow-up, proposta e fechamento</li>
+          <li><b>Treinamento nas ferramentas</b> — como trabalhar com o agente de IA, assumir a conversa e operar o CRM no dia a dia</li>
+          <li><b>Acompanhamento direto</b> do time comercial, com leitura das conversas reais da semana</li>
+          <li><b>Meta de receita</b> definida, monitorada e revisada todo mês</li>
+          <li><b>Reunião mensal de estratégia comigo</b> + quinzenal com o gestor sênior da conta</li>
+          <li><b>Google Meu Negócio e social media</b> (4 posts/mês) inclusos</li>
+          <li><b>Verba gerida até R$ 5.000/mês</b> — 3x mais antes de qualquer excedente</li>
+        </ul>
+        <div class="when"><span>POR QUE RECOMENDO</span>Você pediu o mais completo. No B2B, o contato custa caro e o ciclo é longo, então a diferença entre um bom resultado e um ótimo está em como a equipe conduz cada oportunidade até o contrato. É exatamente o que o Nível 3 cobre.</div>
+      </div>
+    </div>
+    <div class="tbl-wrap" style="margin-top:24px">
+      <table class="cmp">
+        <thead><tr><th>Comparativo</th><th>Nível 2 · Operação</th><th>Nível 3 · Comando</th></tr></thead>
+        <tbody>
+          <tr><td>Instagram + Google Ads</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td>Landing pages, criativos e edição de vídeo</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td>CRM EmpresAtiva com acesso da equipe</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td>Agente de IA 24/7</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td>Retorno dos qualificados ao algoritmo</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td>Playbook comercial</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+          <tr><td>Treinamento comercial semanal com a equipe</td><td class="no">—</td><td class="ok">✓</td></tr>
+          <tr><td>Treinamento no CRM e no agente de IA</td><td>Entrega inicial</td><td class="ok">✓ contínuo</td></tr>
+          <tr><td>Meta de receita + reuniões de estratégia</td><td class="no">—</td><td class="ok">✓</td></tr>
+          <tr><td>Google Meu Negócio + social media</td><td>+R$ 297 cada</td><td class="ok">✓</td></tr>
+          <tr><td>Verba gerida no fee</td><td>até R$ 1.500</td><td>até R$ 5.000</td></tr>
+          <tr><td>Fee mensal</td><td>R$ 1.897</td><td>R$ 3.497</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- OPERAÇÃO -->
+<section id="operacao">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">A operação</p>
+      <h2>Do ajuste do site à equipe fechando contrato</h2>
+    </div>
+    <div class="timeline">
+      <div class="phase done">
+        <div class="phase-meta"><span class="ph">FASE 01</span><span class="when">Semana 1</span></div>
+        <div class="phase-body"><h3>Alistamento</h3><p>Acessos, definição da frente inicial e da área de atendimento, lista de clientes, material de operações e mapeamento de como a sua equipe atende hoje.</p><p class="deliver">Frente, região e equipe mapeadas</p></div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 02</span><span class="when">Semanas 1–2</span></div>
+        <div class="phase-body"><h3>Correção de rota no site</h3><p>WhatsApp real no botão, formulário sem erro e landing page da frente escolhida com case, credenciais e um botão de contato.</p><p class="deliver">Página pronta para receber tráfego</p></div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 03</span><span class="when">Semana 2</span></div>
+        <div class="phase-body"><h3>CRM e agente de IA</h3><p>Funil do CRM montado para B2B, WhatsApp conectado e agente de IA treinado com os serviços, setores e perguntas de qualificação da Verticore.</p><p class="deliver">Equipe com acesso ao CRM e agente de IA atendendo</p></div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 04</span><span class="when">Até o 10º dia útil</span></div>
+        <div class="phase-body"><h3>Campanhas no ar</h3><p>Instagram por região, perfil e remarketing; Google nas buscas de alta intenção. Criativos feitos a partir das operações reais. Cada contato cai no CRM com origem registrada.</p><p class="deliver">Campanhas rodando nas duas plataformas</p></div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 05</span><span class="when">Toda semana · Nível 3</span></div>
+        <div class="phase-body"><h3>Treinamento comercial</h3><p>Encontro semanal com a sua equipe: conversas reais da semana, como assumir o atendimento do agente de IA, follow-up no CRM, proposta e fechamento.</p><p class="deliver">Equipe treinada e funil atualizado toda semana</p></div>
+      </div>
+      <div class="phase">
+        <div class="phase-meta"><span class="ph">FASE 06</span><span class="when">Todo mês</span></div>
+        <div class="phase-body"><h3>Leitura e escala</h3><p>Painel com custo por contato qualificado, orçamentos e contratos por frente. No fechamento mensal, decidimos verba, próxima frente e, no Nível 3, revisamos a meta de receita.</p><p class="deliver">Relatório mensal e plano do mês seguinte</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIMENTO -->
+<section id="investimento" style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Investimento</p>
+      <h2>Como o valor acompanha a verba</h2>
+      <p class="lead">Cada nível cobre a gestão de verba até um limite: R$ 1.500/mês no Nível 2 e R$ 5.000/mês no Nível 3. Acima disso, incide 20% apenas sobre o que exceder. A verba é paga direto ao Meta e ao Google.</p>
+    </div>
+    <div class="invest">
+      <div class="side">
+        <div class="formula">fee do mês = fee fixo + 20% × (verba − limite do nível)</div>
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Verba/mês</th><th>Nível 2</th><th>Nível 3</th></tr></thead>
+            <tbody>
+              <tr><td>R$ 1.500</td><td>R$ 1.897</td><td class="hl">R$ 3.497</td></tr>
+              <tr><td>R$ 3.000</td><td>R$ 2.197</td><td class="hl">R$ 3.497</td></tr>
+              <tr><td>R$ 5.000</td><td>R$ 2.597</td><td class="hl">R$ 3.497</td></tr>
+              <tr><td>R$ 8.000</td><td>R$ 3.197</td><td>R$ 4.097</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="fine" style="margin-top:0">Valores de fee. A verba de anúncio é paga à parte, direto às plataformas.</p>
+      </div>
+      <div class="ammo" style="grid-template-columns:1fr">
+        <div class="card"><span class="ic">6M</span><h3>Contrato de 6 meses</h3><p>Tempo para o algoritmo aprender quem contrata e para a equipe ganhar ritmo. Depois, renovação trimestral; para sair, aviso de 30 dias.</p></div>
+        <div class="card"><span class="ic">0</span><h3>Implantação isenta</h3><p>Taxa de R$ 997 isenta no contrato de 6 meses. Contas, dados e histórico são da Verticore.</p></div>
+        <div class="card"><span class="ic">10</span><h3>Garantia de implantação</h3><p>Sistema no ar em até 10 dias úteis. Se atrasarmos por nossa responsabilidade, o mês é creditado.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM COMANDA -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Quem comanda</p>
+      <h2>João Marot · EmpresAtiva Digital</h2>
+    </div>
+    <div class="cmd">
+      <div class="bio">
+        <p>Ex-capitão do Exército, formado pela AMAN, mentor certificado no Subido PRO, com Pedro Sobral, e certificado em Google Ads e Meta Ads.</p>
+        <p>A equipe reúne gestores de tráfego, designers, web designer e especialistas em CRM e inteligência artificial. Você não contrata um freelancer: ativa uma operação inteira.</p>
+        <div class="mini-stats">
+          <div><b>+250</b><span>negócios atendidos</span></div>
+          <div><b>2018</b><span>em operação desde</span></div>
+          <div><b>Meta + Google</b><span>certificações oficiais</span></div>
+        </div>
+      </div>
+      <div class="case">
+        <span class="tag">Como medimos</span>
+        <p class="big">Cada real investido <em>vira dado</em>, não achismo</p>
+        <p style="color:var(--mute);font-size:.92rem">Você sabe quantas pessoas viram, quantas chamaram, quanto custou cada contato qualificado e qual frente trouxe mais oportunidade. É com isso que decidimos a próxima frente.</p>
+        <div class="refs"><span>Painel ao vivo</span><span>Relatório mensal</span><span>Rastreamento de origem</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--panel);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Antes de decidir</p>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Instagram funciona para B2B industrial?</summary><p>Tem funcionado muito bem nas nossas operações B2B. Quem decide também está no feed, e um vídeo bem feito de operação em altura gera lembrança de marca. O remarketing alcança de novo quem já visitou o site.</p></details>
+      <details><summary>O ciclo de venda é longo. Como medir?</summary><p>Medimos por etapas: contato, contato qualificado, visita técnica ou orçamento enviado e contrato. O painel mostra cada etapa, então não dependemos só do fechamento para saber se a campanha funciona.</p></details>
+      <details><summary>Minha equipe vai saber usar o CRM e o agente de IA?</summary><p>No Nível 2 entregamos a configuração e um treinamento inicial. No Nível 3 o treinamento é semanal: a equipe aprende a assumir a conversa que o agente de IA começou, a mover cada oportunidade no CRM e a fazer follow-up até o contrato.</p></details>
+      <details><summary>O agente de IA não vai atender mal um cliente industrial?</summary><p>Ele é treinado com os serviços, setores e credenciais da Verticore e faz as perguntas de qualificação: empresa, setor, tipo de serviço e prazo. Quando a conversa pede um especialista, passa para a sua equipe com o resumo pronto no CRM.</p></details>
+      <details><summary>Posso começar no Nível 2 e subir depois?</summary><p>Pode. Começar no Nível 2 e migrar para o Nível 3 quando a equipe precisar de acompanhamento semanal é um caminho comum. A vaga do Nível 3 depende da minha agenda, por isso é limitada.</p></details>
+      <details><summary>E a exigência de e-mail corporativo nos materiais?</summary><p>Ela filtra curiosos, mas reduz volume. No começo, sugerimos testar com e sem esse filtro e decidir pelo custo por contato qualificado.</p></details>
+      <details><summary>A verba passa pela agência?</summary><p>Não. A verba é paga direto ao Meta ou ao Google. Contas, dados e histórico são da Verticore.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <div class="box">
+      <p class="eyebrow" style="color:#e8b28f">Próximo passo</p>
+      <h2>Vamos fazer esse foguete decolar?</h2>
+      <p>Me diz qual nível faz mais sentido agora e qual frente você quer abrir primeiro. Enquanto isso, já dá para corrigir o número do WhatsApp no site.</p>
+      <div class="hero-cta" style="margin-top:8px">
+        <a class="btn btn-terra" href="https://wa.me/5521983424319?text=Oi%20Jo%C3%A3o%2C%20aqui%20%C3%A9%20o%20Marcelo.%20Vi%20a%20proposta%20da%20Verticore." target="_blank" rel="noopener">Falar com João</a>
+      </div>
+      <p class="hero-note" style="color:#c8d6ca">WhatsApp (21) 98342-4319</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>EmpresAtiva Digital · Av. das Américas 12.900, Sala 403B · Rio de Janeiro — RJ</p>
+  </div>
+</footer>
+
+</body></html>
