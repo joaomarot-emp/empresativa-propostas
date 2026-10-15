@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · Studio L · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:52ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+.plan .price{font-size:40px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 6px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan .verba{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin-bottom:18px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · Studio L</p>
+    <h1>Tráfego que escala <em>—</em> e leads que viram agenda em todas as unidades</h1>
+    <p class="lede">Para Jessika Ellery, Yasmin Oliveira e Laura. Um plano para o Studio L saber de onde vem cada lead, medir quem é qualificado e crescer o investimento em anúncios com base em dado, nas cinco unidades de hoje e na sexta que está abrindo.</p>
+    <div class="cta">
+      <a class="btn" href="#investimento">Ver investimento</a>
+      <a class="btn ghost" href="#diagnostico">Ver o diagnóstico</a>
+    </div>
+    <p class="note">Proposta de 15/10/2026 · Baseada na reunião de hoje</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>5 + 1</b><span>Unidades ativas, mais a sexta em abertura</span></div>
+    <div class="stat"><b>6</b><span>Números de WhatsApp e um Instagram para todas as unidades</span></div>
+    <div class="stat"><b>2</b><span>Unidades que performam bem abaixo das demais</span></div>
+    <div class="stat"><b>3 meses</b><span>De investimento mais consistente em tráfego</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>Chega lead, mas ninguém mede o que ele vale</h2>
+    <p class="sub">Pelo que a Yasmin e a Jessika contaram, o problema não é falta de marca nem de material. É falta de leitura: de onde vem o lead, quem é qualificado e onde a venda trava.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Criativos parados</h3><p>As peças são as mesmas desde os primeiros lançamentos. A cliente vê o mesmo anúncio todo dia e a atenção cai. A marca é grande, mas muita gente passa no shopping e não a conhece pelo nome.</p></div>
+      <div class="card"><div class="n">02</div><h3>Sem medida de qualificação</h3><p>Não dá para saber se o erro está no lead ou no fechamento. O link da bio do Instagram usa o número do tráfego, então origem se mistura. Nos anúncios do Google, não há métrica de conversão.</p></div>
+      <div class="card"><div class="n">03</div><h3>Unidades sem foco local</h3><p>A mesma campanha vende para todas. As lojas que já vão bem melhoram mais, e as duas mais fracas, incluindo a da torre empresarial, continuam empacadas.</p></div>
+    </div>
+    <div class="quote">Com seis números de WhatsApp e a recepção dividida, o lead espera. O que muda a conta é <span>medir, testar anúncio toda semana</span> e responder rápido.</div>
+    <p class="note" style="margin-top:28px">Fonte: reunião comercial de 15/10/2026 com Jessika, Yasmin e Laura.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Onde está o gargalo</p>
+    <h2>Primeiro descobrir se é o tráfego ou o comercial</h2>
+    <p class="sub">Sem o dado, cada área acha que o problema é da outra. Com a referência do nicho de beleza, a conversa muda.</p>
+    <div class="two">
+      <div class="panel" style="background:var(--bg)">
+        <h4>O que a operação enfrenta hoje</h4>
+        <ul class="xlist">
+          <li>Volume grande de leads direto no WhatsApp, sem segmentação clara</li>
+          <li>Muita gente pergunta endereço e não volta, ou para no preço</li>
+          <li>CRM atual parado e sem alertas confirmados</li>
+          <li>Seis números separados: a Yasmin entra em um, responde, sai e vai para o outro</li>
+          <li>Google recebe verba, mas nenhuma mensagem do lead veio dele</li>
+        </ul>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho de beleza</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>A cada 100 leads, 22 devem ser qualificados (têm a dor, são atendidos na região e o preço não é objeção) e 8 devem virar venda.</p>
+        <p>Qualificados abaixo de 22: o ajuste está no tráfego, na segmentação e no anúncio. Qualificados dentro do esperado, mas vendas abaixo de 8: o ajuste está no comercial, com playbook e follow-up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Medir, testar e escalar</h2>
+    <p class="sub">Três frentes, começando pelo dado que hoje falta.</p>
+
+    <p class="grp">Tráfego e leitura de dados</p>
+    <div class="tl"><div class="tag">Frente 1<b>Rastrear</b></div><div><h3>Saber de onde vem cada lead</h3><p>O software conectado aos números comerciais separa o que veio do anúncio, do link da bio, de site ou de indicação, pelas UTMs. Assim o tráfego deixa de ser uma caixa-preta.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Classificar</b></div><div><h3>IA que mede a qualificação</h3><p>Uma IA com prompt montado para o Studio L lê as conversas e classifica em lead frio, sem interação, qualificado ou agendado. Essa informação volta ao Meta para o anúncio buscar quem se parece com os qualificados. A venda é confirmada manualmente por vocês, para ter dupla checagem.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Testar</b></div><div><h3>Criativo novo toda semana</h3><p>Slot de teste semanal: anúncio novo entra, o que performa escala e o que não performa sai. Os testes mostram qual gancho e qual formato (vídeo, imagem ou carrossel) funcionam melhor.</p></div></div>
+    <div class="tl"><div class="tag">Frente 4<b>Localizar</b></div><div><h3>Geolocalização por unidade</h3><p>Campanhas com foco local, começando pelas duas unidades que performam abaixo, e a sexta unidade entra quando abrir. Também vamos analisar o investimento atual no Google, que hoje não mostra métrica.</p></div></div>
+    <div class="tl"><div class="tag">Frente 5<b>Histórico</b></div><div><h3>Copiar o que já deu certo</h3><p>Vamos estudar o histórico do estúdio, identificar os melhores meses e o que foi feito neles. A base é repetir o que funcionou e melhorar com métrica.</p></div></div>
+
+    <p class="grp">Atendimento e CRM</p>
+    <div class="tl"><div class="tag">Frente 6<b>Responder rápido</b></div><div><h3>Alerta de lead novo no grupo</h3><p>Todo lead novo gera alerta para o time comercial. O ideal é abordar em até 5 minutos. Se não for possível, que seja na primeira meia hora.</p></div></div>
+    <div class="tl"><div class="tag">Frente 7<b>Unificar</b></div><div><h3>Um feed para todos os números</h3><p>Os seis WhatsApps e o Instagram entram no mesmo CRM em kanban, com cada conversa identificada por unidade. A IA move os cards, e se alguém da equipe mover um card manualmente, a IA para de mexer nele.</p></div></div>
+    <div class="tl"><div class="tag">Frente 8<b>Follow-up</b></div><div><h3>Cadência e resgate na API oficial</h3><p>Fluxo automático para novo lead, confirmação de agenda 24 horas e 1 hora antes, no-show, negociação e resgate de perdidos. A API oficial protege os números contra banimento e permite medir quantos leads foram perdidos por mês e por unidade.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que o Studio L leva na operação</h2>
+    <p class="sub">Uma equipe completa, com painel ao vivo e reunião todo mês.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestão de tráfego</h3><p>Meta, Google ou os dois, conforme o nível escolhido.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Criativos toda semana</h3><p>Imagem, carrossel e vídeo pela equipe de design. Vocês gravam o vídeo cru, e a equipe edita. Se já tiverem filmmaker, enviamos o briefing.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>Site de conversão</h3><p>Landing page para campanhas de Meta e Google, para testar a pré-qualificação antes do WhatsApp.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>WhatsApp integrado e IA</h3><p>Rastreio de origem, classificação das conversas e devolução do dado ao Meta.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Painel ao vivo</h3><p>Gasto no Meta e no Google, leads, campanhas ativas e melhores anúncios, na data que a Laura escolher.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Reunião mensal de dono para dono</h3><p>A conversa é sobre qualificados e vendas contra a referência do mercado, e onde está o gargalo, não sobre CTR.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">Os planos</p>
+    <h2>Nível 1, 2 e 3</h2>
+    <p class="sub">Os três níveis apresentados na reunião. A verba de anúncios é investida pelo Studio L, à parte.</p>
+    <div class="cards">
+      <div class="panel plan">
+        <span class="badge off">Nível 1 · Mídia</span>
+        <div class="price">R$ 1.297 <small>/ mês</small></div>
+        <div class="verba">Até R$ 1.500 de verba · 20% sobre o excedente</div>
+        <ul>
+          <li>Tráfego em uma plataforma, Meta ou Google</li>
+          <li>Landing page</li>
+          <li>Criativos semanais</li>
+          <li>WhatsApp integrado e IA de classificação</li>
+          <li>Painel, relatório e reunião mensal</li>
+        </ul>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Nível 2</span>
+        <div class="price">R$ 1.897 <small>/ mês</small></div>
+        <div class="verba">Até R$ 1.500 de verba · 20% sobre o excedente</div>
+        <ul>
+          <li>Tudo do Nível 1</li>
+          <li>Tráfego em Meta e Google</li>
+          <li>Acesso ao CRM com treinamento</li>
+          <li>Agente de IA para qualificar o lead</li>
+          <li>Automações dentro do CRM</li>
+        </ul>
+      </div>
+      <div class="panel plan hi">
+        <span class="badge">Nível 3 · Comando</span>
+        <div class="price">R$ 3.497 <small>/ mês</small></div>
+        <div class="verba">Suporte comercial semanal incluso</div>
+        <ul>
+          <li>Tudo do Nível 2</li>
+          <li>Suporte semanal de treinamento comercial com alguém da equipe</li>
+          <li>Análise dos leads, da abordagem, do follow-up e da quebra de objeção</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:20px">Contrato de 6 meses, com possibilidade de downgrade no meio do caminho.</p>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Caminho discutido</p>
+    <h2>Começar no Nível 3, descer para o 2 depois</h2>
+    <p class="sub">A Yasmin trouxe a ideia, e o contrato permite.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Início · Nível 3</h4>
+        <ul class="xlist">
+          <li>Suporte semanal para organizar a operação comercial e criar a rotina</li>
+          <li>Treinamento voltado a abordagem, follow-up e objeções da recepção</li>
+          <li>Tudo medido e organizado antes de qualquer redução</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>Depois · Nível 2</h4>
+        <ul class="xlist">
+          <li>Com tudo métrico e estável, a operação segue com Meta e Google, CRM e IA</li>
+          <li>O downgrade pode ser feito no meio do contrato de 6 meses</li>
+          <li>O investimento em anúncios continua crescendo conforme o resultado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Sem taxa por unidade ou por número</h2>
+    <p class="sub">Cinco unidades, seis números de WhatsApp e um Instagram no mesmo CRM não geram custo fixo a mais. A cobrança extra incide só sobre o excedente da verba de anúncios.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Valores mensais</h4>
+        <table>
+          <tr><td>Nível 1 · Mídia<small>Uma plataforma · até R$ 1.500 de verba</small></td><td>R$ 1.297,00</td></tr>
+          <tr><td>Nível 2<small>Meta e Google · até R$ 1.500 de verba</small></td><td>R$ 1.897,00</td></tr>
+          <tr class="t"><td>Nível 3 · Comando<small>Com treinamento comercial semanal</small></td><td>R$ 3.497,00</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">Acima de R$ 1.500 de verba, cobra-se 20% sobre o excedente. Exemplo: investindo R$ 2.500, são R$ 1.000 a mais, e o acréscimo é de R$ 200. Um agente de IA próprio em cada número seria cobrado à parte, por unidade, pelo custo de tokens. Os disparos da API oficial do WhatsApp são pagos direto à Meta, e a EmpresAtiva repassa o passo a passo para acompanhar o gasto. Prazo e demais condições seguem a minuta de contrato.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Caminho discutido</p>
+        <div class="price">R$ 3.497 <small>/ mês</small></div>
+        <p>Início no Nível 3, com a possibilidade de migrar para o Nível 2 (R$ 1.897 por mês) depois que a operação estiver organizada.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em negócios locais e em salões de beleza. Trabalha em Meta Ads, Google Ads e Google Meu Negócio, com uma equipe de gestão de tráfego, design, web, CRM e inteligência artificial.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Meta + Google</b><span>e Google Meu Negócio</span></div>
+        </div>
+      </div>
+      <div class="bq">“O tráfego pago foi feito para a escala.”<small>João Marot · reunião de 15/10/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>Cinco unidades e seis WhatsApps custam mais?</summary><p>Não. O CRM fica no servidor da EmpresAtiva, então números e usuários a mais não têm custo fixo. A cobrança do tráfego também não é por unidade: só incide 20% sobre a verba que passar de R$ 1.500. Só um agente de IA próprio em cada número seria cobrado à parte.</p></details>
+    <details><summary>Dá para começar no Nível 3 e depois descer para o 2?</summary><p>Dá. O contrato é de 6 meses e permite o downgrade no meio do caminho, depois que a operação comercial estiver organizada.</p></details>
+    <details><summary>Quanto tempo leva para ter resultado?</summary><p>Como o estúdio já tem dados, o ponto de partida é analisar os melhores meses, copiar o que deu certo e depois melhorar com métrica. A ideia é manter o resultado atual e aumentar a partir dele, sem prometer um número de resultado.</p></details>
+    <details><summary>Como saber se o lead veio do tráfego ou do link do Instagram?</summary><p>O software conectado ao número comercial rastreia as UTMs. Ele mostra se o contato veio do anúncio direto, do link da bio, de um site ou de formulário, e a IA classifica a qualificação.</p></details>
+    <details><summary>Os disparos de mensagem são pagos?</summary><p>São, direto à Meta, e exigem a API oficial para não banir o número. Confirmações de agenda e mensagens de aniversário contam como utilidade, mais baratas que as de marketing. A EmpresAtiva envia o passo a passo para a Jessika acompanhar o gasto no portfólio empresarial.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Do envio à decisão</h2>
+    <p class="sub">Três passos, com retorno combinado.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>EmpresAtiva envia</h3><p>Esta proposta e o passo a passo para acompanhar o gasto de mensagens no WhatsApp. O João começa a analisar o histórico de desempenho do estúdio.</p></div>
+      <div class="card"><div class="n">02</div><h3>Vocês analisam</h3><p>Jessika, Yasmin e Laura discutem a proposta e definem o nível de serviço.</p></div>
+      <div class="card"><div class="n">03</div><h3>Retorno</h3><p>A expectativa combinada na reunião é o retorno no dia seguinte ao envio, para a decisão não ficar sem data.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Studio L · 2026</footer>
+
+</body>
+</html>
