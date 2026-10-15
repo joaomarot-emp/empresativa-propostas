@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · Studio Nella Concept · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+/* topbar */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+/* hero */
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:50ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+/* two col panels */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.funnel .row{display:grid;grid-template-columns:150px 1fr 34px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.funnel .row:first-of-type{border-top:none}
+.bar{height:10px;background:#1A201B;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:#5E625B;border-radius:5px}
+.bar i.g{background:var(--accent)}
+.funnel b{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+/* timeline */
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+/* munição grid */
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+/* plans */
+.plan .price{font-size:44px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 18px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.xlist.no li::before{content:"✕";color:var(--muted);font-size:12px;top:14px}
+/* invest */
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+/* author */
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+/* faq */
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+/* final */
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+.ph{background:#3A2C10;color:#F2D58B;padding:1px 8px;border-radius:3px;font-family:var(--mono);font-size:13px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+  .funnel .row{grid-template-columns:1fr 34px} .funnel .row span{grid-column:1/-1}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · Studio Nella Concept</p>
+    <h1>Mais clientes no salão <em>—</em> e uma marca desejada no Rio</h1>
+    <p class="lede">Para Jaqueline Meira e Fellipe Lopes. Um plano para o salão sair do prejuízo com anúncio que se paga e atendimento organizado, e para a distribuidora entrar no radar dos donos de salão.</p>
+    <div class="cta">
+      <a class="btn" href="#investimento">Ver investimento</a>
+      <a class="btn ghost" href="#diagnostico">Ver o diagnóstico</a>
+    </div>
+    <p class="note">Proposta de 15/10/2026 · Salão e distribuidora em um único pacote</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>R$ 3.000</b><span>Investidos por mês em anúncios, hoje</span></div>
+    <div class="stat"><b>R$ 11,11</b><span>Custo por lead: R$ 1.000 geraram 90 leads</span></div>
+    <div class="stat"><b>7 de 90</b><span>Leads que agendaram no Combo Express</span></div>
+    <div class="stat"><b>≈ R$ 2.000</b><span>Em vendas por lote de 90 leads, ticket de R$ 250</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>O salão traz lead, mas a conta não fecha</h2>
+    <p class="sub">Os números do levantamento semanal da recepção mostram onde o dinheiro escapa. Não é falta de interesse: é ticket, oferta e atendimento.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Ticket baixo para a mídia</h3><p>No Combo Express de R$ 250, um lote de 90 leads rende cerca de R$ 2.000 em vendas. É menos do que R$ 3.000 de anúncio mais a gestão.</p></div>
+      <div class="card"><div class="n">02</div><h3>Quem vê o valor, para</h3><p>11 dos 90 leads pararam de responder ao saber o valor de um pacote maior (R$ 450). O anúncio não deixa claro o que o combo inclui.</p></div>
+      <div class="card"><div class="n">03</div><h3>Mais de um terço sem resposta</h3><p>32 dos 90 leads não responderam. Velocidade, follow-up e resgate organizado ajudam a recuperar parte deles.</p></div>
+    </div>
+    <div class="quote">O tráfego já traz gente interessada. O que muda a conta é <span>testar anúncio toda semana</span>, deixar a oferta clara e organizar o atendimento.</div>
+    <p class="note" style="margin-top:28px">Fonte: levantamento da recepção (90 leads) e conversa de 15/10/2026.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Onde está o gargalo</p>
+    <h2>O ajuste está na oferta e no anúncio</h2>
+    <p class="sub">Comparando com a referência do nicho de beleza, a qualificação está boa. A venda trava depois do valor.</p>
+    <div class="two">
+      <div class="panel funnel" style="background:var(--bg)">
+        <h4>Para onde foram os 90 leads</h4>
+        <div class="row"><span>Não responderam</span><div class="bar"><i style="width:35.6%"></i></div><b>32</b></div>
+        <div class="row"><span>Pararam ao saber o valor</span><div class="bar"><i style="width:12.2%"></i></div><b>11</b></div>
+        <div class="row"><span>Em conversa</span><div class="bar"><i class="g" style="width:27.8%"></i></div><b>25</b></div>
+        <div class="row"><span>Agendaram</span><div class="bar"><i class="g" style="width:7.8%"></i></div><b>7</b></div>
+        <div class="row"><span>Bloqueios, erros e outros</span><div class="bar"><i style="width:16.7%"></i></div><b>15</b></div>
+        <p class="note" style="margin-top:14px">Total: 90 leads. Barras proporcionais ao total.</p>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho de beleza</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>A cada 100 leads, 22 devem ser qualificados (têm a dor, são atendidos na região e o preço não é objeção) e 8 devem virar venda.</p>
+        <p>Nos 90 leads de vocês, 25 em conversa mais 7 agendados somam 32 aparentemente qualificados, acima dos cerca de 20 esperados. Quem desiste ao saber o valor pede um anúncio mais específico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Do teste semanal ao anúncio que se sustenta</h2>
+    <p class="sub">Duas frentes de trabalho, cada uma com o caminho certo para o seu tipo de cliente.</p>
+
+    <p class="grp">Studio Nella Concept · B2C</p>
+    <div class="tl"><div class="tag">Frente 1<b>Slot de teste semanal</b></div><div><h3>Anúncio novo toda semana</h3><p>Ideias, ângulos e ganchos novos entram em testes. Meta de custo por lead de até R$ 5: passou, escala; não passou, sai.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Anúncio do combo</b></div><div><h3>Deixar claro o que está incluso</h3><p>Peças específicas para o Combo Express de R$ 250, mostrando o que entra e o que fica fora, para reduzir quem desiste ao saber o valor.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Google</b></div><div><h3>Google Ads e Google Meu Negócio</h3><p>Hoje o Google é só orgânico. Entram anúncios no Google e a otimização do perfil, que está com pontuação 6,2, para aparecer entre os três primeiros da região.</p></div></div>
+    <div class="tl"><div class="tag">Frente 4<b>Oferta clara</b></div><div><h3>Preço e proximidade como diferencial</h3><p>Sem autoridade em um único serviço, o diferencial é preço e região, como a Segunda Glow. Em paralelo, testar um serviço de ticket maior.</p></div></div>
+
+    <p class="grp">Distribuidora · B2B</p>
+    <div class="tl"><div class="tag">Frente 1<b>Qualificar</b></div><div><h3>Formulário antes do WhatsApp</h3><p>O anúncio leva a um formulário que confirma se a pessoa é dona de salão. Só depois o contato chega ao WhatsApp.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Marca</b></div><div><h3>Tornar a marca desejada no Rio</h3><p>O objetivo inicial é fazer uma marca do Rio Grande do Sul ser conhecida, a ponto de a cliente pedir o produto no salão.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Conteúdo</b></div><div><h3>Vídeos que servem aos dois lados</h3><p>Os vídeos de produto que vocês já produzem alimentam salão e distribuidora, e o time de rua recebe leads já qualificados.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que vocês levam na operação</h2>
+    <p class="sub">Uma equipe completa, não uma pessoa só, com relatório e reunião todo mês.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestor de tráfego e design</h3><p>Imagens, carrosséis e vídeos em motion, com equipe própria de design.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Site ou landing page</h3><p>Para qualificar o lead antes do WhatsApp, quando fizer sentido.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>WhatsApp integrado</h3><p>Todas as conversas classificadas por IA em qualificado e agendado, devolvidas ao Meta para o anúncio aprender.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>Painel ao vivo</h3><p>Gasto, leads, custo por lead e melhores anúncios em tempo real.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Relatório e reunião mensal</h3><p>Fechamento que mostra onde está o gargalo e o que escalar.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Ideias de conteúdo semanais</h3><p>Sugestões toda semana. Para gravação profissional, há um parceiro filmmaker: R$ 500 por captação de até 10 conteúdos.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">Os planos</p>
+    <h2>Nível 1 e Nível 2</h2>
+    <p class="sub">Os dois que fazem sentido para a estrutura de vocês hoje.</p>
+    <div class="two">
+      <div class="panel plan">
+        <span class="badge off">Nível 1 · Mídia</span>
+        <div class="price">R$ 1.297 <small>/ mês</small></div>
+        <ul>
+          <li>Tráfego pago em uma plataforma, Meta ou Google</li>
+          <li>Site ou landing page</li>
+          <li>WhatsApp integrado com classificação inteligente</li>
+          <li>Equipe de design: imagens, carrosséis e motion</li>
+          <li>Painel ao vivo, relatório e reunião mensal</li>
+        </ul>
+      </div>
+      <div class="panel plan hi">
+        <span class="badge">Nível 2 · Líder</span>
+        <div class="price">R$ 1.897 <small>/ mês</small></div>
+        <ul>
+          <li>Tudo do Nível 1</li>
+          <li>Google Ads e Meta Ads juntos</li>
+          <li>CRM próprio em formato kanban</li>
+          <li>Agente de IA fora do horário comercial</li>
+          <li>Playbook comercial para a recepção: abordagem, objeções e resgate</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:20px">O Nível 3 (treinamento comercial semanal e SDR) foi apresentado e não entra agora, pela estrutura atual do negócio.</p>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Recomendação</p>
+    <h2>Nível 2 no salão, Nível 1 na distribuidora</h2>
+    <p class="sub">Cada negócio no momento em que está.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Salão · Nível 2</h4>
+        <ul class="xlist">
+          <li>Google e Meta juntos, como a Jaqueline já queria</li>
+          <li>CRM organiza os leads que hoje sobem e descem na conversa</li>
+          <li>Playbook ajuda a Simara com objeções e resgates</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>Distribuidora · Nível 1</h4>
+        <ul class="xlist">
+          <li>Marca nova, demanda ainda pequena, atendimento em montagem</li>
+          <li>Um canal só, com formulário de qualificação antes do WhatsApp</li>
+          <li>Começa enxuto e cresce conforme o resultado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Pacote combinado, com desconto</h2>
+    <p class="sub">Dois negócios, uma só agência e um valor mensal fechado.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Composição mensal</h4>
+        <table>
+          <tr><td>Studio Nella Concept · Nível 2</td><td>R$ 1.897,00</td></tr>
+          <tr><td>Distribuidora · Nível 1<small>Segundo negócio entra com 50% (de R$ 1.297,00)</small></td><td>R$ 648,50</td></tr>
+          <tr><td>Subtotal</td><td>R$ 2.545,50</td></tr>
+          <tr><td>Desconto de 10% no pacote combinado</td><td>− R$ 254,55</td></tr>
+          <tr class="t"><td>Total por mês</td><td>R$ 2.290,95</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">A verba de anúncios é investida por vocês, à parte. Acima da faixa de verba sugerida, cobra-se 20% sobre o excedente. Prazo e demais condições seguem a minuta de contrato enviada junto com esta proposta.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Total mensal</p>
+        <div class="price">R$ 2.290,95 <small>/ mês</small></div>
+        <p>Salão no Nível 2 e distribuidora no Nível 1, já com os 10% de desconto do pacote combinado.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em negócios locais e em salões de beleza. Trabalha em Meta Ads, Google Ads e Google Meu Negócio, com uma equipe de gestão, design, web, CRM e inteligência artificial.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Meta + Google</b><span>e Google Meu Negócio</span></div>
+        </div>
+      </div>
+      <div class="bq">“O que eu busco é a escala: eu quero que você cresça cada vez mais, porque se você crescer, eu cresço junto com você.”<small>João Marot · reunião de 15/10/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>E se a agência abandonar depois dos primeiros meses?</summary><p>Por isso o trabalho é feito por uma equipe, e não por uma pessoa. Vocês acompanham tudo no painel ao vivo e na reunião mensal, com relatório do que foi investido, do que voltou e do que será escalado.</p></details>
+    <details><summary>Por que o salão no Nível 2 e não no Nível 1?</summary><p>O Nível 2 inclui Google Ads junto com o Meta, o CRM em kanban, o agente de IA fora do horário e o playbook comercial para a recepção. São os pontos em que o levantamento mostrou perda de lead.</p></details>
+    <details><summary>Como funciona a verba de anúncios?</summary><p>A verba de mídia é investida por vocês, à parte da mensalidade. Acima da faixa de verba sugerida, cobra-se 20% sobre o excedente.</p></details>
+    <details><summary>Por que a distribuidora precisa de um formulário antes do WhatsApp?</summary><p>No B2B, o público é dono de salão. O formulário confirma isso antes de o contato chegar ao WhatsApp, para o time comercial falar só com quem interessa.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Do envio à decisão</h2>
+    <p class="sub">Três passos, com data para o retorno.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>EmpresAtiva envia</h3><p>Esta proposta, a minuta do contrato e a análise do Google Meu Negócio, com a pontuação 6,2.</p></div>
+      <div class="card"><div class="n">02</div><h3>Vocês analisam</h3><p>Reunião interna de Jaqueline e Fellipe para validar a viabilidade financeira e os pacotes.</p></div>
+      <div class="card"><div class="n">03</div><h3>Retorno combinado</h3><p>Combinamos o dia e o horário do retorno na hora do envio, para a decisão não ficar sem data.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+</body>
+</html>
