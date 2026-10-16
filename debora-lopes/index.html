@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · nanosense · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+/* topbar */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+/* hero */
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:50ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(24px,2.6vw,32px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+/* two col panels */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.funnel .row{display:grid;grid-template-columns:150px 1fr 34px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.funnel .row:first-of-type{border-top:none}
+.bar{height:10px;background:#1A201B;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:#5E625B;border-radius:5px}
+.bar i.g{background:var(--accent)}
+.funnel b{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+/* projection */
+.proj{margin-top:20px}
+.tbl{overflow-x:auto}
+.proj table{min-width:560px}
+.proj th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:400;text-align:right;padding:0 0 12px 14px}
+.proj th:first-child{text-align:left;padding-left:0}
+.proj td{text-align:right;white-space:nowrap}
+.proj td:first-child{text-align:left;white-space:normal;color:var(--text)}
+.proj td small{display:block;color:var(--dim);font-size:12px}
+.pieces{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.piece{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:16px 18px}
+.piece b{display:block;font-size:20px;font-weight:800;color:var(--accent-hi);line-height:1.2}
+.piece span{font-size:12px;color:var(--muted)}
+/* timeline */
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+/* items grid */
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+/* plans */
+.plan .price{font-size:44px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 18px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+/* invest */
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+/* author */
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+/* faq */
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+/* final */
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 24px}
+.steps .card h3{font-size:16px}
+.align{text-align:left;margin:0 0 40px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.items,.inv,.author,.steps,.pieces{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+  .funnel .row{grid-template-columns:1fr 34px} .funnel .row span{grid-column:1/-1}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · nanosense</p>
+    <h1>Consultoria que leva ao cabelo <em>certo</em></h1>
+    <p class="lede">Para Débora Lopes e Douglas. Um plano de tráfego pago para transformar a curadoria da nanosense em consultoria online paga e levar a cliente certa até a compra da extensão.</p>
+    <div class="cta">
+      <a class="btn" href="#investimento">Ver investimento</a>
+      <a class="btn ghost" href="#diagnostico">Ver o ponto de partida</a>
+    </div>
+    <p class="note">Proposta de 15/10/2026 · Nível 1 · Consultoria online como produto de entrada</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>15 anos</b><span>De experiência da Débora com mega hair</span></div>
+    <div class="stat"><b>R$ 5 a 10 mil</b><span>Por peça de extensão nanosense</span></div>
+    <div class="stat"><b>+20 mil</b><span>Seguidores na conta em uso hoje</span></div>
+    <div class="stat"><b>R$ 100</b><span>Valor da consulta presencial hoje, usada como filtro</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O ponto de partida</p>
+    <h2>A nanosense vende curadoria, não só cabelo</h2>
+    <p class="sub">O que ficou claro na conversa: o diferencial está em encontrar o cabelo certo para a pessoa certa, e a venda precisa começar por aí.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>O diferencial é a seleção</h3><p>Fios regionais e do Sul, com base nano, escolhidos por quem trabalha com isso há 15 anos e tem prova social. A cliente compra a experiência, não só a peça.</p></div>
+      <div class="card"><div class="n">02</div><h3>R$ 100 filtra, mas não sustenta o online</h3><p>Presencial, o valor serve para sinalizar interesse. Online, a consultoria leva de 30 a 60 minutos e o preço precisa remunerar esse tempo.</p></div>
+      <div class="card"><div class="n">03</div><h3>Venda à distância pede consciência</h3><p>Quem pesquisa preço compra onde achar mais barato. A venda funciona melhor para quem quer entender antes de comprar e para cidades onde a profissional não tem estoque premium.</p></div>
+    </div>
+    <div class="quote">A consultoria é o produto de entrada. <span>O cabelo vem depois</span>, com a cliente já convencida e com o resultado em mãos.</div>
+    <p class="note" style="margin-top:28px">Fonte: conversa de 15/10/2026.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Referência e projeção</p>
+    <h2>O que o mercado de consultorias mostra</h2>
+    <p class="sub">Usamos a média do nicho de Consultorias e Treinamentos como referência de funil e simulamos o retorno de uma verba mensal. É uma simulação, não uma garantia.</p>
+    <div class="two">
+      <div class="panel funnel" style="background:var(--bg)">
+        <h4>A cada 100 leads (referência do nicho)</h4>
+        <div class="row"><span>Leads</span><div class="bar"><i style="width:100%"></i></div><b>100</b></div>
+        <div class="row"><span>Qualificados</span><div class="bar"><i class="g" style="width:12.3%"></i></div><b>12</b></div>
+        <div class="row"><span>Vendas</span><div class="bar"><i class="g" style="width:4.66%"></i></div><b>5</b></div>
+        <p class="note" style="margin-top:14px">Barras proporcionais ao total de leads. Valores arredondados.</p>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Consultorias e Treinamentos</h4>
+        <div class="big">100 → 12 → 5</div>
+        <p>Em média, 12,3% dos leads viram qualificados e 37,9% dos qualificados viram venda, o que dá 4,66% de leads para vendas.</p>
+        <p>Fonte: média de mercado RD Station. Na simulação, a venda é a consultoria paga. Os números serão ajustados pelo histórico real da campanha.</p>
+      </div>
+    </div>
+
+    <div class="panel proj" style="background:var(--bg)">
+      <h4>Simulação mensal · verba de referência de R$ 3.000</h4>
+      <div class="tbl">
+        <table>
+          <tr><th>Custo por lead</th><th>Leads</th><th>Qualificados</th><th>Consultorias pagas</th><th>Receita da consultoria</th></tr>
+          <tr><td>R$ 7,00<small>Referência da planilha de negócios locais</small></td><td>428</td><td>53</td><td>20</td><td>R$ 5.940</td></tr>
+          <tr><td>R$ 12,00<small>Referência da planilha de negócios locais</small></td><td>250</td><td>31</td><td>12</td><td>R$ 3.564</td></tr>
+          <tr><td>R$ 20,00<small>Cenário conservador, acima da faixa de R$ 3 a R$ 12</small></td><td>150</td><td>18</td><td>7</td><td>R$ 2.079</td></tr>
+        </table>
+      </div>
+      <p class="note" style="margin-top:16px;line-height:1.7">Receita calculada com a consultoria a R$ 297, o valor de entrada da faixa sugerida. Custo mensal de referência: R$ 3.000 de verba mais R$ 1.297 de gestão, total de R$ 4.297. No cenário de R$ 7,00, a consultoria sozinha cobre esse custo. Nos demais, a diferença é de R$ 733 e R$ 2.218.</p>
+      <div class="pieces">
+        <div class="piece"><b>R$ 5 a 10 mil</b><span>1 peça vendida, o que cobre a diferença nos três cenários</span></div>
+        <div class="piece"><b>R$ 10 a 20 mil</b><span>2 peças vendidas</span></div>
+        <div class="piece"><b>R$ 15 a 30 mil</b><span>3 peças vendidas</span></div>
+      </div>
+      <p class="note" style="margin-top:16px;line-height:1.7">Não existe referência de mercado para a conversão da consultoria em compra do cabelo. Esse número será medido nos primeiros meses de campanha.</p>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Da consultoria paga à venda do cabelo</h2>
+    <p class="sub">Primeiro validamos a consultoria online como produto de entrada. Depois expandimos com parceiros.</p>
+
+    <p class="grp">Fase 1 · Consultoria online</p>
+    <div class="tl"><div class="tag">Frente 1<b>Produto de entrada</b></div><div><h3>Consultoria online paga antes do cabelo</h3><p>A cliente paga a consultoria, recebe a análise do cabelo e uma imagem de antes e depois feita com IA a partir das fotos que ela envia. Só depois vem a apresentação do cabelo e o preço da peça. Valor sugerido entre R$ 297 e R$ 497 por consultoria, equivalente a 3% a 10% de uma peça. Valor final a definir com vocês.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Anúncio</b></div><div><h3>Mulheres que querem naturalidade</h3><p>Público de mulheres a partir de 40 anos, que buscam parecer mais jovens e bonitas com um visual natural e procuram alguém de confiança. O anúncio leva ao contato, onde a consultoria é agendada e paga.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Conteúdo</b></div><div><h3>Micro consultorias no Instagram</h3><p>Conteúdos mostrando como a escolha do cabelo muda conforme cada cliente. Constroem autoridade e consciência, e deixam o anúncio mais fácil de escalar. Recebem ideias semanais da EmpresAtiva.</p></div></div>
+    <div class="tl"><div class="tag">Frente 4<b>Onde anunciar</b></div><div><h3>Cidades médias e grandes centros</h3><p>Teste em cidades acima de 100 a 200 mil habitantes, onde há profissionais boas sem estoque de cabelo premium, e nos grandes mercados como Rio e São Paulo. O resultado de cada região mostra onde escalar.</p></div></div>
+
+    <p class="grp">Fase 2 · Parcerias e escala</p>
+    <div class="tl"><div class="tag">Frente 1<b>Salões parceiros</b></div><div><h3>Indicação para salões de outras cidades</h3><p>A cliente da consultoria é indicada a um salão certificado da cidade dela, e a indicação pode gerar ganho indireto para a nanosense.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Especialistas</b></div><div><h3>Treinar quem faz a consultoria</h3><p>Hoje a Débora e o Douglas fazem os atendimentos. Conforme o volume cresce, outras pessoas são treinadas para a consultoria.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que vocês levam na operação</h2>
+    <p class="sub">Uma equipe completa, não uma pessoa só, com relatório e reunião todo mês.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestor de tráfego e design</h3><p>Imagens, carrosséis e vídeos em motion, com equipe própria de design.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Página conectada à campanha</h3><p>A página nova da nanosense, com a chamada para falar com um especialista, ligada ao anúncio.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>WhatsApp integrado</h3><p>Todas as conversas classificadas por IA em qualificado e agendado, devolvidas ao Meta para o anúncio aprender.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>Painel ao vivo</h3><p>Gasto, leads, custo por lead e melhores anúncios em tempo real.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Relatório e reunião mensal</h3><p>Fechamento que mostra onde está o gargalo e o que escalar.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Ideias de conteúdo semanais</h3><p>Sugestões toda semana para as micro consultorias e para o conteúdo de autoridade.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">Os planos</p>
+    <h2>Começa no Nível 1</h2>
+    <p class="sub">O ponto de partida para validar a consultoria, com espaço para evoluir.</p>
+    <div class="two">
+      <div class="panel plan hi">
+        <span class="badge">Nível 1 · Mídia</span>
+        <div class="price">R$ 1.297 <small>/ mês</small></div>
+        <ul>
+          <li>Tráfego pago em uma plataforma, Meta ou Google</li>
+          <li>Site ou landing page</li>
+          <li>WhatsApp integrado com classificação inteligente</li>
+          <li>Equipe de design: imagens, carrosséis e motion</li>
+          <li>Painel ao vivo, relatório e reunião mensal</li>
+        </ul>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Nível 2 · Líder</span>
+        <div class="price">R$ 1.897 <small>/ mês</small></div>
+        <ul>
+          <li>Tudo do Nível 1</li>
+          <li>Google Ads e Meta Ads juntos</li>
+          <li>CRM próprio em formato kanban</li>
+          <li>Agente de IA fora do horário comercial</li>
+          <li>Playbook comercial: abordagem, objeções e resgate</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Recomendação</p>
+    <h2>Nível 1 agora, Nível 2 quando o volume pedir</h2>
+    <p class="sub">Cada etapa no momento em que o negócio está.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Por que o Nível 1</h4>
+        <ul class="xlist">
+          <li>A consultoria online é um produto novo e precisa ser validada</li>
+          <li>Uma plataforma só, com foco em testar anúncio, público e valor</li>
+          <li>Hoje a Débora e o Douglas atendem, sem equipe comercial montada</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>Quando subir para o Nível 2</h4>
+        <ul class="xlist">
+          <li>Quando o volume de conversas pedir CRM para organizar os leads</li>
+          <li>Quando for preciso atender fora do horário, com agente de IA</li>
+          <li>Quando fizer sentido anunciar no Google junto com o Meta</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Gestão mensal fechada</h2>
+    <p class="sub">Um valor mensal para a operação completa do Nível 1.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Composição mensal</h4>
+        <table>
+          <tr><td>Nível 1 · Mídia<small>Tráfego pago em uma plataforma, WhatsApp integrado, design, painel e reunião mensal</small></td><td>R$ 1.297,00</td></tr>
+          <tr class="t"><td>Total por mês</td><td>R$ 1.297,00</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">A verba de anúncios é investida por vocês, à parte. Prazo e demais condições seguem a minuta de contrato.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Total mensal</p>
+        <div class="price">R$ 1.297,00 <small>/ mês</small></div>
+        <p>Nível 1 para validar a consultoria online da nanosense e levar a cliente certa até a compra.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em negócios locais e em salões de beleza. Trabalha em Meta Ads, Google Ads e Google Meu Negócio, com uma equipe de gestão, design, web, CRM e inteligência artificial.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Meta + Google</b><span>e Google Meu Negócio</span></div>
+        </div>
+      </div>
+      <div class="bq">“Eu acho que você deveria vender a consultoria, que isso aí é um diferencial, que eu não vejo ninguém fazer isso.”<small>João Marot · reunião de 15/10/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>Por que cobrar pela consultoria online?</summary><p>Porque filtra quem tem intenção real e remunera o tempo de 30 a 60 minutos de atendimento. Presencial, a Débora cobra R$ 100 como filtro e funciona. Online é outra estratégia, e o valor precisa ser ajustado.</p></details>
+    <details><summary>E se a cliente fizer a consultoria e comprar o cabelo em outro lugar?</summary><p>A consultoria já foi paga, então a nanosense já monetizou o atendimento. A cliente sai com o documento do que o cabelo dela pede e pode decidir depois.</p></details>
+    <details><summary>Por que não vender consultoria e cabelo por um preço fechado?</summary><p>Porque cada cabelo é personalizado. Um preço fixo antes da consultoria pode se mostrar errado, mais caro ou mais barato do que a cliente precisa, e isso arrisca a credibilidade.</p></details>
+    <details><summary>Como funciona a verba de anúncios?</summary><p>A verba de mídia é investida por vocês, à parte da mensalidade.</p></details>
+    <details><summary>A projeção é uma garantia de resultado?</summary><p>Não. É uma simulação com a média de mercado do nicho de Consultorias e Treinamentos (RD Station), que será ajustada com os números reais da campanha.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Do envio à decisão</h2>
+    <p class="sub">Três passos, com data para o retorno.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>EmpresAtiva envia</h3><p>Esta proposta, pelo WhatsApp, como combinado na reunião.</p></div>
+      <div class="card"><div class="n">02</div><h3>Vocês analisam</h3><p>Débora e Douglas avaliam a consultoria online, o valor sugerido e o plano.</p></div>
+      <div class="card"><div class="n">03</div><h3>Retorno combinado</h3><p>Combinamos o dia e o horário do retorno na hora do envio, para a decisão não ficar sem data.</p></div>
+    </div>
+    <div class="panel align" style="background:var(--panel)">
+      <h4>A alinhar antes de começar</h4>
+      <ul class="xlist">
+        <li>Qual perfil do Instagram vai sustentar os anúncios</li>
+        <li>Página nova da nanosense, que está sendo finalizada</li>
+        <li>Verba mensal de anúncios e valor final da consultoria</li>
+      </ul>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+</body>
+</html>
