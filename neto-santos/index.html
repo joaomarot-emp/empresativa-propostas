@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta Ludmila Linhares</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(36px,6vw,70px);line-height:1.04;letter-spacing:-.01em;max-width:16ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:19ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:58ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;gap:12px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:54ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:48ch}
+.quote span{color:var(--accent-hi)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.funnel .row{display:grid;grid-template-columns:170px 1fr 34px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.funnel .row:first-of-type{border-top:none}
+.bar{height:10px;background:#1A201B;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:#5E625B;border-radius:5px}
+.bar i.g{background:var(--accent)}
+.funnel b{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+.plan{display:flex;flex-direction:column}
+.plan .price{font-size:40px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 6px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan .for{font-size:13.5px;color:var(--muted);margin:8px 0 18px;min-height:3em}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.plan li.bonus{color:var(--accent-hi)}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px;align-self:flex-start}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+td s{color:var(--dim)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(34px,4.6vw,48px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.three,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+  .funnel .row{grid-template-columns:1fr 34px} .funnel .row span{grid-column:1/-1}
+  .plan .for{min-height:0}
+  .top .btn{padding:10px 14px;font-size:11px}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · Ludmila Linhares · Studio 19.88</p>
+    <h1>Lead qualificado <em>na cadeira</em> da Ludmila</h1>
+    <p class="lede">Para Neto Santos. Três formatos para transformar o perfil da Ludmila na referência em mega hair da Grande Vitória: só o tráfego, o tráfego com o time comercial treinado toda semana, ou o comercial inteiro com a EmpresAtiva, entregando a cliente já agendada.</p>
+    <div class="cta">
+      <a class="btn" href="#planos">Ver os três níveis</a>
+      <a class="btn ghost" href="#diagnostico">Ver o diagnóstico</a>
+    </div>
+    <p class="note">Proposta de 20/10/2026 · Perfil da Ludmila, especialista em mega hair · Vitória/ES</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>R$ 5.000</b><span>Ticket médio só do cabelo (pacote anual chega a R$ 12 a 13 mil)</span></div>
+    <div class="stat"><b>82% → 41%</b><span>No-show reduzido com o protocolo D1 / D0 / H2</span></div>
+    <div class="stat"><b>62% → 32%</b><span>Fechamento caiu com a troca de equipe no comercial</span></div>
+    <div class="stat"><b>≈ R$ 3.000</b><span>Por mês em anúncios, hoje somando salão e perfil da Ludmila</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>O tráfego traz gente. O comercial é que não se sustenta</h2>
+    <p class="sub">O que ficou claro na conversa de 17/10: volume de lead não é o problema. O que trava é a qualidade de quem chega, a equipe que não fica e a venda que não volta para o anúncio.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Treina, e a pessoa sai</h3><p>Turnover alto em Vitória. O comercial é treinado, pede demissão e o ciclo recomeça. Enquanto isso, há mensagens de interessadas no Instagram sem resposta.</p></div>
+      <div class="card"><div class="n">02</div><h3>A venda não volta pro Meta</h3><p>A trava do funil é saber qual lead comprou. Sem essa devolutiva, o Meta não aprende quem é a cliente certa e o resultado oscila de semana para semana.</p></div>
+      <div class="card"><div class="n">03</div><h3>Área maior, lead pior</h3><p>De dezembro a abril a qualificação estava ótima. Ao ampliar a área, a partir de maio, começou a vir gente desqualificada. E a pressão para comparecer derrubou o fechamento.</p></div>
+    </div>
+    <div class="quote">“Se eu terceirizar e trouxer leads, a minha mulher senta na cadeira e <span>fecha a venda se for qualificada</span>. Isso aí é fato.”</div>
+    <p class="note" style="margin-top:28px">Neto Santos, reunião de 17/10/2026.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Potencial de venda</p>
+    <h2>O mesmo lead vale quase o dobro com o comercial certo</h2>
+    <p class="sub">A cada 100 leads, com os números que você mesmo trouxe: cerca de 30 agendam e 41% faltam. O que muda o faturamento é a taxa de fechamento voltar ao patamar que vocês já tiveram.</p>
+    <div class="two">
+      <div class="panel funnel" style="background:var(--bg)">
+        <h4>A cada 100 leads, hoje</h4>
+        <div class="row"><span>Leads (quem chamou)</span><div class="bar"><i style="width:100%"></i></div><b>100</b></div>
+        <div class="row"><span>Agendaram</span><div class="bar"><i style="width:30%"></i></div><b>30</b></div>
+        <div class="row"><span>Compareceram (59%)</span><div class="bar"><i style="width:18%"></i></div><b>18</b></div>
+        <div class="row"><span>Fecharam com 32%</span><div class="bar"><i class="g" style="width:6%"></i></div><b>6</b></div>
+        <div class="row"><span>Fechariam com 62%</span><div class="bar"><i class="g" style="width:11%"></i></div><b>11</b></div>
+        <p class="note" style="margin-top:14px;line-height:1.7">6 vendas × R$ 5.000 ≈ R$ 30 mil · 11 vendas × R$ 5.000 ≈ R$ 55 mil. Só o cabelo, sem o pacote anual. Projeção com os números da reunião, não é garantia de resultado.</p>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho · Saúde e Estética</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>Na média de mercado (RD Station), a cada 100 leads, 22,4% chegam qualificados (estão na área de atendimento, têm a dor que a Ludmila resolve e podem pagar) e 8,13% viram venda.</p>
+        <p>Com o ticket de R$ 5.000, 8 vendas são cerca de R$ 40 mil a cada 100 leads. Duas vendas de cabelo no mês já pagam o Nível 4 inteiro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>A Ludmila como a especialista em mega de Vitória</h2>
+    <p class="sub">O salão segue com a comunicação de luxo dele. Aqui o foco é só o perfil da Ludmila: quem ela é, o que faz, como faz e o resultado que entrega.</p>
+
+    <p class="grp">Tráfego · todos os níveis</p>
+    <div class="tl"><div class="tag">Frente 1<b>Perfil dela</b></div><div><h3>Verba própria para a Ludmila</h3><p>Hoje a verba está misturada entre salão e perfil dela. Separar as contas para medir o que o perfil da especialista gera, começando pelo alcance em Vitória e Vila Velha.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Criativos campeões</b></div><div><h3>Replicar o que já funcionou</h3><p>Os vídeos que mais performaram têm gancho nos primeiros 2,5 segundos, transição rápida e legenda falando de volume e pontas afinadas. A ideia é replicar esse padrão o tempo todo, com antes e depois natural e mulheres em que o público de alto padrão se reconhece.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Segmentação</b></div><div><h3>CEPs das áreas nobres, sem saturar</h3><p>Partir da segmentação por CEP que você já montou, controlar a frequência e usar a base de clientes da Avec como público personalizado, para o Meta buscar mulheres parecidas com quem já compra.</p></div></div>
+    <div class="tl"><div class="tag">Frente 4<b>Devolutiva</b></div><div><h3>A venda volta para o anúncio</h3><p>A IA classifica as conversas do WhatsApp em qualificado e agendado. O comercial preenche só nome, telefone e valor da venda, e a automação devolve isso ao Meta. Com cerca de 300 registros o algoritmo já tem base para aprender.</p></div></div>
+
+    <p class="grp">Atendimento · a partir do Nível 2</p>
+    <div class="tl"><div class="tag">Frente 5<b>Nenhuma mensagem parada</b></div><div><h3>Agente de IA e Direct automático</h3><p>Agente de IA atendendo fora do horário e automação no Instagram (ManyChat) mandando Direct para quem comenta. Agendamento pelo Google Agenda enquanto a Avec não libera a integração, mantendo o seu protocolo D1 / D0 / H2.</p></div></div>
+    <div class="tl"><div class="tag">Frente 6<b>Comercial</b></div><div><h3>Treinar o time ou assumir o comercial</h3><p>No Nível 3, os SDRs da EmpresAtiva treinam e cobram o time do estúdio toda semana. No Nível 4, o comercial passa a ser nosso: o SDR atende, conduz e entrega a cliente agendada para a avaliação com a Ludmila.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que vem em qualquer nível</h2>
+    <p class="sub">Uma equipe completa, não uma pessoa só. Se alguém sai, o trabalho não para.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestor de tráfego e design</h3><p>Meta Ads e Google Ads, com equipe própria para imagens, carrosséis e vídeos em motion.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>CRM em kanban</h3><p>Cada lead com origem, etapa e próximo passo, do primeiro contato até a venda.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>WhatsApp com IA</h3><p>Conversas classificadas por IA e devolvidas ao Meta para o anúncio aprender.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>Painel ao vivo</h3><p>Gasto, leads, custo por lead e os melhores anúncios em tempo real.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Relatório e reunião mensal</h3><p>Quantas vendas vieram do tráfego, do orgânico e da indicação, e onde está o gargalo.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Ideias de conteúdo semanais</h3><p>Ganchos e roteiros a partir dos vídeos campeões. A produção continua com o time de vocês.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">Os planos</p>
+    <h2>Três níveis, do tráfego ao comercial completo</h2>
+    <p class="sub">Cada nível inclui tudo do anterior. A diferença é quanto do comercial fica com a EmpresAtiva.</p>
+    <div class="three">
+      <div class="panel plan">
+        <span class="badge off">Nível 2 · Tráfego</span>
+        <div class="price">R$ 1.897 <small>/ mês</small></div>
+        <p class="for">Para quem já tem um comercial que dá conta e quer o lead certo chegando.</p>
+        <ul>
+          <li>Meta Ads e Google Ads para o perfil da Ludmila</li>
+          <li>CRM próprio em kanban</li>
+          <li>Agente de IA fora do horário comercial</li>
+          <li>WhatsApp com IA e devolutiva das vendas ao Meta</li>
+          <li>Design, painel ao vivo, relatório e reunião mensal</li>
+        </ul>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Nível 3 · Time treinado</span>
+        <div class="price">R$ 3.497 <small>/ mês</small></div>
+        <p class="for">Para manter o time do estúdio, com treinamento e cobrança toda semana.</p>
+        <ul>
+          <li>Tudo do Nível 2</li>
+          <li>Treinamento comercial semanal com os SDRs da EmpresAtiva</li>
+          <li>Cobrança da cadência e revisão das conversas do time</li>
+          <li>Abordagem, objeções e resgate para venda de mega pelo WhatsApp</li>
+        </ul>
+      </div>
+      <div class="panel plan hi">
+        <span class="badge">Nível 4 · Comercial completo</span>
+        <div class="price">R$ 9.497 <small>/ mês</small></div>
+        <p class="for">Para tirar o comercial das suas costas: a cliente chega agendada para a Ludmila.</p>
+        <ul>
+          <li>Tudo do Nível 3</li>
+          <li>SDR dedicado da EmpresAtiva, com supervisão semanal</li>
+          <li>50 ligações por semana, além do WhatsApp</li>
+          <li>Resposta a novas interessadas e reativação da base</li>
+          <li>Agendamento conforme as regras e a agenda do estúdio</li>
+          <li>Acompanhamento até o comparecimento</li>
+          <li class="bonus">Implantação de bônus: R$ 2.000 que não são cobrados</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:20px">Em todos os níveis, a verba de anúncios é investida por vocês, à parte da mensalidade.</p>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Recomendação</p>
+    <h2>Nível 4: o comercial sai das suas costas</h2>
+    <p class="sub">Pelo que você contou, o problema não é saber vender. É ter tempo e gente que fique.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Por que o Nível 4</h4>
+        <ul class="xlist">
+          <li>Você toca vários negócios e não consegue supervisionar o comercial do dia a dia</li>
+          <li>Turnover alto em Vitória: treinar quem vai sair custa tempo e faturamento</li>
+          <li>A Ludmila fecha quando a cliente chega qualificada. O SDR entrega exatamente isso</li>
+          <li>Duas vendas de cabelo de R$ 5.000 no mês já pagam a mensalidade</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>Se preferir começar menor</h4>
+        <ul class="xlist">
+          <li>Nível 3, se quiser manter o time do estúdio com treinamento e cobrança semanal</li>
+          <li>Nível 2, se o comercial estiver estável e o foco for só o lead qualificado</li>
+          <li>Dá para subir de nível depois, conforme o resultado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Nível 4, com a implantação de bônus</h2>
+    <p class="sub">Mensalidade fechada. A implantação do comercial fica por nossa conta.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Composição mensal · Nível 4</h4>
+        <table>
+          <tr><td>Nível 3 · Tráfego e treinamento comercial semanal</td><td>R$ 3.497,00</td></tr>
+          <tr><td>SDR dedicado<small>50 ligações por semana, WhatsApp e supervisão semanal</small></td><td>R$ 6.000,00</td></tr>
+          <tr class="t"><td>Total por mês</td><td>R$ 9.497,00</td></tr>
+          <tr><td>Implantação do comercial<small>Serviços e públicos prioritários, base e horários, roteiros, cadência de retomada, CRM e indicadores</small></td><td><s>R$ 2.000,00</s> Bônus</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">A verba de anúncios é investida por vocês, à parte. Acima da faixa de verba contratada, cobra-se 20% sobre o excedente. Prazo de 180 dias; demais condições seguem a minuta de contrato.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Total mensal · Nível 4</p>
+        <div class="price">R$ 9.497 <small>/ mês</small></div>
+        <p>Tráfego, treinamento e SDR dedicado, com a implantação de bônus. Nível 2 por R$ 1.897 e Nível 3 por R$ 3.497, se preferir começar menor.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em negócios locais e especializada em salões de mega hair. Trabalha em Meta Ads, Google Ads e Google Meu Negócio, com equipe de gestão, design, CRM, inteligência artificial e SDRs.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Mega hair</b><span>nicho de especialização</span></div>
+        </div>
+      </div>
+      <div class="bq">“A minha ideia como agência não é ser executor de tráfego pago, é ir para o nível estratégico. É cabeça de dono: o gargalo está aqui, vamos melhorar isso.”<small>João Marot · reunião de 17/10/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>Dá para vender mega hair pelo WhatsApp?</summary><p>O objetivo do WhatsApp é levar a cliente até a avaliação, já com sinal quando for a regra do estúdio. Quem fecha o cabelo é a Ludmila, na cadeira. Em outros salões de mega hair que atendemos, avaliações com sinal fechadas pelo WhatsApp acontecem toda semana.</p></details>
+    <details><summary>E a integração com a Avec?</summary><p>Se a Avec liberar a API (o Avec Lake), integramos. Enquanto isso, o agendamento roda no Google Agenda e o comercial preenche só nome, telefone e valor da venda. O restante a automação puxa sozinha, incluindo a devolutiva ao Meta.</p></details>
+    <details><summary>O que vocês consideram lead qualificado?</summary><p>A cliente que pode ser atendida na região, tem a dor que a Ludmila resolve (volume, pontas afinadas, queda, alopecia) e tem condição de pagar. A referência do nicho é 22,4% dos leads qualificados.</p></details>
+    <details><summary>O conteúdo fica com quem?</summary><p>A produção continua com o time de vocês. A EmpresAtiva entrega ideias semanais e a leitura dos criativos campeões, para cada vídeo novo nascer com o gancho que já provou funcionar.</p></details>
+    <details><summary>O perfil do salão entra no trabalho?</summary><p>Não. O salão tem time e posicionamento próprios. Esta proposta é focada no perfil da Ludmila como especialista em mega hair.</p></details>
+    <details><summary>Como funciona a verba de anúncios?</summary><p>A verba de mídia é investida por vocês, à parte da mensalidade. Acima da faixa de verba contratada, cobra-se 20% sobre o excedente.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Da proposta à primeira cliente agendada</h2>
+    <p class="sub">Três passos, com data para a decisão.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>Você avalia</h3><p>Esta proposta com os três níveis, para a decisão entre quarta e quinta-feira, como combinamos.</p></div>
+      <div class="card"><div class="n">02</div><h3>Escolha do nível</h3><p>Fechamos o nível, assinamos o contrato e liberamos os acessos ao Meta e à base de clientes.</p></div>
+      <div class="card"><div class="n">03</div><h3>Implantação</h3><p>Separação da verba do perfil da Ludmila, CRM e IA no WhatsApp e, no Nível 4, roteiros e cadência do SDR.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+</body>
+</html>
