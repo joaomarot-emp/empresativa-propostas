@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · Belle Amis · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+/* topbar */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+/* hero */
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:50ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+/* two col panels */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.funnel .row{display:grid;grid-template-columns:150px 1fr 74px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.funnel .row:first-of-type{border-top:none}
+.bar{height:10px;background:#1A201B;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:#5E625B;border-radius:5px}
+.bar i.g{background:var(--accent)}
+.funnel b{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+/* timeline */
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+/* entrega grid */
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+/* plans */
+.plan .price{font-size:44px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 18px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan .old{font-size:15px;font-weight:600;color:var(--dim);text-decoration:line-through;margin-top:4px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.xlist.no li::before{content:"✕";color:var(--muted);font-size:12px;top:14px}
+/* invest */
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+/* author */
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+/* faq */
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+/* final */
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+  .funnel .row{grid-template-columns:1fr 74px} .funnel .row span{grid-column:1/-1}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · Belle Amis</p>
+    <h1>Salão cheio <em>—</em> e o fim da fama de caro em Barra Velha</h1>
+    <p class="lede">Para Xica Lima. Um plano para encher os horários vagos do salão e do mega hair, mostrando no anúncio que o preço do Belle Amis é justo e medindo quanto cada real investido vira faturamento.</p>
+    <div class="cta">
+      <a class="btn" href="#investimento">Ver investimento</a>
+      <a class="btn ghost" href="#diagnostico">Ver o diagnóstico</a>
+    </div>
+    <p class="note">Proposta de 03/11/2026 · Nível 1 com condição de entrada</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>≈ R$ 20 mil</b><span>Faturamento bruto por mês, hoje, somando todos os profissionais</span></div>
+    <div class="stat"><b>R$ 50 mil</b><span>Faturamento que você enxerga possível com a agenda cheia</span></div>
+    <div class="stat"><b>3 andares</b><span>Salão, estética, terapias e atelier, com 5 anos de espaço</span></div>
+    <div class="stat"><b>45 mil</b><span>Habitantes em Barra Velha, com cidades vizinhas a 12–45 km</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>O espaço está pronto, mas o salão está parado</h2>
+    <p class="sub">As outras áreas do Belle Amis fluem bem. O que trava é o salão e o mega hair, e o motivo não é falta de público.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>A fama de caro afasta</h3><p>Por ser um dos espaços mais completos e bem montados da cidade, muita gente acha que tudo ali é muito caro, quando o preço é comparável ao dos concorrentes, às vezes até menor.</p></div>
+      <div class="card"><div class="n">02</div><h3>Horários vagos no salão</h3><p>Há muito horário livre no salão e no mega hair. É a área com mais espaço para crescer sem precisar de estrutura nova.</p></div>
+      <div class="card"><div class="n">03</div><h3>Região que ainda não foi alcançada</h3><p>Barra Velha está crescendo, com empresários e obras de alto padrão, e cerca de oito clientes já vêm de fora, de cidades como Joinville e Balneário. Esse público ainda não é buscado de forma ativa.</p></div>
+    </div>
+    <div class="quote">O preço já é justo e o espaço já encanta. O que muda a conta é <span>um anúncio que mostre o valor real</span> e traga a cliente certa para os horários vagos.</div>
+    <p class="note" style="margin-top:28px">Fonte: conversa de diagnóstico de 03/11/2026.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Onde está o espaço para crescer</p>
+    <h2>De R$ 20 mil para o potencial do espaço</h2>
+    <p class="sub">O espaço comporta mais que o dobro do movimento atual. A partir do primeiro mês, o funil passa a ser medido para saber onde cada cliente entra e onde ela para.</p>
+    <div class="two">
+      <div class="panel funnel" style="background:var(--bg)">
+        <h4>Faturamento: hoje e o potencial</h4>
+        <div class="row"><span>Hoje</span><div class="bar"><i style="width:40%"></i></div><b>R$ 20 mil</b></div>
+        <div class="row"><span>Potencial</span><div class="bar"><i class="g" style="width:100%"></i></div><b>R$ 50 mil</b></div>
+        <h4 style="margin-top:26px">Cidades próximas</h4>
+        <div class="row"><span>Balneário Piçarras</span><div class="bar"><i class="g" style="width:27%"></i></div><b>12 km</b></div>
+        <div class="row"><span>Penha · Araquari</span><div class="bar"><i class="g" style="width:33%"></i></div><b>15 km</b></div>
+        <div class="row"><span>Itajaí</span><div class="bar"><i style="width:75%"></i></div><b>30+ km</b></div>
+        <div class="row"><span>Joinville · Balneário</span><div class="bar"><i style="width:100%"></i></div><b>40+ km</b></div>
+        <p class="note" style="margin-top:14px">Valores e distâncias citados na conversa de 03/11/2026.</p>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho de saúde e estética</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>Na média de mercado (RD Station) para saúde e estética, a cada 100 contatos que chegam pelo anúncio, cerca de 22 são qualificados (têm a necessidade, são atendidos na região e o preço não é objeção) e cerca de 8 viram venda.</p>
+        <p>O Belle Amis ainda não tem esse funil medido. Com o WhatsApp integrado, ele passa a ser acompanhado mês a mês e comparado com essa referência, para saber se o ajuste está no anúncio, na oferta ou no atendimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Da oferta clara à demanda previsível</h2>
+    <p class="sub">O foco é o salão e o mega hair, a área com mais horário vago.</p>
+
+    <p class="grp">Belle Amis · salão e mega hair</p>
+    <div class="tl"><div class="tag">Frente 1<b>Oferta com preço</b></div><div><h3>Mostrar o valor real no anúncio</h3><p>Ofertas diretas, como manutenção de mega hair combinada com um tratamento, com o preço à vista. É o que desmonta a fama de caro e leva a cliente a agir agora, em vez de só ver um antes e depois.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Meta Ads</b></div><div><h3>Anúncio para Barra Velha e região</h3><p>Tráfego pago no Instagram e no Facebook, alcançando quem mora em Barra Velha e nas cidades vizinhas de onde já vêm clientes.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Criativos</b></div><div><h3>Vídeos sem você gravar</h3><p>Com os vídeos do espaço que você enviar, a equipe produz vídeos narrados em motion design, além de imagens e carrosséis. Você não precisa ficar na frente da câmera.</p></div></div>
+    <div class="tl"><div class="tag">Frente 4<b>WhatsApp</b></div><div><h3>Classificação inteligente das conversas</h3><p>Cada contato novo gera um alerta no grupo. A inteligência artificial classifica as conversas em frio, qualificado ou agendado e devolve essa informação ao Meta, que passa a buscar pessoas com o mesmo perfil das qualificadas.</p></div></div>
+    <div class="tl"><div class="tag">Frente 5<b>Site</b></div><div><h3>Página com informação e preço</h3><p>Um site ou landing page com as informações do Belle Amis e, se fizer sentido, os valores, para dar credibilidade e quebrar a objeção de preço antes do WhatsApp.</p></div></div>
+    <div class="tl"><div class="tag">Frente 6<b>Escala</b></div><div><h3>Medir e depois escalar</h3><p>Primeiro, descobrir quanto cada real de anúncio vira em faturamento. Com essa conta clara, aumentar a verba para crescer com previsibilidade.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que você leva no Nível 1</h2>
+    <p class="sub">Uma equipe completa, não uma pessoa só, com acompanhamento em tempo real e fechamento todo mês.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestão de tráfego pago</h3><p>Campanhas em uma plataforma, Meta (Instagram e Facebook) ou Google.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Site ou landing page</h3><p>Para apresentar o espaço, trazer informações e quebrar objeções.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>Equipe de design</h3><p>Imagens, carrosséis e vídeos em motion, feitos a partir do material do espaço.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>WhatsApp integrado</h3><p>Seu número comercial conectado ao nosso sistema, com alerta de cada contato novo no grupo.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Classificação inteligente</h3><p>Conversas classificadas por IA e devolvidas ao Meta para o anúncio aprender quem é a cliente certa.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Painel ao vivo e relatório mensal</h3><p>Gasto, conversas e melhores anúncios em tempo real, e fechamento mensal com qualificados e vendas.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Nível 1, o nível da confiança</h2>
+    <p class="sub">O ponto de partida que faz sentido para o momento do Belle Amis.</p>
+    <div class="two">
+      <div class="panel plan hi">
+        <span class="badge">Nível 1 · Mídia</span>
+        <p class="old">R$ 1.297 / mês</p>
+        <div class="price">R$ 997 <small>/ mês</small></div>
+        <ul>
+          <li>Tráfego pago em uma plataforma, Meta ou Google</li>
+          <li>Site ou landing page</li>
+          <li>Equipe de design: imagens, carrosséis e motion</li>
+          <li>WhatsApp integrado com classificação inteligente</li>
+          <li>Painel ao vivo e relatório mensal</li>
+        </ul>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Para depois · Níveis acima</span>
+        <ul>
+          <li>CRM próprio em formato kanban, para organizar cada interessada</li>
+          <li>Agente de IA que conversa e qualifica, inclusive por áudio</li>
+          <li>Google e Meta juntos</li>
+        </ul>
+        <p class="note" style="margin-top:20px;line-height:1.7">Foram apresentados na conversa e ficam para quando o volume de contatos pedir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Recomendação</p>
+    <h2>Começar pelo Nível 1, com foco no Meta</h2>
+    <p class="sub">Construir a confiança com resultado antes de ampliar.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Por que o Nível 1 agora</h4>
+        <ul class="xlist">
+          <li>Você mesma cuida do comercial, então o atendimento já está nas mãos de quem conhece o espaço</li>
+          <li>O Meta é o canal com mais alcance para o público de Barra Velha e região</li>
+          <li>Verba enxuta para começar, a partir de R$ 600 por mês</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>O que não entra agora</h4>
+        <ul class="xlist no">
+          <li>CRM em kanban e agente de IA</li>
+          <li>Google Ads junto com o Meta</li>
+          <li>Treinamento do time comercial</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Condição de entrada para começar</h2>
+    <p class="sub">O Nível 1 completo, com valor reduzido nos primeiros meses.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Composição mensal</h4>
+        <table>
+          <tr><td>Nível 1 · Mídia<small>Valor normal do plano</small></td><td>R$ 1.297,00</td></tr>
+          <tr><td>Condição de entrada<small>Nos primeiros meses</small></td><td>− R$ 300,00</td></tr>
+          <tr class="t"><td>Total por mês</td><td>R$ 997,00</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">Quando os resultados começarem a fluir, o valor volta ao normal de R$ 1.297,00. A verba de anúncios é investida por você, à parte, direto na plataforma: a sugestão para começar é a partir de R$ 600 por mês. Acima de R$ 1.500 de verba por mês, cobra-se 20% sobre o excedente. Prazo e demais condições seguem o contrato de prestação de serviços.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Total mensal</p>
+        <div class="price">R$ 997 <small>/ mês</small></div>
+        <p>Nível 1 completo com a condição de entrada. Verba de anúncios à parte, sugerida a partir de R$ 600 por mês.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Ex-capitão do Exército, com 18 anos de carreira, que deixou a força para empreender. A EmpresAtiva é uma agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em negócios locais e na área da beleza, e uma equipe de tráfego, inteligência artificial, CRM, web e design gráfico.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>18 anos</b><span>de Exército</span></div>
+        </div>
+      </div>
+      <div class="bq">“O que eu preciso entregar para você é dinheiro no seu bolso.”<small>João Marot · conversa de 03/11/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>Já fiz tráfego com outra assessoria e não deu certo. O que muda?</summary><p>Três coisas: anúncios com oferta e preço claros, em vez de só antes e depois; a classificação das conversas devolvida ao Meta, para o anúncio aprender quem é a cliente certa; e o painel ao vivo, para você acompanhar quanto foi gasto, quantas conversas chegaram e quais anúncios funcionaram.</p></details>
+    <details><summary>Preciso gravar vídeos?</summary><p>Não. Basta enviar takes do espaço e dos atendimentos. A equipe monta os vídeos em motion design, com narração, além das imagens e dos carrosséis.</p></details>
+    <details><summary>A verba de anúncios está incluída nos R$ 997?</summary><p>Não. A verba é investida por você, direto na plataforma. A sugestão para começar é a partir de R$ 600 por mês, e ela cresce conforme o resultado aparece.</p></details>
+    <details><summary>E se eu não conseguir responder o WhatsApp na hora?</summary><p>Cada contato novo chega como alerta no grupo, para ninguém ficar esquecido. Resposta rápida faz diferença na venda: se o atendimento virar gargalo, isso aparece no acompanhamento e a gente conversa sobre como resolver.</p></details>
+    <details><summary>E o Google, que também traz clientes?</summary><p>O Nível 1 trabalha uma plataforma. A recomendação é começar pelo Meta, que alcança mais gente em Barra Velha e região. O Google pode entrar depois, junto com o Meta.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Do envio à decisão</h2>
+    <p class="sub">Três passos, com data para o retorno.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>EmpresAtiva envia</h3><p>Esta proposta, com o Nível 1 na condição de entrada de R$ 997 por mês.</p></div>
+      <div class="card"><div class="n">02</div><h3>Você envia</h3><p>O texto com a história do Belle Amis e os vídeos do espaço, para os primeiros criativos.</p></div>
+      <div class="card"><div class="n">03</div><h3>Retorno combinado</h3><p>Quarta-feira, 04/11/2026: conversamos sobre a sua decisão.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+</body>
+</html>
