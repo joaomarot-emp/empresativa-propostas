@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · Meu Espaço de Beleza · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+/* topbar */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+/* hero */
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:50ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+/* two col panels */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.funnel .row{display:grid;grid-template-columns:150px 1fr 44px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.funnel .row:first-of-type{border-top:none}
+.bar{height:10px;background:#1A201B;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:#5E625B;border-radius:5px;transition:width .3s}
+.bar i.g{background:var(--accent)}
+.funnel b{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+/* simulador */
+.ctl{margin-bottom:18px}
+.ctl .lbl{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted);margin-bottom:8px}
+.ctl .lbl b{color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.out div{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 16px}
+.out b{display:block;font-size:22px;font-weight:800;color:var(--accent);line-height:1.2;font-variant-numeric:tabular-nums}
+.out span{font-size:12px;color:var(--muted);display:block;margin-top:4px}
+.out div.wide{grid-column:1/-1;background:var(--green);border-color:#2C4434}
+.out div.wide b{color:var(--text);font-size:26px}
+/* timeline */
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+/* munição grid */
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+/* plans */
+.plan .price{font-size:44px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 18px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.xlist.no li::before{content:"✕";color:var(--muted);font-size:12px;top:14px}
+/* invest */
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+/* author */
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+/* faq */
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+/* final */
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+  .funnel .row{grid-template-columns:1fr 44px} .funnel .row span{grid-column:1/-1}
+}
+@media (max-width:420px){.out{grid-template-columns:1fr}}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · Meu Espaço de Beleza</p>
+    <h1>Clube de escovas cheio <em>—</em> e cara nova no salão toda semana</h1>
+    <p class="lede">Para Thiago Lippmann. Uma estratégia de tráfego pago que usa o Clube de Escovas como porta de entrada, traz mulheres da região para dentro do salão e abre caminho para corte, cor e tratamento.</p>
+    <div class="cta">
+      <a class="btn" href="#investimento">Ver investimento</a>
+      <a class="btn ghost" href="#projecao">Simular resultados</a>
+    </div>
+    <p class="note">Proposta de 04/11/2026 · Nível 1 · Meta Ads</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>R$ 329</b><span>Plano Classic por mês, recorrente</span></div>
+    <div class="stat"><b>3 a 4 meses</b><span>Entre um corte e outro: a agenda que o clube preenche</span></div>
+    <div class="stat"><b>8 em 100</b><span>Leads que viram venda em Saúde e Estética (média RD Station)</span></div>
+    <div class="stat"><b>9 assinaturas</b><span>Classic pagam a mensalidade e R$ 1.500 de verba</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>A casa está pronta, falta gente nova chegando</h2>
+    <p class="sub">O que você contou na nossa conversa mostra um salão organizado, com recepção que vende e cliente que volta. O que trava o crescimento é a entrada.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>O orgânico chegou no limite</h3><p>A base recorrente dá estabilidade e o CRM funciona. Mas sem anúncio, o fluxo de clientes novos parou de crescer.</p></div>
+      <div class="card"><div class="n">02</div><h3>O buraco entre os cortes</h3><p>Quem corta volta em 3 a 4 meses. Nesse intervalo, a equipe sente falta de cara nova na cadeira.</p></div>
+      <div class="card"><div class="n">03</div><h3>Recepção pronta para receber</h3><p>A recepção já agenda, reagenda e oferece outro serviço. É exatamente o time que transforma lead em cliente.</p></div>
+    </div>
+    <div class="quote">Escova é commodity: a cliente decide por preço e por estar perto. Se o anúncio já mostra <span>o preço e o local</span>, quem chama no WhatsApp chega pronta para assinar.</div>
+    <p class="note" style="margin-top:28px">Fonte: reunião de 27/10/2026.</p>
+  </div>
+</section>
+
+<section id="projecao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Projeção de resultados</p>
+    <h2>Quanto o clube pode render com anúncio</h2>
+    <p class="sub">Mexa nos valores e veja a conta. A simulação usa a média de mercado de Saúde e Estética. No primeiro mês, ela é trocada pelos números reais do salão.</p>
+    <div class="two">
+      <div class="panel" style="background:var(--bg)">
+        <h4>Simulador do clube</h4>
+        <div class="ctl">
+          <div class="lbl"><span>Verba de anúncios por mês</span><b id="vVerba">R$ 1.500</b></div>
+          <input type="range" id="verba" min="500" max="5000" step="100" value="1500" aria-label="Verba de anúncios por mês">
+        </div>
+        <div class="ctl">
+          <div class="lbl"><span>Custo por lead (premissa)</span><b id="vCpl">R$ 15</b></div>
+          <input type="range" id="cpl" min="5" max="30" step="1" value="15" aria-label="Custo por lead">
+        </div>
+        <div class="ctl">
+          <div class="lbl"><span>Valor médio da assinatura</span><b id="vTicket">R$ 329</b></div>
+          <input type="range" id="ticket" min="329" max="600" step="10" value="329" aria-label="Valor médio da assinatura">
+        </div>
+        <div class="funnel" style="margin-top:8px">
+          <div class="row"><span>Leads no WhatsApp</span><div class="bar"><i id="bL" style="width:100%"></i></div><b id="nL">100</b></div>
+          <div class="row"><span>Qualificadas</span><div class="bar"><i class="g" id="bQ" style="width:22.4%"></i></div><b id="nQ">22</b></div>
+          <div class="row"><span>Novas assinaturas</span><div class="bar"><i class="g" id="bA" style="width:8.13%"></i></div><b id="nA">8</b></div>
+        </div>
+        <div class="out">
+          <div><b id="oRec">R$ 2.632</b><span>Receita nova por mês</span></div>
+          <div><b id="oCusto">R$ 350</b><span>Custo por assinatura</span></div>
+          <div><b id="oInv">R$ 2.797</b><span>Investimento total no mês</span></div>
+          <div><b id="oPaga">9</b><span>Assinaturas que pagam o mês</span></div>
+          <div class="wide"><b id="o6">R$ 15.792 / mês</b><span id="o6s">Receita recorrente ao fim de 6 meses, com 48 assinantes ativas e sem cancelamentos</span></div>
+        </div>
+        <p class="note" style="margin-top:14px;line-height:1.7">Simulação, não garantia. Taxas: 22,4% de leads qualificados e 8,13% de leads que viram venda (média RD Station, Saúde e Estética). O custo por lead é uma premissa a validar no primeiro mês.</p>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>A cada 100 leads em Saúde e Estética, cerca de 22 são qualificados (querem o serviço, estão na região e o preço não é objeção) e cerca de 8 viram venda.</p>
+        <p>No clube, o anúncio já mostra o preço e o local. A tendência é chegar menos curioso e mais gente pronta para assinar. Esse é o número que vamos perseguir e medir toda semana.</p>
+        <p>E a conta não para na assinatura. Cada assinante volta ao salão várias vezes por mês, vê a equipe trabalhando e tem 15% nos serviços capilares. É ali que entram corte, mechas, coloração e botox capilar.</p>
+        <p class="note" style="margin-top:18px">Fonte: média de mercado RD Station, planilha de taxas de conversão da EmpresAtiva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">A estratégia</p>
+    <h2>Do anúncio à cadeira, e da escova ao corte</h2>
+    <p class="sub">Três momentos: preparar a oferta, colocar o anúncio certo na frente da mulher certa e transformar a assinante em cliente do salão inteiro.</p>
+
+    <p class="grp">Antes do primeiro anúncio</p>
+    <div class="tl"><div class="tag">Etapa 1<b>Oferta clara</b></div><div><h3>Três planos que se explicam sozinhos</h3><p>Classic, Prime e Deluxe com dias, uso ilimitado e preço visíveis. O Prime como o plano em destaque. Os 15% nomeados um por um: corte, mechas, coloração, botox capilar. Mulher indecisa compra o que entende de primeira.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 2<b>Página do clube</b></div><div><h3>Landing page do Clube de Escovas</h3><p>Os três planos lado a lado, o endereço e o botão para o WhatsApp. Quem chega pela página já viu preço e local antes de falar com a recepção.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 3<b>Medição</b></div><div><h3>WhatsApp integrado desde o dia 1</h3><p>Cada conversa é classificada por IA em qualificada ou agendada e devolvida ao Meta. O anúncio aprende a buscar mais mulheres parecidas com quem assina.</p></div></div>
+
+    <p class="grp">Com o anúncio no ar</p>
+    <div class="tl"><div class="tag">Etapa 4<b>Público local</b></div><div><h3>Raio curto ao redor do salão</h3><p>Mulheres da região, no caminho de casa, da academia e da escola dos filhos. Quem mora longe não entra na conta.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 5<b>Criativos</b></div><div><h3>Dois momentos do dia, um desejo</h3><p>"Saiu da academia, saiu pronta" e "deixou os filhos na escola, ganhou um tempo seu". Sempre com preço e local no anúncio. Teste semanal: o que traz assinatura barata escala, o que não traz sai.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 6<b>Remarketing</b></div><div><h3>Quem viu e não chamou</h3><p>Anúncio de lembrete para quem visitou a página ou interagiu e ainda não falou no WhatsApp.</p></div></div>
+
+    <p class="grp">Depois que ela entra</p>
+    <div class="tl"><div class="tag">Etapa 7<b>Valor agregado</b></div><div><h3>Da escova ao serviço de maior valor</h3><p>A recepção e a equipe fazem o que já sabem: oferecer o próximo serviço. A gente acompanha com vocês quantas assinantes compram corte, cor ou tratamento, junto com assinaturas por plano e ocupação da agenda.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que vocês levam no Nível 1</h2>
+    <p class="sub">Uma equipe completa, não uma pessoa só, com relatório e reunião todo mês.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestor de tráfego e design</h3><p>Campanhas no Meta Ads, com imagens, carrosséis e vídeos em motion feitos pela nossa equipe de design.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Landing page do clube</h3><p>Página com os três planos, o endereço e o botão para o WhatsApp.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>WhatsApp integrado</h3><p>Conversas classificadas por IA em qualificada e agendada, devolvidas ao Meta para o anúncio aprender.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>Painel ao vivo</h3><p>Gasto, leads, custo por lead e melhores anúncios em tempo real.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Relatório e reunião mensal</h3><p>Fechamento que mostra quanto entrou, quanto custou cada assinatura e o que escalar.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Teste semanal de anúncios</h3><p>Ângulos e criativos novos toda semana. Fica o que traz assinatura, sai o que não traz.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Nível 1 para lançar o clube</h2>
+    <p class="sub">O ponto de partida certo para colocar o Clube de Escovas na rua e medir o resultado real.</p>
+    <div class="two">
+      <div class="panel plan hi">
+        <span class="badge">Nível 1 · Mídia</span>
+        <div class="price">R$ 1.297 <small>/ mês</small></div>
+        <ul>
+          <li>Tráfego pago no Meta Ads (Instagram e Facebook)</li>
+          <li>Landing page do Clube de Escovas</li>
+          <li>WhatsApp integrado com classificação inteligente</li>
+          <li>Equipe de design: imagens, carrosséis e motion</li>
+          <li>Painel ao vivo, relatório e reunião mensal</li>
+        </ul>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Nível 2 · Para depois</span>
+        <div class="price">R$ 1.897 <small>/ mês</small></div>
+        <ul>
+          <li>Tudo do Nível 1</li>
+          <li>CRM próprio em formato kanban</li>
+          <li>Agente de IA fora do horário comercial</li>
+        </ul>
+        <p class="note" style="margin-top:18px;line-height:1.7">Faz sentido quando o volume de leads do clube crescer além do que a recepção atende no horário.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Recomendação</p>
+    <h2>Nível 1 no Meta, com foco total no clube</h2>
+    <p class="sub">Uma oferta, um canal, um número para acompanhar: custo por assinatura.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Entra agora</h4>
+        <ul class="xlist">
+          <li>Meta Ads, onde está a mulher da região, com geolocalização em volta do salão</li>
+          <li>Clube de Escovas como única oferta no anúncio, com preço e local à vista</li>
+          <li>Página do clube e WhatsApp integrado para medir do clique à assinatura</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>Fica para a próxima fase</h4>
+        <ul class="xlist no">
+          <li>Anúncio de serviços de estética, depois que o clube estiver rodando</li>
+          <li>Kit em sachê e linha home care como oferta para as assinantes</li>
+          <li>CRM e agente de IA, quando o volume pedir (Nível 2)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Um valor mensal, sem surpresa</h2>
+    <p class="sub">A mensalidade da agência e a verba de anúncios, separadas e claras.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Composição mensal</h4>
+        <table>
+          <tr><td>Nível 1 · Mídia<small>Meta Ads, landing page, WhatsApp integrado, design, painel e relatório</small></td><td>R$ 1.297,00</td></tr>
+          <tr><td>Gestão de verba incluída<small>Até R$ 1.500 por mês em anúncios</small></td><td>incluída</td></tr>
+          <tr class="t"><td>Total por mês</td><td>R$ 1.297,00</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">A verba de anúncios é paga por vocês direto ao Meta, à parte da mensalidade. Acima de R$ 1.500 por mês, cobra-se 20% sobre o excedente. Prazo e demais condições seguem a minuta de contrato enviada junto com esta proposta.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Total mensal</p>
+        <div class="price">R$ 1.297 <small>/ mês</small></div>
+        <p>Nível 1 com Meta Ads e gestão de até R$ 1.500 de verba. Na simulação de referência, 9 assinaturas Classic pagam a mensalidade e a verba.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em negócios locais e em salões de beleza. Trabalha em Meta Ads, Google Ads e Google Meu Negócio, com uma equipe de gestão, design, web, CRM e inteligência artificial.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Meta + Google</b><span>e Google Meu Negócio</span></div>
+        </div>
+      </div>
+      <div class="bq">“Não é uma coisa complexa. É o feijão com arroz muito bem estruturado, que chama a atenção das mulheres.”<small>João Marot · reunião de 27/10/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que costumam aparecer</h2>
+    <details style="margin-top:36px"><summary>A projeção é garantia de resultado?</summary><p>Não. É uma simulação com a média de mercado de Saúde e Estética. O resultado depende da oferta, do atendimento e da verba. No primeiro mês trocamos as médias pelos números reais do salão e ajustamos a rota a partir deles.</p></details>
+    <details><summary>Por que começar só pelo Meta?</summary><p>O clube é para a mulher da região, que está no Instagram no caminho da academia e da escola. O Meta permite anunciar num raio curto em volta do salão, com preço e local no próprio anúncio.</p></details>
+    <details><summary>Como funciona a verba de anúncios?</summary><p>A verba é paga por vocês direto ao Meta, à parte da mensalidade. A gestão de até R$ 1.500 por mês está incluída. Acima disso, cobra-se 20% sobre o excedente.</p></details>
+    <details><summary>E o Instagram do salão?</summary><p>O perfil precisa falar do clube, porque é para lá que muita gente vai antes de chamar no WhatsApp. A gestão do Instagram orgânico não faz parte do Nível 1; o ajuste do perfil fica com vocês, como conversamos.</p></details>
+    <details><summary>O projeto do clube fica em sigilo?</summary><p>Sim. O contrato tem cláusula de confidencialidade, que vale durante e depois da parceria.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Da proposta ao clube no ar</h2>
+    <p class="sub">Três passos, com data para o retorno.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>Apresentação</h3><p>Passamos por esta proposta juntos, online ou aí no salão, e ajustamos a simulação com os seus números.</p></div>
+      <div class="card"><div class="n">02</div><h3>Decisão</h3><p>Você valida a verba de anúncios e a oferta do clube. Combinamos o dia do retorno na própria apresentação.</p></div>
+      <div class="card"><div class="n">03</div><h3>Implantação</h3><p>Contrato assinado, montamos a página, o WhatsApp integrado e os primeiros anúncios do clube.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+<script>
+(function(){
+  var TQ=0.224, TV=0.0813, FEE=1297, TETO=1500;
+  var $=function(id){return document.getElementById(id)};
+  var brl=function(n){return 'R$ '+Math.round(n).toLocaleString('pt-BR')};
+  var int=function(n){return Math.round(n).toLocaleString('pt-BR')};
+  function calc(){
+    var v=+$('verba').value, c=+$('cpl').value, t=+$('ticket').value;
+    var leads=v/c, q=leads*TQ, a=Math.max(0,Math.round(leads*TV));
+    var fee=FEE+Math.max(0,v-TETO)*0.2, inv=v+fee;
+    $('vVerba').textContent=brl(v); $('vCpl').textContent=brl(c); $('vTicket').textContent=brl(t);
+    $('nL').textContent=int(leads); $('nQ').textContent=int(q); $('nA').textContent=a;
+    $('oRec').textContent=brl(a*t);
+    $('oCusto').textContent=a>0?brl(inv/a):'—';
+    $('oInv').textContent=brl(inv);
+    $('oPaga').textContent=Math.ceil(inv/t);
+    $('o6').textContent=brl(a*6*t)+' / mês';
+    $('o6s').textContent='Receita recorrente ao fim de 6 meses, com '+(a*6)+' assinantes ativas e sem cancelamentos';
+  }
+  ['verba','cpl','ticket'].forEach(function(id){$(id).addEventListener('input',calc)});
+  calc();
+})();
+</script>
+</body>
+</html>
