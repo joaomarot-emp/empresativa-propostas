@@ -1,0 +1,386 @@
+<title>Parceria de Mídia icons4u</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: proposta em formato de site, tema escuro único da EmpresAtiva (cobre sobre preto, faixas verde-escuras) */
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#7A7E77;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1128px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+section{padding-block:96px}
+h1,h2,h3{color:var(--text);font-family:var(--sans);text-wrap:balance}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(34px,6vw,70px);line-height:1.04;letter-spacing:-.01em;max-width:16ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(26px,4vw,44px);line-height:1.08;max-width:20ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{max-width:58ch;font-size:17px;margin-bottom:44px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim);line-height:1.7}
+.band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* topbar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text);white-space:nowrap}
+.logo b{color:var(--accent)} .logo span{color:var(--dim);font-weight:500}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s;white-space:nowrap}
+.btn:hover{filter:brightness(1.12)}
+.btn:focus-visible,summary:focus-visible{outline:2px solid var(--accent-hi);outline-offset:3px}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+/* hero */
+.hero{padding-block:104px 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:54ch;margin:26px 0 32px}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line);min-width:0}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px;min-width:0}
+.card .who{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.card.hi{border-color:#4A3322;background:var(--green)}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(18px,2.2vw,23px);font-weight:600;color:var(--text);line-height:1.45;max-width:48ch}
+.quote span{color:var(--accent-hi)}
+/* entrega */
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:20px;min-width:0}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+/* plans */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px;display:flex;flex-direction:column;min-width:0}
+.plan.hi{border-color:#6A4528;background:linear-gradient(180deg,#1A1610,var(--panel) 40%)}
+.badge{align-self:flex-start;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:#26302A;padding:4px 10px;border-radius:2px;margin-bottom:14px}
+.plan.hi .badge{background:var(--accent);color:#0B0B0B}
+.plan .letter{font-size:64px;font-weight:800;line-height:1;color:var(--text)}
+.plan .letter small{font-size:15px;font-weight:600;color:var(--accent-hi);letter-spacing:.04em;text-transform:uppercase;margin-left:10px}
+.fit{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin:14px 0 18px;line-height:1.8;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0}
+.fit b{color:var(--text);font-weight:700}
+.price{font-size:40px;font-weight:800;color:var(--text);line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.price small{font-size:14px;font-weight:400;color:var(--muted)}
+.alt{font-size:13px;color:var(--accent-hi);margin-bottom:18px;min-height:20px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+/* comparativo */
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--bg)}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+th,td{padding:14px 18px;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{border-top:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:400;background:var(--panel)}
+tbody th{font-weight:600;color:var(--text);width:30%}
+td{color:var(--body)}
+td.no{color:var(--dim)}
+/* chiesi */
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+.panel{background:var(--bg);border:1px solid var(--line2);border-radius:3px;padding:30px;min-width:0}
+.panel h4{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.inv table{min-width:0;font-size:14.5px}
+.inv td{padding:15px 0}
+.inv tr:first-child td{border-top:none}
+.inv td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+.inv td small{display:block;color:var(--dim);font-size:12.5px}
+.inv tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(34px,4.6vw,48px)}
+.cta-card p{font-size:13.5px;color:var(--muted)}
+/* regras */
+.xlist{list-style:none;display:flex;flex-direction:column;max-width:820px}
+.xlist li{padding:16px 0 16px 28px;border-top:1px solid var(--line);font-size:15px;position:relative}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.xlist b{color:var(--text)}
+.out{margin-top:40px}
+.out h4{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.xlist.no li::before{content:"✕";color:var(--dim);font-size:12px;top:19px}
+.xlist.no li{color:var(--muted)}
+/* autor */
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:24px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+/* faq */
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:66ch}
+/* final */
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding-block:104px 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2,.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:12px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding-block:30px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding-block:68px}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.items,.plans,.inv,.author,.steps{grid-template-columns:1fr}
+  .top .btn{padding:10px 14px;font-size:11px}
+  .logo span{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b> <span>× icons4u</span></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta de parceria · icons4u</p>
+    <h1>Mídia paga para as contas da icons4u, <em>com preço fechado</em></h1>
+    <p class="lede">Para a Rita e o time da icons4u. Três pacotes fixos de gestão de mídia, P, M e G, para vocês entrarem em cada concorrência já sabendo o meu valor e colocarem a margem de vocês por cima.</p>
+    <div class="cta">
+      <a class="btn" href="#pacotes">Ver os pacotes</a>
+      <a class="btn ghost" href="#parceria">Como funciona</a>
+    </div>
+    <p class="note">Proposta de 09/11/2026 · Valores mensais, sem taxa de implantação</p>
+  </div>
+</section>
+
+<div class="stats band">
+  <div class="wrap">
+    <div class="stat"><b>3 pacotes</b><span>P, M e G, definidos por canais, verba e marcas</span></div>
+    <div class="stat"><b>R$ 1.900</b><span>Mensal do pacote de entrada</span></div>
+    <div class="stat"><b>R$ 0</b><span>Plano de mídia para concorrência</span></div>
+    <div class="stat"><b>100%</b><span>Da verba vai para a mídia, direto nas contas do cliente</span></div>
+  </div>
+</div>
+
+<section id="parceria">
+  <div class="wrap">
+    <p class="label">Como funciona</p>
+    <h2>Eu opero a mídia, a icons4u fica com o cliente</h2>
+    <p class="sub">A relação, a criação e o conteúdo continuam com vocês. Eu entro como a área de mídia paga da icons4u, sem contato comercial direto com o cliente.</p>
+    <div class="cards">
+      <div class="card"><div class="who">icons4u</div><h3>Cliente, criação e conteúdo</h3><p>Relação e faturamento com o cliente, produção das peças, conteúdo, landing pages, aprovações e revisão com as áreas médica e regulatória.</p></div>
+      <div class="card hi"><div class="who">EmpresAtiva</div><h3>Mídia de ponta a ponta</h3><p>Plano de mídia, estrutura e operação das contas, rastreamento, otimização, briefing de criativos e relatórios.</p></div>
+      <div class="card"><div class="who">Cliente</div><h3>Verba direto nas plataformas</h3><p>Paga a mídia direto às plataformas e aos veículos, nas contas dele. Os dados ficam com o cliente.</p></div>
+    </div>
+    <div class="quote">Os valores desta proposta são o que eu cobro da icons4u. <span>Não incluem a verba de mídia nem a margem de vocês.</span></div>
+  </div>
+</section>
+
+<section id="entrega" class="band">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que entra em toda conta</h2>
+    <p class="sub">A base é a mesma nos três pacotes. O que muda é o número de canais, a frequência e a profundidade.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Plano de mídia</h3><p>Canais, verba mês a mês e metas. Nos pacotes M e G, com três cenários.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Estrutura e subida das campanhas</h3><p>Contas organizadas por marca e canal, prontas para aprender rápido.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>Rastreamento</h3><p>Pixel, tags e conversões. Nos pacotes M e G, com API de conversão das plataformas.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>Otimização contínua</h3><p>Criativos, públicos e lances ajustados toda semana, pelo custo do resultado que importa.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Briefing de criativos</h3><p>Ângulos e copy de anúncio para o time de criação da icons4u produzir.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Relatório e reunião</h3><p>Resultado por marca e canal, com o que escalar e o que pausar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="pacotes">
+  <div class="wrap">
+    <p class="label">Os pacotes</p>
+    <h2>P, M e G: o tamanho da conta define o pacote</h2>
+    <p class="sub">Vale o critério mais alto que a conta atingir: número de canais, verba mensal de mídia ou número de marcas. Conta como canal cada plataforma ou veículo com compra própria.</p>
+    <div class="plans">
+      <div class="plan">
+        <span class="badge">P · Essencial</span>
+        <div class="letter">P</div>
+        <div class="fit"><b>1 a 2</b> canais<br>até <b>R$ 10 mil</b> de mídia por mês<br><b>1</b> marca ou produto</div>
+        <div class="price">R$ 1.900 <small>/ mês</small></div>
+        <div class="alt"></div>
+        <ul>
+          <li>Plano de mídia</li>
+          <li>Rastreamento básico</li>
+          <li>Revisão e otimização semanais</li>
+          <li>Até 4 briefings de criativo por mês</li>
+          <li>Relatório mensal e 1 reunião por mês</li>
+        </ul>
+      </div>
+      <div class="plan hi">
+        <span class="badge">M · Performance</span>
+        <div class="letter">M</div>
+        <div class="fit"><b>3 a 5</b> canais<br>até <b>R$ 30 mil</b> de mídia por mês<br>até <b>2</b> marcas ou produtos</div>
+        <div class="price">R$ 2.900 <small>/ mês</small></div>
+        <div class="alt"></div>
+        <ul>
+          <li>Plano de mídia com 3 cenários</li>
+          <li>Rastreamento completo, com API de conversão</li>
+          <li>Formulário qualificador no Meta e no LinkedIn</li>
+          <li>Revisão diária e otimização semanal</li>
+          <li>Até 8 briefings de criativo por mês</li>
+          <li>Relatório quinzenal e 2 reuniões por mês</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <span class="badge">G · Escala</span>
+        <div class="letter">G</div>
+        <div class="fit"><b>6 ou mais</b> canais<br>acima de <b>R$ 30 mil</b> de mídia por mês<br><b>3 ou mais</b> marcas ou produtos</div>
+        <div class="price">R$ 3.900 <small>/ mês</small></div>
+        <div class="alt">ou 12% da verba, o que for maior</div>
+        <ul>
+          <li>Tudo do pacote M</li>
+          <li>Eventos offline e teste A/B contínuo</li>
+          <li>Negociação com veículos diretos</li>
+          <li>Até 12 briefings de criativo por mês</li>
+          <li>Painel online e comitê trimestral</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comparativo" class="band">
+  <div class="wrap">
+    <p class="label">Comparativo</p>
+    <h2>Item a item, pacote a pacote</h2>
+    <p class="sub">Para enquadrar cada conta e explicar ao cliente o que está incluído.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Item</th><th>P · Essencial</th><th>M · Performance</th><th>G · Escala</th></tr></thead>
+        <tbody>
+          <tr><th>Plano de mídia</th><td>Sim</td><td>Sim, com 3 cenários</td><td>Sim, com 3 cenários</td></tr>
+          <tr><th>Estrutura e subida das campanhas</th><td>Sim</td><td>Sim</td><td>Sim</td></tr>
+          <tr><th>Rastreamento</th><td>Básico</td><td>Completo, com API de conversão</td><td>Completo, com API de conversão e eventos offline</td></tr>
+          <tr><th>Formulário qualificador (Meta e LinkedIn)</th><td class="no">Não incluso</td><td>Sim</td><td>Sim</td></tr>
+          <tr><th>Revisão de verba e performance</th><td>Semanal</td><td>Diária</td><td>Diária</td></tr>
+          <tr><th>Otimização</th><td>Semanal</td><td>Semanal</td><td>Semanal, com teste A/B contínuo</td></tr>
+          <tr><th>Briefing de criativos e copy</th><td>Até 4 por mês</td><td>Até 8 por mês</td><td>Até 12 por mês</td></tr>
+          <tr><th>Relatório</th><td>Mensal</td><td>Quinzenal</td><td>Quinzenal e painel online</td></tr>
+          <tr><th>Reuniões</th><td>1 por mês</td><td>2 por mês</td><td>2 por mês e comitê trimestral</td></tr>
+          <tr><th>Veículos diretos (portais, apps)</th><td class="no">Não incluso</td><td>Apoio técnico</td><td>Negociação</td></tr>
+          <tr><th>Revisão médica e regulatória</th><td>Até 2 rodadas por peça</td><td>Até 2 rodadas por peça</td><td>Até 2 rodadas por peça</td></tr>
+          <tr><th>Dedicação estimada</th><td>~10 h por mês</td><td>~20 h por mês</td><td>~35 h por mês</td></tr>
+          <tr><th>Prazo de resposta</th><td>1 dia útil</td><td>1 dia útil</td><td>Mesmo dia útil</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="chiesi">
+  <div class="wrap">
+    <p class="label">Exemplo aplicado</p>
+    <h2>Conta Chiesi no pacote M</h2>
+    <p class="sub">São 5 canais, cerca de R$ 7,5 mil de mídia por mês e 2 marcas, Clenil e Trimbow. Pela tabela, a conta cai no pacote M.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Composição em 2027</h4>
+        <table>
+          <tr><td>Pacote M · Performance<small>Janeiro a dezembro de 2027</small></td><td>12 × R$ 2.900</td></tr>
+          <tr><td>Taxa de implantação</td><td>R$ 0</td></tr>
+          <tr><td>Verba de mídia<small>Paga pela Chiesi direto às plataformas e aos veículos</small></td><td>R$ 90.000</td></tr>
+          <tr class="t"><td>Total da EmpresAtiva em 2027</td><td>R$ 34.800</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px">A margem da icons4u entra por cima desse valor, no anexo comercial de vocês.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Mensal para a icons4u</p>
+        <div class="price">R$ 2.900 <small>/ mês</small></div>
+        <p>Pacote M para a conta Chiesi, cobrado só se a concorrência for ganha. O plano de mídia da proposta não tem custo.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regras" class="band">
+  <div class="wrap">
+    <p class="label">Regras comerciais</p>
+    <h2>O combinado, por escrito</h2>
+    <p class="sub">Para valer igual em todas as contas e concorrências.</p>
+    <ul class="xlist">
+      <li><b>Concorrências:</b> o plano de mídia para a proposta não tem custo para a icons4u. Se a conta for ganha, entra o mensal do pacote. A configuração inicial já está incluída.</li>
+      <li><b>Enquadramento:</b> definido no início pela tabela e revisto a cada trimestre. Se a conta mudar de faixa, o pacote muda no mês seguinte.</li>
+      <li><b>Prazo mínimo:</b> 6 meses por conta.</li>
+      <li><b>Pagamento:</b> mensal, por boleto ou Pix, com nota fiscal (NFS-e) da EmpresAtiva.</li>
+      <li><b>Atraso:</b> multa de 2% e juros de 1% ao mês.</li>
+      <li><b>Exclusividade:</b> atendo a conta só por meio da icons4u, sem contato comercial direto com o cliente.</li>
+    </ul>
+    <div class="out">
+      <h4>Fora do escopo</h4>
+      <ul class="xlist no">
+        <li>Verba de mídia, paga pelo cliente direto às plataformas e aos veículos</li>
+        <li>Produção das peças (design, vídeo, motion), conteúdo e landing pages, feitos pela icons4u a partir do meu briefing</li>
+        <li>Instalação no site ou portal do cliente: eu entrego o plano de rastreamento e as tags, a TI do cliente ou a icons4u instala</li>
+        <li>Canais além do pacote contratado, que entram como mudança de pacote</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="autor">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot · EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018. Opera Meta Ads, Google Ads e Google Meu Negócio com uma equipe de gestão, design, CRM e inteligência artificial, e soma a parceria com a icons4u nas contas de grandes marcas.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Meta + Google</b><span>e Google Meu Negócio</span></div>
+        </div>
+      </div>
+      <div class="bq">“A minha ideia é poder trabalhar na parceria, estar junto com vocês mesmo.”<small>João Marot · reunião com a icons4u</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="band">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que podem aparecer</h2>
+    <details style="margin-top:36px"><summary>Por que pacote fixo e não um percentual da verba?</summary><p>Nas contas de verba pequena, um percentual não paga a operação de vários canais. O valor fixo deixa claro o custo antes da concorrência. No pacote G, para verbas grandes, vale 12% da verba quando esse valor for maior que o fixo.</p></details>
+    <details><summary>E se a conta crescer ou diminuir no meio do contrato?</summary><p>O enquadramento é revisto a cada trimestre. Se a conta mudar de faixa, o pacote muda no mês seguinte, para cima ou para baixo.</p></details>
+    <details><summary>Quem fala com o cliente?</summary><p>A icons4u. Eu participo das reuniões previstas no pacote como parte do time de vocês, sem contato comercial direto com o cliente.</p></details>
+    <details><summary>Quanto custa montar o plano de mídia de uma concorrência?</summary><p>Nada. O plano de mídia para a proposta é por minha conta. Se a conta for ganha, entra o mensal do pacote.</p></details>
+    <details><summary>Como fica a conta em setor regulado, como farma?</summary><p>O fluxo de revisão médica e regulatória está incluído nos três pacotes, com até 2 rodadas por peça. Nenhum anúncio cita medicamento de prescrição fora dos ambientes permitidos.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Do combinado à primeira conta</h2>
+    <p class="sub">Três passos para a parceria começar a rodar.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>icons4u valida a tabela</h3><p>Vocês revisam pacotes, regras e escopo, e a gente fecha os ajustes numa conversa rápida.</p></div>
+      <div class="card"><div class="n">02</div><h3>Chiesi no pacote M</h3><p>O plano de mídia da concorrência segue com vocês para o envio até 13/11/2026.</p></div>
+      <div class="card"><div class="n">03</div><h3>Celte/Exeltis enquadrada</h3><p>Depois da reunião de briefing, definimos juntos em qual pacote a conta entra.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+  </div>
+</section>
+
+<footer><div class="wrap">EmpresAtiva Digital × icons4u · Proposta de parceria · Rio de Janeiro · 2026</div></footer>
