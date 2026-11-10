@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · Isabel · Mega Hair em Campo Grande · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:50ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.funnel .row{display:grid;grid-template-columns:150px 1fr 34px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.funnel .row:first-of-type{border-top:none}
+.bar{height:10px;background:#1A201B;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:#5E625B;border-radius:5px}
+.bar i.g{background:var(--accent)}
+.funnel b{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+.plan .price{font-size:44px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 18px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+  .funnel .row{grid-template-columns:1fr 34px} .funnel .row span{grid-column:1/-1}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · Isabel · Mega Hair em Campo Grande</p>
+    <h1>O único mega hair do lado do shopping <em>—</em> com agenda previsível</h1>
+    <p class="lede">Para Isabel e Vittor. Um plano para o espaço novo em Campo Grande abrir no fim de ano com anúncio que já filtra quem pode pagar, atendimento organizado e o resultado medido todo mês.</p>
+    <div class="cta">
+      <a class="btn" href="#investimento">Ver investimento</a>
+      <a class="btn ghost" href="#diagnostico">Ver o diagnóstico</a>
+    </div>
+    <p class="note">Proposta de 10/11/2026 · Mega hair, loiros e personalização de cor</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>3 de 10</b><span>Orçamentos do vídeo de alopécia que viraram cliente</span></div>
+    <div class="stat"><b>41</b><span>Envios do post do espaço novo</span></div>
+    <div class="stat"><b>R$ 290</b><span>Pacote de entrada: cabelo indiano de 45 a 50 cm</span></div>
+    <div class="stat"><b>0</b><span>Concorrentes com mega no shopping e em frente a ele</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>Conteúdo você já tem. Falta o anúncio certo</h2>
+    <p class="sub">O que vimos no seu perfil e o que você contou da experiência anterior com tráfego. O problema nunca foi falta de interesse: foi o anúncio não filtrar.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Lead que some no preço</h3><p>No tráfego anterior chegava gente pedindo orçamento de mega, mas quando o valor era passado a conversa morria. Foram dois a três meses pagando e um a dois meses sem fechar nada pelo anúncio.</p></div>
+      <div class="card"><div class="n">02</div><h3>Perfil ainda no endereço antigo</h3><p>O Instagram ainda mostra Recreio e não tem os pacotes com preço. Quem chega pelo anúncio procura essas informações antes de chamar no WhatsApp.</p></div>
+      <div class="card"><div class="n">03</div><h3>O conteúdo já prova que vende</h3><p>O vídeo da cliente com alopécia trouxe cerca de 10 orçamentos e 3 fechamentos. As transformações às cegas e o post do espaço novo mostram que o público reage.</p></div>
+    </div>
+    <div class="quote">O que falta é <span>tráfego direcionado</span> para o público que você precisa alcançar: mulheres que querem mega, em Campo Grande, e que podem pagar.</div>
+    <p class="note" style="margin-top:28px">Fonte: análise do perfil e conversa de 10/11/2026.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Onde está o gargalo</p>
+    <h2>O anúncio precisa filtrar antes do WhatsApp</h2>
+    <p class="sub">Cada filtro tira do caminho quem não é cliente, para o Vittor só conversar com quem já sabe o que é, onde é e quanto custa.</p>
+    <div class="two">
+      <div class="panel" style="background:var(--bg)">
+        <h4>Os três filtros do anúncio</h4>
+        <ul class="xlist">
+          <li><b style="color:var(--text)">1. O serviço.</b> O anúncio deixa claro que é mega hair, com tipo e tamanho do cabelo.</li>
+          <li><b style="color:var(--text)">2. O lugar.</b> Atendimento presencial em Campo Grande, ao lado do shopping.</li>
+          <li><b style="color:var(--text)">3. O preço.</b> O valor aparece no anúncio. Quem acha caro não chama, e tudo bem: não é o seu cliente.</li>
+        </ul>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho de beleza</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>A cada 100 leads, cerca de 22 são qualificados (têm a dor que você resolve, são atendidos em Campo Grande e podem pagar) e cerca de 8 viram venda.</p>
+        <p>Exemplo da reunião: R$ 1.000 em anúncio com lead a R$ 10 são 100 leads e cerca de 8 vendas. No pacote de entrada de R$ 290, isso dá R$ 2.320 só na primeira compra, antes das manutenções, luzes e retoques de raiz.</p>
+        <p class="note" style="margin-top:14px">Média de mercado RD Station, segmento Saúde e Estética (22,4% e 8,13%). Referência, não garantia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Método Demanda Previsível</h2>
+    <p class="sub">Investir em anúncio e saber quanto volta para o caixa. Funcionou com R$ 1.000, a ideia é colocar R$ 2.000 e buscar o dobro.</p>
+
+    <div class="tl"><div class="tag">Etapa 1<b>Isca de entrada</b></div><div><h3>Uma oferta que traz a cliente para a cadeira</h3><p>Um pacote promocional, como o de cabelo indiano, que não agrida a sua margem nem o seu trabalho. Aproveitando a inauguração, a Black Friday e o fim de ano.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 2<b>Criativos</b></div><div><h3>Anúncios na linha do que já funciona</h3><p>Transformações, alopécia e antes e depois, com os três filtros: mega, Campo Grande e preço. Para chegar gente pronta para comprar, não curiosa.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 3<b>Atendimento</b></div><div><h3>Alerta para o Vittor e classificação inteligente</h3><p>Cada lead novo gera um alerta para o Vittor responder rápido. Uma inteligência artificial lê as conversas e separa em sem interação, desqualificados, qualificados e agendados.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 4<b>Aprendizado</b></div><div><h3>O anúncio aprende com quem compra</h3><p>Essa classificação volta para o Pixel do Instagram, que passa a buscar em Campo Grande mais mulheres parecidas com as suas clientes de verdade.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 5<b>Venda cruzada</b></div><div><h3>A primeira compra abre as outras</h3><p>Quem senta na cadeira pelo pacote de entrada pode trocar para o brasileiro, fazer mechas, corte, luzes e voltar para manutenção, como a cliente que veio por um corte e faz raiz todo mês.</p></div></div>
+    <div class="tl"><div class="tag">Etapa 6<b>Escala</b></div><div><h3>Mais verba onde o resultado aparece</h3><p>Com o relatório mensal mostrando que o investimento volta positivo, aumentamos a verba para trazer mais clientes.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que você leva na operação</h2>
+    <p class="sub">Uma equipe completa trabalhando junto, com acompanhamento aberto para você e para o Vittor.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Tráfego pago</h3><p>Gestão dos anúncios em uma plataforma: Instagram ou Google.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Site</h3><p>Página para o Google ou para qualificar a cliente antes de ela chegar ao WhatsApp.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>Equipe de design</h3><p>Anúncios em imagem, carrossel e vídeo, roteiros para você gravar e edição dos vídeos que você mandar.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>Classificação inteligente</h3><p>Software com IA ligado ao WhatsApp comercial, com alerta de lead novo para o Vittor.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Painel ao vivo</h3><p>Quanto foi gasto, quantas pessoas chegaram e quais anúncios estão trazendo mais resultado.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Fechamento mensal</h3><p>Relatório de resultado: se chegaram os qualificados esperados e quanto o comercial vendeu.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">Os planos</p>
+    <h2>Nível 1 e Nível 2</h2>
+    <p class="sub">O Nível 1 é a entrada. O Nível 2 acrescenta o CRM e o agente de IA que comentamos na reunião.</p>
+    <div class="two">
+      <div class="panel plan hi">
+        <span class="badge">Nível 1 · Mídia</span>
+        <div class="price">R$ 1.297 <small>/ mês</small></div>
+        <ul>
+          <li>Tráfego pago em uma plataforma, Instagram ou Google</li>
+          <li>Site</li>
+          <li>Equipe de design: imagens, carrosséis e vídeos</li>
+          <li>Classificação inteligente no WhatsApp e alerta de lead</li>
+          <li>Painel ao vivo, relatório e fechamento mensal</li>
+        </ul>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Nível 2 · Líder</span>
+        <div class="price">R$ 1.897 <small>/ mês</small></div>
+        <ul>
+          <li>Tudo do Nível 1</li>
+          <li>Instagram e Google juntos</li>
+          <li>CRM próprio em formato kanban</li>
+          <li>Agente de IA que pré-qualifica a cliente e passa para o Vittor na hora de agendar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Recomendação</p>
+    <h2>Começar pelo Nível 1 no Instagram</h2>
+    <p class="sub">O negócio está abrindo agora, e o Instagram é onde o seu conteúdo já mostrou resultado.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Por que o Nível 1 agora</h4>
+        <ul class="xlist">
+          <li>O conteúdo de transformação já existe e performa no Instagram</li>
+          <li>O Vittor cuida do comercial e recebe os alertas de lead</li>
+          <li>Investimento enxuto na largada, no pico do fim de ano</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>Quando subir para o Nível 2</h4>
+        <ul class="xlist">
+          <li>Quando o volume de conversas apertar o atendimento</li>
+          <li>Quando fizer sentido somar o Google ao Instagram</li>
+          <li>Quando quiser o agente de IA respondendo antes do Vittor</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Mensalidade e verba de anúncio</h2>
+    <p class="sub">Dois valores separados: o que fica com a agência e o que vai direto para os anúncios.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Composição mensal</h4>
+        <table>
+          <tr><td>EmpresAtiva · Nível 1<small>Tráfego, site, design, classificação inteligente, painel e relatório</small></td><td>R$ 1.297,00</td></tr>
+          <tr><td>Verba de anúncios<small>Paga por você direto à plataforma. Mínimo de R$ 600, ideal em torno de R$ 1.000</small></td><td>R$ 600 a R$ 1.000</td></tr>
+          <tr class="t"><td>Mensalidade da agência</td><td>R$ 1.297,00</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">Acima da faixa de verba sugerida, cobra-se 20% sobre o excedente. Prazo e demais condições seguem o contrato.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Mensalidade</p>
+        <div class="price">R$ 1.297 <small>/ mês</small></div>
+        <p>Nível 1 com tráfego no Instagram. A verba de anúncios é sua e vai direto para a plataforma.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em salões de beleza e, mais especificamente, em mega hair. Trabalha em Meta Ads, Google Ads e Google Meu Negócio, com uma equipe de gestão, design, sites, CRM e inteligência artificial.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Mega hair</b><span>nicho principal</span></div>
+        </div>
+      </div>
+      <div class="bq">“O negócio é colocar dinheiro no seu bolso. Você feliz porque está aumentando seu faturamento, e eu feliz porque estou construindo isso com você.”<small>João Marot · reunião de 10/11/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>Já paguei tráfego e não vendi. O que muda agora?</summary><p>Se chega gente e some no preço, o problema está no anúncio. Aqui o anúncio já mostra o serviço, o lugar e o valor, e o resultado é medido todo mês no painel e no fechamento: quanto foi investido e quanto voltou em vendas.</p></details>
+    <details><summary>Colocar promoção ou preço no anúncio desvaloriza o meu trabalho?</summary><p>Não. Grandes marcas sempre têm uma isca em promoção para trazer a cliente para dentro. A oferta é montada com você, sem agredir a sua margem nem a qualidade dos produtos que você usa.</p></details>
+    <details><summary>Quanto preciso investir em anúncio?</summary><p>No mínimo R$ 600 por mês, o ideal é em torno de R$ 1.000. Esse valor é seu e vai direto para a plataforma, à parte da mensalidade da agência.</p></details>
+    <details><summary>Quem atende as clientes que chegam?</summary><p>O Vittor, pelo WhatsApp comercial, com alerta a cada lead novo e as conversas classificadas por IA. No Nível 2, um agente de IA pode fazer a pré-qualificação antes de passar para ele.</p></details>
+    <details><summary>Preciso gravar os vídeos?</summary><p>Você já tem bom conteúdo. A equipe cria anúncios em imagem, carrossel e vídeo, manda roteiros se você quiser gravar e edita os vídeos que você mandar.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Da conversa ao anúncio no ar</h2>
+    <p class="sub">Três passos para aproveitar a inauguração e o fim de ano.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>Isabel e Vittor conversam</h3><p>Vocês revisam esta proposta juntos e me dão o retorno na quarta-feira, 11/11.</p></div>
+      <div class="card"><div class="n">02</div><h3>Perfil atualizado</h3><p>O Vittor troca o endereço para Campo Grande e coloca os pacotes com preço no Instagram.</p></div>
+      <div class="card"><div class="n">03</div><h3>Começamos</h3><p>Com o sim, seguem o contrato e o formulário de cadastro, e a equipe começa a montar a oferta e os anúncios.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+</body>
+</html>
