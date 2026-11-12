@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · ER Concept · Gabriel e Eduardo · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+/* topbar */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+/* hero */
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:52ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+/* two col panels */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.funnel .row{display:grid;grid-template-columns:170px 1fr 44px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+.funnel .row:first-of-type{border-top:none}
+.bar{height:10px;background:#1A201B;border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:#5E625B;border-radius:5px}
+.bar i.g{background:var(--accent)}
+.funnel b{text-align:right;color:var(--text);font-variant-numeric:tabular-nums}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+/* timeline */
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+/* entrega grid */
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+/* plans */
+.plan{display:flex;flex-direction:column}
+.plan .price{font-size:40px;font-weight:800;color:var(--text);line-height:1;margin:6px 0 6px}
+.plan .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.plan .after{font-family:var(--mono);font-size:12px;color:var(--accent-hi);margin-bottom:18px;min-height:18px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:20px;font-size:14.5px;color:var(--body)}
+.plan li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.plan .foot{margin-top:auto;padding-top:20px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);margin-top:22px}
+.badge{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#0B0B0B;background:var(--accent);padding:4px 10px;border-radius:2px;margin-bottom:14px;align-self:flex-start}
+.badge.off{background:#26302A;color:var(--muted)}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+/* invest */
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+tr.sep td{padding-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border-top:1px solid var(--line)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+/* author */
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+/* faq */
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+/* final */
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.three,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+  .funnel .row{grid-template-columns:1fr 44px} .funnel .row span{grid-column:1/-1}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · ER Concept · Bom Sucesso</p>
+    <h1>Mais clientes <em>certas</em> na cadeira do Eduardo</h1>
+    <p class="lede">Para Gabriel Dias e Eduardo de Araújo. Um plano para o salão sair da faixa de R$ 27 a 30 mil por mês em serviços e caminhar para os R$ 54 mil, usando a vitrine que vocês já têm pronta: o Instagram do Eduardo.</p>
+    <div class="cta">
+      <a class="btn" href="#planos">Ver as 3 opções</a>
+      <a class="btn ghost" href="#como-funciona">Entender o tráfego pago</a>
+    </div>
+    <p class="note">Proposta de 12/11/2026 · Feita a partir da nossa conversa, para vocês decidirem juntos</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>R$ 27–30 mil</b><span>Faturamento mensal em serviços, hoje (sem a venda de cabelo)</span></div>
+    <div class="stat"><b>R$ 54 mil</b><span>Meta: praticamente dobrar o faturamento em serviços</span></div>
+    <div class="stat"><b>9 de 10</b><span>Clientes que vêm ao orçamento presencial e fecham</span></div>
+    <div class="stat"><b>60 / 100</b><span>Nota do perfil do salão no Google, hoje</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>O salão é forte, mas cresce só no boca a boca</h2>
+    <p class="sub">Qualidade não falta: cabelo só regional e do Sul, produtos importados (Wella, L'Oréal, Davines) e cor personalizada. O que falta é colocar mais gente certa na frente desse trabalho, todo mês.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Nunca houve anúncio de verdade</h3><p>Tudo veio do orgânico e de algum impulsionamento solto. Resultado: o faturamento ficou estável o ano todo, perto do mínimo de R$ 24 mil que fecha as contas com folga.</p></div>
+      <div class="card"><div class="n">02</div><h3>Quem procura no Google não acha vocês</h3><p>Na busca por mega hair em Bom Sucesso, o salão nem aparece no mapa. A nota do perfil é 60 de 100: faltam postagens, vídeos, mais avaliações e respostas às avaliações.</p></div>
+      <div class="card"><div class="n">03</div><h3>O preço assusta no WhatsApp</h3><p>Quem insiste em saber o valor pelo WhatsApp costuma pedir cabelo longo, de 200 a 400 g, e se assusta com pacotes acima de R$ 8 mil. Falta uma porta de entrada de valor menor que traga a cliente ao salão.</p></div>
+    </div>
+    <div class="quote">A vitrine já está pronta. O trabalho é trazer a cliente certa até o salão, porque <span>quando ela vem ao presencial, 9 em cada 10 fecham</span>.</div>
+    <p class="note" style="margin-top:28px">Fonte: reunião de 12/11/2026 e pré-análise do perfil do Google feita durante a conversa.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Como os números funcionam</p>
+    <h2>O que R$ 1.000 em anúncio costuma gerar</h2>
+    <p class="sub">Esta é a métrica de mercado do nicho de beleza e mega hair. É com ela que a gente mede, todo mês, se o trabalho está dentro, acima ou abaixo do esperado.</p>
+    <div class="two">
+      <div class="panel funnel" style="background:var(--bg)">
+        <h4>Exemplo com R$ 1.000 de verba no mês</h4>
+        <div class="row"><span>Contatos no WhatsApp</span><div class="bar"><i style="width:100%"></i></div><b>90</b></div>
+        <div class="row"><span>Qualificados (22,4%)</span><div class="bar"><i class="g" style="width:22.4%"></i></div><b>≈ 20</b></div>
+        <div class="row"><span>Compram (≈ 8% do total)</span><div class="bar"><i class="g" style="width:8%"></i></div><b>≈ 7</b></div>
+        <p class="note" style="margin-top:14px">Supondo custo de R$ 11,11 por contato. É um exemplo para entender a conta, não uma promessa.</p>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho de beleza</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>A cada 100 pessoas que chamam no WhatsApp, cerca de 22 são qualificadas: têm a dor que vocês resolvem (falta de volume, queda, trocar um mega grosseiro por um método mais fino), podem ser atendidas no salão e têm condição de pagar. Dessas 22, cerca de 8 compram.</p>
+        <p>A vantagem de vocês: a recepção já é treinada para levar a cliente ao orçamento presencial, onde quase todas fecham. Um case da agência começou com R$ 600 por mês de verba e uma isca de manutenção, e o faturamento bruto subiu na faixa de R$ 10 a 12 mil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Como o tráfego pago vai trabalhar para vocês</h2>
+    <p class="sub">Primeiro, o básico do método, em quatro passos. Depois, a estratégia pensada para o salão.</p>
+
+    <p class="grp">Como funciona o tráfego pago</p>
+    <div class="tl"><div class="tag">Passo 1<b>Atrair</b></div><div><h3>Anúncio para o público certo</h3><p>Anúncios no Instagram ou no Google aparecem para mulheres com o perfil que vocês querem atender. Vocês pagam a agência para montar e cuidar de tudo, e a verba de anúncio é o "combustível" que faz o carro andar.</p></div></div>
+    <div class="tl"><div class="tag">Passo 2<b>Capturar</b></div><div><h3>A cliente chama no WhatsApp</h3><p>Quem se interessa pelo anúncio chama no WhatsApp do salão. Um alerta avisa a recepção na hora, para responder rápido, porque a venda é emocional e não pode esfriar.</p></div></div>
+    <div class="tl"><div class="tag">Passo 3<b>Classificar</b></div><div><h3>Inteligência artificial lê as conversas</h3><p>Nosso software, ligado ao WhatsApp, separa cada contato em sem interação, desqualificado, qualificado e agendado. Isso volta para o Meta, que passa a buscar mais gente parecida com quem é qualificado.</p></div></div>
+    <div class="tl"><div class="tag">Passo 4<b>Escalar</b></div><div><h3>Bateu a métrica, aumenta a verba</h3><p>Todo mês a gente mede quanto entrou de cliente vindo do anúncio. Se a conta fechou, a verba sobe com segurança para buscar mais faturamento. Se não fechou, a gente ajusta antes de investir mais.</p></div></div>
+
+    <p class="grp">A estratégia para o salão</p>
+    <div class="tl"><div class="tag">Frente 1<b>Vitrine</b></div><div><h3>O Instagram do Eduardo como destino</h3><p>O perfil do Eduardo de Araújo já mostra autoridade em mega hair e mechas. O perfil geral do salão parece um centro de beleza amplo, com unha e estética. Por isso os anúncios levam para o perfil do Eduardo. Manicure e estética ficam fora da divulgação.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Público</b></div><div><h3>Anúncio para quem paga o ticket, onde ela estiver</h3><p>Hoje 90% das clientes vêm de fora de Bom Sucesso: Zona Norte (Cachambi, Irajá, Honório Gurgel), Barra, Recreio e até Ipanema. Depois do fechamento, vocês preenchem um formulário do perfil de cliente ideal (bairros, idade, padrão de consumo) e o anúncio vai atrás desse público, sem ficar preso ao bairro.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Isca</b></div><div><h3>Porta de entrada com valor menor</h3><p>A cliente que já usa mega chega pela manutenção, de valor mais baixo, ou por cabelos menores, de 50 a 55 cm, com manutenção na faixa de R$ 300 a R$ 380. No salão vem o encantamento, e parte delas troca o cabelo ou sobe de pacote.</p></div></div>
+    <div class="tl"><div class="tag">Frente 4<b>Anúncio que filtra</b></div><div><h3>Deixar claro onde, o quê e para quem</h3><p>O anúncio responde as objeções antes do WhatsApp: onde fica o salão, a qualidade do cabelo (regional e do Sul) e uma noção da faixa de valor. Assim, quem não tem condição nem chama, e a recepção não perde tempo.</p></div></div>
+    <div class="tl"><div class="tag">Frente 5<b>Uma linha por vez</b></div><div><h3>Mega, mechas ou combo</h3><p>Com verba curta, o melhor é concentrar numa linha: mega, mechas ou um combo de mega com mechas (ou manutenção com mechas). Ganhou nessa linha, abre outra frente com verba nova, sem tirar a primeira.</p></div></div>
+    <div class="tl"><div class="tag">Frente 6<b>Google</b></div><div><h3>Aparecer para quem já está procurando</h3><p>Otimizar o perfil do Google para subir nas buscas de Bom Sucesso e Higienópolis, onde fica a divisa do salão. Com o Google Ads, o salão também pode aparecer no topo, como os concorrentes que já pagam para isso.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que vocês levam no plano do Instagram</h2>
+    <p class="sub">Uma equipe completa (gestores, design, web, CRM, inteligência artificial e Google), não uma pessoa só.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestor de tráfego e estratégia</h3><p>Monta, roda e otimiza as campanhas, com base no perfil de cliente que vocês definirem.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Equipe de design e edição</h3><p>A gente manda a ideia do vídeo, o Eduardo grava cru e a nossa equipe edita. Também criamos vídeos com o material que vocês já têm, com opção de colocar o áudio dele.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>Site de conversão incluso</h3><p>Site com o trabalho do salão, dúvidas frequentes e botão de agendar avaliação, sem custo extra.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>WhatsApp com classificação inteligente</h3><p>Alerta de contato novo para a recepção e IA classificando cada conversa, para o anúncio aprender quem é cliente de verdade.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Painel ao vivo</h3><p>Quanto foi investido, quantos contatos chegaram, quantos são qualificados, custo por qualificado e quais anúncios estão funcionando melhor.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Fechamento e reunião mensal</h3><p>Cruzando os clientes da agenda do salão com os contatos do anúncio, a gente mostra quanto do faturamento veio do tráfego e o que escalar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap">
+    <p class="label">As opções</p>
+    <h2>Três formas de começar</h2>
+    <p class="sub">Instagram traz mais volume e resultado mais rápido. Google traz menos volume, mas pega quem já está procurando um salão perto. Vocês escolhem por onde começar.</p>
+    <div class="three">
+      <div class="panel plan hi">
+        <span class="badge">Opção 1 · Instagram</span>
+        <h3>Nível 1 · Tráfego no Meta</h3>
+        <div class="price" style="margin-top:12px">R$ 997 <small>/ mês</small></div>
+        <p class="after">Nos 3 primeiros meses (depois R$ 1.297)</p>
+        <ul>
+          <li>Anúncios no Instagram levando ao perfil do Eduardo</li>
+          <li>Site de conversão incluso</li>
+          <li>Design e edição de vídeos, imagens e carrosséis</li>
+          <li>WhatsApp com alerta e classificação por IA</li>
+          <li>Painel ao vivo, relatório e reunião mensal</li>
+        </ul>
+        <p class="foot">+ verba de anúncios, paga por vocês ao Meta. Sugestão para começar: R$ 500 a R$ 600 por mês.</p>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Opção 2 · Google</span>
+        <h3>Google Meu Negócio</h3>
+        <div class="price" style="margin-top:12px">R$ 400 <small>/ mês</small></div>
+        <p class="after">&nbsp;</p>
+        <ul>
+          <li>Perfil do Google otimizado para subir no ranking da região</li>
+          <li>Site entregue e alinhado ao perfil, com blog para SEO</li>
+          <li>Postagens e fotos e vídeos no perfil</li>
+          <li>Pedidos de avaliação às clientes e resposta às avaliações</li>
+        </ul>
+        <p class="foot">Sem verba de anúncio. O resultado vem do ranking orgânico, que sobe aos poucos.</p>
+      </div>
+      <div class="panel plan">
+        <span class="badge off">Opção 3 · Google + Ads</span>
+        <h3>Google Meu Negócio + Google Ads</h3>
+        <div class="price" style="margin-top:12px">R$ 500 <small>/ mês</small></div>
+        <p class="after">R$ 400 + R$ 100 para o Google Ads</p>
+        <ul>
+          <li>Tudo da Opção 2</li>
+          <li>Campanha no Google Ads para aparecer no topo das buscas</li>
+          <li>Gestão da verba de até R$ 500 por mês no Google</li>
+        </ul>
+        <p class="foot">+ verba de anúncios no Google, paga por vocês, de no máximo R$ 500 por mês.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:20px">O Nível 2 (Instagram e Google juntos, CRM, agente de IA fora do horário e playbook para a recepção) também foi apresentado e fica como próximo passo quando a operação escalar.</p>
+  </div>
+</section>
+
+<section id="recomendacao" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Recomendação</p>
+    <h2>Começar pelo <em>Instagram</em></h2>
+    <p class="sub">Para quem precisa de movimento já no primeiro mês, o Instagram é o caminho mais rápido. O Google entra como complemento, ou como porta de entrada se vocês preferirem começar mais enxutos.</p>
+    <div class="two">
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Por que o Instagram primeiro</h4>
+        <ul class="xlist">
+          <li>A vitrine já está pronta: o perfil do Eduardo passa autoridade em mega e mechas</li>
+          <li>É de onde já vêm as clientes de fora que pagam o ticket de vocês</li>
+          <li>Traz mais volume e resultado mais rápido que o Google</li>
+          <li>Com o valor reduzido nos 3 primeiros meses, o investimento total fica perto de R$ 1.500 por mês, o valor que o Gabriel tinha em mente</li>
+        </ul>
+      </div>
+      <div class="panel" style="background:var(--bg)">
+        <h4>Quando o Google faz mais sentido</h4>
+        <ul class="xlist">
+          <li>Se a prioridade for começar com o menor valor possível</li>
+          <li>Para aparecer para quem pesquisa "mega hair perto de mim" em Bom Sucesso e Higienópolis</li>
+          <li>Como segunda frente depois que o Instagram estiver dando retorno</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="investimento">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Quanto fica por mês</h2>
+    <p class="sub">A mensalidade é o serviço da agência. A verba de anúncios é investida por vocês, à parte, direto na plataforma.</p>
+    <div class="inv">
+      <div class="panel">
+        <h4>Opção 1 · Instagram (recomendada)</h4>
+        <table>
+          <tr><td>Gestão Nível 1 · meses 1 a 3<small>Valor cheio: R$ 1.297,00</small></td><td>R$ 997,00</td></tr>
+          <tr><td>Verba de anúncios sugerida<small>Paga por vocês ao Meta</small></td><td>R$ 500 a R$ 600</td></tr>
+          <tr class="t"><td>Total estimado por mês · meses 1 a 3</td><td>R$ 1.497 a R$ 1.597</td></tr>
+          <tr><td>A partir do 4º mês<small>Gestão no valor original, mais a verba</small></td><td>R$ 1.297,00 + verba</td></tr>
+          <tr class="sep"><td colspan="2">Opções no Google</td></tr>
+          <tr><td>Opção 2 · Google Meu Negócio<small>Sem verba de anúncio</small></td><td>R$ 400,00</td></tr>
+          <tr><td>Opção 3 · Google Meu Negócio + Google Ads<small>Mais verba no Google de no máximo R$ 500, paga por vocês</small></td><td>R$ 500,00 + verba</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">O valor de R$ 997 vale nos três primeiros meses, independentemente do resultado. Depois, a gestão volta ao valor original de R$ 1.297. Prazo e demais condições seguem o contrato.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Para começar no Instagram</p>
+        <div class="price">R$ 997 <small>/ mês</small></div>
+        <p>Nos três primeiros meses, mais a verba sugerida de R$ 500 a R$ 600 por mês em anúncios.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, focada em negócios locais e especializada em salões de mega hair: a gente sabe a diferença entre ponto americano, fita adesiva e microcápsula, e entre cabelo regional, do Sul e importado. Trabalha com Meta Ads, Google Ads e Google Meu Negócio, com equipe de gestores, design, web, CRM, inteligência artificial e Google.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>Mega hair</b><span>nicho de especialidade</span></div>
+        </div>
+      </div>
+      <div class="bq">“O meu foco é colocar dinheiro no bolso do seu negócio. No primeiro mês, você já tem que ver resultado.”<small>João Marot · reunião de 12/11/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>Afinal, o que é tráfego pago?</summary><p>São anúncios pagos no Instagram ou no Google, mostrados só para o público que interessa ao salão. Em vez de esperar a cliente achar vocês, o anúncio leva o trabalho do Eduardo até ela e a convida a chamar no WhatsApp.</p></details>
+    <details><summary>Por que pago a agência e a verba separados?</summary><p>A mensalidade paga a estratégia, a estrutura e o dia a dia da gestão: é a gente preparando o carro. A verba é o combustível, que vocês colocam direto na plataforma (Meta ou Google) para os anúncios rodarem. Quanto mais combustível, mais longe o carro vai, e a gente só sugere aumentar quando a conta estiver fechando.</p></details>
+    <details><summary>E se o anúncio atrair gente da região que não paga o nosso ticket?</summary><p>O anúncio não fica preso a Bom Sucesso. Depois do fechamento, vocês preenchem um formulário com o perfil da cliente ideal (bairros, idade, tipo de consumo), e a gente direciona os anúncios para esse público, como a Zona Norte, Cachambi e o entorno do Norte Shopping, Barra e Recreio. O anúncio também mostra a qualidade e uma noção de valor, para filtrar quem não tem condição.</p></details>
+    <details><summary>O Eduardo não tem tempo para editar vídeo. Como fica?</summary><p>Ele só grava, cru, seguindo a ideia que a gente manda. A nossa equipe de design faz a edição. Também dá para criar vídeos com o material que vocês já têm no Instagram, com o áudio gravado por ele.</p></details>
+    <details><summary>Trabalhamos com mega hair e com mechas. Dá para anunciar os dois?</summary><p>Dá, mas com verba curta o ideal é concentrar numa linha por vez: mega, mechas ou um combo de mega com mechas (ou manutenção com mechas). Quando uma linha está dando certo, abrimos outra frente com verba nova, sem tirar a primeira.</p></details>
+    <details><summary>Quanto tempo leva para ver resultado?</summary><p>O trabalho é montado para gerar movimento já no primeiro mês, com contatos chegando no WhatsApp e clientes indo ao salão. O painel mostra se estamos dentro, acima ou abaixo da métrica do mercado. No Google Meu Negócio sem anúncios, o ranking sobe aos poucos.</p></details>
+    <details><summary>O site está incluso?</summary><p>Sim. Em todas as opções o site vem junto, sem custo extra.</p></details>
+    <details><summary>E a sala na Barra?</summary><p>Por enquanto o foco é o salão de Bom Sucesso, onde já existe estrutura e equipe. A Barra pode virar uma nova frente mais para a frente.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Da conversa à decisão</h2>
+    <p class="sub">Três passos, com data para o retorno.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>Gabriel e Eduardo conversam</h3><p>Vocês avaliam juntos esta proposta e escolhem por onde começar: Instagram, Google ou Google com anúncios.</p></div>
+      <div class="card"><div class="n">02</div><h3>Instagram do salão</h3><p>O Gabriel me envia pelo WhatsApp o link do Instagram do salão, para eu já olhar a vitrine com calma.</p></div>
+      <div class="card"><div class="n">03</div><h3>Retorno e início</h3><p>Combinamos o dia do retorno. Fechado, vem o contrato, o formulário do perfil de cliente ideal e as primeiras gravações do Eduardo.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+</body>
+</html>
