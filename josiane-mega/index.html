@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta · Josiane Cristina Mega Hair · EmpresAtiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0B0B; --panel:#121713; --green:#15251B; --line:#232421; --line2:#222A23;
+  --accent:#B26936; --accent-hi:#D4915A; --text:#F3F3F3; --body:#D6D1C6; --muted:#A6A6A6; --dim:#6E726B;
+  --sans:'Poppins',Arial,Helvetica,sans-serif; --mono:'Space Mono','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1080px,88vw);margin:0 auto}
+section{padding:96px 0;border-top:1px solid transparent}
+h1,h2,h3{color:var(--text);font-family:var(--sans)}
+h1{font-weight:800;text-transform:uppercase;font-size:clamp(38px,6vw,72px);line-height:1.04;letter-spacing:-.01em;max-width:15ch}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+h2{font-weight:800;text-transform:uppercase;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-.005em;max-width:18ch;margin-bottom:18px}
+h3{font-weight:700;font-size:18px;line-height:1.3}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.label::before{content:"";width:26px;height:1px;background:var(--accent)}
+.sub{color:var(--body);max-width:56ch;font-size:17px;margin-bottom:44px}
+.mono{font-family:var(--mono)}
+.top{position:sticky;top:0;z-index:20;background:rgba(11,11,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.logo b{color:var(--accent)}
+.btn{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--accent);background:var(--accent);color:#0B0B0B;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:#3A3B38;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}
+.hero{padding:104px 0 88px;background:
+  linear-gradient(rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  linear-gradient(90deg,rgba(21,37,27,.35) 1px,transparent 1px) 0 0/64px 64px,
+  radial-gradient(ellipse at 70% 0%,rgba(21,37,27,.9),transparent 60%),var(--bg)}
+.hero p.lede{font-size:18px;max-width:50ch;margin:26px 0 32px;color:var(--body)}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.note{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.stats{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:28px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none;padding-left:0}
+.stat b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--accent);line-height:1.1}
+.stat span{font-size:13px;color:var(--muted);display:block;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:14px}
+.card p{font-size:14.5px;color:var(--muted);margin-top:8px}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 24px;margin-top:44px;font-size:clamp(19px,2.2vw,24px);font-weight:600;color:var(--text);line-height:1.45;max-width:46ch}
+.quote span{color:var(--accent-hi)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--panel);border:1px solid var(--line2);border-radius:3px;padding:30px}
+.panel.hi{border-color:#4A3322}
+.panel h4{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.panel.hi h4{color:var(--accent-hi)}
+.big{font-size:clamp(34px,4.4vw,52px);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:12px}
+.panel p{font-size:14.5px;color:var(--muted)}
+.panel p+p{margin-top:12px}
+.grp{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line)}
+.tl .tag{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+.tl .tag b{display:block;font-family:var(--sans);font-size:22px;letter-spacing:0;color:var(--text);font-weight:800;margin-top:4px}
+.tl p{font-size:14.5px;color:var(--muted);margin-top:6px;max-width:62ch}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.item{display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.item .n{font-family:var(--mono);color:var(--accent);font-size:13px;padding-top:2px}
+.item p{font-size:14px;color:var(--muted);margin-top:4px}
+.xlist{list-style:none;display:flex;flex-direction:column}
+.xlist li{padding:12px 0 12px 24px;border-top:1px solid var(--line);font-size:14.5px;position:relative;color:var(--body)}
+.xlist li:first-child{border-top:none}
+.xlist li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
+.xlist.no li::before{content:"✕";color:var(--muted);font-size:12px;top:14px}
+.inv{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+td{padding:15px 0;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child td{border-top:none}
+td+td{text-align:right;font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap;padding-left:14px}
+td small{display:block;color:var(--dim);font-size:12.5px;white-space:normal}
+tr.t td{font-weight:700;color:var(--accent-hi)}
+.cta-card{background:var(--green);border:1px solid #2C4434;border-radius:3px;padding:32px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.cta-card .label{margin-bottom:4px}
+.cta-card .price{font-size:clamp(36px,4.6vw,50px);font-weight:800;color:var(--text);line-height:1}
+.cta-card .price small{font-size:14px;font-weight:400;color:var(--muted)}
+.cta-card p{font-size:13px;color:var(--muted)}
+.cta-card .btn{text-align:center;margin-top:8px}
+.author{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.metrics{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap}
+.metric{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:14px 20px}
+.metric b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.metric span{font-size:12px;color:var(--muted)}
+.bq{background:var(--green);border-left:3px solid var(--accent);padding:26px 28px;font-size:17px;font-weight:600;color:var(--text);line-height:1.5}
+.bq small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-hi);margin-top:14px;font-weight:400}
+details{border-top:1px solid var(--line);padding:20px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--text);font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-family:var(--mono);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--muted);font-size:14.5px;max-width:64ch}
+.final{text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(21,37,27,.95),var(--bg) 70%);padding:104px 0 96px}
+.final .label{justify-content:center}
+.final .label::before{display:none}
+.final h2{margin-left:auto;margin-right:auto;max-width:16ch}
+.final .sub{margin-left:auto;margin-right:auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left;margin:0 0 40px}
+.steps .card h3{font-size:16px}
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+@media (max-width:860px){
+  section{padding:68px 0}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none;padding-left:0}
+  .stat{border-top:1px solid var(--line)} .stat:nth-child(-n+2){border-top:none}
+  .cards,.two,.items,.inv,.author,.steps{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:8px}
+}
+@media print{.top{position:static}.btn{display:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">EmpresAtiva <b>Digital</b></div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="label">Proposta comercial · Josiane Cristina Mega Hair</p>
+    <h1>Anúncio que traz quem valoriza o seu cabelo <em>—</em> em Ribeirão Preto</h1>
+    <p class="lede">Para a Josiane. Um plano para usar o cabelo vietnamita como isca, atrair mulheres da zona sul de Ribeirão Preto e levar cada uma até a sua cadeira, com número e painel para acompanhar tudo.</p>
+    <div class="cta">
+      <a class="btn" href="#investimento">Ver investimento</a>
+      <a class="btn ghost" href="#diagnostico">Ver o diagnóstico</a>
+    </div>
+    <p class="note">Proposta de 18/11/2026 · Contrato inicial de 3 meses</p>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>R$ 2.000</b><span>Instalação a partir desse valor, hoje</span></div>
+    <div class="stat"><b>≈ 30%</b><span>Margem estimada nessa instalação (R$ 500 a R$ 600)</span></div>
+    <div class="stat"><b>R$ 1.350</b><span>Vietnamita super double drawn, 150 g e 50 cm, com margem em torno de 100%</span></div>
+    <div class="stat"><b>8 em 100</b><span>Leads que viram venda na média do nicho de beleza</span></div>
+  </div>
+</div>
+
+<section id="diagnostico">
+  <div class="wrap">
+    <p class="label">O diagnóstico</p>
+    <h2>O cabelo é ótimo. O público do anúncio é que precisa mudar</h2>
+    <p class="sub">Da conversa de hoje saíram três pontos que explicam por que o tráfego anterior não se pagou.</p>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Chegava gente, fechava pouca</h3><p>Com R$ 600 a R$ 700 por mês em anúncio, chegavam cerca de 50 mensagens. Ao saber o valor, a maioria desistia. Pelo seu relato, a cada 40 conversas, uma fechava.</p></div>
+      <div class="card"><div class="n">02</div><h3>Autoridade ainda está em Araxá</h3><p>Depois de mais de 10 anos em Araxá, a maior parte da clientela ainda vem de lá. Em Ribeirão Preto você quer ser conhecida na zona sul e por quem dá valor ao cabelo.</p></div>
+      <div class="card"><div class="n">03</div><h3>O WhatsApp é só seu</h3><p>Você atende, vende e despacha. Na média do mercado, o ideal é responder em até 5 minutos, e 30 minutos é o limite antes de a cliente ir para a concorrência.</p></div>
+    </div>
+    <div class="quote">O desafio não é falta de interesse. É <span>anunciar a oferta certa para a mulher certa</span>, com o valor claro antes de ela chamar no WhatsApp.</div>
+    <p class="note" style="margin-top:28px">Fonte: diagnóstico de 18/11/2026 com a Josiane.</p>
+  </div>
+</section>
+
+<section id="gargalo" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A conta</p>
+    <h2>Quanto o anúncio precisa custar para o salão lucrar</h2>
+    <p class="sub">Simulação feita na reunião com a média do nicho de beleza e mega hair, ticket de R$ 2.000 e verba de R$ 700. É uma referência para acompanhar, não uma promessa de resultado.</p>
+    <div class="two">
+      <div class="panel" style="background:var(--bg)">
+        <h4>Simulação com R$ 700 de verba</h4>
+        <table>
+          <tr><td>Leads, com custo de R$ 10 cada</td><td>70</td></tr>
+          <tr><td>Vendas, na média de 8 em 100</td><td>≈ 6</td></tr>
+          <tr><td>Faturamento, ticket de R$ 2.000</td><td>≈ R$ 11.200</td></tr>
+          <tr><td>Custo por venda</td><td>≈ R$ 125</td></tr>
+          <tr class="t"><td>Se o lead cair para R$ 5<small>Anúncios mais atrativos, com a mesma verba</small></td><td>140 leads</td></tr>
+          <tr><td>Vendas estimadas</td><td>≈ 11</td></tr>
+          <tr><td>Faturamento estimado</td><td>≈ R$ 22.000</td></tr>
+        </table>
+      </div>
+      <div class="panel hi" style="background:var(--bg)">
+        <h4>Referência do nicho de beleza</h4>
+        <div class="big">100 → 22 → 8</div>
+        <p>A cada 100 leads, 22 devem ser qualificados (têm a dor que você resolve e condição de pagar) e cerca de 36% desses compram. No total, 8 vendas por 100 leads.</p>
+        <p>Isso mostra onde está o gargalo. Se chegam menos de 22 qualificados, o ajuste é no anúncio. Se chegam 22 e a venda não acontece, o ajuste é no atendimento.</p>
+        <ul class="xlist" style="margin-top:18px">
+          <li>Custo por venda até R$ 150: excelente, com a margem de 30% de hoje</li>
+          <li>Até R$ 300: ainda dá lucro</li>
+          <li>A partir de R$ 450: a operação fica no negativo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano">
+  <div class="wrap">
+    <p class="label">O plano</p>
+    <h2>Da isca ao upgrade: uma esteira para encher a cadeira</h2>
+    <p class="sub">Começamos pelo produto que já coloca dinheiro no seu bolso e evoluímos a linha premium conforme a verba cresce.</p>
+
+    <p class="grp">Anúncios · Ribeirão Preto</p>
+    <div class="tl"><div class="tag">Frente 1<b>A isca</b></div><div><h3>Vietnamita premium como porta de entrada</h3><p>O super double drawn, a partir de R$ 1.350 (150 g, 50 cm), tem preço e qualidade acima do que se vende na cidade. É a oferta que atrai volume de mulheres para o salão.</p></div></div>
+    <div class="tl"><div class="tag">Frente 2<b>Anúncio que filtra</b></div><div><h3>Mostrar valor antes do WhatsApp</h3><p>Os anúncios mostram a qualidade do cabelo, a sua referência na região e a faixa de preço. Quem chama já sabe o valor, e a objeção de preço sai da conversa. Segmentação para Ribeirão Preto, com foco na zona sul.</p></div></div>
+    <div class="tl"><div class="tag">Frente 3<b>Teste constante</b></div><div><h3>Ganchos novos toda semana</h3><p>A equipe de design cria imagens, carrosséis e vídeos. Muda gancho, início, meio e fim, e mantém o que traz lead mais barato e mais qualificado. Vídeos podem ter a sua voz: você manda o áudio do roteiro.</p></div></div>
+
+    <p class="grp">Conversão · Do anúncio à cadeira</p>
+    <div class="tl"><div class="tag">Frente 4<b>Avaliação presencial</b></div><div><h3>Trazer a cliente para o salão</h3><p>Com valor e qualidade já claros no anúncio, a cliente sentada na cadeira tem muito mais chance de fechar do que numa avaliação online.</p></div></div>
+    <div class="tl"><div class="tag">Frente 5<b>Esteira</b></div><div><h3>Do vietnamita ao cabelo regional e do Sul</h3><p>Ela entra pelo vietnamita, conhece o restante da linha na cadeira e faz o upgrade. Quem faz upgrade indica. Com a venda entrando, a verba cresce e o anúncio do público premium roda em paralelo.</p></div></div>
+    <div class="tl"><div class="tag">Frente 6<b>Velocidade</b></div><div><h3>Alerta e resposta rápida</h3><p>Você recebe um aviso quando chega lead qualificado. Meta de resposta: até 30 minutos, e 5 minutos quando for possível.</p></div></div>
+  </div>
+</section>
+
+<section id="entrega" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">A entrega</p>
+    <h2>O que a EmpresAtiva entrega todo mês</h2>
+    <p class="sub">Uma equipe completa, com gestão, design e inteligência artificial, e relatório do que voltou para o seu bolso.</p>
+    <div class="items">
+      <div class="item"><div class="n">01</div><div><h3>Gestão de tráfego pago</h3><p>Campanhas em uma plataforma, Instagram ou Google, definida com você.</p></div></div>
+      <div class="item"><div class="n">02</div><div><h3>Criativos para anúncio</h3><p>Imagens, carrosséis e vídeos. Você envia o que tiver do espaço, dos cabelos e dos antes e depois, e a equipe cria.</p></div></div>
+      <div class="item"><div class="n">03</div><div><h3>WhatsApp integrado</h3><p>As conversas são lidas e classificadas por IA em desqualificado, qualificado e agendado. O resultado volta para o Instagram, e o anúncio aprende a achar mulheres parecidas com as que compram.</p></div></div>
+      <div class="item"><div class="n">04</div><div><h3>Alerta de lead qualificado</h3><p>Aviso na hora para você continuar a conversa e agendar.</p></div></div>
+      <div class="item"><div class="n">05</div><div><h3>Painel ao vivo</h3><p>Leads, qualificados e os criativos que mais performam, em tempo real.</p></div></div>
+      <div class="item"><div class="n">06</div><div><h3>Relatório mensal e ideias de conteúdo</h3><p>Fechamento do mês e sugestões de conteúdo para a equipe de redes sociais que você contratou usar na construção de autoridade.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="escopo">
+  <div class="wrap">
+    <p class="label">Combinado entre nós</p>
+    <h2>Quem faz o quê</h2>
+    <p class="sub">Para o tráfego trazer venda, o anúncio e o atendimento precisam andar juntos.</p>
+    <div class="two">
+      <div class="panel hi">
+        <h4>Do lado da EmpresAtiva</h4>
+        <ul class="xlist">
+          <li>Executar as campanhas com o vietnamita como isca</li>
+          <li>Integrar o WhatsApp para qualificar e classificar os leads</li>
+          <li>Criar e testar os anúncios, com painel ao vivo e relatório mensal</li>
+          <li>Compartilhar a lista de clientes de mega hair da agência</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Do seu lado</h4>
+        <ul class="xlist">
+          <li>Priorizar o atendimento presencial no salão para fechar a venda</li>
+          <li>Responder os leads qualificados em até 30 minutos, de preferência em 5</li>
+          <li>Enviar vídeos e fotos do espaço, dos cabelos e dos antes e depois</li>
+        </ul>
+      </div>
+    </div>
+    <p class="grp" style="margin-top:44px">Fora do escopo agora</p>
+    <ul class="xlist no" style="max-width:62ch">
+      <li>Site institucional: já contratado com outra equipe</li>
+      <li>Vídeos e conteúdo orgânico do feed: ficam com a equipe de redes sociais que você contratou</li>
+      <li>CRM próprio: foi apresentado e faz mais sentido quando houver alguém dedicado ao comercial</li>
+    </ul>
+  </div>
+</section>
+
+<section id="investimento" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Investimento</p>
+    <h2>Mensalidade e verba de anúncios</h2>
+    <p class="sub">O valor padrão da agência é R$ 1.297 por mês. Como o site não entra, o início sai por R$ 997.</p>
+    <div class="inv">
+      <div class="panel" style="background:var(--bg)">
+        <h4>Composição mensal no início</h4>
+        <table>
+          <tr><td>Mensalidade EmpresAtiva<small>Valor padrão de R$ 1.297, sem a entrega do site</small></td><td>R$ 997,00</td></tr>
+          <tr><td>Verba de anúncios, mínimo sugerido<small>À parte da mensalidade. O ideal é em torno de R$ 1.000 para um movimento mais rápido</small></td><td>R$ 600,00</td></tr>
+          <tr class="t"><td>Total estimado no início</td><td>≈ R$ 1.600</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px;line-height:1.7">Contrato inicial de 3 meses, para entendermos se o trabalho flui. Dando certo, seguimos com contratos semestrais. A ideia é que, com o primeiro mês de vendas, a verba seja ampliada a partir do que o anúncio devolver.</p>
+      </div>
+      <div class="cta-card">
+        <p class="label">Mensalidade</p>
+        <div class="price">R$ 997 <small>/ mês</small></div>
+        <p>Contrato inicial de 3 meses. Verba de anúncios à parte, a partir de R$ 600.</p>
+        <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar com o João</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="autor">
+  <div class="wrap">
+    <p class="label">Quem conduz</p>
+    <h2>João Marot — EmpresAtiva Digital</h2>
+    <div class="author">
+      <div>
+        <p style="font-size:15px;color:var(--body)">Agência de tráfego pago no Rio de Janeiro, no ar desde 2018, com foco em negócios locais e em salões de mega hair. Trabalha com Meta Ads, Google Ads e Google Meu Negócio, com uma equipe própria de gestão, design, web, CRM e inteligência artificial.</p>
+        <div class="metrics">
+          <div class="metric"><b>+250</b><span>negócios locais atendidos</span></div>
+          <div class="metric"><b>2018</b><span>agência no ar</span></div>
+          <div class="metric"><b>R$ 300 mil+</b><span>faturados por uma cliente de mega hair com R$ 4 mil de verba (caso fora da curva)</span></div>
+        </div>
+      </div>
+      <div class="bq">“Meu foco é colocar dinheiro no seu bolso.”<small>João Marot · diagnóstico de 18/11/2026</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="label">Perguntas frequentes</p>
+    <h2>Dúvidas que apareceram na conversa</h2>
+    <details style="margin-top:36px"><summary>O vídeo do anúncio vai aparecer no meu Instagram?</summary><p>Não. O anúncio patrocinado não fica no perfil nem no feed. Ele aparece só para o público escolhido, em Ribeirão Preto, e a pessoa não o vê no seu perfil.</p></details>
+    <details><summary>Por que começar pelo vietnamita se eu quero deixar de trabalhar com ele?</summary><p>Porque ele já tem preço e qualidade que chamam atenção e coloca dinheiro no caixa agora. A mulher que entra por ele conhece o cabelo regional e o do Sul na cadeira e faz o upgrade. Com a verba crescendo, o público premium ganha anúncio próprio.</p></details>
+    <details><summary>Como vou saber se está funcionando?</summary><p>Pelo painel ao vivo e pelo relatório mensal. A régua é a média do nicho: 22 leads qualificados a cada 100 e custo por venda até R$ 150 a R$ 300. Os números mostram se o ajuste é no anúncio ou no atendimento.</p></details>
+    <details><summary>E se eu não puder em um mês?</summary><p>O contrato inicial é de 3 meses para entendermos se as coisas fluem. Depois, dando certo, passamos para contratos semestrais.</p></details>
+    <details><summary>O site e os vídeos do feed ficam com quem?</summary><p>Com a equipe que você já contratou. A EmpresAtiva entrega o tráfego e os criativos de anúncio, e envia sugestões de conteúdo para essa equipe usar nas redes sociais.</p></details>
+  </div>
+</section>
+
+<section class="final" id="proximos">
+  <div class="wrap">
+    <p class="label">Próximos passos</p>
+    <h2>Do envio à decisão</h2>
+    <p class="sub">Outubro, novembro e dezembro são os melhores meses de venda para salão de beleza. Quanto antes começar, mais você aproveita essa fase.</p>
+    <div class="steps">
+      <div class="card"><div class="n">01</div><h3>EmpresAtiva envia</h3><p>Esta proposta e a lista de clientes de mega hair da agência, por WhatsApp.</p></div>
+      <div class="card"><div class="n">02</div><h3>Você analisa</h3><p>Com calma, vendo se a mensalidade e a verba cabem nos primeiros meses.</p></div>
+      <div class="card"><div class="n">03</div><h3>Retorno na sexta-feira</h3><p>Na sexta, 20/11, o João volta a falar com você para saber se vocês começam agora ou em outra data.</p></div>
+    </div>
+    <a class="btn" href="https://wa.me/5521983424319" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>EmpresAtiva Digital · Proposta · Rio de Janeiro · 2026</footer>
+
+</body>
+</html>
